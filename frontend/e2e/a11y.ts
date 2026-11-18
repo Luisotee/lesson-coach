@@ -9,7 +9,7 @@ export async function expectNoAxeViolations(page: Page, label?: string) {
   // Only what a reader needs to find the problem: the rule and the elements.
   const found = results.violations.map((v) => ({
     rule: v.id,
-    targets: v.nodes.map((n) => n.target.join(' ')),
+    targets: v.nodes.map((n) => `${n.target.join(' ')}: ${n.failureSummary ?? ''}`),
   }))
   expect(found, label).toEqual([])
 }
@@ -63,6 +63,14 @@ export async function checkState(page: Page, label?: string, { loading = false }
   await expectNoSideScroll(page, label)
   await expectNothingClipped(page, label)
   await expectNoAxeViolations(page, label)
+}
+
+/**
+ * Waits until "Explain this" is back from its disabled look (opacity 0.5). The fade is 0.01 ms
+ * under reduced motion, but a busy machine can still be caught in it by axe's contrast check.
+ */
+export async function explainSettled(page: Page) {
+  await expect(page.getByRole('button', { name: 'Explain this' })).toHaveCSS('opacity', '1')
 }
 
 /** Types into a MathLive field by its label. */

@@ -4,6 +4,7 @@ import {
   expectNoAxeViolations,
   expectNoSideScroll,
   expectNothingClipped,
+  explainSettled,
   typeMath,
 } from './a11y.ts'
 import { fixture, mockApi, type ApiOverrides } from './api.ts'
@@ -259,6 +260,7 @@ const STATES: [string, (page: Page) => Promise<void>][] = [
       async (page) => {
         await explain(page, { mistake: () => ({ body: fixture(`mistake/${state}.json`) }) })
         await expect(page.locator(`[data-status="${state.replaceAll('-', '_')}"]`)).toBeVisible()
+        await explainSettled(page)
       },
     ],
   ),

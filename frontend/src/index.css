@@ -149,6 +149,12 @@
   h3 {
     @apply font-heading;
   }
+  /* MathLive's on-screen keyboard (touch devices) marks its selected tab in its own blue,
+     #0c75d8, under 4.5:1 on its grey backdrop (#cacfd7); navy there is about 9:1. */
+  :root {
+    --keyboard-accent-color: var(--color-navy);
+    --keyboard-toolbar-text-active: var(--color-navy);
+  }
   /* Scrolled-to and focused elements stop below the sticky header, never under it (WCAG
      2.4.11). --header-h is the header's live height (useHeaderHeight). */
   html {

@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from '@playwright/test'
-import { expectNoAxeViolations } from './a11y.ts'
+import { expectNoAxeViolations, explainSettled } from './a11y.ts'
 import { fixture, mockApi } from './api.ts'
 
 /*
@@ -150,6 +150,7 @@ test('mistake: choose a topic, type the problem and answer, explain, try another
   await tabTo(page, page.getByRole('button', { name: 'Try another answer' }))
   await page.keyboard.press('Enter')
   await expect(page.locator('math-field[aria-label="What your student answered"]')).toBeFocused()
+  await explainSettled(page)
   await expectNoAxeViolations(page)
 })
 

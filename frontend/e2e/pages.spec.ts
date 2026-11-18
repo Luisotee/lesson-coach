@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { expectNoAxeViolations, typeMath } from './a11y.ts'
+import { expectNoAxeViolations, explainSettled, typeMath } from './a11y.ts'
 import { fixture, mockApi } from './api.ts'
 
 test.beforeEach(async ({ page }) => {
@@ -219,6 +219,7 @@ for (const [state, heading] of STATES) {
       lang: 'en',
       working: [],
     })
+    await explainSettled(page)
     await expectNoAxeViolations(page)
   })
 }
