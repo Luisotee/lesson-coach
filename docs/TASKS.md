@@ -45,10 +45,10 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - i18n: react-i18next, an English locale, a working language picker, an RTL switch (`dir`), and lazy-loaded locales.
   - **Math renderer components:** `Fraction`, `EquationLine` (aligned on `=` with a margin op), `Notebook` (squared paper), `Pen` variants (pencil, ink, green), and a write-on animation that is off under reduced motion. Each produces spoken text through `aria-label` or MathML.
   - **Done when:** a Storybook-like demo route renders every math component in LTR and RTL, and axe reports no violations.
-- [ ] **T4 Azure infrastructure** (`infra/`)
+- [x] **T4 Azure infrastructure** (`infra/`)
   - Scripts (az CLI, idempotent) that create `rg-akelius-coach` in `switzerlandnorth` with:
     - an AI Services account;
-    - deployments `gpt-5.4-mini` (**DataZoneStandard**) and a stronger offline model (check what the region offers);
+    - deployments `gpt-5.5` live (**DataZoneStandard**; `gpt-5.4-mini` has 0 quota there) and `gpt-5.5` offline (GlobalStandard);
     - a Container Apps environment with scale-to-zero;
     - ACR Basic.
   - Write the endpoint and key into the local `.env` only. **Leave `rg-tourlore-ai` untouched.**

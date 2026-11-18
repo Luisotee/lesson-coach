@@ -138,8 +138,8 @@ frontend/ (React + Vite + TS + Tailwind v4 + shadcn/ui + Motion + MathLive + rea
   - Node with `pnpm`.
   - One Dockerfile: the frontend is built and served by FastAPI as static files.
 - **Models:** Azure OpenAI in `switzerlandnorth` (the subscription's allowed region).
-  - Live calls use `gpt-5.4-mini` on **DataZoneStandard**, which keeps processing in the EU data zone. That covers both text and vision.
-  - Offline generation and translation use a stronger model; `GlobalBatch` is acceptable because no personal data is involved.
+  - Live calls use `gpt-5.5` on **DataZoneStandard** (deployment `gpt-5.5-live`), which keeps processing in the EU data zone. That covers both text and vision. The planned `gpt-5.4-mini` has 0 DataZoneStandard quota on Azure for Students; the deployment name lives in `MODEL_LIVE`, so swapping back is config only.
+  - Offline generation and translation use `gpt-5.5` on GlobalStandard (deployment `gpt-5.5-offline`), acceptable because no personal data is involved. `GlobalBatch` would be cheaper but only works through the Batch API.
   - Model, `reasoning_effort` and token limits live in one config. Use `max_completion_tokens`, and send no `temperature` unless the deployment accepts it.
   - Prompts put fixed instructions and the source lesson first, then teacher input in delimiters. Every prompt includes "Output content only. Do not address the user."
   - Log `cached_tokens` and `reasoning_tokens` per call.
@@ -180,7 +180,7 @@ frontend/ (React + Vite + TS + Tailwind v4 + shadcn/ui + Motion + MathLive + rea
   - tokens (including cached and reasoning) and cost per call.
 - **LLM judge, for free text only:** dimensions are located / actionable / not revealing / non-judgmental, each scored `yes / to some extent / no`. Calibrate it against our hand labels (Cohen's kappa) before quoting it. Count judge failures.
 - **`evals/results.yaml`** stores a hash of prompts, schemas, packs and config. A pytest fails when it is stale.
-- **Model choice:** compare minimal and low `reasoning_effort` on `gpt-5.4-mini`.
+- **Model choice:** compare minimal and low `reasoning_effort` on the live model (`gpt-5.5`).
 - **pytest** covers the sympy core (guards, rules, first line that doesn't follow), the API with a mocked LLM, i18n completeness (every key in every listed language), and that every pack step has its explanations.
 - **Playwright** covers every page and state, axe-core, keyboard-only flows, RTL rendering and print.
 

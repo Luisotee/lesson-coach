@@ -59,6 +59,6 @@ Use `uv` for Python and `pnpm` for Node. CI may not run because GitHub Actions i
 ## Azure
 
 - Subscription "Azure for Students". Allowed regions are `switzerlandnorth` and `belgiumcentral` among others.
-- Live model: `gpt-5.4-mini` on **DataZoneStandard**, which keeps processing in the EU data zone. Offline generation may use `GlobalBatch`, since no personal data is involved.
+- Live model: `gpt-5.5` on **DataZoneStandard** (deployment `gpt-5.5-live`), which keeps processing in the EU data zone. `gpt-5.4-mini` DataZoneStandard has 0 quota on this subscription; swapping back is config only (`MODEL_LIVE`). Offline generation uses `gpt-5.5` on GlobalStandard (`gpt-5.5-offline`), since no personal data is involved.
 - Secrets go only in the local `.env` and in Container Apps secrets.
 - **Never touch `rg-tourlore-ai`**, which belongs to another project.
