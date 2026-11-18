@@ -150,6 +150,29 @@ export function StudentQuestions({ items }: { items: Pack['questions'] }) {
   )
 }
 
+// Stands in for the title while the label is formatted, so the title can be wrapped in its own
+// element whatever the language's word order.
+const TITLE = '\u2063title\u2063'
+
+/** Akelius's own title of an English lesson, inside the translated label. When the page is in
+ * another language the title is marked `lang="en"`, so a screen reader reads it in English
+ * (WCAG 3.1.2, Language of Parts). */
+function LessonLabel({ lesson }: { lesson: AkeliusLesson }) {
+  const { t, i18n } = useTranslation()
+  const [before, after = ''] = t('topic.akeliusLesson', {
+    title: TITLE,
+    grade: lesson.grade,
+  }).split(TITLE)
+  const english = (i18n.resolvedLanguage ?? i18n.language).split('-')[0] === 'en'
+  return (
+    <span>
+      {before}
+      {english ? lesson.title : <span lang="en">{lesson.title}</span>}
+      {after}
+    </span>
+  )
+}
+
 function AkeliusLinks({ lessons }: { lessons: AkeliusLesson[] }) {
   const { t } = useTranslation()
   return (
@@ -164,7 +187,7 @@ function AkeliusLinks({ lessons }: { lessons: AkeliusLesson[] }) {
               rel="noopener noreferrer"
               className="inline-flex min-h-11 items-center gap-2 font-semibold text-link-ink underline underline-offset-2"
             >
-              {t('topic.akeliusLesson', { title: l.title, grade: l.grade })}
+              <LessonLabel lesson={l} />
               <ExternalLink aria-hidden="true" className="size-4" />
               <span className="sr-only">{t('common.newTab')}</span>
             </a>

@@ -47,6 +47,12 @@ for (const lang of RTL) {
       for (const el of await math.all()) {
         await expect(el).toHaveCSS('direction', 'ltr')
       }
+      // Akelius's lesson titles are English: marked so a screen reader reads them in English.
+      if (name === 'topic') {
+        const titles = page.locator('a[href*="akelius.education"] [lang="en"]')
+        await expect(titles.first()).toBeVisible()
+        expect(await titles.first().textContent()).toMatch(/[a-z]/i)
+      }
       // The text itself runs right to left: the main heading is aligned to the right edge.
       await expect(page.getByRole('heading', { level: 1 })).toHaveCSS('direction', 'rtl')
 
