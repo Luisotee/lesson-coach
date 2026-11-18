@@ -348,6 +348,7 @@
     "barCaption": "La réponse sous forme de schéma en barres.",
     "whatToSay": "Ce que vous pourriez dire",
     "sayExample": "Rédigé pour un exemple, pas pour celui de votre élève :",
+    "sayWorded": "formulé par l’IA pour ce problème · nombres vérifiés par le moteur mathématique",
     "say": {
       "ask": "demander",
       "nudge": "guider",

@@ -348,6 +348,7 @@
     "barCaption": "A resposta como um modelo de barras.",
     "whatToSay": "O que você poderia dizer",
     "sayExample": "Escrito para um problema de exemplo, não para o do seu aluno:",
+    "sayWorded": "redigido por IA para este problema · números verificados pelo mecanismo matemático",
     "say": {
       "ask": "perguntar",
       "nudge": "dar uma pista",

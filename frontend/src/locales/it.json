@@ -348,6 +348,7 @@
     "barCaption": "La risposta come modello a barre.",
     "whatToSay": "Che cosa potresti dire",
     "sayExample": "Scritto per un problema di esempio, non per quello del tuo studente:",
+    "sayWorded": "formulato dall’AI per questo problema · numeri controllati dal motore matematico",
     "say": {
       "ask": "chiedi",
       "nudge": "dai un suggerimento",

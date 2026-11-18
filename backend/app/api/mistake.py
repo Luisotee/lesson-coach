@@ -25,7 +25,7 @@ from app.api.models import (
     TryNextOut,
     WhatToSayOut,
 )
-from app.content.schema import Misconception, Pack
+from app.content.schema import CheckQuestion, Misconception, Pack, PracticeItem
 from app.content.schema import Problem as PackProblem
 from app.content.store import PackStore
 from app.llm.client import LLM
@@ -40,6 +40,7 @@ from app.llm.prompts import (
 )
 from app.math.nodes import MathError
 from app.math.pipeline import MathText, MistakeFindings, analyse_mistake, read_problem
+from app.math.problems import Kind
 from app.mathpool import MathFailure, MathPool, MathTimeout
 
 router = APIRouter(prefix="/api", tags=["mistake"])
@@ -119,21 +120,36 @@ def _card_out(card: Misconception) -> MisconceptionOut:
     )
 
 
-def _same_problem(problem: PackProblem, found: MistakeFindings) -> bool:
-    """Whether a pack problem is the one the teacher typed, once both are normalised."""
-    if problem.kind != found.kind:
-        return False
+def _normalised(text: str, kind: Kind) -> str | None:
     try:
-        return read_problem(MathText(problem.expr, "text"), problem.kind).expr == found.expr
+        return read_problem(MathText(text, "text"), kind).expr
     except MathError:
+        return None
+
+
+def _same_problem(problem: PackProblem, found: MistakeFindings) -> bool:
+    """Whether a pack problem is the one the teacher typed, once both are normalised.
+    `evaluate` and `simplify` count as one: a problem typed without a kind is read as
+    `evaluate`, and both are graded the same way."""
+    if (problem.kind == "solve") != (found.kind == "solve") or found.expr is None:
         return False
+    return _normalised(problem.expr, problem.kind) == found.expr
+
+
+def _same_answer(answer: str, found: MistakeFindings) -> bool:
+    if found.student_answer is None:
+        return False
+    return _normalised(answer, "evaluate") == _normalised(found.student_answer, "evaluate")
 
 
 async def _rule_diagnosis(
     llm: LLM, pack: Pack, cards: list[Misconception], found: MistakeFindings, lang: str
 ) -> Diagnosis:
     first = cards[0]
-    same = _same_problem(first.example_problem, found)  # the card's moves fit as they are
+    # The card's own example with its wrong answer: its moves fit as they are.
+    same = _same_problem(first.example_problem, found) and _same_answer(
+        first.example_wrong_answer, found
+    )
     phrased = None if same else await _rule_say(llm, first, found, lang)
     if phrased is not None:
         say, say_lang, say_example = phrased, lang, None
@@ -144,8 +160,7 @@ async def _rule_diagnosis(
         source="rule",
         rule_checked=True,
         misconceptions=[_card_out(c) for c in cards],
-        # The belief and why it feels right, which the result shows from the card itself.
-        explanation=f"{first.belief} {first.why_it_feels_right}",
+        explanation="",  # the card's belief and why it feels right are in `misconceptions`
         margin_note=None,
         what_to_say=say,
         say_example=say_example,
@@ -160,7 +175,7 @@ async def _rule_say(
     llm: LLM, card: Misconception, found: MistakeFindings, lang: str
 ) -> WhatToSayOut | None:
     """The card's moves rewritten for the teacher's problem, or None when the call is
-    unavailable, abstains or writes a number sympy didn't give it."""
+    unavailable, abstains, leaves a move blank or writes a number sympy didn't give it."""
     messages = rule_say_messages(
         misconception={
             "belief": card.belief,
@@ -173,7 +188,7 @@ async def _rule_say(
         lang=lang,
     )
     reply = await llm.structured(
-        task="mistake",
+        task="mistake_moves",  # a short deadline: a slow model falls back to the card fast
         messages=messages,
         schema_name="rule_what_to_say",
         schema=RULE_SAY_SCHEMA,
@@ -193,17 +208,17 @@ async def _rule_say(
 
 
 def _try_next(pack: Pack, card: Misconception, found: MistakeFindings) -> TryNextOut | None:
-    """The card's check question, or, when that is the problem the teacher just typed, another
-    card's, then a practice problem; None when every one is the same problem."""
-    options = [card.check_question] + [
-        m.check_question for m in pack.misconceptions if m.id != card.id
+    """The card's check question, or, when that is the problem the teacher just typed, a
+    practice problem of the topic (it practises the same skill; another card's check question
+    was built to detect another belief), then another card's; None when every one is it."""
+    options: list[CheckQuestion | PracticeItem] = [
+        card.check_question,
+        *pack.practice,
+        *(m.check_question for m in pack.misconceptions if m.id != card.id),
     ]
     for option in options:
         if not _same_problem(option.problem, found):
             return TryNextOut(problem=option.problem, prompt=option.prompt)
-    for item in pack.practice:
-        if not _same_problem(item.problem, found):
-            return TryNextOut(problem=item.problem, prompt=item.prompt)
     return None
 
 

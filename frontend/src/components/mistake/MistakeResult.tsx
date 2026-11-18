@@ -120,6 +120,11 @@ function WhatToSay({ d }: { d: Diagnosis }) {
           <MathExpr expr={d.say_example.expr} className="text-xl" />
         </p>
       )}
+      {d.source === 'rule' && !d.say_example && (
+        <p className="text-[13px] text-muted-foreground" data-say-worded>
+          {t('mistake.sayWorded')}
+        </p>
+      )}
       <ol className="flex flex-col gap-3">
         {rows.map(([key, text]) => (
           <li key={key} className="flex flex-col gap-1 sm:flex-row sm:gap-3">

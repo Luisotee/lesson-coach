@@ -143,9 +143,11 @@ class Diagnosis(Model):
     then the misconception comes from the pack's card, and `what_to_say` is the card's moves
     rephrased by one AI call for this problem (numbers checked like any AI text). When that
     call is unavailable, abstains or fails the check, `what_to_say` is the card's own moves,
-    written for the card's example problem, and `say_example` names that problem. `lang` is
-    the language of `explanation`, `margin_note` and `what_to_say`; `cards_lang` that of
-    `misconceptions` and `try_next` (the pack served, which falls back to English).
+    written for the card's example problem, and `say_example` names that problem. On the rule
+    path `explanation` is empty: the card's belief and why it feels right are in
+    `misconceptions`. `lang` is the language of `explanation`, `margin_note` and
+    `what_to_say`; `cards_lang` that of `misconceptions` and `try_next` (the pack served,
+    which falls back to English).
     """
 
     source: Literal["rule", "ai"]

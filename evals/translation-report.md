@@ -8,32 +8,32 @@ A language ships only when its prompts, its three packs and all its UI strings p
 - The judge compares each English text with its translation and reports errors (meaning, math terms, grammar). Flagged texts are asked for again with the problems, up to 3 times; that is the review pass. Its changes to UI strings are listed below.
 - Judge flag rate: judge-majority flags per text judged. Every judging counts, including each re-judge after a repair, so a text flagged in two rounds counts twice; it is not the share of distinct texts flagged.
 
-Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $52.83.
+Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $53.01.
 Not run: so, ti, ps, prs.
 
 Cost, calls, repairs and flag rate add up every recorded run of a language. A rerun reuses the units that already passed, so it adds little.
 
 | Language | Packs ship | Calls | Repairs | Flag rate | Cost | UI ships | Calls | Repairs | Flag rate | Cost |
 |---|---|---|---|---|---|---|---|---|---|---|
-| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 9 / 26 | 5 | 27.3% | $1.12 |
-| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 29 / 49 | 10 | 3.1% | $0.64 |
-| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 26 / 48 | 9 | 3.2% | $0.58 |
-| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 29 / 61 | 12 | 4.7% | $0.77 |
-| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 24 / 34 | 7 | 1.6% | $0.49 |
-| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 29 / 47 | 10 | 3.7% | $0.63 |
-| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 27 / 47 | 8 | 2.2% | $0.61 |
-| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 8 / 21 | 5 | 20.7% | $1.00 |
-| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 24 / 38 | 7 | 1.9% | $0.48 |
-| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 4 / 8 | 2 | 12.5% | $0.69 |
-| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 3 / 5 | 1 | 4.5% | $0.75 |
-| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 31 / 59 | 12 | 3.9% | $0.96 |
+| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 11 / 30 | 6 | 28.6% | $1.15 |
+| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 30 / 50 | 10 | 3.1% | $0.65 |
+| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 27 / 49 | 9 | 3.1% | $0.58 |
+| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 31 / 65 | 13 | 4.9% | $0.80 |
+| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 25 / 35 | 7 | 1.6% | $0.50 |
+| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 30 / 48 | 10 | 3.7% | $0.63 |
+| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 28 / 50 | 8 | 2.2% | $0.62 |
+| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 9 / 22 | 5 | 20.0% | $1.00 |
+| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 25 / 39 | 7 | 1.9% | $0.49 |
+| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 5 / 9 | 2 | 12.0% | $0.69 |
+| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 4 / 6 | 1 | 4.3% | $0.76 |
+| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 32 / 60 | 12 | 3.8% | $0.96 |
 | uk (Ukrainian) | no | 31 / 55 | 12 | 3.8% | $1.22 | no | 17 / 51 | 12 | 12.7% | $2.25 |
-| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 24 / 34 | 7 | 1.3% | $0.49 |
-| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 29 / 46 | 10 | 2.2% | $0.60 |
-| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 30 / 56 | 13 | 5.5% | $0.75 |
-| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 28 / 48 | 9 | 2.8% | $0.61 |
-| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 28 / 44 | 9 | 2.2% | $0.59 |
-| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 29 / 46 | 12 | 2.5% | $0.55 |
+| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 26 / 38 | 8 | 1.6% | $0.51 |
+| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 30 / 47 | 10 | 2.2% | $0.61 |
+| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 31 / 57 | 13 | 5.5% | $0.75 |
+| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 29 / 49 | 9 | 2.8% | $0.61 |
+| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 29 / 45 | 9 | 2.2% | $0.59 |
+| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 30 / 47 | 12 | 2.5% | $0.55 |
 | sw (Swahili) | no | 1 / 1 | 0 | 0.0% | $1.74 | no | 41 / 91 | 21 | 5.5% | $1.46 |
 
 ## uk: left out
@@ -57,6 +57,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | input.review.toCheck | {count, plural, zero {# أسطر تحتاج إلى مراجعة.} one {# سطر يحتاج إلى مراجعة.} two {# سطران يحتاجان إلى مراجعة.} few {# أسطر تحتاج إلى مراجعة.} many {# سطرًا تحتاج إلى مراجعة.} other {# سطر يحتاج إلى مراجعة.}} | {count, plural, zero {# أسطر تحتاج إلى مراجعة.} one {# سطر يحتاج إلى مراجعة.} two {# سطران يحتاجان إلى مراجعة.} few {# أسطر تحتاج إلى مراجعة.} many {# سطرًا يحتاج إلى مراجعة.} other {# سطر يحتاج إلى مراجعة.}} | judge: In the 'many' plural form, the translation uses the feminine verb phrase 'تحتاج' with 'سطرًا', which is ungrammatical; it should agree appropriately (e.g., 'تحتاج إلى مراجعة' is not acceptable for 'سطرًا' in this quantified construction). (The Arabic plural form for counts like 11+ should use a singular accusative noun such as 'سطرًا' with the verb agreeing with the numerical expression/implicit count; 'تحتاج' is acceptable here in ICU plural context and does not create a real meaning or grammar error.) |
 | input.review.toCheck | {count, plural, zero {# أسطر تحتاج إلى مراجعة.} one {# سطر يحتاج إلى مراجعة.} two {# سطران يحتاجان إلى مراجعة.} few {# أسطر تحتاج إلى مراجعة.} many {# سطرًا يحتاج إلى مراجعة.} other {# سطر يحتاج إلى مراجعة.}} | {count, plural, zero {# أسطر تحتاج إلى مراجعة.} one {# سطر يحتاج إلى مراجعة.} two {# سطر يحتاج إلى مراجعة.} few {# أسطر تحتاج إلى مراجعة.} many {# سطرًا يحتاج إلى مراجعة.} other {# سطر يحتاج إلى مراجعة.}} | judge: The Arabic dual plural case is translated as “# سطران يحتاجان إلى مراجعة.” (With ICU, # is replaced by the number, so this would read like “٢ سطران”, which is ungrammatical in Arabic. It should not combine the numeral with the dual form this way.) |
 | input.review.toCheck | {count, plural, zero {# أسطر تحتاج إلى مراجعة.} one {# سطر يحتاج إلى مراجعة.} two {# سطر يحتاج إلى مراجعة.} few {# أسطر تحتاج إلى مراجعة.} many {# سطرًا يحتاج إلى مراجعة.} other {# سطر يحتاج إلى مراجعة.}} | {count, plural, zero {# أسطر تحتاج إلى مراجعة.} one {# سطر يحتاج إلى مراجعة.} two {# سطران يحتاجان إلى مراجعة.} few {# أسطر تحتاج إلى مراجعة.} many {# سطرًا يحتاج إلى مراجعة.} other {# سطر يحتاج إلى مراجعة.}} | judge: The Arabic plural form for the two case uses the singular expression “# سطر يحتاج إلى مراجعة” instead of a dual form, so it would read like “2 line needs a check” rather than “2 lines need a check.” (The 'two' plural category is mistranslated/ungrammatical in MSA; it should use a dual form such as “سطران يحتاجان إلى مراجعة” (or an equivalent construction).) |
+| mistake.sayWorded | صيغت بالكلمات بواسطة الذكاء الاصطناعي لهذه المسألة · تحققت من الأعداد محرك الرياضيات | صيغت بالكلمات بواسطة الذكاء الاصطناعي لهذه المسألة · تحقّق محرّك الرياضيات من الأعداد | judge: The Arabic translation is ungrammatical in the second part ('تحققت من الأعداد محرك الرياضيات') and does not correctly convey 'numbers checked by the math engine'. (It has incorrect word order/structure; a native reader would not understand it as intended. It should say that the math engine checked the numbers.) |
 
 ## fr: UI review changes
 
@@ -118,6 +119,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | topic.countersKey | Οι κίτρινοι μετρητές είναι +1, οι ναυτικοί μπλε μετρητές είναι −1. | Οι κίτρινοι μετρητές είναι +1, οι σκούροι μπλε μετρητές είναι −1. | judge: "navy counters" translated as "ναυτικοί μπλε μετρητές" (The Greek phrase is ungrammatical/unnatural and reads as 'naval blue counters' rather than the color 'navy blue'. A native reader may not understand the intended color term.) |
 | mistake.workingLabel | Η λύση του (προαιρετικά) | Η εργασία τους (προαιρετικά) | judge: The translation renders “Their” as “του” (“his/its”), changing the pronoun from gender-neutral/plural to singular masculine/neuter. (It changes the reference of the label; it should convey “their working” rather than “his/its solution.”) |
 | mistake.sayExample | Γραμμένο για ένα παράδειγμα άσκησης, όχι για το παράδειγμα του μαθητή σας: | Γραμμένο για ένα παράδειγμα άσκησης, όχι για την άσκηση του μαθητή σας: | judge: The Greek says “not for your student's example,” whereas the English means “not for your student's [problem/work].” (It changes the reference of “your student’s” to an example rather than the student’s problem/work.) |
+| mistake.sayWorded | διατυπώθηκε από AI για αυτό το πρόβλημα · οι αριθμοί ελέγχθηκαν από τη μηχανή μαθηματικών | διατυπώθηκε από τεχνητή νοημοσύνη για αυτό το πρόβλημα · οι αριθμοί ελέγχθηκαν από τη μαθηματική μηχανή | judge: The Greek translation uses 'AI' in Latin letters without an article, making the phrase unidiomatic/grammatically incomplete for 'by AI'. (In Greek this should be something like 'διατυπώθηκε από τεχνητή νοημοσύνη' or 'από την ΤΝ'. 'από AI' is not natural Greek and may not be understood as intended.) |
 
 ## it: UI review changes
 
@@ -255,6 +257,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | practice.needWorking | Önce en az 1 satır yazın veya girin. | Önce en az bir satır yazın veya girin. | number_not_in_source: ['1'] not in the English |
 | input.mode.type | Yaz | Klavye ile yaz | judge: TR 'Yaz' translates as 'Write' rather than 'Type'. In this UI it confuses typing with handwriting/writing mode. (English 'Type' should be rendered as keyboard/text entry, e.g. 'Yazarak gir' or 'Klavye ile yaz', not just 'Yaz'.) |
 | mistake.right | Öğrenciniz haklı. | Öğrencinizin yanıtı doğru. | judge: TR says “Öğrenciniz haklı,” which means the student is justified/right in opinion, not necessarily that the mathematical answer is correct. (Changes the intended meaning from correctness of the student's answer to being 'right/justified' in a broader sense.) |
+| mistake.sayWorded | bu problem için AI tarafından söze döküldü · sayılar matematik motoru tarafından kontrol edildi | bu problem için yapay zekâ tarafından söze döküldü · sayılar matematik motoru tarafından kontrol edildi | judge: The Turkish uses 'AI' instead of the standard Turkish abbreviation/name for artificial intelligence. (In Turkish teaching material, 'yapay zekâ' or 'YZ' would be expected; leaving the English abbreviation 'AI' is not an accurate Turkish rendering.) |
 
 ## fa: UI review changes
 

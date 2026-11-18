@@ -122,5 +122,8 @@ def test_each_task_gets_its_own_settings() -> None:
     assert llm._task_settings("judge")[2] == 123
     assert llm._task_settings("judge")[3] == settings.offline_deadline_s
     assert llm._task_settings("mistake")[3] == 7
+    # The rule-match moves call: the mistake model, effort and tokens, its own short deadline.
+    assert llm._task_settings("mistake_moves")[:3] == llm._task_settings("mistake")[:3]
+    assert llm._task_settings("mistake_moves")[3] == settings.mistake_moves_deadline_s == 6.0
     with pytest.raises(ValueError, match="unknown LLM task"):
         llm._task_settings("chat")  # type: ignore[arg-type]

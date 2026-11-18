@@ -46,15 +46,17 @@ class AzureLLM:
 
     def _task_settings(self, task: Task) -> tuple[str, str, int, float, float]:
         """Deployment, reasoning effort, token limit, deadline and per-attempt timeout. Each
-        task has its `<task>_*` settings; `generate` and `judge` run offline."""
+        task has its `<task>_*` settings (`mistake_moves` shares the `mistake` ones but its
+        deadline); `generate` and `judge` run offline."""
         if task not in get_args(Task):
             raise ValueError(f"unknown LLM task: {task}")
         s = self.settings
         offline = task in OFFLINE_TASKS
+        family = "mistake" if task == "mistake_moves" else task
         return (
             s.model_offline if offline else s.model_live,
-            getattr(s, f"{task}_reasoning_effort"),
-            getattr(s, f"{task}_max_completion_tokens"),
+            getattr(s, f"{family}_reasoning_effort"),
+            getattr(s, f"{family}_max_completion_tokens"),
             s.offline_deadline_s if offline else getattr(s, f"{task}_deadline_s"),
             s.offline_attempt_timeout_s if offline else s.llm_attempt_timeout_s,
         )

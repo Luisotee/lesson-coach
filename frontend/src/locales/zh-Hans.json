@@ -348,6 +348,7 @@
     "barCaption": "用条形模型表示答案。",
     "whatToSay": "你可以这样说",
     "sayExample": "为示例题而写，不是为你的学生的题目而写：",
+    "sayWorded": "此题由 AI 表述 · 数字已由数学引擎检查",
     "say": {
       "ask": "提问",
       "nudge": "提示",

@@ -1,6 +1,7 @@
 """Misconception rules: each one reproduces the wrong answer a known wrong belief gives.
 
-A rule that reproduces a student's answer is a diagnosis that needs no LLM call. Rules work on
+A rule that reproduces a student's answer is a diagnosis that needs no LLM diagnosis (one short
+call only words the card's moves for the student's problem). Rules work on
 any problem of their shape, not only on their example: an expression rule replaces the right
 computation at the nodes it matches (at each one alone, and at all of them, since a student
 may make the mistake once or every time).

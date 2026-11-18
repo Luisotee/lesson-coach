@@ -38,6 +38,9 @@ class Settings(BaseSettings):
     mistake_reasoning_effort: ReasoningEffort = "none"
     mistake_max_completion_tokens: int = 4000
     mistake_deadline_s: float = 30.0
+    # The call that words a rule match's moves (about 2 s): past this the card's own moves are
+    # shown, framed by their example, rather than holding back a diagnosis sympy settled.
+    mistake_moves_deadline_s: float = 6.0
     transcribe_reasoning_effort: ReasoningEffort = "none"
     transcribe_max_completion_tokens: int = 4000
     transcribe_deadline_s: float = 45.0

@@ -58,7 +58,7 @@ def test_rule_match_uses_the_pack_card_without_ai(make_client: MakeClient) -> No
     diagnosis = result["diagnosis"]
     assert diagnosis["source"] == "rule" and diagnosis["rule_checked"] is True
     assert [m["id"] for m in diagnosis["misconceptions"]] == ["add_tops_and_bottoms"]
-    assert diagnosis["explanation"].startswith("To add fractions, add the tops")
+    assert diagnosis["explanation"] == ""  # the card's text is in `misconceptions`
     assert diagnosis["try_next"]["problem"] == {"kind": "evaluate", "expr": "1/4 + 1/2"}
     assert diagnosis["margin_note"] is None
     assert (diagnosis["lang"], diagnosis["cards_lang"]) == ("en", "en")
@@ -252,7 +252,7 @@ def test_rule_moves_are_written_for_this_problem(make_client: MakeClient) -> Non
     assert "5" in say and "6" not in say
     assert diagnosis["say_example"] is None and diagnosis["lang"] == "en"
     # One phrasing call, given sympy's findings and the card's moves as the example.
-    assert len(llm.calls) == 1 and llm.calls[0]["task"] == "mistake"
+    assert len(llm.calls) == 1 and llm.calls[0]["task"] == "mistake_moves"
     prompt = json.dumps(llm.calls[0]["messages"])
     assert "3*x + 5 = 20" in prompt and "Subtract six" in prompt
 
@@ -288,12 +288,37 @@ def test_rule_moves_for_the_cards_own_example_need_no_ai(make_client: MakeClient
 
 def test_try_next_is_never_the_problem_just_typed(make_client: MakeClient) -> None:
     diagnosis = post(linear_client(make_client, FakeLLM(say_reply())), **LINEAR)["diagnosis"]
-    # The card's check question is 3*x + 5 = 20 itself, so the next card's is offered.
-    assert diagnosis["try_next"]["problem"] == {"kind": "solve", "expr": "4*x + 8 = 20"}
-    # The rule path's explanation is the card's belief and why it feels right, which the
-    # result already shows from the card, so the frontend doesn't repeat it (MistakeResult).
-    card = diagnosis["misconceptions"][0]
-    assert diagnosis["explanation"] == f"{card['belief']} {card['why_it_feels_right']}"
+    # The card's check question is 3*x + 5 = 20 itself, so a practice problem of the topic is
+    # offered before another card's check question (built to detect another belief).
+    assert diagnosis["try_next"]["problem"] == {"kind": "solve", "expr": "8*x = 56"}
+    assert diagnosis["explanation"] == ""  # the card is shown from `misconceptions`
+
+
+def test_a_simplify_problem_typed_without_a_kind_is_recognised(make_client: MakeClient) -> None:
+    # The page sends no kind, so `(6+9)/3` is read as `evaluate`; the pack calls it `simplify`.
+    client = linear_client(make_client, FakeLLM(say_reply()))
+    body = {"problem": {"text": "(6+9)/3"}, "answer": {"text": "9"}, "topic": "fractions"}
+    diagnosis = post(client, **body)["diagnosis"]
+    assert [m["id"] for m in diagnosis["misconceptions"]] == ["cancel_across_addition"]
+    assert diagnosis["try_next"]["problem"]["expr"] != "(6+9)/3"
+
+
+def test_the_cards_own_example_typed_without_a_kind_needs_no_ai(make_client: MakeClient) -> None:
+    llm = FakeLLM(error="unavailable")
+    body = {"problem": {"text": "(2+4)/2"}, "answer": {"text": "4"}, "topic": "fractions"}
+    diagnosis = post(linear_client(make_client, llm), **body)["diagnosis"]
+    assert diagnosis["source"] == "rule" and diagnosis["say_example"] is None
+    assert llm.calls == []
+
+
+def test_the_cards_example_with_another_wrong_answer_is_rewritten(make_client: MakeClient) -> None:
+    # The rule also gives 5 on (2+4)/2, but the card's moves quote its own wrong answer, 4.
+    llm = FakeLLM(error="unavailable")
+    body = {"problem": {"text": "(2+4)/2"}, "answer": {"text": "5"}, "topic": "fractions"}
+    diagnosis = post(linear_client(make_client, llm), **body)["diagnosis"]
+    assert [m["id"] for m in diagnosis["misconceptions"]] == ["cancel_across_addition"]
+    assert len(llm.calls) == 1
+    assert diagnosis["say_example"] == {"kind": "simplify", "expr": "(2+4)/2"}
 
 
 def test_ai_follow_ups_leave_out_the_problem_just_typed(make_client: MakeClient) -> None:

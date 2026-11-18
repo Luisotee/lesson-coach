@@ -194,6 +194,15 @@ def run_mistakes(
                     ai_text = {
                         k: diagnosis.get(k) for k in ("explanation", "margin_note", "what_to_say")
                     }
+                elif diagnosis.get("source") == "rule" and calls and not diagnosis["say_example"]:
+                    # The moves the AI worded for this problem, judged with the card they follow
+                    # (shown above them as the belief and why it feels right).
+                    card = diagnosis["misconceptions"][0]
+                    ai_text = {
+                        "explanation": f"{card['belief']} {card['why_it_feels_right']}",
+                        "margin_note": None,
+                        "what_to_say": diagnosis["what_to_say"],
+                    }
                 records.append(
                     {
                         "id": f"{effort}/{'ai_only' if ai_only else 'product'}/{case['id']}/{run}",
@@ -336,9 +345,9 @@ def cmd_judge(args: argparse.Namespace) -> None:
     records = ai_records()
     if args.sample:
         rng = random.Random(10)
-        by_stratum: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+        by_stratum: dict[tuple[str, str, str, str], list[dict[str, Any]]] = defaultdict(list)
         for r in records:
-            by_stratum[(r["effort"], r["mode"], r["status"])].append(r)
+            by_stratum[(r["effort"], r["mode"], r["source"], r["status"])].append(r)
         sample: list[dict[str, Any]] = []
         while len(sample) < args.sample and any(by_stratum.values()):
             for group in by_stratum.values():
@@ -430,9 +439,14 @@ def _fallback(record: dict[str, Any]) -> str | None:
     if record["result"]["diagnosis"]["say_example"] is None:
         return None
     call = record["calls"][-1]
-    if call["reply"] is None:
+    reply = call["reply"]
+    if reply is None:
         return f"error:{call['error']}"
-    return "abstained" if call["reply"]["abstain"] else "unverified_math"
+    if reply["abstain"]:
+        return "abstained"
+    if not all(reply[k].strip() for k in ("probe", "nudge", "tell")):
+        return "blank_move"
+    return "unverified_math"
 
 
 def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
@@ -577,7 +591,9 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
     groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for j in ok:
         r = record_by_id[j["id"]]
-        groups[(r["effort"], r["mode"])].append(j)
+        # Rule-match moves are scored apart from the AI's own diagnoses.
+        mode = r["mode"] if r["source"] == "ai" else f"{r['mode']}_rule_moves"
+        groups[(r["effort"], mode)].append(j)
     scores: dict[str, dict[str, Any]] = defaultdict(dict)
     for (effort, mode), rows in sorted(groups.items()):
         scores[effort][mode] = {

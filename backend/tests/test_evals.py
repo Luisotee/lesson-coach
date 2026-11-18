@@ -133,7 +133,10 @@ def test_rule_path_fallback_reasons() -> None:
         return {"result": {"diagnosis": {"say_example": say_example}}, "calls": [call]}
 
     example = {"kind": "solve", "expr": "2*x + 6 = 10"}
-    assert run._fallback(record(None, {"abstain": False})) is None
+    moves = {"probe": "p", "nudge": "n", "tell": "t"}
+    assert run._fallback(record(None, {"abstain": False} | moves)) is None
     assert run._fallback(record(example, None, "deadline")) == "error:deadline"
-    assert run._fallback(record(example, {"abstain": True})) == "abstained"
-    assert run._fallback(record(example, {"abstain": False})) == "unverified_math"
+    assert run._fallback(record(example, {"abstain": True} | moves)) == "abstained"
+    blank = {"abstain": False} | moves | {"nudge": " "}
+    assert run._fallback(record(example, blank)) == "blank_move"
+    assert run._fallback(record(example, {"abstain": False} | moves)) == "unverified_math"

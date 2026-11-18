@@ -348,6 +348,7 @@
     "barCaption": "Odpowiedź jako model paskowy.",
     "whatToSay": "Co możesz powiedzieć",
     "sayExample": "Napisane dla zadania przykładowego, nie dla zadania Twojego ucznia:",
+    "sayWorded": "sformułowane przez AI dla tego zadania · liczby sprawdzone przez silnik matematyczny",
     "say": {
       "ask": "zapytaj",
       "nudge": "naprowadź",

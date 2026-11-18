@@ -141,6 +141,8 @@ describe('MistakeResult', () => {
     expect(screen.getAllByText(/add the tops and add the bottoms/)).toHaveLength(1)
     expect(screen.getAllByText(/two separate whole numbers/)).toHaveLength(1)
     expect(document.querySelector('[data-say-example]')).toBeNull()
+    // The moves were worded by the AI for this problem, so the card says so.
+    expect(screen.getByText(/worded by AI for this problem/)).toBeInTheDocument()
   })
 
   test('the card’s own moves are framed by the example problem they are written for', () => {
@@ -149,6 +151,7 @@ describe('MistakeResult', () => {
     const framing = document.querySelector('[data-say-example]')!
     expect(framing).toHaveTextContent('Written for an example problem, not your student’s:')
     expect(within(framing as HTMLElement).getByRole('math')).toHaveAccessibleName(/2 x plus 6/)
+    expect(screen.queryByText(/worded by AI/)).toBeNull()
   })
 
   test('correct', () => {

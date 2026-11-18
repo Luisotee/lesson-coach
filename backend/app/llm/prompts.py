@@ -259,8 +259,8 @@ def mistake_messages(
 def rule_say_messages(
     *, misconception: dict[str, Any], request: dict[str, Any], lang: str
 ) -> list[dict[str, Any]]:
-    """System instructions, then the matched misconception (the same for every answer it
-    explains, so cacheable), then the request."""
+    """System instructions, then the matched misconception, then the request. The prompt
+    (about 680 tokens) is under Azure's 1024-token caching minimum, so none of it is cached."""
     card = json.dumps(misconception, ensure_ascii=False)
     findings = json.dumps(request, ensure_ascii=False)
     return [
