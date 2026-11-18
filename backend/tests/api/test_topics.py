@@ -18,8 +18,8 @@ def test_list_topics(make_client: MakeClient) -> None:
         "langs": ["de", "en"],
         "machine_translated": False,
         "prerequisites": ["negative-numbers"],
-        "grades": [],
-        "summary": None,
+        "grades": [6, 7],
+        "summary": "Adding, simplifying, multiplying and dividing fractions.",
     }
     german = client.get("/api/topics?lang=de").json()[0]
     assert (german["lang"], german["title"], german["machine_translated"]) == ("de", "Brüche", True)

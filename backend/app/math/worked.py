@@ -1,7 +1,10 @@
 """The correct solution as written lines, built by sympy (never by the LLM).
 
-Shapes our topics use get real steps: a linear equation in one letter, a sum or difference of
-two fractions, and `a - (-b)`. Anything else gets the problem and its answer. Every list is
+Shapes our topics use get real steps: a linear equation in one letter (a bracket times a number
+is divided first), a sum or difference of two fractions, a whole number times a fraction, a
+fraction divided by a fraction, `a - (-b)`, a sum or difference of two signed whole numbers, and
+a product or exact quotient of two signed whole numbers. Anything else gets the problem and its
+answer. Every list is
 checked with `check_steps` before it is returned, so a generator bug falls back instead of
 showing wrong math.
 """
@@ -47,7 +50,14 @@ def _generate(node: Node, solution: Solution) -> list[Step] | None:
         return _linear_steps(node, solution)
     if solution.value is None or solution.value.free_symbols:
         return None
-    return _fraction_steps(node) or _minus_negative_steps(node)
+    return (
+        _fraction_steps(node)
+        or _minus_negative_steps(node)
+        or _signed_sum_steps(node)
+        or _signed_product_steps(node)
+        or _whole_times_fraction_steps(node)
+        or _fraction_quotient_steps(node)
+    )
 
 
 def _num(value: sympy.Expr) -> str:
@@ -80,6 +90,8 @@ def _divide_op(a: sympy.Expr) -> str:
 def _linear_steps(eq: Eq, solution: Solution) -> list[Step] | None:
     if solution.kind != "value" or solution.variable is None:
         return None
+    if (bracket := _bracket_steps(eq, solution)) is not None:
+        return bracket
     lin = linear_form(eq)
     x = solution.variable
     a_l, b_l, a_r, b_r = lin.a_left, lin.b_left, lin.a_right, lin.b_right
@@ -154,3 +166,129 @@ def _minus_negative_steps(node: Node) -> list[Step] | None:
         return None
     plus = Bin("+", node.left, node.right.arg)
     return [Step(render(node)), Step(render(plus)), Step(_num(to_sympy(node)))]
+
+
+def _integer(node: Node) -> int | None:
+    """A whole number as written, possibly negative: `7`, `-7`."""
+    if isinstance(node, Neg):
+        inner = _integer(node.arg)
+        return None if inner is None else -inner
+    if isinstance(node, Num) and node.is_integer:
+        return int(node.text)
+    return None
+
+
+def _signed(value: int) -> str:
+    """A whole number as a factor: `4`, `(-4)`."""
+    return f"({value})" if value < 0 else str(value)
+
+
+def _bracket_steps(eq: Eq, solution: Solution) -> list[Step] | None:
+    """`a*(x + b) = c` with a whole number a: divide by a first, then solve `x + b = c/a`."""
+    left, right = eq.left, eq.right
+    if not (isinstance(left, Bin) and left.op == "*" and _integer(right) is not None):
+        return None
+    a = _integer(left.left)
+    if a is None or a in (0, 1, -1) or not isinstance(left.right, Bin):
+        return None
+    inner = left.right
+    if inner.op not in ("+", "-") or _integer(inner.right) is None:
+        return None
+    c = _integer(right)
+    assert c is not None
+    if c % a:
+        return None  # c/a is not whole: the general method is clearer than fractions here
+    following = _linear_steps(Eq(inner, _int_node(c // a)), solution)
+    if following is None:
+        return None
+    first = Step(render(left), render(right), _divide_op(sympy.Integer(a)))
+    return [first, *following]
+
+
+def _int_node(value: int) -> Node:
+    return Neg(Num(str(-value))) if value < 0 else Num(str(value))
+
+
+def _signed_sum_steps(node: Node) -> list[Step] | None:
+    """`-7 + 4` becomes `-(7 - 4)`; `3 - 7` becomes `-(7 - 3)`; `-3 + (-4)` becomes `-(3 + 4)`."""
+    if not (isinstance(node, Bin) and node.op in ("+", "-")):
+        return None
+    a, b = _integer(node.left), _integer(node.right)
+    if a is None or b is None:
+        return None
+    if node.op == "-":
+        if isinstance(node.right, Neg):
+            return None  # `a - (-b)` has its own steps
+        b = -b
+    if a >= 0 and b >= 0:
+        return None  # nothing signed to explain
+    total = a + b
+    big, small = (a, b) if abs(a) >= abs(b) else (b, a)
+    if (a < 0) == (b < 0):
+        middle = f"-({abs(a)} + {abs(b)})"
+    elif big < 0:
+        middle = f"-({abs(big)} - {abs(small)})"
+    else:
+        middle = f"{abs(big)} - {abs(small)}"
+    return [Step(render(node)), Step(middle), Step(str(total))]
+
+
+def _signed_product_steps(node: Node) -> list[Step] | None:
+    """`(-4)*(-6)` becomes `4*6`; `-9*3` becomes `-(9*3)`; `-100/(-4)` becomes `100/4`."""
+    if not (isinstance(node, Bin) and node.op in ("*", "/")):
+        return None
+    a, b = _integer(node.left), _integer(node.right)
+    if a is None or b is None or b == 0 or (a >= 0 and b >= 0):
+        return None
+    if node.op == "/" and a % b:
+        return None  # not a whole number: a fraction, with its own steps
+    value = a * b if node.op == "*" else a // b
+    middle = f"{abs(a)}{node.op}{abs(b)}"
+    if value < 0:
+        middle = f"-({middle})"
+    return [Step(f"{_signed(a)}{node.op}{_signed(b)}"), Step(middle), Step(str(value))]
+
+
+def _whole_times_fraction_steps(node: Node) -> list[Step] | None:
+    """`3*(2/5)` becomes `(3*2)/5`, then `6/5` (then simplified when it can be)."""
+    if not (isinstance(node, Bin) and node.op == "*"):
+        return None
+    whole, frac = _integer(node.left), _fraction(node.right)
+    if whole is None or frac is None:
+        whole, frac = _integer(node.right), _fraction(node.left)
+    if whole is None or frac is None or frac[1] == 0:
+        return None
+    top, bottom = frac
+    lines = [render(node), f"({_signed(whole)}*{_signed(top)})/{bottom}"]
+    lines.append(f"{whole * top}/{bottom}")
+    value = sympy.Rational(whole * top, bottom)
+    if value.q != bottom or value.p != whole * top:
+        lines.append(_num(value))
+    return [Step(line) for line in lines]
+
+
+def _fraction_quotient_steps(node: Node) -> list[Step] | None:
+    """`(2/3)/(3/4)` becomes `(2/3)*(4/3)`, then `(2*4)/(3*3)`, then `8/9`."""
+    if not (isinstance(node, Bin) and node.op == "/"):
+        return None
+    left, right = _fraction(node.left), _fraction(node.right)
+    if left is None or right is None or 0 in (left[1], right[0], right[1]):
+        return None
+    (a, b), (c, d) = left, right
+    if d < 0 or b < 0:
+        return None
+    flipped = f"({c}/{d})" if c > 0 else None
+    if flipped is None:
+        return None
+    reciprocal = f"{d}/{c}"
+    top, bottom = a * d, b * c
+    lines = [
+        f"({a}/{b})/({c}/{d})",
+        f"({a}/{b})*({reciprocal})",
+        f"({_signed(a)}*{d})/({b}*{c})",
+        f"{top}/{bottom}",
+    ]
+    value = sympy.Rational(top, bottom)
+    if value.q != bottom or value.p != top:
+        lines.append(_num(value))
+    return [Step(line) for line in lines]

@@ -28,6 +28,8 @@ class Settings(BaseSettings):
     azure_openai_api_key: SecretStr = SecretStr("")
     azure_openai_api_version: str = "2025-04-01-preview"
     model_live: str = "gpt-5.5-live"
+    # Offline content generation (pipeline/): no personal data, so GlobalStandard is fine.
+    model_offline: str = "gpt-5.5-offline"
 
     # Per task: the mistake explainer and the transcription of photos and drawings.
     mistake_reasoning_effort: ReasoningEffort = "low"
@@ -37,6 +39,13 @@ class Settings(BaseSettings):
     transcribe_max_completion_tokens: int = 4000
     transcribe_deadline_s: float = 45.0
     llm_attempt_timeout_s: float = 25.0
+    # Offline tasks: pack prose and step explanations, and the judge that checks them.
+    generate_reasoning_effort: ReasoningEffort = "low"
+    generate_max_completion_tokens: int = 16000
+    judge_reasoning_effort: ReasoningEffort = "low"
+    judge_max_completion_tokens: int = 8000
+    offline_deadline_s: float = 600.0
+    offline_attempt_timeout_s: float = 240.0
 
     # sympy runs in worker processes with a wall-clock limit per request.
     math_workers: int = 2

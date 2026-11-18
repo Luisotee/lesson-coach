@@ -43,15 +43,44 @@ class AzureLLM:
             max_retries=0,  # we retry ourselves, under one deadline
         )
 
-    def _task_settings(self, task: Task) -> tuple[str, int, float]:
+    def _task_settings(self, task: Task) -> tuple[str, str, int, float, float]:
+        """Deployment, reasoning effort, token limit, deadline and per-attempt timeout."""
         s = self.settings
-        if task == "mistake":
-            return s.mistake_reasoning_effort, s.mistake_max_completion_tokens, s.mistake_deadline_s
-        return (
-            s.transcribe_reasoning_effort,
-            s.transcribe_max_completion_tokens,
-            s.transcribe_deadline_s,
-        )
+        live, offline = s.model_live, s.model_offline
+        attempt, offline_attempt = s.llm_attempt_timeout_s, s.offline_attempt_timeout_s
+        match task:
+            case "mistake":
+                return (
+                    live,
+                    s.mistake_reasoning_effort,
+                    s.mistake_max_completion_tokens,
+                    s.mistake_deadline_s,
+                    attempt,
+                )
+            case "transcribe":
+                return (
+                    live,
+                    s.transcribe_reasoning_effort,
+                    s.transcribe_max_completion_tokens,
+                    s.transcribe_deadline_s,
+                    attempt,
+                )
+            case "generate":
+                return (
+                    offline,
+                    s.generate_reasoning_effort,
+                    s.generate_max_completion_tokens,
+                    s.offline_deadline_s,
+                    offline_attempt,
+                )
+            case "judge":
+                return (
+                    offline,
+                    s.judge_reasoning_effort,
+                    s.judge_max_completion_tokens,
+                    s.offline_deadline_s,
+                    offline_attempt,
+                )
 
     async def structured[T: BaseModel](
         self,
@@ -62,7 +91,7 @@ class AzureLLM:
         schema: dict[str, Any],
         output: type[T],
     ) -> LLMResult[T]:
-        effort, max_tokens, deadline_s = self._task_settings(task)
+        model, effort, max_tokens, deadline_s, attempt_s = self._task_settings(task)
         start = time.monotonic()
         deadline = start + deadline_s
         attempts = 0
@@ -72,7 +101,7 @@ class AzureLLM:
             remaining = deadline - time.monotonic()
             try:
                 params: dict[str, Any] = {
-                    "model": self.settings.model_live,
+                    "model": model,
                     "messages": messages,
                     "response_format": {
                         "type": "json_schema",
@@ -80,7 +109,7 @@ class AzureLLM:
                     },
                     "max_completion_tokens": max_tokens,
                     "reasoning_effort": effort,
-                    "timeout": max(1.0, min(self.settings.llm_attempt_timeout_s, remaining)),
+                    "timeout": max(1.0, min(attempt_s, remaining)),
                 }
                 response = await self.client.chat.completions.create(**params)
             except TRANSIENT as err:
@@ -110,7 +139,7 @@ class AzureLLM:
                 {
                     "event": "llm_call",
                     "task": task,
-                    "model": self.settings.model_live,
+                    "model": self._task_settings(task)[0],
                     "latency_ms": round((time.monotonic() - start) * 1000),
                     "attempts": attempts,
                     "outcome": result.error or "ok",

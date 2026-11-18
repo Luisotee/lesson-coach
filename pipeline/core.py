@@ -49,7 +49,7 @@ class LLM(Protocol):
 
 def worked_steps(problem: Problem) -> list[Step]:
     """sympy's verified steps for a problem (math-core's `worked_solution`)."""
-    from app.math.worked import worked_solution  # type: ignore[import-not-found]  # T6
+    from app.math.worked import worked_solution
 
     steps: list[Step] = worked_solution(problem)
     return steps
@@ -57,8 +57,8 @@ def worked_steps(problem: Problem) -> list[Step]:
 
 def offline_llm() -> tuple[LLM, str]:
     """math-core's client on the offline deployment (`MODEL_OFFLINE`), and its name."""
-    from app.config import get_settings  # type: ignore[import-not-found]  # T6
-    from app.llm.azure import AzureLLM  # type: ignore[import-not-found]  # T6
+    from app.config import get_settings
+    from app.llm.azure import AzureLLM
 
     settings = get_settings()
     if not settings.llm_configured:

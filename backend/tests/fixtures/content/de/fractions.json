@@ -2,6 +2,11 @@
   "topic": "fractions",
   "lang": "de",
   "title": "Brüche",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Brüche addieren, kürzen, multiplizieren und dividieren.",
   "idea": "A fraction names equal parts of a whole. (Test fixture: the real pack comes from T5.)",
   "why_it_works": "Equal parts can be counted once they have the same size.",
   "prerequisites": [
@@ -34,7 +39,8 @@
           "explanations": null
         }
       ],
-      "answer": "5/6"
+      "answer": "5/6",
+      "prompt": "Work out:"
     },
     {
       "ai_generated": [],
@@ -62,7 +68,8 @@
           "explanations": null
         }
       ],
-      "answer": "1/2"
+      "answer": "1/2",
+      "prompt": "Work out:"
     },
     {
       "ai_generated": [],
@@ -90,7 +97,8 @@
           "explanations": null
         }
       ],
-      "answer": "5/6"
+      "answer": "5/6",
+      "prompt": "Work out:"
     }
   ],
   "misconceptions": [
@@ -605,5 +613,7 @@
       "license": "CC-BY-4.0"
     }
   ],
-  "machine_translated": true
+  "machine_translated": true,
+  "source_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "model": "fixture"
 }
