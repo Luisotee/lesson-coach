@@ -169,4 +169,5 @@ def render(node: Node) -> str:
                 isinstance(right, Bin) and _PRECEDENCE[right.op] <= prec
             ):
                 rs = f"({rs})"
-            return f"{ls} {op} {rs}"
+            # `2*x + 6`, `1/2 - 1/3`: spaces only around + and -, as people write it.
+            return f"{ls}{op}{rs}" if op in "*/" else f"{ls} {op} {rs}"
