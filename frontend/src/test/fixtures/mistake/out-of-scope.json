@@ -1,0 +1,12 @@
+{
+  "status": "out_of_scope",
+  "reason": "unsupported",
+  "problem": null,
+  "student_answer": null,
+  "correct_answer": null,
+  "verdict": null,
+  "worked_solution": [],
+  "first_bad_line": null,
+  "diagnosis": null,
+  "working": []
+}

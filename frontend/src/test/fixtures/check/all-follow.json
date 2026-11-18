@@ -1,0 +1,18 @@
+{
+  "status": "all_follow",
+  "reason": null,
+  "first_bad_line": null,
+  "final": "correct",
+  "lines": [
+    {
+      "left": "8*x",
+      "right": "56",
+      "op": "/8"
+    },
+    {
+      "left": "x",
+      "right": "7",
+      "op": ""
+    }
+  ]
+}

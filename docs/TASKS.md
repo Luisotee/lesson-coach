@@ -83,7 +83,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - **Transcription confirm screen:** handwriting rendering, each line editable, uncertain lines highlighted.
   - A shared `MathInput` component with **type / write / photo** tabs.
   - **Done when:** every mode is keyboard- and screen-reader-usable (write and photo always offer the type alternative) and works on touch (tested in a Playwright mobile emulator).
-- [ ] **T8 Pages** (needs T3 and T7; uses T5 packs, with fixture packs at first)
+- [x] **T8 Pages** (needs T3 and T7; uses T5 packs, with fixture packs at first)
   - **Home, Topic, Mistake and Practice, matching the design and fully working:**
     - prev/next and the "refresh first" links;
     - the worked-example notebook with the three explanation modes;

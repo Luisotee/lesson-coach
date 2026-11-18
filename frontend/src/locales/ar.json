@@ -32,7 +32,14 @@
     "mistakeTitle": "افهم خطأً",
     "mistakeText": "اكتب ما كتبه الطالب. شاهد السبب المحتمل وماذا تسأل.",
     "practiceTitle": "تدرّب بمفردك",
-    "practiceText": "مسائل مع تلميحات تفتحها واحدًا تلو الآخر. بلا درجات."
+    "practiceText": "مسائل مع تلميحات تفتحها واحدًا تلو الآخر. بلا درجات.",
+    "titleHighlight": "قبل",
+    "mistakeCta": "كتب طالب هذا…",
+    "heroWorked": "مثال محلول",
+    "heroWhyTitle": "لماذا تنجح هذه الخطوة",
+    "heroWhyText": "اطرح 5 من طرف واحد فقط فيميل الميزان. اطرحها من الطرفين فيبقى الطرفان متساويين.",
+    "heroExampleLink": "شاهد مثالًا محلولًا: حل 3x + 5 = 20",
+    "noTopics": "لا توجد مواضيع بعد."
   },
   "topics": {
     "negative-numbers": {
@@ -49,8 +56,6 @@
     }
   },
   "pages": {
-    "inProgress": "هذه الصفحة قيد الإنشاء. سيظهر هنا الدرس الكامل والأمثلة المحلولة والأخطاء.",
-    "mistakeTitle": "كتب طالب هذا",
     "practiceTitle": "تدرّب: {topic}",
     "practiceProblem": "المسألة {n} من {total}",
     "previous": "المسألة السابقة",
@@ -79,7 +84,8 @@
       "fractionSimple": "{num} على {den}",
       "power": "{power, select, squared {{base} تربيع} cubed {{base} تكعيب} other {{base} أس {exp}}}",
       "powerGroup": "{base} أس {exp}، نهاية الأس",
-      "lineWithOp": "{line}؛ {op}"
+      "lineWithOp": "{line}؛ {op}",
+      "withNote": "{line}؛ ملاحظة: {note}"
     },
     "op": {
       "add": "أضف {arg} إلى الطرفين",
@@ -207,5 +213,170 @@
       "image": "تعذّر تجهيز الصورة. حاول مرة أخرى، أو اكتبها بلوحة المفاتيح.",
       "open": "تعذّر فتح هذه الصورة. استخدم صورة PNG أو JPEG أو WebP، أو اكتبها بلوحة المفاتيح."
     }
+  },
+  "common": {
+    "grade": "الصف {grade}",
+    "grades": "الصف {from}–{to}",
+    "loading": "جارٍ التحميل…",
+    "loadError": "تعذّر تحميل هذا.",
+    "retry": "حاول مرة أخرى",
+    "retryIn": "حاول مرة أخرى بعد {seconds} ث",
+    "rateLimited": "طلبات كثيرة الآن. يرجى الانتظار قليلًا.",
+    "rateLimitedFor": "طلبات كثيرة الآن. يرجى الانتظار {seconds} ثانية.",
+    "machineTranslated": "ترجمة آلية",
+    "newTab": "(يفتح في علامة تبويب جديدة)"
+  },
+  "topic": {
+    "allTopics": "كل المواضيع",
+    "printOutline": "اطبع خطة الدرس",
+    "servedInEnglish": "معروض بالإنجليزية: لم يُترجم بعد",
+    "onThisPage": "في هذه الصفحة",
+    "sections": {
+      "idea": "الفكرة",
+      "refresh": "راجع أولًا",
+      "example": "مثال محلول",
+      "mistakes": "أخطاء شائعة",
+      "questions": "أسئلة يطرحها الطلاب",
+      "outline": "خطة الدرس"
+    },
+    "idea": "الفكرة",
+    "whyItWorks": "لماذا تنجح",
+    "textUnavailable": "هذا الشرح غير متاح بعد.",
+    "refreshFirst": "راجع أولًا:",
+    "exampleOf": "المثال المحلول {n} من {total}",
+    "previousExample": "المثال المحلول السابق",
+    "nextExample": "المثال المحلول التالي",
+    "exampleLabel": "المثال المحلول {n}",
+    "kind": {
+      "solve": "حل",
+      "simplify": "بسّط",
+      "evaluate": "احسب"
+    },
+    "checkedBadge": "كل خطوة تحقق منها محرك رياضيات",
+    "tapLine": "اضغط على سطر لترى لماذا ينجح",
+    "check": "تحقق:",
+    "checkHolds": "صحيح",
+    "explanationStyle": "طريقة الشرح",
+    "modes": {
+      "why": "لماذا؟",
+      "another": "طريقة أخرى",
+      "visual": "صورة"
+    },
+    "stepStart": "الخطوة {n} · البداية",
+    "stepWithOp": "الخطوة {n} · {op}",
+    "step": "الخطوة {n}",
+    "explanationUnavailable": "شرح هذه الخطوة غير متاح. الخطوة نفسها تم التحقق منها.",
+    "countersKey": "العدادات الصفراء ‎+1‎، والعدادات الكحلية ‎−1‎.",
+    "aiLabel": "كُتب بمساعدة الذكاء الاصطناعي · تحقق محرك رياضيات من الرياضيات",
+    "checkedLabel": "تحقق محرك رياضيات من الرياضيات",
+    "previousStep": "الخطوة السابقة",
+    "nextStep": "الخطوة التالية",
+    "mistakesHeading": "ما يخطئ فيه الطلاب غالبًا",
+    "studentWrites": "يكتب الطالب",
+    "whyItFeelsRight": "لماذا يبدو صحيحًا.",
+    "ask": "اسأل:",
+    "questionsHeading": "أسئلة يطرحها الطلاب",
+    "outlineHeading": "خطة الدرس",
+    "outlineTotal": "حوالي {minutes} دقيقة · عدّلها بحرية",
+    "outlineTime": "{from}–{to} دقيقة",
+    "akeliusHeading": "درس Akelius Math المطابق",
+    "akeliusLesson": "{title} (الصف {grade})",
+    "tryYourself": "جرّب هذه المسائل بنفسك أولًا"
+  },
+  "practice": {
+    "noneYet": "لا توجد مسائل تدريب بعد.",
+    "hintsHeading": "تلميحات، حين تريدها",
+    "startOver": "ابدأ من جديد",
+    "hidden": "(لم يُفتح)",
+    "rung": {
+      "goal": "الهدف",
+      "information": "ما تحتاجه",
+      "computation": "الحساب",
+      "answer": "الإجابة"
+    },
+    "showNextHint": "أظهر التلميح التالي",
+    "showAnswer": "أظهر الإجابة",
+    "doneNote": "قارن بحلّك. هل تريد التعليل؟",
+    "openExample": "افتح المثال المحلول.",
+    "allFollow": "كل سطر ينتج عن السطر الذي قبله.",
+    "final": {
+      "correct": "والسطر الأخير هو الإجابة.",
+      "equivalent_not_simplified": "السطر الأخير صحيح لكنه لم يُبسّط بعد.",
+      "wrong": "لكن السطر الأخير ليس الإجابة بعد."
+    },
+    "lineDoesntFollow": "السطر {n} لا ينتج عن السطر الذي قبله.",
+    "badReason": {
+      "unparsable": "تعذّرت قراءته كرياضيات.",
+      "false_equality": "طرفاه غير متساويين.",
+      "not_equivalent": "لا يساوي السطر الذي قبله.",
+      "unsupported": "يستخدم رياضيات لا يغطيها المدقق."
+    },
+    "status": {
+      "unclear": "تعذّر التحقق من الحل.",
+      "out_of_scope": "هذا الحل خارج ما يغطيه المدقق."
+    },
+    "yourLines": "حلّك",
+    "header": "المسألة {n} من {total} · لك وحدك، لا يُسجَّل شيء",
+    "backToTopic": "عودة إلى {topic}",
+    "workingLabel": "حلّك",
+    "workingHint": "لا يُرسل إلا حين تضغط «تحقق من حلّي». لا يُحفظ شيء.",
+    "check": "تحقق من حلّي",
+    "checking": "جارٍ التحقق…",
+    "needWorking": "اكتب سطرًا واحدًا على الأقل أولًا.",
+    "sourceLabel": "المصدر:"
+  },
+  "mistake": {
+    "title": "كتب طالب هذا…",
+    "intro": "اكتب المسألة وما أجاب به طالبك. يجد المدرب السبب المحتمل ويقترح ما تسأل.",
+    "topicLegend": "الموضوع",
+    "problemLabel": "المسألة",
+    "problemHint": "اكتب الكسور بشرطة مائلة، مثل 2/5. تظهر كما تكتبها.",
+    "answerLabel": "ما أجاب به طالبك",
+    "workingLabel": "حلّه (اختياري)",
+    "privacy": "يرجى عدم كتابة أسماء الطلاب. لا يُحفظ شيء هنا.",
+    "explain": "اشرح هذا",
+    "explaining": "جارٍ النظر فيه…",
+    "needProblem": "أضف المسألة أولًا.",
+    "needAnswer": "أضف إجابة طالبك.",
+    "likelyReason": "السبب المحتمل",
+    "looksLikeSlip": "يبدو سهوًا",
+    "slipTitle": "سهو، وليس سوء فهم.",
+    "ruleBadge": "تم التحقق: هذه القاعدة تعطي إجابته بالضبط",
+    "aiBadge": "اقتراح من الذكاء الاصطناعي · تحقق محرك رياضيات من الرياضيات",
+    "whatTheyWrote": "ما كتبه",
+    "workedOut": "الإجابة، محلولة",
+    "barCaption": "الإجابة كنموذج أشرطة.",
+    "whatToSay": "ما يمكنك قوله",
+    "say": {
+      "ask": "اسأل",
+      "nudge": "لمّح",
+      "tell": "عند الحاجة"
+    },
+    "tryNext": "جرّب بعدها مع طالبك",
+    "fromTopic": "من موضوع {topic}",
+    "right": "طالبك على حق.",
+    "correct": "إجابته صحيحة.",
+    "notSimplified": "إنها القيمة نفسها، لكنها غير مبسطة. إن كان صفك يكتب الإجابات في أبسط صورة، فاسأله كيف يبسّطها.",
+    "sameAmount": "إجابته والإجابة المبسطة",
+    "notSure": "غير متأكد من إجابة واحدة",
+    "askHow": "اسأله كيف وصل إليها.",
+    "possibilities": "{count, plural, one {احتمال واحد} two {احتمالان} few {# احتمالات} many {# احتمالًا} other {# احتمال}}",
+    "possibly": "ربما",
+    "or": "أو",
+    "outOfScope": "هذه المسألة خارج ما يغطيه المدرب.",
+    "reason": {
+      "problem_unreadable": "تعذّرت قراءة المسألة كرياضيات. تحقق منها وحاول مجددًا.",
+      "answer_unreadable": "تعذّرت قراءة الإجابة كرياضيات. تحقق منها وحاول مجددًا.",
+      "unsupported": "هذا النوع من الرياضيات غير مغطى بعد.",
+      "timeout": "استغرق الأمر وقتًا طويلًا. يرجى المحاولة مجددًا.",
+      "ai_unavailable": "خدمة الشرح غير متاحة الآن. التحقق الرياضي أعلاه يبقى صحيحًا.",
+      "ai_unclear": "لم يستطع المدرب الحكم من هذه الإجابة وحدها.",
+      "ai_out_of_scope": "وجد المدرب أن هذا خارج المواضيع التي يغطيها.",
+      "ai_unverified_math": "تعذّر على محرك الرياضيات التحقق من الشرح، لذا لا يُعرض. الرياضيات أعلاه تم التحقق منها.",
+      "math_error": "تعذّر على محرك الرياضيات حل هذا. تحقق من المدخلات وحاول مجددًا."
+    },
+    "tryAnother": "جرّب إجابة أخرى",
+    "resultHeading": "النتيجة",
+    "reasonUnavailable": "السبب المحتمل غير متاح."
   }
 }

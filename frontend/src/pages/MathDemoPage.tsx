@@ -4,7 +4,6 @@ import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { MathExpr, Pen, StepsNotebook, type PenVariant } from '@/components/math'
-import { usePageTitle } from '@/components/shell/hooks'
 import { isContinued } from '@/math/parse'
 import { speakLine, speakText } from '@/math/speech'
 import type { Step } from '@/math/types'
@@ -72,7 +71,6 @@ function spokenSteps(steps: Step[], t: ReturnType<typeof useTranslation>['t']): 
 /** Every math component in one place, in the page's direction and inside RTL text. */
 export function MathDemoPage() {
   const { t } = useTranslation()
-  usePageTitle(t('demo.title'))
   // Remounting the notebook replays its write-on animation.
   const [run, setRun] = useState(0)
   // Under reduced motion nothing is written on, so there is nothing to replay.

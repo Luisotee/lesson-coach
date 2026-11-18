@@ -1,0 +1,21 @@
+{
+  "status": "line_doesnt_follow",
+  "reason": null,
+  "first_bad_line": {
+    "index": 1,
+    "reason": "not_equivalent"
+  },
+  "final": null,
+  "lines": [
+    {
+      "left": "8*x",
+      "right": "56",
+      "op": "/8"
+    },
+    {
+      "left": "x",
+      "right": "8",
+      "op": ""
+    }
+  ]
+}

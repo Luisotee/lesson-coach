@@ -1,0 +1,32 @@
+[
+  {
+    "id": "negative-numbers",
+    "title": "Negative numbers",
+    "lang": "en",
+    "langs": ["en"],
+    "machine_translated": false,
+    "prerequisites": [],
+    "grades": [6, 7],
+    "summary": "Adding, subtracting and multiplying with signs."
+  },
+  {
+    "id": "fractions",
+    "title": "Fractions",
+    "lang": "en",
+    "langs": ["en"],
+    "machine_translated": false,
+    "prerequisites": ["negative-numbers"],
+    "grades": [6, 7],
+    "summary": "Equivalent fractions, common denominators and what “of” means."
+  },
+  {
+    "id": "linear-equations",
+    "title": "Solving linear equations",
+    "lang": "en",
+    "langs": ["en"],
+    "machine_translated": false,
+    "prerequisites": ["negative-numbers", "fractions"],
+    "grades": [7, 8],
+    "summary": "Keeping the balance: doing the same to both sides, step by step."
+  }
+]
