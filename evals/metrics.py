@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 from collections import Counter
 from collections.abc import Iterable, Sequence
 from typing import Any
@@ -127,6 +128,31 @@ def score_transcription(
         "wrong": wrong,
         "wrong_flagged": flagged,
     }
+
+
+# Math written as prose instead of in backticks, which the page then shows raw: `3*x`, `1/2`,
+# `x = 5`, `8 - 3`. Words, line numbers and counts don't match.
+RAW_MATH = re.compile(
+    r"\d\s*[*/^]\s*[\d(a-z]"  # 3*x, 1/2, 2^3
+    r"|[a-z)]\s*[*/^]\s*[\d(a-z]"  # x*2, (x + 1)/2
+    r"|\b[a-z]\s*=\s*-?\d"  # x = 5
+    r"|\d\s*=\s*-?\d"  # 2 = 2
+    r"|\d\s*[+\-\u2212]\s*\(?-?\d",  # 8 - 3, 4 + (-10)
+    re.IGNORECASE,
+)
+
+
+def raw_math(ai_text: dict[str, Any]) -> bool:
+    """Whether a shown AI text has math outside backticks. A text with an odd number of
+    backticks is shown as written, so all of it counts as outside."""
+    say = ai_text.get("what_to_say") or {}
+    fields = [ai_text.get("explanation") or "", *say.values()]
+    for text in fields:
+        parts = text.split("`")
+        outside = parts[::2] if len(parts) % 2 == 1 else [text]
+        if any(RAW_MATH.search(part) for part in outside):
+            return True
+    return False
 
 
 def text_hash(ai_text: dict[str, Any]) -> str:

@@ -340,3 +340,32 @@ def test_ai_follow_ups_leave_out_the_problem_just_typed(make_client: MakeClient)
     assert result["reason"] == "ai_unavailable"
     ids = llm.calls[0]["schema"]["properties"]["follow_up_id"]["anyOf"][0]["enum"]
     assert "check:sign_not_changed" not in ids and "check:divide_one_term" in ids
+
+
+def test_the_numbers_guard_reads_math_in_backticks() -> None:
+    from app.llm.guard import new_numbers
+
+    given = ["3*x + 5 = 20", "25/3", "3*x = 15", "x = 5"]
+    assert not new_numbers(["Subtract `5`: `3*x = 15`, so `x = 5`."], given)
+    assert new_numbers(["So `x = 7`."], given) == {7}
+    # A stray backtick doesn't hide a number: the text is still read as written.
+    assert new_numbers(["So `x = 7."], given) == {7}
+    assert new_numbers(["`2/7` of it"], given) == {2, 7}
+
+
+def test_ai_text_with_math_in_backticks_is_shown(make_client: MakeClient) -> None:
+    reply = ai_reply(
+        explanation="They added the tops and the bottoms: `1 + 1` over `2 + 3`.",
+        margin_note="added `the` bottoms too",
+        what_to_say={
+            "probe": "Is `2/5` bigger or smaller than `1/2`?",
+            "nudge": "Draw bars.",
+            "tell": "Use sixths: `3/6 + 2/6` is `5/6`.",
+        },
+    )
+    client, _ = make_client(FakeLLM(reply))
+    result = post(client, **FRACTIONS, answer={"text": "7/9"})
+    assert result["status"] == "diagnosed", result["reason"]
+    diagnosis = result["diagnosis"]
+    assert diagnosis["what_to_say"]["tell"] == "Use sixths: `3/6 + 2/6` is `5/6`."
+    assert diagnosis["margin_note"] == "added the bottoms too"  # drawn as plain text

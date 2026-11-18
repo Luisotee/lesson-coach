@@ -167,6 +167,14 @@ describe('MistakeResult', () => {
     expect(screen.queryByText(/worded by AI/)).toBeNull()
   })
 
+  test('AI text with math in backticks draws the math, with no raw * or /', () => {
+    const say = { probe: 'Why `3*x = 25`?', nudge: 'Look at the `+ 5`.', tell: 'So `x = 5`.' }
+    show({ ...slip, diagnosis: { ...slip.diagnosis, what_to_say: say } })
+    const card = screen.getByRole('heading', { name: 'What you could say' }).parentElement!
+    expect(within(card).getAllByRole('math')).toHaveLength(3)
+    expect(card.textContent).not.toMatch(/[`*]/)
+  })
+
   test('correct', () => {
     show(correct)
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Your student is right.')

@@ -140,3 +140,12 @@ def test_rule_path_fallback_reasons() -> None:
     blank = {"abstain": False} | moves | {"nudge": " "}
     assert run._fallback(record(example, blank)) == "blank_move"
     assert run._fallback(record(example, {"abstain": False} | moves)) == "unverified_math"
+
+
+def test_raw_math() -> None:
+    say = {"probe": "Why?", "nudge": "Look at line 2.", "tell": "So `x = 5`."}
+    clean = {"explanation": "They kept the sign of `+ 5`.", "what_to_say": say}
+    assert not metrics.raw_math(clean)
+    for raw in ("So 3*x = 15.", "Use 1/2 here.", "so x = 5", "8 - 3 is 5", "`x = 5"):
+        assert metrics.raw_math(clean | {"explanation": raw}), raw
+    assert not metrics.raw_math(clean | {"explanation": "grade six, one step, 3 runs"})
