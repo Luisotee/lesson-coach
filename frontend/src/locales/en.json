@@ -56,8 +56,6 @@
     }
   },
   "pages": {
-    "inProgress": "This page is still being built. The full lesson, worked examples and mistakes will appear here.",
-    "mistakeTitle": "A student wrote this",
     "practiceTitle": "Practice: {topic}",
     "practiceProblem": "Problem {n} of {total}",
     "previous": "Previous problem",

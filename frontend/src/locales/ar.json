@@ -56,8 +56,6 @@
     }
   },
   "pages": {
-    "inProgress": "هذه الصفحة قيد الإنشاء. سيظهر هنا الدرس الكامل والأمثلة المحلولة والأخطاء.",
-    "mistakeTitle": "كتب طالب هذا",
     "practiceTitle": "تدرّب: {topic}",
     "practiceProblem": "المسألة {n} من {total}",
     "previous": "المسألة السابقة",

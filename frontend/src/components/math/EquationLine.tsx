@@ -19,26 +19,32 @@ function drawOp(parsed: ParseResult<MarginOp>, src: string): ReactNode {
 }
 
 /** A hand-drawn ring around a line, in the marking colour (5:1 on white). */
-function Circle() {
+function Circle({ numbered }: { numbered: boolean }) {
+  // Spans the math columns (left, =, right), not the step number or the margin.
   return (
-    <svg
+    <span
       aria-hidden="true"
-      data-mark="circle"
-      className="pointer-events-none absolute -inset-x-2 -inset-y-1 h-[calc(100%+0.5rem)] w-[calc(100%+1rem)] text-mark"
-      viewBox="0 0 100 40"
-      preserveAspectRatio="none"
-      fill="none"
+      className="pointer-events-none relative row-start-1 self-stretch"
+      style={{ gridColumn: numbered ? '2 / 5' : '1 / 4' }}
     >
-      <path
-        d="M6 22 C 6 6, 94 2, 96 18 C 98 34, 10 40, 4 24 C 3 16, 20 8, 40 7"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        vectorEffect="non-scaling-stroke"
-        pathLength={1}
-        className="[stroke-dasharray:1] motion-safe:animate-[draw_0.6s_ease-out_both]"
-      />
-    </svg>
+      <svg
+        data-mark="circle"
+        className="absolute -inset-x-3 -inset-y-1 h-[calc(100%+0.5rem)] w-[calc(100%+1.5rem)] text-mark"
+        viewBox="0 0 100 40"
+        preserveAspectRatio="none"
+        fill="none"
+      >
+        <path
+          d="M6 22 C 6 6, 94 2, 96 18 C 98 34, 10 40, 4 24 C 3 16, 20 8, 40 7"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+          pathLength={1}
+          className="[stroke-dasharray:1] motion-safe:animate-[draw_0.6s_ease-out_both]"
+        />
+      </svg>
+    </span>
   )
 }
 
@@ -111,7 +117,10 @@ export function EquationLine({
       <span aria-hidden="true" className="relative ps-[0.6em] text-[0.75em] font-bold">
         {line.op ? <span className="text-pen-green">{drawOp(line.op, op)}</span> : null}
         {annotate?.note ? (
-          <span className="ms-2 font-normal text-mark" data-mark="note">
+          <span
+            className="ms-2 inline-block font-normal whitespace-normal text-mark"
+            data-mark="note"
+          >
             ← {annotate.note}
           </span>
         ) : null}
@@ -120,7 +129,7 @@ export function EquationLine({
   )
 
   const rowClass = cn(
-    'relative col-span-full grid grid-cols-subgrid items-center whitespace-nowrap',
+    'relative col-span-full row-start-1 grid grid-cols-subgrid items-center whitespace-nowrap',
     writeOn && 'motion-safe:animate-write',
   )
   const rowStyle = writeOn ? { animationDelay: `${index * WRITE_ON_STAGGER}s` } : undefined
@@ -138,7 +147,7 @@ export function EquationLine({
           className="absolute inset-y-1 start-8 end-2 origin-left rounded-[6px_14px_8px_12px] bg-highlight/55 motion-safe:animate-[marker_0.45s_ease-out_both]"
         />
       )}
-      {annotate?.circle && <Circle />}
+      {annotate?.circle && <Circle numbered={numbered} />}
       {onSelect ? (
         // Named by its spoken text (not aria-label), so the visible handwriting, which is
         // hidden from screen readers, doesn't have to match a label.
