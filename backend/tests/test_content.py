@@ -30,7 +30,7 @@ from app.content.schema import (
     Problem,
     TopicId,
 )
-from app.math import TOPICS, parse_text, rule_reproduces, to_sympy
+from app.math import TOPICS, parse_text, reproducing_rules, rule_reproduces, to_sympy
 from app.math import Problem as MathProblem
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -179,12 +179,22 @@ def test_mistakes() -> None:
                 parse_math(step.right)
         mid = case.expected.misconception_id
         assert mid is None or mid == "other" or mid in ids[case.topic], case.id
+        # A rule that fires is a diagnosis made before any LLM call, so the label must agree:
+        # a rule-linked label is reproduced by exactly its rule, and other rows by no rule.
+        problem = MathProblem(case.problem.kind, case.problem.expr)
+        fired = reproducing_rules(problem, case.student_answer, topic=case.topic)
+        expected_rules = [mid] if mid in RULE_IDS[case.topic] else []
+        assert fired == expected_rules, f"{case.id}: rules {fired}, label {mid}"
 
 
 def test_attribution() -> None:
     text = (CONTENT / "ATTRIBUTION.md").read_text()
     for topic in TOPIC_IDS:
-        assert practice(topic).items[0].source.commit in text
+        for item in practice(topic).items:
+            assert item.source.commit in text, item.id
+            folder = item.source.path.split("/")[1]
+            assert item.source.url.endswith(f"/content-pool/{folder}"), item.id
+            assert item.source.path.startswith(f"content-pool/{folder}/steps/"), item.id
     assert "12bee142d49dfb3c874149035cfbad28547a818b" in text
     assert "Permission is hereby granted" in text
 
@@ -227,20 +237,19 @@ DIAGNOSED = {"classification": "wrong", "status": "diagnosed", "misconception_id
         ({"classification": "wrong"}, {}),
         ({"classification": "wrong", "status": "unclear", "misconception_id": "other"}, {}),
         ({"classification": "wrong", "status": "diagnosed"}, {}),
-        (
-            {"classification": "wrong", "status": "diagnosed", "misconception_id": "x"},
-            {"commit": None},
-        ),
-        (
-            {"classification": "wrong", "status": "diagnosed", "misconception_id": "x"},
-            {"license": "CC-BY-4.0"},
-        ),
+        (DIAGNOSED, {"commit": None}),
+        (DIAGNOSED, {"license": "CC-BY-4.0"}),
     ],
 )
-def test_case_validators(expected: dict[str, Any], source: dict[str, Any]) -> None:
+def test_case_validators_reject(expected: dict[str, Any], source: dict[str, Any]) -> None:
     data = yaml.safe_load((ROOT / "evals" / "mistakes.yaml").read_text())
     case = data["cases"][0]
     with pytest.raises(ValidationError):
         MistakeCase.model_validate(
             {**case, "expected": expected, "source": {**case["source"], **source}}
         )
+
+
+def test_case_validators_accept_a_diagnosed_row() -> None:
+    data = yaml.safe_load((ROOT / "evals" / "mistakes.yaml").read_text())
+    MistakeCase.model_validate({**data["cases"][0], "expected": DIAGNOSED})

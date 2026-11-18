@@ -4,7 +4,7 @@
 
 The source lessons (`content/source/*.md`), the misconceptions (`content/source/*.misconceptions.json`), the practice prompts and the reworded hints are Lesson Coach's own writing, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-They were drafted with AI (Claude Code) and await human review. Every field written by AI is listed in the item's `ai_generated` array. `backend/tests/test_content.py` checks every answer and every inline claim such as "`5 - (-3)` is `8`" with sympy, and checks that every other expression parses. The misconception sentences that state a wrong answer on purpose are only parsed.
+They were drafted with AI (Claude Code) and await human review. Every field written by AI is listed in the item's `ai_generated` array. `backend/tests/test_content.py` uses sympy to check every answer, every misconception's example wrong answer, and inline claims written as "`A` is `B`" or "`A` = `B`" (for example "`5 - (-3)` is `8`"). Every other inline expression, including the equation lines in hints, is only checked to parse; checking each step is planned for the pipeline's `verify.py`. The misconception sentences that state a wrong answer on purpose are only parsed.
 
 ## Practice problems: OATutor-Content and OpenStax (CC BY 4.0)
 
