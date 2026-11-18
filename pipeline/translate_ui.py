@@ -11,7 +11,9 @@ judge comparing the English and the translation; the strings that fail are asked
 with the problems, up to 3 times. That review is the second pass: every change it made is
 recorded in evals/translation-report.md. A language's locale file is written only when all of
 its strings pass. `--recheck` translates again only the strings of an existing locale file that
-fail today's checks (after en.json changed a message, say) and keeps the rest. `--review KEY...`
+fail today's checks or were translated from different English (each string's English is
+hashed into evals/translation-ui-sources.json when it passes; `--seed-sources` records today's
+English for every committed file without any call) and keeps the rest. `--review KEY...`
 only checks and judges those committed strings, e.g. after a hand fix; its result and cost are
 recorded like a run's.
 """
@@ -21,6 +23,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import functools
+import hashlib
 import json
 import re
 import subprocess
@@ -50,6 +53,8 @@ from pipeline.translate import (
 )
 
 LOCALES = ROOT / "frontend" / "src" / "locales"
+# Per language, a hash of the English each string was translated from (see english_hashes).
+SOURCES_FILE = ROOT / "evals" / "translation-ui-sources.json"
 UNIT = 50  # strings per call
 GUESS_USD = 0.6
 # Locales Intl knows better under another code (for plural rules).
@@ -163,13 +168,38 @@ def limit(_path: str, english: str) -> int:
     return max(200, 3 * len(english))
 
 
+def english_hashes(english: dict[str, str]) -> dict[str, str]:
+    """A short hash of each English string, recorded per language when its translation passes,
+    so a reworded English string is found even when it keeps its arguments."""
+    return {k: hashlib.sha256(v.encode()).hexdigest()[:12] for k, v in english.items()}
+
+
+def load_sources() -> dict[str, dict[str, str]]:
+    if not SOURCES_FILE.exists():
+        return {}
+    data: dict[str, dict[str, str]] = json.loads(SOURCES_FILE.read_text(encoding="utf-8"))
+    return data
+
+
+def record_sources(lang: str, keys: set[str] | None) -> None:
+    """Records that `lang`'s strings for `keys` (all when None) match today's English."""
+    english = flatten(json.loads((LOCALES / "en.json").read_text(encoding="utf-8")))
+    hashes = english_hashes({k: v for k, v in english.items() if keys is None or k in keys})
+    sources = load_sources()
+    sources[lang] = dict(sorted({**sources.get(lang, {}), **hashes}.items()))
+    lines = [f"  {json.dumps(k)}: {json.dumps(v)}" for k, v in sorted(sources.items())]
+    SOURCES_FILE.write_text("{\n" + ",\n".join(lines) + "\n}\n", encoding="utf-8")
+
+
 def failing_keys(lang: str) -> set[str]:
-    """The keys of a committed locale file that are missing or fail today's checks, e.g. after
-    en.json changed a message."""
+    """The keys of a committed locale file that are missing, were translated from different
+    English than today's (evals/translation-ui-sources.json), or fail today's checks."""
     english = flatten(json.loads((LOCALES / "en.json").read_text(encoding="utf-8")))
     current = flatten(json.loads((LOCALES / f"{lang}.json").read_text(encoding="utf-8")))
     have = {k: current[k] for k in english if k in current}
-    return set(english) - set(have) | set(icu_check(lang, english)(have))
+    made_from = load_sources().get(lang, {})
+    reworded = {k for k, h in english_hashes(english).items() if made_from.get(k) != h}
+    return set(english) - set(have) | reworded | set(icu_check(lang, english)(have))
 
 
 async def translate_ui(
@@ -291,6 +321,7 @@ async def run(
                 }
             path = LOCALES / f"{lang}.json"
             path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+            record_sources(lang, redo[lang])
             return {
                 "lang": lang,
                 "shipped": True,
@@ -330,7 +361,18 @@ def main() -> None:
         action="store_true",
         help="for a language with a locale file, translate only the strings that fail the checks",
     )
+    parser.add_argument(
+        "--seed-sources",
+        action="store_true",
+        help="record today's English as the source of every committed locale file (no calls)",
+    )
     args = parser.parse_args()
+    if args.seed_sources:
+        for path in sorted(LOCALES.glob("*.json")):
+            if path.stem != "en":
+                record_sources(path.stem, None)
+        print(f"recorded {SOURCES_FILE.relative_to(ROOT)}")
+        return
     langs = list(args.lang)
     if args.packs:
         langs += [lang for lang, r in load_stats().items() if r["shipped"] and lang not in langs]

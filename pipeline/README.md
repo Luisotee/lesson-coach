@@ -29,7 +29,9 @@ uv run --project backend python pipeline/verify.py --lang en --judge --report ev
   say a plural's count wherever the English does. A CLDR category is not a number (French `one`
   is also 0, Russian `one` also 21), so en.json writes a literal "one" as `=1 {one}`, and only an
   `=N` branch (or Arabic's `zero`, which is only 0) may put the number in words.
-- `--recheck` translates again only the strings of a locale file that fail today's checks;
+- `--recheck` translates again only the strings of a locale file that fail today's checks or
+  were translated from different English (per-key hashes in
+  `evals/translation-ui-sources.json`; `--seed-sources` records today's English, no calls);
   `--review KEY...` only checks and judges committed strings, e.g. after a hand fix. Both are
   recorded in the stats and the report like any run.
 - Both use the same loop: check, judge (English against translation), then ask again for only

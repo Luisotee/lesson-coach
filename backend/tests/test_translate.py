@@ -347,3 +347,19 @@ def test_units_that_fail_in_the_pack_are_not_kept_in_the_cache(
     # The prompts and the failing topic's six units are dropped; the first topic's six stay
     # (the topics after the failing one are never assembled, so theirs stay too).
     assert kept == 6 * len(TOPIC_IDS) - 6
+
+
+def test_recheck_finds_a_reworded_english_string(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    english = {"nav": {"topics": "Topics", "home": "Home"}}
+    (tmp_path / "en.json").write_text(json.dumps(english))
+    (tmp_path / "de.json").write_text(json.dumps({"nav": {"topics": "Themen", "home": "Start"}}))
+    monkeypatch.setattr(translate_ui, "LOCALES", tmp_path)
+    monkeypatch.setattr(translate_ui, "SOURCES_FILE", tmp_path / "sources.json")
+    assert translate_ui.failing_keys("de") == {"nav.topics", "nav.home"}  # no source recorded
+    translate_ui.record_sources("de", None)
+    assert translate_ui.failing_keys("de") == set()
+    english["nav"]["topics"] = "All topics"  # same arguments, new meaning
+    (tmp_path / "en.json").write_text(json.dumps(english))
+    assert translate_ui.failing_keys("de") == {"nav.topics"}
