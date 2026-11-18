@@ -195,7 +195,9 @@ class PracticeSet(Model):
 
 
 class AkeliusLesson(Model):
-    url: Annotated[str, StringConstraints(pattern=r"^https://akelius\.education/math/en/lesson/\d+$")]
+    url: Annotated[
+        str, StringConstraints(pattern=r"^https://akelius\.education/math/en/lesson/\d+$")
+    ]
     title: Short
     grade: int = Field(ge=1, le=12)
 
