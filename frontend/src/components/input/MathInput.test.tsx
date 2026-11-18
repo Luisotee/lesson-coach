@@ -177,7 +177,11 @@ test('a confirmed transcription reaches the page as the API shape', async () => 
       closePath() {}
     },
   )
-  render(<MathInput shape="lines" label="Working" defaultMode="write" onChange={onChange} />)
+  const { createRef } = await import('react')
+  const ref = createRef<MathInputHandle>()
+  render(
+    <MathInput ref={ref} shape="lines" label="Working" defaultMode="write" onChange={onChange} />,
+  )
   const canvas = screen.getByRole('img', { name: /empty/ })
   canvas.setPointerCapture = () => {}
   canvas.getBoundingClientRect = () => ({ left: 0, top: 0 }) as DOMRect
@@ -189,6 +193,11 @@ test('a confirmed transcription reaches the page as the API shape', async () => 
   expect(screen.getByRole('img', { name: /1 stroke/ })).toBeInTheDocument()
 
   await user.click(screen.getByRole('button', { name: 'Read my writing' }))
+  const heading = await screen.findByRole('heading', { name: 'Is this what was written?' })
+  screen.getByRole('button', { name: 'Yes, use these lines' }).focus()
+  // focus() on the confirm screen goes to its heading, not the tab.
+  act(() => ref.current!.focus())
+  expect(heading).toHaveFocus()
   await user.click(await screen.findByRole('button', { name: 'Yes, use these lines' }))
   expect(onChange).toHaveBeenLastCalledWith({
     mode: 'write',
@@ -296,4 +305,34 @@ test('a photo that cannot be opened is announced once and does not take focus ba
   expect(other).toHaveFocus()
   other.remove()
   vi.unstubAllGlobals()
+})
+
+test('a late result does not pull focus from a field outside the input', async () => {
+  const { focusIfHere } = await import('@/components/input/focus')
+  document.body.innerHTML =
+    '<fieldset><h3 tabindex="-1" id="h">x</h3><button id="b">in</button></fieldset><input id="o" />'
+  const h = document.getElementById('h')!
+  document.getElementById('o')!.focus()
+  focusIfHere(h)
+  expect(document.getElementById('o')).toHaveFocus()
+  document.getElementById('b')!.focus()
+  focusIfHere(h)
+  expect(h).toHaveFocus()
+  ;(document.activeElement as HTMLElement).blur()
+  document.getElementById('o')!.focus()
+  document.getElementById('o')!.blur()
+  focusIfHere(h)
+  expect(h).toHaveFocus()
+  document.body.innerHTML = ''
+})
+
+test('a failure message follows a language switch', async () => {
+  const { ReadingStatus } = await import('@/components/input/Reading')
+  const i18n = (await import('@/i18n')).default
+  const phase = { kind: 'failed', error: 'rate_limited', params: { seconds: 30 } } as const
+  render(<ReadingStatus phase={phase} readingLabel="" />)
+  expect(screen.getByRole('alert')).toHaveTextContent('Try again in 30 seconds')
+  await act(() => i18n.changeLanguage('ar'))
+  expect(screen.getByRole('alert')).toHaveTextContent('30 ثانية')
+  await act(() => i18n.changeLanguage('en'))
 })

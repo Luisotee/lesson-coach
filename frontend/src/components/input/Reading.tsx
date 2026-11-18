@@ -1,6 +1,7 @@
 import { Keyboard, Loader2 } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { focusIfHere } from '@/components/input/focus'
 import type { Phase } from '@/components/input/useTranscription'
 import { Button } from '@/components/ui/button'
 
@@ -17,12 +18,14 @@ export function TypeInstead({ onClick }: { onClick: () => void }) {
 
 /** The reading and failed states of a transcription, announced to screen readers. */
 export function ReadingStatus({ phase, readingLabel }: { phase: Phase; readingLabel: string }) {
+  const { t } = useTranslation()
   const alert = useRef<HTMLParagraphElement>(null)
-  const message = phase.kind === 'failed' ? phase.message : null
-  // Focus a new failure once, never again on a re-render of the same one.
+  // Each failure is a new state object, kept stable across renders: focus it once when it
+  // appears, not again on a re-render or a language switch.
+  const failure = phase.kind === 'failed' ? phase : null
   useEffect(() => {
-    if (message) alert.current?.focus()
-  }, [message])
+    if (failure) focusIfHere(alert.current)
+  }, [failure])
   return (
     <>
       <p role="status" className="flex items-center gap-2 empty:hidden">
@@ -40,7 +43,7 @@ export function ReadingStatus({ phase, readingLabel }: { phase: Phase; readingLa
           tabIndex={-1}
           className="rounded-xl border border-destructive/40 bg-white p-3 font-semibold text-destructive outline-none"
         >
-          {phase.message}
+          {t(`input.error.${phase.error}`, { ...phase.params })}
         </p>
       )}
     </>

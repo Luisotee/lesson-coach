@@ -1,24 +1,16 @@
 import { Plus, X } from 'lucide-react'
 import { useId, useImperativeHandle, useRef, useState, type Ref } from 'react'
 import { useTranslation } from 'react-i18next'
-import { MathField, type FieldValue, type MathFieldHandle } from '@/components/input/MathField'
-import { hasEmptyBox, latexValue, textValue } from '@/components/input/lines'
+import { MathField, type MathFieldHandle } from '@/components/input/MathField'
+import { mathIssue, toMath, type FieldValue } from '@/components/input/lines'
 import { LIMITS, type LineIn, type MathIn } from '@/components/input/types'
 import { Button } from '@/components/ui/button'
 
-const toMath = (v: FieldValue): MathIn | null =>
-  'latex' in v ? latexValue(v.latex) : textValue(v.text)
-
-const tooLong = (v: FieldValue | undefined) =>
-  !!v && ('latex' in v ? v.latex.trim().length > LIMITS.latex : v.text.trim().length > LIMITS.text)
-
 /** Why a typed value can't be used yet, as a message key; null when it can. */
-const problem = (v: FieldValue | undefined) =>
-  tooLong(v)
-    ? 'input.type.tooLong'
-    : v && 'latex' in v && hasEmptyBox(v.latex)
-      ? 'input.type.emptyBox'
-      : null
+const problem = (v: FieldValue | undefined) => {
+  const issue = v && mathIssue(v)
+  return issue ? (`input.type.${issue}` as const) : null
+}
 
 /** One typed expression. Reports `{latex}` (or `{text}` from the fallback), or null. */
 export function TypeExpression({

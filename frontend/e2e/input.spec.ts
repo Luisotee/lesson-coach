@@ -292,3 +292,57 @@ test('the board is locked while the drawing is being read', async ({ page }) => 
   release()
   await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
 })
+
+test('one fast stroke is drawn on the screen at once', async ({ page }) => {
+  const canvas = card(page, 'Lines of working').getByTestId('drawing-canvas')
+  await canvas.scrollIntoViewIfNeeded()
+  // Down, ten moves and up in one task: the release lands in the same frame as the last move.
+  const ink = await canvas.evaluate(async (el: HTMLCanvasElement) => {
+    const box = el.getBoundingClientRect()
+    const at = (type: string, i: number) =>
+      el.dispatchEvent(
+        new PointerEvent(type, {
+          pointerId: 1,
+          pointerType: 'mouse',
+          button: 0,
+          bubbles: true,
+          clientX: box.left + 30 + i * 12,
+          clientY: box.top + 40,
+        }),
+      )
+    at('pointerdown', 0)
+    for (let i = 1; i <= 10; i++) at('pointermove', i)
+    at('pointerup', 10)
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
+    const data = el.getContext('2d')!.getImageData(0, 0, el.width, el.height).data
+    let n = 0
+    for (let i = 3; i < data.length; i += 4) if (data[i] > 0) n++
+    return n
+  })
+  expect(ink).toBeGreaterThan(100)
+})
+
+test('a failed photo read keeps the photo to try again', async ({ page }) => {
+  const working = card(page, 'Lines of working')
+  await working.getByRole('tab', { name: 'Photo' }).click()
+  await working.getByTestId('photo-upload').setInputFiles(FIXTURE)
+  let calls = 0
+  await page.route('**/api/transcribe', async (route) => {
+    calls++
+    if (calls === 1) return route.fulfill({ status: 503, body: '' })
+    await route.fulfill({
+      json: {
+        status: 'ok',
+        reason: null,
+        lines: [{ left: 'x', right: '2', op: '', confidence: 0.9, uncertain: false }],
+      },
+    })
+  })
+  await working.getByRole('button', { name: 'Read this part' }).click()
+  await expect(working.getByRole('alert')).toHaveText(/Reading isn’t available right now/)
+  await expect(working.getByTestId('crop-box')).toBeVisible()
+  await expectNoAxeViolations(page)
+  await working.getByRole('button', { name: 'Try again' }).click()
+  await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
+  expect(calls).toBe(2)
+})

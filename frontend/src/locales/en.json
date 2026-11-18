@@ -168,7 +168,8 @@
       "rotate": "Turn 90°",
       "other": "Choose another photo",
       "reading": "Reading the photo…",
-      "retake": "Take another photo"
+      "retake": "Take another photo",
+      "tryAgain": "Try again"
     },
     "review": {
       "heading": "Is this what was written?",

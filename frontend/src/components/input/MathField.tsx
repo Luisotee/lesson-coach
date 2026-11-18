@@ -1,6 +1,7 @@
 import type { MathfieldElement } from 'mathlive'
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from 'react'
 import { useTranslation } from 'react-i18next'
+import type { FieldValue } from '@/components/input/lines'
 import { loadMathLive } from '@/components/input/mathlive'
 import { cn } from '@/lib/utils'
 
@@ -8,7 +9,7 @@ export interface MathFieldHandle {
   focus(): void
 }
 
-export type FieldValue = { latex: string } | { text: string }
+export type { FieldValue } from '@/components/input/lines'
 
 const box =
   'block min-h-12 w-full rounded-lg border border-input bg-white px-3 py-2 text-2xl text-navy focus-within:border-link focus-within:ring-4 focus-within:ring-paleblue'

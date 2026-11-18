@@ -29,11 +29,17 @@ export function CropStep({
   onRotate,
   onCrop,
   onCancel,
+  busy = false,
+  failed = false,
 }: {
   image: ImageBitmap
   onRotate: () => void
   onCrop: (rect: Rect) => void
   onCancel: () => void
+  /** The photo is being read: the actions wait. */
+  busy?: boolean
+  /** The last read failed: the main action reads again. */
+  failed?: boolean
 }) {
   const { t } = useTranslation()
   const helpId = useId()
@@ -169,20 +175,32 @@ export function CropStep({
         {description}
       </p>
       <div className="flex flex-wrap gap-2">
-        <Button type="button" className="min-h-11 px-5" onClick={() => onCrop(rect)}>
+        <Button
+          type="button"
+          className="min-h-11 px-5 aria-disabled:opacity-50"
+          aria-disabled={busy || undefined}
+          onClick={() => !busy && onCrop(rect)}
+        >
           <Check aria-hidden="true" />
-          {t('input.photo.useCrop')}
+          {t(failed ? 'input.photo.tryAgain' : 'input.photo.useCrop')}
         </Button>
         <Button
           type="button"
           variant="outline"
-          className="min-h-11"
-          onClick={() => onCrop({ x: 0, y: 0, ...bounds })}
+          className="min-h-11 aria-disabled:opacity-50"
+          aria-disabled={busy || undefined}
+          onClick={() => !busy && onCrop({ x: 0, y: 0, ...bounds })}
         >
           <Expand aria-hidden="true" />
           {t('input.photo.useWhole')}
         </Button>
-        <Button type="button" variant="outline" className="min-h-11" onClick={onRotate}>
+        <Button
+          type="button"
+          variant="outline"
+          className="min-h-11 aria-disabled:opacity-50"
+          aria-disabled={busy || undefined}
+          onClick={() => !busy && onRotate()}
+        >
           <RotateCw aria-hidden="true" />
           {t('input.photo.rotate')}
         </Button>

@@ -2,7 +2,8 @@ import { AlertTriangle, Check, Pencil, Plus, RotateCcw, Trash2 } from 'lucide-re
 import { useEffect, useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { EquationLine, Notebook } from '@/components/math'
-import { isBlank } from '@/components/input/lines'
+import { isBlank, lineIssue } from '@/components/input/lines'
+import { focusIfHere } from '@/components/input/focus'
 import { LIMITS, type ReviewLine } from '@/components/input/types'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
@@ -53,7 +54,7 @@ export function TranscriptionReview({
   const [confirmed, setConfirmed] = useState(false)
   const focusAfter = useRef<string | null>(null)
 
-  useEffect(() => heading.current?.focus(), [])
+  useEffect(() => focusIfHere(heading.current), [])
   useEffect(() => {
     if (!focusAfter.current) return
     document.getElementById(focusAfter.current)?.focus()
@@ -72,10 +73,6 @@ export function TranscriptionReview({
 
   const filled = rows.filter((r) => !isBlank(r))
   const toCheck = rows.filter((r) => r.uncertain).length
-  const tooLong = (r: ReviewLine) =>
-    r.left.trim().length > LIMITS.text ||
-    r.right.trim().length > LIMITS.text ||
-    r.op.trim().length > LIMITS.op
   // The API's limits (backend/app/api/models.py), checked here so Confirm never sends a 422.
   const blocked =
     filled.length === 0
@@ -84,7 +81,7 @@ export function TranscriptionReview({
         ? 'oneLine'
         : filled.length > LIMITS.lines
           ? 'tooMany'
-          : filled.some(tooLong)
+          : filled.some(lineIssue)
             ? 'tooLong'
             : null
 
@@ -95,6 +92,7 @@ export function TranscriptionReview({
           id={headingId}
           ref={heading}
           tabIndex={-1}
+          data-main-control
           className="text-lg font-semibold outline-none"
         >
           {t('input.review.heading')}

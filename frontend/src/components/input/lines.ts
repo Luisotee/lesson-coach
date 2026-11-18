@@ -23,19 +23,37 @@ export function toExpression(line: ReviewLine): MathIn {
   return { text: left && right ? `${left} = ${right}` : left || right }
 }
 
-/** True when MathLive still shows an empty box (e.g. a fraction with no denominator yet). */
-export const hasEmptyBox = (latex: string) => latex.includes('\\placeholder')
+/** What a typed field holds: LaTeX from MathLive, or text from the fallback field. */
+export type FieldValue = { latex: string } | { text: string }
 
-/** A typed LaTeX value, or null when empty, unfinished or over the API's limit. */
-export function latexValue(latex: string): MathIn | null {
-  const v = latex.trim()
-  if (!v || v.length > LIMITS.latex || hasEmptyBox(v)) return null
-  return { latex: v }
+/** Why a value can't be sent; one name per message (`input.type.*`, `input.review.blocked.*`). */
+export type Issue = 'tooLong' | 'emptyBox'
+
+/**
+ * The one check of the API's limits (backend/app/api/models.py) for a typed value: LaTeX
+ * up to 400 characters with no empty MathLive box, text up to 200. Null when it can be sent.
+ */
+export function mathIssue(v: FieldValue): Issue | null {
+  if ('latex' in v) {
+    const latex = v.latex.trim()
+    if (latex.length > LIMITS.latex) return 'tooLong'
+    return latex.includes('\\placeholder') ? 'emptyBox' : null
+  }
+  return v.text.trim().length > LIMITS.text ? 'tooLong' : null
 }
 
-/** A plain-text value (the fallback field), or null when empty or over the limit. */
-export function textValue(text: string): MathIn | null {
-  const v = text.trim()
-  if (!v || v.length > LIMITS.text) return null
-  return { text: v }
+/** The same check for a reviewed line: each side up to 200 characters, the operation up to 30. */
+export function lineIssue(l: ReviewLine): Issue | null {
+  const long =
+    l.left.trim().length > LIMITS.text ||
+    l.right.trim().length > LIMITS.text ||
+    l.op.trim().length > LIMITS.op
+  return long ? 'tooLong' : null
+}
+
+/** A typed value as the API's MathIn, or null when it is empty or has an issue. */
+export function toMath(v: FieldValue): MathIn | null {
+  if (mathIssue(v)) return null
+  if ('latex' in v) return v.latex.trim() ? { latex: v.latex.trim() } : null
+  return v.text.trim() ? { text: v.text.trim() } : null
 }

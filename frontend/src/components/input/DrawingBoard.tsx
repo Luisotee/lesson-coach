@@ -1,6 +1,7 @@
 import { Eraser, Redo2, Undo2 } from 'lucide-react'
 import {
   useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   type Dispatch,
@@ -76,6 +77,9 @@ export function DrawingBoard({
   const [size, setSize] = useState({ w: 0, h: rows * 44 })
   const [announcement, setAnnouncement] = useState('')
   const strokes = visibleStrokes(history)
+  // What a paint draws. A paint queued for the next frame must draw the latest strokes, not
+  // those of the render that queued it, or a stroke finished in the same frame would vanish.
+  const view = useRef({ strokes, size })
 
   // Match the canvas to its box and the screen's pixel density.
   useEffect(() => {
@@ -93,10 +97,15 @@ export function DrawingBoard({
     const el = canvas.current
     const ctx = el?.getContext('2d')
     if (!el || !ctx) return
+    const { strokes, size } = view.current
     const dpr = window.devicePixelRatio || 1
-    if (el.width !== size.w * dpr || el.height !== size.h * dpr) {
-      el.width = size.w * dpr
-      el.height = size.h * dpr
+    // Whole pixels: at a fractional density an unrounded size never matches, and every paint
+    // would reallocate the canvas.
+    const w = Math.round(size.w * dpr)
+    const h = Math.round(size.h * dpr)
+    if (el.width !== w || el.height !== h) {
+      el.width = w
+      el.height = h
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, size.w, size.h)
@@ -107,7 +116,10 @@ export function DrawingBoard({
     if (current.current) ctx.fill(strokePath(current.current.stroke))
   }
   // Repaint whenever the strokes or the size change.
-  useEffect(paint)
+  useLayoutEffect(() => {
+    view.current = { strokes, size }
+    paint()
+  })
 
   const point = (
     e: PointerEvent<HTMLCanvasElement> | globalThis.PointerEvent,
@@ -144,12 +156,14 @@ export function DrawingBoard({
     const c = current.current
     if (!c || c.id !== e.pointerId) return
     current.current = null
+    cancelAnimationFrame(frame.current)
     dispatch({ type: 'add', stroke: c.stroke })
   }
   // A cancelled touch (a palm, a system gesture) is not a stroke.
   const onPointerCancel = (e: PointerEvent<HTMLCanvasElement>) => {
     if (current.current?.id !== e.pointerId) return
     current.current = null
+    cancelAnimationFrame(frame.current)
     paint()
   }
 

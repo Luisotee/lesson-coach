@@ -15,8 +15,9 @@ const ACCEPT = 'image/png,image/jpeg,image/webp'
 /**
  * Take or upload a photo, crop it, have it read, confirm the lines. The photo is decoded,
  * cropped and re-encoded in the browser (which drops EXIF and GPS data) and kept only in
- * memory; it is let go when it is replaced, once it has been read, and when the panel leaves
- * the page. Each view marks its main control with `data-main-control` for `MathInput.focus()`.
+ * memory. It stays on the crop view until a read succeeds, so a failed read can be tried
+ * again or cropped differently; it is let go when it is replaced, once it has been read, and
+ * when the panel leaves the page. Each view marks its main control with `data-main-control` for `MathInput.focus()`.
  */
 export function PhotoPanel({
   single,
@@ -37,6 +38,8 @@ export function PhotoPanel({
   // object is stable across renders and its alert is focused once.
   const [localError, setLocalError] = useState<Phase | null>(null)
   const { phase, run, reset } = useTranscription()
+  // Counts photo picks, so a slow load that finishes after a newer one is dropped.
+  const loads = useRef(0)
 
   // The bitmap on screen, closed when the panel unmounts; and whether it is still mounted.
   const current = useRef<ImageBitmap | null>(null)
@@ -77,12 +80,13 @@ export function PhotoPanel({
     e.target.value = ''
     if (!file) return
     startOver()
+    const load = ++loads.current
     try {
       const bitmap = await loadImage(file)
-      if (mounted.current) show(bitmap)
+      if (mounted.current && load === loads.current) show(bitmap)
       else bitmap.close()
     } catch {
-      setLocalError({ kind: 'failed', message: t('input.error.open') })
+      if (load === loads.current) setLocalError({ kind: 'failed', error: 'open' })
     }
   }
 
@@ -93,26 +97,21 @@ export function PhotoPanel({
       if (mounted.current && current.current === image) show(turned)
       else turned.close()
     } catch {
-      setLocalError({ kind: 'failed', message: t('input.error.image') })
+      setLocalError({ kind: 'failed', error: 'image' })
     }
   }
 
-  const onCrop = (rect: Rect) => {
+  const onCrop = async (rect: Rect) => {
     const source = image
-    if (!source) return
-    // The crop now owns the bitmap: it is closed once the upload is made, not before.
-    current.current = null
-    setImage(null)
+    if (!source || phase.kind === 'reading') return
     setLocalError(null)
-    void run(async () => {
-      try {
-        const blob = await cropAndDownscale(source, rect)
-        if (mounted.current) setPreview(URL.createObjectURL(blob))
-        return blob
-      } finally {
-        source.close()
-      }
+    const outcome = await run(async () => {
+      const blob = await cropAndDownscale(source, rect)
+      if (mounted.current) setPreview(URL.createObjectURL(blob))
+      return blob
     })
+    // Read: the photo itself is no longer needed. Failed: it stays for another try.
+    if (outcome?.kind === 'review' && current.current === source) show(null)
   }
 
   if (phase.kind === 'review') {
@@ -140,11 +139,13 @@ export function PhotoPanel({
         <CropStep
           key={imageKey}
           image={image}
-          onCrop={onCrop}
+          busy={phase.kind === 'reading'}
+          failed={phase.kind === 'failed'}
+          onCrop={(rect) => void onCrop(rect)}
           onCancel={startOver}
           onRotate={() => void onRotate()}
         />
-        {localError && <ReadingStatus phase={localError} readingLabel="" />}
+        <ReadingStatus phase={localError ?? phase} readingLabel={t('input.photo.reading')} />
       </div>
     )
   }
@@ -192,13 +193,6 @@ export function PhotoPanel({
         data-testid="photo-upload"
         onChange={onFile}
       />
-      {preview && phase.kind === 'reading' && (
-        <img
-          src={preview}
-          alt={t('input.photo.croppedAlt')}
-          className="max-h-48 w-auto max-w-full self-start rounded-xl border border-line"
-        />
-      )}
       <ReadingStatus phase={localError ?? phase} readingLabel={t('input.photo.reading')} />
     </div>
   )
