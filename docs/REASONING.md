@@ -25,22 +25,33 @@ They work alone, dislike chatbots, and want nothing that grades them. With 20kâ€
 
 ## How the human and the AI worked together
 
-- **The product owner (Luis)** set the direction and made the calls: the scope ("all of the suggestions"), "no database? no login?", the design taste, "it should still feel like Akelius", "math should feel human", photos and drawing, languages, accessibility, and "no mock buttons".
-- **Claude Code, as planner and researcher,** did the following:
-  - read the brief and the email, researched Akelius (website, design tokens, a real lesson's structure), and checked the Azure subscription's regions and models;
-  - wrote the plan;
-  - ran **peer research**: it found 5 open-source projects with similar mechanisms (Oak's Aila, OATutor, llm-math-education, MathTutorBench, AITutor-EvalKit), had an agent read each codebase against our plan, and checked their 13 findings before adopting them;
-  - designed the UI on a Claude Design canvas and revised it three times from feedback.
-- **The build** is split into the tasks in `docs/TASKS.md` and given to Claude Code workers through agent-mesh (`/delegate-claude`). Each worker builds in its own branch, and each PR is reviewed before merge.
-- Every factual claim (licenses, dataset contents, model availability) was checked before it went into the plan.
+I (Luis) acted as product owner. Claude Code researched, planned and designed, and Claude Code workers build. The session, step by step:
+
+1. **Me:** "Here is the assignment; let's talk about it first." **Claude:** read the brief, the email and Akelius's site, then proposed four product ideas. Its recommendation was a lesson-prep page without chat.
+2. **Me:** "I like all of them. Build the whole app with a frontend, on my Azure credits." **Claude:** checked the subscription. The allowed region `switzerlandnorth` offers `gpt-5.4-mini` on DataZoneStandard, so live AI stays in the EU data zone.
+3. **Claude:** checked whether Akelius Math content could be reused. It is served by an undocumented API with no license, so we don't scrape it: we write our own lessons and deep-link to theirs.
+4. **Me:** "Before building, see how similar apps are built." **Claude:** found 5 open-source peers and had an agent read each codebase against our plan. It checked their 13 findings, and these changed the plan:
+   - sympy computes the answer first;
+   - "I can't tell" is always an option;
+   - known mistakes are matched by rules;
+   - the eval set comes from a published misconception dataset.
+5. **Me:** "Why JSON and not a database? Will there be a login?" **Claude:** explained why neither is needed. That led to one more change: step explanations are generated offline too, so there's no runtime cache to lose.
+6. **Claude:** designed seven screens on a Claude Design canvas (desktop, tablet and phone).
+7. **Me:** "Look at Akelius's own website." **Claude:** extracted their design tokens and studied a real lesson. **Me:** "Keep it modern, but it should feel like Akelius." **Claude:** rethemed the design with their colours and lesson conventions (balance scale, operation shown on both sides).
+8. **Me:** "The math looks like a computer wrote it, not a person." **Claude:** switched to handwriting on squared paper, stacked fractions, steps aligned on `=`, and margin notes like `| âˆ’5`.
+9. **Me:** "Can teachers write math by hand, or take a photo?" **Claude:** added type, write and photo input. The teacher confirms the transcription before anything runs, and a photo of the working shows the first line that doesn't follow.
+10. **Me:** "Add every language you can, strong accessibility, a drawing board in practice, no mock buttons, and a short reasoning doc." **Claude:** wrote the final plan, a task list in waves, and agent instructions (`CLAUDE.md`).
+11. **Build:** tasks are handed to Claude Code workers through agent-mesh (`/delegate-claude`). Each works on its own branch, and each PR is reviewed before merge. *(Log continues below as the build runs.)*
+
+Every factual claim (licenses, dataset contents, model availability) was checked before it went into the plan.
 
 ## Time
 
-Human time and AI time are counted separately, because most of the work ran unattended.
+Human time and AI time are counted separately. Both are active working time; the session sat idle in between.
 
-| Phase | My active time | Elapsed, with AI working |
+| Phase | My active time | Claude's active time |
 |---|---|---|
-| Understanding, research, plan, peer review, design | ~20 min | ~3 h 45 min |
+| Understanding, research, plan, peer review, design | ~10 min | ~30 min (peer agents also ran in parallel in the background) |
 | Build (agents) | to be filled | to be filled from the commit log |
 | Review and delivery | to be filled | to be filled |
 
