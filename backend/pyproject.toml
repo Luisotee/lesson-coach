@@ -5,6 +5,7 @@ description = "Lesson Coach API: sympy math core, packs and live diagnosis."
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "fastapi>=0.115",
+    "sympy>=1.13",
     "uvicorn[standard]>=0.32",
 ]
 
@@ -33,3 +34,13 @@ files = ["app", "tests"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[[tool.mypy.overrides]]
+# sympy ships no type information.
+module = ["sympy", "sympy.*"]
+ignore_missing_imports = true
+
+[tool.ruff.lint.per-file-ignores]
+# Math input uses Unicode operators (−, ×, ÷) on purpose.
+"app/math/**" = ["RUF001", "RUF002", "RUF003"]
+"tests/math/**" = ["RUF001", "RUF002", "RUF003"]
