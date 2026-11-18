@@ -31,7 +31,7 @@ A take-home assignment for Akelius: **Lesson Coach**, a web app that helps math 
   Don't use the Akelius logo.
 - **Don't scrape Akelius content.** It states no license. Deep-link to their lessons instead.
 
-## Planned layout (being scaffolded by task T0)
+## Layout
 
 ```
 backend/     FastAPI (Python 3.12, uv). app/math/ = sympy core; LLM client behind one interface + one config
@@ -46,9 +46,10 @@ The data flow is source lesson → `generate.py` → `verify.py` → committed p
 
 ## Commands
 
-T0 defines these `Makefile` targets. Check the Makefile once it exists, since it is the authority.
-- `make dev` runs the backend and frontend locally. `docker compose up` runs the full app.
-- `make test` runs pytest and vitest. `make lint` runs ruff, mypy and eslint. `make fmt`, `make build`, and `make e2e` (Playwright with axe-core).
+The `Makefile` is the authority.
+- `make install` once after cloning: `uv sync`, `pnpm install`, and Playwright's Chromium.
+- `make dev` runs the API on :8000 and Vite on :5173 (proxying `/api`). `docker compose up` runs the full app on :8000.
+- `make test` runs pytest and vitest. `make lint` runs ruff, ruff format, mypy, tsc, eslint and prettier. `make fmt` fixes formatting. `make build` builds `frontend/dist`. `make e2e` builds the frontend, then runs Playwright with axe-core against FastAPI serving it.
 - Single tests: `cd backend && uv run pytest tests/test_math.py::test_name -q`, or `cd frontend && pnpm vitest run path/to/file.test.ts -t "name"`.
 - Pipeline: `uv run python pipeline/generate.py --topic <id> --lang <code>`, then `uv run python pipeline/verify.py`.
 - Evals: `uv run python evals/run.py`.

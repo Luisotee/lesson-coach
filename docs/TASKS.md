@@ -14,7 +14,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
 
 ## Wave 0: foundation (one worker, blocks everything)
 
-- [ ] **T0 Scaffold the monorepo**
+- [x] **T0 Scaffold the monorepo**
   - Layout: `backend/` (FastAPI, uv, Python 3.12), `frontend/` (pnpm, Vite, React, TS, Tailwind v4, shadcn/ui, Motion, react-i18next), `pipeline/`, `content/`, `evals/`, `infra/`, `docs/`.
   - A `Makefile` with `dev`, `test`, `lint`, `fmt`, `build`, `e2e`.
   - Python tools: ruff + mypy + pytest. Frontend tools: eslint, prettier, vitest, Playwright.

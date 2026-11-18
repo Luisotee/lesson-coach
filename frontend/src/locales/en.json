@@ -1,0 +1,10 @@
+{
+  "app": {
+    "title": "Lesson Coach",
+    "tagline": "Refresh the math you teach and prepare your next lesson.",
+    "apiStatus": "API status: {{state}}",
+    "apiOk": "connected",
+    "apiDown": "not reachable",
+    "apiChecking": "checking"
+  }
+}
