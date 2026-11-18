@@ -104,8 +104,13 @@ describe.each(translated.map((l) => [l.code]))('%s', (code) => {
         new RegExp(`(^|[^\\p{Nd}])${form}($|[^\\p{Nd}])`, 'u').test(text),
       )
     const read = (num: number, den: number) => t('math.speech.fractionSimple', { num, den })
-    // A CLDR category is not a number: French `one` is also 0, Russian `one` is also 21.
-    expect(says(read(0, 3), 0), `${code} 0/3: ${read(0, 3)}`).toBe(true)
+    // A CLDR category is not a number: French `one` is also 0, Russian `one` is also 21. As in
+    // pipeline/icu_check.mjs, a `zero` category that holds only 0 (Arabic) is as exact as `=0`,
+    // so it may say "no thirds" in words.
+    const rules = new Intl.PluralRules(intlLocale(code))
+    const exactZero =
+      rules.select(0) === 'zero' && [10, 20, 100].every((n) => rules.select(n) !== 'zero')
+    if (!exactZero) expect(says(read(0, 3), 0), `${code} 0/3: ${read(0, 3)}`).toBe(true)
     expect(says(read(21, 4), 21), `${code} 21/4: ${read(21, 4)}`).toBe(true)
     expect(read(1, 3), `${code} 1/3`).not.toBe(read(0, 3))
     expect(read(1, 3)).not.toMatch(/[{}]/)
