@@ -42,6 +42,7 @@ I (Luis) acted as product owner. Claude Code researched, planned and designed, a
 9. **Me:** "Can teachers write math by hand, or take a photo?" **Claude:** added type, write and photo input. The teacher confirms the transcription before anything runs, and a photo of the working shows the first line that doesn't follow.
 10. **Me:** "Add every language you can, strong accessibility, a drawing board in practice, no mock buttons, and a short reasoning doc." **Claude:** wrote the final plan, a task list in waves, and agent instructions (`CLAUDE.md`).
 11. **Build:** tasks are handed to Claude Code workers through agent-mesh (`/delegate-claude`). Each works on its own branch, and each PR is reviewed before merge. *(Log continues below as the build runs.)*
+12. **T4 infra:** `gpt-5.4-mini` DataZoneStandard quota is 0 on Azure for Students; switched live to `gpt-5.5` DataZoneStandard to keep EU processing. Offline uses `gpt-5.5` on GlobalStandard, because GlobalBatch can't be called interactively or smoke-tested.
 
 Every factual claim (licenses, dataset contents, model availability) was checked before it went into the plan.
 
