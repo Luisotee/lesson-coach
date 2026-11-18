@@ -13,9 +13,9 @@
     6,
     7
   ],
-  "summary": "Use opposites and number-line moves to add, subtract, and multiply negative numbers.",
-  "idea": "A negative number is below zero. On a number line, `-3` is three steps left of zero, while `3` is three steps right. They are opposites because they are the same distance from zero on opposite sides.\n\nAdding a positive number moves right. Adding a negative number moves left. Subtracting a number moves the opposite way to adding it, so subtracting a negative number moves right.\n\nWhen numbers with different signs are added, the signs pull in opposite directions. The answer keeps the sign of the number farther from zero, and its size is the difference between the two sizes. So `-7 + 4` is `-3`.",
-  "why_it_works": "Subtraction can be seen as distance or as moving the opposite way from addition. The distance from `-3` to `5` is the whole stretch across zero. So `5 - (-3)` is `5 + 3`, and `5 + 3` is `8`.\n\nFor multiplication, a pattern explains the sign. `3*(-2)` is `-6`, `2*(-2)` is `-4`, `1*(-2)` is `-2`, and `0*(-2)` is `0`. Continuing the pattern gives positive products when both factors are negative.\n\nThat is why `(-4)*(-6)` is `4*6`, and `4*6` is `24`. A negative times a negative is positive because the multiplication pattern must keep going consistently.",
+  "summary": "Use number lines, opposites, and sign rules to add, subtract, and multiply negative numbers.",
+  "idea": "A negative number is below zero. On a number line, `-3` is three steps left of zero, while `3` is three steps right. They are opposites because they are the same distance from zero on different sides.\n\nAdding a positive number moves right. Adding a negative number moves left. Subtracting a number moves the opposite way to adding it, so subtracting a negative moves right. For example, `5 - (-3)` becomes `5 + 3`, and `5 + 3` is `8`.\n\nWhen numbers with different signs are added, the signs pull in opposite directions. The answer takes the sign of the number farther from zero. Its size is the difference of the two sizes, so `-7 + 4` becomes `-(7 - 4)`, and `-(7 - 4)` is `-3`.",
+  "why_it_works": "Subtraction can mean distance or difference. The difference between a positive number and a negative number crosses zero. So subtracting a negative number increases the value. In the worked example, `5 - (-3)` becomes `5 + 3`, and `5 + 3` is `8`.\n\nMultiplication with negatives follows a pattern. As one factor decreases by one, the product changes by a steady amount. Continuing that pattern past zero shows that a negative times a negative must be positive. In the worked example, `-4*(-6)` becomes `4*6`, and `4*6` is `24`.\n\nFor addition with different signs, think of a tug of war. The number farther from zero has the stronger pull. That is why `-7 + 4` keeps a negative sign and becomes `-(7 - 4)`, which is `-3`.",
   "prerequisites": [],
   "worked_examples": [
     {
@@ -36,9 +36,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Start with `5 - (-3)`. The operation is subtract, and the number being subtracted is `-3`. Keep those two ideas separate.",
-            "another_way": "Think of this as the distance from `-3` up to `5`, or as taking away a debt of `3`.",
-            "visual": "On a number line, start at `5` and prepare to subtract `-3`."
+            "why": "The expression `5 - (-3)` means start at `5` and subtract a negative number. Subtracting a negative moves the opposite way from adding a negative.",
+            "another_way": "Think of taking away a debt. Removing `-3` has the same effect as gaining `3`.",
+            "visual": "On a number line, start at `5`; the instruction subtract `-3` points to a move right."
           }
         },
         {
@@ -51,9 +51,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Subtracting `-3` moves the opposite way from adding `-3`, so it moves right. That makes `5 - (-3)` is `5 + 3`.",
-            "another_way": "Use the opposite: subtracting a negative is the same as adding the positive opposite.",
-            "visual": "On a number line, start at `5` and move `3` steps to the right."
+            "why": "Subtracting a negative is adding its opposite, so `5 - (-3)` becomes `5 + 3`. Now the move is three steps to the right from `5`.",
+            "another_way": "Keep the `5`, change subtracting `-3` into adding `3`, then use ordinary addition.",
+            "visual": "On a number line, start at `5` and move `3` steps right for `+3`."
           }
         },
         {
@@ -66,9 +66,9 @@
               "another_way",
               "visual"
             ],
-            "why": "`5 + 3` is `8`, so `8` is the value of the original expression.",
-            "another_way": "Count the full distance from `-3` to `5`; it ends at the same value, `8`.",
-            "visual": "The number line move from `5` ends at `8`."
+            "why": "After moving `3` steps right from `5`, the endpoint is `8`. So the value of the expression is `8`.",
+            "another_way": "The distance from `-3` to `5` is the same total change shown by `5 - (-3)`, and it gives `8`.",
+            "visual": "The number line move from `5` lands on `8`, so `8` is the final position."
           }
         }
       ],
@@ -92,9 +92,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The expression `-7 + 4` adds numbers with different signs. Think of a tug of war: `-7` is farther left than `4`, so the result stays negative.",
-            "another_way": "Start at `-7` and add `4` by moving right. The move heads right, but not far enough to become positive.",
-            "visual": "Counters on a number line start at `-7`, then move `4` steps right."
+            "why": "This starts with `-7 + 4`. The numbers have different signs, so think of them pulling in opposite directions from zero.",
+            "another_way": "Use a number line: start at `-7` and add `4` by moving right.",
+            "visual": "On the number line, a counter starts at `-7` with an arrow `4` steps to the right."
           }
         },
         {
@@ -107,9 +107,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Since `-7` is farther left than `4` is right, subtract the sizes and keep the negative sign. This is why `-7 + 4` is written as `-(7 - 4)`.",
-            "another_way": "Pair `4` positive counters with `4` of the negative counters. The unpaired counters are negative.",
-            "visual": "A number line shows the distance difference between `7` left steps and `4` right steps."
+            "why": "Since `-7` is farther from zero than `4`, the answer will be negative. The size is found by the difference `7 - 4`.",
+            "another_way": "Think of the negative side winning by the gap between `7` and `4`, so `-7 + 4` becomes `-(7 - 4)`.",
+            "visual": "On the number line, the left pull has length `7` and the right pull has length `4`, leaving a left pull."
           }
         },
         {
@@ -122,9 +122,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The difference `7 - 4` is `3`, so `-(7 - 4)` is `-3`. This is the answer because the negative side has `3` more.",
-            "another_way": "From `-7`, moving `4` steps right lands on `-3`. The final position gives the value.",
-            "visual": "Counters on a number line end at `-3` after moving right from `-7`."
+            "why": "The difference inside the parentheses is `3`, and the negative sign stays. So `-(7 - 4)` becomes `-3`, which is the answer.",
+            "another_way": "From `-7`, moving `4` steps right lands on `-3`.",
+            "visual": "The counter lands at `-3` on the number line."
           }
         }
       ],
@@ -139,7 +139,7 @@
       "prompt": "Work out:",
       "steps": [
         {
-          "left": "(-4)*(-6)",
+          "left": "-4*(-6)",
           "right": "",
           "op": "",
           "explanations": {
@@ -148,9 +148,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The factors in `(-4)*(-6)` are both negative. A negative times a negative is positive, so the product has the same size as `4*6`.",
-            "another_way": "Use the pattern for multiplying by a negative. Continuing the pattern past zero makes `(-4)*(-6)` match `4*6`.",
-            "visual": "Counters on a number line show two negative factors turning the direction back to the right."
+            "why": "The expression `-4*(-6)` multiplies two negative numbers. A negative times a negative is positive, so the signs will make a positive product.",
+            "another_way": "Use the pattern for multiplying by a negative. Continuing the pattern shows that `-4*(-6)` has the same positive size as `4*6`.",
+            "visual": "On a number line, `-4` groups of `-6` are shown by reversing direction to the right."
           }
         },
         {
@@ -163,9 +163,9 @@
               "another_way",
               "visual"
             ],
-            "why": "After the sign is handled, the remaining multiplication is `4*6`. This gives the size of the answer.",
-            "another_way": "Think of `4*6` as four groups of six, or six groups of four. Either view gives the same product.",
-            "visual": "Counters show `4` equal jumps of `6` to the right from zero."
+            "why": "The sign change has been handled, so the remaining multiplication is `4*6`. This keeps the size of the product and makes it positive.",
+            "another_way": "Think of both numbers as their distances from zero. The distances are `4` and `6`, and the product is positive.",
+            "visual": "On a number line, show `4` jumps of size `6` moving to the right from zero."
           }
         },
         {
@@ -178,9 +178,9 @@
               "another_way",
               "visual"
             ],
-            "why": "`24` is the answer because `4*6` is `24`, and the product of two negatives is positive.",
-            "another_way": "The signs make the result positive first, then the basic fact gives `24`.",
-            "visual": "The final point is `24`, to the right of zero on the number line."
+            "why": "`4*6` is `24`, so the value of the original expression is `24`. The answer is positive because the two factors were both negative.",
+            "another_way": "The product has size `24`, and the sign is positive. So `-4*(-6)` equals `24`.",
+            "visual": "The rightward jumps end at `24` on the number line."
           }
         }
       ],
@@ -352,59 +352,55 @@
   "questions": [
     {
       "question": "Why does subtracting a negative move right?",
-      "answer": "Subtracting moves the opposite way from adding. Adding a negative moves left, so subtracting a negative moves right. For example, `5 - (-3)` is `5 + 3`."
+      "answer": "Subtracting moves the opposite way from adding. Adding a negative moves left, so subtracting a negative moves right. That is why `5 - (-3)` becomes `5 + 3`."
     },
     {
-      "question": "Are the two minus signs in `5 - (-3)` the same thing?",
-      "answer": "No. The first is the operation: subtract. The second is the sign of the number `-3`. Saying “subtract negative three” helps keep them separate."
+      "question": "Do two negatives always make a positive?",
+      "answer": "No. That idea applies to multiplying and dividing. For addition, two negatives move farther below zero."
     },
     {
       "question": "Why is `-7 + 4` negative?",
-      "answer": "The numbers pull in opposite directions. `-7` is farther from zero than `4`, so the answer is negative. `-7 + 4` is `-3`."
+      "answer": "The numbers pull in opposite directions. `-7` is farther from zero than `4`, so the answer is negative. `-7 + 4` becomes `-(7 - 4)`, and that is `-3`."
     },
     {
       "question": "Why is a negative times a negative positive?",
-      "answer": "The multiplication pattern must continue. As the first factor drops through zero, the products move up. So a product like `(-4)*(-6)` is positive."
+      "answer": "The multiplication pattern has to continue past zero. That pattern shows a negative times a negative gives a positive product."
     },
     {
-      "question": "Does “two negatives make a positive” work for addition?",
-      "answer": "No. That rule is for multiplying and dividing. Adding two negative numbers moves farther left on the number line."
-    },
-    {
-      "question": "Can `3 - 7` have an answer below zero?",
-      "answer": "Yes. Start at `3` and move seven steps left on the number line. The result can be below zero."
+      "question": "Can a smaller number subtract a larger number?",
+      "answer": "Yes. On a number line, subtraction can move left past zero. The result can be negative."
     }
   ],
   "outline": [
     {
       "minutes": 8,
       "title": "Locate negatives",
-      "activity": "Place negative and positive numbers on a number line. Emphasize that opposites are the same distance from zero on opposite sides, such as `-3` and `3`."
+      "activity": "Use a number line to place negative and positive numbers. Emphasize that opposites are the same distance from zero on opposite sides."
     },
     {
       "minutes": 10,
       "title": "Add as movement",
-      "activity": "Model addition as movement. Adding a positive moves right. Adding a negative moves left. Use signed-number language and ask students to describe each move."
+      "activity": "Show that adding positive numbers moves right and adding negative numbers moves left. Use student language of steps on the number line."
     },
     {
       "minutes": 10,
       "title": "Subtract negatives",
-      "activity": "Separate operation from sign. Read `5 - (-3)` as “five subtract negative three.” Show that subtracting a negative moves right, so `5 - (-3)` is `5 + 3`, and `5 + 3` is `8`."
+      "activity": "Separate the operation from the sign. Say “subtract” and “negative” as different words. Show that `5 - (-3)` becomes `5 + 3`, and `5 + 3` is `8`."
     },
     {
       "minutes": 8,
-      "title": "Different signs in addition",
-      "activity": "Use a tug-of-war image for mixed-sign addition. The answer takes the sign of the number farther from zero. Show that `-7 + 4` is `-(7 - 4)`, and `-(7 - 4)` is `-3`."
+      "title": "Add different signs",
+      "activity": "Use the tug-of-war idea. The answer takes the sign of the number farther from zero, and the size is the difference. Show `-7 + 4` becomes `-(7 - 4)`, which is `-3`."
     },
     {
       "minutes": 10,
-      "title": "Multiply with a pattern",
-      "activity": "Build the pattern `3*(-2)`, `2*(-2)`, `1*(-2)`, `0*(-2)`. Continue it to show why a negative times a negative is positive. Connect to `(-4)*(-6)` is `4*6`, and `4*6` is `24`."
+      "title": "Multiply negatives",
+      "activity": "Use the multiplication pattern from the lesson. Connect it to the rule that a negative times a negative is positive. Show `-4*(-6)` becomes `4*6`, and `4*6` is `24`."
     },
     {
       "minutes": 4,
       "title": "Check misconceptions",
-      "activity": "Ask for number-line or pattern explanations for common errors, such as treating `5 - (-3)` as smaller, or using “two negatives make a positive” for addition."
+      "activity": "Ask students to explain common errors, such as making `5 - (-3)` smaller or using “two negatives make a positive” for addition."
     }
   ],
   "akelius_lessons": [
@@ -751,6 +747,6 @@
   ],
   "machine_translated": false,
   "unavailable": [],
-  "source_hash": "b23e6dc668b1f839cf21c9a5bfecf3257c2d158bfcddcb202cd6e2faee3e96af",
+  "source_hash": "b92121bc34fa3abdc818fc3a92b7e433486a1da5a890f5996964245410e82f8d",
   "model": "gpt-5.5-offline"
 }

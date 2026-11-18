@@ -14,9 +14,9 @@
     8,
     9
   ],
-  "summary": "Solve linear equations by keeping both sides balanced and undoing operations in reverse order.",
-  "idea": "An equation says that two expressions have the same value. Solving means finding the value of `x` that makes the statement true.\n\nThe balance model is useful. Each line keeps the two sides equal by doing the same operation to both sides. The margin operation, such as subtract `6` or divide by `2`, records what changed.\n\nTo get `x` alone, undo the operations around it in reverse order. For `2*x + 6 = 10`, subtract `6` from both sides to get `2*x = 4`, then divide by `2` to get `x = 2`.\n\nBrackets need care. In `5*(x + 3) = 35`, the `5` multiplies the whole bracket, so dividing both sides by `5` gives `x + 3 = 7`, then `x = 4`.",
-  "why_it_works": "Doing the same operation to equal amounts keeps them equal. Each new line is an equation with the same solution as the line before it.\n\nSolving reverses the way the expression was built. In `2*x + 6 = 10`, `x` was multiplied by `2`, then `6` was added. To undo this, subtract `6` first, then divide by `2`.\n\nThe same balance idea works when there are variables on both sides. From `3*x + 4 = x + 10`, subtracting `x` from both sides gives `2*x + 4 = 10`. Then subtract `4` and divide by `2`, giving `x = 3`.\n\nA substitution check confirms the result. For `x = 2`, `2*2 + 6` is `10`, so the original equation is true.",
+  "summary": "Solve linear equations by doing the same undoing operation to both sides.",
+  "idea": "An equation says that two expressions have the same value. Solving means finding the value of `x` that makes the statement true.\n\nThe balance idea is useful. Both sides must stay equal, so any operation done to one side is also done to the other. Writing the operation in the margin, such as subtracting `6`, helps make each step visible.\n\nTo get `x` alone, undo the operations around it in reverse order. In `2*x + 6 = 10`, subtracting `6` from both sides gives `2*x = 4`, then dividing both sides by `2` gives `x = 2`.\n\nBrackets need care. In `5*(x + 3) = 35`, the `5` multiplies the whole bracket, so dividing both sides by `5` gives `x + 3 = 7`, then subtracting `3` gives `x = 4`.",
+  "why_it_works": "Each new line has the same solution because equal amounts stay equal when the same operation is done to both sides. This is the reason for recording the margin operation on every line.\n\nOperations are undone in reverse order. In `2*x + 6 = 10`, the adding is undone before the multiplying. That gives `2*x = 4`, then `x = 2`.\n\nWhen the same variable appears on both sides, first collect variable terms on one side. In `3*x + 4 = x + 10`, subtracting `x` from both sides gives `2*x + 4 = 10`, then the equation can be solved as before.\n\nSubstitution checks the result. For `x = 2`, `2*2 + 6` is `10`, so the original equation is true.",
   "prerequisites": [
     "negative-numbers",
     "fractions"
@@ -40,9 +40,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The `+ 6` is undone first because it is outside the `2*x`. Subtracting `6` from both sides keeps the equation balanced.",
-            "another_way": "Think in reverse order: `x` was multiplied by `2`, then `6` was added. Undo the adding first with subtracting `6`.",
-            "visual": "A balance shows `2*x + 6` level with `10`; remove `6` from both pans."
+            "why": "The `+ 6` is undone first because it was added after `2*x`. Subtracting `6` from both sides keeps the equation balanced.",
+            "another_way": "Think of removing the same `6` from each side of the scale. This leaves the term with `x` by itself on the left.",
+            "visual": "A balance shows `2*x + 6` and `10`; remove `6` from both pans."
           }
         },
         {
@@ -55,9 +55,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Now `2*x = 4`. The `2` means `x` is multiplied by `2`, so divide both sides by `2` to get one `x`.",
-            "another_way": "Split both sides into `2` equal groups. One group on the left is `x`, and one group on the right is `2`.",
-            "visual": "A balance shows `2*x` level with `4`; divide each pan into `2` equal groups."
+            "why": "Now `2*x` means two equal copies of `x`. Dividing both sides by `2` undoes the multiplication by `2`.",
+            "another_way": "Split both sides into `2` equal groups. One group on the left is `x`, so one group on the right is the matching value.",
+            "visual": "A balance shows `2*x` and `4`; split both sides into `2` equal parts."
           }
         },
         {
@@ -70,9 +70,9 @@
               "another_way",
               "visual"
             ],
-            "why": "This is the answer because `x` is alone. The equation says the value that makes the original statement true is `2`.",
-            "another_way": "Check by substitution: `2*2 + 6` is `10`, matching the right side of the original equation.",
-            "visual": "A balance shows one `x` level with `2`."
+            "why": "This is the answer because `x` is alone and its value is shown. The equation says `x = 2`.",
+            "another_way": "A check uses the original equation: replacing `x` with `2` makes `2*x + 6 = 10` true.",
+            "visual": "A balance shows one `x` matching `2`."
           }
         }
       ],
@@ -96,8 +96,8 @@
               "another_way",
               "visual"
             ],
-            "why": "Divide both sides by `5` to undo the outside multiplication in `5*(x + 3) = 35`. This keeps the equation balanced and leaves the bracket expression by itself next.",
-            "another_way": "This avoids expanding the bracket. It uses that the whole left side is `5` groups of `x + 3`, so dividing by `5` gives one group.",
+            "why": "The bracketed amount is multiplied by `5`. Dividing both sides by `5` undoes that multiplication and keeps the equation balanced.",
+            "another_way": "This avoids multiplying out the bracket. Since the whole left side is `5` groups of `x + 3`, divide both sides by `5` first.",
             "visual": "A balance shows `5*(x + 3)` on one side and `35` on the other, with both sides split into `5` equal parts."
           }
         },
@@ -111,9 +111,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Subtract `3` from both sides to undo the `+ 3` in `x + 3 = 7`. This keeps the same solution while isolating `x`.",
-            "another_way": "Think of `x + 3 = 7` as a missing-addend statement. The amount left after taking away `3` from `7` is the value of `x`.",
-            "visual": "A balance shows `x + 3` level with `7`, then `3` is removed from both pans."
+            "why": "The `3` is added to `x`. Subtracting `3` from both sides leaves `x` alone and keeps the two sides equal.",
+            "another_way": "Think of undoing the last addition. Remove `3` from each side of the balance to isolate the unknown.",
+            "visual": "A balance shows `x + 3` on one side and `7` on the other, with `3` removed from both sides."
           }
         },
         {
@@ -126,9 +126,9 @@
               "another_way",
               "visual"
             ],
-            "why": "`x = 4` is the answer because `x` is alone and the equation states its value directly.",
-            "another_way": "Substitution checks it: in the original equation, replacing `x` with `4` makes the bracket `4 + 3`.",
-            "visual": "A balance shows one `x` block level with `4` units."
+            "why": "The variable is isolated, so the equation gives the solution. The answer is `x = 4`.",
+            "another_way": "A check can use the original equation: substituting `4` makes the left side match the right side shown in the problem.",
+            "visual": "A balance shows `x` alone on one side and `4` on the other, level."
           }
         }
       ],
@@ -152,9 +152,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Subtract `x` from both sides to collect the `x` terms on one side. The balance stays level because the same `x` is removed from each side.",
-            "another_way": "Think of `3*x` as `x + 2*x`. Removing `x` from both sides leaves `2*x + 4 = 10`.",
-            "visual": "A balance shows `3*x + 4` and `x + 10`; remove one `x` from each pan."
+            "why": "Subtract `x` from both sides to gather the `x` terms on one side. Doing the same subtraction to both sides keeps the equation balanced.",
+            "another_way": "Think of removing one `x` weight from each pan. The right side then has no `x` left, and the left side keeps the extra `x` terms.",
+            "visual": "A balance shows `3*x + 4` and `x + 10`; one `x` is removed from each side."
           }
         },
         {
@@ -167,9 +167,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Subtract `4` from both sides to get the `x` term by itself. This undoes the added `4` on the left.",
-            "another_way": "The equation `2*x + 4 = 10` says `2*x` plus `4` makes `10`, so take away `4` from both sides.",
-            "visual": "A balance shows `2*x + 4` and `10`; remove `4` from each pan."
+            "why": "Subtract `4` from both sides to leave the term with `x` by itself. The equation stays equal because the same amount is removed from each side.",
+            "another_way": "The `+ 4` is undone with `-4`. This clears the extra number beside `2*x`.",
+            "visual": "A balance shows `2*x + 4` and `10`; four unit weights are removed from each side."
           }
         },
         {
@@ -182,9 +182,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Divide both sides by `2` because `2*x` means two equal groups of `x`. This leaves one group, `x`.",
-            "another_way": "Split both sides of `2*x = 6` into `2` equal parts. One part on the left is `x`, and one part on the right is `3`.",
-            "visual": "A balance shows `2*x` and `6`; split both pans into `2` equal groups."
+            "why": "Divide both sides by `2` to undo the multiplication in `2*x`. This leaves one `x` on the left.",
+            "another_way": "Since `2*x` means two equal groups of `x`, split both sides into `2` equal parts.",
+            "visual": "A balance shows `2*x` and `6`; both sides are split into two equal groups."
           }
         },
         {
@@ -197,9 +197,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The variable is alone, so the equation gives the solution directly. The answer is `x = 3`.",
-            "another_way": "Check by substitution: in the original equation, replacing `x` with `3` gives equal sides.",
-            "visual": "A balance shows one `x` matching `3`."
+            "why": "`x = 3` is the solution because the variable is alone. This gives the value that makes the original equation true.",
+            "another_way": "The solving steps have kept the same solution all the way down, so the final isolated value is the answer.",
+            "visual": "A balance shows one `x` matching `3` unit weights."
           }
         }
       ],
@@ -370,60 +370,55 @@
   ],
   "questions": [
     {
-      "question": "Why do the same thing to both sides?",
-      "answer": "An equation says both sides have the same value. Doing the same operation to both sides keeps them equal, like a balance scale."
+      "question": "Why do we do the same thing to both sides?",
+      "answer": "An equation says both sides are equal. Doing the same operation to both sides keeps them equal, like a balance scale."
     },
     {
-      "question": "Why subtract `6` in `2*x + 6 = 10`?",
-      "answer": "The `6` was added to `2*x`. Subtracting `6` from both sides undoes that addition and gives `2*x = 4`."
+      "question": "Why subtract `6` before dividing by `2` in `2*x + 6 = 10`?",
+      "answer": "Undo the operations in reverse order. The `6` was added after the multiplying, so subtract `6` first."
     },
     {
-      "question": "Why divide by `2` instead of subtracting `2`?",
-      "answer": "In `2*x`, the `2` means multiply by `2`. The inverse operation is divide by `2`, giving `x = 2`."
+      "question": "Can a number just move across the equals sign?",
+      "answer": "No. A step means doing an operation to both sides. In `2*x + 6 = 10`, subtracting `6` from both sides gives `2*x = 4`."
     },
     {
-      "question": "What happens when there is an `x` on both sides?",
-      "answer": "Use the same balance rule. In `3*x + 4 = x + 10`, subtract `x` from both sides to get `2*x + 4 = 10`."
+      "question": "Why not turn `2*x + 6 = 10` into `x + 6 = 5`?",
+      "answer": "Dividing a side means dividing every term on that side. Dividing only some terms changes the equation."
     },
     {
-      "question": "Why does the `5` affect all of `x + 3` in `5*(x + 3) = 35`?",
-      "answer": "The bracket is one group. The `5` multiplies the whole group, so dividing both sides by `5` gives `x + 3 = 7`."
+      "question": "What should happen with `5*(x + 3) = 35`?",
+      "answer": "The `5` multiplies the whole bracket. Dividing both sides by `5` gives `x + 3 = 7`, then `x = 4`."
     },
     {
-      "question": "How can an answer be checked?",
-      "answer": "Put the value back into the original equation. If both sides have the same value, the answer works."
+      "question": "How can students know if the answer works?",
+      "answer": "Substitute it into the original equation. If both sides have the same value, the answer works."
     }
   ],
   "outline": [
     {
       "minutes": 8,
-      "title": "Meaning of an equation",
-      "activity": "Use `2*x + 6 = 10` to discuss an equation as two expressions with the same value. Connect this to a balance scale."
+      "title": "Equation as balance",
+      "activity": "Introduce an equation as two expressions with the same value. Use `2*x + 6 = 10` and the balance image. Show that the margin operation applies to both sides."
     },
     {
       "minutes": 10,
-      "title": "Record balanced steps",
-      "activity": "Model solving `2*x + 6 = 10`. Write the margin operation on each line: subtract `6`, then divide by `2`. End with `x = 2`."
+      "title": "Undo in reverse order",
+      "activity": "Work through `2*x + 6 = 10`: subtract `6` to get `2*x = 4`, then divide by `2` to get `x = 2`. Keep the margin operation on each line."
     },
     {
       "minutes": 8,
       "title": "Check by substitution",
-      "activity": "Substitute the answer into the original equation. Show that `2*2 + 6` is `10`, so `x = 2` makes the equation true."
+      "activity": "Substitute the answer back into the original equation. For `x = 2`, show that `2*2 + 6` is `10`. Treat a failed check as evidence that a step needs revisiting."
     },
     {
-      "minutes": 10,
+      "minutes": 9,
       "title": "Brackets",
-      "activity": "Solve `5*(x + 3) = 35` by dividing both sides by `5`, giving `x + 3 = 7`, then subtracting `3` to get `x = 4`."
+      "activity": "Use `5*(x + 3) = 35`. Divide both sides by `5` to get `x + 3 = 7`, then subtract `3` to get `x = 4`. Emphasize that the outside number applies to the whole bracket."
     },
     {
       "minutes": 10,
       "title": "Variables on both sides",
-      "activity": "Solve `3*x + 4 = x + 10`. Subtract `x`, subtract `4`, then divide by `2`, ending with `x = 3`."
-    },
-    {
-      "minutes": 4,
-      "title": "Common errors",
-      "activity": "Review errors: changing sides without changing the operation, dividing only one term, subtracting instead of dividing, and ignoring part of a bracket."
+      "activity": "Solve `3*x + 4 = x + 10` by subtracting `x` first to get `2*x + 4 = 10`, then subtracting `4` to get `2*x = 6`, then dividing by `2` to get `x = 3`."
     }
   ],
   "akelius_lessons": [
@@ -765,6 +760,6 @@
   ],
   "machine_translated": false,
   "unavailable": [],
-  "source_hash": "af91c4c3615617a5ffbedcfe9ead0530b7bd56b4d530a159bd374aeafdc12dc8",
+  "source_hash": "9012acd6248ed78a3f6d6fcbafa9a22a7165b5a4b2387b03cf6384f9af1b6e1f",
   "model": "gpt-5.5-offline"
 }
