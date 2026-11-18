@@ -15,7 +15,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-ReasoningEffort = Literal["minimal", "low", "medium", "high"]
+# gpt-5.5 takes none, low, medium, high and xhigh ("minimal" gets a 400; checked live).
+ReasoningEffort = Literal["none", "low", "medium", "high", "xhigh"]
 
 
 class Settings(BaseSettings):
