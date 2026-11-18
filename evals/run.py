@@ -434,6 +434,10 @@ def _calls_summary(calls: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _raw_math(rows: list[dict[str, Any]]) -> str:
+    return f"{sum(metrics.raw_math(r['ai_text']) for r in rows)}/{len(rows)}"
+
+
 def _fallback(record: dict[str, Any]) -> str | None:
     """Why a rule match showed the card's own moves, or None when they were rewritten."""
     if record["result"]["diagnosis"]["say_example"] is None:
@@ -497,6 +501,11 @@ def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
             "held_back_unverified_math": metrics.rate(
                 r["reason"] == "ai_unverified_math" for r in ai_path
             ),
+        },
+        # Shown AI texts with math outside backticks, which the page shows raw (`3*x`).
+        "raw_math_in_shown_text": {
+            "diagnoses": _raw_math([r for r in records if r["source"] == "ai" and r["ai_text"]]),
+            "rule_moves": _raw_math([r for r in records if r["source"] == "rule" and r["ai_text"]]),
         },
         "rule_path_moves": {
             "runs": len(rule_moves),

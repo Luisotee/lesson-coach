@@ -15,6 +15,11 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict
 
 OUTPUT_ONLY = "Output content only. Do not address the user."
+# The packs' convention, which the page draws as handwritten math: anything else shows raw `*`.
+MATH_IN_TEXT = """Put every piece of math in backticks, written as plain text that a math
+parser reads: `1/2`, `2*x`, `x = 3`, `3*x + 5 = 20`, `-4`. That includes a number that is part
+of the math (the `5` in `3*x + 5`); a line number or a count in words needs none. Never write
+math outside backticks."""
 
 MISTAKE_SYSTEM = f"""You help math teachers (grades 6-9) understand a student's wrong answer.
 A math engine (sympy) has already solved the problem and checked the student's work. Its
@@ -29,8 +34,8 @@ Decide what most likely happened and reply with:
 - misconception_ids: at most 2, best first, from the listed misconceptions, or "other" when a
   misconception explains it but none of the listed ones does. Empty unless "diagnosed".
 - explanation: 1-3 short sentences for the teacher on what the student probably did.
-- margin_note: at most 60 characters to write next to the student's work, such as "added the
-  bottoms too", or null.
+- margin_note: at most 60 characters of words (no math, no backticks) to write next to the
+  student's work, such as "added the bottoms too", or null.
 - what_to_say: probe (a question the teacher can ask the student), nudge (a short hint or
   question that points the student at where to look, without naming the rule or the steps to
   fix it: the student should still find the method), tell (what to explain if the student is
@@ -40,9 +45,10 @@ Decide what most likely happened and reply with:
 
 Use only the math you were given: the problem, the student's answer and working, the
 verified answer and the worked solution. Never compute, simplify or invent a new number or
-expression; refer to steps in words instead. Write math as plain text (1/2, 2*x, x = 3).
-Be kind and specific; never judge the student or
-the teacher, and give no scores or praise. Write every text field in the requested language.
+expression; refer to steps in words instead.
+{MATH_IN_TEXT}
+Be kind and specific; never judge the student or the teacher, and give no scores or praise.
+Write every text field in the requested language.
 {OUTPUT_ONLY}"""
 
 RULE_SAY_SYSTEM = f"""You help math teachers (grades 6-9) talk with a student about a wrong answer.
@@ -57,8 +63,9 @@ for the misconception's own example problem. Rewrite the moves for the student's
 Follow the example moves' style and intent, but about this problem only. Use only the math of
 the request: the problem, the student's answer and working, the verified answer and the
 worked solution. Never use the example problem's numbers. Never compute, simplify or invent
-a new number or expression; refer to steps in words instead. Write math as plain text (1/2,
-2*x, x = 3). Be kind and specific; never judge the student, and give no scores or praise.
+a new number or expression; refer to steps in words instead.
+{MATH_IN_TEXT}
+Be kind and specific; never judge the student, and give no scores or praise.
 Set abstain to true, with the moves empty, when you can't write them for this problem from
 the math given. Write every text field in the requested language.
 {OUTPUT_ONLY}"""
@@ -119,7 +126,9 @@ class MistakeOut(Model):
     follow_up_id: str | None
 
     def clipped(self) -> MistakeOut:
-        note = clip(self.margin_note, MAX_MARGIN_NOTE) if self.margin_note else None
+        # The note is drawn and spoken as plain text, so a stray backtick is dropped.
+        raw = self.margin_note.replace("`", "") if self.margin_note else None
+        note = clip(raw, MAX_MARGIN_NOTE) if raw else None
         return MistakeOut(
             status=self.status,
             misconception_ids=self.misconception_ids,  # mistake.py dedupes, then caps at 2
