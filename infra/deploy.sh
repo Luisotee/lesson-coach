@@ -61,7 +61,9 @@ if [[ -z "$principal" ]]; then
   exit 1
 fi
 acr_id="$(az acr show -g "$RG" -n "$ACR_NAME" --query id -o tsv)"
-if [[ -z "$(az role assignment list --assignee "$principal" --scope "$acr_id" --role AcrPull --query '[].id' -o tsv)" ]]; then
+# Assigned first: inside [[ ]] a failing az would not trip set -e and would read as "no grant".
+grant="$(az role assignment list --assignee "$principal" --scope "$acr_id" --role AcrPull --query '[].id' -o tsv)"
+if [[ -z "$grant" ]]; then
   # Granted explicitly: `az containerapp registry set --identity system` can leave it out.
   log "granting the app's identity AcrPull on $ACR_NAME"
   az role assignment create --assignee-object-id "$principal" --assignee-principal-type ServicePrincipal \
