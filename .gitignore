@@ -1,0 +1,29 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# the assignment brief belongs to Akelius; not redistributed
+*.pdf
+
+# python
+__pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# node
+node_modules/
+dist/
+.vite/
+
+# test output
+playwright-report/
+test-results/
+coverage/
+
+# os / editors
+.DS_Store
+.idea/
+.vscode/

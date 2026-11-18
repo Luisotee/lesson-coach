@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lesson Coach — private practice</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Figtree:wght@500;600;700;800&amp;family=Kalam:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#357CA2}a:hover{color:#172B53}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes unfold{from{opacity:0;transform:translateY(-6px) scaleY(.96);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+@keyframes fillUp{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.press{transition:transform .15s ease,box-shadow .2s ease}
+.press:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(23,43,83,.6)}
+.press:active{transform:translateY(1px) scale(.98)}
+.ghost{transition:background-color .2s ease,border-color .2s ease}
+.ghost:hover{background-color:#EEF1F4;border-color:#C4C7CA}
+.field{transition:border-color .2s ease,box-shadow .2s ease}
+.field:focus{outline:none;border-color:#357CA2;box-shadow:0 0 0 4px #D0EFFF}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;margin:0 .12em}.fr>span:first-child{padding:0 .22em .08em}.fr>span:last-child{border-top:2px solid currentColor;padding:.08em .22em 0}.paper{background-color:#FFFFFF;background-image:linear-gradient(#E4EDF6 1px,transparent 1px),linear-gradient(90deg,#E4EDF6 1px,transparent 1px);background-size:22px 22px}@keyframes write{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}@keyframes marker{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; font-family: Inter, system-ui, sans-serif; color: #172B53; background: #F6F7F9">
+
+  <header style="border-bottom: 1px solid #E2E5E8; background: rgba(246,247,249,.85); backdrop-filter: blur(12px)">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <a href="Topic.dc.html" class="ghost" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; margin-left: -12px; border-radius: 10px; border: 1px solid transparent; color: #3A4458; text-decoration: none; font-weight: 500; font-size: 15px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+        Solving linear equations
+      </a>
+      <span style="font-size: 14px; color: #5B6475">Problem 2 of 8 · just for you, nothing is recorded</span>
+    </div>
+  </header>
+
+  <main style="max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px">
+
+    <div style="flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+      <div style="padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E5E8; box-shadow: 0 30px 60px -40px rgba(23,43,83,.35); animation: fadeUp .6s cubic-bezier(.2,.8,.2,1) both">
+        <div style="font-size: 12px; font-weight: 600; letter-spacing: .01em; text-transform: lowercase; color: #6B7280">Solve for x</div>
+        <div style="margin-top: 14px; font-family: Kalam, 'Comic Neue', cursive; font-size: clamp(40px, 6vw, 64px); line-height: 1.1; letter-spacing: .01em">4<i>x</i> − 7 = 13</div>
+        <label for="scratch" style="display: block; margin-top: 28px; font-size: 14px; font-weight: 600">Your working <span style="font-weight: 400; color: #6B7280">(stays on this screen)</span></label>
+        <textarea id="scratch" class="field paper" rows="4" placeholder="Try it here first…" style="margin-top: 8px; width: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 14px; border: 1px solid #C4C7CA; font-family: Kalam, 'Comic Neue', cursive; font-size: 20px; line-height: 1.6; color: #172B53; resize: vertical"></textarea>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px">
+        <button type="button" class="ghost" style="min-height: 48px; padding: 0 18px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5E8; font: 600 15px Inter, sans-serif; color: #3A4458; cursor: pointer">← Previous</button>
+        <button type="button" class="ghost" style="min-height: 48px; padding: 0 18px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5E8; font: 600 15px Inter, sans-serif; color: #172B53; cursor: pointer">Next problem →</button>
+      </div>
+      <p style="margin: 0; font-size: 13px; color: #6B7280">Source: [problem source] · CC BY 4.0</p>
+    </div>
+
+    <aside style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 12px; animation: fadeUp .6s .1s cubic-bezier(.2,.8,.2,1) both">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+        <h2 style="margin: 0; font-family: Figtree, sans-serif; font-size: 22px">Hints, when you want them</h2>
+        <button type="button" onClick="{{reset}}" class="ghost" style="min-height: 40px; padding: 0 12px; border-radius: 10px; border: 1px solid transparent; background: transparent; font: 500 14px Inter, sans-serif; color: #5B6475; cursor: pointer">Start over</button>
+      </div>
+
+      <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{hints}}" as="h" hint-placeholder-count="4">
+          <li style="display: flex; gap: 14px">
+            <div style="display: flex; flex-direction: column; align-items: center; padding-top: 18px">
+              <span style="width: 26px; height: 26px; border-radius: 999px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: {{h.dotBg}}; color: {{h.dotInk}}; transition: background-color .3s ease">{{h.n}}</span>
+            </div>
+            <div style="flex: 1 1 auto; min-width: 0; border-radius: 16px; border: 1px solid {{h.border}}; background: {{h.bg}}; padding: 16px 18px; transition: background-color .3s ease, border-color .3s ease">
+              <div style="font-size: 13px; font-weight: 600; color: {{h.labelInk}}">{{h.label}}</div>
+              <sc-if value="{{h.shown}}" hint-placeholder-val="{{false}}">
+                <p style="margin: 8px 0 0; font-size: 16px; line-height: 1.6; color: #172B53; transform-origin: top; animation: unfold .45s cubic-bezier(.2,.8,.2,1) both">{{h.text}}</p>
+              </sc-if>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+
+      <sc-if value="{{canReveal}}" hint-placeholder-val="{{true}}">
+        <button type="button" class="press" onClick="{{next}}" style="margin-top: 6px; min-height: 52px; border: 0; border-radius: 14px; background: #172B53; color: #FFFFFF; font: 600 16px Inter, sans-serif; cursor: pointer">{{nextLabel}}</button>
+      </sc-if>
+      <sc-if value="{{done}}" hint-placeholder-val="{{false}}">
+        <div style="margin-top: 6px; display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; background: #ECFDF5; color: #065F46; font-size: 15px; line-height: 1.5; animation: unfold .45s cubic-bezier(.2,.8,.2,1) both">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M5 12l5 5 9-10"></path></svg>
+          Compare with your working. Want the reasoning? Open the worked example.
+        </div>
+      </sc-if>
+    </aside>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1150}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { shown: 1 };
+  }
+  renderVals() {
+    const shown = this.state.shown;
+    const raw = [
+      ['The goal', 'Find the number x that makes both sides equal.'],
+      ['What you need', 'x is multiplied by 4, then 7 is taken away. Undo those in reverse order.'],
+      ['The calculation', 'Add 7 to both sides, then divide both sides by 4.'],
+      ['The answer', '4x = 20, so x = 5. Check: 4 · 5 − 7 = 13.']
+    ];
+    const hints = raw.map((r, i) => {
+      const on = i < shown;
+      const next = i === shown;
+      return {
+        n: i + 1, label: r[0], text: r[1], shown: on,
+        bg: on ? '#FFFFFF' : '#EEF1F4',
+        border: on ? '#E2E5E8' : (next ? '#B5E2F8' : '#E9ECF0'),
+        labelInk: on ? '#357CA2' : '#6B7280',
+        dotBg: on ? '#172B53' : '#E2E5E8',
+        dotInk: on ? '#FFFFFF' : '#5B6475'
+      };
+    });
+    return {
+      hints: hints,
+      canReveal: shown < 4,
+      done: shown >= 4,
+      nextLabel: shown === 3 ? 'Show the answer' : 'Show next hint',
+      next: () => this.setState({ shown: Math.min(4, shown + 1) }),
+      reset: () => this.setState({ shown: 0 })
+    };
+  }
+}
+</script>
+</body>
+</html>

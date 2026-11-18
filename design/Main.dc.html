@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lesson Coach — home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Figtree:wght@500;600;700;800&amp;family=Kalam:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#357CA2}a:hover{color:#172B53}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-10px) rotate(0.5deg)}}
+@keyframes pop{0%{opacity:0;transform:scale(.92) translateY(6px)}60%{opacity:1;transform:scale(1.02)}100%{transform:none}}
+@keyframes shimmer{from{background-position:0% 50%}to{background-position:200% 50%}}
+.lift{transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s cubic-bezier(.2,.8,.2,1),border-color .35s}
+.lift:hover{transform:translateY(-4px);box-shadow:0 18px 40px -18px rgba(23,43,83,.28);border-color:#B5E2F8}
+.press{transition:transform .15s ease,background-color .2s ease,box-shadow .2s ease}
+.press:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(23,43,83,.55)}
+.press:active{transform:translateY(1px) scale(.98)}
+.ghost{transition:background-color .2s ease,border-color .2s ease}
+.ghost:hover{background-color:#EEF1F4;border-color:#C4C7CA}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;margin:0 .12em}.fr>span:first-child{padding:0 .22em .08em}.fr>span:last-child{border-top:2px solid currentColor;padding:.08em .22em 0}.paper{background-color:#FFFFFF;background-image:linear-gradient(#E4EDF6 1px,transparent 1px),linear-gradient(90deg,#E4EDF6 1px,transparent 1px);background-size:22px 22px}@keyframes write{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}@keyframes draw{from{stroke-dashoffset:400}to{stroke-dashoffset:0}}@keyframes marker{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; font-family: Inter, system-ui, sans-serif; color: #172B53; background: #F6F7F9">
+
+  <header style="position: sticky; top: 0; z-index: 10; background: rgba(246,247,249,.85); backdrop-filter: blur(12px); border-bottom: 1px solid #E2E5E8">
+    <nav style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <a href="Main.dc.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: #172B53">
+        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="{{accent}}"></rect><path d="M10 12h5M12.5 9.5v5M18 12h5M10 21h5M18 19.5l4 4M22 19.5l-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round"></path></svg>
+        <span style="font-family: Figtree, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em">Lesson Coach</span>
+      </a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px">
+        <a href="#topics" class="ghost" style="padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; color: #3A4458; text-decoration: none; font-size: 15px; font-weight: 500">Topics</a>
+        <a href="Mistake.dc.html" class="ghost" style="padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; color: #3A4458; text-decoration: none; font-size: 15px; font-weight: 500">A student wrote this</a>
+        <a href="Practice.dc.html" class="ghost" style="padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; color: #3A4458; text-decoration: none; font-size: 15px; font-weight: 500">Practice</a>
+      </div>
+      <span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E5E8; font-size: 13px; color: #5B6475">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        No account. Nothing saved.
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <section style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 56px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+      <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+        <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: {{accentSoft}}; color: {{accentInk}}; font-size: 13px; font-weight: 600; animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) both">
+          <span style="width: 6px; height: 6px; border-radius: 999px; background: {{accent}}"></span>
+          For math teachers, grades 6–9
+        </span>
+        <h1 style="margin: 0; font-family: Figtree, sans-serif; font-weight: 700; font-size: clamp(40px, 5.4vw, 68px); line-height: 1.02; letter-spacing: -0.035em; animation: fadeUp .7s .08s cubic-bezier(.2,.8,.2,1) both">Feel sure of the math <span style="background: linear-gradient(transparent 62%, #FFE923 62%, #FFE923 90%, transparent 90%)">before</span> you teach it.</h1>
+        <p style="margin: 0; max-width: 34rem; font-size: 19px; line-height: 1.6; color: #5B6475; animation: fadeUp .7s .16s cubic-bezier(.2,.8,.2,1) both">Pick tomorrow’s topic. See why each step works, what students usually get wrong, and what to say when they do.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; animation: fadeUp .7s .24s cubic-bezier(.2,.8,.2,1) both">
+          <a href="Topic.dc.html" class="press" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; border-radius: 12px; background: {{accent}}; color: #FFFFFF; font-weight: 600; font-size: 16px; text-decoration: none">
+            Prepare a lesson
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+          <a href="Mistake.dc.html" class="ghost" style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px; border-radius: 12px; background: #FFFFFF; border: 1px solid #E2E5E8; color: #172B53; font-weight: 600; font-size: 16px; text-decoration: none">A student wrote this…</a>
+        </div>
+      </div>
+
+      <div style="flex: 1 1 400px; min-width: 0; position: relative; height: 380px">
+        <div style="position: absolute; inset: 24px 0 0 40px; border-radius: 28px; background: radial-gradient(120% 120% at 0% 0%, {{accentSoft}} 0%, #FFFFFF 60%); border: 1px solid #E2E5E8"></div>
+        <div style="position: absolute; left: 0; top: 56px; width: min(360px, 88%); background: #FFFFFF; border: 1px solid #E2E5E8; border-radius: 20px; padding: 22px; box-shadow: 0 30px 60px -30px rgba(23,43,83,.35); animation: floaty 7s ease-in-out infinite, fadeUp .9s .2s both">
+          <div style="font-size: 12px; font-weight: 600; letter-spacing: .01em; text-transform: lowercase; color: #6B7280">Worked example</div>
+          <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px; font-family: Kalam, 'Comic Neue', cursive; font-size: 24px">
+            <div style="color: #9AA3AF">3<i>x</i> + 5 = 20</div>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 12px; margin: 0 -12px; border-radius: 12px; background: {{accentSoft}}">
+              <span>3<i>x</i> = 15</span>
+              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: {{accentInk}}; background: #FFFFFF; border: 1px solid {{accentLine}}; border-radius: 999px; padding: 4px 10px">Why?</span>
+            </div>
+            <div style="color: #9AA3AF"><i>x</i> = 5</div>
+          </div>
+        </div>
+        <div style="position: absolute; right: 0; bottom: 18px; width: min(300px, 80%); background: #172B53; color: #F6F7F9; border-radius: 18px; padding: 18px 20px; box-shadow: 0 24px 50px -24px rgba(23,43,83,.6); animation: pop .8s .6s cubic-bezier(.2,.8,.2,1) both">
+          <div style="font-size: 13px; color: #FFE923; font-weight: 600">Why this step works</div>
+          <p style="margin: 8px 0 0; font-size: 15px; line-height: 1.55">Take 5 from only one side and the balance tips. Take it from both, and the sides stay equal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="topics" style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 64px">
+      <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 24px">
+        <h2 style="margin: 0; font-family: Figtree, sans-serif; font-size: 32px; letter-spacing: -0.02em">Choose a topic</h2>
+        <p style="margin: 0; color: #5B6475; font-size: 15px">Each topic: the idea, worked examples, common mistakes and a lesson outline.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+        <sc-for list="{{topics}}" as="t" hint-placeholder-count="3">
+          <a href="Topic.dc.html" class="lift" style="display: flex; flex-direction: column; gap: 18px; padding: 24px; border-radius: 20px; background: #FFFFFF; border: 1px solid #E2E5E8; text-decoration: none; color: #172B53; animation: fadeUp .7s {{t.delay}} cubic-bezier(.2,.8,.2,1) both">
+            <div style="height: 120px; border-radius: 14px; background: {{t.bg}}; display: flex; align-items: center; justify-content: center; font-family: Kalam, 'Comic Neue', cursive; font-size: 44px; color: {{t.ink}}">{{t.glyph}}</div>
+            <div style="display: flex; flex-direction: column; gap: 6px">
+              <span style="font-size: 13px; font-weight: 600; color: #6B7280">{{t.grade}}</span>
+              <span style="font-family: Figtree, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.01em">{{t.title}}</span>
+              <span style="font-size: 15px; line-height: 1.5; color: #5B6475">{{t.blurb}}</span>
+            </div>
+            <span style="margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: {{accentInk}}">Open topic
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width: 1200px; margin: 0 auto; padding: 0 24px 72px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+        <a href="Topic.dc.html" class="lift" style="display: flex; gap: 16px; padding: 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E5E8; text-decoration: none; color: #172B53">
+          <span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: {{accentSoft}}; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{accent}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 012-2h12v18H6a2 2 0 01-2-2z"></path><path d="M8 7h6M8 11h6"></path></svg>
+          </span>
+          <span style="display: flex; flex-direction: column; gap: 4px"><b style="font-size: 16px">Prepare a lesson</b><span style="font-size: 14px; line-height: 1.5; color: #5B6475">Refresh the idea and see every step explained three ways.</span></span>
+        </a>
+        <a href="Mistake.dc.html" class="lift" style="display: flex; gap: 16px; padding: 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E5E8; text-decoration: none; color: #172B53">
+          <span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: #FFFBEB; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l4-1 11-11-3-3L5 16z"></path><path d="M14 6l3 3"></path></svg>
+          </span>
+          <span style="display: flex; flex-direction: column; gap: 4px"><b style="font-size: 16px">Understand a mistake</b><span style="font-size: 14px; line-height: 1.5; color: #5B6475">Type what a student wrote. See the likely reason and what to ask.</span></span>
+        </a>
+        <a href="Practice.dc.html" class="lift" style="display: flex; gap: 16px; padding: 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E5E8; text-decoration: none; color: #172B53">
+          <span style="flex: none; width: 44px; height: 44px; border-radius: 12px; background: #ECFDF5; display: flex; align-items: center; justify-content: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#047857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z"></path><path d="M9.5 9.5a2.5 2.5 0 114 2c-1 .6-1.5 1.2-1.5 2.5M12 17h.01"></path></svg>
+          </span>
+          <span style="display: flex; flex-direction: column; gap: 4px"><b style="font-size: 16px">Practise privately</b><span style="font-size: 14px; line-height: 1.5; color: #5B6475">Problems with hints you open one at a time. No scores.</span></span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer style="border-top: 1px solid #E2E5E8; background: #FFFFFF">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 14px; color: #5B6475">
+      <span>No tests. No scores. Nothing about you or your students is saved.</span>
+      <span>Every answer is checked by a computer algebra system.</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#172B53","options":["#172B53","#357CA2","#007A5C"]},"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#172B53';
+    const tones = {
+      '#172B53': { soft: '#E3F4FD', ink: '#172B53', line: '#B5E2F8' },
+      '#357CA2': { soft: '#E3F4FD', ink: '#2B6788', line: '#B5E2F8' },
+      '#007A5C': { soft: '#E3F6F0', ink: '#00664D', line: '#A6E3D1' }
+    };
+    const tone = tones[accent] || tones['#172B53'];
+    return {
+      accent: accent,
+      accentSoft: tone.soft,
+      accentInk: tone.ink,
+      accentLine: tone.line,
+      topics: [
+        { title: 'Negative numbers', grade: 'Grade 6–7', glyph: '−3 + 5', blurb: 'Adding, subtracting and multiplying with signs, and why two negatives make a positive.', bg: '#EEF1F4', ink: '#172B53', delay: '.05s' },
+        { title: 'Fractions', grade: 'Grade 6–7', glyph: '½ + ⅓', blurb: 'Equivalent fractions, common denominators and what “of” means.', bg: '#FFFBEB', ink: '#92400E', delay: '.12s' },
+        { title: 'Solving linear equations', grade: 'Grade 7–8', glyph: '3x + 5 = 20', blurb: 'Keeping the balance: doing the same to both sides, step by step.', bg: tone.soft, ink: tone.ink, delay: '.19s' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lesson Coach — a student wrote this</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Figtree:wght@500;600;700;800&amp;family=Kalam:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F7F9}
+a{color:#357CA2}a:hover{color:#172B53}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes reveal{from{opacity:0;transform:translateY(10px) scale(.985);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes write{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes circle{from{opacity:0;transform:rotate(-4deg) scale(1.25)}to{opacity:1;transform:rotate(-4deg) scale(1)}}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.press{transition:transform .15s ease,box-shadow .2s ease}
+.press:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(23,43,83,.6)}
+.press:active{transform:translateY(1px) scale(.98)}
+.ghost{transition:background-color .2s ease,border-color .2s ease}
+.ghost:hover{background-color:#EEF1F4;border-color:#C4C7CA}
+.field{transition:border-color .2s ease,box-shadow .2s ease}
+.field:focus{outline:none;border-color:#357CA2;box-shadow:0 0 0 4px #D0EFFF}
+.fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1.05;margin:0 .12em}
+.fr>span:first-child{padding:0 .22em .08em}
+.fr>span:last-child{border-top:2px solid currentColor;padding:.08em .22em 0}
+.paper{background-color:#FFFFFF;background-image:linear-gradient(#E4EDF6 1px,transparent 1px),linear-gradient(90deg,#E4EDF6 1px,transparent 1px);background-size:22px 22px}
+.hand{font-family:Kalam,'Comic Neue',cursive}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="min-height: 100vh; font-family: Inter, system-ui, sans-serif; color: #172B53; background: #F6F7F9">
+
+  <header style="border-bottom: 1px solid #E2E5E8; background: rgba(246,247,249,.85); backdrop-filter: blur(12px)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+      <a href="Main.dc.html" class="ghost" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; margin-left: -12px; border-radius: 10px; border: 1px solid transparent; color: #3A4458; text-decoration: none; font-weight: 500; font-size: 15px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"></path></svg>
+        home
+      </a>
+      <span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E5E8; font-size: 13px; color: #5B6475">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#007A5C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        nothing you type is saved
+      </span>
+    </div>
+  </header>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 80px">
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; animation: fadeUp .6s cubic-bezier(.2,.8,.2,1) both">
+      <h1 style="margin: 0; font-family: Figtree, sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.03em; line-height: 1.05">A student wrote this…</h1>
+      <p style="margin: 0; max-width: 40rem; font-size: 18px; line-height: 1.6; color: #5B6475">Type the problem and what your student answered. The coach finds the likely reason and suggests what to ask.</p>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px">
+
+      <form style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px; padding: 24px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E5E8; animation: fadeUp .6s .08s cubic-bezier(.2,.8,.2,1) both">
+        <fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+          <legend style="padding: 0; margin-bottom: 10px; font-size: 14px; font-weight: 600">topic</legend>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px">
+            <button type="button" class="ghost" style="min-height: 40px; padding: 0 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E5E8; font: 500 14px Inter, sans-serif; color: #3A4458; cursor: pointer">Negative numbers</button>
+            <button type="button" aria-pressed="true" style="min-height: 40px; padding: 0 14px; border-radius: 999px; background: #172B53; border: 1px solid #172B53; font: 600 14px Inter, sans-serif; color: #FFFFFF; cursor: pointer">Fractions</button>
+            <button type="button" class="ghost" style="min-height: 40px; padding: 0 14px; border-radius: 999px; background: #FFFFFF; border: 1px solid #E2E5E8; font: 500 14px Inter, sans-serif; color: #3A4458; cursor: pointer">Linear equations</button>
+          </div>
+        </fieldset>
+
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="problem" style="font-size: 14px; font-weight: 600">the problem</label>
+          <div style="display: flex; align-items: stretch; border-radius: 14px; border: 1px solid #C4C7CA; background: #FFFFFF; overflow: hidden">
+            <input id="problem" class="field" value="{{problem}}" aria-describedby="problem-preview" style="flex: 1 1 auto; min-width: 0; min-height: 56px; padding: 0 16px; border: 0; background: transparent; font: 18px Inter, sans-serif; color: #172B53">
+            <div id="problem-preview" class="paper hand" aria-label="shown as" style="flex: none; display: flex; align-items: center; padding: 6px 16px; border-left: 1px solid #E2E5E8; font-size: 22px; color: #172B53">
+              <sc-for list="{{problemTokens}}" as="tk" hint-placeholder-count="3">
+                <sc-if value="{{tk.isFrac}}" hint-placeholder-val="{{true}}"><span class="fr"><span>{{tk.n}}</span><span>{{tk.d}}</span></span></sc-if>
+                <sc-if value="{{tk.isOp}}" hint-placeholder-val="{{false}}"><span style="margin: 0 6px">{{tk.v}}</span></sc-if>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="answer" style="font-size: 14px; font-weight: 600">what your student answered</label>
+          <div style="display: flex; align-items: stretch; border-radius: 14px; border: 1px solid #C4C7CA; background: #FFFFFF; overflow: hidden">
+            <input id="answer" class="field" value="{{answer}}" aria-describedby="answer-preview" style="flex: 1 1 auto; min-width: 0; min-height: 56px; padding: 0 16px; border: 0; background: transparent; font: 18px Inter, sans-serif; color: #172B53">
+            <div id="answer-preview" class="paper hand" aria-label="shown as" style="flex: none; display: flex; align-items: center; padding: 6px 16px; border-left: 1px solid #E2E5E8; font-size: 22px; color: #3A4458">
+              <sc-for list="{{answerTokens}}" as="tk" hint-placeholder-count="1">
+                <sc-if value="{{tk.isFrac}}" hint-placeholder-val="{{true}}"><span class="fr"><span>{{tk.n}}</span><span>{{tk.d}}</span></span></sc-if>
+                <sc-if value="{{tk.isOp}}" hint-placeholder-val="{{false}}"><span style="margin: 0 6px">{{tk.v}}</span></sc-if>
+              </sc-for>
+            </div>
+          </div>
+          <span style="font-size: 13px; color: #6B7280">Type fractions with a slash, like 2/5. They appear the way you’d write them.</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="working" style="font-size: 14px; font-weight: 600">their working <span style="font-weight: 400; color: #6B7280">(optional)</span></label>
+          <textarea id="working" class="field" rows="3" placeholder="Copy the steps they wrote, one per line" style="padding: 12px 16px; border-radius: 14px; border: 1px solid #C4C7CA; background: #FFFFFF; font: 16px Inter, sans-serif; color: #172B53; resize: vertical"></textarea>
+        </div>
+        <p style="margin: 0; display: flex; gap: 10px; padding: 12px 14px; border-radius: 12px; background: #FFFBE0; font-size: 14px; line-height: 1.5; color: #5C4A00">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16h.01"></path></svg>
+          Please don’t type students’ names. Nothing here is stored.
+        </p>
+        <button type="button" class="press" onClick="{{explain}}" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; border: 0; border-radius: 14px; background: #172B53; color: #FFFFFF; font: 600 16px Inter, sans-serif; cursor: pointer">
+          <sc-if value="{{loading}}" hint-placeholder-val="{{false}}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" style="animation: spin .8s linear infinite"><path d="M12 3a9 9 0 019 9"></path></svg>
+          </sc-if>
+          {{buttonLabel}}
+        </button>
+      </form>
+
+      <section aria-live="polite" style="flex: 1.4 1 480px; min-width: 0">
+        <sc-if value="{{loading}}" hint-placeholder-val="{{false}}">
+          <div style="display: flex; flex-direction: column; gap: 14px; padding: 28px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E5E8">
+            <div style="height: 24px; width: 60%; border-radius: 8px; background: linear-gradient(90deg,#EEF1F4 0%,#E2E5E8 50%,#EEF1F4 100%); background-size: 800px 100%; animation: shimmer 1.2s linear infinite"></div>
+            <div style="height: 140px; border-radius: 16px; background: linear-gradient(90deg,#EEF1F4 0%,#E2E5E8 50%,#EEF1F4 100%); background-size: 800px 100%; animation: shimmer 1.2s linear infinite"></div>
+            <div style="height: 16px; width: 75%; border-radius: 8px; background: linear-gradient(90deg,#EEF1F4 0%,#E2E5E8 50%,#EEF1F4 100%); background-size: 800px 100%; animation: shimmer 1.2s linear infinite"></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showPattern}}" hint-placeholder-val="{{true}}">
+          <div style="display: flex; flex-direction: column; gap: 16px; animation: reveal .55s cubic-bezier(.2,.8,.2,1) both">
+            <div style="padding: 28px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E5E8; box-shadow: 0 30px 60px -40px rgba(23,43,83,.35); display: flex; flex-direction: column; gap: 20px">
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+                <span style="padding: 5px 12px; border-radius: 999px; background: #FFFBE0; color: #5C4A00; font-size: 13px; font-weight: 600">likely reason</span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: #E3F6F0; color: #00664D; font-size: 13px; font-weight: 600">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+                  checked: this rule gives exactly their answer
+                </span>
+              </div>
+              <h2 style="margin: 0; font-family: Figtree, sans-serif; font-weight: 800; font-size: 28px; line-height: 1.2; letter-spacing: -0.02em">They added the tops and added the bottoms.</h2>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px">
+                <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px">
+                  <figcaption style="font-size: 13px; font-weight: 600; color: #5B6475">what they wrote</figcaption>
+                  <div class="paper hand" role="img" aria-label="one half plus one third equals one plus one over two plus three, equals two fifths" style="position: relative; min-height: 150px; padding: 22px 20px; border-radius: 16px; border: 1px solid #E2E5E8; display: flex; flex-direction: column; justify-content: center; gap: 10px; color: #3A4458; font-size: 30px; box-shadow: inset 0 1px 0 #FFFFFF">
+                    <div style="display: flex; align-items: center; flex-wrap: wrap; animation: write 1.4s .3s steps(18) both">
+                      <span class="fr"><span>1</span><span>2</span></span><span style="margin: 0 6px">+</span><span class="fr"><span>1</span><span>3</span></span><span style="margin: 0 8px">=</span>
+                      <span class="fr"><span>1 + 1</span><span style="position: relative">2 + 3<span aria-hidden="true" style="position: absolute; inset: -4px -10px -6px -10px; border: 2.5px solid #FF8200; border-radius: 50%; transform: rotate(-4deg); animation: circle .5s 1.9s cubic-bezier(.3,1.5,.5,1) both"></span></span></span>
+                      <span style="margin: 0 8px">=</span><span class="fr"><span>2</span><span>5</span></span>
+                    </div>
+                    <div style="align-self: flex-end; font-size: 19px; color: #B45309; transform: rotate(-2deg); animation: fadeUp .5s 2.3s both">← added the bottoms too</div>
+                  </div>
+                </figure>
+                <figure style="margin: 0; display: flex; flex-direction: column; gap: 8px">
+                  <figcaption style="font-size: 13px; font-weight: 600; color: #00664D">the answer, worked out</figcaption>
+                  <div class="paper hand" role="img" aria-label="one half plus one third equals three sixths plus two sixths, equals five sixths" style="min-height: 150px; padding: 22px 20px; border-radius: 16px; border: 1px solid #E2E5E8; display: flex; flex-direction: column; justify-content: center; gap: 14px; color: #00664D; font-size: 30px">
+                    <div style="display: flex; align-items: center; flex-wrap: wrap; animation: write 1.4s 1s steps(18) both">
+                      <span class="fr"><span>1</span><span>2</span></span><span style="margin: 0 6px">+</span><span class="fr"><span>1</span><span>3</span></span><span style="margin: 0 8px">=</span>
+                      <span class="fr"><span>3</span><span>6</span></span><span style="margin: 0 6px">+</span><span class="fr"><span>2</span><span>6</span></span><span style="margin: 0 8px">=</span><span class="fr" style="font-weight: 700"><span>5</span><span>6</span></span>
+                    </div>
+                    <div aria-hidden="true" style="display: flex; gap: 3px; height: 18px; animation: fadeUp .5s 2.4s both">
+                      <span style="flex: 1; border-radius: 3px; background: #00A57C; transform-origin: left; animation: fill .4s 2.5s both"></span>
+                      <span style="flex: 1; border-radius: 3px; background: #00A57C; transform-origin: left; animation: fill .4s 2.6s both"></span>
+                      <span style="flex: 1; border-radius: 3px; background: #00A57C; transform-origin: left; animation: fill .4s 2.7s both"></span>
+                      <span style="flex: 1; border-radius: 3px; background: #FFC801; transform-origin: left; animation: fill .4s 2.8s both"></span>
+                      <span style="flex: 1; border-radius: 3px; background: #FFC801; transform-origin: left; animation: fill .4s 2.9s both"></span>
+                      <span style="flex: 1; border-radius: 3px; border: 2px dashed #C4C7CA"></span>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+
+              <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #3A4458"><b style="color: #172B53">Why it feels right.</b> Adding straight across works for whole numbers, and a fraction looks like two whole numbers stacked up.</p>
+            </div>
+
+            <div style="padding: 28px; border-radius: 24px; background: #172B53; color: #F6F7F9; display: flex; flex-direction: column; gap: 16px">
+              <h3 style="margin: 0; font-family: Figtree, sans-serif; font-weight: 800; font-size: 20px; color: #FFE923">what you could say</h3>
+              <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px">
+                <li style="display: flex; gap: 14px; align-items: center; animation: fadeUp .5s .1s cubic-bezier(.2,.8,.2,1) both">
+                  <span style="flex: none; min-width: 72px; padding: 4px 10px; border-radius: 999px; background: rgba(246,247,249,.12); font-size: 12px; font-weight: 600; text-align: center">ask</span>
+                  <span style="font-size: 17px; line-height: 1.6">“Is <span class="fr hand" style="font-size: 20px"><span>2</span><span>5</span></span> bigger or smaller than <span class="fr hand" style="font-size: 20px"><span>1</span><span>2</span></span>? Can adding <span class="fr hand" style="font-size: 20px"><span>1</span><span>3</span></span> make it smaller?”</span>
+                </li>
+                <li style="display: flex; gap: 14px; align-items: center; animation: fadeUp .5s .2s cubic-bezier(.2,.8,.2,1) both">
+                  <span style="flex: none; min-width: 72px; padding: 4px 10px; border-radius: 999px; background: rgba(246,247,249,.12); font-size: 12px; font-weight: 600; text-align: center">nudge</span>
+                  <span style="font-size: 17px; line-height: 1.6">Draw a half and a third as bars of the same length, then try to join them.</span>
+                </li>
+                <li style="display: flex; gap: 14px; align-items: center; animation: fadeUp .5s .3s cubic-bezier(.2,.8,.2,1) both">
+                  <span style="flex: none; min-width: 72px; padding: 4px 10px; border-radius: 999px; background: rgba(246,247,249,.12); font-size: 12px; font-weight: 600; text-align: center">if needed</span>
+                  <span style="font-size: 17px; line-height: 1.6">We can only add pieces of the same size, so cut both into sixths.</span>
+                </li>
+              </ol>
+            </div>
+
+            <a href="Topic.dc.html" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; border-radius: 18px; background: #FFFFFF; border: 1px solid #E2E5E8; text-decoration: none; color: #172B53">
+              <span style="display: flex; align-items: center; gap: 16px">
+                <span style="font-size: 13px; color: #5B6475">try next with your student</span>
+                <span class="hand" style="font-size: 26px"><span class="fr"><span>1</span><span>4</span></span> + <span class="fr"><span>1</span><span>2</span></span></span>
+              </span>
+              <span style="font-size: 15px; font-weight: 600; color: #357CA2">from the fractions topic →</span>
+            </a>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showCorrect}}" hint-placeholder-val="{{false}}">
+          <div style="padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #A6E3D1; box-shadow: 0 30px 60px -40px rgba(0,122,92,.45); display: flex; flex-direction: column; gap: 18px; animation: reveal .55s cubic-bezier(.2,.8,.2,1) both">
+            <span style="width: 56px; height: 56px; border-radius: 18px; background: #E3F6F0; display: flex; align-items: center; justify-content: center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007A5C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+            </span>
+            <h2 style="margin: 0; font-family: Figtree, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em">Your student is right.</h2>
+            <div class="paper hand" role="img" aria-label="ten twelfths equals five sixths" style="padding: 18px 22px; border-radius: 16px; border: 1px solid #E2E5E8; font-size: 30px; color: #00664D; display: flex; align-items: center; animation: write 1.2s .3s steps(12) both">
+              <span class="fr"><span>10</span><span>12</span></span><span style="margin: 0 10px">=</span><span class="fr"><span>5</span><span>6</span></span>
+            </div>
+            <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #3A4458">It’s the same amount, just not simplified. If your class writes fractions in simplest form, you might ask: “Can you share the top and bottom by the same number?”</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{showUnclear}}" hint-placeholder-val="{{false}}">
+          <div style="padding: 32px; border-radius: 24px; background: #FFFFFF; border: 1px solid #E2E5E8; display: flex; flex-direction: column; gap: 18px; animation: reveal .55s cubic-bezier(.2,.8,.2,1) both">
+            <span style="align-self: flex-start; padding: 5px 12px; border-radius: 999px; background: #EEF1F4; color: #3A4458; font-size: 13px; font-weight: 600">not sure from one answer</span>
+            <h2 style="margin: 0; font-family: Figtree, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.02em">Ask how they got it.</h2>
+            <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #3A4458">“Talk me through your first step.” Their answer will tell you more than <span class="fr hand" style="font-size: 20px"><span>3</span><span>5</span></span> can on its own.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px">
+              <span style="font-size: 14px; font-weight: 600; color: #5B6475">two possibilities</span>
+              <div style="padding: 14px 16px; border-radius: 14px; background: #F6F7F9; border: 1px solid #E2E5E8; font-size: 15px; line-height: 1.5"><b>Possibly</b> a slip while finding a common denominator.</div>
+              <div style="padding: 14px 16px; border-radius: 14px; background: #F6F7F9; border: 1px solid #E2E5E8; font-size: 15px; line-height: 1.5"><b>Or</b> they kept the larger denominator and added the tops.</div>
+            </div>
+          </div>
+        </sc-if>
+      </section>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"result":{"editor":"enum","options":["pattern","correct","unclear"],"default":"pattern"},"$preview":{"width":1440,"height":1500}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { loading: false };
+  }
+  componentWillUnmount() { clearTimeout(this.t); }
+  tokens(text) {
+    return text.split(' ').filter(Boolean).map((p) => {
+      const m = p.match(/^(\d+)\/(\d+)$/);
+      return m ? { isFrac: true, isOp: false, n: m[1], d: m[2] } : { isFrac: false, isOp: true, v: p };
+    });
+  }
+  renderVals() {
+    const result = this.props.result ?? 'pattern';
+    const loading = this.state.loading;
+    const inputs = { pattern: ['1/2 + 1/3', '2/5'], correct: ['1/2 + 1/3', '10/12'], unclear: ['1/2 + 1/3', '3/5'] }[result] || ['1/2 + 1/3', '2/5'];
+    return {
+      problem: inputs[0],
+      answer: inputs[1],
+      problemTokens: this.tokens(inputs[0]),
+      answerTokens: this.tokens(inputs[1]),
+      loading: loading,
+      buttonLabel: loading ? 'looking at it…' : 'Explain this',
+      showPattern: !loading && result === 'pattern',
+      showCorrect: !loading && result === 'correct',
+      showUnclear: !loading && result === 'unclear',
+      explain: () => {
+        this.setState({ loading: true });
+        clearTimeout(this.t);
+        this.t = setTimeout(() => this.setState({ loading: false }), 900);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
