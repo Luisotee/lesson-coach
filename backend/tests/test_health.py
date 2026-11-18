@@ -27,7 +27,7 @@ def test_health_returns_ok() -> None:
 
 
 @pytest.mark.parametrize("method", ["GET", "HEAD", "POST", "PUT", "DELETE"])
-@pytest.mark.parametrize("path", ["/api", "/api/", "/api/nope", "/api/mistake"])
+@pytest.mark.parametrize("path", ["/api", "/api/", "/api/nope", "/api/mistakes"])
 def test_unknown_api_paths_are_404_for_any_method(dist: Path, method: str, path: str) -> None:
     response = client.request(method, path)
     assert response.status_code == 404

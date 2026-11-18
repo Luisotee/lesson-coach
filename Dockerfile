@@ -18,6 +18,8 @@ WORKDIR /app/backend
 COPY backend/pyproject.toml backend/uv.lock backend/.python-version ./
 RUN uv sync --frozen --no-dev
 COPY backend/app ./app
+# The API serves the generated packs from content/generated (held in memory).
+COPY content/ /app/content/
 COPY --from=frontend /app/frontend/dist /app/frontend/dist
 RUN useradd --system --uid 1001 app
 USER app
