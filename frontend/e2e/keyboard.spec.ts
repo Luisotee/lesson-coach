@@ -218,13 +218,16 @@ test('the language picker by keyboard: to Arabic and back', async ({ page }) => 
   const picker = page.locator('header select')
   await tabTo(page, picker)
   const html = page.locator('html')
-  for (let i = 0; i < 40 && (await html.getAttribute('lang')) !== 'ar'; i++)
-    await page.keyboard.press('ArrowDown')
+  // Arabic is listed right after English. Each press waits for its language to load, so a
+  // slow locale chunk can't make the test press past it.
+  await page.keyboard.press('ArrowDown')
+  await expect(html).toHaveAttribute('lang', 'ar')
   await expect(html).toHaveAttribute('dir', 'rtl')
   await expect(picker).toBeFocused()
-  for (let i = 0; i < 40 && (await html.getAttribute('lang')) !== 'en'; i++)
-    await page.keyboard.press('ArrowUp')
+  await page.keyboard.press('ArrowUp')
+  await expect(html).toHaveAttribute('lang', 'en')
   await expect(html).toHaveAttribute('dir', 'ltr')
+  await expect(picker).toBeFocused()
 })
 
 test.describe('on a phone', () => {

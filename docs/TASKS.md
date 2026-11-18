@@ -108,9 +108,9 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - Metrics and the judge with calibration as in PLAN. `evals/results.yaml` with a hash, plus a staleness test.
   - Compare `none` and low `reasoning_effort` (gpt-5.5 rejects `minimal` with a 400).
   - **Done when:** results are committed and summarised in `evals/README.md`.
-- [~] **T11 Accessibility and end-to-end** (needs T8 and T9)
+- [x] **T11 Accessibility and end-to-end** (needs T8 and T9)
   - Playwright covers every page and state: axe-core, keyboard-only flows, RTL, print, reduced motion, 200% zoom, 320 px.
-  - Document a manual screen-reader pass.
+  - Document a manual screen-reader pass. (Done as a script in `docs/A11Y.md`; no human has run it yet, and the doc says so.)
   - **Done when:** zero axe violations, and the e2e suite runs green through `make e2e`.
 - [x] **T12 Deploy** (needs T6 and T8)
   - Build and push the image, deploy to Container Apps with secrets, and smoke-test the live URL with the Playwright flow.

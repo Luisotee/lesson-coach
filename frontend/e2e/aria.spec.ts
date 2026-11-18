@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { readFileSync } from 'node:fs'
 import { typeMath } from './a11y.ts'
 import { fixture, mockApi } from './api.ts'
 
@@ -52,9 +53,12 @@ test('a worked example: each step is a toggle named by its spoken math and the m
 })
 
 test('in Arabic the same steps are spoken in Arabic', async ({ page }) => {
+  // The list's label is the locale's own, which the translation pipeline may rewrite.
+  const ar = JSON.parse(readFileSync(new URL('../src/locales/ar.json', import.meta.url), 'utf8'))
+  const label = (ar.topic.exampleLabel as string).replace('{n}', '1')
   await page.goto('/topics/linear-equations?lng=ar')
   await expect(page.locator('#example ol').first()).toMatchAriaSnapshot(`
-    - list "المثال المحلول 1":
+    - list "${label}":
       - listitem:
         - button "3 x زائد 5 يساوي 20؛ اطرح 5 من الطرفين" [pressed]
       - listitem:

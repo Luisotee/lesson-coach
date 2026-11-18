@@ -16,4 +16,4 @@ docker compose up     # the full app on http://localhost:8000
 
 ## Accessibility
 
-The target is WCAG 2.2 AA. [`docs/A11Y.md`](docs/A11Y.md) lists what the e2e tests check (axe in every page state at five layouts, keyboard-only flows, reduced motion, print, the accessibility tree) and what hasn't been tested yet: no one has run a real screen reader on it.
+The target is WCAG 2.2 AA. [`docs/A11Y.md`](docs/A11Y.md) lists what the e2e tests check (axe in every page state at five layouts, keyboard-only flows, reduced motion, print, the accessibility tree, and in other languages: Arabic, Chinese and Hindi pages, right to left at 320 px, 200% zoom and in print, spoken math in all 19 languages, and a web font for every script) and what hasn't been tested yet: no one has run a real screen reader on it.
