@@ -320,3 +320,19 @@ test('practice: switching language keeps the working, the check result and open 
   await expect(page.getByText(/We want the value of/)).toBeVisible()
   await expect(page.locator('math-field').first()).toHaveJSProperty('value', '8x=56')
 })
+
+test('topic: the sticky section nav stays below the header, whatever its height', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.goto('/topics/linear-equations')
+  const nav = page.getByRole('navigation', { name: 'On this page' })
+  await expect(nav).toBeVisible()
+  await page.locator('#questions').scrollIntoViewIfNeeded()
+  await page.mouse.wheel(0, 400)
+  const [header, top] = await Promise.all([
+    page.locator('header').first().boundingBox(),
+    nav.boundingBox(),
+  ])
+  expect(top!.y).toBeGreaterThanOrEqual(header!.y + header!.height)
+})
