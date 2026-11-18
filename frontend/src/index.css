@@ -134,7 +134,7 @@
   --destructive: #c62828;
   --border: var(--color-line);
   --input: var(--color-line-strong);
-  --ring: var(--color-link);
+  --ring: var(--color-navy);
 }
 
 @layer base {
@@ -149,7 +149,27 @@
   h3 {
     @apply font-heading;
   }
-  /* A visible focus ring everywhere (WCAG 2.4.7 / 2.4.11). Navy has 3:1+ against white and ground. */
+  /* MathLive's on-screen keyboard (touch devices) marks its selected tab in its own blue,
+     #0c75d8, under 4.5:1 on its grey backdrop (#cacfd7); navy there is about 9:1. */
+  :root {
+    --keyboard-accent-color: var(--color-navy);
+    --keyboard-toolbar-text-active: var(--color-navy);
+  }
+  /* In OS dark mode MathLive draws its keyboard on #151515, where navy is 1.3:1; pale blue is
+     about 15:1. */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --keyboard-accent-color: var(--color-paleblue);
+      --keyboard-toolbar-text-active: var(--color-paleblue);
+    }
+  }
+  /* Scrolled-to and focused elements stop below the sticky header, never under it (WCAG
+     2.4.11). --header-h is the header's live height (useHeaderHeight); until it is measured,
+     4.5rem stands in for it. */
+  html {
+    scroll-padding-top: calc(var(--header-h, 4.5rem) + 0.75rem);
+  }
+  /* A visible focus ring everywhere (WCAG 2.4.7 / 2.4.11). Navy has 3:1+ against white and ground; shadcn controls draw the same navy as a ring. */
   :focus-visible {
     outline: 3px solid var(--color-navy);
     outline-offset: 2px;

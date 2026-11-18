@@ -231,7 +231,7 @@ export function HomePage() {
       <section
         id="topics"
         aria-labelledby="topics-heading"
-        className="flex scroll-mt-24 flex-col gap-6 pt-6 pb-16"
+        className="flex flex-col gap-6 pt-6 pb-16"
       >
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 id="topics-heading" className="text-[32px] font-semibold tracking-tight">

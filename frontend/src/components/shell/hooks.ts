@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, type RefObject } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router'
 
@@ -96,4 +96,25 @@ export function useRouteFocus(): void {
       return false
     })
   }, [key, hash])
+}
+
+/**
+ * Keeps `--header-h` on <html> at the sticky header's height, so `scroll-padding-top` stops
+ * anything scrolled into view (a focused element, a #section) below the header instead of
+ * under it (WCAG 2.4.11). The header's height changes as it wraps: at 200% zoom it is taller.
+ */
+export function useHeaderHeight(header: RefObject<HTMLElement | null>): void {
+  useEffect(() => {
+    const el = header.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const root = document.documentElement
+    const observer = new ResizeObserver(() =>
+      root.style.setProperty('--header-h', `${el.offsetHeight}px`),
+    )
+    observer.observe(el)
+    return () => {
+      observer.disconnect()
+      root.style.removeProperty('--header-h')
+    }
+  }, [header])
 }

@@ -72,7 +72,7 @@ export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
     <section
       id="example"
       aria-labelledby="example-heading"
-      className="scroll-mt-24 rounded-3xl border border-line bg-white p-2 shadow-[0_30px_60px_-40px_rgba(23,43,83,.35)] print:hidden"
+      className="rounded-3xl border border-line bg-white p-2 shadow-[0_30px_60px_-40px_rgba(23,43,83,.35)] print:hidden"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 pt-4 pb-2">
         <div className="flex flex-col gap-1">

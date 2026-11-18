@@ -1,57 +1,34 @@
-import AxeBuilder from '@axe-core/playwright'
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test } from '@playwright/test'
+import { expectNoAxeViolations, explainSettled, typeMath } from './a11y.ts'
 import { fixture, mockApi } from './api.ts'
-
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
-const WIDTHS = [320, 768, 1440] as const
-
-async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
-  expect(results.violations).toEqual([])
-}
-
-async function expectNoSideScroll(page: Page) {
-  const overflow = await page.evaluate(
-    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-  )
-  expect(overflow).toBeLessThanOrEqual(0)
-}
 
 test.beforeEach(async ({ page }) => {
   await mockApi(page)
 })
 
-for (const width of WIDTHS) {
-  test.describe(`at ${width} px`, () => {
-    test.use({ viewport: { width, height: 900 } })
+// Each page's states at every layout, with axe, are in a11y.spec.ts.
 
-    test('home lists the topics from the API', async ({ page }) => {
-      await page.goto('/')
-      await expect(page.getByRole('link', { name: /Solving linear equations/ })).toBeVisible()
-      await expect(page.getByText('Grade 7–8')).toBeVisible()
-      await expectNoSideScroll(page)
-      await expectNoAxeViolations(page)
-    })
+test('home lists the topics from the API with their grades', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.getByRole('link', { name: /Solving linear equations/ })).toBeVisible()
+  await expect(page.getByText('Grade 7–8')).toBeVisible()
+})
 
-    test('topic page renders every section', async ({ page }) => {
-      await page.goto('/topics/linear-equations')
-      await expect(
-        page.getByRole('heading', { level: 1, name: 'Solving linear equations' }),
-      ).toBeVisible()
-      for (const name of [
-        'The idea',
-        'Why it works',
-        'What students often get wrong',
-        'Questions students ask',
-        'Lesson outline',
-      ]) {
-        await expect(page.getByRole('heading', { name, exact: true })).toBeVisible()
-      }
-      await expectNoSideScroll(page)
-      await expectNoAxeViolations(page)
-    })
-  })
-}
+test('topic page renders every section', async ({ page }) => {
+  await page.goto('/topics/linear-equations')
+  await expect(
+    page.getByRole('heading', { level: 1, name: 'Solving linear equations' }),
+  ).toBeVisible()
+  for (const name of [
+    'The idea',
+    'Why it works',
+    'What students often get wrong',
+    'Questions students ask',
+    'Lesson outline',
+  ]) {
+    await expect(page.getByRole('heading', { name, exact: true })).toBeVisible()
+  }
+})
 
 test('topic: selecting a line and switching explanation modes', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 })
@@ -139,19 +116,6 @@ test('topic: the section nav marks the section in view', async ({ page }) => {
   )
 })
 
-test('topic: print shows only the title and the lesson outline', async ({ page }) => {
-  await page.goto('/topics/linear-equations')
-  await expect(page.getByRole('button', { name: 'Print lesson outline' })).toBeVisible()
-  await page.emulateMedia({ media: 'print' })
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Lesson outline' })).toBeVisible()
-  await expect(page.getByText('Model it')).toBeVisible()
-  for (const hidden of ['The idea', 'What students often get wrong', 'Questions students ask']) {
-    await expect(page.getByRole('heading', { name: hidden, exact: true })).toBeHidden()
-  }
-  await expect(page.locator('header').first()).toBeHidden()
-})
-
 test('topic: an unknown topic is not found; a server error offers a retry', async ({ page }) => {
   await page.goto('/topics/algebra')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found')
@@ -184,34 +148,6 @@ test('topic in Arabic: RTL page, math stays left to right, English pack marked',
   expect(new Set(headingLangs)).toEqual(new Set(['ar']))
   await expectNoAxeViolations(page)
 })
-
-/** Types into a MathLive field found by its label. */
-async function typeMath(page: Page, label: string, keys: string) {
-  const field = page.locator(`math-field[aria-label="${label}"]`)
-  await field.focus()
-  await page.keyboard.type(keys)
-}
-
-for (const width of WIDTHS) {
-  test.describe(`practice and mistake at ${width} px`, () => {
-    test.use({ viewport: { width, height: 900 } })
-
-    test('practice page renders with no axe violations', async ({ page }) => {
-      await page.goto('/practice/linear-equations/1')
-      await expect(page.getByRole('math', { name: '8 x equals 56' })).toBeVisible()
-      await expect(page.getByRole('heading', { name: 'Hints, when you want them' })).toBeVisible()
-      await expectNoSideScroll(page)
-      await expectNoAxeViolations(page)
-    })
-
-    test('mistake page renders with no axe violations', async ({ page }) => {
-      await page.goto('/mistake')
-      await expect(page.getByRole('button', { name: 'Explain this' })).toBeVisible()
-      await expectNoSideScroll(page)
-      await expectNoAxeViolations(page)
-    })
-  })
-}
 
 test('practice: hints, check my working, and previous/next', async ({ page }) => {
   const posted = await mockApi(page, {
@@ -282,6 +218,7 @@ for (const [state, heading] of STATES) {
       lang: 'en',
       working: [],
     })
+    await explainSettled(page)
     await expectNoAxeViolations(page)
   })
 }
@@ -382,4 +319,20 @@ test('practice: switching language keeps the working, the check result and open 
   await expect(page.locator('[data-check="line_doesnt_follow"]')).toBeVisible()
   await expect(page.getByText(/We want the value of/)).toBeVisible()
   await expect(page.locator('math-field').first()).toHaveJSProperty('value', '8x=56')
+})
+
+test('topic: the sticky section nav stays below the header, whatever its height', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.goto('/topics/linear-equations')
+  const nav = page.getByRole('navigation', { name: 'On this page' })
+  await expect(nav).toBeVisible()
+  await page.locator('#questions').scrollIntoViewIfNeeded()
+  await page.mouse.wheel(0, 400)
+  const [header, top] = await Promise.all([
+    page.locator('header').first().boundingBox(),
+    nav.boundingBox(),
+  ])
+  expect(top!.y).toBeGreaterThanOrEqual(header!.y + header!.height)
 })

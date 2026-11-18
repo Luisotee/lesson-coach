@@ -1,12 +1,12 @@
 import { ShieldCheck } from 'lucide-react'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { MotionConfig } from 'motion/react'
-import { useState, type MouseEvent } from 'react'
+import { useRef, useState, type MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet, ScrollRestoration, useMatch } from 'react-router'
 import { createQueryClient } from '@/api/queries'
 import { LanguagePicker } from '@/components/shell/LanguagePicker'
-import { useRouteFocus } from '@/components/shell/hooks'
+import { useHeaderHeight, useRouteFocus } from '@/components/shell/hooks'
 import { isTopicId, problemNumber } from '@/content/topics'
 import { cn } from '@/lib/utils'
 
@@ -47,6 +47,8 @@ export function Shell() {
   const inPractice =
     isTopicId(practiceMatch?.params.topic) && problemNumber(practiceMatch?.params.n) !== null
   useRouteFocus()
+  const header = useRef<HTMLElement>(null)
+  useHeaderHeight(header)
   // One cache for the app's lifetime: packs are static, so revisits are instant.
   const [queryClient] = useState(createQueryClient)
   return (
@@ -60,7 +62,10 @@ export function Shell() {
           {t('shell.skipToContent')}
         </a>
         <div className="flex min-h-svh flex-col">
-          <header className="sticky top-0 z-10 border-b border-line bg-ground/85 backdrop-blur-md print:hidden">
+          <header
+            ref={header}
+            className="sticky top-0 z-10 border-b border-line bg-ground/85 backdrop-blur-md print:hidden"
+          >
             <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
               <Link
                 to="/"
