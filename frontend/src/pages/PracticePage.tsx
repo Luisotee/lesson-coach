@@ -28,7 +28,7 @@ function Practice({ topic, n }: { topic: string; n: number }) {
   const { t } = useTranslation()
   const title = t('pages.practiceTitle', { topic: t(`topics.${topic}.title`) })
   const problem = t('pages.practiceProblem', { n, total: PRACTICE_COUNT })
-  usePageTitle(`${title}, ${problem}`)
+  usePageTitle(t('pages.practicePageTitle', { title, problem }))
   return (
     <PageFrame title={title}>
       <p className="text-lg font-semibold">{problem}</p>

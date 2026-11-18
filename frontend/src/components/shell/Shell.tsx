@@ -2,7 +2,7 @@ import { ShieldCheck } from 'lucide-react'
 import { MotionConfig } from 'motion/react'
 import type { MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, NavLink, Outlet, ScrollRestoration } from 'react-router'
+import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router'
 import { LanguagePicker } from '@/components/shell/LanguagePicker'
 import { useRouteFocus } from '@/components/shell/hooks'
 import { cn } from '@/lib/utils'
@@ -35,6 +35,9 @@ function Mark() {
 
 export function Shell() {
   const { t } = useTranslation()
+  const { pathname } = useLocation()
+  // The Practice link opens problem 1 of the first topic, but it is current on every practice page.
+  const inPractice = pathname.startsWith('/practice/')
   useRouteFocus()
   return (
     <MotionConfig reducedMotion="user">
@@ -67,9 +70,13 @@ export function Shell() {
               <NavLink to="/mistake" className={navClass}>
                 {t('nav.mistake')}
               </NavLink>
-              <NavLink to="/practice/negative-numbers/1" className={navClass}>
+              <Link
+                to="/practice/negative-numbers/1"
+                className={navClass({ isActive: inPractice })}
+                aria-current={inPractice ? 'page' : undefined}
+              >
                 {t('nav.practice')}
-              </NavLink>
+              </Link>
             </nav>
             <div className="flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-[13px] text-muted-foreground">

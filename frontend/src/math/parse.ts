@@ -205,3 +205,41 @@ export function hasVariable(node: MathNode): boolean {
 export function showsDot(left: MathNode, right: MathNode): boolean {
   return startsWithNumber(right) || (!hasVariable(left) && !hasVariable(right))
 }
+
+/** Drops brackets a layout already shows: a whole numerator, denominator or exponent. */
+export function unwrapGroup(node: MathNode): MathNode {
+  return node.type === 'group' ? node.inner : node
+}
+
+/** One notebook line, parsed once for both the drawing and the spoken text. */
+export interface ParsedLine {
+  left: ParseResult<MathNode>
+  /** Absent for an expression step. */
+  right?: ParseResult<MathNode>
+  /** Absent when the line has no margin operation. */
+  op?: ParseResult<MarginOp>
+  /** The original text, shown and spoken as written when it doesn't parse. */
+  source: { left: string; right: string; op: string }
+}
+
+export function parseLine({
+  left,
+  right = '',
+  op = '',
+}: {
+  left: string
+  right?: string
+  op?: string
+}): ParsedLine {
+  return {
+    left: parseMath(left),
+    right: right ? parseMath(right) : undefined,
+    op: op ? parseOp(op) : undefined,
+    source: { left, right, op },
+  }
+}
+
+/** An expression step that follows another expression step is written as "= …". */
+export function isContinued(steps: readonly { right: string }[], i: number): boolean {
+  return !steps[i].right && i > 0 && !steps[i - 1].right
+}

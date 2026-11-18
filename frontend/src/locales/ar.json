@@ -6,7 +6,7 @@
   "shell": {
     "skipToContent": "انتقل إلى المحتوى الرئيسي",
     "mainNav": "الرئيسية",
-    "nothingSaved": "بلا حساب. لا يُحفظ شيء.",
+    "nothingSaved": "بلا حساب. لا يُحفظ إلا اختيار اللغة، في هذا المتصفح.",
     "footerNoScores": "لا اختبارات. لا درجات. لا يُحفظ شيء عنك أو عن طلابك.",
     "footerChecked": "كل إجابة يتحقق منها نظام جبر حاسوبي."
   },
@@ -35,9 +35,18 @@
     "practiceText": "مسائل مع تلميحات تفتحها واحدًا تلو الآخر. بلا درجات."
   },
   "topics": {
-    "negative-numbers": { "title": "الأعداد السالبة", "grade": "الصف 6–7" },
-    "fractions": { "title": "الكسور", "grade": "الصف 6–7" },
-    "linear-equations": { "title": "حل المعادلات الخطية", "grade": "الصف 7–8" }
+    "negative-numbers": {
+      "title": "الأعداد السالبة",
+      "grade": "الصف 6–7"
+    },
+    "fractions": {
+      "title": "الكسور",
+      "grade": "الصف 6–7"
+    },
+    "linear-equations": {
+      "title": "حل المعادلات الخطية",
+      "grade": "الصف 7–8"
+    }
   },
   "pages": {
     "inProgress": "هذه الصفحة قيد الإنشاء. سيظهر هنا الدرس الكامل والأمثلة المحلولة والأخطاء.",
@@ -46,7 +55,8 @@
     "practiceProblem": "المسألة {n} من {total}",
     "previous": "المسألة السابقة",
     "next": "المسألة التالية",
-    "practiceNav": "المسائل"
+    "practiceNav": "المسائل",
+    "practicePageTitle": "{title}، {problem}"
   },
   "notFound": {
     "title": "الصفحة غير موجودة",
@@ -67,6 +77,7 @@
       "fraction": "الكسر الذي بسطه {num} ومقامه {den}",
       "fractionSimple": "{num} على {den}",
       "power": "{power, select, squared {{base} تربيع} cubed {{base} تكعيب} other {{base} أس {exp}}}",
+      "powerGroup": "{base} أس {exp}، نهاية الأس",
       "lineWithOp": "{line}؛ {op}"
     },
     "op": {
@@ -93,6 +104,7 @@
     "fractionStepsLabel": "جمع نصف وثلث",
     "replay": "اكتبها مرة أخرى",
     "rtlHeading": "داخل نص من اليمين إلى اليسار",
-    "rtlNote": "النص المحيط يُقرأ من اليمين إلى اليسار؛ والرياضيات تبقى من اليسار إلى اليمين."
+    "rtlNote": "النص المحيط يُقرأ من اليمين إلى اليسار؛ والرياضيات تبقى من اليسار إلى اليمين.",
+    "fractionStepsHeading": "خطوات الكسور"
   }
 }

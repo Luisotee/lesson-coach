@@ -24,6 +24,22 @@ describe('spoken text in English', () => {
     expect(speakText(src, t)).toBe(spoken)
   })
 
+  test.each([
+    ['(-3)**2 = 9', 'open bracket, negative 3, close bracket squared equals 9'],
+    ['-3**2 = -9', 'negative 3 squared equals negative 9'],
+    ['(-x)**2', 'open bracket, negative x, close bracket squared'],
+    ['-x**2', 'negative x squared'],
+    ['2**(x + 1)', '2 to the power of x plus 1, end of exponent'],
+    ['2**x + 1', '2 to the power of x plus 1'],
+    ['2^3^2', '2 to the power of 3 squared, end of exponent'],
+    ['(2^3)^2', 'open bracket, 2 cubed, close bracket squared'],
+    ['(x + 1)**2', 'open bracket, x plus 1, close bracket squared'],
+    ['(x)**2', 'x squared'],
+    ['x**(2)', 'x squared'],
+  ])('powers are unambiguous: %s', (src, spoken) => {
+    expect(speakText(src, t)).toBe(spoken)
+  })
+
   test('unparseable text is read as written', () => {
     expect(speakText('sqrt(4)', t)).toBe('sqrt(4)')
   })
@@ -56,6 +72,7 @@ describe('spoken text in Arabic', () => {
   test('uses the Arabic locale', () => {
     const t = i18n.getFixedT('ar')
     expect(speakText('1/2 + 1/3', t)).toBe('1 على 2 زائد 1 على 3')
+    expect(speakText('2**(x + 1)', t)).toBe('2 أس x زائد 1، نهاية الأس')
     expect(speakLine({ left: '3*x + 5', right: '20', op: '-5' }, t)).toBe(
       '3 x زائد 5 يساوي 20؛ اطرح 5 من الطرفين',
     )

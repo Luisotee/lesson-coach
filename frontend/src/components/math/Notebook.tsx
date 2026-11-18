@@ -3,6 +3,7 @@ import { EquationLine } from '@/components/math/EquationLine'
 import { NotebookContext } from '@/components/math/notebook-context'
 import { penClass, type PenVariant } from '@/components/math/pens'
 import { cn } from '@/lib/utils'
+import { isContinued } from '@/math/parse'
 import type { Step } from '@/math/types'
 
 /**
@@ -58,8 +59,7 @@ export function StepsNotebook({
           left={step.left}
           right={step.right}
           op={step.op}
-          // An expression that follows another expression is written as "= …".
-          continued={!step.right && i > 0 && !steps[i - 1].right}
+          continued={isContinued(steps, i)}
         />
       ))}
     </Notebook>

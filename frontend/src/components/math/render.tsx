@@ -1,15 +1,12 @@
 import type { ReactNode } from 'react'
 import { Fraction } from '@/components/math/Fraction'
-import { showsDot } from '@/math/parse'
+import { showsDot, unwrapGroup as unwrap } from '@/math/parse'
 import type { MarginOp, MathNode } from '@/math/types'
 
 const MINUS = '−'
 
 /** An operator with the small gaps handwriting leaves around it. */
 const sym = (symbol: string): ReactNode => <span className="mx-[0.22em]">{symbol}</span>
-
-/** Drops parentheses that a stacked fraction makes unnecessary: (1 + 1)/(2 + 3). */
-const unwrap = (n: MathNode): MathNode => (n.type === 'group' ? n.inner : n)
 
 /** Draws the tree exactly as written: no evaluation, no reordering. */
 export function renderNode(node: MathNode): ReactNode {

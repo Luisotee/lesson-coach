@@ -3,19 +3,18 @@ import { useTranslation } from 'react-i18next'
 import { NotebookContext } from '@/components/math/notebook-context'
 import { renderNode, renderOp } from '@/components/math/render'
 import { cn } from '@/lib/utils'
-import { parseMath, parseOp } from '@/math/parse'
-import { speakLine } from '@/math/speech'
+import { parseLine } from '@/math/parse'
+import { speakParsedLine } from '@/math/speech'
+import type { MarginOp, MathNode, ParseResult } from '@/math/types'
 
 /** Seconds between lines when they are written on. */
 export const WRITE_ON_STAGGER = 0.8
 
-function draw(src: string): ReactNode {
-  const parsed = parseMath(src)
+function draw(parsed: ParseResult<MathNode>, src: string): ReactNode {
   return parsed.ok ? renderNode(parsed.value) : src
 }
 
-function drawOp(src: string): ReactNode {
-  const parsed = parseOp(src)
+function drawOp(parsed: ParseResult<MarginOp>, src: string): ReactNode {
   return parsed.ok ? renderOp(parsed.value) : src
 }
 
@@ -42,8 +41,8 @@ export function EquationLine({
 }) {
   const { t } = useTranslation()
   const { writeOn } = useContext(NotebookContext)
-  const isEquation = right !== ''
-  const label = speakLine({ left, right, op, continued }, t)
+  const line = parseLine({ left, right, op })
+  const label = speakParsedLine(line, continued, t)
 
   return (
     <li
@@ -60,16 +59,16 @@ export function EquationLine({
         style={writeOn ? { animationDelay: `${index * WRITE_ON_STAGGER}s` } : undefined}
       >
         <span aria-hidden="true" className="justify-self-end">
-          {isEquation ? draw(left) : null}
+          {line.right ? draw(line.left, left) : null}
         </span>
         <span aria-hidden="true" className="justify-self-center">
-          {isEquation || continued ? '=' : null}
+          {line.right || continued ? '=' : null}
         </span>
         <span aria-hidden="true" className="justify-self-start">
-          {isEquation ? draw(right) : draw(left)}
+          {line.right ? draw(line.right, right) : draw(line.left, left)}
         </span>
         <span aria-hidden="true" className="ps-[0.6em] text-[0.75em] font-bold text-pen-green">
-          {op ? drawOp(op) : null}
+          {line.op ? drawOp(line.op, op) : null}
         </span>
       </span>
     </li>

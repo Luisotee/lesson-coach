@@ -11,24 +11,33 @@ export function usePageTitle(page?: string): void {
   }, [title])
 }
 
+/** The element a #hash names. A malformed escape is looked up as written instead of throwing. */
+function hashTarget(hash: string): HTMLElement | null {
+  let id = hash.slice(1)
+  try {
+    id = decodeURIComponent(id)
+  } catch {
+    // keep the raw id
+  }
+  return document.getElementById(id)
+}
+
 /**
  * After a client-side navigation, moves focus to the link's #target or to the page's <h1>, so
  * keyboard and screen-reader users start on the new page instead of the old link.
- * The first load keeps the browser's own focus.
+ * The first load keeps the browser's own focus (also under StrictMode's effect re-run), and
+ * focusing never scrolls: ScrollRestoration owns the scroll position, including on Back.
  */
 export function useRouteFocus(): void {
-  const { pathname, hash } = useLocation()
-  const firstLoad = useRef(true)
+  const { key, hash } = useLocation()
+  const initialKey = useRef(key)
+  const navigated = useRef(false)
   useEffect(() => {
-    if (firstLoad.current) {
-      firstLoad.current = false
-      return
-    }
-    const target = hash
-      ? document.getElementById(decodeURIComponent(hash.slice(1)))
-      : document.querySelector<HTMLElement>('main h1')
+    if (!navigated.current && key === initialKey.current) return
+    navigated.current = true
+    const target = hash ? hashTarget(hash) : document.querySelector<HTMLElement>('main h1')
     if (!target) return
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1')
-    target.focus()
-  }, [pathname, hash])
+    target.focus({ preventScroll: true })
+  }, [key, hash])
 }

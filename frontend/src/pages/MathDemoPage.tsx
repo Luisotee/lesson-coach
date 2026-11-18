@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
 import { MathExpr, Pen, StepsNotebook, type PenVariant } from '@/components/math'
 import { usePageTitle } from '@/components/shell/hooks'
+import { isContinued } from '@/math/parse'
 import { speakLine, speakText } from '@/math/speech'
 import type { Step } from '@/math/types'
 import { PageFrame } from '@/pages/PageFrame'
@@ -54,9 +55,7 @@ function Card({ title, children }: { title: string; children: ReactNode }) {
 }
 
 function spokenSteps(steps: Step[], t: ReturnType<typeof useTranslation>['t']): string {
-  return steps
-    .map((s, i) => speakLine({ ...s, continued: !s.right && i > 0 && !steps[i - 1].right }, t))
-    .join(' / ')
+  return steps.map((s, i) => speakLine({ ...s, continued: isContinued(steps, i) }, t)).join(' / ')
 }
 
 /** Every math component in one place, in the page's direction and inside RTL text. */
@@ -123,7 +122,7 @@ export function MathDemoPage() {
           <StepsNotebook steps={EXPRESSION_STEPS} label={t('demo.expressionLabel')} pen="pencil" />
           <Spoken text={spokenSteps(EXPRESSION_STEPS, t)} />
         </Card>
-        <Card title={t('demo.expressionHeading')}>
+        <Card title={t('demo.fractionStepsHeading')}>
           <StepsNotebook steps={FRACTION_STEPS} label={t('demo.fractionStepsLabel')} pen="green" />
           <Spoken text={spokenSteps(FRACTION_STEPS, t)} />
         </Card>

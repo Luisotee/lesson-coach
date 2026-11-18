@@ -57,6 +57,22 @@ test('the Topics link moves to the topic list', async ({ page }) => {
   await page.getByRole('link', { name: 'Topics', exact: true }).click()
   await expect(page).toHaveURL(/\/#topics$/)
   await expect(page.locator('#topics')).toBeFocused()
+  await expect(page.locator('#topics')).toBeInViewport()
+})
+
+test('Back returns to where the page was scrolled', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 500 })
+  await page.goto('/')
+  await page.evaluate(() => window.scrollTo(0, 400))
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(400)
+  await page.getByRole('link', { name: /Fractions/ }).click()
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Fractions')
+  await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
+  await page.goBack()
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+    'Feel sure of the math before you teach it.',
+  )
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(400)
 })
 
 test('the language picker switches to Arabic, right to left, and remembers it', async ({

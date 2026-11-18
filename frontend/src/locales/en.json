@@ -6,7 +6,7 @@
   "shell": {
     "skipToContent": "Skip to main content",
     "mainNav": "Main",
-    "nothingSaved": "No account. Nothing saved.",
+    "nothingSaved": "No account. Only your language choice is kept, in this browser.",
     "footerNoScores": "No tests. No scores. Nothing about you or your students is saved.",
     "footerChecked": "Every answer is checked by a computer algebra system."
   },
@@ -35,9 +35,18 @@
     "practiceText": "Problems with hints you open one at a time. No scores."
   },
   "topics": {
-    "negative-numbers": { "title": "Negative numbers", "grade": "Grade 6–7" },
-    "fractions": { "title": "Fractions", "grade": "Grade 6–7" },
-    "linear-equations": { "title": "Solving linear equations", "grade": "Grade 7–8" }
+    "negative-numbers": {
+      "title": "Negative numbers",
+      "grade": "Grade 6–7"
+    },
+    "fractions": {
+      "title": "Fractions",
+      "grade": "Grade 6–7"
+    },
+    "linear-equations": {
+      "title": "Solving linear equations",
+      "grade": "Grade 7–8"
+    }
   },
   "pages": {
     "inProgress": "This page is still being built. The full lesson, worked examples and mistakes will appear here.",
@@ -46,7 +55,8 @@
     "practiceProblem": "Problem {n} of {total}",
     "previous": "Previous problem",
     "next": "Next problem",
-    "practiceNav": "Problems"
+    "practiceNav": "Problems",
+    "practicePageTitle": "{title}, {problem}"
   },
   "notFound": {
     "title": "Page not found",
@@ -67,6 +77,7 @@
       "fraction": "the fraction with numerator {num} and denominator {den}",
       "fractionSimple": "{num, plural, one {one} other {#}} {den, plural, =2 {{num, plural, one {half} other {halves}}} =3 {{num, plural, one {third} other {thirds}}} =4 {{num, plural, one {quarter} other {quarters}}} =5 {{num, plural, one {fifth} other {fifths}}} =6 {{num, plural, one {sixth} other {sixths}}} =7 {{num, plural, one {seventh} other {sevenths}}} =8 {{num, plural, one {eighth} other {eighths}}} =9 {{num, plural, one {ninth} other {ninths}}} =10 {{num, plural, one {tenth} other {tenths}}} other {over #}}",
       "power": "{power, select, squared {{base} squared} cubed {{base} cubed} other {{base} to the power of {exp}}}",
+      "powerGroup": "{base} to the power of {exp}, end of exponent",
       "lineWithOp": "{line}; {op}"
     },
     "op": {
@@ -93,6 +104,7 @@
     "fractionStepsLabel": "Adding one half and one third",
     "replay": "Write it again",
     "rtlHeading": "Inside right-to-left text",
-    "rtlNote": "The surrounding text runs right to left; the math stays left to right."
+    "rtlNote": "The surrounding text runs right to left; the math stays left to right.",
+    "fractionStepsHeading": "Fraction steps"
   }
 }
