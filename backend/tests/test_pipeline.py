@@ -186,6 +186,10 @@ def test_strict_schema_requires_every_property() -> None:
     assert set(schema["required"]) == set(schema["properties"])
     for sub in schema["$defs"].values():
         assert sub["additionalProperties"] is False
+    outline = schema["$defs"]["OutlineOut"]
+    assert (
+        set(outline["required"]) == set(outline["properties"]) == {"minutes", "title", "activity"}
+    )
 
 
 @pytest.fixture(scope="module")

@@ -19,8 +19,8 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-if __package__ in (None, ""):
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+if __package__ in (None, ""):  # run as a script: make `pipeline` and `app` importable
+    sys.path[:0] = [str(Path(__file__).resolve().parents[1] / p) for p in ("", "backend")]
 
 from app.content.schema import TOPIC_IDS, Pack, TopicId
 from pydantic import ValidationError
@@ -165,6 +165,12 @@ def write_report(
             cost_line(s),
         ]
     path = path if path.is_absolute() else ROOT / path
+    if stats is None and path.exists():  # keep the last generation's numbers
+        old = path.read_text()
+        if "\n## Generation\n" in old:
+            lines += ["", "## Generation" + old.split("\n## Generation", 1)[1].rstrip("\n")]
+    if judged and stats is None:
+        lines += ["", "The judge columns come from an independent `verify.py --judge` run."]
     path.write_text("\n".join(lines) + "\n")
     return results
 

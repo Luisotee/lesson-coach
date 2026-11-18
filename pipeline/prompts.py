@@ -126,7 +126,8 @@ def strict_schema(model: type[BaseModel]) -> dict[str, Any]:
             if node.get("type") == "object" and "properties" in node:
                 node["required"] = list(node["properties"])
                 node["additionalProperties"] = False
-            node.pop("title", None)
+            if isinstance(node.get("title"), str):  # an annotation, not a property
+                node.pop("title")
             for value in node.values():
                 fix(value)
         elif isinstance(node, list):

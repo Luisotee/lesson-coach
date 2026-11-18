@@ -20,8 +20,8 @@ from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
 from pathlib import Path
 
-if __package__ in (None, ""):
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+if __package__ in (None, ""):  # run as a script: make `pipeline` and `app` importable
+    sys.path[:0] = [str(Path(__file__).resolve().parents[1] / p) for p in ("", "backend")]
 
 from app.content.schema import (
     TOPIC_IDS,
@@ -404,7 +404,8 @@ def main() -> None:
         print(f"wrote {write_pack(pack)} (unavailable: {pack.unavailable or 'none'})")
     from pipeline.verify import write_report
 
-    write_report(Path(args.report), args.lang, stats=stats, model=model)
+    judged: dict[TopicId, dict[str, list[str]]] = {p.topic: {} for p in packs}
+    write_report(Path(args.report), args.lang, stats=stats, model=model, judged=judged)
     print(json.dumps({"calls": dict(stats.calls), "dropped": stats.dropped}))
 
 
