@@ -8,7 +8,11 @@ export default defineConfig({
   testDir: './e2e',
   reporter: process.env.CI ? 'line' : 'list',
   use: { baseURL: `http://127.0.0.1:${port}`, trace: 'retain-on-failure', reducedMotion: 'reduce' },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    // Touch: the math input on a phone (drawing with touch events, photo upload).
+    { name: 'mobile', use: { ...devices['Pixel 7'] }, testMatch: /input\.spec/ },
+  ],
   webServer: {
     command: `cd ../backend && uv run uvicorn app.main:app --host 127.0.0.1 --port ${port}`,
     url: `http://127.0.0.1:${port}/api/health`,

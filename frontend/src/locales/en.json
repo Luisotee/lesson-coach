@@ -108,6 +108,104 @@
     "rtlNote": "The surrounding text runs right to left; the math stays left to right.",
     "fractionStepsHeading": "Fraction steps",
     "longHeading": "A longer equation",
-    "longLabel": "Solving 2(x + 3) − 4(x − 1) = 3x + 10"
+    "longLabel": "Solving 2(x + 3) − 4(x − 1) = 3x + 10",
+    "inputTitle": "Math input components",
+    "inputIntro": "The three ways to enter math: type it, write it, or take a photo. Below each input is exactly what the page receives. Written and photographed math is read by the server, and nothing is passed on until you confirm it.",
+    "inputExpression": "One expression",
+    "inputExpressionLabel": "The problem",
+    "inputExpressionHint": "Type fractions with a slash, like 2/5.",
+    "inputLines": "Lines of working",
+    "inputLinesLabel": "The student’s working",
+    "inputReceived": "What the page receives",
+    "inputNothing": "Nothing yet."
+  },
+  "input": {
+    "modes": "Ways to enter {label}",
+    "mode": {
+      "type": "Type",
+      "write": "Write",
+      "photo": "Photo"
+    },
+    "typeInstead": "Type it instead",
+    "type": {
+      "loading": "Loading the math field…",
+      "fallback": "The math field didn’t load, so this is a plain text field. Type fractions with a slash, like 2/5.",
+      "tooLong": "This is too long to check. Shorten it, or split it into lines.",
+      "lineLabel": "{label}, line {n}",
+      "addLine": "Add a line",
+      "removeLine": "Remove line {n}",
+      "emptyBox": "Fill in the empty box first."
+    },
+    "write": {
+      "introOne": "Write it with your finger, a pen or the mouse, on one line.",
+      "introLines": "Write the working with your finger, a pen or the mouse, one step per line.",
+      "board": "Drawing board for {label}",
+      "empty": "empty",
+      "strokes": "{count, plural, one {# stroke} other {# strokes}}",
+      "undo": "Undo",
+      "redo": "Redo",
+      "clear": "Clear",
+      "did": {
+        "undo": "Undone.",
+        "redo": "Redone.",
+        "clear": "Cleared."
+      },
+      "read": "Read my writing",
+      "reading": "Reading your writing…",
+      "again": "Draw again"
+    },
+    "photo": {
+      "intro": "Take a photo of the student’s work, or upload one. You can crop and turn it next. It stays in this browser until it is read, and is never stored.",
+      "take": "Take a photo",
+      "upload": "Upload a photo",
+      "cropHelp": "Drag the box or its corners around the math. With the keyboard: arrow keys move the box, Shift with the arrow keys changes its size.",
+      "cropBox": "Crop area",
+      "cropState": "The crop area is {w}% wide and {h}% tall, {x}% from the left and {y}% from the top.",
+      "photoAlt": "Your photo",
+      "croppedAlt": "The cropped photo that was read",
+      "useCrop": "Read this part",
+      "useWhole": "Read the whole photo",
+      "rotate": "Turn 90°",
+      "other": "Choose another photo",
+      "reading": "Reading the photo…",
+      "retake": "Take another photo",
+      "tryAgain": "Try again"
+    },
+    "review": {
+      "heading": "Is this what was written?",
+      "intro": "Check each line. Edit anything that was misread. Nothing is checked until you confirm.",
+      "toCheck": "{count, plural, one {# line needs a check.} other {# lines need a check.}}",
+      "lines": "Lines that were read",
+      "lineN": "Line {n}",
+      "uncertain": "check this line",
+      "edit": "Edit",
+      "done": "Done",
+      "editLine": "Edit line {n}",
+      "doneLine": "Done editing line {n}",
+      "removeLine": "Remove line {n}",
+      "blank": "Empty line",
+      "unreadable": "This line can’t be drawn as math. It will be sent as written.",
+      "left": "Left side",
+      "right": "Right side (after =)",
+      "op": "Operation (like −5)",
+      "addLine": "Add a line",
+      "confirm": "Yes, use these lines",
+      "confirmed": "Confirmed.",
+      "blocked": {
+        "none": "There are no lines to use. Add one, or try again.",
+        "oneLine": "Keep only one line here: remove the others.",
+        "tooMany": "There are more than {max} lines. Remove some before you confirm.",
+        "tooLong": "A line is too long to check (at most {chars} characters a side). Shorten it."
+      }
+    },
+    "error": {
+      "unclear": "No math could be read here. Try again with clearer writing, or type it instead.",
+      "unavailable": "Reading isn’t available right now. Type it instead, or try again later.",
+      "too_large": "This image is too large to send. Crop it smaller, or type it instead.",
+      "bad_image": "This image couldn’t be read. Use a PNG, JPEG or WebP photo, or type it instead.",
+      "rate_limited": "Too many requests just now. Try again in {seconds} seconds, or type it instead.",
+      "image": "The image couldn’t be prepared. Try again, or type it instead.",
+      "open": "This photo couldn’t be opened. Use a PNG, JPEG or WebP photo, or type it instead."
+    }
   }
 }
