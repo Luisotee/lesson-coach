@@ -373,7 +373,9 @@ def save_prompts(lang: str, prompts: dict[str, str]) -> None:
     data = json.loads(PROMPTS_FILE.read_text(encoding="utf-8"))
     data[lang] = prompts
     ordered = {"en": data["en"], **{k: data[k] for k in sorted(data) if k != "en"}}
-    PROMPTS_FILE.write_text(json.dumps(ordered, indent=2, ensure_ascii=False) + "\n")
+    PROMPTS_FILE.write_text(
+        json.dumps(ordered, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
 
 
 def prune() -> list[str]:
@@ -508,7 +510,7 @@ def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
                     + " | ".join(x.replace("|", "\\|").replace("\n", " ") for x in cells)
                     + " |"
                 )
-    REPORT_FILE.write_text("\n".join(lines) + "\n")
+    REPORT_FILE.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 async def run(
@@ -565,7 +567,9 @@ async def run(
             )
             for line in result.failing[:10]:
                 print(f"  {line}")
-        STATS_FILE.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\n")
+        STATS_FILE.write_text(
+            json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
         write_report(results, model)
     print(f"total: ${sum(r['usd'] for r in results.values()):.2f}")
 

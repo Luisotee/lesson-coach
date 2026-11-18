@@ -213,7 +213,7 @@ def write_report(
             lines += ["", "## Generation" + section.rstrip("\n")]
     if judged and stats is None:
         lines += ["", JUDGE_NOTE]
-    path.write_text("\n".join(lines) + "\n")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return results
 
 

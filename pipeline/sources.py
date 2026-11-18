@@ -73,7 +73,7 @@ def write_pack(pack: Pack) -> Path:
     path = pack_path(pack.topic, pack.lang)
     path.parent.mkdir(parents=True, exist_ok=True)
     data = pack.model_dump(mode="json")
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return path
 
 

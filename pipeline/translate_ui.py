@@ -320,7 +320,7 @@ async def run(
                     "changes": log,
                 }
             path = LOCALES / f"{lang}.json"
-            path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+            path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             record_sources(lang, redo[lang])
             return {
                 "lang": lang,
@@ -342,7 +342,9 @@ async def run(
             print(f"{lang} ui: {status}, ${result['last_usd']:.2f}")
             for line in result["failing"][:10]:
                 print(f"  {line}")
-        UI_STATS_FILE.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\n")
+        UI_STATS_FILE.write_text(
+            json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
         write_report(load_stats(), model)
     print(f"total spent on translation: ${spent():.2f}")
 
