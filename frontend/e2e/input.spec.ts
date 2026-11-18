@@ -1,15 +1,9 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Locator, type Page, type Request } from '@playwright/test'
+import { expectNoAxeViolations } from './a11y.ts'
 
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
 const FIXTURE = path.join(import.meta.dirname, 'fixtures', 'working.jpg')
-
-async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
-  expect(results.violations).toEqual([])
-}
 
 const card = (page: Page, heading: string) =>
   page.locator('section', { has: page.getByRole('heading', { level: 2, name: heading }) })

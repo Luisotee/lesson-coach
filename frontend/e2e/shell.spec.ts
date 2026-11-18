@@ -1,17 +1,10 @@
-import AxeBuilder from '@axe-core/playwright'
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
+import { expectNoAxeViolations } from './a11y.ts'
 import { mockApi } from './api.ts'
 
 // The Arabic strings come from the locale file, which the translation pipeline rewrites.
 const ar = JSON.parse(readFileSync(new URL('../src/locales/ar.json', import.meta.url), 'utf8'))
-
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
-
-async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
-  expect(results.violations).toEqual([])
-}
 
 test.beforeEach(async ({ page }) => {
   await mockApi(page)

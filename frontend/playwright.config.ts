@@ -1,7 +1,9 @@
 import { defineConfig, devices } from '@playwright/test'
 
-const port = 8010
-const devPort = 5180
+// Override to run e2e in parallel worktrees: `E2E_PORT=8020 make e2e`. The dev server takes
+// E2E_PORT + 1000 unless E2E_DEV_PORT is set, so ports one apart never collide.
+const port = Number(process.env.E2E_PORT ?? 8010)
+const devPort = Number(process.env.E2E_DEV_PORT ?? port + 1000)
 const api = `http://127.0.0.1:${port}`
 const dev = `http://127.0.0.1:${devPort}`
 // BASE_URL runs the app specs against a deployed app instead of local servers, e.g.
@@ -14,6 +16,10 @@ const remote = process.env.BASE_URL
 // against the Vite dev server, which proxies /api to the same FastAPI. A deployed app has
 // no showcases, so with BASE_URL only the app specs run.
 const DEV_SPECS = /(demo|input)\.spec/
+// The state matrix runs at five layouts of its own (see e2e/a11y.spec.ts).
+const MATRIX = /a11y\.spec/
+// Keyboard flows also run at 200% zoom, where the sticky header covers more of the screen.
+const ZOOMED = /(a11y|keyboard)\.spec/
 
 export default defineConfig({
   testDir: './e2e',
@@ -22,7 +28,34 @@ export default defineConfig({
   reporter: process.env.CI ? 'line' : 'list',
   use: { baseURL: remote ?? api, trace: 'retain-on-failure', reducedMotion: 'reduce' },
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, testIgnore: DEV_SPECS },
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] }, testIgnore: [DEV_SPECS, MATRIX] },
+    {
+      name: 'a11y-desktop',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 800 } },
+      testMatch: MATRIX,
+    },
+    // A tablet: the explanation panel is inline (≥768 px) but the section nav is still a strip.
+    {
+      name: 'a11y-tablet',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 820, height: 1180 } },
+      testMatch: MATRIX,
+    },
+    { name: 'a11y-phone', use: { ...devices['Pixel 7'] }, testMatch: MATRIX },
+    {
+      name: 'a11y-320',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 320, height: 800 } },
+      testMatch: MATRIX,
+    },
+    // 200% zoom of a 1280×800 window: CSS sees a 640×400 viewport at twice the pixel density.
+    {
+      name: 'a11y-zoom200',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 640, height: 400 },
+        deviceScaleFactor: 2,
+      },
+      testMatch: ZOOMED,
+    },
     ...(remote
       ? []
       : [
