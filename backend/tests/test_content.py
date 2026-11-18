@@ -31,6 +31,7 @@ from app.content.schema import (
 )
 from app.math import (
     TOPICS,
+    UnsupportedProblem,
     classify_answer,
     equivalent,
     format_value,
@@ -163,6 +164,11 @@ def test_mistakes() -> None:
     cases = MistakeEvalSet.model_validate(data).cases
     ids = {t: {m.id for m in misconceptions(t).misconceptions} for t in TOPIC_IDS}
     for case in cases:
+        if case.expected.status == "out_of_scope":
+            # An abstain row: T1 refuses the problem, so the API answers out_of_scope.
+            with pytest.raises(UnsupportedProblem):
+                classify_answer(math_problem(case.problem), case.student_answer)
+            continue
         verdict = classify_answer(math_problem(case.problem), case.student_answer)
         assert verdict == case.expected.classification, f"{case.id}: T1 says {verdict}"
         for step in case.student_working:

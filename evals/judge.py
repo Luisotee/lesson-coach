@@ -2,8 +2,8 @@
 
 Four dimensions, each "yes", "to some extent" or "no". It runs on the offline deployment
 (GlobalStandard: the inputs are our own synthetic cases, no teacher data) through the app's
-`AzureLLM`, so it gets the same retries and token log. Its scores are quoted only for the
-dimensions where it agrees with the hand labels (`judge_labels.yaml`, kappa >= 0.6).
+`AzureLLM` and its offline `judge` task, so it gets the same retries and token log. Its
+scores are quoted only for the dimensions where it agrees with the hand labels (`judge_labels.yaml`, kappa >= 0.6).
 """
 
 from __future__ import annotations
@@ -17,8 +17,8 @@ from app.config import Settings
 from app.llm.azure import AzureLLM
 from app.llm.client import LLMResult
 
-JUDGE_MODEL = "gpt-5.5-offline"
-JUDGE_EFFORT = "low"
+JUDGE_MODEL = Settings.model_fields["model_offline"].default
+JUDGE_EFFORT = Settings.model_fields["judge_reasoning_effort"].default
 DIMENSIONS = ("located", "actionable", "not_revealing", "non_judgmental")
 Level = Literal["yes", "to some extent", "no"]
 
@@ -58,22 +58,9 @@ def judge_schema() -> dict[str, Any]:
     }
 
 
-class JudgeSettings(Settings):
-    model_offline: str = JUDGE_MODEL
-
-
 def judge_llm() -> AzureLLM:
-    """`AzureLLM` pointed at the offline deployment. It logs the calls as task "mistake",
-    the only text task the app has."""
-    base = JudgeSettings()
-    settings = base.model_copy(
-        update={
-            "model_live": base.model_offline,
-            "mistake_reasoning_effort": JUDGE_EFFORT,
-            "mistake_max_completion_tokens": 2000,
-        }
-    )
-    return AzureLLM(settings)
+    """The app's client; its `judge` task runs on `model_offline` with the judge settings."""
+    return AzureLLM(Settings())
 
 
 def judge_input(record: dict[str, Any]) -> str:
@@ -97,7 +84,7 @@ def judge_input(record: dict[str, Any]) -> str:
 
 async def judge(llm: AzureLLM, record: dict[str, Any]) -> LLMResult[JudgeOut]:
     return await llm.structured(
-        task="mistake",
+        task="judge",
         messages=[
             {"role": "system", "content": JUDGE_SYSTEM},
             {"role": "user", "content": judge_input(record)},
