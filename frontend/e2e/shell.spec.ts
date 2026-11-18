@@ -1,10 +1,6 @@
 import { expect, test } from '@playwright/test'
-import { readFileSync } from 'node:fs'
-import { expectNoAxeViolations } from './a11y.ts'
+import { expectNoAxeViolations, t } from './a11y.ts'
 import { mockApi } from './api.ts'
-
-// The Arabic strings come from the locale file, which the translation pipeline rewrites.
-const ar = JSON.parse(readFileSync(new URL('../src/locales/ar.json', import.meta.url), 'utf8'))
 
 test.beforeEach(async ({ page }) => {
   await mockApi(page)
@@ -96,13 +92,16 @@ test('the language picker switches to Arabic, right to left, and remembers it', 
   await page.getByLabel('Language').selectOption('ar')
   await expect(page.locator('html')).toHaveAttribute('lang', 'ar')
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
-  await expect(page.getByRole('link', { name: ar.nav.topics })).toBeVisible()
+  await expect(page.getByRole('link', { name: t('ar', 'nav.topics') })).toBeVisible()
 
-  await page.getByRole('link', { name: ar.nav.mistake }).first().click()
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText(ar.mistake.title)
+  await page
+    .getByRole('link', { name: t('ar', 'nav.mistake') })
+    .first()
+    .click()
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(t('ar', 'mistake.title'))
   await page.reload()
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText(ar.mistake.title)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(t('ar', 'mistake.title'))
 })
 
 test('the dev showcases are not in the production build', async ({ page }) => {

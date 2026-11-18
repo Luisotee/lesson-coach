@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, type Page } from '@playwright/test'
+import { readFileSync } from 'node:fs'
 
 /** WCAG 2.0, 2.1 and 2.2 A and AA. `wcag22aa` brings axe's `target-size` (2.5.8). */
 export const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
@@ -66,11 +67,31 @@ export async function checkState(page: Page, label?: string, { loading = false }
 }
 
 /**
- * Waits until "Explain this" is back from its disabled look (opacity 0.5). The fade is 0.01 ms
- * under reduced motion, but a busy machine can still be caught in it by axe's contrast check.
+ * Waits until "Explain this" (by its name in the active language) is back from its disabled
+ * look (opacity 0.5). The fade is 0.01 ms under reduced motion, but a busy machine can still be
+ * caught in it by axe's contrast check.
  */
-export async function explainSettled(page: Page) {
-  await expect(page.getByRole('button', { name: 'Explain this' })).toHaveCSS('opacity', '1')
+export async function explainSettled(page: Page, name = 'Explain this') {
+  await expect(page.getByRole('button', { name })).toHaveCSS('opacity', '1')
+}
+
+const LOCALES = new Map<string, Record<string, unknown>>()
+
+/**
+ * A string from a locale file by dotted key, raw (ICU placeholders left in). Read from the
+ * file, not hard-coded, because the translation pipeline may rewrite it.
+ */
+export function t(lang: string, key: string): string {
+  if (!LOCALES.has(lang))
+    LOCALES.set(
+      lang,
+      JSON.parse(readFileSync(new URL(`../src/locales/${lang}.json`, import.meta.url), 'utf8')),
+    )
+  const value = key
+    .split('.')
+    .reduce<unknown>((o, k) => (o as Record<string, unknown>)?.[k], LOCALES.get(lang))
+  if (typeof value !== 'string') throw new Error(`${lang}: no string at ${key}`)
+  return value
 }
 
 /** Types into a MathLive field by its label. */

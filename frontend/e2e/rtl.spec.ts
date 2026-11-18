@@ -1,8 +1,7 @@
 import { expect, test, type Page, type Route } from '@playwright/test'
 import { IntlMessageFormat } from 'intl-messageformat'
-import { readFileSync } from 'node:fs'
 import { LANGUAGES } from '../src/i18n/languages.ts'
-import { checkState, expectNoSideScroll, expectNothingClipped } from './a11y.ts'
+import { checkState, expectNoSideScroll, expectNothingClipped, explainSettled, t } from './a11y.ts'
 import { fixture } from './api.ts'
 
 // Right-to-left pages against the real build and the real translated packs (no mocks). With
@@ -83,32 +82,16 @@ for (const lang of RTL) {
  * marked lang="en", as a real result in another language would be marked with its own.
  */
 
-/** A locale file's string by dotted key. */
-const LOCALES = new Map<string, Record<string, unknown>>()
-function t(lang: string, key: string): string {
-  if (!LOCALES.has(lang))
-    LOCALES.set(
-      lang,
-      JSON.parse(readFileSync(new URL(`../src/locales/${lang}.json`, import.meta.url), 'utf8')),
-    )
-  const value = key
-    .split('.')
-    .reduce<unknown>((o, k) => (o as Record<string, unknown>)?.[k], LOCALES.get(lang))
-  if (typeof value !== 'string') throw new Error(`${lang}: no string at ${key}`)
-  return value
-}
-
-async function mockModel(page: Page) {
+/** Mocks only the two model calls; the packs come from the real server. */
+async function mockModel(page: Page, mistake = 'mistake/diagnosed.json') {
   const reply = (path: string) => (route: Route) =>
     route.fulfill({ contentType: 'application/json', body: JSON.stringify(fixture(path)) })
-  await page.route('**/api/mistake', reply('mistake/diagnosed.json'))
+  await page.route('**/api/mistake', reply(mistake))
   await page.route('**/api/check-working', reply('check/bad-line.json'))
 }
 
-async function mistakeResult(page: Page, lang: string, fixturePath: string) {
-  await page.route('**/api/mistake', (route) =>
-    route.fulfill({ contentType: 'application/json', body: JSON.stringify(fixture(fixturePath)) }),
-  )
+/** Asks about 2/5 for 1/2 + 1/3; the result is whatever mockModel was given. */
+async function mistakeResult(page: Page, lang: string) {
   await page.goto(`/mistake?lng=${lang}`)
   const fields = page.locator('math-field')
   await fields.nth(0).focus()
@@ -118,8 +101,11 @@ async function mistakeResult(page: Page, lang: string, fixturePath: string) {
   await page.getByRole('button', { name: t(lang, 'mistake.explain') }).click()
 }
 
-/** Every page, in a settled state worth checking, by the active language. */
-const LANG_STATES: [string, (page: Page, lang: string) => Promise<void>][] = [
+/**
+ * Every page, in a settled state worth checking, by the active language, with the mistake
+ * fixture its model call answers with.
+ */
+const LANG_STATES: [string, (page: Page, lang: string) => Promise<void>, string?][] = [
   [
     'home',
     async (page, lang) => {
@@ -160,16 +146,17 @@ const LANG_STATES: [string, (page: Page, lang: string) => Promise<void>][] = [
   [
     'mistake, diagnosed',
     async (page, lang) => {
-      await mistakeResult(page, lang, 'mistake/diagnosed.json')
+      await mistakeResult(page, lang)
       await expect(page.locator('[data-status="diagnosed"]')).toBeVisible()
     },
   ],
   [
     'mistake, unclear',
     async (page, lang) => {
-      await mistakeResult(page, lang, 'mistake/unclear.json')
+      await mistakeResult(page, lang)
       await expect(page.locator('[data-status="unclear"]')).toBeVisible()
     },
+    'mistake/unclear.json',
   ],
   [
     'not found',
@@ -197,26 +184,21 @@ const LAYOUTS: { lang: string; name: string; use: Parameters<typeof test.use>[0]
 for (const layout of LAYOUTS) {
   test.describe(`${layout.lang} at ${layout.name}`, () => {
     test.use(layout.use)
-    for (const [name, reach] of LANG_STATES) {
+    for (const [name, reach, mistake] of LANG_STATES) {
       test(`${name}: axe, reflow, nothing clipped`, async ({ page }) => {
-        await mockModel(page)
+        await mockModel(page, mistake)
         await reach(page, layout.lang)
         const html = page.locator('html')
         await expect(html).toHaveAttribute('lang', layout.lang)
         await expect(html).toHaveAttribute('dir', layout.lang === 'ar' ? 'rtl' : 'ltr')
         for (const el of await page.locator('[role="math"]').all())
           await expect(el).toHaveCSS('direction', 'ltr')
-        await explainSettledIn(page, layout.lang)
+        if (name.startsWith('mistake'))
+          await explainSettled(page, t(layout.lang, 'mistake.explain'))
         await checkState(page, `${layout.lang} ${name}`)
       })
     }
   })
-}
-
-/** "Explain this" fades back from its disabled look; axe must not catch it mid-fade. */
-async function explainSettledIn(page: Page, lang: string) {
-  const button = page.getByRole('button', { name: t(lang, 'mistake.explain') })
-  if (await button.count()) await expect(button).toHaveCSS('opacity', '1')
 }
 
 test.describe('print in Arabic', () => {
