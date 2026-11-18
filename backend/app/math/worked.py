@@ -210,7 +210,9 @@ def _int_node(value: int) -> Node:
 
 
 def _signed_sum_steps(node: Node) -> list[Step] | None:
-    """`-7 + 4` becomes `-(7 - 4)`; `3 - 7` becomes `-(7 - 3)`; `-3 + (-4)` becomes `-(3 + 4)`."""
+    """`-7 + 4` becomes `-(7 - 4)`; `3 - 7` becomes `-(7 - 3)`; `-3 + (-4)` becomes `-(3 + 4)`.
+    A zero or two opposite numbers (`0 - 7`, `-4 + 4`) need no middle line: the fallback shows
+    them as written."""
     if not (isinstance(node, Bin) and node.op in ("+", "-")):
         return None
     a, b = _integer(node.left), _integer(node.right)
@@ -222,6 +224,8 @@ def _signed_sum_steps(node: Node) -> list[Step] | None:
         b = -b
     if a >= 0 and b >= 0:
         return None  # nothing signed to explain
+    if 0 in (a, b) or a == -b:
+        return None
     total = a + b
     big, small = (a, b) if abs(a) >= abs(b) else (b, a)
     if (a < 0) == (b < 0):
@@ -246,20 +250,24 @@ def _signed_product_steps(node: Node) -> list[Step] | None:
     middle = f"{abs(a)}{node.op}{abs(b)}"
     if value < 0:
         middle = f"-({middle})"
-    return [Step(f"{_signed(a)}{node.op}{_signed(b)}"), Step(middle), Step(str(value))]
+    return [Step(render(node)), Step(middle), Step(str(value))]
 
 
 def _whole_times_fraction_steps(node: Node) -> list[Step] | None:
-    """`3*(2/5)` becomes `(3*2)/5`, then `6/5` (then simplified when it can be)."""
+    """`3*(2/5)` becomes `(3*2)/5`, and `(2/5)*3` becomes `(2*3)/5`, then `6/5` (then
+    simplified when it can be)."""
     if not (isinstance(node, Bin) and node.op == "*"):
         return None
     whole, frac = _integer(node.left), _fraction(node.right)
+    whole_first = True
     if whole is None or frac is None:
         whole, frac = _integer(node.right), _fraction(node.left)
+        whole_first = False
     if whole is None or frac is None or frac[1] == 0:
         return None
     top, bottom = frac
-    lines = [render(node), f"({_signed(whole)}*{_signed(top)})/{bottom}"]
+    factors = (whole, top) if whole_first else (top, whole)
+    lines = [render(node), f"({_signed(factors[0])}*{_signed(factors[1])})/{bottom}"]
     lines.append(f"{whole * top}/{bottom}")
     value = sympy.Rational(whole * top, bottom)
     if value.q != bottom or value.p != whole * top:
@@ -275,10 +283,7 @@ def _fraction_quotient_steps(node: Node) -> list[Step] | None:
     if left is None or right is None or 0 in (left[1], right[0], right[1]):
         return None
     (a, b), (c, d) = left, right
-    if d < 0 or b < 0:
-        return None
-    flipped = f"({c}/{d})" if c > 0 else None
-    if flipped is None:
+    if d < 0 or b < 0 or c <= 0:
         return None
     reciprocal = f"{d}/{c}"
     top, bottom = a * d, b * c

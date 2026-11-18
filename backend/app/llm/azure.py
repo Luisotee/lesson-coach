@@ -118,28 +118,34 @@ class AzureLLM:
                 if time.monotonic() + delay >= deadline:
                     error: LLMError = "deadline" if attempts > 1 else "unavailable"
                     result = LLMResult(None, error)
-                    self._log(task, start, attempts, result, type(err).__name__)
+                    self._log(task, model, start, attempts, result, type(err).__name__)
                     return result
                 await sleep(delay)
                 continue
             except openai.OpenAIError as err:  # 400, 401, 404...: retrying won't help
                 result = LLMResult(None, "unavailable")
-                self._log(task, start, attempts, result, type(err).__name__)
+                self._log(task, model, start, attempts, result, type(err).__name__)
                 return result
             result = _read(response, output)
             result.attempts = attempts
-            self._log(task, start, attempts, result, None)
+            self._log(task, model, start, attempts, result, None)
             return result
 
     def _log(
-        self, task: Task, start: float, attempts: int, result: LLMResult[Any], cause: str | None
+        self,
+        task: Task,
+        model: str,
+        start: float,
+        attempts: int,
+        result: LLMResult[Any],
+        cause: str | None,
     ) -> None:
         log.info(
             json.dumps(
                 {
                     "event": "llm_call",
                     "task": task,
-                    "model": self._task_settings(task)[0],
+                    "model": model,
                     "latency_ms": round((time.monotonic() - start) * 1000),
                     "attempts": attempts,
                     "outcome": result.error or "ok",

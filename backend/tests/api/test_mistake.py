@@ -90,7 +90,7 @@ def test_unexplained_wrong_answer_makes_one_ai_call(make_client: MakeClient) -> 
     assert diagnosis["source"] == "ai" and diagnosis["rule_checked"] is False
     assert diagnosis["misconceptions"][0]["belief"].startswith("To add fractions")
     assert diagnosis["margin_note"] == "added the bottoms too"
-    assert diagnosis["try_next"]["prompt"] == "Add one quarter and one half."
+    assert diagnosis["try_next"]["prompt"] == "Work out:"
     assert (diagnosis["lang"], diagnosis["cards_lang"]) == ("fr", "en")
     # The AI is told sympy's verified answer, and the request comes last.
     messages = llm.calls[0]["messages"]

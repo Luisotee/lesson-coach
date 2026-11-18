@@ -75,13 +75,18 @@ def test_signed_sum_steps() -> None:
     assert lines("evaluate", "-3 + (-4)")[1] == ("-(3 + 4)", "", "")
 
 
+@pytest.mark.parametrize(("expr", "value"), [("-4 + 4", "0"), ("0 - 7", "-7"), ("-5 + 0", "-5")])
+def test_zero_and_opposites_are_shown_as_written(expr: str, value: str) -> None:
+    assert lines("evaluate", expr) == [(expr, value, "")]
+
+
 def test_signed_product_steps() -> None:
     assert lines("evaluate", "(-4)*(-6)") == [
-        ("(-4)*(-6)", "", ""),
+        ("-4*(-6)", "", ""),
         ("4*6", "", ""),
         ("24", "", ""),
     ]
-    assert lines("evaluate", "-9*3")[1:] == [("-(9*3)", "", ""), ("-27", "", "")]
+    assert lines("evaluate", "-9*3") == [("-9*3", "", ""), ("-(9*3)", "", ""), ("-27", "", "")]
     assert lines("evaluate", "-100/(-4)")[1:] == [("100/4", "", ""), ("25", "", "")]
 
 
@@ -92,6 +97,7 @@ def test_whole_times_fraction_steps() -> None:
         ("6/5", "", ""),
     ]
     assert lines("evaluate", "4*(3/8)")[-2:] == [("12/8", "", ""), ("3/2", "", "")]
+    assert lines("evaluate", "(2/5)*3")[1] == ("(2*3)/5", "", "")
 
 
 def test_fraction_quotient_steps() -> None:

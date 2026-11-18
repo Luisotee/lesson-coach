@@ -4,8 +4,10 @@
 
 Each piece of LLM prose (the pack text, and each worked example's step explanations) goes
 through the same loop: deterministic checks, then an LLM judge (a majority of 3 when it flags
-anything); on failure one targeted retry that quotes the findings, then up to 3 fresh samples.
-What still fails is dropped: its field is null and listed in `unavailable`. Misconceptions and
+anything) over every part that passed the checks; on failure one targeted retry that quotes
+the findings, then up to 3 fresh samples. What still fails is dropped: its field is null and
+listed in `unavailable`. If the judge gives no verdict after retries, its unit is dropped too:
+nothing ships unjudged. Misconceptions and
 practice are copied from the source files, which are already written and tested.
 """
 
@@ -62,6 +64,8 @@ from pipeline.sources import Sources, load, write_pack
 
 SAMPLES = 3  # fresh samples after the targeted retry
 JUDGES = 3  # judge samples when the first judge flags something; the majority decides
+JUDGE_ATTEMPTS = 3  # calls per judge sample before the judge counts as unavailable
+CONCURRENCY = 8  # LLM calls in flight at once, across all topics
 LIMITS = {"summary": 200, "idea": 2000, "why_it_works": 2000, "title": 200, "text": 600}
 PACK_AI_FIELDS = ["summary", "idea", "why_it_works", "questions", "outline"]
 STEP_AI_FIELDS = ["why", "another_way", "visual"]
@@ -84,22 +88,45 @@ class Stats:
 Failing = dict[str, list[str]]  # path -> findings
 
 
+class PackError(Exception):
+    """A built pack fails the deterministic checks: a bug in this file, not in the LLM output."""
+
+
+def score(failing: Failing) -> float:
+    """How bad a candidate is: a whole-unit failure is worse than any number of failing parts."""
+    return float("inf") if "*" in failing else len(failing)
+
+
+def judged_key(name: str, texts: dict[str, str]) -> str:
+    """The `texts` key a judge's field name is about: the longest key it starts with
+    (`questions[0].answer` -> `questions[0]`), else the whole unit `*`."""
+    keys = [k for k in texts if name == k or (name.startswith(k) and not name[len(k)].isalnum())]
+    return max(keys, key=len) if keys else "*"
+
+
+def skipped(key: str, failing: Failing) -> bool:
+    """`key` (such as `outline[2]`) is already failing, on its own or as part of its list."""
+    return key in failing or key.split("[")[0] in failing
+
+
 class Runner:
-    def __init__(self, llm: LLM, stats: Stats) -> None:
+    def __init__(self, llm: LLM, stats: Stats, concurrency: int = CONCURRENCY) -> None:
         self.llm = llm
         self.stats = stats
+        self.slots = asyncio.Semaphore(concurrency)
 
     async def call[T: BaseModel](
         self, task: Task, messages: list[dict[str, object]], out: type[T]
     ) -> T | None:
         self.stats.calls[task] += 1
-        result = await self.llm.structured(
-            task=task,
-            messages=messages,
-            schema_name=out.__name__,
-            schema=strict_schema(out),
-            output=out,
-        )
+        async with self.slots:
+            result = await self.llm.structured(
+                task=task,
+                messages=messages,
+                schema_name=out.__name__,
+                schema=strict_schema(out),
+                output=out,
+            )
         usage = result.usage
         self.stats.prompt_tokens += usage.prompt_tokens
         self.stats.cached_tokens += usage.cached_tokens
@@ -110,30 +137,37 @@ class Runner:
         value: T | None = result.value
         return value
 
-    async def judge(self, lesson: str, facts: str, texts: dict[str, str]) -> Failing:
-        """Fields with an unsupported claim, by majority when the first judge flags any."""
+    async def judge(self, lesson: str, facts: str, texts: dict[str, str]) -> Failing | None:
+        """Fields with an unsupported claim, by majority when the first judge flags any. None
+        when the judge gives no verdict, even after retrying: then nothing may ship."""
+        if not texts:
+            return {}
 
         async def once() -> Failing | None:
-            out = await self.call("judge", judge_messages(lesson, facts, texts), JudgeOut)
-            if out is None:
+            for _ in range(JUDGE_ATTEMPTS):
+                out = await self.call("judge", judge_messages(lesson, facts, texts), JudgeOut)
+                if out is not None:
+                    break
+            else:
                 return None
             flagged: Failing = {}
             for claim in out.claims:
                 if claim.verdict == "unsupported":
-                    key = claim.field if claim.field in texts else "*"
+                    key = judged_key(claim.field, texts)
                     flagged.setdefault(key, []).append(f"judge: {claim.claim} ({claim.reason})")
             return flagged
 
         first = await once()
-        if first is None:
-            return {"*": ["the judge gave no verdict"]}
         if not first:
-            return {}
-        runs = [first, *[r for r in await asyncio.gather(*(once() for _ in range(JUDGES - 1)))]]
+            return first
+        more = await asyncio.gather(*(once() for _ in range(JUDGES - 1)))
+        runs = [first, *more]
+        if any(run is None for run in runs):
+            return None
         votes: Counter[str] = Counter()
         reasons: Failing = {}
         for run in runs:
-            for key, why in (run or {"*": ["the judge gave no verdict"]}).items():
+            for key, why in (run or {}).items():
                 votes[key] += 1
                 reasons.setdefault(key, why)
         majority = {k: reasons[k] for k, n in votes.items() if n * 2 > len(runs)}
@@ -146,26 +180,38 @@ class Runner:
         messages: list[dict[str, object]],
         out: type[T],
         check: Callable[[T], Failing],
-        verdict: Callable[[T], Awaitable[Failing]],
+        verdict: Callable[[T, Failing], Awaitable[Failing | None]],
     ) -> tuple[T | None, Failing]:
-        """Sample, check, retry with the findings, then vote over fresh samples."""
+        """Sample, check, retry with the findings, then vote over fresh samples.
+
+        Every candidate is judged on the parts that passed the deterministic checks, so no
+        part ships unjudged. If the judge gives no verdict, the unit stops: the best judged
+        candidate so far is returned, or nothing."""
         best: tuple[T | None, Failing] = (None, {"*": ["no output"]})
 
-        async def evaluate(candidate: T | None) -> Failing:
+        async def evaluate(candidate: T | None) -> Failing | None:
             if candidate is None:
                 return {"*": ["no output"]}
             failing = check(candidate)
-            if not failing:
-                failing = await verdict(candidate)
-            return failing
+            if "*" in failing:
+                return failing
+            judged = await verdict(candidate, failing)
+            if judged is None:
+                return None
+            return {**judged, **failing}
 
         def keep(candidate: T | None, failing: Failing) -> None:
             nonlocal best
-            if candidate is not None and (best[0] is None or len(failing) < len(best[1])):
+            if candidate is not None and (best[0] is None or score(failing) < score(best[1])):
                 best = (candidate, failing)
+
+        def no_judge() -> tuple[T | None, Failing]:
+            return best if best[0] is not None else (None, {"*": ["the judge gave no verdict"]})
 
         first = await self.call("generate", messages, out)
         failing = await evaluate(first)
+        if failing is None:
+            return no_judge()
         keep(first, failing)
         if not failing:
             return first, {}
@@ -179,6 +225,8 @@ class Runner:
             ]
             second = await self.call("generate", again, out)
             failing = await evaluate(second)
+            if failing is None:
+                return no_judge()
             keep(second, failing)
             if not failing:
                 return second, {}
@@ -186,6 +234,8 @@ class Runner:
             self.stats.samples += 1
             sample = await self.call("generate", messages, out)
             failing = await evaluate(sample)
+            if failing is None:
+                return no_judge()
             keep(sample, failing)
             if not failing:
                 return sample, {}
@@ -269,7 +319,7 @@ def skeleton(topic: TopicId, steps_for: StepsFor) -> list[WorkedExample]:
         mp = math_problem(problem)
         steps = steps_for(mp)
         if len(steps) < 3:
-            raise SystemExit(f"{topic}: no real worked steps for {problem.expr}")
+            raise PackError(f"{topic}: no real worked steps for {problem.expr}")
         examples.append(
             WorkedExample(
                 problem=problem,
@@ -288,12 +338,14 @@ async def build_pack(
     examples = skeleton(topic, steps_for)
     facts = "\n\n".join(example_facts(e) for e in examples)
 
-    async def pack_verdict(c: PackProseOut) -> Failing:
-        return await runner.judge(lesson, facts, prose_texts(c))
+    async def pack_verdict(c: PackProseOut, failing: Failing) -> Failing | None:
+        texts = {k: v for k, v in prose_texts(c).items() if not skipped(k, failing)}
+        return await runner.judge(lesson, facts, texts)
 
     async def explain(example: WorkedExample) -> tuple[StepsOut | None, Failing]:
-        async def verdict(c: StepsOut) -> Failing:
-            return await runner.judge(lesson, example_facts(example), steps_texts(c))
+        async def verdict(c: StepsOut, failing: Failing) -> Failing | None:
+            texts = {k: v for k, v in steps_texts(c).items() if not skipped(k, failing)}
+            return await runner.judge(lesson, example_facts(example), texts)
 
         return await runner.unit(
             steps_messages(lesson, example),
@@ -319,19 +371,24 @@ async def build_pack(
 
     questions: list[StudentQuestion] = []
     outline: list[OutlineStep] = []
-    if not whole and prose_out is not None:
-        questions = [
-            StudentQuestion(question=q.question.strip(), answer=q.answer.strip())
-            for i, q in enumerate(prose_out.questions)
-            if f"questions[{i}]" not in prose_failing and "questions" not in prose_failing
+    dropped_questions: list[str] = []
+    if not whole and prose_out is not None and "questions" not in prose_failing:
+        for i, q in enumerate(prose_out.questions):
+            if f"questions[{i}]" in prose_failing:
+                dropped_questions.append(f"questions[{i}]")
+            else:
+                questions.append(
+                    StudentQuestion(question=q.question.strip(), answer=q.answer.strip())
+                )
+    if (
+        not whole
+        and prose_out is not None
+        and not any(k.split("[")[0] == "outline" for k in prose_failing)  # all parts or none
+    ):
+        outline = [
+            OutlineStep(minutes=o.minutes, title=o.title.strip(), activity=o.activity.strip())
+            for o in prose_out.outline
         ]
-        if "outline" not in prose_failing and not any(
-            k.startswith("outline[") for k in prose_failing
-        ):
-            outline = [
-                OutlineStep(minutes=o.minutes, title=o.title.strip(), activity=o.activity.strip())
-                for o in prose_out.outline
-            ]
 
     worked = []
     for example, (out, failing) in zip(examples, explained, strict=True):
@@ -370,25 +427,38 @@ async def build_pack(
         source_hash=sources.hash,
         model=model,
     )
-    pack = pack.model_copy(update={"unavailable": sorted(dropped_paths(pack))})
+    unavailable = sorted(dropped_paths(pack) | set(dropped_questions))
+    pack = pack.model_copy(update={"unavailable": unavailable})
     runner.stats.dropped += [f"{topic}: {p}" for p in pack.unavailable]
     return pack
 
 
 async def generate(
-    topics: list[TopicId], llm: LLM, model: str, steps_for: StepsFor = worked_steps
+    topics: list[TopicId],
+    llm: LLM,
+    model: str,
+    steps_for: StepsFor = worked_steps,
+    on_pack: Callable[[Pack], object] = lambda pack: None,
 ) -> tuple[list[Pack], Stats]:
+    """Builds the topics concurrently. Each pack goes to `on_pack` as soon as it passes the
+    checks, so one failing topic doesn't lose the others' paid output."""
     stats = Stats()
     runner = Runner(llm, stats)
-    packs = []
-    for topic in topics:
+
+    async def one(topic: TopicId) -> Pack:
         sources = load(topic)
         pack = await build_pack(sources, runner, steps_for, model)
         problems = pack_findings(pack, sources, steps_for)
-        if problems:  # a bug in this file, not in the LLM output: never write such a pack
-            raise SystemExit("\n".join(str(p) for p in problems))
-        packs.append(pack)
-    return packs, stats
+        if problems:  # never write such a pack
+            raise PackError("\n".join(f"{topic}: {p}" for p in problems))
+        on_pack(pack)
+        return pack
+
+    results = await asyncio.gather(*(one(t) for t in topics), return_exceptions=True)
+    errors = [r for r in results if isinstance(r, BaseException)]
+    if errors:
+        raise PackError("\n".join(str(e) for e in errors)) from errors[0]
+    return [r for r in results if isinstance(r, Pack)], stats
 
 
 def main() -> None:
@@ -399,9 +469,14 @@ def main() -> None:
     args = parser.parse_args()
     topics: list[TopicId] = list(TOPIC_IDS) if args.topic == "all" else [args.topic]
     llm, model = offline_llm()
-    packs, stats = asyncio.run(generate(topics, llm, model))
-    for pack in packs:
+
+    def write(pack: Pack) -> None:
         print(f"wrote {write_pack(pack)} (unavailable: {pack.unavailable or 'none'})")
+
+    try:
+        packs, stats = asyncio.run(generate(topics, llm, model, on_pack=write))
+    except PackError as err:
+        raise SystemExit(str(err)) from err
     from pipeline.verify import write_report
 
     judged: dict[TopicId, dict[str, list[str]]] = {p.topic: {} for p in packs}

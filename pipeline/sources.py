@@ -13,7 +13,7 @@ from app.content.schema import LessonMeta, MisconceptionSet, Pack, PracticeSet, 
 from pipeline import ROOT
 
 CONTENT = ROOT / "content"
-PROMPT_VERSION = "1"  # bump when a prompt changes, so every pack is regenerated
+PROMPT_VERSION = "2"  # bump when a prompt changes, so every pack is regenerated
 
 
 @dataclass(frozen=True)

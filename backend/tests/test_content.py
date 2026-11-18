@@ -247,8 +247,11 @@ def test_case_validators_accept_a_diagnosed_row() -> None:
     MistakeCase.model_validate({**data["cases"][0], "expected": DIAGNOSED})
 
 
-def test_prompt_cannot_carry_stray_numbers() -> None:
+@pytest.mark.parametrize(
+    "prompt", ["Solve 8x = 57.", "Solve 8x = 56.", "Solve for y:", "Add one half and one third."]
+)
+def test_prompt_is_an_allowed_instruction(prompt: str) -> None:
     item = practice("linear-equations").items[0].model_dump()
-    with pytest.raises(ValidationError, match="prompt numbers"):
-        PracticeItem.model_validate({**item, "prompt": "Solve 8x = 57."})
-    PracticeItem.model_validate({**item, "prompt": "Solve 8x = 56."})
+    with pytest.raises(ValidationError, match="prompt must be one of"):
+        PracticeItem.model_validate({**item, "prompt": prompt})
+    PracticeItem.model_validate({**item, "prompt": "Solve for x:"})

@@ -36,13 +36,24 @@ Sha = Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{40}$")]
 
 NUMBER = re.compile(r"\d+(?:\.\d+)?")
 
+# The prompts a problem may carry, by language: instructions only, because the page shows the
+# problem's math beside them. `{var}` is the letter to solve for. A translation (T9) adds its
+# language here; the prompt text never carries math, so it can't go stale or be mistranslated.
+PROMPTS: dict[str, dict[str, str]] = {
+    "en": {"evaluate": "Work out:", "simplify": "Simplify:", "solve": "Solve for {var}:"},
+}
 
-def check_prompt(prompt: str, expr: str) -> None:
-    """A prompt is an instruction ("Solve:"); any number it mentions must be in `expr`, so a
-    prompt can't carry stale or translated math."""
-    stray = set(NUMBER.findall(prompt)) - set(NUMBER.findall(expr))
-    if stray:
-        raise ValueError(f"prompt numbers not in the problem: {sorted(stray)}")
+
+def prompt_for(kind: str, expr: str, lang: str = "en") -> str:
+    letters = sorted({c for c in expr if c.isalpha()})
+    return PROMPTS[lang][kind].format(var=letters[0] if letters else "")
+
+
+def check_prompt(prompt: str, problem: Problem) -> None:
+    """A prompt is one of the allowed instructions for its problem, in some language."""
+    allowed = {prompt_for(problem.kind, problem.expr, lang) for lang in PROMPTS}
+    if prompt not in allowed:
+        raise ValueError(f"prompt must be one of {sorted(allowed)}, not {prompt!r}")
 
 
 def unique_ids(kind: str, ids: list[str]) -> None:
@@ -117,7 +128,7 @@ class WorkedExample(AiMarked):
 
     @model_validator(mode="after")
     def _prompt(self) -> Self:
-        check_prompt(self.prompt, self.problem.expr)
+        check_prompt(self.prompt, self.problem)
         return self
 
 
@@ -134,7 +145,7 @@ class CheckQuestion(Model):
 
     @model_validator(mode="after")
     def _prompt(self) -> Self:
-        check_prompt(self.prompt, self.problem.expr)
+        check_prompt(self.prompt, self.problem)
         return self
 
 
@@ -200,7 +211,7 @@ class PracticeItem(AiMarked):
     def _rungs(self) -> Self:
         if tuple(h.rung for h in self.hints) != HINT_RUNGS:
             raise ValueError(f"hints must be the rungs {HINT_RUNGS} in order")
-        check_prompt(self.prompt, self.problem.expr)
+        check_prompt(self.prompt, self.problem)
         return self
 
 

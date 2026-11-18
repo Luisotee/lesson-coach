@@ -22,8 +22,10 @@ MATH_RULES = """Math rules:
   contradict them.
 - Write every math expression in backticks as plain text: `2*x + 6 = 10`, `1/2 + 1/3`, `-3`.
   Use only numbers that appear in the given steps.
-- When you say two expressions are equal, write it as "`A` is `B`" and make sure the engine's
-  steps show it."""
+- When you say two expressions are equal, use one of these forms inside a grammatical
+  sentence: "`A` is `B`", "`A` equals `B`" or "`A` becomes `B`" (for a rewrite). For example:
+  "Subtracting a negative is adding, so `5 - (-3)` becomes `5 + 3`." Make sure the engine's
+  steps show the equality."""
 
 AUDIENCE = """You write for math teachers of grades 6-9 who are refreshing a topic before they
 teach it. They work alone, dislike chatbots and want no judgment. Write plainly, in short full
@@ -68,7 +70,10 @@ verdict:
 - supported: the facts support it, or it is a fair teaching statement consistent with them;
 - unsupported: it contradicts the facts, states math the facts don't show, or is wrong;
 - unsure: you cannot tell.
-Give a short reason for anything not supported. Judge only correctness, not style.
+Also list every sentence that is ungrammatical or reads awkwardly (such as "that makes `A` is
+`B`") as a claim with the verdict unsupported and the reason "wording". Use the text's field
+names exactly as given. Give a short reason for anything not supported. Do not judge style
+otherwise.
 {OUTPUT_ONLY}"""
 
 

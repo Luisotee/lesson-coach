@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import asyncio
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 from typing import Any
 
@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from pipeline import generate  # noqa: E402
-from pipeline.checks import lesson_findings, pack_findings, prose  # noqa: E402
+from pipeline.checks import lesson_findings, pack_findings, prose, solutions  # noqa: E402
 from pipeline.generate import Stats  # noqa: E402
 from pipeline.prompts import (  # noqa: E402
     ClaimOut,
@@ -29,16 +29,17 @@ from pipeline.prompts import (  # noqa: E402
     strict_schema,
 )
 from pipeline.sources import load, pack_path  # noqa: E402
-from pipeline.verify import verify_topic  # noqa: E402
+from pipeline.verify import JUDGE_NOTE, judgeable, verify_topic, write_report  # noqa: E402
 
 from app.content.schema import TOPIC_IDS, Pack, PracticeItem, TopicId  # noqa: E402
+from app.content.schema import Problem as ContentProblem  # noqa: E402
 from app.math import Kind, Problem, Step, check_steps  # noqa: E402
 
 # sympy's steps for the worked examples, written out so these tests don't need the generator.
 STEPS: dict[str, list[tuple[str, str, str]]] = {
     "5 - (-3)": [("5 - (-3)", "", ""), ("5 + 3", "", ""), ("8", "", "")],
     "-7 + 4": [("-7 + 4", "", ""), ("-(7 - 4)", "", ""), ("-3", "", "")],
-    "(-4)*(-6)": [("(-4)*(-6)", "", ""), ("4*6", "", ""), ("24", "", "")],
+    "(-4)*(-6)": [("-4*(-6)", "", ""), ("4*6", "", ""), ("24", "", "")],
     "1/2 + 1/3": [("1/2 + 1/3", "", ""), ("3/6 + 2/6", "", ""), ("5/6", "", "")],
     "3*(2/5)": [("3*(2/5)", "", ""), ("(3*2)/5", "", ""), ("6/5", "", "")],
     "(2/3)/(3/4)": [("(2/3)/(3/4)", "", ""), ("(2/3)*(4/3)", "", ""), ("8/9", "", "")],
@@ -94,19 +95,23 @@ class FakeResult:
 
 
 class FakeLLM:
-    """Steps answers come from `steps` (one per call, the last repeats); the judge flags the
-    fields in `flags` (one set per judge call, the last repeats)."""
+    """Steps answers come from `steps` (one per call, the last repeats): a StepOut repeated for
+    every line, or a whole StepsOut. The judge flags the fields in `flags` (one set per judge
+    call, the last repeats), or gives no verdict when `judge_down`."""
 
     def __init__(
         self,
-        steps: list[StepOut] | None = None,
+        steps: list[StepOut | StepsOut] | None = None,
         prose: list[PackProseOut] | None = None,
         flags: list[set[str]] | None = None,
+        judge_down: bool = False,
     ) -> None:
         self.steps = steps or [GOOD_STEP]
         self.prose = prose or [GOOD_PROSE]
         self.flags = flags or [set()]
+        self.judge_down = judge_down
         self.calls: dict[str, int] = {}
+        self.sent: list[str] = []  # every generate message, to see what retries quoted
 
     def _next[T](self, name: str, items: list[T]) -> T:
         n = self.calls.get(name, 0)
@@ -123,6 +128,9 @@ class FakeLLM:
         output: type[BaseModel],
     ) -> FakeResult:
         if output is JudgeOut:
+            if self.judge_down:
+                self.calls["judge"] = self.calls.get("judge", 0) + 1
+                return FakeResult(None, "unavailable")
             text = messages[-1]["content"]
             flags = self._next("judge", self.flags)
             claims = [
@@ -131,15 +139,17 @@ class FakeLLM:
                 if f'"{f}"' in text
             ]
             return FakeResult(JudgeOut(claims=claims))
+        self.sent += [str(m["content"]) for m in messages]
         if output is PackProseOut:
             return FakeResult(self._next("prose", self.prose))
         ask = next(m["content"] for m in messages if "for all " in str(m["content"]))
         lines = int(ask.split("for all ")[1].split()[0])
         step = self._next("steps", self.steps)
-        return FakeResult(StepsOut(steps=[step] * lines))
+        return FakeResult(step if isinstance(step, StepsOut) else StepsOut(steps=[step] * lines))
 
 
 def build(topic: TopicId, llm: FakeLLM) -> tuple[Pack, Stats]:
+    """One topic's pack; the topics run one at a time so FakeLLM's call order is fixed."""
     packs, stats = asyncio.run(generate.generate([topic], llm, "fake-model", fake_steps))
     return packs[0], stats
 
@@ -178,6 +188,71 @@ def test_a_majority_of_judges_drops_the_field() -> None:
     pack, stats = build("fractions", llm)
     assert pack.idea is None and "idea" in pack.unavailable
     assert stats.judge_flags["idea"] >= 1
+
+
+def test_prose_failing_a_check_is_still_judged() -> None:
+    """Every sample fails a check in one question; the judge must still read the rest."""
+    bad_question = QuestionOut(question="Why?", answer="Because `2*x +` here.")
+    sample = GOOD_PROSE.model_copy(update={"questions": [bad_question, *GOOD_PROSE.questions[1:]]})
+    pack, _ = build("fractions", FakeLLM(prose=[sample], flags=[{"idea"}]))
+    assert pack.idea is None
+    assert {"idea", "questions[0]"} <= set(pack.unavailable)
+    assert len(pack.questions) == 3
+    assert pack_findings(pack, load("fractions"), fake_steps) == []
+
+
+def test_a_whole_unit_failure_ranks_below_a_partial_one() -> None:
+    """The first answer has the wrong number of lines; the later ones get one line wrong."""
+    one_bad = StepsOut(steps=[GOOD_STEP, BAD_STEP, GOOD_STEP])
+    llm = FakeLLM(steps=[StepsOut(steps=[GOOD_STEP]), one_bad])
+    pack, _ = build("negative-numbers", llm)
+    explained = [s.explanations is not None for s in pack.worked_examples[0].steps]
+    assert explained == [True, False, True]
+
+
+def test_no_judge_verdict_ships_nothing_and_is_not_sent_back() -> None:
+    llm = FakeLLM(judge_down=True)
+    pack, stats = build("fractions", llm)
+    assert pack.idea is None and pack.summary is None and pack.questions == []
+    assert all(s.explanations is None for e in pack.worked_examples for s in e.steps)
+    assert stats.calls["generate"] == 4 and stats.retries == 0
+    assert stats.calls["judge"] == 4 * generate.JUDGE_ATTEMPTS
+    assert not any("no verdict" in m for m in llm.sent)
+    assert pack_findings(pack, load("fractions"), fake_steps) == []
+
+
+@pytest.mark.parametrize(
+    ("name", "key"),
+    [
+        ("questions[0].answer", "questions[0]"),
+        ("questions[1]", "questions[1]"),
+        ("steps[1].why", "steps[1]"),
+        ("steps[12]", "*"),
+        ("questions", "*"),
+        ("idea", "idea"),
+    ],
+)
+def test_judge_fields_map_to_the_text_they_name(name: str, key: str) -> None:
+    texts = {"idea": "", "questions[0]": "", "questions[1]": "", "steps[1]": ""}
+    assert generate.judged_key(name, texts) == key
+
+
+def test_each_pack_is_handed_on_as_soon_as_it_passes() -> None:
+    def steps_for(problem: Problem) -> list[Step]:
+        return [] if problem.expr == "1/2 + 1/3" else fake_steps(problem)
+
+    written: list[str] = []
+    with pytest.raises(generate.PackError, match="fractions"):
+        asyncio.run(
+            generate.generate(
+                ["negative-numbers", "fractions"],
+                FakeLLM(),
+                "fake-model",
+                steps_for,
+                on_pack=lambda p: written.append(p.topic),
+            )
+        )
+    assert written == ["negative-numbers"]
 
 
 def test_strict_schema_requires_every_property() -> None:
@@ -223,6 +298,7 @@ def broken(pack: Pack, path: str, value: Any) -> Pack:
         ("source_hash", "0" * 64, "stale"),
         ("title", "Another title", "changed"),
         ("unavailable", ["idea"], "mismatch"),
+        ("unavailable", ["questions[9]"], "mismatch"),
     ],
 )
 def test_verify_rejects_a_broken_pack(good: Pack, path: str, value: Any, check: str) -> None:
@@ -230,12 +306,32 @@ def test_verify_rejects_a_broken_pack(good: Pack, path: str, value: Any, check: 
     assert check in {f.check for f in findings}, findings
 
 
-def test_the_schema_rejects_a_prompt_with_stray_math(good: Pack) -> None:
-    with pytest.raises(ValueError, match="prompt numbers"):
+def test_the_schema_rejects_a_prompt_with_math(good: Pack) -> None:
+    with pytest.raises(ValueError, match="prompt must be one of"):
         broken(good, "worked_examples[0].prompt", "Solve 2x + 6 = 12:")
     item = good.practice[0].model_dump()
-    with pytest.raises(ValueError, match="prompt numbers"):
-        PracticeItem.model_validate({**item, "prompt": "Solve 8x = 57."})
+    with pytest.raises(ValueError, match="prompt must be one of"):
+        PracticeItem.model_validate({**item, "prompt": "Divide eight by two."})
+
+
+def test_claims_about_the_unknown_use_the_solution() -> None:
+    known = solutions(ContentProblem(kind="solve", expr="2*x + 6 = 10"))
+    assert prose("t", "So `x` is `2`, and `2*x` equals `4`.", known=known) == []
+    assert prose("t", "So `x` is `3`.", known=known)
+    assert prose("t", "Then `2*x + 6` becomes `9`.", known=known)
+    assert prose("t", "So `x` is `3`.") == []  # no solution known: can't be checked
+
+
+def test_wrong_answers_are_skipped_only_in_the_misconception_section() -> None:
+    sources = load("negative-numbers")
+    wrong = sources.misconceptions.misconceptions[0]
+    claim = f"`{wrong.example_problem.expr}` is `{wrong.example_wrong_answer}`"
+    lesson = sources.lesson.replace(
+        "## Common misconceptions\n", f"## Common misconceptions\n{claim}\n"
+    )
+    assert lesson_findings(replace(sources, lesson=lesson)) == []
+    lesson = sources.lesson.replace("## The idea\n", f"## The idea\n{claim}\n")
+    assert lesson_findings(replace(sources, lesson=lesson))
 
 
 def test_claims_skip_only_the_stated_wrong_answer() -> None:
@@ -247,6 +343,21 @@ def test_claims_skip_only_the_stated_wrong_answer() -> None:
 @pytest.mark.parametrize("topic", TOPIC_IDS)
 def test_lessons_hold_every_claim(topic: TopicId) -> None:
     assert lesson_findings(load(topic)) == []
+
+
+def test_topics_without_a_readable_pack_are_not_judged() -> None:
+    assert judgeable("xx") == []
+
+
+def test_the_report_keeps_one_judge_note(tmp_path: Path) -> None:
+    report = tmp_path / "report.md"
+    report.write_text("# old\n\n## Generation\n\n- LLM calls: 1\n")
+    for _ in range(3):
+        write_report(report, "en", judged={})
+        write_report(report, "en", judged={"fractions": {}})
+    text = report.read_text()
+    assert text.count(JUDGE_NOTE) == 1 and text.count("## Generation") == 1
+    assert "- LLM calls: 1" in text
 
 
 @pytest.mark.parametrize("topic", TOPIC_IDS)

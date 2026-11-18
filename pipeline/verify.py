@@ -38,6 +38,11 @@ DEFAULT_PRICES = {"input": "5.00", "cached": "0.50", "output": "30.00"}
 PRICES = {k: os.environ.get(f"PRICE_{k.upper()}", v) for k, v in DEFAULT_PRICES.items()}
 
 
+NO_VERDICT = {"*": ["the judge gave no verdict"]}
+JUDGE_NOTE = "The judge columns come from an independent `verify.py --judge` run."
+UNREADABLE = {"missing", "schema"}  # findings that leave no pack to judge
+
+
 @dataclass
 class TopicResult:
     topic: TopicId
@@ -92,7 +97,7 @@ async def judge_topic(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str
     flagged: dict[str, list[str]] = {}
     for i, found in enumerate(await asyncio.gather(*jobs)):
         prefix = "" if i == 0 else f"worked_examples[{i - 1}]."
-        for key, why in found.items():
+        for key, why in (found if found is not None else NO_VERDICT).items():
             flagged[prefix + key] = why
     return flagged
 
@@ -168,11 +173,21 @@ def write_report(
     if stats is None and path.exists():  # keep the last generation's numbers
         old = path.read_text()
         if "\n## Generation\n" in old:
-            lines += ["", "## Generation" + old.split("\n## Generation", 1)[1].rstrip("\n")]
+            section = old.split("\n## Generation", 1)[1].split(f"\n{JUDGE_NOTE}")[0]
+            lines += ["", "## Generation" + section.rstrip("\n")]
     if judged and stats is None:
-        lines += ["", "The judge columns come from an independent `verify.py --judge` run."]
+        lines += ["", JUDGE_NOTE]
     path.write_text("\n".join(lines) + "\n")
     return results
+
+
+def judgeable(lang: str) -> list[TopicId]:
+    """The topics whose pack exists and loads; the others already fail verify."""
+    return [
+        r.topic
+        for r in (verify_topic(t, lang) for t in TOPIC_IDS)
+        if not any(f.check in UNREADABLE for f in r.findings)
+    ]
 
 
 def main() -> None:
@@ -185,9 +200,11 @@ def main() -> None:
     if args.judge:
         llm, _ = offline_llm()
 
+        topics = judgeable(args.lang)
+
         async def run() -> dict[TopicId, dict[str, list[str]]]:
-            found = await asyncio.gather(*(judge_topic(t, args.lang, llm) for t in TOPIC_IDS))
-            return dict(zip(TOPIC_IDS, found, strict=True))
+            found = await asyncio.gather(*(judge_topic(t, args.lang, llm) for t in topics))
+            return dict(zip(topics, found, strict=True))
 
         judged = asyncio.run(run())
     if args.report:

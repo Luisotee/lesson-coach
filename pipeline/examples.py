@@ -1,6 +1,7 @@
 """The three worked examples per topic, chosen to mirror the topic's misconceptions."""
 
 from app.content.schema import Problem, TopicId
+from app.content.schema import prompt_for as schema_prompt_for
 
 EXAMPLES: dict[TopicId, list[Problem]] = {
     "negative-numbers": [
@@ -21,11 +22,6 @@ EXAMPLES: dict[TopicId, list[Problem]] = {
 }
 
 
-def prompt_for(problem: Problem) -> str:
+def prompt_for(problem: Problem, lang: str = "en") -> str:
     """Instruction-only prompts: the page shows the problem's math beside them."""
-    if problem.kind == "evaluate":
-        return "Work out:"
-    if problem.kind == "simplify":
-        return "Simplify:"
-    letters = sorted({c for c in problem.expr if c.isalpha()})
-    return f"Solve for {letters[0]}:"
+    return schema_prompt_for(problem.kind, problem.expr, lang)
