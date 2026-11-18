@@ -49,7 +49,10 @@ const POW = 40
 
 class Parser {
   private pos = 0
-  constructor(private readonly tokens: Token[]) {}
+  private readonly tokens: Token[]
+  constructor(tokens: Token[]) {
+    this.tokens = tokens
+  }
 
   private peek(): Token | undefined {
     return this.tokens[this.pos]
@@ -92,7 +95,8 @@ class Parser {
         if (MUL <= minBp) break
         this.next()
         const right = this.expr(MUL + 1)
-        left = t.value === '*' ? { type: 'mul', left, right } : { type: 'frac', num: left, den: right }
+        left =
+          t.value === '*' ? { type: 'mul', left, right } : { type: 'frac', num: left, den: right }
       } else if (t.kind === 'op' && t.value === '^') {
         if (POW < minBp) break
         this.next()

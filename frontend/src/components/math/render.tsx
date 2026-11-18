@@ -6,7 +6,7 @@ import type { MarginOp, MathNode } from '@/math/types'
 const MINUS = '−'
 
 /** An operator with the small gaps handwriting leaves around it. */
-const Sym = ({ children }: { children: ReactNode }) => <span className="mx-[0.22em]">{children}</span>
+const sym = (symbol: string): ReactNode => <span className="mx-[0.22em]">{symbol}</span>
 
 /** Drops parentheses that a stacked fraction makes unnecessary: (1 + 1)/(2 + 3). */
 const unwrap = (n: MathNode): MathNode => (n.type === 'group' ? n.inner : n)
@@ -29,7 +29,7 @@ export function renderNode(node: MathNode): ReactNode {
       return (
         <>
           {renderNode(node.left)}
-          <Sym>{node.op === '+' ? '+' : MINUS}</Sym>
+          {sym(node.op === '+' ? '+' : MINUS)}
           {renderNode(node.right)}
         </>
       )
@@ -37,7 +37,7 @@ export function renderNode(node: MathNode): ReactNode {
       return (
         <>
           {renderNode(node.left)}
-          {showsDot(node.left, node.right) && <Sym>·</Sym>}
+          {showsDot(node.left, node.right) && sym('·')}
           {renderNode(node.right)}
         </>
       )
@@ -51,15 +51,11 @@ export function renderNode(node: MathNode): ReactNode {
         </>
       )
     case 'group':
-      return (
-        <>
-          ({renderNode(node.inner)})
-        </>
-      )
+      return <>({renderNode(node.inner)})</>
     case 'rel':
       return node.sides.map((side, i) => (
         <span key={i}>
-          {i > 0 && <Sym>=</Sym>}
+          {i > 0 && sym('=')}
           {renderNode(side)}
         </span>
       ))

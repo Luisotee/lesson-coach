@@ -32,10 +32,15 @@ export function speak(node: MathNode, t: TFunction): string {
         right: s(node.right),
       })
     case 'mul':
-      return t(showsDot(node.left, node.right) || node.right.type === 'group' ? 'math.speech.times' : 'math.speech.juxtaposed', {
-        left: s(node.left),
-        right: s(node.right),
-      })
+      return t(
+        showsDot(node.left, node.right) || node.right.type === 'group'
+          ? 'math.speech.times'
+          : 'math.speech.juxtaposed',
+        {
+          left: s(node.left),
+          right: s(node.right),
+        },
+      )
     case 'frac': {
       const num = unwrap(node.num)
       const den = unwrap(node.den)
@@ -47,7 +52,12 @@ export function speak(node: MathNode, t: TFunction): string {
     }
     case 'pow': {
       const exp = unwrap(node.exp)
-      const power = exp.type === 'num' && exp.value === '2' ? 'squared' : exp.type === 'num' && exp.value === '3' ? 'cubed' : 'other'
+      const power =
+        exp.type === 'num' && exp.value === '2'
+          ? 'squared'
+          : exp.type === 'num' && exp.value === '3'
+            ? 'cubed'
+            : 'other'
       return t('math.speech.power', { base: s(node.base), exp: s(exp), power })
     }
     case 'group':
@@ -69,11 +79,17 @@ export function speakText(src: string, t: TFunction): string {
 
 /** Spoken text for one notebook line: `left = right`, an expression, or `= expression`. */
 export function speakLine(
-  { left, right, op, continued = false }: { left: string; right?: string; op?: string; continued?: boolean },
+  {
+    left,
+    right,
+    op,
+    continued = false,
+  }: { left: string; right?: string; op?: string; continued?: boolean },
   t: TFunction,
 ): string {
   let line: string
-  if (right) line = t('math.speech.equals', { left: speakText(left, t), right: speakText(right, t) })
+  if (right)
+    line = t('math.speech.equals', { left: speakText(left, t), right: speakText(right, t) })
   else if (continued) line = t('math.speech.continued', { expr: speakText(left, t) })
   else line = speakText(left, t)
   if (!op) return line

@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { EquationLine } from '@/components/math/EquationLine'
 import { NotebookContext } from '@/components/math/notebook-context'
-import { penClass, type PenVariant } from '@/components/math/Pen'
+import { penClass, type PenVariant } from '@/components/math/pens'
 import { cn } from '@/lib/utils'
 import type { Step } from '@/math/types'
 

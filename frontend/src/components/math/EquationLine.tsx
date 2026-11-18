@@ -46,7 +46,9 @@ export function EquationLine({
   const label = speakLine({ left, right, op, continued }, t)
 
   return (
-    <li className={cn('col-span-full grid min-h-[2.2em] grid-cols-subgrid items-center', className)}>
+    <li
+      className={cn('col-span-full grid min-h-[2.2em] grid-cols-subgrid items-center', className)}
+    >
       <span
         role="math"
         aria-label={label}
