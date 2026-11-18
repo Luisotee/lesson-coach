@@ -48,10 +48,13 @@ def rate(hits: Iterable[bool]) -> float | None:
     return round(sum(items) / len(items), 3) if items else None
 
 
-def weighted_kappa(a: Sequence[str], b: Sequence[str], levels: Sequence[str] = LEVELS) -> float:
+def weighted_kappa(
+    a: Sequence[str], b: Sequence[str], levels: Sequence[str] = LEVELS
+) -> float | None:
     """Cohen's kappa with linear weights, for two raters on an ordinal scale.
-    1 is perfect agreement, 0 is chance. When both raters always give the same single
-    label, agreement is perfect but kappa is undefined; that returns 1.0."""
+    1 is perfect agreement, 0 is chance. When both raters give one and the same label to
+    everything, kappa is undefined (None): the sample can't show whether the judge tells
+    the levels apart."""
     if len(a) != len(b) or not a:
         raise ValueError("two equally long, non-empty label lists are needed")
     k = len(levels)
@@ -66,7 +69,7 @@ def weighted_kappa(a: Sequence[str], b: Sequence[str], levels: Sequence[str] = L
     disagree_obs = sum(weight[i][j] * observed[i][j] for i in range(k) for j in range(k))
     disagree_exp = sum(weight[i][j] * row[i] * col[j] for i in range(k) for j in range(k))
     if disagree_exp == 0:
-        return 1.0
+        return None
     return 1 - disagree_obs / disagree_exp
 
 

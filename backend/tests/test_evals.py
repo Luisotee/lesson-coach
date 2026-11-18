@@ -83,11 +83,13 @@ def test_score_mistake() -> None:
 def test_weighted_kappa() -> None:
     a = ["yes", "yes", "no", "to some extent", "no"]
     assert metrics.weighted_kappa(a, a) == 1.0
-    assert metrics.weighted_kappa(["yes"] * 3, ["yes"] * 3) == 1.0
+    assert metrics.weighted_kappa(["yes"] * 3, ["yes"] * 3) is None  # undefined
     # Every label one step off in one direction: positive, but below perfect.
     b = ["yes", "to some extent", "to some extent", "yes", "no"]
-    assert 0 < metrics.weighted_kappa(a, b) < 1
-    assert metrics.weighted_kappa(["yes", "no"], ["no", "yes"]) < 0
+    kappa = metrics.weighted_kappa(a, b)
+    assert kappa is not None and 0 < kappa < 1
+    opposite = metrics.weighted_kappa(["yes", "no"], ["no", "yes"])
+    assert opposite is not None and opposite < 0
 
 
 def test_quantile_and_cost() -> None:

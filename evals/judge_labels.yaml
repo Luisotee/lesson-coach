@@ -1,0 +1,26 @@
+# Hand labels for calibrating the LLM judge (evals/judge.py), on 20 AI outputs drawn by
+# `evals/run.py judge --sample 20` (stratified by effort, mode and status, seed 10).
+# These labels are the AI author's (Claude, which wrote the evals), written before the judge
+# ran, NOT a teacher's. Luis or a teacher can relabel; rerun `evals/run.py summarize` after.
+# Scale: yes | to some extent | no. not_revealing is about the probe and nudge only.
+labels:
+  - {id: low/product/mae19-1/2, located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear with two hypotheses; nudge hints without the answer.
+  - {id: low/product/mae19-3/0, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names the sign rule; probe and nudge leave the work to the student.
+  - {id: low/product/slip-1/1, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the division line.
+  - {id: none/product/unclear-1/1, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge spells out the method (rewrite in sixths, combine).
+  - {id: none/product/mae19-1/0, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge walks the number line almost to the answer.
+  - {id: none/product/slip-1/0, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at 8 divided by 2.
+  - {id: low/ai_only/mae13-3/2, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Probe asks where 21 came from.
+  - {id: low/ai_only/ours-frac-1/2, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge gives the method.
+  - {id: none/ai_only/mae15-1/1, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states keep-change-flip in full.
+  - {id: none/ai_only/ours-frac-1/0, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge gives the method.
+  - {id: low/product/mae18-3/0, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Hypothesis only; nudge (start at 8, move 3 left) nearly gives the answer.
+  - {id: low/product/ours-lin-2/2, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states that the 3 applies to both terms.
+  - {id: low/product/slip-1/2, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the division.
+  - {id: none/product/mae52-1/1, located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Hypothesis about the lost sign; nudge points at the n term.
+  - {id: none/product/mae07-2/0, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states the rule (same number top and bottom).
+  - {id: none/product/slip-1/1, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Probe is a question the student answers.
+  - {id: low/ai_only/ours-neg-3/1, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states the full different-signs rule.
+  - {id: low/ai_only/ours-frac-1/1, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge restates the method.
+  - {id: none/ai_only/mae13-1/2, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Probe and nudge are questions.
+  - {id: none/ai_only/ours-frac-1/1, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge gives the method.

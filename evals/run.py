@@ -469,6 +469,7 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
             human = [lab[d] for lab, _ in pairs]
             model = [j["scores"][d] for _, j in pairs]
             kappa = metrics.weighted_kappa(human, model) if pairs else None
+            # Quoted only when the judge agrees with the hand labels beyond chance.
             calibration[d] = {
                 "n": len(pairs),
                 "agreement": metrics.rate(h == m for h, m in zip(human, model, strict=True)),

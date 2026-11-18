@@ -3,7 +3,8 @@
 Four dimensions, each "yes", "to some extent" or "no". It runs on the offline deployment
 (GlobalStandard: the inputs are our own synthetic cases, no teacher data) through the app's
 `AzureLLM` and its offline `judge` task, so it gets the same retries and token log. Its
-scores are quoted only for the dimensions where it agrees with the hand labels (`judge_labels.yaml`, kappa >= 0.6).
+scores are quoted only for the dimensions where it agrees with the hand labels
+(`judge_labels.yaml`, kappa >= 0.6).
 """
 
 from __future__ import annotations
