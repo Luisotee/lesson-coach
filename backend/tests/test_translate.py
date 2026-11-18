@@ -225,3 +225,79 @@ def test_icu_check_wants_the_locales_plural_forms() -> None:
         )
         == {}
     )
+
+
+def test_served_languages_are_exactly_the_shipped_ones() -> None:
+    """The API serves a language's packs only when the app offers it: packs and UI strings
+    both shipped (frontend/src/i18n/locales.test.ts ties the app's list to the same files)."""
+    packs = translate.load_stats()
+    ui = translate_ui.load_ui_stats()
+    shipped = {lang for lang in packs if packs[lang]["shipped"] and ui.get(lang, {}).get("shipped")}
+    assert set(pack_langs()) == {"en"} | shipped
+    assert set(PROMPTS) == {"en"} | shipped
+
+
+def test_icu_check_wants_the_count_said_where_the_english_says_it() -> None:
+    english = "{count, plural, =1 {one possibility} one {# possibility} other {# possibilities}}"
+    fr = translate_ui.icu_check("fr", {"k": english})
+    # French `one` is 0 and 1: "une possibilité" would be read for 0.
+    plural = "many {# possibilités} other {# possibilités}}"
+    found = fr({"k": "{count, plural, one {une possibilité} " + plural})
+    assert "count = 0" in found["k"][0]
+    assert fr({"k": "{count, plural, =1 {une possibilité} one {# possibilité} " + plural}) == {}
+    # Arabic `zero` is only 0, so it may say "no possibilities", like an `=0` branch.
+    ar = translate_ui.icu_check("ar", {"k": english})
+    arabic = (
+        "{count, plural, zero {لا احتمالات} one {احتمال واحد} two {احتمالان} "
+        "few {# احتمالات} many {# احتمالًا} other {# احتمال}}"
+    )
+    assert ar({"k": arabic}) == {}
+
+
+def test_review_only_judges_the_committed_strings(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(translate_ui, "LOCALES", tmp_path)
+    english = json.loads((ROOT / "frontend" / "src" / "locales" / "en.json").read_text())
+    (tmp_path / "en.json").write_text(json.dumps(english))
+    (tmp_path / "de.json").write_text(json.dumps(english))
+    keys = {"nav.topics"}
+    llm = FakeTranslator()
+    data = asyncio.run(
+        translate_ui.translate_ui("de", llm, Stats(), [], None, keys, review_only=True)
+    )
+    assert data == english and llm.calls == {"judge": 1}
+    with pytest.raises(translate.TranslationError, match=r"nav\.topics: judge"):
+        asyncio.run(
+            translate_ui.translate_ui(
+                "de", FakeTranslator(flag="nav"), Stats(), [], None, keys, review_only=True
+            )
+        )
+
+
+def test_a_language_that_crashes_is_still_recorded(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Any error in one language is recorded with its cost; the other languages and the stats
+    file are still written."""
+    stats_file = tmp_path / "ui-stats.json"
+    monkeypatch.setattr(translate_ui, "UI_STATS_FILE", stats_file)
+    monkeypatch.setattr(translate, "UI_STATS_FILE", stats_file)
+    monkeypatch.setattr(translate, "REPORT_FILE", tmp_path / "report.md")
+    (tmp_path / "en.json").write_text((translate_ui.LOCALES / "en.json").read_text())
+    monkeypatch.setattr(translate_ui, "LOCALES", tmp_path)
+    monkeypatch.setattr(translate_ui, "offline_llm", lambda: (FakeTranslator(), "fake"))
+    monkeypatch.setattr(translate_ui, "load_stats", lambda: {})
+    monkeypatch.setattr(translate, "load_stats", lambda: {})
+    real = translate_ui.translate_ui
+
+    async def flaky(lang: str, *args: Any, **kwargs: Any) -> dict[str, Any]:
+        if lang == "fr":
+            raise RuntimeError("connection reset")
+        return await real(lang, *args, **kwargs)
+
+    monkeypatch.setattr(translate_ui, "translate_ui", flaky)
+    asyncio.run(translate_ui.run(["fr", "de"], budget=100))
+    saved = json.loads(stats_file.read_text())
+    assert saved["fr"]["shipped"] is False and "RuntimeError" in saved["fr"]["failing"][0]
+    assert saved["de"]["shipped"] is True and (tmp_path / "de.json").exists()

@@ -77,13 +77,23 @@ def write_pack(pack: Pack) -> Path:
     return path
 
 
+TRANSLATE_PROMPTS = ROOT / "pipeline" / "translate_prompts.py"
+
+
+def translate_prompts_hash() -> str:
+    """The translation prompts' bytes (TRANSLATE_VERSION among them): the one fingerprint of
+    how translations are made, in every translated pack's `source_hash` and in the unit cache
+    key, so a changed prompt makes both stale together."""
+    return hashlib.sha256(TRANSLATE_PROMPTS.read_bytes()).hexdigest()
+
+
 def translation_hash(topic: TopicId) -> str:
     """A translated pack's `source_hash`: the English pack and the translation prompts, so a
     translation is stale when either changes."""
     from pipeline.translate_prompts import TRANSLATE_VERSION
 
     digest = hashlib.sha256(f"translate-{TRANSLATE_VERSION}".encode())
-    for path in (pack_path(topic, "en"), ROOT / "pipeline" / "translate_prompts.py"):
+    for path in (pack_path(topic, "en"), TRANSLATE_PROMPTS):
         digest.update(path.name.encode())
         digest.update(path.read_bytes())
     return digest.hexdigest()

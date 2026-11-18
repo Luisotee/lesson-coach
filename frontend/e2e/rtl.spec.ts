@@ -1,8 +1,9 @@
 import { expect, test } from '@playwright/test'
 import { LANGUAGES } from '../src/i18n/languages.ts'
 
-// Right-to-left pages against the real build and the real translated packs (no mocks). The
-// screenshots go to docs/screenshots/ so a reviewer can see the pages without running them.
+// Right-to-left pages against the real build and the real translated packs (no mocks). With
+// SCREENSHOTS=1 the pages are also saved to docs/screenshots/ for the README and reviewers;
+// otherwise the committed screenshots are left alone.
 
 const RTL = LANGUAGES.filter((l) => l.dir === 'rtl').map((l) => l.code)
 
@@ -39,8 +40,9 @@ for (const lang of RTL) {
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
       await page.waitForLoadState('networkidle')
 
-      // Math stays left to right inside the right-to-left page.
-      const math = page.locator('[dir="ltr"]')
+      // Math stays left to right inside the right-to-left page: every math expression and
+      // equation line, found by what it is (role="math") rather than by its dir attribute.
+      const math = page.locator('[role="math"]')
       if (name !== 'home') await expect(math.first()).toBeVisible()
       for (const el of await math.all()) {
         await expect(el).toHaveCSS('direction', 'ltr')
@@ -56,11 +58,10 @@ for (const lang of RTL) {
         )
         expect(overflow, `${lang} ${name} at ${width}px`).toBeLessThanOrEqual(0)
       }
-      await page.setViewportSize({ width: 1280, height: 900 })
-      await page.screenshot({
-        path: `../docs/screenshots/rtl-${lang}-${name}.png`,
-        fullPage: false,
-      })
+      if (process.env.SCREENSHOTS === '1') {
+        await page.setViewportSize({ width: 1280, height: 900 })
+        await page.screenshot({ path: `../docs/screenshots/rtl-${lang}-${name}.png` })
+      }
     })
   }
 }
