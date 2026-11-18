@@ -149,7 +149,6 @@ test('topic in Arabic: RTL page, math stays left to right, English pack marked',
   await expectNoAxeViolations(page)
 })
 
-/** Types into a MathLive field found by its label. */
 test('practice: hints, check my working, and previous/next', async ({ page }) => {
   const posted = await mockApi(page, {
     checkWorking: () => ({ body: fixture('check/bad-line.json') }),

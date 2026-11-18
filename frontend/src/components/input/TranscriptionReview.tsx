@@ -19,7 +19,7 @@ const readable = (l: ReviewLine) => {
 }
 
 const field =
-  'min-h-11 w-full rounded-lg border border-input bg-white px-3 font-hand text-xl text-navy outline-none focus:border-link focus:ring-4 focus:ring-paleblue'
+  'min-h-11 w-full rounded-lg border border-input bg-white px-3 font-hand text-xl text-navy outline-none focus:border-link focus:ring-[3px] focus:ring-navy'
 
 /**
  * The confirm step: what the model read, in the student's pencil, one line at a time. Lines it

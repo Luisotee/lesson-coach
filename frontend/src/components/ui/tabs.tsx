@@ -35,7 +35,7 @@ function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPr
       data-slot="tabs-trigger"
       className={cn(
         'inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-semibold text-navy outline-none',
-        'hover:bg-[#eef1f4] focus-visible:ring-[3px] focus-visible:ring-ring/50',
+        'hover:bg-[#eef1f4] focus-visible:ring-[3px] focus-visible:ring-ring',
         'data-[state=active]:bg-paleblue disabled:pointer-events-none disabled:opacity-50',
         '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
         className,
@@ -50,7 +50,7 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
     <TabsPrimitive.Content
       data-slot="tabs-content"
       className={cn(
-        'rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50',
+        'rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring',
         className,
       )}
       {...props}

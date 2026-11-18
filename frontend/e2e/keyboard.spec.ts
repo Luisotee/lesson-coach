@@ -4,24 +4,80 @@ import { fixture, mockApi } from './api.ts'
 
 /*
  * Each page's main task done with the keyboard alone: no clicks, no programmatic focus.
- * Every element focus lands on along the way must show a focus indicator (WCAG 2.4.7) and
- * must not be hidden under the sticky header (WCAG 2.4.11).
+ * Every element focus lands on along the way must show a focus indicator (WCAG 2.4.7) with
+ * enough contrast (1.4.11), and must not be hidden under the sticky header (WCAG 2.4.11).
  */
 
-/** What is wrong with the focused element, or null. Runs in the page. */
-function focusProblem(): string | null {
+/**
+ * What is wrong with the focused element, or null. Runs in the page.
+ *
+ * The indicator must be an outline or a ring (a box-shadow with no blur) at least 2 px wide,
+ * in a colour with 3:1 contrast against white (WCAG 1.4.11), and it must go away when focus
+ * moves on: the element focused before this one is checked again, unfocused.
+ */
+async function focusProblem(): Promise<string | null> {
+  // Let the focus style's transition finish (0.01 ms under reduced motion, but only on the
+  // next frame), so the ring is read as it shows.
+  await Promise.all(
+    document
+      .getAnimations()
+      .filter((a) => a.effect?.getTiming().iterations !== Infinity)
+      .map((a) => a.finished.catch(() => {})),
+  )
+  await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
   const el = document.activeElement as HTMLElement | null
   if (!el || el === document.body) return 'nothing focused'
-  const name = `${el.tagName.toLowerCase()} "${(el.getAttribute('aria-label') ?? el.textContent ?? '').trim().slice(0, 40)}"`
-  const shows = (e: Element) => {
+  const label = (e: Element) =>
+    `${e.tagName.toLowerCase()} "${(e.getAttribute('aria-label') ?? e.textContent ?? '').trim().slice(0, 40)}"`
+  const name = label(el)
+
+  /** Contrast of a colour (alpha-blended over white) against white. */
+  const contrast = (color: string) => {
+    const [r, g, b, a = 1] = (color.match(/[\d.]+/g) ?? []).map(Number)
+    const lum = [r, g, b]
+      .map((c) => (a * c + (1 - a) * 255) / 255)
+      .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
+    const l = 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2]
+    return 1.05 / (l + 0.05)
+  }
+  /** The element's focus indicator as text, or '' if it shows none that is strong enough. */
+  const indicator = (e: Element) => {
     const s = getComputedStyle(e)
-    const outline = s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0
-    return outline || s.boxShadow !== 'none'
+    const strong: string[] = []
+    if (
+      s.outlineStyle !== 'none' &&
+      parseFloat(s.outlineWidth) >= 2 &&
+      contrast(s.outlineColor) >= 3
+    )
+      strong.push(`outline ${s.outlineWidth} ${s.outlineColor}`)
+    // Computed box-shadows read "rgb(…) Xpx Ypx BLURpx SPREADpx", comma separated.
+    for (const shadow of s.boxShadow.split(/,(?![^(]*\))/)) {
+      const color = shadow.match(/rgba?\([^)]*\)/)?.[0]
+      const [x, y, blur, spread] = (
+        shadow.replace(/rgba?\([^)]*\)/, '').match(/-?[\d.]+px/g) ?? []
+      ).map(parseFloat)
+      if (color && !shadow.includes('inset') && x === 0 && y === 0 && blur === 0 && spread >= 2)
+        if (contrast(color) >= 3) strong.push(`ring ${spread}px ${color}`)
+    }
+    return strong.join(', ')
   }
   // A math field shows its focus on the box around it (a focus-within ring).
-  const ring =
-    el.tagName === 'MATH-FIELD' ? el.closest<HTMLElement>('[class*="focus-within:ring"]') : el
-  if (!ring || !shows(ring)) return `${name}: no visible focus indicator`
+  const ringOf = (e: HTMLElement) =>
+    e.tagName === 'MATH-FIELD' ? e.closest<HTMLElement>('[class*="focus-within:ring"]') : e
+  const ring = ringOf(el)
+  const shown = ring ? indicator(ring) : ''
+  if (!shown) return `${name}: no focus indicator of 2 px or more at 3:1`
+
+  // The previous stop, now unfocused, must have lost its indicator.
+  const w = window as unknown as { lastFocus?: { el: HTMLElement; shown: string } }
+  const last = w.lastFocus
+  w.lastFocus = { el, shown }
+  if (last && last.el !== el && last.el.isConnected && !last.el.contains(el)) {
+    const lastRing = ringOf(last.el)
+    if (lastRing && !lastRing.contains(el) && indicator(lastRing) === last.shown)
+      return `${label(last.el)}: still shows its focus indicator (${last.shown}) after focus left`
+  }
+
   const header = document.querySelector('header')
   // A fixed element (the skip link, a sheet) sits above the header, so can't be under it.
   const fixed = (e: Element | null): boolean =>
@@ -68,6 +124,8 @@ test('home to a worked example, its explanations, a question and the outline', a
   await tabTo(page, page.getByRole('link', { name: /Solving linear equations/ }).last())
   await page.keyboard.press('Enter')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Solving linear equations')
+  // The loading view already shows that h1 (and focus lands on it); wait for the pack.
+  await expect(page.locator('[data-state="loading"]')).toHaveCount(0)
 
   const line = page.getByRole('button', { name: /3 x equals 15/ })
   await tabTo(page, line)
@@ -171,6 +229,8 @@ test('the language picker by keyboard: to Arabic and back', async ({ page }) => 
 
 test.describe('on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 } })
+  // Its own viewport replaces the zoomed one (2x density), so it would only run twice.
+  test.skip(({ deviceScaleFactor }) => deviceScaleFactor === 2)
 
   test('a step opens in the bottom sheet, moves on, and Esc returns to the line', async ({
     page,

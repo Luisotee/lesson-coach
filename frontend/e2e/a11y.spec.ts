@@ -7,12 +7,12 @@ import {
   explainSettled,
   typeMath,
 } from './a11y.ts'
-import { fixture, mockApi, type ApiOverrides } from './api.ts'
+import { fixture, mockApi, PACKS, type ApiOverrides } from './api.ts'
 
 /*
  * Every page in every state, each checked for zero axe violations (WCAG 2.2 AA), no sideways
- * page scroll and no clipped text. playwright.config.ts runs this file at four layouts:
- * desktop 1280 px, a phone (Pixel 7, touch), 320 px, and 200% zoom (a 1280×800 window at
+ * page scroll and no clipped text. playwright.config.ts runs this file at five layouts:
+ * desktop 1280 px, a tablet 820 px, a phone (Pixel 7, touch), 320 px, and 200% zoom (a 1280×800 window at
  * 200% is a 640×400 CSS viewport). The API is the fixture API; nothing calls a model.
  */
 
@@ -216,7 +216,9 @@ const STATES: [string, (page: Page) => Promise<void>][] = [
     async (page) => {
       await mockApi(page)
       await page.route('**/api/topics/*?**', async (route) => {
-        const pack = await (await route.fetch()).json()
+        const id = new URL(route.request().url()).pathname.split('/').pop() ?? ''
+        const pack = PACKS[id] as object | undefined
+        if (!pack) return route.fulfill({ status: 404, json: { detail: 'Not Found' } })
         await route.fulfill({ json: { ...pack, practice: [] } })
       })
       await page.goto('/practice')
@@ -319,5 +321,6 @@ test('mistake: every abstain reason is shown and fits', async ({ page }) => {
     await expectNothingClipped(page, r)
   }
   // The markup is the same for every reason; one axe run covers it.
+  await explainSettled(page)
   await expectNoAxeViolations(page)
 })

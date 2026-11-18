@@ -134,7 +134,7 @@
   --destructive: #c62828;
   --border: var(--color-line);
   --input: var(--color-line-strong);
-  --ring: var(--color-link);
+  --ring: var(--color-navy);
 }
 
 @layer base {
@@ -156,11 +156,12 @@
     --keyboard-toolbar-text-active: var(--color-navy);
   }
   /* Scrolled-to and focused elements stop below the sticky header, never under it (WCAG
-     2.4.11). --header-h is the header's live height (useHeaderHeight). */
+     2.4.11). --header-h is the header's live height (useHeaderHeight); until it is measured,
+     4.5rem stands in for it. */
   html {
-    scroll-padding-top: calc(var(--header-h, 0px) + 0.75rem);
+    scroll-padding-top: calc(var(--header-h, 4.5rem) + 0.75rem);
   }
-  /* A visible focus ring everywhere (WCAG 2.4.7 / 2.4.11). Navy has 3:1+ against white and ground. */
+  /* A visible focus ring everywhere (WCAG 2.4.7 / 2.4.11). Navy has 3:1+ against white and ground; shadcn controls draw the same navy as a ring. */
   :focus-visible {
     outline: 3px solid var(--color-navy);
     outline-offset: 2px;
