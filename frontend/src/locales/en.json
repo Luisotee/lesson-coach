@@ -347,6 +347,9 @@
     "workedOut": "the answer, worked out",
     "barCaption": "The answer as a bar model.",
     "whatToSay": "What you could say",
+    "sayExample": "Written for an example problem, not your student’s:",
+    "sayAnswer": "Written for another wrong answer to this problem:",
+    "sayWorded": "worded by AI for this problem · numbers checked by the math engine",
     "say": {
       "ask": "ask",
       "nudge": "nudge",

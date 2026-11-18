@@ -94,6 +94,7 @@ class RecordingLLM:
         self.calls.append(
             {
                 "task": task,
+                "schema": schema_name,
                 "latency_ms": round((time.perf_counter() - start) * 1000),
                 "attempts": result.attempts,
                 "error": result.error,
@@ -192,6 +193,15 @@ def run_mistakes(
                 if diagnosis.get("source") == "ai":
                     ai_text = {
                         k: diagnosis.get(k) for k in ("explanation", "margin_note", "what_to_say")
+                    }
+                elif diagnosis.get("source") == "rule" and calls and not diagnosis["say_example"]:
+                    # The moves the AI worded for this problem, judged with the card they follow
+                    # (shown above them as the belief and why it feels right).
+                    card = diagnosis["misconceptions"][0]
+                    ai_text = {
+                        "explanation": f"{card['belief']} {card['why_it_feels_right']}",
+                        "margin_note": None,
+                        "what_to_say": diagnosis["what_to_say"],
                     }
                 records.append(
                     {
@@ -335,9 +345,9 @@ def cmd_judge(args: argparse.Namespace) -> None:
     records = ai_records()
     if args.sample:
         rng = random.Random(10)
-        by_stratum: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+        by_stratum: dict[tuple[str, str, str, str], list[dict[str, Any]]] = defaultdict(list)
         for r in records:
-            by_stratum[(r["effort"], r["mode"], r["status"])].append(r)
+            by_stratum[(r["effort"], r["mode"], r["source"], r["status"])].append(r)
         sample: list[dict[str, Any]] = []
         while len(sample) < args.sample and any(by_stratum.values()):
             for group in by_stratum.values():
@@ -424,11 +434,28 @@ def _calls_summary(calls: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _fallback(record: dict[str, Any]) -> str | None:
+    """Why a rule match showed the card's own moves, or None when they were rewritten."""
+    if record["result"]["diagnosis"]["say_example"] is None:
+        return None
+    call = record["calls"][-1]
+    reply = call["reply"]
+    if reply is None:
+        return f"error:{call['error']}"
+    if reply["abstain"]:
+        return "abstained"
+    if not all(reply[k].strip() for k in ("probe", "nudge", "tell")):
+        return "blank_move"
+    return "unverified_math"
+
+
 def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
     scored = [(r, metrics.score_mistake(r["result"], r["expected"])) for r in records]
     controls = [s for r, s in scored if r["expected"]["classification"] != "wrong"]
     named = [(r, s) for r, s in scored if s["id_ok"] is not None]
-    ai_path = [r for r in records if r["calls"]]
+    ai_path = [r for r in records if r["calls"] and r["source"] != "rule"]
+    # A rule match makes one call too: it rewrites the card's moves for this problem.
+    rule_moves = [r for r in records if r["calls"] and r["source"] == "rule"]
     outcomes: dict[str, list[str]] = defaultdict(list)
     for r, s in scored:
         outcomes[r["case"]].append(s["outcome"])
@@ -471,11 +498,25 @@ def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
                 r["reason"] == "ai_unverified_math" for r in ai_path
             ),
         },
+        "rule_path_moves": {
+            "runs": len(rule_moves),
+            "written_for_the_problem": metrics.rate(
+                r["result"]["diagnosis"]["say_example"] is None for r in rule_moves
+            ),
+            # The card's own moves were shown, framed by its example problem, because the call
+            # failed, abstained or wrote a number sympy didn't give it.
+            "fell_back": metrics.counts(f for f in map(_fallback, rule_moves) if f),
+        },
         "request_latency_ms": {
             "no_ai": _latency([r["latency_ms"] for r in records if not r["calls"]]),
             "ai": _latency([r["latency_ms"] for r in ai_path]),
+            "rule_moves": _latency([r["latency_ms"] for r in rule_moves]),
         },
         "llm": _calls_summary([c for r in records for c in r["calls"]]),
+        "llm_by_call": {
+            name: _calls_summary([c for r in records for c in r["calls"] if c["schema"] == name])
+            for name in ("mistake_diagnosis", "rule_what_to_say")
+        },
         "per_case": {case: sorted(set(v)) for case, v in outcomes.items()},
     }
 
@@ -550,7 +591,9 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
     groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for j in ok:
         r = record_by_id[j["id"]]
-        groups[(r["effort"], r["mode"])].append(j)
+        # Rule-match moves are scored apart from the AI's own diagnoses.
+        mode = r["mode"] if r["source"] == "ai" else f"{r['mode']}_rule_moves"
+        groups[(r["effort"], mode)].append(j)
     scores: dict[str, dict[str, Any]] = defaultdict(dict)
     for (effort, mode), rows in sorted(groups.items()):
         scores[effort][mode] = {

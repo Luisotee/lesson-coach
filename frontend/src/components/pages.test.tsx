@@ -136,6 +136,37 @@ describe('MistakeResult', () => {
     )
   })
 
+  test('rule path: the card is shown once, not repeated as an explanation paragraph', () => {
+    show(diagnosed, 'fractions')
+    expect(screen.getAllByText(/add the tops and add the bottoms/)).toHaveLength(1)
+    expect(screen.getAllByText(/two separate whole numbers/)).toHaveLength(1)
+    expect(document.querySelector('[data-say-example]')).toBeNull()
+    // The card's own example: its moves are shown unchanged, so no AI note.
+    expect(screen.queryByText(/worded by AI/)).toBeNull()
+  })
+
+  test('rule match with moves worded by the AI for this problem says so', () => {
+    show({ ...diagnosed, diagnosis: { ...diagnosed.diagnosis, say_source: 'ai' } })
+    expect(screen.getByText(/worded by AI for this problem/)).toBeInTheDocument()
+  })
+
+  test('the card’s moves for another wrong answer to this problem are framed by that answer', () => {
+    show({ ...diagnosed, diagnosis: { ...diagnosed.diagnosis, say_answer: '4' } })
+    const framing = document.querySelector('[data-say-answer]')!
+    expect(framing).toHaveTextContent('Written for another wrong answer to this problem:')
+    expect(document.querySelector('[data-say-example]')).toBeNull()
+    expect(screen.queryByText(/worded by AI/)).toBeNull()
+  })
+
+  test('the card’s own moves are framed by the example problem they are written for', () => {
+    const example = { kind: 'solve', expr: '2*x + 6 = 10' }
+    show({ ...diagnosed, diagnosis: { ...diagnosed.diagnosis, say_example: example } })
+    const framing = document.querySelector('[data-say-example]')!
+    expect(framing).toHaveTextContent('Written for an example problem, not your student’s:')
+    expect(within(framing as HTMLElement).getByRole('math')).toHaveAccessibleName(/2 x plus 6/)
+    expect(screen.queryByText(/worded by AI/)).toBeNull()
+  })
+
   test('correct', () => {
     show(correct)
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Your student is right.')

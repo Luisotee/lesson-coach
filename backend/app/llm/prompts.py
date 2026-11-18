@@ -1,4 +1,5 @@
-"""Prompts and output schemas for the two live LLM tasks.
+"""Prompts and output schemas for the live LLM calls: the mistake diagnosis, the moves for a
+rule-matched mistake (the same `mistake` task) and transcription.
 
 Layout for prompt caching: the fixed instructions first, then the topic's misconception list
 and follow-up options (the same for every request on a topic), then the request itself in
@@ -42,6 +43,24 @@ verified answer and the worked solution. Never compute, simplify or invent a new
 expression; refer to steps in words instead. Write math as plain text (1/2, 2*x, x = 3).
 Be kind and specific; never judge the student or
 the teacher, and give no scores or praise. Write every text field in the requested language.
+{OUTPUT_ONLY}"""
+
+RULE_SAY_SYSTEM = f"""You help math teachers (grades 6-9) talk with a student about a wrong answer.
+A math engine (sympy) has already checked that a known misconception gives exactly the
+student's answer. You get that misconception, with three moves a teacher could use, written
+for the misconception's own example problem. Rewrite the moves for the student's problem:
+- probe: a question the teacher can ask the student.
+- nudge: a short hint or question that points the student at where to look, without naming
+  the rule or the steps to fix it: the student should still find the method.
+- tell: what to explain if the student is still stuck; only here may you state the method.
+
+Follow the example moves' style and intent, but about this problem only. Use only the math of
+the request: the problem, the student's answer and working, the verified answer and the
+worked solution. Never use the example problem's numbers. Never compute, simplify or invent
+a new number or expression; refer to steps in words instead. Write math as plain text (1/2,
+2*x, x = 3). Be kind and specific; never judge the student, and give no scores or praise.
+Set abstain to true, with the moves empty, when you can't write them for this problem from
+the math given. Write every text field in the requested language.
 {OUTPUT_ONLY}"""
 
 TRANSCRIBE_SYSTEM = f"""Transcribe the lines of math in the image, top to bottom.
@@ -115,6 +134,20 @@ class MistakeOut(Model):
         )
 
 
+class RuleSayOut(Model):
+    abstain: bool
+    probe: str
+    nudge: str
+    tell: str
+
+    def clipped(self) -> WhatToSayOut:
+        return WhatToSayOut(
+            probe=clip(self.probe, MAX_SAY),
+            nudge=clip(self.nudge, MAX_SAY),
+            tell=clip(self.tell, MAX_TELL),
+        )
+
+
 class LineOut(Model):
     left: str
     right: str
@@ -178,6 +211,10 @@ def mistake_schema(misconception_ids: list[str], follow_up_ids: list[str]) -> di
     )
 
 
+RULE_SAY_SCHEMA = _object(
+    {"abstain": {"type": "boolean"}, "probe": _string(), "nudge": _string(), "tell": _string()}
+)
+
 TRANSCRIBE_SCHEMA = _object(
     {
         "lines": {
@@ -212,6 +249,23 @@ def mistake_messages(
     return [
         {"role": "system", "content": MISTAKE_SYSTEM},
         {"role": "system", "content": f"<topic_context>\n{context}\n</topic_context>"},
+        {
+            "role": "user",
+            "content": f"<request>\n{findings}\n</request>\n<language>{lang}</language>",
+        },
+    ]
+
+
+def rule_say_messages(
+    *, misconception: dict[str, Any], request: dict[str, Any], lang: str
+) -> list[dict[str, Any]]:
+    """System instructions, then the matched misconception, then the request. The prompt
+    (about 680 tokens) is under Azure's 1024-token caching minimum, so none of it is cached."""
+    card = json.dumps(misconception, ensure_ascii=False)
+    findings = json.dumps(request, ensure_ascii=False)
+    return [
+        {"role": "system", "content": RULE_SAY_SYSTEM},
+        {"role": "system", "content": f"<misconception>\n{card}\n</misconception>"},
         {
             "role": "user",
             "content": f"<request>\n{findings}\n</request>\n<language>{lang}</language>",

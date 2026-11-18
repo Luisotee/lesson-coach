@@ -123,3 +123,20 @@ def test_summarize_refuses_partial_or_stale_rows() -> None:
     stale = [r | {"fingerprint": "old"} for r in one_of_three * 3]
     with pytest.raises(SystemExit, match="other prompts, code or inputs"):
         run._check_complete(path, stale, {"a", "b"})
+
+
+def test_rule_path_fallback_reasons() -> None:
+    from evals import run
+
+    def record(say_example: object, reply: object, error: object = None) -> dict[str, object]:
+        call = {"reply": reply, "error": error}
+        return {"result": {"diagnosis": {"say_example": say_example}}, "calls": [call]}
+
+    example = {"kind": "solve", "expr": "2*x + 6 = 10"}
+    moves = {"probe": "p", "nudge": "n", "tell": "t"}
+    assert run._fallback(record(None, {"abstain": False} | moves)) is None
+    assert run._fallback(record(example, None, "deadline")) == "error:deadline"
+    assert run._fallback(record(example, {"abstain": True} | moves)) == "abstained"
+    blank = {"abstain": False} | moves | {"nudge": " "}
+    assert run._fallback(record(example, blank)) == "blank_move"
+    assert run._fallback(record(example, {"abstain": False} | moves)) == "unverified_math"

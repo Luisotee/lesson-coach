@@ -29,10 +29,13 @@ from typing import Any
 from app.config import Settings
 from app.llm.prompts import (
     MISTAKE_SYSTEM,
+    RULE_SAY_SCHEMA,
+    RULE_SAY_SYSTEM,
     TRANSCRIBE_SCHEMA,
     TRANSCRIBE_SYSTEM,
     mistake_messages,
     mistake_schema,
+    rule_say_messages,
     transcribe_messages,
 )
 
@@ -85,10 +88,15 @@ def parts(labels: bool = True) -> dict[str, Any]:
             "mistake_system": MISTAKE_SYSTEM,
             "transcribe_system": TRANSCRIBE_SYSTEM,
             "mistake_messages": sample,
+            "rule_say_system": RULE_SAY_SYSTEM,
+            "rule_say_messages": rule_say_messages(
+                misconception={"belief": "b"}, request={"problem": "p"}, lang="en"
+            ),
             "transcribe_messages": transcribe_messages("data:image/png;base64,"),
         },
         "schemas": {
             "mistake": mistake_schema(["m"], ["check:m"]),
+            "rule_say": RULE_SAY_SCHEMA,
             "transcribe": TRANSCRIBE_SCHEMA,
         },
         "packs": _files([p for lang in PACK_LANGS for p in (content / lang).glob("*.json")]),

@@ -1,6 +1,6 @@
 # Written by `evals/run.py summarize` from evals/outputs/. Don't edit by hand:
 # backend/tests/test_evals.py checks the fingerprint against the inputs.
-fingerprint: 25db18d96bd640fda3b094075f111c7e24e59cbecd398f2bcf99ad812295cb55
+fingerprint: 248856925d153ac77b50675987762adc9067a8bb159b7c4b27c83b71a5f223b3
 date: '2026-11-18'
 model: gpt-5.5-live
 prices_usd_per_1m_tokens:
@@ -17,7 +17,7 @@ reasoning_efforts:
     mistakes:
       runs: 90
       verdict_accuracy: 1.0
-      status_match: 0.911
+      status_match: 0.922
       false_mistake_rate_on_controls: 0.0
       misconception_id:
         all:
@@ -32,7 +32,7 @@ reasoning_efforts:
           n: 24
           first_id: 0.5
           in_top_2: 0.5
-      consistent_over_runs: 0.967
+      consistent_over_runs: 0.933
       answered_by:
         ai: 33
         rule: 39
@@ -40,41 +40,82 @@ reasoning_efforts:
       ai_path:
         runs: 33
         status:
-          diagnosed: 16
+          diagnosed: 17
           slip: 3
-          unclear: 14
+          unclear: 13
         abstain_reasons:
-          ai_unclear: 14
+          ai_unclear: 13
         held_back_unverified_math: 0.0
+      rule_path_moves:
+        runs: 39
+        written_for_the_problem: 1.0
+        fell_back: {}
       request_latency_ms:
         no_ai:
-          p50: 4.0
-          p90: 7.799999999999997
+          p50: 3.0
+          p90: 5.0
         ai:
-          p50: 3517.0
-          p90: 4040.2000000000003
+          p50: 2465.0
+          p90: 2979.6000000000004
+        rule_moves:
+          p50: 1393.0
+          p90: 1942.6000000000001
       llm:
-        calls: 33
+        calls: 72
         schema_valid: 1.0
         errors: {}
-        retried: 0.03
+        retried: 0.014
         latency_ms:
-          p50: 3507.0
-          p90: 4029.4
+          p50: 1962.0
+          p90: 2697.7999999999997
         mean_tokens:
-          prompt_tokens: 1516
-          cached_tokens: 1241
-          completion_tokens: 176
+          prompt_tokens: 1061
+          cached_tokens: 587
+          completion_tokens: 141
           reasoning_tokens: 0
-        cache_hit_share: 0.819
-        cost_per_call_usd: 0.008
-        cost_usd: 0.2641
+        cache_hit_share: 0.553
+        cost_per_call_usd: 0.0076
+        cost_usd: 0.547
+      llm_by_call:
+        mistake_diagnosis:
+          calls: 33
+          schema_valid: 1.0
+          errors: {}
+          retried: 0.0
+          latency_ms:
+            p50: 2460.0
+            p90: 2974.8
+          mean_tokens:
+            prompt_tokens: 1512
+            cached_tokens: 1280
+            completion_tokens: 178
+            reasoning_tokens: 0
+          cache_hit_share: 0.847
+          cost_per_call_usd: 0.00786
+          cost_usd: 0.2593
+        rule_what_to_say:
+          calls: 39
+          schema_valid: 1.0
+          errors: {}
+          retried: 0.026
+          latency_ms:
+            p50: 1387.0
+            p90: 1935.4
+          mean_tokens:
+            prompt_tokens: 680
+            cached_tokens: 0
+            completion_tokens: 110
+            reasoning_tokens: 0
+          cache_hit_share: 0.0
+          cost_per_call_usd: 0.00738
+          cost_usd: 0.2877
       per_case:
         mae18-2:
         - diagnosed:subtract_smaller_from_larger
         mae18-3:
         - unclear:ai_unclear
         mae19-1:
+        - diagnosed:two_negatives_make_positive
         - unclear:ai_unclear
         mae19-3:
         - diagnosed:two_negatives_make_positive
@@ -100,6 +141,325 @@ reasoning_efforts:
         - diagnosed:sign_not_changed
         mae52-1:
         - diagnosed:sign_not_changed
+        - unclear:ai_unclear
+        mae52-3:
+        - unclear:ai_unclear
+        ours-neg-1:
+        - diagnosed:minus_negative_stays_minus
+        ours-neg-2:
+        - diagnosed:neg_times_neg_is_neg
+        ours-neg-3:
+        - diagnosed:add_magnitudes_keep_sign
+        ours-frac-1:
+        - diagnosed:cancel_across_addition
+        ours-lin-1:
+        - diagnosed:divide_one_term
+        ours-lin-2:
+        - diagnosed:distribute_first_term_only
+        ctrl-1:
+        - 'correct:'
+        ctrl-2:
+        - 'not_simplified:'
+        ctrl-3:
+        - 'correct:'
+        ctrl-4:
+        - 'correct:'
+        ctrl-5:
+        - 'correct:'
+        slip-1:
+        - 'slip:'
+        unclear-1:
+        - unclear:ai_unclear
+        oos-1:
+        - out_of_scope:unsupported
+    ai_only_not_product_accuracy:
+      runs: 39
+      verdict_accuracy: 1.0
+      status_match: 0.949
+      false_mistake_rate_on_controls: null
+      misconception_id:
+        all:
+          n: 39
+          first_id: 0.949
+          in_top_2: 0.949
+        rule_labelled:
+          n: 39
+          first_id: 0.949
+          in_top_2: 0.949
+        ai_labelled:
+          n: 0
+          first_id: null
+          in_top_2: null
+      consistent_over_runs: 0.923
+      answered_by:
+        ai: 39
+      ai_path:
+        runs: 39
+        status:
+          diagnosed: 37
+          unclear: 2
+        abstain_reasons:
+          ai_unclear: 2
+        held_back_unverified_math: 0.0
+      rule_path_moves:
+        runs: 0
+        written_for_the_problem: null
+        fell_back: {}
+      request_latency_ms:
+        no_ai:
+          p50: null
+          p90: null
+        ai:
+          p50: 2287.0
+          p90: 2637.6
+        rule_moves:
+          p50: null
+          p90: null
+      llm:
+        calls: 39
+        schema_valid: 1.0
+        errors: {}
+        retried: 0.0
+        latency_ms:
+          p50: 2283.0
+          p90: 2634.4
+        mean_tokens:
+          prompt_tokens: 1501
+          cached_tokens: 1280
+          completion_tokens: 178
+          reasoning_tokens: 0
+        cache_hit_share: 0.853
+        cost_per_call_usd: 0.0078
+        cost_usd: 0.304
+      llm_by_call:
+        mistake_diagnosis:
+          calls: 39
+          schema_valid: 1.0
+          errors: {}
+          retried: 0.0
+          latency_ms:
+            p50: 2283.0
+            p90: 2634.4
+          mean_tokens:
+            prompt_tokens: 1501
+            cached_tokens: 1280
+            completion_tokens: 178
+            reasoning_tokens: 0
+          cache_hit_share: 0.853
+          cost_per_call_usd: 0.0078
+          cost_usd: 0.304
+        rule_what_to_say:
+          calls: 0
+      per_case:
+        mae18-2:
+        - diagnosed:subtract_smaller_from_larger
+        - unclear:ai_unclear
+        mae08-1:
+        - diagnosed:add_tops_and_bottoms
+        mae08-2:
+        - diagnosed:add_tops_and_bottoms
+        mae13-1:
+        - diagnosed:multiply_both_by_whole
+        mae13-3:
+        - diagnosed:multiply_both_by_whole
+        mae15-1:
+        - diagnosed:flip_first_when_dividing
+        mae15-2:
+        - diagnosed:flip_first_when_dividing
+        mae33-3:
+        - diagnosed:sign_not_changed
+        ours-neg-1:
+        - diagnosed:minus_negative_stays_minus
+        ours-neg-2:
+        - diagnosed:neg_times_neg_is_neg
+        ours-neg-3:
+        - diagnosed:add_magnitudes_keep_sign
+        ours-frac-1:
+        - diagnosed:cancel_across_addition
+        ours-lin-1:
+        - diagnosed:divide_one_term
+    transcription:
+      runs: 33
+      line_accuracy: 1.0
+      image_accuracy: 1.0
+      image_accuracy_by_kind:
+        clean: 1.0
+        drawing: 1.0
+        messy: 1.0
+        no_math: 1.0
+        photo: 1.0
+        typed: 1.0
+      wrong_lines: 0
+      wrong_lines_flagged_uncertain: null
+      request_latency_ms:
+        p50: 1609.0
+        p90: 2046.2
+      llm:
+        calls: 33
+        schema_valid: 1.0
+        errors: {}
+        retried: 0.0
+        latency_ms:
+          p50: 1606.0
+          p90: 2043.4
+        mean_tokens:
+          prompt_tokens: 482
+          cached_tokens: 0
+          completion_tokens: 47
+          reasoning_tokens: 7
+        cache_hit_share: 0.0
+        cost_per_call_usd: 0.0042
+        cost_usd: 0.1386
+      per_image:
+        00-typed-fixture.png:
+        - 'true'
+        01-clean-sum.png:
+        - 'true'
+        02-stacked-fraction.png:
+        - 'true'
+        03-negatives.png:
+        - 'true'
+        04-working-ops.png:
+        - 'true'
+        05-messy-working.png:
+        - 'true'
+        06-rotated.jpg:
+        - 'true'
+        07-sideways.jpg:
+        - 'true'
+        08-dim-skewed.jpg:
+        - 'true'
+        09-drawing-board.png:
+        - 'true'
+        10-no-math.png:
+        - 'true'
+  none:
+    mistakes:
+      runs: 90
+      verdict_accuracy: 1.0
+      status_match: 0.878
+      false_mistake_rate_on_controls: 0.0
+      misconception_id:
+        all:
+          n: 63
+          first_id: 0.778
+          in_top_2: 0.778
+        rule_labelled:
+          n: 39
+          first_id: 1.0
+          in_top_2: 1.0
+        ai_labelled:
+          n: 24
+          first_id: 0.417
+          in_top_2: 0.417
+      consistent_over_runs: 0.967
+      answered_by:
+        ai: 33
+        rule: 39
+        sympy: 18
+      ai_path:
+        runs: 33
+        status:
+          diagnosed: 13
+          slip: 3
+          unclear: 17
+        abstain_reasons:
+          ai_unclear: 17
+        held_back_unverified_math: 0.0
+      rule_path_moves:
+        runs: 39
+        written_for_the_problem: 1.0
+        fell_back: {}
+      request_latency_ms:
+        no_ai:
+          p50: 3.0
+          p90: 5.300000000000001
+        ai:
+          p50: 2468.0
+          p90: 2786.6
+        rule_moves:
+          p50: 1623.0
+          p90: 1897.2
+      llm:
+        calls: 72
+        schema_valid: 1.0
+        errors: {}
+        retried: 0.0
+        latency_ms:
+          p50: 1910.5
+          p90: 2655.9
+        mean_tokens:
+          prompt_tokens: 1061
+          cached_tokens: 587
+          completion_tokens: 141
+          reasoning_tokens: 0
+        cache_hit_share: 0.553
+        cost_per_call_usd: 0.00758
+        cost_usd: 0.5456
+      llm_by_call:
+        mistake_diagnosis:
+          calls: 33
+          schema_valid: 1.0
+          errors: {}
+          retried: 0.0
+          latency_ms:
+            p50: 2463.0
+            p90: 2777.8
+          mean_tokens:
+            prompt_tokens: 1512
+            cached_tokens: 1280
+            completion_tokens: 175
+            reasoning_tokens: 0
+          cache_hit_share: 0.847
+          cost_per_call_usd: 0.00775
+          cost_usd: 0.2558
+        rule_what_to_say:
+          calls: 39
+          schema_valid: 1.0
+          errors: {}
+          retried: 0.0
+          latency_ms:
+            p50: 1618.0
+            p90: 1893.2
+          mean_tokens:
+            prompt_tokens: 680
+            cached_tokens: 0
+            completion_tokens: 112
+            reasoning_tokens: 0
+          cache_hit_share: 0.0
+          cost_per_call_usd: 0.00743
+          cost_usd: 0.2899
+      per_case:
+        mae18-2:
+        - diagnosed:subtract_smaller_from_larger
+        mae18-3:
+        - unclear:ai_unclear
+        mae19-1:
+        - unclear:ai_unclear
+        mae19-3:
+        - diagnosed:two_negatives_make_positive
+        mae32-4:
+        - diagnosed:two_negatives_make_positive
+        - unclear:ai_unclear
+        mae08-1:
+        - diagnosed:add_tops_and_bottoms
+        mae08-2:
+        - diagnosed:add_tops_and_bottoms
+        mae13-1:
+        - diagnosed:multiply_both_by_whole
+        mae13-3:
+        - diagnosed:multiply_both_by_whole
+        mae15-1:
+        - diagnosed:flip_first_when_dividing
+        mae15-2:
+        - diagnosed:flip_first_when_dividing
+        mae07-2:
+        - diagnosed:simplify_one_part
+        mae33-3:
+        - diagnosed:sign_not_changed
+        mae33-1:
+        - diagnosed:sign_not_changed
+        mae52-1:
         - unclear:ai_unclear
         mae52-3:
         - unclear:ai_unclear
@@ -149,189 +509,70 @@ reasoning_efforts:
           n: 0
           first_id: null
           in_top_2: null
-      consistent_over_runs: 1.0
+      consistent_over_runs: 0.846
       answered_by:
         ai: 39
       ai_path:
         runs: 39
         status:
           diagnosed: 36
-          unclear: 3
+          slip: 1
+          unclear: 2
         abstain_reasons:
-          ai_unclear: 3
+          ai_unclear: 2
         held_back_unverified_math: 0.0
+      rule_path_moves:
+        runs: 0
+        written_for_the_problem: null
+        fell_back: {}
       request_latency_ms:
         no_ai:
           p50: null
           p90: null
         ai:
-          p50: 3120.0
-          p90: 3493.4
+          p50: 2423.0
+          p90: 2793.2
+        rule_moves:
+          p50: null
+          p90: null
       llm:
         calls: 39
         schema_valid: 1.0
         errors: {}
         retried: 0.0
         latency_ms:
-          p50: 3111.0
-          p90: 3484.8
+          p50: 2417.0
+          p90: 2790.2
         mean_tokens:
-          prompt_tokens: 1507
-          cached_tokens: 1214
-          completion_tokens: 178
+          prompt_tokens: 1501
+          cached_tokens: 1280
+          completion_tokens: 179
           reasoning_tokens: 0
-        cache_hit_share: 0.806
-        cost_per_call_usd: 0.00816
-        cost_usd: 0.3181
-      per_case:
-        mae18-2:
-        - unclear:ai_unclear
-        mae08-1:
-        - diagnosed:add_tops_and_bottoms
-        mae08-2:
-        - diagnosed:add_tops_and_bottoms
-        mae13-1:
-        - diagnosed:multiply_both_by_whole
-        mae13-3:
-        - diagnosed:multiply_both_by_whole
-        mae15-1:
-        - diagnosed:flip_first_when_dividing
-        mae15-2:
-        - diagnosed:flip_first_when_dividing
-        mae33-3:
-        - diagnosed:sign_not_changed
-        ours-neg-1:
-        - diagnosed:minus_negative_stays_minus
-        ours-neg-2:
-        - diagnosed:neg_times_neg_is_neg
-        ours-neg-3:
-        - diagnosed:add_magnitudes_keep_sign
-        ours-frac-1:
-        - diagnosed:cancel_across_addition
-        ours-lin-1:
-        - diagnosed:divide_one_term
-    transcription:
-      runs: 33
-      line_accuracy: 1.0
-      image_accuracy: 1.0
-      image_accuracy_by_kind:
-        clean: 1.0
-        drawing: 1.0
-        messy: 1.0
-        no_math: 1.0
-        photo: 1.0
-        typed: 1.0
-      wrong_lines: 0
-      wrong_lines_flagged_uncertain: null
-      request_latency_ms:
-        p50: 1948.0
-        p90: 2599.4
-      llm:
-        calls: 33
-        schema_valid: 1.0
-        errors: {}
-        retried: 0.0
-        latency_ms:
-          p50: 1945.0
-          p90: 2595.6
-        mean_tokens:
-          prompt_tokens: 482
-          cached_tokens: 0
-          completion_tokens: 50
-          reasoning_tokens: 9
-        cache_hit_share: 0.0
-        cost_per_call_usd: 0.00428
-        cost_usd: 0.1414
-      per_image:
-        00-typed-fixture.png:
-        - 'true'
-        01-clean-sum.png:
-        - 'true'
-        02-stacked-fraction.png:
-        - 'true'
-        03-negatives.png:
-        - 'true'
-        04-working-ops.png:
-        - 'true'
-        05-messy-working.png:
-        - 'true'
-        06-rotated.jpg:
-        - 'true'
-        07-sideways.jpg:
-        - 'true'
-        08-dim-skewed.jpg:
-        - 'true'
-        09-drawing-board.png:
-        - 'true'
-        10-no-math.png:
-        - 'true'
-  none:
-    mistakes:
-      runs: 90
-      verdict_accuracy: 1.0
-      status_match: 0.9
-      false_mistake_rate_on_controls: 0.0
-      misconception_id:
-        all:
-          n: 63
-          first_id: 0.81
-          in_top_2: 0.81
-        rule_labelled:
-          n: 39
-          first_id: 1.0
-          in_top_2: 1.0
-        ai_labelled:
-          n: 24
-          first_id: 0.5
-          in_top_2: 0.5
-      consistent_over_runs: 1.0
-      answered_by:
-        ai: 33
-        rule: 39
-        sympy: 18
-      ai_path:
-        runs: 33
-        status:
-          diagnosed: 15
-          slip: 3
-          unclear: 15
-        abstain_reasons:
-          ai_unclear: 15
-        held_back_unverified_math: 0.0
-      request_latency_ms:
-        no_ai:
-          p50: 4.0
-          p90: 8.399999999999999
-        ai:
-          p50: 3139.0
-          p90: 3488.8
-      llm:
-        calls: 33
-        schema_valid: 1.0
-        errors: {}
-        retried: 0.03
-        latency_ms:
-          p50: 3128.0
-          p90: 3482.6
-        mean_tokens:
-          prompt_tokens: 1516
-          cached_tokens: 1202
-          completion_tokens: 177
-          reasoning_tokens: 0
-        cache_hit_share: 0.793
-        cost_per_call_usd: 0.00821
-        cost_usd: 0.271
+        cache_hit_share: 0.853
+        cost_per_call_usd: 0.00784
+        cost_usd: 0.3058
+      llm_by_call:
+        mistake_diagnosis:
+          calls: 39
+          schema_valid: 1.0
+          errors: {}
+          retried: 0.0
+          latency_ms:
+            p50: 2417.0
+            p90: 2790.2
+          mean_tokens:
+            prompt_tokens: 1501
+            cached_tokens: 1280
+            completion_tokens: 179
+            reasoning_tokens: 0
+          cache_hit_share: 0.853
+          cost_per_call_usd: 0.00784
+          cost_usd: 0.3058
+        rule_what_to_say:
+          calls: 0
       per_case:
         mae18-2:
         - diagnosed:subtract_smaller_from_larger
-        mae18-3:
-        - unclear:ai_unclear
-        mae19-1:
-        - unclear:ai_unclear
-        mae19-3:
-        - diagnosed:two_negatives_make_positive
-        mae32-4:
-        - diagnosed:two_negatives_make_positive
         mae08-1:
         - diagnosed:add_tops_and_bottoms
         mae08-2:
@@ -344,16 +585,9 @@ reasoning_efforts:
         - diagnosed:flip_first_when_dividing
         mae15-2:
         - diagnosed:flip_first_when_dividing
-        mae07-2:
-        - diagnosed:simplify_one_part
+        - unclear:ai_unclear
         mae33-3:
         - diagnosed:sign_not_changed
-        mae33-1:
-        - diagnosed:sign_not_changed
-        mae52-1:
-        - unclear:ai_unclear
-        mae52-3:
-        - unclear:ai_unclear
         ours-neg-1:
         - diagnosed:minus_negative_stays_minus
         ours-neg-2:
@@ -362,104 +596,7 @@ reasoning_efforts:
         - diagnosed:add_magnitudes_keep_sign
         ours-frac-1:
         - diagnosed:cancel_across_addition
-        ours-lin-1:
-        - diagnosed:divide_one_term
-        ours-lin-2:
-        - diagnosed:distribute_first_term_only
-        ctrl-1:
-        - 'correct:'
-        ctrl-2:
-        - 'not_simplified:'
-        ctrl-3:
-        - 'correct:'
-        ctrl-4:
-        - 'correct:'
-        ctrl-5:
-        - 'correct:'
-        slip-1:
         - 'slip:'
-        unclear-1:
-        - unclear:ai_unclear
-        oos-1:
-        - out_of_scope:unsupported
-    ai_only_not_product_accuracy:
-      runs: 39
-      verdict_accuracy: 1.0
-      status_match: 0.974
-      false_mistake_rate_on_controls: null
-      misconception_id:
-        all:
-          n: 39
-          first_id: 0.974
-          in_top_2: 0.974
-        rule_labelled:
-          n: 39
-          first_id: 0.974
-          in_top_2: 0.974
-        ai_labelled:
-          n: 0
-          first_id: null
-          in_top_2: null
-      consistent_over_runs: 0.923
-      answered_by:
-        ai: 39
-      ai_path:
-        runs: 39
-        status:
-          diagnosed: 38
-          unclear: 1
-        abstain_reasons:
-          ai_unclear: 1
-        held_back_unverified_math: 0.0
-      request_latency_ms:
-        no_ai:
-          p50: null
-          p90: null
-        ai:
-          p50: 3364.0
-          p90: 3853.6000000000004
-      llm:
-        calls: 39
-        schema_valid: 1.0
-        errors: {}
-        retried: 0.0
-        latency_ms:
-          p50: 3355.0
-          p90: 3849.6000000000004
-        mean_tokens:
-          prompt_tokens: 1507
-          cached_tokens: 1247
-          completion_tokens: 180
-          reasoning_tokens: 0
-        cache_hit_share: 0.828
-        cost_per_call_usd: 0.00805
-        cost_usd: 0.3141
-      per_case:
-        mae18-2:
-        - diagnosed:subtract_smaller_from_larger
-        mae08-1:
-        - diagnosed:add_tops_and_bottoms
-        mae08-2:
-        - diagnosed:add_tops_and_bottoms
-        mae13-1:
-        - diagnosed:multiply_both_by_whole
-        mae13-3:
-        - diagnosed:multiply_both_by_whole
-        mae15-1:
-        - diagnosed:flip_first_when_dividing
-        mae15-2:
-        - diagnosed:flip_first_when_dividing
-        - unclear:ai_unclear
-        mae33-3:
-        - diagnosed:sign_not_changed
-        ours-neg-1:
-        - diagnosed:minus_negative_stays_minus
-        ours-neg-2:
-        - diagnosed:neg_times_neg_is_neg
-        ours-neg-3:
-        - diagnosed:add_magnitudes_keep_sign
-        ours-frac-1:
-        - diagnosed:cancel_across_addition
         ours-lin-1:
         - diagnosed:divide_one_term
     transcription:
@@ -476,16 +613,16 @@ reasoning_efforts:
       wrong_lines: 0
       wrong_lines_flagged_uncertain: null
       request_latency_ms:
-        p50: 1610.0
-        p90: 2345.0
+        p50: 1471.0
+        p90: 1953.6
       llm:
         calls: 33
         schema_valid: 1.0
         errors: {}
-        retried: 0.03
+        retried: 0.0
         latency_ms:
-          p50: 1608.0
-          p90: 2342.0
+          p50: 1468.0
+          p90: 1950.6
         mean_tokens:
           prompt_tokens: 482
           cached_tokens: 0
@@ -522,14 +659,14 @@ judge:
   reasoning_effort: low
   stale_scores_skipped: 0
   stale_labels_skipped: 0
-  judged: 144
+  judged: 222
   failures: 0
   failure_reasons: {}
   calibration:
     located:
       n: 20
-      agreement: 0.6
-      weighted_kappa: 0.0
+      agreement: 0.7
+      weighted_kappa: 0.178
       quoted: false
     actionable:
       n: 20
@@ -538,13 +675,13 @@ judge:
       quoted: false
     not_revealing:
       n: 20
-      agreement: 0.8
-      weighted_kappa: 0.273
+      agreement: 0.65
+      weighted_kappa: 0.176
       quoted: false
     non_judgmental:
       n: 20
-      agreement: 0.95
-      weighted_kappa: 0.0
+      agreement: 1.0
+      weighted_kappa: null
       quoted: false
   scores_by_effort_and_mode:
     low:
@@ -568,7 +705,7 @@ judge:
       product:
         located:
           n: 33
-          'yes': 0.879
+          'yes': 0.939
           yes_or_some: 1.0
         actionable:
           n: 33
@@ -576,11 +713,28 @@ judge:
           yes_or_some: 1.0
         not_revealing:
           n: 33
-          'yes': 0.909
+          'yes': 0.879
           yes_or_some: 1.0
         non_judgmental:
           n: 33
           'yes': 1.0
+          yes_or_some: 1.0
+      product_rule_moves:
+        located:
+          n: 39
+          'yes': 0.974
+          yes_or_some: 1.0
+        actionable:
+          n: 39
+          'yes': 1.0
+          yes_or_some: 1.0
+        not_revealing:
+          n: 39
+          'yes': 0.846
+          yes_or_some: 0.974
+        non_judgmental:
+          n: 39
+          'yes': 0.949
           yes_or_some: 1.0
     none:
       ai_only:
@@ -594,7 +748,7 @@ judge:
           yes_or_some: 1.0
         not_revealing:
           n: 39
-          'yes': 1.0
+          'yes': 0.974
           yes_or_some: 1.0
         non_judgmental:
           n: 39
@@ -603,7 +757,7 @@ judge:
       product:
         located:
           n: 33
-          'yes': 0.818
+          'yes': 0.879
           yes_or_some: 1.0
         actionable:
           n: 33
@@ -611,14 +765,33 @@ judge:
           yes_or_some: 1.0
         not_revealing:
           n: 33
-          'yes': 0.939
+          'yes': 0.848
           yes_or_some: 1.0
         non_judgmental:
           n: 33
-          'yes': 0.97
+          'yes': 1.0
           yes_or_some: 1.0
-  cost_usd: 0.7271
-total_cost_usd: 2.166
-recommendation: 'none for both live tasks: accuracy within noise of low (the same misconception ids; status
-  90.0% vs 91.1%), the same outcome in all 3 runs for 30/30 cases (low 29/30), faster on both calls and
-  about the same cost; low spent no reasoning tokens on diagnoses.'
+      product_rule_moves:
+        located:
+          n: 39
+          'yes': 1.0
+          yes_or_some: 1.0
+        actionable:
+          n: 39
+          'yes': 1.0
+          yes_or_some: 1.0
+        not_revealing:
+          n: 39
+          'yes': 0.821
+          yes_or_some: 1.0
+        non_judgmental:
+          n: 39
+          'yes': 0.974
+          yes_or_some: 1.0
+  cost_usd: 1.2444
+total_cost_usd: 3.216
+recommendation: 'none for both live tasks, with a caveat: low matched the expected status in 4 more of
+  90 runs (92.2% vs 87.8%) and named the right misconception in 2 more of 63, at the same cost and with
+  no reasoning tokens on diagnoses; across the last four runs low was ahead on status by 1 to 4 runs each
+  time. Within what one case flipping between runs moves, but switching (config only) should get its own
+  eval run.'

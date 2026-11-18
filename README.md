@@ -31,7 +31,7 @@ make dev        # API on :8000, app on http://localhost:5173 (proxies /api)
 | `MODEL_LIVE` | The deployment for live calls (`gpt-5.5-live`) |
 | `MODEL_OFFLINE` | The deployment for the content pipeline and eval judge (`gpt-5.5-offline`); not needed to run the app |
 
-**Without keys, almost everything still works:** topic pages, worked examples, misconceptions, practice with hints, "check my working" for typed lines, and the mistake explainer whenever sympy or a misconception rule settles the answer. Only two things need the model, and both say plainly that they couldn't run, never guess: the AI step of a mistake that no rule explains, and reading a photo or drawing.
+**Without keys, almost everything still works:** topic pages, worked examples, misconceptions, practice with hints, "check my working" for typed lines, and the mistake explainer whenever sympy or a misconception rule settles the answer (a rule match then shows the card's own moves, marked as written for its example problem). Only two things need the model, and both say plainly that they couldn't run, never guess: the AI step of a mistake (a diagnosis when no rule explains it, or what to say about this problem when one does), and reading a photo or drawing.
 
 ### Tests and checks
 
@@ -86,7 +86,7 @@ docs/        PLAN.md, TASKS.md, REASONING.md, COST.md, A11Y.md
 | They **dislike chatbots** | No chat box anywhere. Buttons, pages and structured results; each AI output is small and has a fixed place | [REASONING: decisions](docs/REASONING.md#the-decisions-that-matter) |
 | **No tests, judgment, exams, scores or certificates** | Nothing is graded or recorded. Practice says "just for you, nothing is recorded"; "check my working" says privately which line first doesn't follow. Nothing is stored | [DATA.md](DATA.md) |
 | **Good internet** | Content is served as static JSON; only per-teacher input calls a model | [PLAN: Architecture](docs/PLAN.md#architecture) |
-| **20,000–50,000 teachers, so cost per teacher matters** | Content generated once, offline; known mistakes answered by rules, with no model call; one small model call only when needed; scale to zero. About **$0.07 of AI per teacher per month** | [COST.md](docs/COST.md) |
+| **20,000–50,000 teachers, so cost per teacher matters** | Content generated once, offline; known mistakes diagnosed by rules, with one short model call to word what to say; one small model call to diagnose the rest; scale to zero. About **$0.10 of AI per teacher per month** | [COST.md](docs/COST.md) |
 
 ### What we were asked to do
 

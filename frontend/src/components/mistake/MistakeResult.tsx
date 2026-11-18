@@ -114,6 +114,23 @@ function WhatToSay({ d }: { d: Diagnosis }) {
   return (
     <Card>
       <h3 className="text-lg font-semibold">{t('mistake.whatToSay')}</h3>
+      {d.say_example && (
+        <p className="flex flex-wrap items-center gap-2 text-[15px]" data-say-example>
+          {t('mistake.sayExample')}
+          <MathExpr expr={d.say_example.expr} className="text-xl" />
+        </p>
+      )}
+      {d.say_answer && (
+        <p className="flex flex-wrap items-center gap-2 text-[15px]" data-say-answer>
+          {t('mistake.sayAnswer')}
+          <MathExpr expr={d.say_answer} className="text-xl" />
+        </p>
+      )}
+      {d.source === 'rule' && d.say_source === 'ai' && (
+        <p className="text-[13px] text-muted-foreground" data-say-worded>
+          {t('mistake.sayWorded')}
+        </p>
+      )}
       <ol className="flex flex-col gap-3">
         {rows.map(([key, text]) => (
           <li key={key} className="flex flex-col gap-1 sm:flex-row sm:gap-3">
@@ -286,7 +303,9 @@ export function MistakeResult({
               </InLang>
             </p>
           )}
-          {d && (main || result.status === 'slip') && (
+          {/* On the rule path the explanation is the card's belief and why it feels right,
+              both shown above. */}
+          {d && d.source !== 'rule' && (main || result.status === 'slip') && (
             <InLang lang={d.lang}>
               <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
             </InLang>

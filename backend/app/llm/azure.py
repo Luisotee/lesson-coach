@@ -34,6 +34,10 @@ OFFLINE_TASKS = ("generate", "judge")
 sleep = asyncio.sleep  # tests replace it
 
 
+# Tasks that share another task's effort and token settings, with their own deadline.
+TASK_FAMILY: dict[str, str] = {"mistake_moves": "mistake"}
+
+
 class AzureLLM:
     def __init__(self, settings: Settings, client: AsyncAzureOpenAI | None = None) -> None:
         self.settings = settings
@@ -46,15 +50,17 @@ class AzureLLM:
 
     def _task_settings(self, task: Task) -> tuple[str, str, int, float, float]:
         """Deployment, reasoning effort, token limit, deadline and per-attempt timeout. Each
-        task has its `<task>_*` settings; `generate` and `judge` run offline."""
+        task has its `<task>_*` settings (`mistake_moves` shares the `mistake` ones but its
+        deadline); `generate` and `judge` run offline."""
         if task not in get_args(Task):
             raise ValueError(f"unknown LLM task: {task}")
         s = self.settings
         offline = task in OFFLINE_TASKS
+        family = TASK_FAMILY.get(task, task)
         return (
             s.model_offline if offline else s.model_live,
-            getattr(s, f"{task}_reasoning_effort"),
-            getattr(s, f"{task}_max_completion_tokens"),
+            getattr(s, f"{family}_reasoning_effort"),
+            getattr(s, f"{family}_max_completion_tokens"),
             s.offline_deadline_s if offline else getattr(s, f"{task}_deadline_s"),
             s.offline_attempt_timeout_s if offline else s.llm_attempt_timeout_s,
         )

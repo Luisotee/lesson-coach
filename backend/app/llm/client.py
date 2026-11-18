@@ -8,7 +8,8 @@ from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel
 
-Task = Literal["mistake", "transcribe", "generate", "judge"]  # the last two run offline
+# `mistake_moves` words a rule match's moves: the `mistake` settings, with its own deadline.
+Task = Literal["mistake", "mistake_moves", "transcribe", "generate", "judge"]  # last two offline
 LLMError = Literal["unavailable", "deadline", "invalid_output", "refused"]
 Message = dict[str, Any]
 

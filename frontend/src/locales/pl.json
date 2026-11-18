@@ -347,6 +347,9 @@
     "workedOut": "odpowiedź z rozwiązaniem",
     "barCaption": "Odpowiedź jako model paskowy.",
     "whatToSay": "Co możesz powiedzieć",
+    "sayExample": "Napisane dla zadania przykładowego, nie dla zadania Twojego ucznia:",
+    "sayAnswer": "Napisane dla innej błędnej odpowiedzi do tego zadania:",
+    "sayWorded": "sformułowane przez AI dla tego zadania · liczby sprawdzone przez silnik matematyczny",
     "say": {
       "ask": "zapytaj",
       "nudge": "naprowadź",
