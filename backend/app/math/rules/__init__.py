@@ -64,30 +64,26 @@ class NodeRule:
         results: list[sympy.Expr] = []
         targets: list[int | None] = [*range(min(count, MAX_MATCHED_NODES)), None]
         for alt in range(MAX_ALTERNATIVES):
-            used = False
+            exists = [False]  # set when some node offers alternative `alt`, even if undefined
             for target in targets:
                 try:
-                    value, applied = self._evaluate(root, target, alt)
+                    results.append(self._evaluate(root, target, alt, exists))
                 except (MathError, _NoAlternative):
                     continue
-                used = used or applied
-                results.append(value)
-            if not used:
+            if not exists[0]:
                 break  # no node has this many alternatives, so later ones won't either
         return results
 
-    def _evaluate(self, root: Node, target: int | None, alt: int) -> tuple[sympy.Expr, bool]:
+    def _evaluate(self, root: Node, target: int | None, alt: int, exists: list[bool]) -> sympy.Expr:
         """Evaluate with the rule at match number `target` (None: at every match).
 
         Each node is evaluated once (cached), so a long sum costs time linear in its length.
-        Returns the value and whether an alternative was applied anywhere.
+        Sets `exists[0]` when some node offers alternative `alt`.
         """
         order = {id(node): i for i, node in enumerate(_matching(root, self.matches))}
         cache: dict[int, sympy.Expr] = {}
-        applied = False
 
         def ev(node: Node) -> sympy.Expr:
-            nonlocal applied
             key = id(node)
             if key in cache:
                 return cache[key]
@@ -96,8 +92,8 @@ class NodeRule:
             if index is not None and (target is None or target == index):
                 options = self.alternatives(node, ev)
                 if alt < len(options):
+                    exists[0] = True  # before `checked`, which may raise for an undefined value
                     value = checked(options[alt])
-                    applied = True
                 elif target is not None:
                     raise _NoAlternative
             if value is None:
@@ -105,7 +101,7 @@ class NodeRule:
             cache[key] = value
             return value
 
-        return ev(root), applied
+        return ev(root)
 
 
 class _NoAlternative(Exception):

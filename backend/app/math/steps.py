@@ -32,6 +32,7 @@ from app.math.problems import (
     Step,
     equivalent,
     isolated,
+    letter_in_denominator,
     same_value,
     solution_set,
     solve,
@@ -90,8 +91,12 @@ def parse_line(step: Step, kind: Kind, variable: str | None = None) -> Line:
         return Line(node)
     if left and right:
         a, b = _side(left), _side(right)
-        return Line(b, false_equality=not equivalent(a, b))
-    return Line(_side(left or right))
+    else:
+        node = parse_text(left or right)
+        if not isinstance(node, Eq):
+            return Line(node)
+        a, b = node.left, node.right  # `1/2 + 1/3 = 2/5` typed into one field
+    return Line(b, false_equality=not equivalent(a, b))
 
 
 def _op_matches(prev: Eq, op: tuple[BinOp, sympy.Expr], nxt: Eq) -> bool:
@@ -113,26 +118,33 @@ class StepCheck:
     equivalent: bool
     identical: bool
     op_ok: bool | None
+    unsupported: bool = False  # out of scope (say, a letter in a denominator): not checked
 
     @property
     def ok(self) -> bool:
         """A worked-example step must keep the value and change the writing."""
-        return self.equivalent and not self.identical and self.op_ok is not False
+        return (
+            self.equivalent
+            and not self.identical
+            and self.op_ok is not False
+            and not self.unsupported
+        )
 
 
 def check_step(prev: Step, nxt: Step, kind: Kind = "solve") -> StepCheck:
-    """Compare two consecutive lines. `prev.op` (if any) must turn `prev` into `nxt`."""
+    """Compare two consecutive lines. `prev.op` (if any) must turn `prev` into `nxt`.
+    Math out of scope gives `unsupported=True`, never an exception."""
     variable = _single_var(prev, kind)
     a, b = parse_line(prev, kind, variable), parse_line(nxt, kind, variable)
     op = parse_op(prev.op)
     op_ok: bool | None = None
     if op is not None and isinstance(a.node, Eq) and isinstance(b.node, Eq):
         op_ok = _op_matches(a.node, op, b.node)
-    return StepCheck(
-        equivalent=not b.false_equality and equivalent(a.node, b.node),
-        identical=a.node == b.node,
-        op_ok=op_ok,
-    )
+    try:
+        same = not b.false_equality and equivalent(a.node, b.node)
+    except UnsupportedProblem:
+        return StepCheck(False, a.node == b.node, op_ok, unsupported=True)
+    return StepCheck(equivalent=same, identical=a.node == b.node, op_ok=op_ok)
 
 
 def _single_var(step: Step, kind: Kind) -> str | None:
@@ -153,6 +165,7 @@ StepIssueReason = Literal[
     "op_mismatch",
     "wrong_answer",
     "not_simplified",
+    "unsupported",
 ]
 
 
@@ -168,9 +181,14 @@ def check_steps(problem: Problem, steps: list[Step]) -> list[StepIssue]:
 
     Step 0 must be equivalent to the problem (restating it is fine). Every later step must be
     equivalent to the one before and written differently, and each margin op must produce the
-    next line. The last step must be the answer in simplest form.
+    next line. The last step must be the answer in simplest form, or for an equation with no
+    solution or every value, a line without letters such as `0 = 4` or `0 = 0`. Math out of
+    scope gives an `unsupported` issue (index 0 for the problem itself), never an exception.
     """
-    solution = solve(problem)
+    try:
+        solution = solve(problem)
+    except MathError as err:
+        return [StepIssue(0, "unsupported", f"the problem: {err}")]
     variable = solution.variable
     issues: list[StepIssue] = []
     lines: list[Line | None] = []
@@ -178,6 +196,10 @@ def check_steps(problem: Problem, steps: list[Step]) -> list[StepIssue]:
         try:
             line = parse_line(step, problem.kind, variable)
             parse_op(step.op)
+        except UnsupportedProblem as err:
+            issues.append(StepIssue(index, "unsupported", str(err)))
+            lines.append(None)
+            continue
         except MathError as err:
             issues.append(StepIssue(index, "unparsable", str(err)))
             lines.append(None)
@@ -191,7 +213,12 @@ def check_steps(problem: Problem, steps: list[Step]) -> list[StepIssue]:
         if parsed is None:
             return issues
         node = parsed.node
-        if not equivalent(previous, node):
+        try:
+            follows = equivalent(previous, node)
+        except UnsupportedProblem as err:
+            issues.append(StepIssue(index, "unsupported", str(err)))
+            return issues
+        if not follows:
             issues.append(StepIssue(index, "not_equivalent"))
         elif index > 0:
             if previous == node:
@@ -216,7 +243,11 @@ def _final_issues(problem: Problem, node: Node, index: int, solution: Solution) 
     if solution.kind != "value":
         # No solution or every value: the last line must say so, like `0 = 4` or `0 = 0`.
         try:
-            same = isinstance(node, Eq) and solution_set(node)[1] == solution.kind
+            same = (
+                isinstance(node, Eq)
+                and not free_vars(node)
+                and solution_set(node)[1] == solution.kind
+            )
         except MathError:
             same = False
         return [] if same else [StepIssue(index, "wrong_answer")]
@@ -236,7 +267,7 @@ def _final_issues(problem: Problem, node: Node, index: int, solution: Solution) 
     return []
 
 
-LineReason = Literal["unparsable", "false_equality", "not_equivalent"]
+LineReason = Literal["unparsable", "false_equality", "not_equivalent", "unsupported"]
 
 
 @dataclass(frozen=True)
@@ -251,13 +282,16 @@ def first_line_that_doesnt_follow(
     """The first line that is not equivalent to the line before it, or None if all follow.
 
     With a problem, line 0 is compared with the problem. Copying a line again is fine here:
-    only worked examples must change every line. Raises UnsupportedProblem when the math is
-    out of scope (a letter in a denominator, too large); the caller abstains.
+    only worked examples must change every line. Raises UnsupportedProblem only when the
+    problem itself is out of scope (too large, a letter in a denominator); a student line out
+    of scope is reported as `unsupported` at its index.
     """
     variable: str | None = None
     if problem is not None:
         kind: Kind = problem.kind
         problem_node = problem.node()
+        if letter_in_denominator(problem_node):
+            raise UnsupportedProblem("equations with a letter in a denominator are not supported")
         previous: Node | None = problem_node
         letters = free_vars(problem_node)
         if kind == "solve" and len(letters) == 1:
@@ -271,23 +305,29 @@ def first_line_that_doesnt_follow(
                 variable = _single_var(step, kind)
             line = parse_line(step, kind, variable)
         except UnsupportedProblem:
-            raise
+            return LineFinding(index, "unsupported")
         except MathError:
             return LineFinding(index, "unparsable")
         if line.false_equality:
             return LineFinding(index, "false_equality")
-        if previous is not None and not equivalent(previous, line.node):
+        try:
+            follows = previous is None or equivalent(previous, line.node)
+        except UnsupportedProblem:
+            return LineFinding(index, "unsupported")
+        if not follows:
             return LineFinding(index, "not_equivalent")
         previous = line.node
     return None
 
 
 def _looks_like_equation(step: Step) -> bool:
-    """`2x + 6 | 10` in two fields, or `2x + 6 = 10` typed into one."""
+    """`2x + 6 | 10` in two fields, or `2x + 6 = 10` typed into one. Equations without a letter
+    (`1/2 + 1/3 = 2/5`) belong to an expression chain."""
     left, right = step.left.strip(), step.right.strip()
     try:
         if left and right:
             return bool(free_vars(parse_text(left)) or free_vars(parse_text(right)))
-        return isinstance(parse_text(left or right), Eq)
+        node = parse_text(left or right)
+        return isinstance(node, Eq) and bool(free_vars(node))
     except MathError:
         return False

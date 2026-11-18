@@ -41,8 +41,9 @@ MAX_LENGTH = 200
 MAX_DEPTH = 20
 MAX_DIGITS = 12
 MAX_EXPONENT = 10
-# Grades 6-9 need one or two letters. With at most 2 letters and degree 20, an expanded
-# polynomial has at most 231 terms, which sympy handles in milliseconds.
+# Grades 6-9 need one or two letters. With at most 2 letters and degree 20 in the top and in
+# the bottom of the combined fraction, an expanded polynomial has at most 231 terms. The
+# API still runs sympy under a time limit (T6) as the backstop.
 MAX_LETTERS = 2
 MAX_DEGREE = 20
 MAX_BITS = 20_000
@@ -250,28 +251,40 @@ def _is_power(node: Node) -> bool:
     return isinstance(node, Pow) or (isinstance(node, Neg) and _is_power(node.arg))
 
 
-def _size(node: Node) -> tuple[int, float]:
-    """An upper bound on the expanded degree, and on the bits of the largest number."""
+@dataclass(frozen=True)
+class _Size:
+    """Upper bounds after sympy combines everything into one fraction: the degree of the top
+    and of the bottom, and the bits of all numbers together."""
+
+    top: int
+    bottom: int
+    bits: float
+
+
+def _size(node: Node) -> _Size:
     match node:
         case Num(text):
-            return 0, len(text) * 3.33
+            return _Size(0, 0, len(text) * 3.33)
         case Mixed(whole, num, den):
-            return 0, (len(str(whole)) + len(str(num)) + 2 * len(str(den))) * 3.33
+            return _Size(0, 0, (len(str(whole)) + len(str(num)) + 2 * len(str(den))) * 3.33)
         case Var():
-            return 1, 1.0
+            return _Size(1, 0, 1.0)
         case Neg(arg):
             return _size(arg)
-        case Bin(op, left, right):
-            (dl, bl), (dr, br) = _size(left), _size(right)
+        case Bin() | Eq():
+            a, b = _size(node.left), _size(node.right)
+            bits = a.bits + b.bits + 1
+            op = node.op if isinstance(node, Bin) else "-"  # an equation is read as left - right
             if op in ("+", "-"):
-                return max(dl, dr), max(bl, br) + 1
-            return dl + dr, bl + br
+                # a/b + c/d = (ad + cb)/(bd): the bottoms multiply.
+                return _Size(max(a.top + b.bottom, b.top + a.bottom), a.bottom + b.bottom, bits)
+            if op == "*":
+                return _Size(a.top + b.top, a.bottom + b.bottom, bits)
+            return _Size(a.top + b.bottom, a.bottom + b.top, bits)
         case Pow(base, exp):
-            d, b = _size(base)
-            return d * abs(exp), b * abs(exp)
-        case Eq(left, right):
-            (dl, bl), (dr, br) = _size(left), _size(right)
-            return max(dl, dr), max(bl, br)
+            p = _size(base)
+            top, bottom = (p.top, p.bottom) if exp >= 0 else (p.bottom, p.top)
+            return _Size(top * abs(exp), bottom * abs(exp), p.bits * abs(exp))
 
 
 def check_size(node: Node) -> None:
@@ -279,8 +292,8 @@ def check_size(node: Node) -> None:
     letters = free_vars(node)
     if len(letters) > MAX_LETTERS:
         raise UnsupportedProblem(f"use at most {MAX_LETTERS} different letters")
-    degree, bits = _size(node)
-    if degree > MAX_DEGREE or bits > MAX_BITS:
+    size = _size(node)
+    if max(size.top, size.bottom) > MAX_DEGREE or size.bits > MAX_BITS:
         raise UnsupportedProblem("the expression is too large to work out")
 
 

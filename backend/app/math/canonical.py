@@ -132,7 +132,10 @@ def is_canonical(node: Node, *, allow_decimals: bool = False) -> bool:
 
 
 def classify_answer(problem: Problem, answer: str, fmt: Format = "text") -> Verdict:
-    """`correct`, `equivalent_not_simplified` or `wrong`. Raises MathParseError on unreadable input.
+    """`correct`, `equivalent_not_simplified` or `wrong`.
+
+    Raises MathParseError on unreadable input and UnsupportedProblem on math out of scope
+    (in the problem or the answer); the caller abstains.
 
     For a solve problem, `x = 3`, `3 = x` and `3` are all correct; an equivalent equation that
     is not solved yet (`2x = 6`, `x = 6/2`) is `equivalent_not_simplified`. Problems with no
@@ -145,45 +148,30 @@ def classify_answer(problem: Problem, answer: str, fmt: Format = "text") -> Verd
             "answers to equations with no solution or every value as a solution are not graded"
         )
     node = parse_input(answer.strip().removeprefix("="), fmt)
-    allow = problem.allows_decimals
+    expected = solution.value
+    assert expected is not None
     try:
-        if problem.kind != "solve":
-            if isinstance(node, Eq):
-                node = node.right
-            assert solution.value is not None
-            if not same_value(to_sympy(node), solution.value):
-                return "wrong"
-            return (
-                "correct"
-                if is_canonical(node, allow_decimals=allow)
-                else "equivalent_not_simplified"
-            )
-        if isinstance(node, Eq):
+        if problem.kind == "solve" and isinstance(node, Eq):
             iso = isolated(node)
-            if iso is not None:
-                name, node = iso
-                if name != solution.variable:
-                    return "wrong"
-            else:
+            if iso is None:
+                # An equation not solved yet: right when it has the same solution.
                 var, kind, value = solution_set(node)
-                same = kind == solution.kind and (
-                    kind != "value"
-                    or (
-                        var == solution.variable
-                        and value is not None
-                        and solution.value is not None
-                        and same_value(value, solution.value)
-                    )
+                same = kind == "value" and var == solution.variable and value is not None
+                return (
+                    "equivalent_not_simplified" if same and same_value(value, expected) else "wrong"
                 )
-                return "equivalent_not_simplified" if same else "wrong"
-        if solution.value is None or free_vars(node):
+            name, node = iso
+            if name != solution.variable:
+                return "wrong"
+        elif isinstance(node, Eq):
+            node = node.right  # `1/2 + 1/3 = 5/6`: the answer is the last side
+        if problem.kind == "solve" and free_vars(node):
             return "wrong"
-        if not same_value(to_sympy(node), solution.value):
+        if not same_value(to_sympy(node), expected):
             return "wrong"
-        return (
-            "correct" if is_canonical(node, allow_decimals=allow) else "equivalent_not_simplified"
-        )
     except UnsupportedProblem:
-        return "wrong"
+        raise  # an answer out of scope (a non-linear or rational equation): the caller abstains
     except MathError:
-        return "wrong"
+        return "wrong"  # an answer with no value, such as a division by zero
+    simplest = is_canonical(node, allow_decimals=problem.allows_decimals)
+    return "correct" if simplest else "equivalent_not_simplified"

@@ -32,6 +32,11 @@ class TestSolve:
         assert solve(Problem("solve", "5y + 3 = 2y + 9")).answer_text == "y = 2"
         assert solve(Problem("solve", "x/2 = 3/4")).answer_text == "x = 3/2"
 
+    def test_letter_divided_by_itself_is_rational(self) -> None:
+        # Regression: sympy cancelled x/x, so this was "every value" although x = 0 fails.
+        with pytest.raises(UnsupportedProblem):
+            solve(Problem("solve", "2x/x = 2"))
+
     def test_cancelling_squares_are_linear(self) -> None:
         assert solve(Problem("solve", "x^2 + x = x^2 + 3")).answer_text == "x = 3"
         assert solve(Problem("solve", "x(x+2) = x^2 + 6")).answer_text == "x = 3"
@@ -151,7 +156,12 @@ class TestClassify:
         assert classify_answer(problem, "2x = 8") == "wrong"
         assert classify_answer(problem, "y = 3") == "wrong"
         assert classify_answer(problem, "x") == "wrong"
-        assert classify_answer(problem, "x^2 = 9") == "wrong"
+
+    def test_answers_out_of_scope_abstain(self) -> None:
+        problem = Problem("solve", "2x = 6")
+        for answer in ["x^2 = 9", "6/x = 2"]:  # a rational answer used to be graded wrong
+            with pytest.raises(UnsupportedProblem):
+                classify_answer(problem, answer)
 
     def test_evaluate(self) -> None:
         problem = Problem("evaluate", "1/2 + 1/3")

@@ -1,8 +1,11 @@
 import time
 
 import pytest
+import sympy
 
 from app.math import ALL_RULES, RULES, TOPICS, Problem, reproducing_rules, rule_reproduces
+from app.math.nodes import Bin
+from app.math.rules import NodeRule
 
 AGREED_IDS = {
     "negative-numbers": {
@@ -97,6 +100,12 @@ def test_no_rule_for_right_or_unexplained_answers(problem: Problem, answer: str)
 def test_linear_rules_give_one_diagnosis_each() -> None:
     assert reproducing_rules(Problem("solve", "2*x + 6 = 10"), "x = -1") == ["divide_one_term"]
     assert reproducing_rules(Problem("solve", "(x + 6)/2 = 10"), "x = 8") == ["wrong_inverse_order"]
+
+
+def test_an_undefined_alternative_does_not_hide_later_ones() -> None:
+    # Regression: alternative 0 was undefined everywhere, so alternative 1 was never tried.
+    rule = NodeRule(lambda n: isinstance(n, Bin), lambda n, ev: [sympy.zoo, sympy.Integer(42)])
+    assert 42 in rule.candidates(Problem("evaluate", "1 + 1"))
 
 
 def test_long_sum_is_fast() -> None:

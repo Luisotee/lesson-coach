@@ -9,9 +9,12 @@ import sympy
 
 from app.math.latex import parse_latex
 from app.math.nodes import (
+    Bin,
     Eq,
     MathError,
+    Neg,
     Node,
+    Pow,
     UnsupportedProblem,
     Var,
     checked,
@@ -99,6 +102,27 @@ class LinearEquation:
         return ("all", None) if c == 0 else ("none", None)
 
 
+def letter_in_denominator(node: Node) -> bool:
+    """Whether a letter is divided by, as written (`6/x`, `2x/x`, `x^(-1)`), before sympy
+    cancels anything."""
+    match node:
+        case Bin(op, left, right):
+            return (op == "/" and bool(free_vars(right))) or (
+                letter_in_denominator(left) or letter_in_denominator(right)
+            )
+        case Pow(base, exp):
+            return (exp < 0 and bool(free_vars(base))) or letter_in_denominator(base)
+        case Neg(arg):
+            return letter_in_denominator(arg)
+        case Eq(left, right):
+            return letter_in_denominator(left) or letter_in_denominator(right)
+        case _:
+            return False
+
+
+_RATIONAL = "equations with a letter in a denominator are not supported"
+
+
 def linear_form(eq: Eq) -> LinearEquation:
     names = free_vars(eq)
     if len(names) > 1:
@@ -107,15 +131,15 @@ def linear_form(eq: Eq) -> LinearEquation:
     left, right = to_sympy(eq.left), to_sympy(eq.right)
     if name is None:
         return LinearEquation(None, sympy.Integer(0), left, sympy.Integer(0), right)
+    if letter_in_denominator(eq):
+        # A rational equation (6/x = 2): multiplying by x can add or lose solutions.
+        raise UnsupportedProblem(_RATIONAL)
     x = sympy.Symbol(name)
     try:
         polys = [sympy.Poly(side, x) for side in (left, right)]
         difference = sympy.Poly(left - right, x)
     except sympy.PolynomialError as err:
-        # A letter in a denominator (6/x = 2) makes a rational equation: out of scope.
-        raise UnsupportedProblem(
-            "equations with a letter in a denominator are not supported"
-        ) from err
+        raise UnsupportedProblem("only linear equations are supported") from err
     if difference.degree() > 1:
         raise UnsupportedProblem("only linear equations are supported")
     if all(poly.degree() <= 1 for poly in polys):
@@ -194,10 +218,8 @@ def _equations_equivalent(a: Eq, b: Eq) -> bool:
         # Beyond linear: equivalent when lhs - rhs differ by a non-zero constant factor.
         da = to_sympy(a.left) - to_sympy(a.right)
         db = to_sympy(b.left) - to_sympy(b.right)
-        if any(sympy.denom(sympy.together(d)).free_symbols for d in (da, db)):
-            raise UnsupportedProblem(
-                "equations with a letter in a denominator are not supported"
-            ) from None
+        if letter_in_denominator(a) or letter_in_denominator(b):
+            raise UnsupportedProblem(_RATIONAL) from None
         if db == 0:
             return bool(da == 0)
         ratio = sympy.cancel(da / db)

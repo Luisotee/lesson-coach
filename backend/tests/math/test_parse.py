@@ -1,3 +1,5 @@
+import time
+
 import pytest
 import sympy
 
@@ -91,6 +93,8 @@ def test_size_guards() -> None:
     with pytest.raises(MathParseError):
         parse_text("(-2^2)^2")
     assert to_sympy(parse_text("(x^2 + 1)^2")) == (sympy.Symbol("x") ** 2 + 1) ** 2
+    assert to_sympy(parse_text(f"2^{MAX_EXPONENT}")) == 2**MAX_EXPONENT
+    assert to_sympy(parse_text("2^(-1)")) == sympy.Rational(1, 2)
 
 
 def test_expansion_guards() -> None:
@@ -101,13 +105,20 @@ def test_expansion_guards() -> None:
         parse_text("(x+y)^10(x+y)^10(x+y)^10")
     with pytest.raises(UnsupportedProblem):
         parse_text("(((9^10*9)^10*9)^10*9)^10")
+    # A sum of fractions multiplies the bottoms: 14 terms took 84 s before the bound.
+    fractions = "+".join(f"1/(x+{k}y)^10" for k in range(2, 16))
+    start = time.perf_counter()
+    with pytest.raises(UnsupportedProblem):
+        parse_text(fractions)
+    assert time.perf_counter() - start < 1
+    with pytest.raises(UnsupportedProblem):
+        parse_text("1/(x+y)^10 + 1/(x+2y)^10 + 1/(x+3y)^10")
+    assert parse_text("1/(x+y)^10 + 1/(x+2y)^10")
     assert free_vars_of("(x + y)^10") == {"x", "y"}
 
 
 def free_vars_of(text: str) -> set[str]:
     return set(map(str, to_sympy(parse_text(text)).free_symbols))
-    assert to_sympy(parse_text(f"2^{MAX_EXPONENT}")) == 2**MAX_EXPONENT
-    assert to_sympy(parse_text("2^(-1)")) == sympy.Rational(1, 2)
 
 
 def test_division_by_zero_is_undefined() -> None:

@@ -124,6 +124,21 @@ class TestCheckSteps:
         issues = check_steps(problem, [Step("x + 1", "x + 2", "-x"), Step("x", "1")])
         assert "not_equivalent" in [i.reason for i in issues]
 
+    def test_restating_a_no_solution_problem_does_not_pass(self) -> None:
+        issues = check_steps(Problem("solve", "x+1=x+2"), [Step("x+1", "x+2")])
+        assert [(i.index, i.reason) for i in issues] == [(0, "wrong_answer")]
+        every = Problem("solve", "2(x+1)=2x+2")
+        assert [i.reason for i in check_steps(every, [Step("2(x+1)", "2x+2")])] == ["wrong_answer"]
+        assert check_steps(every, [Step("2(x+1)", "2x+2", "-2x"), Step("2", "2")]) == []
+
+    def test_out_of_scope_steps_are_issues_not_errors(self) -> None:
+        issues = check_steps(Problem("solve", "2x=6"), [Step("2x", "6"), Step("x", "6/x")])
+        assert (1, "unsupported") in [(i.index, i.reason) for i in issues]
+        issues = check_steps(Problem("solve", "6/x=2"), [Step("6", "2x")])
+        assert [(i.index, i.reason) for i in issues] == [(0, "unsupported")]
+        result = check_step(Step("6/x", "2", "*x"), Step("6", "2x"))
+        assert result.unsupported and not result.ok
+
     def test_unparsable_step(self) -> None:
         issues = check_steps(EQUATION, [Step("3x + 5", "twenty")])
         assert [(i.index, i.reason) for i in issues] == [(0, "unparsable")]
@@ -177,9 +192,28 @@ class TestFirstLineThatDoesntFollow:
         lines = [Step("2x+6=10"), Step("2x=16"), Step("x=8")]
         assert first_line_that_doesnt_follow(lines) == LineFinding(1, "not_equivalent")
 
-    def test_rational_equation_abstains(self) -> None:
+    def test_rational_line_is_unsupported_at_its_index(self) -> None:
+        lines = [Step("6/x", "2", "*x"), Step("6", "2x")]
+        assert first_line_that_doesnt_follow(lines) == LineFinding(1, "unsupported")
+
+    def test_rational_problem_raises(self) -> None:
         with pytest.raises(UnsupportedProblem):
-            first_line_that_doesnt_follow([Step("6/x", "2", "*x"), Step("6", "2x")])
+            first_line_that_doesnt_follow([Step("6", "2x")], Problem("solve", "6/x = 2"))
+
+    def test_student_line_out_of_scope_is_unsupported(self) -> None:
+        lines = [Step("2x+6", "10"), Step("a+b+c", "4")]
+        found = first_line_that_doesnt_follow(lines, Problem("solve", "2x+6=10"))
+        assert found == LineFinding(1, "unsupported")
+
+    def test_number_equations_in_one_field_are_an_expression_chain(self) -> None:
+        # Regression: these switched to solve mode, where every false line is "no solution".
+        lines = [Step("1/2+1/3=2/5"), Step("2/5=3/7")]
+        assert first_line_that_doesnt_follow(lines) == LineFinding(0, "false_equality")
+        assert first_line_that_doesnt_follow([Step("1/2+1/3=5/6"), Step("5/6")]) is None
+        problem = Problem("evaluate", "1/2 + 1/3")
+        assert first_line_that_doesnt_follow([Step("1/2+1/3=2/5")], problem) == LineFinding(
+            0, "false_equality"
+        )
 
     def test_unparsable_line(self) -> None:
         lines = [Step("2x + 6", "10"), Step("2x", "4?")]
