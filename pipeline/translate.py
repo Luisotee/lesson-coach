@@ -416,6 +416,7 @@ def load_stats() -> dict[str, dict[str, Any]]:
 
 
 def flag_rate(stats: dict[str, Any]) -> float:
+    """Majority flags per judging (re-judges after a repair included), as the report says."""
     judged = stats.get("judged_items", 0)
     return sum(stats.get("judge_flags", {}).values()) / judged if judged else 0.0
 
@@ -465,7 +466,9 @@ def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
         "- The judge compares each English text with its translation and reports errors (meaning, "
         "math terms, grammar). Flagged texts are asked for again with the problems, up to 3 "
         "times; that is the review pass. Its changes to UI strings are listed below.",
-        "- Judge flag rate: the share of judged texts a judge majority flagged at least once.",
+        "- Judge flag rate: judge-majority flags per text judged. Every judging counts, "
+        "including each re-judge after a repair, so a text flagged in two rounds counts twice; "
+        "it is not the share of distinct texts flagged.",
         "",
         f"Ships: {', '.join(ships) or 'none'}. Total cost: about ${total:.2f}.",
         f"Not run: {', '.join(not_run) or 'none'}.",

@@ -6,7 +6,7 @@ A language ships only when its prompts, its three packs and all its UI strings p
 - Packs are translated from the English packs. The math is copied and verified identical (`pipeline/checks.py: translation_findings`): every math field, and every backtick span inside the prose, character for character.
 - UI strings must compile as ICU for their locale with the same arguments and the locale's plural categories (`pipeline/icu_check.mjs`).
 - The judge compares each English text with its translation and reports errors (meaning, math terms, grammar). Flagged texts are asked for again with the problems, up to 3 times; that is the review pass. Its changes to UI strings are listed below.
-- Judge flag rate: the share of judged texts a judge majority flagged at least once.
+- Judge flag rate: judge-majority flags per text judged. Every judging counts, including each re-judge after a repair, so a text flagged in two rounds counts twice; it is not the share of distinct texts flagged.
 
 Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $52.60.
 Not run: so, ti, ps, prs.
