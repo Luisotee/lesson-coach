@@ -14,6 +14,7 @@ import { MistakeResult } from '@/components/mistake/MistakeResult'
 import { usePageTitle } from '@/components/shell/hooks'
 import { Button } from '@/components/ui/button'
 import { TOPIC_IDS, type TopicId } from '@/content/topics'
+import { useRetryWait } from '@/hooks/useRetryWait'
 import { cn } from '@/lib/utils'
 
 /** "A student wrote this": the problem, the student's answer and optional working in; the
@@ -24,6 +25,8 @@ export function MistakePage() {
   const lang = useApiLang()
   const titleOf = useTopicTitle()
   const mistake = useMistake()
+  // After a 429, "Explain this" waits out Retry-After like the Retry button does.
+  const wait = useRetryWait(mistake.error)
 
   const [topic, setTopic] = useState<TopicId | undefined>()
   const [problem, setProblem] = useState<ConfirmedExpression | null>(null)
@@ -163,7 +166,7 @@ export function MistakePage() {
           <Button
             type="submit"
             className="min-h-12 self-start px-6 text-base"
-            disabled={mistake.isPending}
+            disabled={mistake.isPending || wait > 0}
           >
             {mistake.isPending && (
               <Loader2 aria-hidden="true" className="animate-spin motion-reduce:animate-none" />

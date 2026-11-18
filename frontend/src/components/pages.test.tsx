@@ -8,7 +8,9 @@ import { CheckResult } from '@/components/practice/CheckResult'
 import { HintLadder } from '@/components/practice/HintLadder'
 import { createMemoryRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
-import { PACKS } from '@/test/api'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { createQueryClient } from '@/api/queries'
+import { PACKS, mockApi } from '@/test/api'
 import allFollow from '@/test/fixtures/check/all-follow.json'
 import badLine from '@/test/fixtures/check/bad-line.json'
 import correct from '@/test/fixtures/mistake/correct.json'
@@ -21,10 +23,15 @@ import type { ReactNode } from 'react'
 
 afterEach(() => vi.unstubAllGlobals())
 
-/** Renders inside a router, for components with links. */
+/** Renders inside a router (for links) and a query client on the fixture API (for topic titles). */
 function inRouter(ui: ReactNode) {
+  mockApi()
   const router = createMemoryRouter([{ path: '*', element: ui }])
-  return render(<RouterProvider router={router} />)
+  return render(
+    <QueryClientProvider client={createQueryClient()}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>,
+  )
 }
 
 test('RichText draws backtick math by hand and keeps the prose', () => {
@@ -80,6 +87,36 @@ describe('CheckResult', () => {
 describe('MistakeResult', () => {
   const show = (r: unknown, topic?: string) =>
     inRouter(<MistakeResult result={r as Result} topic={topic} onTryAnother={() => {}} />)
+
+  test('cards in another language mark only their own text, never the UI labels', () => {
+    show({ ...diagnosed, diagnosis: { ...diagnosed.diagnosis, cards_lang: 'ar' } }, 'fractions')
+    const langOf = (el: Element) => el.closest('[lang]')?.getAttribute('lang') ?? null
+    const belief = screen.getByText('To add fractions, add the tops and add the bottoms.')
+    expect(langOf(belief)).toBe('ar')
+    expect(belief.closest('[lang]')).toHaveAttribute('dir', 'rtl')
+    for (const label of [
+      'What you could say',
+      'nudge',
+      'try next with your student',
+      'Why it feels right.',
+    ])
+      expect(langOf(screen.getByText(label))).not.toBe('ar')
+  })
+
+  test('unclear: the first bad line sympy found is circled, without the AI margin note', () => {
+    show({
+      ...unclear,
+      working: diagnosed.working,
+      first_bad_line: diagnosed.first_bad_line,
+      diagnosis: diagnosed.diagnosis,
+    })
+    const items = within(screen.getByRole('list', { name: 'what they wrote' })).getAllByRole(
+      'listitem',
+    )
+    expect(items[1].querySelector('[data-mark="circle"]')).not.toBeNull()
+    expect(document.querySelector('[data-mark="note"]')).toBeNull()
+    expect(within(items[1]).getByRole('math')).not.toHaveAccessibleName(/marked/)
+  })
 
   test('diagnosed: the reason, their working circled with a note, the answer, what to say, try next', () => {
     show(diagnosed, 'fractions')

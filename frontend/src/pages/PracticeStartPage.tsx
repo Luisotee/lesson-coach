@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next'
 import { Navigate } from 'react-router'
 import { usePacks, useTopics } from '@/api/queries'
 import { LoadError, Loading } from '@/components/LoadState'
-import { usePageTitle } from '@/components/shell/hooks'
 import { PageFrame } from '@/pages/PageFrame'
 
 /**
@@ -11,7 +10,6 @@ import { PageFrame } from '@/pages/PageFrame'
  */
 export function PracticeStartPage() {
   const { t } = useTranslation()
-  usePageTitle(t('nav.practice'))
   const topics = useTopics()
   const packs = usePacks(topics.data?.map((x) => x.id) ?? [])
   const firstIndex = packs.findIndex((p) => (p.data?.practice.length ?? 0) > 0)

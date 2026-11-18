@@ -23,17 +23,44 @@ function hashTarget(hash: string): HTMLElement | null {
 }
 
 /**
+ * Calls `check` on every change inside <main> for up to 10 s, until it returns true.
+ * Returns the cleanup.
+ */
+function watchMain(check: () => boolean): (() => void) | undefined {
+  const main = document.querySelector('main')
+  if (!main) return
+  const observer = new MutationObserver(() => {
+    if (check()) observer.disconnect()
+  })
+  observer.observe(main, { childList: true, subtree: true })
+  const stop = window.setTimeout(() => observer.disconnect(), 10_000)
+  return () => {
+    observer.disconnect()
+    window.clearTimeout(stop)
+  }
+}
+
+/**
  * After a client-side navigation, moves focus to the link's #target or to the page's <h1>, so
  * keyboard and screen-reader users start on the new page instead of the old link.
  * The first load keeps the browser's own focus (also under StrictMode's effect re-run), and
  * focusing never scrolls: ScrollRestoration owns the scroll position, including on Back.
+ * A #target that a loading page adds later is scrolled into view once it appears, also on
+ * the first load, since neither the browser nor ScrollRestoration found it in time.
  */
 export function useRouteFocus(): void {
   const { key, hash } = useLocation()
   const initialKey = useRef(key)
   const navigated = useRef(false)
   useEffect(() => {
-    if (!navigated.current && key === initialKey.current) return
+    if (!navigated.current && key === initialKey.current) {
+      if (!hash || hashTarget(hash)) return
+      return watchMain(() => {
+        const target = hashTarget(hash)
+        target?.scrollIntoView?.()
+        return target !== null
+      })
+    }
     navigated.current = true
     const focus = (el: HTMLElement) => {
       if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1')
@@ -48,33 +75,25 @@ export function useRouteFocus(): void {
     // page heading, so focus never stays on a stale link.
     let current = document.querySelector<HTMLElement>('main h1')
     if (current) focus(current)
-    const main = document.querySelector('main')
-    if (!main) return
     // A page that loads its content replaces its loading heading. Follow it: to the #target
     // once it exists (scrolled into view, since ScrollRestoration found nothing to scroll to),
     // otherwise to the new <h1>. Not if the user has already moved focus elsewhere.
-    const observer = new MutationObserver(() => {
+    return watchMain(() => {
       const active = document.activeElement
-      if (active && active !== document.body && active !== current) return
+      if (active && active !== document.body && active !== current) return true
       const target = hash ? hashTarget(hash) : null
       if (target) {
-        observer.disconnect()
         focus(target)
         target.scrollIntoView?.()
-        return
+        return true
       }
-      if (current?.isConnected) return
+      if (current?.isConnected) return false
       const h1 = document.querySelector<HTMLElement>('main h1')
       if (h1) {
         current = h1
         focus(h1)
       }
+      return false
     })
-    observer.observe(main, { childList: true, subtree: true })
-    const stop = window.setTimeout(() => observer.disconnect(), 10_000)
-    return () => {
-      observer.disconnect()
-      window.clearTimeout(stop)
-    }
   }, [key, hash])
 }

@@ -1,5 +1,6 @@
 import { useContext, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useContentLang } from '@/components/content-lang'
 import { NotebookContext } from '@/components/math/notebook-context'
 import { renderNode, renderOp } from '@/components/math/render'
 import { cn } from '@/lib/utils'
@@ -86,6 +87,8 @@ export function EquationLine({
 }) {
   const { t } = useTranslation()
   const { writeOn, numbered } = useContext(NotebookContext)
+  // The note is diagnosis text: it takes that text's language, not the UI's.
+  const noteLang = useContentLang()
   const line = parseLine({ left, right, op })
   const spoken = speakParsedLine(line, continued, t)
   const label = annotate?.note
@@ -120,6 +123,7 @@ export function EquationLine({
           <span
             className="ms-2 inline-block font-normal whitespace-normal text-mark"
             data-mark="note"
+            {...noteLang}
           >
             ← {annotate.note}
           </span>

@@ -30,9 +30,12 @@ test.describe('math demo', () => {
   test('lines align on = across a notebook', async ({ page }) => {
     await page.goto('/demo/math')
     const notebook = page.getByRole('list', { name: 'Solving 3x + 5 = 20' }).first()
-    const eqXs = await notebook
-      .locator('[data-math="line"] > span:nth-child(2)')
-      .evaluateAll((cells) => cells.map((c) => Math.round(c.getBoundingClientRect().left)))
+    // evaluateAll doesn't wait: let the lazily loaded page render its lines first.
+    const cells = notebook.locator('[data-math="line"] > span:nth-child(2)')
+    await expect(cells).toHaveCount(3)
+    const eqXs = await cells.evaluateAll((cells) =>
+      cells.map((c) => Math.round(c.getBoundingClientRect().left)),
+    )
     expect(eqXs).toHaveLength(3)
     expect(new Set(eqXs).size).toBe(1)
   })

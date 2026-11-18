@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, Check, Sparkles } from 'lucide-react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { WorkedExample } from '@/api/types'
 import { CheckLine, EquationLine, MathExpr, Notebook } from '@/components/math'
@@ -45,6 +45,7 @@ export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
   const [stepState, setStepIndex] = useState(0)
   const [mode, setMode] = useState<ExplanationMode>('why')
   const [sheetOpen, setSheetOpen] = useState(false)
+  const lines = useRef<HTMLDivElement>(null)
 
   // Clamped so a stale index can never point past the examples or steps on screen.
   const exampleIndex = Math.min(exampleState, examples.length - 1)
@@ -119,7 +120,7 @@ export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
       </div>
 
       <div className="flex flex-wrap gap-2 p-2">
-        <div className="min-w-0 flex-[1_1_300px]">
+        <div className="min-w-0 flex-[1_1_300px]" ref={lines}>
           <p className="mb-1 ps-10 text-xs text-muted-foreground">{t('topic.tapLine')}</p>
           <Notebook
             label={t('topic.exampleLabel', { n: exampleIndex + 1 })}
@@ -157,7 +158,14 @@ export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
 
       {phone && (
         <Drawer open={sheetOpen} onOpenChange={setSheetOpen}>
-          <DrawerContent>
+          <DrawerContent
+            onCloseAutoFocus={(e) => {
+              // The sheet has no trigger to return to: go back to the line now selected
+              // (Previous/Next step may have moved it).
+              e.preventDefault()
+              lines.current?.querySelector<HTMLElement>('button[aria-pressed="true"]')?.focus()
+            }}
+          >
             <DrawerHeader className="text-start">
               <DrawerTitle>{heading}</DrawerTitle>
               <DrawerDescription asChild>

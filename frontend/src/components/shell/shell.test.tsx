@@ -179,3 +179,14 @@ test('Practice says so when no topic has practice problems', async () => {
   expect(await screen.findByText('There are no practice problems yet.')).toBeInTheDocument()
   expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Practice')
 })
+
+test.each([
+  ['/topics/fractions', 'Fractions · Lesson Coach'],
+  ['/practice/fractions/2', 'Practice: Fractions · Lesson Coach'],
+])('%s has its own title while loading and when loading fails', async (path, title) => {
+  mockApi({ 'GET /api/topics/fractions': () => json({ detail: 'boom' }, 500) })
+  renderAt(path)
+  expect(document.title).toBe(title)
+  await screen.findByRole('alert', {}, { timeout: 5000 })
+  expect(document.title).toBe(title)
+})

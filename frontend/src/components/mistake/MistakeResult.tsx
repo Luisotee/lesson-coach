@@ -2,8 +2,10 @@ import { ArrowRight, BadgeCheck, CircleCheck, Sparkles } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
+import { useTopicTitle } from '@/api/queries'
 import type { Diagnosis, MistakeResult as Result } from '@/api/types'
 import { EquationLine, MathExpr, Notebook, StepsNotebook } from '@/components/math'
+import { InLang } from '@/components/ContentLang'
 import { RichText } from '@/components/RichText'
 import { StepPicture } from '@/components/visual/StepPicture'
 import { pictureFor } from '@/components/visual/picture'
@@ -42,13 +44,15 @@ function Figure({ caption, children }: { caption: string; children: ReactNode })
 }
 
 /**
- * The student's lines in pencil, with the first line that doesn't follow circled and the
- * margin note beside it. Without working, the problem and their answer.
+ * The student's lines in pencil, with sympy's first line that doesn't follow circled.
+ * Without working, the problem and their answer. With `diagnosed`, the answer is circled when
+ * sympy found no line, and the diagnosis's margin note is shown; an abstain gets neither.
  */
-function WhatTheyWrote({ result, circle }: { result: Result; circle: boolean }) {
+function WhatTheyWrote({ result, diagnosed }: { result: Result; diagnosed: boolean }) {
   const { t } = useTranslation()
   const working = toSteps(result.working)
-  const note = result.diagnosis?.margin_note ?? undefined
+  const circle = diagnosed
+  const note = diagnosed ? (result.diagnosis?.margin_note ?? undefined) : undefined
   let lines: Step[]
   let marked: number | null
   if (working.length) {
@@ -67,19 +71,21 @@ function WhatTheyWrote({ result, circle }: { result: Result; circle: boolean }) 
   if (!lines.length) return null
   return (
     <Figure caption={t('mistake.whatTheyWrote')}>
-      <Notebook label={t('mistake.whatTheyWrote')} pen="pencil">
-        {lines.map((l, i) => (
-          <EquationLine
-            key={i}
-            index={i}
-            left={l.left}
-            right={l.right}
-            op={l.op}
-            continued={isContinued(lines, i)}
-            annotate={marked === i ? { circle: true, note } : undefined}
-          />
-        ))}
-      </Notebook>
+      <InLang lang={result.diagnosis?.lang}>
+        <Notebook label={t('mistake.whatTheyWrote')} pen="pencil">
+          {lines.map((l, i) => (
+            <EquationLine
+              key={i}
+              index={i}
+              left={l.left}
+              right={l.right}
+              op={l.op}
+              continued={isContinued(lines, i)}
+              annotate={marked === i ? { circle: true, note } : undefined}
+            />
+          ))}
+        </Notebook>
+      </InLang>
     </Figure>
   )
 }
@@ -107,16 +113,16 @@ function WhatToSay({ d }: { d: Diagnosis }) {
   ] as const
   return (
     <Card>
-      <h3 className="text-lg font-semibold" lang={d.lang}>
-        {t('mistake.whatToSay')}
-      </h3>
-      <ol className="flex flex-col gap-3" lang={d.lang}>
+      <h3 className="text-lg font-semibold">{t('mistake.whatToSay')}</h3>
+      <ol className="flex flex-col gap-3">
         {rows.map(([key, text]) => (
           <li key={key} className="flex flex-col gap-1 sm:flex-row sm:gap-3">
             <span className="w-24 flex-none text-sm font-semibold text-link-ink lowercase">
               {t(`mistake.say.${key}`)}
             </span>
-            <RichText text={text} className="text-[15px] leading-relaxed" />
+            <InLang lang={d.lang}>
+              <RichText text={text} className="text-[15px] leading-relaxed" />
+            </InLang>
           </li>
         ))}
       </ol>
@@ -126,6 +132,7 @@ function WhatToSay({ d }: { d: Diagnosis }) {
 
 function TryNext({ d, topic }: { d: Diagnosis; topic?: string }) {
   const { t } = useTranslation()
+  const titleOf = useTopicTitle()
   if (!d.try_next) return null
   const body = (
     <>
@@ -134,13 +141,15 @@ function TryNext({ d, topic }: { d: Diagnosis; topic?: string }) {
           {t('mistake.tryNext')}
         </span>
         <span className="flex flex-wrap items-center gap-2">
-          <RichText text={d.try_next.prompt} />
+          <InLang lang={d.cards_lang}>
+            <RichText text={d.try_next.prompt} />
+          </InLang>
           <MathExpr expr={d.try_next.problem.expr} className="text-2xl" />
         </span>
       </span>
       {topic && (
         <span className="inline-flex items-center gap-2 font-semibold text-link-ink">
-          {t('mistake.fromTopic', { topic: t(`topics.${topic}.title`) })}
+          {t('mistake.fromTopic', { topic: titleOf(topic) })}
           <ArrowRight aria-hidden="true" className="size-4 rtl:-scale-x-100" />
         </span>
       )}
@@ -149,17 +158,11 @@ function TryNext({ d, topic }: { d: Diagnosis; topic?: string }) {
   const cls =
     'flex flex-wrap items-center justify-between gap-3 rounded-[20px] border border-line bg-white p-5 text-navy no-underline'
   return topic ? (
-    <Link
-      to={`/topics/${topic}#mistakes`}
-      className={`${cls} hover:border-line-strong`}
-      lang={d.cards_lang ?? undefined}
-    >
+    <Link to={`/topics/${topic}#mistakes`} className={`${cls} hover:border-line-strong`}>
       {body}
     </Link>
   ) : (
-    <div className={cls} lang={d.cards_lang ?? undefined}>
-      {body}
-    </div>
+    <div className={cls}>{body}</div>
   )
 }
 
@@ -234,7 +237,11 @@ export function MistakeResult({
         <p className="text-[15px] leading-relaxed">
           {result.status === 'not_simplified' ? t('mistake.notSimplified') : t('mistake.correct')}
         </p>
-        {d && <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />}
+        {d && (
+          <InLang lang={d.lang}>
+            <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
+          </InLang>
+        )}
         <Reason result={result} />
         {tryAnother}
       </Card>
@@ -252,33 +259,37 @@ export function MistakeResult({
             </span>
             {d && <SourceBadge d={d} />}
           </div>
-          <h2
-            className="text-2xl leading-snug font-semibold"
-            lang={
-              result.status === 'slip' ? undefined : main ? (d?.cards_lang ?? undefined) : d?.lang
-            }
-          >
+          <h2 className="text-2xl leading-snug font-semibold">
             {result.status === 'slip' ? (
               t('mistake.slipTitle')
             ) : main?.belief ? (
-              <RichText text={main.belief} />
+              <InLang lang={d?.cards_lang}>
+                <RichText text={main.belief} />
+              </InLang>
             ) : d ? (
-              <RichText text={d.explanation} />
+              <InLang lang={d.lang}>
+                <RichText text={d.explanation} />
+              </InLang>
             ) : (
               t('mistake.reasonUnavailable')
             )}
           </h2>
           <div className="flex flex-wrap gap-4">
-            <WhatTheyWrote result={result} circle />
+            <WhatTheyWrote result={result} diagnosed />
             <WorkedOut result={result} />
           </div>
           {main?.why_it_feels_right && (
-            <p className="text-[15px] leading-relaxed" lang={d?.cards_lang ?? undefined}>
-              <b>{t('topic.whyItFeelsRight')}</b> <RichText text={main.why_it_feels_right} />
+            <p className="text-[15px] leading-relaxed">
+              <b>{t('topic.whyItFeelsRight')}</b>{' '}
+              <InLang lang={d?.cards_lang}>
+                <RichText text={main.why_it_feels_right} />
+              </InLang>
             </p>
           )}
           {d && (main || result.status === 'slip') && (
-            <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
+            <InLang lang={d.lang}>
+              <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
+            </InLang>
           )}
           <Reason result={result} />
         </Card>
@@ -298,24 +309,27 @@ export function MistakeResult({
           </span>
           <h2 className="text-2xl font-semibold">{t('mistake.askHow')}</h2>
           <Reason result={result} />
-          {d && <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />}
+          {d && (
+            <InLang lang={d.lang}>
+              <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
+            </InLang>
+          )}
           {cards.length > 0 && (
-            <div
-              className="flex flex-col gap-2 rounded-xl bg-ground p-4"
-              lang={d?.cards_lang ?? undefined}
-            >
+            <div className="flex flex-col gap-2 rounded-xl bg-ground p-4">
               <span className="text-xs font-semibold text-muted-foreground lowercase">
                 {t('mistake.possibilities', { count: cards.length })}
               </span>
               {cards.map((m, i) => (
                 <p key={m.id}>
                   <b>{i === 0 ? t('mistake.possibly') : t('mistake.or')}</b>{' '}
-                  <RichText text={m.belief!} />
+                  <InLang lang={d?.cards_lang}>
+                    <RichText text={m.belief!} />
+                  </InLang>
                 </p>
               ))}
             </div>
           )}
-          <WhatTheyWrote result={result} circle={false} />
+          <WhatTheyWrote result={result} diagnosed={false} />
         </Card>
         {d && <WhatToSay d={d} />}
         {tryAnother}
@@ -329,7 +343,11 @@ export function MistakeResult({
       <Card>
         <h2 className="text-2xl font-semibold">{t('mistake.outOfScope')}</h2>
         <Reason result={result} />
-        {d && <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />}
+        {d && (
+          <InLang lang={d.lang}>
+            <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
+          </InLang>
+        )}
       </Card>
       {d && <WhatToSay d={d} />}
       {tryAnother}

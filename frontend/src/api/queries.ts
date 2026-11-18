@@ -49,6 +49,11 @@ function packQuery(id: string, lang: string) {
         `/api/topics/${encodeURIComponent(id)}?lang=${encodeURIComponent(lang)}`,
         signal,
       ),
+    // A language switch keeps the same topic's pack on screen until the new one arrives, so the
+    // page isn't unmounted (the teacher's working, check result and open hints survive).
+    // Never another topic's pack.
+    placeholderData: (previous, previousQuery) =>
+      previousQuery?.queryKey[1] === id ? previous : undefined,
   })
 }
 

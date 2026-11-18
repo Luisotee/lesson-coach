@@ -1,7 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MathInput, type ConfirmedExpression, type ConfirmedLines } from '@/components/input'
-import { usePageTitle } from '@/components/shell/hooks'
 import { PageFrame } from '@/pages/PageFrame'
 
 function Card({ title, children }: { title: string; children: ReactNode }) {
@@ -33,7 +32,6 @@ function Received({ value }: { value: ConfirmedExpression | ConfirmedLines | nul
 /** Both shapes of MathInput, with what each hands to its page. */
 export function InputDemoPage() {
   const { t } = useTranslation()
-  usePageTitle(t('demo.inputTitle'))
   const [expression, setExpression] = useState<ConfirmedExpression | null>(null)
   const [lines, setLines] = useState<ConfirmedLines | null>(null)
   return (

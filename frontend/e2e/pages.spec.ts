@@ -107,6 +107,8 @@ test.describe('topic on a phone', () => {
     await expectNoAxeViolations(page)
     await page.keyboard.press('Escape')
     await expect(sheet).toBeHidden()
+    // Focus returns to the line now selected, step 3 after Next step.
+    await expect(page.getByRole('button', { name: /x equals 5/, pressed: true })).toBeFocused()
   })
 })
 
@@ -305,6 +307,7 @@ test('mistake: validation, try another answer, and a rate limit', async ({ page 
   limited = false
   // Retry stays off until the wait is over.
   await expect(page.getByRole('button', { name: /^Try again in \d s$/ })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Explain this' })).toBeDisabled()
   await expect(page.getByRole('button', { name: 'Try again', exact: true })).toBeEnabled()
   await page.getByRole('button', { name: 'Try again', exact: true }).click()
   await expect(page.getByText('checked: this rule gives exactly their answer')).toBeVisible()
@@ -351,4 +354,32 @@ test('mistake: the try-next link reaches the section of a topic not yet loaded',
   await page.getByRole('link', { name: /from the Fractions topic/ }).click()
   await expect(page.locator('#mistakes')).toBeFocused()
   await expect(page.locator('#mistakes')).toBeInViewport()
+})
+
+test('topic: opening a #section link directly scrolls to it once the pack loads', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 600 })
+  await page.goto('/topics/linear-equations#mistakes')
+  await expect(page.locator('#mistakes')).toBeInViewport()
+  expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(300)
+})
+
+test('practice: switching language keeps the working, the check result and open hints', async ({
+  page,
+}) => {
+  await mockApi(page, { checkWorking: () => ({ body: fixture('check/bad-line.json') }) })
+  await page.goto('/practice/linear-equations/1')
+  await page.getByRole('tab', { name: 'Type' }).click()
+  await typeMath(page, 'Your working, line 1', '8x=56')
+  await page.getByRole('button', { name: 'Check my working' }).click()
+  await expect(page.locator('[data-check="line_doesnt_follow"]')).toBeVisible()
+  await page.getByRole('button', { name: 'Show next hint' }).click()
+  await expect(page.getByText(/We want the value of/)).toBeVisible()
+
+  await page.getByLabel('Language').selectOption('ar')
+  await expect(page.locator('html')).toHaveAttribute('lang', 'ar')
+  await expect(page.locator('[data-check="line_doesnt_follow"]')).toBeVisible()
+  await expect(page.getByText(/We want the value of/)).toBeVisible()
+  await expect(page.locator('math-field').first()).toHaveJSProperty('value', '8x=56')
 })
