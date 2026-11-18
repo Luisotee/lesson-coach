@@ -335,8 +335,11 @@ async function headerCoversLittle(page: Page, path: string) {
   await mockApi(page)
   await page.goto(path)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
-  await page.mouse.wheel(0, 800)
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(100)
+  // A wheel sent before the page settles can be lost, so send it again until the page scrolls.
+  await expect(async () => {
+    await page.mouse.wheel(0, 800)
+    expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(100)
+  }).toPass({ timeout: 10_000 })
   const { width, height } = page.viewportSize()!
   const roomy = width >= 768 && height >= 600
   const box = (await page.locator('header').first().boundingBox())!
