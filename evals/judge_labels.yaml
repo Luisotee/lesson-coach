@@ -5,23 +5,23 @@
 # Each label carries the hash of the text it rates; a label whose text changed is skipped.
 # Scale: yes | to some extent | no. not_revealing is about the probe and nudge only.
 labels:
-  - {id: low/product/ours-neg-3/2, text_hash: "84becff0c1b98003", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Rule-match moves: number line and tug of war as questions.
-  - {id: low/product/mae18-3/0, text_hash: "dbb6dd90bc29f816", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Honest unclear; nudge walks the number line (start at 8, move 3 in the negative direction).
-  - {id: low/product/mae07-2/2, text_hash: "63aad65dc2c7d566", located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states the method (divide top and bottom by the same number).
-  - {id: low/product/slip-1/1, text_hash: "e0f3735ac8b23041", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last line.
-  - {id: none/product/ours-neg-3/2, text_hash: "4e8bcfc6a39d437b", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Rule-match moves: number line and tug of war as questions.
-  - {id: none/product/mae18-3/0, text_hash: "4b2892d23edf66dd", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Honest unclear; nudge walks the number line.
-  - {id: none/product/mae32-4/1, text_hash: "8895f64cddaedaf0", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks which way subtracting 4 moves.
-  - {id: none/product/slip-1/1, text_hash: "5ac3879ce44f2f01", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last division.
-  - {id: low/ai_only/mae33-3/2, text_hash: "e48e04a36465db27", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names 180 - 120; nudge asks what undoes the -120.
-  - {id: low/ai_only/mae18-2/2, text_hash: "cbc6899520a740c3", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Unclear; nudge walks the number line (start at 4, move 10 left).
-  - {id: none/ai_only/ours-neg-3/0, text_hash: "162db0867825fe08", located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge walks the number line (start at -8, move 3 right).
-  - {id: none/ai_only/mae15-1/1, text_hash: "c9fee73eb9e9b621", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear (reciprocal); nudge is a question.
-  - {id: low/product/mae33-3/2, text_hash: "7b7b6c2de46355d2", located: "yes", actionable: "yes", not_revealing: "no", non_judgmental: "yes"}  # Rule-match moves: the nudge gives the step (| +120 on both sides).
-  - {id: low/product/mae52-3/1, text_hash: "d13c1708c18586d1", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear; nudge suggests substituting back.
-  - {id: low/product/mae19-3/1, text_hash: "10c65cfff8ff48c6", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge is an owing analogy as a question.
-  - {id: low/product/slip-1/0, text_hash: "783b5639026b04d9", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last division.
-  - {id: none/product/mae08-2/1, text_hash: "1cab484a3a054314", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Rule-match moves: size check and same-size parts as questions.
-  - {id: none/product/mae52-3/2, text_hash: "6c02457b4186ea34", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear; nudge suggests substituting back.
-  - {id: none/product/mae19-3/1, text_hash: "206824a21c661042", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks which direction both move.
-  - {id: none/product/slip-1/0, text_hash: "b3603a8c789b7b8e", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last division.
+  - {id: low/product/ours-neg-3/2, text_hash: "d86beac76fca6cfc", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Rule-match moves: number line and opposite pulls as questions.
+  - {id: low/product/mae18-3/0, text_hash: "9c761127809212b4", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Honest unclear; nudge walks the number line (start at 8, move 3 in the negative direction).
+  - {id: low/product/mae32-4/2, text_hash: "153cfab24fabf9c9", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks which way subtracting 4 moves.
+  - {id: low/product/slip-1/1, text_hash: "16f22d34f01b9cd4", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last division.
+  - {id: none/product/ours-neg-3/2, text_hash: "e8a85f74f97ef901", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Rule-match moves: tug of war as a question.
+  - {id: none/product/mae18-3/0, text_hash: "eeb141340cd2ee95", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Honest unclear; nudge walks the number line from 8.
+  - {id: none/product/mae33-1/0, text_hash: "508ca2c51e7ec67a", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names 150 - 330; nudge asks what keeps both sides balanced.
+  - {id: none/product/slip-1/1, text_hash: "0bd52d64cce9a4c6", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last division.
+  - {id: low/ai_only/mae18-2/1, text_hash: "7d2b70159dfcd0f2", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Unclear; nudge asks which size is larger.
+  - {id: low/ai_only/mae15-2/1, text_hash: "ed83ce839a77e2e9", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names the flipped fraction; nudge is a pointer.
+  - {id: none/ai_only/ours-neg-3/0, text_hash: "978d61320bb6e947", located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge walks the number line (start at -8, move 3 right).
+  - {id: none/ai_only/mae15-2/1, text_hash: "3e94cf0fbfa3b2d6", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear (reciprocal); nudge points at which fraction to turn over.
+  - {id: none/ai_only/ours-frac-1/2, text_hash: "76019b667a93e0cd", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Calls a known misconception a slip; nudge points at the brackets.
+  - {id: low/product/mae33-3/1, text_hash: "7b7b6c2de46355d2", located: "yes", actionable: "yes", not_revealing: "no", non_judgmental: "yes"}  # Rule-match moves: the nudge gives the step (| +120 on both sides), as the card's does.
+  - {id: low/product/mae52-3/0, text_hash: "d3647f2824843333", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear; nudge is a general balance hint.
+  - {id: low/product/mae32-4/1, text_hash: "031efaa827b4ce4d", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks what subtracting 4 does.
+  - {id: low/product/slip-1/2, text_hash: "90813983ff0eb00a", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the division step.
+  - {id: none/product/mae08-2/0, text_hash: "8eb6f4fdb4b84158", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Rule-match moves: size check and same-size parts as questions.
+  - {id: none/product/mae52-1/2, text_hash: "9ad5d552282225d1", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Honest unclear; nudge gives the first step (subtract 9).
+  - {id: none/product/mae07-2/0, text_hash: "6f67d625430a2de9", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names simplifying one part; nudge is a question.

@@ -8,11 +8,11 @@ Only two requests call a model live: `/api/mistake` (one call per wrong answer: 
 
 | Live call | Tokens per call, measured (prompt / cached / output / reasoning) | `gpt-5.5` Data Zone | `gpt-5.4-mini` Data Zone |
 |---|---|---|---|
-| Mistake diagnosis (`/api/mistake`, when no rule explains the answer) | 1512 / 1241 / 177 / 0 | **$0.0080** | $0.0012 |
-| What to say for a rule match (`/api/mistake`, when a rule explains the answer) | 680 / 0 / 110 / 0 | **$0.0074** | $0.0011 |
+| Mistake diagnosis (`/api/mistake`, when no rule explains the answer) | 1512 / 1280 / 175 / 0 | **$0.0078** | $0.0012 |
+| What to say for a rule match (`/api/mistake`, when a rule explains the answer) | 680 / 0 / 112 / 0 | **$0.0074** | $0.0011 |
 | Reading a photo or drawing (`/api/transcribe`) | 482 / 0 / 39 / 0 | **$0.0039** | $0.0006 |
 
-- **Tokens:** the means over 33, 39 and 33 calls in the latest eval run (`reasoning_effort: none`, the default), from [`evals/results.yaml`](../evals/results.yaml). About 80% of the diagnosis prompt was cached (60–80% across runs), because its fixed instructions and topic context come first. The rule-match prompt (680 tokens) is under Azure's 1024-token caching minimum, so none of it is cached.
+- **Tokens:** the means over 33, 39 and 33 calls in the latest eval run (`reasoning_effort: none`, the default), from [`evals/results.yaml`](../evals/results.yaml). About 85% of the diagnosis prompt was cached (60–85% across runs), because its fixed instructions and topic context come first. The rule-match prompt (680 tokens) is under Azure's 1024-token caching minimum, so none of it is cached.
 - **Prices**, USD per 1M tokens, Azure retail prices API ([prices.azure.com](https://prices.azure.com/api/retail/prices)), EU Data Zone meters, read 2026-11-18:
 
   | Model | Input | Cached input | Output |
@@ -29,12 +29,12 @@ Only two requests call a model live: `/api/mistake` (one call per wrong answer: 
 
 **The usage assumption**, stated plainly because nothing is measured yet: a teacher checks **N = 10** student answers a month and sends **M = 10** images (photos of student work, or drawn working in practice).
 - **s**, the share of mistake checks that get a diagnosis call, is **37%** in the eval set (33 of 90 runs), and **r**, the share a misconception rule explains (one shorter call words what to say), is **43%** (39 of 90). The other 20% are settled by sympy alone: right answers, answers that are right but not simplified, and problems out of scope. Real teachers' mix is unknown, so the worst case (every check gets a diagnosis call) is shown too.
-- **The retry rate** is 0.7% (2 retries in 288 live calls).
+- **The retry rate** is 0.3% (1 retry in 288 live calls).
 
 | | `gpt-5.5` | `gpt-5.4-mini` |
 |---|---|---|
-| AI, typical (s = 37%, r = 43%) | **$0.101** | $0.015 |
-| AI, worst case (s = 100%) | $0.120 | $0.018 |
+| AI, typical (s = 37%, r = 43%) | **$0.100** | $0.015 |
+| AI, worst case (s = 100%) | $0.117 | $0.018 |
 
 ## Hosting
 
@@ -59,16 +59,16 @@ The 20,000 and 50,000 rows are rough: the replica count is a guess, not a load t
 | Item | Cost | Source |
 |---|---|---|
 | English packs: generation and verification (3 topics; 18 generation and 22 judge calls) | $1.06 | [`evals/verify-report.md`](../evals/verify-report.md) |
-| Translation into 17 more languages (packs and UI strings, with judge and repairs) | $53.01 | [`evals/translation-report.md`](../evals/translation-report.md) |
-| Evals, latest run (288 live calls and 222 judge calls) | $3.25 | [`evals/README.md`](../evals/README.md) |
+| Translation into 17 more languages (packs and UI strings, with judge and repairs) | $53.11 | [`evals/translation-report.md`](../evals/translation-report.md) |
+| Evals, latest run (288 live calls and 222 judge calls) | $3.22 | [`evals/README.md`](../evals/README.md) |
 
 That's about $57 in all, spent once. Spread over 20,000 teachers it is $0.003 per teacher. A new language costs about $1.20 for packs and $0.55 for UI strings, once the pipeline has settled (the first French run cost $5.39 before the judge was fixed). A new topic costs about $0.35 in English.
 
 ## How to lower it
 
 1. **Switch the live model to `gpt-5.4-mini`** once there is Data Zone quota: AI cost falls about 7× (config only, `MODEL_LIVE`; re-run the evals first).
-2. **Add misconception rules.** Every wrong answer a rule reproduces needs no diagnosis, only the shorter call that words what to say (about 8% cheaper), and the diagnosis is certain. Rules already explain 39 of the 72 wrong-answer runs in the evals. Without that call the moves would be about the card's example problem, not the student's (the fallback, which costs nothing).
-3. **Keep prompts cache-friendly:** fixed instructions and topic context first, the teacher's input last. About 80% of diagnosis prompt tokens (60–80% across runs) are already cached at a tenth of the price. The rule-match prompt is under the 1024-token caching minimum.
+2. **Add misconception rules.** Every wrong answer a rule reproduces needs no diagnosis, only the shorter call that words what to say (about 5% cheaper), and the diagnosis is certain. Rules already explain 39 of the 72 wrong-answer runs in the evals. Without that call the moves would be about the card's example problem, not the student's (the fallback, which costs nothing).
+3. **Keep prompts cache-friendly:** fixed instructions and topic context first, the teacher's input last. About 85% of diagnosis prompt tokens (60–85% across runs) are already cached at a tenth of the price. The rule-match prompt is under the 1024-token caching minimum.
 4. **Run offline work through the Batch API** (GlobalBatch, half price) once the pipeline no longer needs interactive retries.
 5. **Hosting:** keep scale to zero. The $5 registry could move to a free registry. At scale, move the rate limit to a shared store so that replicas can scale with load.
 6. **Keep `reasoning_effort: none`**: the evals found `low` no more accurate for these tasks, and reasoning tokens bill as output.
