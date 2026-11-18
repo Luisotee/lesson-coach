@@ -2,25 +2,26 @@
 # `evals/run.py judge --sample 20` (stratified by effort, mode and status, seed 10).
 # These labels are the AI author's (Claude, which wrote the evals), written before the judge
 # ran, NOT a teacher's. Luis or a teacher can relabel; rerun `evals/run.py summarize` after.
+# Each label carries the hash of the text it rates; a label whose text changed is skipped.
 # Scale: yes | to some extent | no. not_revealing is about the probe and nudge only.
 labels:
-  - {id: low/product/mae19-1/2, located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear with two hypotheses; nudge hints without the answer.
-  - {id: low/product/mae19-3/0, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names the sign rule; probe and nudge leave the work to the student.
-  - {id: low/product/slip-1/1, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the division line.
-  - {id: none/product/unclear-1/1, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge spells out the method (rewrite in sixths, combine).
-  - {id: none/product/mae19-1/0, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge walks the number line almost to the answer.
-  - {id: none/product/slip-1/0, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at 8 divided by 2.
-  - {id: low/ai_only/mae13-3/2, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Probe asks where 21 came from.
-  - {id: low/ai_only/ours-frac-1/2, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge gives the method.
-  - {id: none/ai_only/mae15-1/1, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states keep-change-flip in full.
-  - {id: none/ai_only/ours-frac-1/0, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge gives the method.
-  - {id: low/product/mae18-3/0, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Hypothesis only; nudge (start at 8, move 3 left) nearly gives the answer.
-  - {id: low/product/ours-lin-2/2, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states that the 3 applies to both terms.
-  - {id: low/product/slip-1/2, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the division.
-  - {id: none/product/mae52-1/1, located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Hypothesis about the lost sign; nudge points at the n term.
-  - {id: none/product/mae07-2/0, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states the rule (same number top and bottom).
-  - {id: none/product/slip-1/1, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Probe is a question the student answers.
-  - {id: low/ai_only/ours-neg-3/1, located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge states the full different-signs rule.
-  - {id: low/ai_only/ours-frac-1/1, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge restates the method.
-  - {id: none/ai_only/mae13-1/2, located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Probe and nudge are questions.
-  - {id: none/ai_only/ours-frac-1/1, located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Misses the cancelling; nudge gives the method.
+  - {id: low/product/mae33-1/2, text_hash: "5f9987b3aec6c783", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Names the reversed subtraction; nudge asks what happens to the 150.
+  - {id: low/product/mae52-3/0, text_hash: "4061e86dabd89f0f", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear; nudge asks how to get the k terms on one side.
+  - {id: low/product/slip-1/1, text_hash: "6cc11b1bd26e1700", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at 8 divided by 2 with a question.
+  - {id: none/product/unclear-1/2, text_hash: "8724a2250530868d", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear; nudge asks about the size of the pieces.
+  - {id: none/product/ours-lin-2/1, text_hash: "1e1b1c64e7c3dbbb", located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge says the 3 changes every term inside, which is the rule.
+  - {id: none/product/slip-1/0, text_hash: "7958b0a1ee71f207", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the division with a question.
+  - {id: low/ai_only/mae08-2/1, text_hash: "075c89f054edd4cd", located: "yes", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge says to rewrite them as same-size pieces, which is the method.
+  - {id: low/ai_only/mae18-2/1, text_hash: "1f4a44d014bc9828", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Unclear between a dropped sign and a slip; nudge is a question.
+  - {id: low/ai_only/ours-frac-1/1, text_hash: "e94762110e7f707e", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Calls it a slip and misses the cancelling; nudge points at the brackets.
+  - {id: none/ai_only/mae15-1/1, text_hash: "0738070833b1a745", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks what happens to the fraction after the division sign.
+  - {id: none/ai_only/mae15-2/0, text_hash: "fc670a8461f3470c", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Honest unclear (reciprocal); nudge is a question.
+  - {id: low/product/mae19-1/0, text_hash: "b7fc19fbbd9f9cea", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Number-line question for the nudge.
+  - {id: low/product/unclear-1/2, text_hash: "4904c7cc21c236c0", located: "to some extent", actionable: "yes", not_revealing: "to some extent", non_judgmental: "yes"}  # Nudge says to rewrite with same-size pieces, which is the method.
+  - {id: low/product/slip-1/2, text_hash: "6813fd30f4884278", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the right side after dividing.
+  - {id: none/product/mae18-3/1, text_hash: "f3593d355b2813dd", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Unclear; nudge asks which direction to move, without the answer.
+  - {id: none/product/mae32-4/0, text_hash: "010c5a2cad979dcf", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Number-line question for the nudge.
+  - {id: none/product/slip-1/1, text_hash: "27362fb8002aee77", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Points at the last division.
+  - {id: low/ai_only/mae08-2/2, text_hash: "68633d4aba45c3fa", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks whether thirds and fifths are the same pieces.
+  - {id: low/ai_only/ours-frac-1/0, text_hash: "b544d78ce5b7db3d", located: "to some extent", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Misses the cancelling; nudge points at the brackets.
+  - {id: none/ai_only/mae08-2/2, text_hash: "855f59d15f085b93", located: "yes", actionable: "yes", not_revealing: "yes", non_judgmental: "yes"}  # Nudge asks what must match before adding.
