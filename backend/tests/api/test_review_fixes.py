@@ -100,7 +100,7 @@ def test_transcription_is_clipped() -> None:
     assert len(reply.lines[0].left) == 200
     assert MistakeOut.model_validate(
         ai_reply(misconception_ids=["a", "b", "c"])
-    ).clipped().misconception_ids == ["a", "b"]
+    ).clipped().misconception_ids == ["a", "b", "c"]  # mistake.py dedupes, then caps
 
 
 # 5. AI abstains carry a reason.
@@ -122,11 +122,23 @@ def test_ai_abstain_reasons(
 
 
 # 6. A failing or dying math worker abstains.
-def test_inline_failure_is_a_math_failure() -> None:
-    with pytest.raises(MathFailure):
-        import asyncio
+def test_inline_failure_raises_so_tests_see_bugs() -> None:
+    import asyncio
 
+    with pytest.raises(RecursionError):
         asyncio.run(MathPool(0, 1.0).run(fail))
+
+
+def test_a_failing_task_in_the_pool_is_a_math_failure() -> None:
+    import asyncio
+
+    pool = MathPool(1, 5.0)
+    pool.start()
+    try:
+        with pytest.raises(MathFailure):
+            asyncio.run(pool.run(fail))
+    finally:
+        pool.stop()
 
 
 def test_a_dead_worker_is_a_math_failure() -> None:
@@ -263,3 +275,66 @@ def test_check_working_echoes_the_lines(make_client: MakeClient) -> None:
     )
     assert [(w.left, w.right) for w in result.lines] == [("2*x", "4"), ("x = 2?", None)]
     assert result.first_bad_line is not None and result.first_bad_line.index == 1
+
+
+# Round 2.
+LINEAR = ["2*x + 6 = 10", "2*x + 6 10 -6", "2*x 4 /2", "x 2"]
+
+
+@pytest.mark.parametrize(
+    "text", ["They should get 4x = 12x", "So 3x/2 is next", "Now x^3", "x = 7"]
+)
+def test_guard_catches_digits_next_to_letters(text: str) -> None:
+    assert new_numbers([text], LINEAR)
+
+
+@pytest.mark.parametrize("text", ["2x = 4, so x = 2", "Subtract 6 from 2x + 6", "x^2 has 2 in it"])
+def test_guard_passes_given_coefficients(text: str) -> None:
+    assert new_numbers([text], LINEAR) == set()
+
+
+def test_guard_decimal_comma_only_where_it_is_a_decimal() -> None:
+    given = ["1/2 + 1/3", "3/6 + 2/6", "5/6"]
+    assert new_numbers(["Think of 2,3 and 6 as denominators."], given, lang="en") == set()
+    assert new_numbers(["Ein Halb ist 0,5."], given, lang="de") == set()
+    assert new_numbers(["Two numbers: 2,3"], given, lang="de")  # 2.3 is new math in German
+
+
+def test_guard_allows_line_numbers_and_card_examples(make_client: MakeClient) -> None:
+    assert new_numbers(["Look at line 3."], ["2*x"], line_count=3) == set()
+    assert new_numbers(["Look at line 3."], ["2*x"], line_count=2)
+    # Card examples sent in the prompt (1/4 + 1/2 is a check question; 3*2/5 -> 6/15 a card).
+    reply = ai_reply(explanation="Like 3 * 2/5 turning into 6/15, they treat parts as wholes.")
+    client, _ = make_client(FakeLLM(reply))
+    assert post(client, **FRACTIONS, answer={"text": "7/9"})["status"] == "diagnosed"
+
+
+def test_the_ai_sees_the_students_working(make_client: MakeClient) -> None:
+    client, llm = make_client(FakeLLM(ai_reply(misconception_ids=["other"])))
+    working = [{"text": "2x+6=10"}, {"text": "2x = 17"}]
+    post(client, problem={"text": "2x + 6 = 10"}, answer={"text": "x = 8.5"}, working=working)
+    request = llm.calls[0]["messages"][-1]["content"]
+    assert (
+        '"student_working": [{"left": "2*x + 6", "right": "10", "op": ""}, '
+        '{"left": "2*x", "right": "17"' in request
+    )
+
+
+def test_a_cut_transcription_line_is_uncertain(make_client: MakeClient) -> None:
+    long = "1+" * 120 + "1"
+    reply = {"lines": [{"left": long, "right": "241", "op": "", "confidence": 0.99}]}
+    client, _ = make_client(FakeLLM(reply))
+    files = {"image": ("w.png", PNG, "image/png")}
+    line = client.post("/api/transcribe", files=files).json()["lines"][0]
+    assert line["uncertain"] is True and len(line["left"]) == 200
+
+
+def test_clip_keeps_the_limit_with_the_ellipsis() -> None:
+    assert len(clip("x" * 100, 60)) == 60
+
+
+def test_duplicate_ids_do_not_push_out_a_second_misconception(make_client: MakeClient) -> None:
+    ids = ["add_tops_and_bottoms", "add_tops_and_bottoms", "multiply_both_by_whole"]
+    client, _ = make_client(FakeLLM(ai_reply(misconception_ids=ids)))
+    diagnosis = post(client, **FRACTIONS, answer={"text": "7/9"})["diagnosis"]
+    assert [m["id"] for m in diagnosis["misconceptions"]] == ids[1:]

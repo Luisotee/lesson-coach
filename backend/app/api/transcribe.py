@@ -53,6 +53,9 @@ def _readable(text: str) -> bool:
 async def post_transcribe(
     request: Request, image: Annotated[UploadFile, File()]
 ) -> TranscribeResult:
+    # The image is held a few times at once (the guard's buffered body, the multipart file,
+    # these bytes and the base64 copy), about 26 MB for a 6 MB upload. The 6 MB cap and the
+    # rate limit bound it; nothing is written to disk.
     data = await image.read(MAX_IMAGE_BYTES + 1)
     if len(data) > MAX_IMAGE_BYTES:
         raise HTTPException(status_code=413, detail="the image is larger than 5 MB")
@@ -78,7 +81,8 @@ async def post_transcribe(
             right=line.right.strip(),
             op=line.op.strip(),
             confidence=line.confidence,
-            uncertain=line.confidence < UNCERTAIN_BELOW
+            uncertain=line.cut
+            or line.confidence < UNCERTAIN_BELOW
             or not (_readable(line.left) and _readable(line.right)),
         )
         for line in transcript.lines

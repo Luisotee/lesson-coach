@@ -74,7 +74,7 @@ def clip(text: str, limit: int) -> str:
     text = text.strip()
     if len(text) <= limit:
         return text
-    cut = text[:limit]
+    cut = text[: limit - 1]  # room for the "…"
     for end in (". ", "! ", "? "):
         at = cut.rfind(end)
         if at >= limit // 2:
@@ -101,7 +101,7 @@ class MistakeOut(Model):
         note = clip(self.margin_note, MAX_MARGIN_NOTE) if self.margin_note else None
         return MistakeOut(
             status=self.status,
-            misconception_ids=self.misconception_ids[:2],
+            misconception_ids=self.misconception_ids,  # mistake.py dedupes, then caps at 2
             explanation=clip(self.explanation, MAX_EXPLANATION),
             margin_note=note or None,
             what_to_say=WhatToSayOut(
@@ -118,6 +118,7 @@ class LineOut(Model):
     right: str
     op: str
     confidence: float
+    cut: bool = False  # set by `clipped` when a side was too long: the math may have changed
 
 
 class TranscribeOut(Model):
@@ -131,6 +132,9 @@ class TranscribeOut(Model):
                     right=line.right.strip()[:MAX_SIDE],
                     op=line.op.strip()[:MAX_OP],
                     confidence=min(1.0, max(0.0, line.confidence)),
+                    cut=len(line.left.strip()) > MAX_SIDE
+                    or len(line.right.strip()) > MAX_SIDE
+                    or len(line.op.strip()) > MAX_OP,
                 )
                 for line in self.lines[:MAX_LINES]
             ]

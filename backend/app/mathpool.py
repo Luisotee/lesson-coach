@@ -14,7 +14,7 @@ from collections.abc import Callable
 from concurrent.futures import TimeoutError as FutureTimeout
 from typing import Any, TypeVar
 
-from pebble import ProcessExpired, ProcessPool
+from pebble import ProcessPool
 
 T = TypeVar("T")
 log = logging.getLogger("app.mathpool")
@@ -56,14 +56,16 @@ class MathPool:
             self._pool = None
 
     async def run(self, fn: Callable[..., T], *args: Any) -> T:
+        if self._pool is None:
+            return fn(
+                *args
+            )  # inline (tests): a bug raises, so tests can't mistake it for an abstain
+        future = self._pool.schedule(fn, args=args, timeout=self.timeout_s)
         try:
-            if self._pool is None:
-                return fn(*args)
-            future = self._pool.schedule(fn, args=args, timeout=self.timeout_s)
             result: T = await asyncio.wrap_future(future)
         except FutureTimeout as err:
             raise MathTimeout from err
-        except (ProcessExpired, Exception) as err:
+        except Exception as err:  # includes pebble's ProcessExpired (a worker that died)
             # Logged by type only: the input may be a teacher's free text.
             log.error('{"event": "math_failure", "error": "%s"}', type(err).__name__)
             raise MathFailure from err

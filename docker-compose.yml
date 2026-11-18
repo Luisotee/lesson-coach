@@ -3,6 +3,9 @@ services:
     build: .
     ports:
       - "8000:8000"
+    environment:
+      # No proxy in front locally, so X-Forwarded-For is whatever the client sends.
+      TRUST_PROXY: "false"
     env_file:
       - path: .env
         required: false

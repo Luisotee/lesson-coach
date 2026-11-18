@@ -153,6 +153,7 @@ async def _ai_result(
     request: dict[str, Any] = {
         "problem": {"kind": found.kind, "expr": found.expr},
         "student_answer": found.student_answer,
+        "student_working": [vars(w) for w in found.working],
         "verified_answer": found.correct_answer,
         "verdict": found.verdict,
         "worked_solution": [vars(s) for s in found.worked],
@@ -190,7 +191,10 @@ async def _ai_result(
     out = reply.value.clipped()
     try_next = follow_ups.get(out.follow_up_id) if out.follow_up_id else None
     texts = [out.explanation, out.margin_note or "", *out.what_to_say.model_dump().values()]
-    if new_numbers(texts, _given_math(found, try_next)):
+    examples = [f"{m.example_problem.expr} {m.example_wrong_answer}" for m in cards.values()]
+    given = [*_given_math(found, try_next), *examples]
+    line_count = max(len(found.working), len(found.worked))
+    if new_numbers(texts, given, lang=lang, line_count=line_count):
         # The AI wrote math sympy didn't give it: show nothing rather than unverified math.
         return result.model_copy(update={"status": "unclear", "reason": "ai_unverified_math"})
     ids = [i for i in dict.fromkeys(out.misconception_ids) if i in cards or i == "other"]

@@ -24,7 +24,7 @@ COPY --from=frontend /app/frontend/dist /app/frontend/dist
 RUN useradd --system --uid 1001 app
 USER app
 EXPOSE 8000
-# Only the Container Apps ingress reaches the container, so its X-Forwarded-For is trusted
-# for the per-client rate limit. `make dev` keeps the default (false).
+# On Container Apps the ingress appends the client's IP to X-Forwarded-For, and the rate limit
+# keys on that right-most entry. docker-compose.yml (no proxy) and `make dev` set it false.
 ENV TRUST_PROXY=true
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
