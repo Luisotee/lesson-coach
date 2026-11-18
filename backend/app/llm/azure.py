@@ -12,7 +12,7 @@ import json
 import logging
 import random
 import time
-from typing import Any
+from typing import Any, get_args
 
 import openai
 from openai import AsyncAzureOpenAI
@@ -30,6 +30,7 @@ TRANSIENT = (
 )
 BACKOFF_BASE_S = 0.5
 BACKOFF_MAX_S = 8.0
+OFFLINE_TASKS = ("generate", "judge")
 sleep = asyncio.sleep  # tests replace it
 
 
@@ -43,14 +44,19 @@ class AzureLLM:
             max_retries=0,  # we retry ourselves, under one deadline
         )
 
-    def _task_settings(self, task: Task) -> tuple[str, int, float]:
+    def _task_settings(self, task: Task) -> tuple[str, str, int, float, float]:
+        """Deployment, reasoning effort, token limit, deadline and per-attempt timeout. Each
+        task has its `<task>_*` settings; `generate` and `judge` run offline."""
+        if task not in get_args(Task):
+            raise ValueError(f"unknown LLM task: {task}")
         s = self.settings
-        if task == "mistake":
-            return s.mistake_reasoning_effort, s.mistake_max_completion_tokens, s.mistake_deadline_s
+        offline = task in OFFLINE_TASKS
         return (
-            s.transcribe_reasoning_effort,
-            s.transcribe_max_completion_tokens,
-            s.transcribe_deadline_s,
+            s.model_offline if offline else s.model_live,
+            getattr(s, f"{task}_reasoning_effort"),
+            getattr(s, f"{task}_max_completion_tokens"),
+            s.offline_deadline_s if offline else getattr(s, f"{task}_deadline_s"),
+            s.offline_attempt_timeout_s if offline else s.llm_attempt_timeout_s,
         )
 
     async def structured[T: BaseModel](
@@ -62,7 +68,7 @@ class AzureLLM:
         schema: dict[str, Any],
         output: type[T],
     ) -> LLMResult[T]:
-        effort, max_tokens, deadline_s = self._task_settings(task)
+        model, effort, max_tokens, deadline_s, attempt_s = self._task_settings(task)
         start = time.monotonic()
         deadline = start + deadline_s
         attempts = 0
@@ -72,7 +78,7 @@ class AzureLLM:
             remaining = deadline - time.monotonic()
             try:
                 params: dict[str, Any] = {
-                    "model": self.settings.model_live,
+                    "model": model,
                     "messages": messages,
                     "response_format": {
                         "type": "json_schema",
@@ -80,7 +86,7 @@ class AzureLLM:
                     },
                     "max_completion_tokens": max_tokens,
                     "reasoning_effort": effort,
-                    "timeout": max(1.0, min(self.settings.llm_attempt_timeout_s, remaining)),
+                    "timeout": max(1.0, min(attempt_s, remaining)),
                 }
                 response = await self.client.chat.completions.create(**params)
             except TRANSIENT as err:
@@ -89,28 +95,34 @@ class AzureLLM:
                 if time.monotonic() + delay >= deadline:
                     error: LLMError = "deadline" if attempts > 1 else "unavailable"
                     result = LLMResult(None, error)
-                    self._log(task, start, attempts, result, type(err).__name__)
+                    self._log(task, model, start, attempts, result, type(err).__name__)
                     return result
                 await sleep(delay)
                 continue
             except openai.OpenAIError as err:  # 400, 401, 404...: retrying won't help
                 result = LLMResult(None, "unavailable")
-                self._log(task, start, attempts, result, type(err).__name__)
+                self._log(task, model, start, attempts, result, type(err).__name__)
                 return result
             result = _read(response, output)
             result.attempts = attempts
-            self._log(task, start, attempts, result, None)
+            self._log(task, model, start, attempts, result, None)
             return result
 
     def _log(
-        self, task: Task, start: float, attempts: int, result: LLMResult[Any], cause: str | None
+        self,
+        task: Task,
+        model: str,
+        start: float,
+        attempts: int,
+        result: LLMResult[Any],
+        cause: str | None,
     ) -> None:
         log.info(
             json.dumps(
                 {
                     "event": "llm_call",
                     "task": task,
-                    "model": self.settings.model_live,
+                    "model": model,
                     "latency_ms": round((time.monotonic() - start) * 1000),
                     "attempts": attempts,
                     "outcome": result.error or "ok",

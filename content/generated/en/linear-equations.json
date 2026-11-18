@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "en",
+  "title": "Solving linear equations",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Solve linear equations by doing the same operation to both sides and checking the answer.",
+  "idea": "An equation says that two expressions have the same value. Solving means finding the value of `x` that makes the statement true.\n\nThe balance model is the main image. Whatever is done to one side must be done to the other side. The operation can be written in the margin, such as subtract `6`, to show that both sides change.\n\nTo get `x` alone, undo the operations in reverse order. For `2*x + 6 = 10`, subtracting `6` from both sides gives `2*x = 4`. Dividing both sides by `2` gives `x = 2`.\n\nIf there are brackets, treat the whole bracket as being multiplied. In `5*(x + 3) = 35`, dividing both sides by `5` gives `x + 3 = 7`, then subtracting `3` gives `x = 4`.",
+  "why_it_works": "Each step keeps the two sides equal because the same operation is applied to both sides. The equation changes form, but the solution stays the same.\n\nOperations are undone in reverse order. In `2*x + 6 = 10`, the expression with `x` was multiplied by `2` and then `6` was added. So subtract `6` first, then divide by `2`.\n\nWith variables on both sides, the same balance idea still applies. In `3*x + 4 = x + 10`, subtracting `x` from both sides gives `2*x + 4 = 10`. Then subtracting `4` gives `2*x = 6`, and dividing by `2` gives `x = 3`.\n\nChecking works by substitution. For `x = 2`, `2*2 + 6` is `10`, so the original equation is true.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Solve for x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "The `+ 6` keeps `x` from being alone. Subtract `6` from both sides so the balance stays level and the added `6` is undone.",
+            "another_way": "Think in reverse order. Since `6` was added after `2*x`, undo that first with `-6` on both sides.",
+            "visual": "A balance shows `2*x + 6` on one side and `10` on the other, with `6` removed from both sides."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Now `2*x = 4`, so `x` is still multiplied by `2`. Divide both sides by `2` to undo the multiplication and keep the equation balanced.",
+            "another_way": "`2*x` means two equal groups of `x`. Splitting both sides into `2` equal parts leaves one group of `x`.",
+            "visual": "A balance shows `2*x` on one side and `4` on the other, with both sides split into `2` equal parts."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "This is the answer because `x` is alone and the equation says its value directly: `x = 2`.",
+            "another_way": "Check by substituting: `2*2 + 6` is `10`, so the original equation is true.",
+            "visual": "A balance shows one `x` on one side and `2` on the other, level."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Solve for x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "The bracketed expression is multiplied by `5`. Dividing both sides by `5` undoes that multiplication and keeps the equation balanced.",
+            "another_way": "This avoids expanding the bracket first. Since the whole left side is `5` times `x + 3`, divide the whole of both sides by `5`.",
+            "visual": "A balanced scale shows `5*(x + 3)` on one side and `35` on the other, ready to split both sides into `5` equal groups."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Now `3` is added to `x`. Subtracting `3` from both sides undoes the addition and keeps the equation balanced.",
+            "another_way": "Think of removing the same `3` from each side of the scale. That leaves the unknown alone on the left.",
+            "visual": "A balanced scale shows `x + 3` on one side and `7` on the other, with `3` removed from both sides."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "The variable is alone, so this line gives the solution. The value that makes the original equation true is `x = 4`.",
+            "another_way": "A check would put `4` back for `x` in the original equation and confirm the two sides match.",
+            "visual": "A balanced scale shows `x` alone on one side and `4` on the other."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Solve for x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "The `x` term on the right is removed first by subtracting `x` from both sides. This keeps the equation balanced and puts the variable terms together.",
+            "another_way": "Think of taking one `x` from each side. Then the left side becomes `2*x + 4`, and the right side no longer has an `x` term.",
+            "visual": "A balance scale shows `3*x + 4` and `x + 10`, with one `x` removed from each side."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "The constant `4` is removed from the left by subtracting `4` from both sides. This leaves the `x` term by itself on the left side.",
+            "another_way": "Since `4` was added to `2*x`, undo that addition with subtraction. The right side changes in the same way to keep balance.",
+            "visual": "A balance scale shows `2*x + 4` and `10`, with `4` removed from both sides."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "The `2` is multiplying `x`, so divide both sides by `2` to undo the multiplication. This gives one `x` alone.",
+            "another_way": "`2*x` means two equal groups of `x`. Splitting both sides into `2` equal parts shows the value of one group.",
+            "visual": "A balance scale shows `2*x` and `6`, split into `2` equal parts on each side."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "This is the answer because `x` is alone and its value is shown. The equation states that `x` is `3`.",
+            "another_way": "Substitution can check it in the original equation. Replacing `x` with `3` makes both sides match.",
+            "visual": "A balance scale shows one `x` balancing with `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "A number can move across the equals sign and keep its sign.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"Move it to the other side\" is a common shortcut, and the student forgets that moving means subtracting.",
+      "what_to_say": {
+        "probe": "What did you do to both sides to get rid of the `+ 6`?",
+        "nudge": "Write the operation in the margin, \"| -6\", and apply it to both sides.",
+        "tell": "Subtract six from both sides: `2*x = 4`, so `x = 2`. Substituting checks it: `2*2 + 6` is `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Solve for x:",
+        "answer": "5"
+      },
+      "source_quote": "Some students move a number across the equals sign without changing its sign."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "You can divide just one term of a side by the coefficient.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "The student focuses on getting `x` alone and divides the terms next to it, forgetting the rest of the side.",
+      "what_to_say": {
+        "probe": "When you divided by two, what happened to the `6`?",
+        "nudge": "Divide every term on both sides by two and compare with your line.",
+        "tell": "Dividing a side divides every term on it: `x + 3 = 5`, so `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Solve for x:",
+        "answer": "3"
+      },
+      "source_quote": "Some students divide only one term by the number in front of `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "To get rid of the number in front of `x`, subtract it.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Subtracting is the first undo the student learned, and `3*x` looks like `3` next to `x`.",
+      "what_to_say": {
+        "probe": "What does `3*x` mean? What operation joins the `3` and the `x`?",
+        "nudge": "Check your answer: is `3*9` equal to `12`?",
+        "tell": "`3*x` means three times `x`, so divide both sides by three: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Solve for x:",
+        "answer": "7"
+      },
+      "source_quote": "Some students subtract the number in front of `x` instead of dividing by it."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "You can undo the operations on `x` in any order.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Subtracting the number next to `x` is the usual first step, so the student does it even when that number sits inside a division.",
+      "what_to_say": {
+        "probe": "In `(x + 6)/2`, what happens to `x` first, and what happens last?",
+        "nudge": "The halving was done last. What do you multiply both sides by to undo it?",
+        "tell": "Undo the halving first: `x + 6 = 20`, so `x = 14`. Check: `(14 + 6)/2` is `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Solve for x:",
+        "answer": "11"
+      },
+      "source_quote": "Some students undo the steps in the wrong order."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "The number outside a bracket multiplies only the first term inside.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "The `5` sits right next to the `x`, so the student multiplies what is closest.",
+      "what_to_say": {
+        "probe": "How many threes are there in `5*(x + 3)`?",
+        "nudge": "Write `5*(x + 3)` as `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` and count.",
+        "tell": "The five multiplies everything in the bracket: `5*x + 15 = 35`, so `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Solve for x:",
+        "answer": "5"
+      },
+      "source_quote": "Some students multiply the number outside a bracket by the first term only."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Why do the same thing to both sides?",
+      "answer": "An equation is balanced. Doing the same operation to equal amounts keeps them equal, so the solution does not change."
+    },
+    {
+      "question": "Why does `+ 6` become subtract `6`?",
+      "answer": "Solving undoes operations. In `2*x + 6 = 10`, subtracting `6` from both sides gives `2*x = 4`."
+    },
+    {
+      "question": "Why divide by `2` instead of subtracting `2`?",
+      "answer": "`2*x` means `2` times `x`. Multiplication is undone by division, so `2*x = 4` becomes `x = 2`."
+    },
+    {
+      "question": "What if there is an `x` on both sides?",
+      "answer": "Use the same balance step. In `3*x + 4 = x + 10`, subtracting `x` from both sides gives `2*x + 4 = 10`."
+    },
+    {
+      "question": "How do brackets change the work?",
+      "answer": "The number outside multiplies the whole bracket. In `5*(x + 3) = 35`, dividing both sides by `5` gives `x + 3 = 7`."
+    },
+    {
+      "question": "How can students know if the answer is right?",
+      "answer": "Substitute the answer into the original equation. If both sides match, the answer works."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Equation as balance",
+      "activity": "Show `2*x + 6 = 10` as two equal sides. Emphasize that an equation says two expressions have the same value. Introduce writing the same operation in the margin, such as subtract `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Undo in reverse order",
+      "activity": "Work through `2*x + 6 = 10`. Subtracting `6` from both sides gives `2*x = 4`. Dividing both sides by `2` gives `x = 2`. Check by substituting."
+    },
+    {
+      "minutes": 8,
+      "title": "Common wrong turns",
+      "activity": "Discuss typical errors: changing sides without changing the operation, dividing only one term, and subtracting the coefficient instead of dividing. Keep the focus on the balance step."
+    },
+    {
+      "minutes": 8,
+      "title": "Brackets",
+      "activity": "Use `5*(x + 3) = 35`. Divide both sides by `5` to get `x + 3 = 7`. Then subtract `3` to get `x = 4`. Note that the `5` applies to the whole bracket."
+    },
+    {
+      "minutes": 10,
+      "title": "Variables on both sides",
+      "activity": "Work through `3*x + 4 = x + 10`. Subtracting `x` from both sides gives `2*x + 4 = 10`. Subtracting `4` gives `2*x = 6`. Dividing by `2` gives `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Check answers",
+      "activity": "Students substitute answers into the original equation. A failed check means a step should be revisited. The check is part of the solving process, not an extra task."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Solve for x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `8*x = 56` true."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` means eight times `x`, so undo it by dividing both sides by `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Solve for c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `c` that makes `-5*c = 55` true."
+        },
+        {
+          "rung": "information",
+          "text": "Divide both sides by `-5`, the number in front of `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` is negative because the signs differ."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Solve for x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `7*x + 8 = -13` true."
+        },
+        {
+          "rung": "information",
+          "text": "Undo the steps in reverse order: subtract `8` from both sides, then divide by `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "After subtracting `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Check: `7*(-3) + 8` is `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Solve for x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `3*x + 4 = -8` true."
+        },
+        {
+          "rung": "information",
+          "text": "Subtract `4` from both sides, then divide both sides by `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "After subtracting `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Check: `3*(-4) + 4` is `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Solve for x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `5*(x + 3) = 35` true."
+        },
+        {
+          "rung": "information",
+          "text": "The five multiplies the whole bracket. Divide both sides by `5`, or multiply out the bracket."
+        },
+        {
+          "rung": "computation",
+          "text": "Dividing both sides by `5` gives `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Check: `5*(4 + 3)` is `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Solve for m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `m` that makes `2*(m - 4) + 3 = -1` true."
+        },
+        {
+          "rung": "information",
+          "text": "Multiply out the bracket first, then collect the numbers."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, so `2*m - 5 = -1` and `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Check: `2*(2 - 4) + 3` is `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Solve for x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `7*x + 5 = 6*x + 2` true."
+        },
+        {
+          "rung": "information",
+          "text": "Get the `x` terms on one side: subtract `6*x` from both sides."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, then subtract `5` from both sides."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Check: both sides are `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Solve for x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `12*x + 8 = 6*x + 2` true."
+        },
+        {
+          "rung": "information",
+          "text": "Subtract `6*x` from both sides, then subtract `8` from both sides."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, so `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Check: both sides are `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": false,
+  "unavailable": [],
+  "source_hash": "c97168e9b5a01ab59417d7536d23e28bb49de10ce132263fcb3eda2e2a070f65",
+  "model": "gpt-5.5-offline"
+}

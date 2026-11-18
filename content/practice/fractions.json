@@ -7,7 +7,7 @@
         "kind": "evaluate",
         "expr": "1/2 + 1/7"
       },
-      "prompt": "Add one half and one seventh.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -48,7 +48,7 @@
         "kind": "evaluate",
         "expr": "7/12 + 5/18"
       },
-      "prompt": "Add seven twelfths and five eighteenths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -89,7 +89,7 @@
         "kind": "evaluate",
         "expr": "7/12 - 9/16"
       },
-      "prompt": "Subtract nine sixteenths from seven twelfths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -130,7 +130,7 @@
         "kind": "simplify",
         "expr": "120/252"
       },
-      "prompt": "Write 120 over 252 in lowest terms.",
+      "prompt": "Simplify:",
       "hints": [
         {
           "rung": "goal",
@@ -171,7 +171,7 @@
         "kind": "evaluate",
         "expr": "(-3/4)*(-4/9)"
       },
-      "prompt": "Multiply negative three quarters by negative four ninths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -212,7 +212,7 @@
         "kind": "evaluate",
         "expr": "(3/4)/(5/8)"
       },
-      "prompt": "Divide three quarters by five eighths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -253,7 +253,7 @@
         "kind": "evaluate",
         "expr": "(2/3)/(5/6)"
       },
-      "prompt": "Divide two thirds by five sixths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -294,7 +294,7 @@
         "kind": "evaluate",
         "expr": "-23/24 - 13/24"
       },
-      "prompt": "Subtract thirteen twenty-fourths from negative twenty-three twenty-fourths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",

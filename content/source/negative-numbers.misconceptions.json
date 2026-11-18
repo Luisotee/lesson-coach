@@ -22,7 +22,7 @@
           "kind": "evaluate",
           "expr": "2 - (-6)"
         },
-        "prompt": "Work out 2 minus negative 6.",
+        "prompt": "Work out:",
         "answer": "8"
       },
       "source_quote": "Some students believe that subtracting a negative number makes the answer smaller.",
@@ -54,7 +54,7 @@
           "kind": "evaluate",
           "expr": "(-4)*(-5)"
         },
-        "prompt": "Work out negative 4 times negative 5.",
+        "prompt": "Work out:",
         "answer": "20"
       },
       "source_quote": "Some students believe that a negative times a negative is negative.",
@@ -86,7 +86,7 @@
           "kind": "evaluate",
           "expr": "-9 + 4"
         },
-        "prompt": "Work out negative 9 plus 4.",
+        "prompt": "Work out:",
         "answer": "-5"
       },
       "source_quote": "Some students add the sizes and keep the sign of the first number.",
@@ -118,7 +118,7 @@
           "kind": "evaluate",
           "expr": "2 - 9"
         },
-        "prompt": "Work out 2 minus 9.",
+        "prompt": "Work out:",
         "answer": "-7"
       },
       "source_quote": "Some students always subtract the smaller number from the larger one.",
@@ -150,7 +150,7 @@
           "kind": "evaluate",
           "expr": "-6 + (-2)"
         },
-        "prompt": "Work out negative 6 plus negative 2.",
+        "prompt": "Work out:",
         "answer": "-8"
       },
       "source_quote": "Some students apply \"two negatives make a positive\" to addition.",

@@ -11,6 +11,7 @@ from pydantic import BaseModel
 from app.config import Settings
 from app.llm import azure
 from app.llm.azure import AzureLLM
+from app.llm.client import Task
 
 
 class Out(BaseModel):
@@ -103,3 +104,23 @@ def test_does_not_retry_a_bad_request() -> None:
 )
 def test_bad_replies_abstain(reply: Any, error: str) -> None:
     assert call(FakeClient(reply)).error == error
+
+
+@pytest.mark.parametrize(
+    ("task", "deployment"),
+    [("mistake", "live-x"), ("transcribe", "live-x"), ("generate", "off-x"), ("judge", "off-x")],
+)
+def test_each_task_uses_its_deployment(task: Task, deployment: str) -> None:
+    settings = Settings(_env_file=None, model_live="live-x", model_offline="off-x")  # type: ignore[call-arg]
+    model, *_ = AzureLLM(settings, client=object())._task_settings(task)  # type: ignore[arg-type]
+    assert model == deployment
+
+
+def test_each_task_gets_its_own_settings() -> None:
+    settings = Settings(_env_file=None, judge_max_completion_tokens=123, mistake_deadline_s=7)  # type: ignore[call-arg]
+    llm = AzureLLM(settings, client=object())  # type: ignore[arg-type]
+    assert llm._task_settings("judge")[2] == 123
+    assert llm._task_settings("judge")[3] == settings.offline_deadline_s
+    assert llm._task_settings("mistake")[3] == 7
+    with pytest.raises(ValueError, match="unknown LLM task"):
+        llm._task_settings("chat")  # type: ignore[arg-type]

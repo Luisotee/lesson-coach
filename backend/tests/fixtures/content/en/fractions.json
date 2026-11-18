@@ -2,6 +2,11 @@
   "topic": "fractions",
   "lang": "en",
   "title": "Fractions",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Adding, simplifying, multiplying and dividing fractions.",
   "idea": "A fraction names equal parts of a whole. (Test fixture: the real pack comes from T5.)",
   "why_it_works": "Equal parts can be counted once they have the same size.",
   "prerequisites": [
@@ -34,7 +39,8 @@
           "explanations": null
         }
       ],
-      "answer": "5/6"
+      "answer": "5/6",
+      "prompt": "Work out:"
     },
     {
       "ai_generated": [],
@@ -62,7 +68,8 @@
           "explanations": null
         }
       ],
-      "answer": "1/2"
+      "answer": "1/2",
+      "prompt": "Work out:"
     },
     {
       "ai_generated": [],
@@ -90,7 +97,8 @@
           "explanations": null
         }
       ],
-      "answer": "5/6"
+      "answer": "5/6",
+      "prompt": "Work out:"
     }
   ],
   "misconceptions": [
@@ -121,7 +129,7 @@
           "kind": "evaluate",
           "expr": "1/4 + 1/2"
         },
-        "prompt": "Add one quarter and one half.",
+        "prompt": "Work out:",
         "answer": "3/4"
       },
       "source_quote": "Some students add fractions by adding the tops and adding the bottoms."
@@ -153,7 +161,7 @@
           "kind": "evaluate",
           "expr": "4*(3/7)"
         },
-        "prompt": "Work out 4 times three sevenths.",
+        "prompt": "Work out:",
         "answer": "12/7"
       },
       "source_quote": "Some students multiply both the top and the bottom by the whole number."
@@ -185,7 +193,7 @@
           "kind": "evaluate",
           "expr": "(3/5)/(1/2)"
         },
-        "prompt": "Divide three fifths by one half.",
+        "prompt": "Work out:",
         "answer": "6/5"
       },
       "source_quote": "Some students flip the first fraction when dividing, not the second."
@@ -217,7 +225,7 @@
           "kind": "simplify",
           "expr": "(6+9)/3"
         },
-        "prompt": "Simplify (6 + 9) over 3.",
+        "prompt": "Simplify:",
         "answer": "5"
       },
       "source_quote": "Some students cancel across a plus sign."
@@ -249,7 +257,7 @@
           "kind": "simplify",
           "expr": "10/15"
         },
-        "prompt": "Simplify ten fifteenths.",
+        "prompt": "Simplify:",
         "answer": "2/3"
       },
       "source_quote": "Some students simplify by changing only one part of the fraction."
@@ -286,7 +294,7 @@
         "kind": "evaluate",
         "expr": "1/2 + 1/7"
       },
-      "prompt": "Add one half and one seventh.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -327,7 +335,7 @@
         "kind": "evaluate",
         "expr": "7/12 + 5/18"
       },
-      "prompt": "Add seven twelfths and five eighteenths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -368,7 +376,7 @@
         "kind": "evaluate",
         "expr": "7/12 - 9/16"
       },
-      "prompt": "Subtract nine sixteenths from seven twelfths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -409,7 +417,7 @@
         "kind": "simplify",
         "expr": "120/252"
       },
-      "prompt": "Write 120 over 252 in lowest terms.",
+      "prompt": "Simplify:",
       "hints": [
         {
           "rung": "goal",
@@ -450,7 +458,7 @@
         "kind": "evaluate",
         "expr": "(-3/4)*(-4/9)"
       },
-      "prompt": "Multiply negative three quarters by negative four ninths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -491,7 +499,7 @@
         "kind": "evaluate",
         "expr": "(3/4)/(5/8)"
       },
-      "prompt": "Divide three quarters by five eighths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -532,7 +540,7 @@
         "kind": "evaluate",
         "expr": "(2/3)/(5/6)"
       },
-      "prompt": "Divide two thirds by five sixths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -573,7 +581,7 @@
         "kind": "evaluate",
         "expr": "-23/24 - 13/24"
       },
-      "prompt": "Subtract thirteen twenty-fourths from negative twenty-three twenty-fourths.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -605,5 +613,7 @@
       "license": "CC-BY-4.0"
     }
   ],
-  "machine_translated": false
+  "machine_translated": false,
+  "source_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "model": "fixture"
 }

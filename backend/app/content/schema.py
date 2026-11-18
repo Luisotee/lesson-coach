@@ -10,6 +10,7 @@ Prose may carry inline math in backticks, and each backtick span must parse.
 
 from __future__ import annotations
 
+import re
 from typing import Annotated, Literal, Self, get_args
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
@@ -31,6 +32,39 @@ Text = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max
 Long = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000)]
 Url = Annotated[str, StringConstraints(pattern=r"^https://\S+$", max_length=300)]
 Sha = Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{40}$")]
+
+
+NUMBER = re.compile(r"\d+(?:\.\d+)?")
+
+# The prompts a problem may carry, by language: instructions only, because the page shows the
+# problem's math beside them. `{var}` is the letter to solve for. A translation (T9) adds its
+# language here; the prompt text never carries math, so it can't go stale or be mistranslated.
+PROMPTS: dict[str, dict[str, str]] = {
+    "en": {"evaluate": "Work out:", "simplify": "Simplify:", "solve": "Solve for {var}:"},
+}
+
+
+def prompt_for(kind: str, expr: str, lang: str = "en") -> str:
+    letters = sorted({c for c in expr if c.isalpha()})
+    return PROMPTS[lang][kind].format(var=letters[0] if letters else "")
+
+
+def check_prompt(prompt: str, problem: Problem) -> None:
+    """A prompt is one of the allowed instructions for its problem, in some language."""
+    allowed = {prompt_for(problem.kind, problem.expr, lang) for lang in PROMPTS}
+    if prompt not in allowed:
+        raise ValueError(f"prompt must be one of {sorted(allowed)}, not {prompt!r}")
+
+
+def unique_ids(kind: str, ids: list[str]) -> None:
+    if len(set(ids)) != len(ids):
+        raise ValueError(f"{kind} ids must be unique")
+
+
+def check_rules(topic: TopicId, misconceptions: list[Misconception]) -> None:
+    for m in misconceptions:
+        if m.rule_sympy is not None and m.rule_sympy not in RULE_IDS[topic]:
+            raise ValueError(f"unknown rule id for {topic}: {m.rule_sympy}")
 
 
 class Model(BaseModel):
@@ -73,10 +107,13 @@ class Step(Model):
     op: Op = ""
 
 
-class StepExplanations(Model):
+class StepExplanations(AiMarked):
+    """The three explanation modes of a step. `visual` is a one-sentence caption: the frontend
+    draws the picture (balance scale, bar model, counters) from the step's own math."""
+
     why: Text
     another_way: Text
-    visual: Text
+    visual: Short
 
 
 class ExplainedStep(Step):
@@ -85,8 +122,14 @@ class ExplainedStep(Step):
 
 class WorkedExample(AiMarked):
     problem: Problem
+    prompt: Short
     steps: list[ExplainedStep] = Field(min_length=2, max_length=12)
     answer: Math
+
+    @model_validator(mode="after")
+    def _prompt(self) -> Self:
+        check_prompt(self.prompt, self.problem)
+        return self
 
 
 class WhatToSay(Model):
@@ -99,6 +142,11 @@ class CheckQuestion(Model):
     problem: Problem
     prompt: Short
     answer: Math
+
+    @model_validator(mode="after")
+    def _prompt(self) -> Self:
+        check_prompt(self.prompt, self.problem)
+        return self
 
 
 class Misconception(AiMarked):
@@ -126,12 +174,8 @@ class MisconceptionSet(Model):
 
     @model_validator(mode="after")
     def _ids(self) -> Self:
-        ids = [m.id for m in self.misconceptions]
-        if len(set(ids)) != len(ids):
-            raise ValueError("misconception ids must be unique")
-        for m in self.misconceptions:
-            if m.rule_sympy is not None and m.rule_sympy not in RULE_IDS[self.topic]:
-                raise ValueError(f"unknown rule id for {self.topic}: {m.rule_sympy}")
+        unique_ids("misconception", [m.id for m in self.misconceptions])
+        check_rules(self.topic, self.misconceptions)
         return self
 
 
@@ -167,6 +211,7 @@ class PracticeItem(AiMarked):
     def _rungs(self) -> Self:
         if tuple(h.rung for h in self.hints) != HINT_RUNGS:
             raise ValueError(f"hints must be the rungs {HINT_RUNGS} in order")
+        check_prompt(self.prompt, self.problem)
         return self
 
 
@@ -176,15 +221,16 @@ class PracticeSet(Model):
 
     @model_validator(mode="after")
     def _ids(self) -> Self:
-        ids = [i.id for i in self.items]
-        if len(set(ids)) != len(ids):
-            raise ValueError("practice item ids must be unique")
+        unique_ids("practice item", [i.id for i in self.items])
         return self
 
 
 class AkeliusLesson(Model):
     url: Annotated[
-        str, StringConstraints(pattern=r"^https://akelius\.education/math/en/lesson/\d+$")
+        str,
+        StringConstraints(
+            pattern=r"^https://akelius\.education/math/[a-z]{2,3}(-[A-Za-z]{2,4})?/lesson/\d+$"
+        ),
     ]
     title: Short
     grade: int = Field(ge=1, le=12)
@@ -213,14 +259,18 @@ class OutlineStep(Model):
     activity: Text
 
 
-class Pack(Model):
-    """Draft of a generated pack (`content/generated/<lang>/<topic>.json`). T5 owns it."""
+class Pack(AiMarked):
+    """A generated pack (`content/generated/<lang>/<topic>.json`), built by pipeline/generate.py
+    and checked by pipeline/verify.py. A prose field that failed verification is `None` (shown
+    as "unavailable") and its path is listed in `unavailable`; it is never shipped unverified."""
 
     topic: TopicId
     lang: Annotated[str, StringConstraints(pattern=r"^[a-z]{2,3}(-[A-Za-z]{2,4})?$")]
     title: Short
-    idea: Long
-    why_it_works: Long
+    grades: list[int] = Field(min_length=1)
+    summary: Short | None
+    idea: Long | None
+    why_it_works: Long | None
     prerequisites: list[TopicId] = []
     worked_examples: list[WorkedExample] = Field(min_length=3, max_length=3)
     misconceptions: list[Misconception] = Field(min_length=4, max_length=6)
@@ -229,6 +279,20 @@ class Pack(Model):
     akelius_lessons: list[AkeliusLesson] = Field(min_length=1)
     practice: list[PracticeItem] = []
     machine_translated: bool = False
+    unavailable: list[str] = []
+    source_hash: Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{64}$")]
+    model: Short
+
+    @model_validator(mode="after")
+    def _consistent(self) -> Self:
+        unique_ids("misconception", [m.id for m in self.misconceptions])
+        unique_ids("practice item", [i.id for i in self.practice])
+        check_rules(self.topic, self.misconceptions)
+        if self.topic in self.prerequisites:
+            raise ValueError("a topic is not its own prerequisite")
+        if sum(o.minutes for o in self.outline) > 60:
+            raise ValueError("the lesson outline is longer than 60 minutes")
+        return self
 
 
 # Eval cases (`evals/mistakes.yaml`). T10 may extend them.

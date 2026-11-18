@@ -56,7 +56,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
 
 ## Wave 2
 
-- [ ] **T5 Generation and verification pipeline** (needs T1, T2, T4)
+- [x] **T5 Generation and verification pipeline** (needs T1, T2, T4)
   - Pydantic pack schemas (PLAN, "Pack schema").
   - `pipeline/generate.py`:
     - refresher, why it works, 3 worked examples with sympy-computed answers;

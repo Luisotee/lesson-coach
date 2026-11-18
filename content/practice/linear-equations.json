@@ -7,7 +7,7 @@
         "kind": "solve",
         "expr": "8*x = 56"
       },
-      "prompt": "Solve 8x = 56.",
+      "prompt": "Solve for x:",
       "hints": [
         {
           "rung": "goal",
@@ -48,7 +48,7 @@
         "kind": "solve",
         "expr": "-5*c = 55"
       },
-      "prompt": "Solve -5c = 55.",
+      "prompt": "Solve for c:",
       "hints": [
         {
           "rung": "goal",
@@ -89,7 +89,7 @@
         "kind": "solve",
         "expr": "7*x + 8 = -13"
       },
-      "prompt": "Solve 7x + 8 = -13.",
+      "prompt": "Solve for x:",
       "hints": [
         {
           "rung": "goal",
@@ -130,7 +130,7 @@
         "kind": "solve",
         "expr": "3*x + 4 = -8"
       },
-      "prompt": "Solve 3x + 4 = -8.",
+      "prompt": "Solve for x:",
       "hints": [
         {
           "rung": "goal",
@@ -171,7 +171,7 @@
         "kind": "solve",
         "expr": "5*(x + 3) = 35"
       },
-      "prompt": "Solve 5(x + 3) = 35.",
+      "prompt": "Solve for x:",
       "hints": [
         {
           "rung": "goal",
@@ -212,7 +212,7 @@
         "kind": "solve",
         "expr": "2*(m - 4) + 3 = -1"
       },
-      "prompt": "Solve 2(m - 4) + 3 = -1.",
+      "prompt": "Solve for m:",
       "hints": [
         {
           "rung": "goal",
@@ -253,7 +253,7 @@
         "kind": "solve",
         "expr": "7*x + 5 = 6*x + 2"
       },
-      "prompt": "Solve 7x + 5 = 6x + 2.",
+      "prompt": "Solve for x:",
       "hints": [
         {
           "rung": "goal",
@@ -294,7 +294,7 @@
         "kind": "solve",
         "expr": "12*x + 8 = 6*x + 2"
       },
-      "prompt": "Solve 12x + 8 = 6x + 2.",
+      "prompt": "Solve for x:",
       "hints": [
         {
           "rung": "goal",
