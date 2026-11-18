@@ -77,7 +77,7 @@ def test_retries_transient_errors_then_succeeds(caplog: pytest.LogCaptureFixture
     assert (result.usage.cached_tokens, result.usage.reasoning_tokens) == (1024, 30)
     sent = client.calls[0]
     assert sent["response_format"]["json_schema"]["strict"] is True
-    assert sent["reasoning_effort"] == "low" and sent["max_completion_tokens"] == 4000
+    assert sent["reasoning_effort"] == "none" and sent["max_completion_tokens"] == 4000
     assert '"cached_tokens": 1024' in caplog.text and '"x": 5' not in caplog.text
 
 
