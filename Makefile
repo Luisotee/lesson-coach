@@ -29,7 +29,7 @@ lint:
 	$(FRONTEND) pnpm lint
 
 fmt:
-	$(BACKEND) uv run ruff check --fix . ../pipeline && uv run ruff format . ../pipeline
+	$(BACKEND) uv run ruff check --fix . ../pipeline ../evals && uv run ruff format . ../pipeline ../evals
 	$(FRONTEND) pnpm fmt
 
 build:

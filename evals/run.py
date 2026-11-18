@@ -25,7 +25,7 @@ import random
 import sys
 import time
 from collections import defaultdict
-from collections.abc import Callable, Iterator
+from collections.abc import Callable, Iterable, Iterator
 from contextlib import contextmanager, nullcontext
 from pathlib import Path
 from typing import Any, TypeVar, cast
@@ -48,7 +48,7 @@ from app.main import create_app  # noqa: E402
 from app.math.pipeline import MistakeFindings, analyse_mistake  # noqa: E402
 from evals import metrics  # noqa: E402
 from evals.fingerprint import fingerprint  # noqa: E402
-from evals.judge import DIMENSIONS, JUDGE_EFFORT, JUDGE_MODEL, judge, judge_llm  # noqa: E402
+from evals.judge import DIMENSIONS, judge, judge_llm  # noqa: E402
 
 EVALS = ROOT / "evals"
 OUT = EVALS / "outputs"
@@ -67,8 +67,9 @@ class Budget(Exception):
 class RecordingLLM:
     """Wraps the real LLM and keeps what each call cost, and the raw reply."""
 
-    def __init__(self, inner: LLM, spent: list[float], budget: float) -> None:
+    def __init__(self, inner: LLM, spent: list[float], budget: float, model: str) -> None:
         self.inner = inner
+        self.model = model  # the deployment that actually runs (Settings, .env included)
         self.calls: list[dict[str, Any]] = []
         self.spent = spent
         self.budget = budget
@@ -82,8 +83,7 @@ class RecordingLLM:
         schema: dict[str, Any],
         output: type[T],
     ) -> LLMResult[T]:
-        if self.spent[0] >= self.budget:
-            raise Budget(f"spent ${self.spent[0]:.2f}, the budget is ${self.budget:.2f}")
+        check_budget(self.spent, self.budget)
         start = time.perf_counter()
         result = await self.inner.structured(
             task=task, messages=messages, schema_name=schema_name, schema=schema, output=output
@@ -103,6 +103,11 @@ class RecordingLLM:
             }
         )
         return result
+
+
+def check_budget(spent: list[float], budget: float) -> None:
+    if spent[0] >= budget:
+        raise Budget(f"spent ${spent[0]:.2f}, the budget is ${budget:.2f}")
 
 
 def without_rules(*args: Any) -> MistakeFindings:
@@ -130,7 +135,7 @@ def client(
     if not settings.llm_configured:
         sys.exit("No Azure credentials: put them in the repo's .env (see .env.example).")
     azure = AzureLLM(settings)
-    llm = RecordingLLM(azure, spent, budget)
+    llm = RecordingLLM(azure, spent, budget, settings.model_live)
     patch = (
         mock.patch.object(app.api.mistake, "analyse_mistake", without_rules)
         if ai_only
@@ -171,6 +176,7 @@ def run_mistakes(
     effort: ReasoningEffort,
     runs: int,
     ai_only: bool,
+    stamp: dict[str, Any],
     **kw: Any,
 ) -> None:
     with client(effort, ai_only=ai_only, **kw) as (test_client, llm):
@@ -209,7 +215,9 @@ def run_mistakes(
                         "ai_text": ai_text,
                         "result": result,
                         "calls": calls,
+                        "model": llm.model,
                     }
+                    | stamp
                 )
                 print(f"  {records[-1]['id']}: {result.get('status')} {result.get('reason')}")
 
@@ -219,6 +227,7 @@ def run_transcription(
     images: list[dict[str, Any]],
     effort: ReasoningEffort,
     runs: int,
+    stamp: dict[str, Any],
     **kw: Any,
 ) -> None:
     with client(effort, ai_only=False, **kw) as (test_client, llm):
@@ -243,7 +252,9 @@ def run_transcription(
                             result, image["lines"], http=response.status_code
                         ),
                         "calls": llm.calls[before:],
+                        "model": llm.model,
                     }
+                    | stamp
                 )
                 print(f"  {records[-1]['id']}: {records[-1]['score']}")
 
@@ -284,7 +295,10 @@ def cmd_run(args: argparse.Namespace) -> None:
         images = [i for i in images if Path(i["file"]).stem in wanted]
         suffix = "-subset"
     spent = [0.0]
-    kw = {"spent": spent, "budget": args.budget, "content": args.content}
+    # Every row says what produced it: summarize refuses rows from other code or inputs, and
+    # checks that each item ran exactly `runs` times.
+    stamp = {"fingerprint": fingerprint(labels=False), "runs": args.runs}
+    kw = {"spent": spent, "budget": args.budget, "content": args.content, "stamp": stamp}
     modes: list[tuple[str, str, Callable[..., None], list[dict[str, Any]], bool]] = [
         ("mistakes", "mistakes", run_mistakes, cases, False),
         ("ai_only", "ai-only", run_mistakes, rule_labelled(cases), True),
@@ -300,8 +314,10 @@ def cmd_run(args: argparse.Namespace) -> None:
             try:
                 run_mode(records, items, effort, args.runs, **extra, **kw)
             except Budget as stop:
-                write_jsonl(OUT / f"{stem}-{effort}{suffix}.jsonl", records)
-                sys.exit(f"Stopped: {stop}. The outputs are partial; summarize will refuse them.")
+                # Never over the full outputs: summarize refuses while a partial file exists.
+                partial = OUT / f"{stem}-{effort}{suffix}-partial.jsonl"
+                write_jsonl(partial, records)
+                sys.exit(f"Stopped: {stop}. What ran is in {partial.name}; summarize refuses it.")
             write_jsonl(OUT / f"{stem}-{effort}{suffix}.jsonl", records)
         print(f"spent so far: ${spent[0]:.2f}")
 
@@ -310,7 +326,7 @@ def ai_records() -> list[dict[str, Any]]:
     """Every AI text that was shown, from both modes and both efforts."""
     records = []
     for path in sorted(OUT.glob("mistakes-*.jsonl")) + sorted(OUT.glob("ai-only-*.jsonl")):
-        if not path.stem.endswith("-subset"):
+        if not path.stem.endswith(("-subset", "-partial")):
             records += [r for r in read_jsonl(path) if r["ai_text"]]
     return records
 
@@ -331,28 +347,50 @@ def cmd_judge(args: argparse.Namespace) -> None:
         print(f"wrote {len(sample)} outputs to label to {OUT / 'label-sample.jsonl'}")
         return
     llm = judge_llm()
+    stamp = fingerprint(labels=False)
+    # A text already scored (same id, same text, same code) is kept, not paid for again.
+    done = {
+        (j["id"], j["text_hash"]): j
+        for j in read_jsonl(OUT / "judge.jsonl")
+        if j.get("fingerprint") == stamp and j["scores"]
+    }
+    spent = [0.0]
+    out: list[dict[str, Any]] = []
 
-    async def go() -> list[dict[str, Any]]:
-        out = []
+    async def go() -> None:
         for record in records:
+            key = (record["id"], _hash(record))
+            if key in done:
+                out.append(done[key])
+                continue
+            check_budget(spent, args.budget)
             start = time.perf_counter()
             reply = await judge(llm, record)
             usage = dataclasses.asdict(reply.usage)
             out.append(
                 {
                     "id": record["id"],
-                    "text_hash": _hash(record),
+                    "text_hash": key[1],
                     "scores": reply.value.model_dump() if reply.value else None,
                     "error": reply.error,
                     "latency_ms": round((time.perf_counter() - start) * 1000),
                     "usage": usage,
                     "cost": metrics.cost(usage, metrics.PRICES["global"]),
+                    "model": llm.settings.model_offline,
+                    "reasoning_effort": llm.settings.judge_reasoning_effort,
+                    "fingerprint": stamp,
                 }
             )
+            spent[0] += out[-1]["cost"]
             print(f"  {record['id']}: {out[-1]['scores'] or out[-1]['error']}")
-        return out
 
-    write_jsonl(OUT / "judge.jsonl", asyncio.run(go()))
+    try:
+        asyncio.run(go())
+    except Budget as stop:
+        write_jsonl(OUT / "judge.jsonl", out)
+        sys.exit(f"Stopped: {stop}. {len(out)} texts judged; rerun `judge` to go on.")
+    write_jsonl(OUT / "judge.jsonl", out)
+    print(f"judged {len(out) - len(done)} new texts, kept {len(done)}, ${spent[0]:.2f}")
 
 
 def _hash(record: dict[str, Any]) -> str:
@@ -484,6 +522,10 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
     if not all_judged:
         return None
     judged = [j for j in all_judged if current.get(j["id"]) == j.get("text_hash")]
+    _check_stamps(OUT / "judge.jsonl", judged)
+    unjudged = set(current) - {j["id"] for j in judged}
+    if unjudged:
+        sys.exit(f"{len(unjudged)} AI texts have no judge score: run `judge` first.")
     labels = (yaml.safe_load(LABELS.read_text()) or {}).get("labels") if LABELS.exists() else None
     by_id = {j["id"]: j for j in judged}
     ok = [j for j in judged if j["scores"] and not j["scores"]["cannot_judge"]]
@@ -520,8 +562,8 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
             for d in DIMENSIONS
         }
     return {
-        "model": JUDGE_MODEL,
-        "reasoning_effort": JUDGE_EFFORT,
+        "model": _one(j["model"] for j in judged),
+        "reasoning_effort": _one(j["reasoning_effort"] for j in judged),
         "stale_scores_skipped": len(all_judged) - len(judged),
         "stale_labels_skipped": stale_labels,
         "judged": len(judged),
@@ -535,19 +577,39 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
     }
 
 
+def _one(values: Iterable[str]) -> str:
+    """The one value every row shares (a model or effort), or all of them if they differ."""
+    return ", ".join(sorted(set(values)))
+
+
+def _check_stamps(path: Path, records: list[dict[str, Any]]) -> None:
+    """Refuse rows made by other code or inputs than what is here now."""
+    stamp = fingerprint(labels=False)
+    stale = sum(r.get("fingerprint") != stamp for r in records)
+    if stale:
+        sys.exit(
+            f"{path.name}: {stale} rows were made by other prompts, code or inputs than the "
+            "current ones: rerun `run` (and `judge`) before `summarize`."
+        )
+
+
 def _check_complete(path: Path, records: list[dict[str, Any]], want: set[str]) -> None:
-    """Refuse partial outputs (a budget stop, or an old filtered run): every item, equally
-    often."""
+    """Refuse partial outputs: every item exactly as many times as the run asked for."""
+    _check_stamps(path, records)
     key = "image" if path.stem.startswith("transcription") else "case"
-    runs: dict[str, int] = defaultdict(int)
+    counts: dict[str, int] = defaultdict(int)
     for r in records:
-        runs[r[key]] += 1
-    if set(runs) != want or len(set(runs.values())) > 1:
-        missing = sorted(want - set(runs))
-        sys.exit(f"{path.name} is partial (missing {missing[:5]}, or uneven runs): rerun `run`.")
+        counts[r[key]] += 1
+    asked = {r["runs"] for r in records}
+    if set(counts) != want or len(asked) != 1 or set(counts.values()) != asked:
+        missing = sorted(want - set(counts))
+        sys.exit(f"{path.name} is partial (missing {missing[:5]}, or not every run): rerun `run`.")
 
 
 def cmd_summarize(args: argparse.Namespace) -> None:
+    partial = sorted(p.name for p in OUT.glob("*-partial.jsonl"))
+    if partial:
+        sys.exit(f"Partial outputs from a budget stop: {partial}. Rerun `run`, then delete them.")
     efforts = sorted(
         {
             p.stem.split("-")[-1]
@@ -563,6 +625,7 @@ def cmd_summarize(args: argparse.Namespace) -> None:
         "transcription": {i["file"] for i in load_images()},
     }
     all_mistakes: list[dict[str, Any]] = []
+    all_rows: list[dict[str, Any]] = []
     per_effort: dict[str, Any] = {}
     total = 0.0
     for effort in efforts:
@@ -579,17 +642,18 @@ def cmd_summarize(args: argparse.Namespace) -> None:
             "transcription": summarize_transcription(transcription) if transcription else None,
         }
         total += sum(c["cost"] for r in mistakes + ai_only + transcription for c in r["calls"])
+        all_rows += mistakes + ai_only + transcription
     judge_summary = summarize_judge(all_mistakes)
     if judge_summary:
         total += judge_summary["cost_usd"]
-    defaults = {f: Settings.model_fields[f].default for f in ("model_live",)}
     recommendation = args.recommend
     if not recommendation and RESULTS.exists():  # keep the recorded one
         recommendation = (yaml.safe_load(RESULTS.read_text()) or {}).get("recommendation", "")
     results = {
         "fingerprint": fingerprint(),
         "date": dt.date.today().isoformat(),
-        "model": defaults["model_live"],
+        # What ran (Settings with .env), not the code defaults. The prices are gpt-5.5's.
+        "model": _one(r["model"] for r in all_rows),
         "prices_usd_per_1m_tokens": metrics.PRICES,
         "reasoning_efforts": per_effort,
         "judge": judge_summary,
@@ -616,6 +680,7 @@ def main() -> None:
     run.add_argument("--content", type=Path, default=None, help="pack dir (default: the app's)")
     judge_cmd = sub.add_parser("judge", help="the LLM judge on the AI's shown text")
     judge_cmd.add_argument("--sample", type=int, default=0, help="only write a sample to label")
+    judge_cmd.add_argument("--budget", type=float, default=2.0, help="stop at this many USD")
     summarize = sub.add_parser("summarize", help="write results.yaml from the outputs")
     summarize.add_argument(
         "--recommend", default="", help="the recommendation to record (default: keep the last)"

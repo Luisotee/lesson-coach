@@ -1,14 +1,22 @@
 """The hash that pins `evals/results.yaml` to what was evaluated.
 
-It covers the prompts and schemas (rendered from `app.llm.prompts`, so formatting-only code
-changes don't count), the packs the eval cases read (English only: language packs added later
-don't make the results stale), the model-facing config defaults, the judge's prompt, model and
-effort, the source of the code that decides the results (the rules, the mistake pipeline, the
-two endpoints, the numbers guard, the scoring), and the eval inputs (cases, images, truth,
-hand labels). `backend/tests/test_evals.py` recomputes it without calling any model.
+It covers:
+- the prompts and schemas as rendered from `app.llm.prompts`;
+- the packs the eval cases read (English only: language packs added later don't make the
+  results stale);
+- the model-facing config defaults, and the judge's prompt, schema, model and effort;
+- the raw bytes of the code that decides the results (`SOURCES`: the rules, the mistake
+  pipeline and the math it uses, the two endpoints, the numbers guard, the Azure client, and
+  the eval runner, judge and scoring), so even a comment-only change there needs a rerun;
+- the eval inputs (cases, images, truth) and the hand labels.
 
-Not covered: `.env` or Container Apps overrides of the config (only the code defaults are
-pinned), and app code outside the files listed in `SOURCES`.
+`run` and `judge` stamp `fingerprint(labels=False)` on every output row; `summarize` refuses
+rows whose stamp differs, then writes `fingerprint()` to results.yaml. The hand labels are
+left out of the stamp because they only feed `summarize`: relabelling needs `summarize` only.
+`backend/tests/test_evals.py` recomputes it without calling any model.
+
+Not covered: `.env` or Container Apps overrides of the config (results.yaml records the
+models and efforts that actually ran), and app code outside `SOURCES`.
 """
 
 from __future__ import annotations
@@ -41,10 +49,14 @@ CONFIG_FIELDS = (
 BACKEND = ROOT / "backend" / "app"
 SOURCES = (
     *sorted((BACKEND / "math" / "rules").glob("*.py")),
-    BACKEND / "math" / "pipeline.py",
+    *(BACKEND / "math" / f"{m}.py" for m in ("pipeline", "steps", "worked", "canonical")),
+    BACKEND / "math" / "problems.py",
     BACKEND / "api" / "mistake.py",
     BACKEND / "api" / "transcribe.py",  # holds the image checks before the model call
     BACKEND / "llm" / "guard.py",  # new_numbers
+    BACKEND / "llm" / "azure.py",
+    EVALS / "run.py",
+    EVALS / "judge.py",
     EVALS / "metrics.py",
 )
 
@@ -57,7 +69,7 @@ def _files(paths: list[Path]) -> dict[str, str]:
     }
 
 
-def parts() -> dict[str, Any]:
+def parts(labels: bool = True) -> dict[str, Any]:
     from evals.judge import JUDGE_EFFORT, JUDGE_MODEL, JUDGE_SYSTEM, judge_schema
 
     sample = mistake_messages(
@@ -91,7 +103,7 @@ def parts() -> dict[str, Any]:
         "inputs": _files(
             [
                 EVALS / "mistakes.yaml",
-                EVALS / "judge_labels.yaml",
+                *([EVALS / "judge_labels.yaml"] if labels else []),
                 *(EVALS / "transcription").glob("*.yaml"),
                 *(EVALS / "transcription").glob("*.png"),
                 *(EVALS / "transcription").glob("*.jpg"),
@@ -100,6 +112,6 @@ def parts() -> dict[str, Any]:
     }
 
 
-def fingerprint() -> str:
-    blob = json.dumps(parts(), sort_keys=True, ensure_ascii=False, default=str)
+def fingerprint(labels: bool = True) -> str:
+    blob = json.dumps(parts(labels), sort_keys=True, ensure_ascii=False, default=str)
     return hashlib.sha256(blob.encode()).hexdigest()

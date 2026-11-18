@@ -180,7 +180,7 @@ frontend/ (React + Vite + TS + Tailwind v4 + shadcn/ui + Motion + MathLive + rea
   - tokens (including cached and reasoning) and cost per call.
 - **LLM judge, for free text only:** dimensions are located / actionable / not revealing / non-judgmental, each scored `yes / to some extent / no`. Calibrate it against our hand labels (Cohen's kappa) before quoting it. Count judge failures.
 - **`evals/results.yaml`** stores a hash of prompts, schemas, packs and config. A pytest fails when it is stale.
-- **Model choice:** compare minimal and low `reasoning_effort` on the live model (`gpt-5.5`).
+- **Model choice:** compare `none` and low `reasoning_effort` on the live model (`gpt-5.5`). gpt-5.5 rejects `minimal` with a 400, so `none` is the cheapest setting. The evals chose `none`: accuracy within noise of `low`, steadier over runs (see `evals/README.md`).
 - **pytest** covers the sympy core (guards, rules, first line that doesn't follow), the API with a mocked LLM, i18n completeness (every key in every listed language), and that every pack step has its explanations.
 - **Playwright** covers every page and state, axe-core, keyboard-only flows, RTL rendering and print.
 

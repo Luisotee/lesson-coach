@@ -109,3 +109,17 @@ def test_quantile_and_cost() -> None:
     usage = {"prompt_tokens": 1000, "cached_tokens": 800, "completion_tokens": 100}
     # 200 fresh * 5.50 + 800 cached * 0.55 + 100 out * 33, per million tokens
     assert metrics.cost(usage, metrics.PRICES["data_zone"]) == pytest.approx(0.00484)
+
+
+def test_summarize_refuses_partial_or_stale_rows() -> None:
+    from evals import run
+
+    path = Path("transcription-none.jsonl")
+    stamp = fingerprint(labels=False)
+    one_of_three = [{"image": i, "runs": 3, "fingerprint": stamp} for i in ("a", "b")]
+    with pytest.raises(SystemExit, match="partial"):  # a budget stop after run 1
+        run._check_complete(path, one_of_three, {"a", "b"})
+    run._check_complete(path, one_of_three * 3, {"a", "b"})
+    stale = [r | {"fingerprint": "old"} for r in one_of_three * 3]
+    with pytest.raises(SystemExit, match="other prompts, code or inputs"):
+        run._check_complete(path, stale, {"a", "b"})

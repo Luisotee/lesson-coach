@@ -28,5 +28,6 @@ coverage/
 .idea/
 .vscode/
 
-# Filtered eval runs (evals/run.py run --cases): never summarised or committed.
+# Filtered eval runs (--cases) and budget stops: never summarised or committed.
 evals/outputs/*-subset.jsonl
+evals/outputs/*-partial.jsonl

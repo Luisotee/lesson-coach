@@ -106,7 +106,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
 - [x] **T10 Evals** (needs T6)
   - `evals/run.py` over `mistakes.yaml` and `evals/transcription/`, 3 runs per case.
   - Metrics and the judge with calibration as in PLAN. `evals/results.yaml` with a hash, plus a staleness test.
-  - Compare minimal and low `reasoning_effort`.
+  - Compare `none` and low `reasoning_effort` (gpt-5.5 rejects `minimal` with a 400).
   - **Done when:** results are committed and summarised in `evals/README.md`.
 - [ ] **T11 Accessibility and end-to-end** (needs T8 and T9)
   - Playwright covers every page and state: axe-core, keyboard-only flows, RTL, print, reduced motion, 200% zoom, 320 px.
