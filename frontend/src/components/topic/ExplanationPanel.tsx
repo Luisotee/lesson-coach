@@ -4,8 +4,7 @@ import { RichText } from '@/components/RichText'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { StepPicture } from '@/components/visual/StepPicture'
 
-export type ExplanationMode = 'why' | 'another' | 'visual'
-export const MODES: ExplanationMode[] = ['why', 'another', 'visual']
+import { MODES, type ExplanationMode } from '@/components/topic/modes'
 
 /** The three pre-generated explanations of one step, as tabs. */
 export function ExplanationPanel({

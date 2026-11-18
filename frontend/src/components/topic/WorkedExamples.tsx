@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { WorkedExample } from '@/api/types'
 import { CheckLine, EquationLine, MathExpr, Notebook } from '@/components/math'
-import { ExplanationPanel, type ExplanationMode } from '@/components/topic/ExplanationPanel'
+import { ExplanationPanel } from '@/components/topic/ExplanationPanel'
+import type { ExplanationMode } from '@/components/topic/modes'
 import { Button } from '@/components/ui/button'
 import {
   Drawer,

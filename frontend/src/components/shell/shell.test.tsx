@@ -1,4 +1,4 @@
-import { act, render, screen, within } from '@testing-library/react'
+import { act, render, screen, waitFor, within } from '@testing-library/react'
 import { StrictMode } from 'react'
 import userEvent from '@testing-library/user-event'
 import { afterEach, beforeEach, expect, test, vi } from 'vitest'
@@ -58,13 +58,13 @@ test.each([
   expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(heading)
 })
 
-test('practice has previous and next only where a problem exists', () => {
+test('practice has previous and next only where a problem exists', async () => {
   renderAt('/practice/fractions/1')
-  expect(screen.queryByRole('link', { name: /Previous problem/ })).toBeNull()
-  expect(screen.getByRole('link', { name: /Next problem/ })).toHaveAttribute(
+  expect(await screen.findByRole('link', { name: /Next problem/ })).toHaveAttribute(
     'href',
     '/practice/fractions/2',
   )
+  expect(screen.queryByRole('link', { name: /Previous problem/ })).toBeNull()
 })
 
 test('navigating moves focus to the new page heading', async () => {
@@ -96,9 +96,11 @@ test.each([
   else expect(link).not.toHaveAttribute('aria-current')
 })
 
-test('the practice page title is one translated message', () => {
+test('the practice page title is one translated message', async () => {
   renderAt('/practice/fractions/2')
-  expect(document.title).toBe('Practice: Fractions, Problem 2 of 8 · Lesson Coach')
+  await waitFor(() =>
+    expect(document.title).toBe('Practice: Fractions, Problem 2 of 8 · Lesson Coach'),
+  )
 })
 
 test('the first load leaves focus alone, even under StrictMode', () => {

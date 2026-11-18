@@ -16,7 +16,7 @@ test.beforeEach(async ({ page }) => {
 const ROUTES = [
   ['/', 'Feel sure of the math before you teach it.'],
   ['/topics/linear-equations', 'Solving linear equations'],
-  ['/mistake', 'A student wrote this'],
+  ['/mistake', 'A student wrote this…'],
   ['/practice/fractions/2', 'Practice: Fractions'],
   ['/demo/math', 'Math handwriting components'],
   ['/no-such-page', 'Page not found'],
@@ -47,12 +47,14 @@ test('the skip link is the first tab stop and moves focus to main', async ({ pag
 
 test('every header and home link reaches a real page', async ({ page }) => {
   await page.goto('/')
+  await expect(page.getByRole('link', { name: /Solving linear equations/ })).toBeVisible()
   const hrefs = await page
     .locator('header a, main a')
     .evaluateAll((links) => [...new Set(links.map((a) => a.getAttribute('href') ?? ''))])
   expect(hrefs.length).toBeGreaterThan(6)
   for (const href of hrefs) {
     await page.goto(href)
+    await expect(page.locator('[data-state="loading"]')).toHaveCount(0)
     await expect(page.getByRole('heading', { level: 1 }), href).not.toHaveText('Page not found')
   }
 })
@@ -101,10 +103,10 @@ test('the language picker switches to Arabic, right to left, and remembers it', 
   await expect(page.getByRole('link', { name: 'المواضيع' })).toBeVisible()
 
   await page.getByRole('link', { name: 'كتب طالب هذا' }).first().click()
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('كتب طالب هذا')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('كتب طالب هذا…')
   await page.reload()
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('كتب طالب هذا')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('كتب طالب هذا…')
 })
 
 test.describe('math demo', () => {

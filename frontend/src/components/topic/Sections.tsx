@@ -180,12 +180,15 @@ function AkeliusLinks({ lessons }: { lessons: AkeliusLesson[] }) {
 /** The outline as a timeline. It is the part of the page that prints. */
 export function LessonOutline({ pack }: { pack: Pack }) {
   const { t } = useTranslation()
-  let start = 0
-  const rows = pack.outline.map((o) => {
-    const row = { ...o, from: start, to: start + o.minutes }
-    start += o.minutes
-    return row
-  })
+  // Running start and end minutes, for the "0–5 min" labels.
+  const rows = pack.outline.reduce<(Pack['outline'][number] & { from: number; to: number })[]>(
+    (acc, o) => {
+      const from = acc.length ? acc[acc.length - 1].to : 0
+      return [...acc, { ...o, from, to: from + o.minutes }]
+    },
+    [],
+  )
+  const total = rows.length ? rows[rows.length - 1].to : 0
   return (
     <section
       id="outline"
@@ -198,7 +201,7 @@ export function LessonOutline({ pack }: { pack: Pack }) {
           {t('topic.outlineHeading')}
         </h2>
         <span className="text-sm text-muted-foreground">
-          {t('topic.outlineTotal', { minutes: start })}
+          {t('topic.outlineTotal', { minutes: total })}
         </span>
       </div>
       <ol className="flex flex-col rounded-[20px] border border-line bg-white p-5 print:border-0 print:p-0">

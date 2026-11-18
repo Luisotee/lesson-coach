@@ -323,8 +323,7 @@
     "check": "تحقق من حلّي",
     "checking": "جارٍ التحقق…",
     "needWorking": "اكتب سطرًا واحدًا على الأقل أولًا.",
-    "source": "المصدر: {source} · CC BY 4.0",
-    "sourceLink": "مصدر المسألة"
+    "sourceLabel": "المصدر:"
   },
   "mistake": {
     "title": "كتب طالب هذا…",

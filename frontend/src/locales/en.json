@@ -323,8 +323,7 @@
     "check": "Check my working",
     "checking": "Checking…",
     "needWorking": "Write or type at least one line first.",
-    "source": "Source: {source} · CC BY 4.0",
-    "sourceLink": "problem source"
+    "sourceLabel": "Source:"
   },
   "mistake": {
     "title": "A student wrote this…",

@@ -258,14 +258,18 @@ export function MistakeResult({
           </div>
           <h2
             className="text-2xl leading-snug font-semibold"
-            lang={main ? (d?.cards_lang ?? undefined) : d?.lang}
+            lang={
+              result.status === 'slip' ? undefined : main ? (d?.cards_lang ?? undefined) : d?.lang
+            }
           >
-            {main?.belief ? (
+            {result.status === 'slip' ? (
+              t('mistake.slipTitle')
+            ) : main?.belief ? (
               <RichText text={main.belief} />
             ) : d ? (
               <RichText text={d.explanation} />
             ) : (
-              t(result.status === 'slip' ? 'mistake.slipTitle' : 'mistake.reasonUnavailable')
+              t('mistake.reasonUnavailable')
             )}
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -277,7 +281,7 @@ export function MistakeResult({
               <b>{t('topic.whyItFeelsRight')}</b> <RichText text={main.why_it_feels_right} />
             </p>
           )}
-          {main && d && (
+          {d && (main || result.status === 'slip') && (
             <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
           )}
           <Reason result={result} />

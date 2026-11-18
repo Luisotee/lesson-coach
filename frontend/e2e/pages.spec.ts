@@ -1,6 +1,6 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Page } from '@playwright/test'
-import { mockApi } from './api.ts'
+import { fixture, mockApi } from './api.ts'
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
 const WIDTHS = [320, 768, 1440] as const
@@ -175,4 +175,129 @@ test('topic in Arabic: RTL page, math stays left to right, English pack marked',
     .evaluateAll((els) => els.map((el) => getComputedStyle(el).direction))
   expect(new Set(dirs)).toEqual(new Set(['ltr']))
   await expectNoAxeViolations(page)
+})
+
+/** Types into a MathLive field found by its label. */
+async function typeMath(page: Page, label: string, keys: string) {
+  const field = page.locator(`math-field[aria-label="${label}"]`)
+  await field.focus()
+  await page.keyboard.type(keys)
+}
+
+for (const width of WIDTHS) {
+  test.describe(`practice and mistake at ${width} px`, () => {
+    test.use({ viewport: { width, height: 900 } })
+
+    test('practice page renders with no axe violations', async ({ page }) => {
+      await page.goto('/practice/linear-equations/1')
+      await expect(page.getByRole('math', { name: '8 x equals 56' })).toBeVisible()
+      await expect(page.getByRole('heading', { name: 'Hints, when you want them' })).toBeVisible()
+      await expectNoSideScroll(page)
+      await expectNoAxeViolations(page)
+    })
+
+    test('mistake page renders with no axe violations', async ({ page }) => {
+      await page.goto('/mistake')
+      await expect(page.getByRole('button', { name: 'Explain this' })).toBeVisible()
+      await expectNoSideScroll(page)
+      await expectNoAxeViolations(page)
+    })
+  })
+}
+
+test('practice: hints, check my working, and previous/next', async ({ page }) => {
+  const posted = await mockApi(page, {
+    checkWorking: () => ({ body: fixture('check/bad-line.json') }),
+  })
+  await page.goto('/practice/linear-equations/1')
+  await expect(page.getByText('Problem 1 of 8 · just for you, nothing is recorded')).toBeVisible()
+
+  // Check with nothing written: the input says why and takes focus.
+  await page.getByRole('button', { name: 'Check my working' }).click()
+  await expect(page.getByText('Write or type at least one line first.')).toBeVisible()
+  expect(posted).toHaveLength(0)
+
+  await page.getByRole('tab', { name: 'Type' }).click()
+  await typeMath(page, 'Your working, line 1', '8x=56')
+  await page.getByRole('button', { name: 'Check my working' }).click()
+  await expect(page.getByText('Line 2 doesn’t follow from the line before.')).toBeVisible()
+  expect(posted[0].url).toBe('/api/check-working')
+  expect(posted[0].body).toMatchObject({ problem: { kind: 'solve', text: '8*x = 56' } })
+  expect((posted[0].body as { lines: unknown[] }).lines).toHaveLength(1)
+  await expectNoAxeViolations(page)
+
+  await page.getByRole('button', { name: 'Show next hint' }).click()
+  await expect(page.getByText(/We want the value of/)).toBeVisible()
+
+  await page.getByRole('link', { name: 'Next problem' }).click()
+  await expect(page).toHaveURL(/\/practice\/linear-equations\/2$/)
+  await expect(page.getByText('Problem 2 of 8 · just for you, nothing is recorded')).toBeVisible()
+  // A new problem starts fresh: no hints open, no check result.
+  await expect(page.getByText(/doesn’t follow/)).toHaveCount(0)
+  await page.getByRole('link', { name: 'Previous problem' }).click()
+  await expect(page).toHaveURL(/\/practice\/linear-equations\/1$/)
+  await expect(page.getByRole('link', { name: 'Previous problem' })).toHaveCount(0)
+})
+
+test('practice: a problem number past the pack is not found', async ({ page }) => {
+  await page.goto('/practice/linear-equations/9')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found')
+})
+
+const STATES = [
+  ['diagnosed', 'To add fractions, add the tops and add the bottoms.'],
+  ['correct', 'Your student is right.'],
+  ['not-simplified', 'Your student is right.'],
+  ['unclear', 'Ask how they got it.'],
+  ['slip', 'A slip, not a misunderstanding.'],
+  ['out-of-scope', 'This one is outside what the coach covers.'],
+] as const
+
+for (const [state, heading] of STATES) {
+  test(`mistake: the ${state} result`, async ({ page }) => {
+    const posted = await mockApi(page, {
+      mistake: () => ({ body: fixture(`mistake/${state}.json`) }),
+    })
+    await page.goto('/mistake')
+    await page.getByRole('button', { name: 'Fractions' }).click()
+    await typeMath(page, 'The problem', '2x+6=10')
+    await typeMath(page, 'What your student answered', '3')
+    await page.getByRole('button', { name: 'Explain this' }).click()
+    await expect(page.getByRole('heading', { level: 2, name: heading })).toBeVisible()
+    expect(posted[0].body).toMatchObject({
+      problem: { latex: expect.stringContaining('x') },
+      answer: { latex: '3' },
+      topic: 'fractions',
+      lang: 'en',
+      working: [],
+    })
+    await expectNoAxeViolations(page)
+  })
+}
+
+test('mistake: validation, try another answer, and a rate limit', async ({ page }) => {
+  let limited = true
+  const posted = await mockApi(page, {
+    mistake: () =>
+      limited
+        ? { status: 429, body: { detail: 'Too many requests' }, headers: { 'Retry-After': '30' } }
+        : { body: fixture('mistake/diagnosed.json') },
+  })
+  await page.goto('/mistake')
+  await page.getByRole('button', { name: 'Explain this' }).click()
+  await expect(page.getByText('Add the problem first.')).toBeVisible()
+  await expect(page.getByText('Add your student’s answer.')).toBeVisible()
+  expect(posted).toHaveLength(0)
+
+  await typeMath(page, 'The problem', '2x+6=10')
+  await typeMath(page, 'What your student answered', '3')
+  await page.getByRole('button', { name: 'Explain this' }).click()
+  await expect(page.getByRole('alert')).toContainText('Please wait 30 seconds.')
+  limited = false
+  await page.getByRole('button', { name: 'Try again' }).click()
+  await expect(page.getByText('checked: this rule gives exactly their answer')).toBeVisible()
+
+  await page.getByRole('button', { name: 'Try another answer' }).click()
+  await expect(page.locator('math-field[aria-label="What your student answered"]')).toBeFocused()
+  await expect(page.getByText('checked: this rule gives exactly their answer')).toHaveCount(0)
 })

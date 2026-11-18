@@ -1,15 +1,187 @@
+import { Loader2, ShieldCheck } from 'lucide-react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useApiLang, useMistake, useTopics } from '@/api/queries'
+import type { MistakeRequest } from '@/api/types'
+import {
+  MathInput,
+  type ConfirmedExpression,
+  type ConfirmedLines,
+  type MathInputHandle,
+} from '@/components/input'
+import { LoadError, Loading } from '@/components/LoadState'
+import { MistakeResult } from '@/components/mistake/MistakeResult'
 import { usePageTitle } from '@/components/shell/hooks'
-import { PageFrame } from '@/pages/PageFrame'
+import { Button } from '@/components/ui/button'
+import { TOPIC_IDS, type TopicId } from '@/content/topics'
+import { cn } from '@/lib/utils'
 
-/** Placeholder until T7 and T8 add the input and result screens. */
+/** "A student wrote this": the problem, the student's answer and optional working in; the
+ * likely reason and what to say out. Nothing is stored; one request per "Explain this". */
 export function MistakePage() {
   const { t } = useTranslation()
-  const title = t('pages.mistakeTitle')
-  usePageTitle(title)
+  usePageTitle(t('mistake.title'))
+  const lang = useApiLang()
+  const topics = useTopics()
+  const mistake = useMistake()
+
+  const [topic, setTopic] = useState<TopicId | undefined>()
+  const [problem, setProblem] = useState<ConfirmedExpression | null>(null)
+  const [answer, setAnswer] = useState<ConfirmedExpression | null>(null)
+  const [working, setWorking] = useState<ConfirmedLines | null>(null)
+  const [errors, setErrors] = useState<{ problem?: string; answer?: string }>({})
+  // Changing the key resets the answer input ("Try another answer").
+  const [answerKey, setAnswerKey] = useState(0)
+  const focusAnswerNext = useRef(false)
+  const problemRef = useRef<MathInputHandle>(null)
+  const answerRef = useRef<MathInputHandle>(null)
+  const lastRequest = useRef<MistakeRequest | null>(null)
+
+  useEffect(() => {
+    if (!focusAnswerNext.current) return
+    focusAnswerNext.current = false
+    // The fresh input loads its editor asynchronously: ask a few times until focus lands,
+    // and stop as soon as anything has focus (including the user's own choice).
+    const timers = [0, 100, 300, 700, 1500].map((ms) =>
+      window.setTimeout(() => {
+        if (document.activeElement && document.activeElement !== document.body) return
+        answerRef.current?.focus()
+      }, ms),
+    )
+    return () => timers.forEach((id) => window.clearTimeout(id))
+  }, [answerKey])
+
+  const send = (body: MistakeRequest) => {
+    lastRequest.current = body
+    mistake.mutate(body)
+  }
+
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    const next = {
+      problem: problem ? undefined : t('mistake.needProblem'),
+      answer: answer ? undefined : t('mistake.needAnswer'),
+    }
+    setErrors(next)
+    if (!problem) return problemRef.current?.focus()
+    if (!answer) return answerRef.current?.focus()
+    send({
+      problem: problem.math,
+      answer: answer.math,
+      working: working?.lines ?? [],
+      ...(topic && { topic }),
+      lang,
+    })
+  }
+
+  const tryAnother = () => {
+    // Blur first: MathLive drops a focus request while the focused element changes.
+    ;(document.activeElement as HTMLElement | null)?.blur()
+    mistake.reset()
+    setAnswer(null)
+    setAnswerKey((k) => k + 1)
+    focusAnswerNext.current = true
+  }
+
+  const titleOf = (id: TopicId) =>
+    topics.data?.find((x) => x.id === id)?.title ?? t(`topics.${id}.title`)
+
   return (
-    <PageFrame title={title}>
-      <p className="max-w-2xl text-lg text-muted-foreground">{t('pages.inProgress')}</p>
-    </PageFrame>
+    <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-10 sm:px-6">
+      <div className="flex max-w-2xl flex-col gap-3">
+        <h1 className="text-[clamp(32px,4vw,48px)] leading-tight font-bold tracking-tight">
+          {t('mistake.title')}
+        </h1>
+        <p className="text-lg leading-relaxed text-muted-foreground">{t('mistake.intro')}</p>
+      </div>
+
+      <div className="flex flex-wrap items-start gap-8">
+        <form
+          noValidate
+          onSubmit={onSubmit}
+          className="flex min-w-0 flex-[1_1_380px] flex-col gap-6 rounded-[20px] border border-line bg-white p-5 sm:p-6"
+        >
+          <fieldset className="flex flex-col gap-2">
+            <legend className="mb-2 text-sm font-semibold text-muted-foreground lowercase">
+              {t('mistake.topicLegend')}
+            </legend>
+            <div className="flex flex-wrap gap-2">
+              {TOPIC_IDS.map((id) => (
+                <button
+                  key={id}
+                  type="button"
+                  aria-pressed={topic === id}
+                  onClick={() => setTopic(topic === id ? undefined : id)}
+                  className={cn(
+                    'min-h-11 rounded-full border px-4 text-sm font-medium',
+                    topic === id
+                      ? 'border-navy bg-paleblue text-navy'
+                      : 'border-line bg-white text-[#3a4458] hover:border-line-strong hover:bg-[#eef1f4]',
+                  )}
+                >
+                  {titleOf(id)}
+                </button>
+              ))}
+            </div>
+          </fieldset>
+
+          <MathInput
+            ref={problemRef}
+            shape="expression"
+            label={t('mistake.problemLabel')}
+            description={t('mistake.problemHint')}
+            error={errors.problem}
+            onChange={(v) => {
+              setProblem(v)
+              if (v) setErrors((e) => ({ ...e, problem: undefined }))
+            }}
+          />
+          <MathInput
+            key={answerKey}
+            ref={answerRef}
+            shape="expression"
+            label={t('mistake.answerLabel')}
+            error={errors.answer}
+            onChange={(v) => {
+              setAnswer(v)
+              if (v) setErrors((e) => ({ ...e, answer: undefined }))
+            }}
+          />
+          <MathInput shape="lines" label={t('mistake.workingLabel')} onChange={setWorking} />
+
+          <p className="flex items-start gap-2 text-sm text-muted-foreground">
+            <ShieldCheck aria-hidden="true" className="mt-0.5 size-4 flex-none text-green" />
+            {t('mistake.privacy')}
+          </p>
+          <Button
+            type="submit"
+            className="min-h-12 self-start px-6 text-base"
+            disabled={mistake.isPending}
+          >
+            {mistake.isPending && (
+              <Loader2 aria-hidden="true" className="animate-spin motion-reduce:animate-none" />
+            )}
+            {mistake.isPending ? t('mistake.explaining') : t('mistake.explain')}
+          </Button>
+        </form>
+
+        <section
+          aria-live="polite"
+          aria-label={t('mistake.resultHeading')}
+          className="flex min-w-0 flex-[1.2_1_420px] flex-col gap-4"
+        >
+          {mistake.isPending && <Loading lines={4} />}
+          {mistake.isError && (
+            <LoadError
+              error={mistake.error}
+              onRetry={() => lastRequest.current && send(lastRequest.current)}
+            />
+          )}
+          {mistake.data && (
+            <MistakeResult result={mistake.data} topic={topic} onTryAnother={tryAnother} />
+          )}
+        </section>
+      </div>
+    </div>
   )
 }
