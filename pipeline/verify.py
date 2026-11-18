@@ -31,8 +31,11 @@ from pipeline.core import LLM, StepsFor, offline_llm, worked_steps
 from pipeline.prompts import example_facts
 from pipeline.sources import load, pack_path
 
-# USD per million tokens, from the environment, e.g. PRICE_INPUT=1.25. Unset: no cost line.
-PRICES = {k: os.environ.get(f"PRICE_{k.upper()}") for k in ("input", "cached", "output")}
+# USD per million tokens. Defaults: Microsoft's published GPT-5.5 rate (Foundry announcement,
+# azure.microsoft.com/en-us/blog/openais-gpt-5-5-in-microsoft-foundry-...). Override with
+# PRICE_INPUT, PRICE_CACHED and PRICE_OUTPUT.
+DEFAULT_PRICES = {"input": "5.00", "cached": "0.50", "output": "30.00"}
+PRICES = {k: os.environ.get(f"PRICE_{k.upper()}", v) for k, v in DEFAULT_PRICES.items()}
 
 
 @dataclass
