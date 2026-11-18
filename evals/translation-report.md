@@ -8,32 +8,32 @@ A language ships only when its prompts, its three packs and all its UI strings p
 - The judge compares each English text with its translation and reports errors (meaning, math terms, grammar). Flagged texts are asked for again with the problems, up to 3 times; that is the review pass. Its changes to UI strings are listed below.
 - Judge flag rate: judge-majority flags per text judged. Every judging counts, including each re-judge after a repair, so a text flagged in two rounds counts twice; it is not the share of distinct texts flagged.
 
-Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $53.01.
+Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $53.11.
 Not run: so, ti, ps, prs.
 
 Cost, calls, repairs and flag rate add up every recorded run of a language. A rerun reuses the units that already passed, so it adds little.
 
 | Language | Packs ship | Calls | Repairs | Flag rate | Cost | UI ships | Calls | Repairs | Flag rate | Cost |
 |---|---|---|---|---|---|---|---|---|---|---|
-| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 11 / 30 | 6 | 28.6% | $1.15 |
-| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 30 / 50 | 10 | 3.1% | $0.65 |
-| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 27 / 49 | 9 | 3.1% | $0.58 |
-| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 31 / 65 | 13 | 4.9% | $0.80 |
-| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 25 / 35 | 7 | 1.6% | $0.50 |
-| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 30 / 48 | 10 | 3.7% | $0.63 |
-| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 28 / 50 | 8 | 2.2% | $0.62 |
-| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 9 / 22 | 5 | 20.0% | $1.00 |
-| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 25 / 39 | 7 | 1.9% | $0.49 |
-| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 5 / 9 | 2 | 12.0% | $0.69 |
-| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 4 / 6 | 1 | 4.3% | $0.76 |
-| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 32 / 60 | 12 | 3.8% | $0.96 |
+| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 12 / 31 | 6 | 27.8% | $1.15 |
+| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 31 / 51 | 10 | 3.1% | $0.65 |
+| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 28 / 50 | 9 | 3.1% | $0.59 |
+| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 32 / 66 | 13 | 4.9% | $0.81 |
+| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 26 / 36 | 7 | 1.6% | $0.50 |
+| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 31 / 49 | 10 | 3.7% | $0.64 |
+| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 29 / 51 | 8 | 2.2% | $0.63 |
+| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 10 / 23 | 5 | 19.4% | $1.01 |
+| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 26 / 40 | 7 | 1.9% | $0.49 |
+| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 6 / 10 | 2 | 11.5% | $0.70 |
+| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 5 / 7 | 1 | 4.2% | $0.77 |
+| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 33 / 61 | 12 | 3.8% | $0.97 |
 | uk (Ukrainian) | no | 31 / 55 | 12 | 3.8% | $1.22 | no | 17 / 51 | 12 | 12.7% | $2.25 |
-| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 26 / 38 | 8 | 1.6% | $0.51 |
-| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 30 / 47 | 10 | 2.2% | $0.61 |
-| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 31 / 57 | 13 | 5.5% | $0.75 |
-| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 29 / 49 | 9 | 2.8% | $0.61 |
-| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 29 / 45 | 9 | 2.2% | $0.59 |
-| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 30 / 47 | 12 | 2.5% | $0.55 |
+| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 27 / 39 | 8 | 1.6% | $0.52 |
+| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 31 / 48 | 10 | 2.2% | $0.62 |
+| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 32 / 58 | 13 | 5.5% | $0.76 |
+| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 30 / 50 | 9 | 2.8% | $0.62 |
+| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 30 / 46 | 9 | 2.2% | $0.60 |
+| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 31 / 48 | 12 | 2.5% | $0.56 |
 | sw (Swahili) | no | 1 / 1 | 0 | 0.0% | $1.74 | no | 41 / 91 | 21 | 5.5% | $1.46 |
 
 ## uk: left out

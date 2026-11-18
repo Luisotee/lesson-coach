@@ -51,7 +51,9 @@ def test_not_simplified(make_client: MakeClient) -> None:
     assert result["status"] == "not_simplified" and llm.calls == []
 
 
-def test_rule_match_uses_the_pack_card_without_ai(make_client: MakeClient) -> None:
+def test_rule_match_on_the_cards_own_example_uses_the_card_without_ai(
+    make_client: MakeClient,
+) -> None:
     client, llm = make_client()
     result = post(client, **FRACTIONS, answer={"text": "2/5"})
     assert result["status"] == "diagnosed" and llm.calls == []
@@ -59,6 +61,7 @@ def test_rule_match_uses_the_pack_card_without_ai(make_client: MakeClient) -> No
     assert diagnosis["source"] == "rule" and diagnosis["rule_checked"] is True
     assert [m["id"] for m in diagnosis["misconceptions"]] == ["add_tops_and_bottoms"]
     assert diagnosis["explanation"] == ""  # the card's text is in `misconceptions`
+    assert diagnosis["say_source"] == "card" and diagnosis["say_example"] is None
     assert diagnosis["try_next"]["problem"] == {"kind": "evaluate", "expr": "1/4 + 1/2"}
     assert diagnosis["margin_note"] is None
     assert (diagnosis["lang"], diagnosis["cards_lang"]) == ("en", "en")
@@ -251,6 +254,7 @@ def test_rule_moves_are_written_for_this_problem(make_client: MakeClient) -> Non
     say = " ".join(diagnosis["what_to_say"].values())
     assert "5" in say and "6" not in say
     assert diagnosis["say_example"] is None and diagnosis["lang"] == "en"
+    assert diagnosis["say_source"] == "ai"
     # One phrasing call, given sympy's findings and the card's moves as the example.
     assert len(llm.calls) == 1 and llm.calls[0]["task"] == "mistake_moves"
     prompt = json.dumps(llm.calls[0]["messages"])
@@ -275,14 +279,19 @@ def test_rule_moves_fall_back_to_the_card_framed_by_its_example(
     assert diagnosis["source"] == "rule"
     assert diagnosis["what_to_say"] == CARD_MOVES
     assert diagnosis["say_example"] == {"kind": "solve", "expr": "2*x + 6 = 10"}
+    assert diagnosis["say_answer"] is None and diagnosis["say_source"] == "card"
     assert diagnosis["lang"] == "en"
 
 
-def test_rule_moves_for_the_cards_own_example_need_no_ai(make_client: MakeClient) -> None:
+@pytest.mark.parametrize("answer", ["8", "x=8", "8 = x"])
+def test_rule_moves_for_the_cards_own_example_need_no_ai(
+    make_client: MakeClient, answer: str
+) -> None:
     llm = FakeLLM(say_reply())
-    body = {**LINEAR, "problem": {"text": "2x+6=10"}, "answer": {"text": "8"}, "working": []}
+    body = {**LINEAR, "problem": {"text": "2x+6=10"}, "answer": {"text": answer}, "working": []}
     diagnosis = post(linear_client(make_client, llm), **body)["diagnosis"]
     assert diagnosis["what_to_say"] == CARD_MOVES and diagnosis["say_example"] is None
+    assert (diagnosis["say_source"], diagnosis["say_answer"]) == ("card", None)
     assert llm.calls == []
 
 
@@ -318,7 +327,10 @@ def test_the_cards_example_with_another_wrong_answer_is_rewritten(make_client: M
     diagnosis = post(linear_client(make_client, llm), **body)["diagnosis"]
     assert [m["id"] for m in diagnosis["misconceptions"]] == ["cancel_across_addition"]
     assert len(llm.calls) == 1
-    assert diagnosis["say_example"] == {"kind": "simplify", "expr": "(2+4)/2"}
+    # When the call fails, the moves are framed by the answer they were written for: the
+    # problem is the student's own, so no other problem is named.
+    assert (diagnosis["say_example"], diagnosis["say_answer"]) == (None, "4")
+    assert diagnosis["say_source"] == "card"
 
 
 def test_ai_follow_ups_leave_out_the_problem_just_typed(make_client: MakeClient) -> None:

@@ -348,6 +348,7 @@
     "barCaption": "Die Antwort als Balkenmodell.",
     "whatToSay": "Was Sie sagen könnten",
     "sayExample": "Für eine Beispielaufgabe geschrieben, nicht für die deines Schülers oder deiner Schülerin:",
+    "sayAnswer": "Geschrieben für eine andere falsche Antwort auf diese Aufgabe:",
     "sayWorded": "von KI für diese Aufgabe formuliert · Zahlen von der Mathematik-Engine geprüft",
     "say": {
       "ask": "fragen",

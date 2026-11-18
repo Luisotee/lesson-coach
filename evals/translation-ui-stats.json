@@ -5,30 +5,30 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 27,
-        "judge": 49
+        "judge": 50,
+        "generate": 28
       },
       "failed_calls": 0,
-      "prompt_tokens": 57195,
+      "prompt_tokens": 57988,
       "cached_tokens": 1280,
-      "completion_tokens": 10023,
+      "completion_tokens": 10068,
       "reasoning_tokens": 283,
       "retries": 9,
       "samples": 0,
       "judge_flags": {
-        "home.title": 1,
-        "demo.inputTitle": 1,
-        "input.mode.type": 2,
-        "shell.mainNav": 2,
         "math.speech.fractionSimple": 1,
-        "practice.badReason.not_equivalent": 1,
+        "demo.title": 1,
+        "input.mode.type": 2,
+        "demo.inputTitle": 1,
+        "home.title": 1,
         "mistake.say.nudge": 1,
-        "demo.title": 1
+        "practice.badReason.not_equivalent": 1,
+        "shell.mainNav": 2
       },
-      "judged_items": 318,
+      "judged_items": 319,
       "dropped": []
     },
-    "last_usd": 0.005555,
+    "last_usd": 0.005315,
     "changes": [
       {
         "path": "shell.mainNav",
@@ -109,7 +109,7 @@
         "why": "judge: TR translates 'Type' as the verb 'Eingeben' rather than the noun/category 'Typ' or 'Art'. (The German changes the meaning from a label meaning 'type/kind' to an action meaning 'enter/input'.)"
       }
     ],
-    "usd": 0.580905
+    "usd": 0.58622
   },
   "el": {
     "lang": "el",
@@ -117,35 +117,35 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 31,
-        "judge": 65
+        "judge": 66,
+        "generate": 32
       },
       "failed_calls": 0,
-      "prompt_tokens": 71889,
+      "prompt_tokens": 72691,
       "cached_tokens": 5376,
-      "completion_tokens": 15494,
+      "completion_tokens": 15548,
       "reasoning_tokens": 873,
       "retries": 13,
       "samples": 0,
       "judge_flags": {
-        "mistake.sayExample": 1,
-        "topics.fractions.grade": 1,
+        "math.speech.fractionSimple": 1,
         "mistake.workingLabel": 2,
         "demo.ink": 1,
-        "math.speech.group": 1,
         "topics.linear-equations.grade": 1,
+        "mistake.sayExample": 1,
         "topic.countersKey": 2,
         "topics.negative-numbers.grade": 1,
-        "math.speech.fractionSimple": 1,
         "home.waysHeading": 1,
         "mistake.sayWorded": 1,
-        "practice.badReason.not_equivalent": 1,
-        "input.mode.type": 2
+        "input.mode.type": 2,
+        "topics.fractions.grade": 1,
+        "math.speech.group": 1,
+        "practice.badReason.not_equivalent": 1
       },
-      "judged_items": 324,
+      "judged_items": 325,
       "dropped": []
     },
-    "last_usd": 0.0256,
+    "last_usd": 0.00563,
     "changes": [
       {
         "path": "topics.negative-numbers.grade",
@@ -268,7 +268,7 @@
         "why": "judge: The Greek translation uses 'AI' in Latin letters without an article, making the phrase unidiomatic/grammatically incomplete for 'by AI'. (In Greek this should be something like 'διατυπώθηκε από τεχνητή νοημοσύνη' or 'από την ΤΝ'. 'από AI' is not natural Greek and may not be understood as intended.)"
       }
     ],
-    "usd": 0.8000729999999999
+    "usd": 0.805703
   },
   "pt": {
     "lang": "pt",
@@ -276,30 +276,30 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 30,
-        "judge": 48
+        "judge": 49,
+        "generate": 31
       },
       "failed_calls": 0,
-      "prompt_tokens": 59070,
+      "prompt_tokens": 59869,
       "cached_tokens": 2560,
-      "completion_tokens": 11699,
-      "reasoning_tokens": 1754,
+      "completion_tokens": 11816,
+      "reasoning_tokens": 1821,
       "retries": 10,
       "samples": 0,
       "judge_flags": {
-        "topic.whyItWorks": 2,
-        "topic.whyItFeelsRight": 2,
-        "practice.noneYet": 1,
-        "input.review.unreadable": 1,
-        "topic.tapLine": 2,
-        "math.op.sub": 1,
         "mistake.sameAmount": 1,
-        "input.mode.type": 2
+        "practice.noneYet": 1,
+        "topic.whyItWorks": 2,
+        "input.review.unreadable": 1,
+        "topic.whyItFeelsRight": 2,
+        "math.op.sub": 1,
+        "input.mode.type": 2,
+        "topic.tapLine": 2
       },
-      "judged_items": 322,
+      "judged_items": 323,
       "dropped": []
     },
-    "last_usd": 0.00559,
+    "last_usd": 0.007505,
     "changes": [
       {
         "path": "home.prepareText",
@@ -386,7 +386,7 @@
         "why": "judge: TR uses 'Por que parece certo' for 'Why it feels right', but European Portuguese would require 'Porque parece certo' or 'Por que razão parece certo'. (The translation uses the wrong form of 'why/because' for a nominal heading and is ungrammatical/unnatural in European Portuguese.)"
       }
     ],
-    "usd": 0.6348
+    "usd": 0.642305
   },
   "pt-BR": {
     "lang": "pt-BR",
@@ -394,28 +394,28 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 28,
-        "judge": 50
+        "judge": 51,
+        "generate": 29
       },
       "failed_calls": 0,
-      "prompt_tokens": 58795,
+      "prompt_tokens": 59594,
       "cached_tokens": 1280,
-      "completion_tokens": 11092,
+      "completion_tokens": 11135,
       "reasoning_tokens": 1623,
       "retries": 8,
       "samples": 0,
       "judge_flags": {
-        "mistake.possibilities": 1,
-        "math.speech.positive": 1,
         "input.review.unreadable": 1,
+        "input.mode.type": 2,
         "home.eyebrow": 1,
+        "mistake.possibilities": 1,
         "math.speech.negative": 1,
-        "input.mode.type": 2
+        "math.speech.positive": 1
       },
-      "judged_items": 317,
+      "judged_items": 318,
       "dropped": []
     },
-    "last_usd": 0.013895,
+    "last_usd": 0.005285,
     "changes": [
       {
         "path": "demo.inputIntro",
@@ -478,7 +478,7 @@
         "why": "judge: The translation uses the Portuguese plural category `one` with singular `# possibilidade`, which in Brazilian Portuguese plural rules can apply to 0, producing “0 possibilidade” instead of “0 possibilidades.” (This can change the intended pluralization for count = 0; it should ensure counts other than exactly 1 use the plural form.)"
       }
     ],
-    "usd": 0.6209749999999999
+    "usd": 0.6262599999999999
   },
   "ru": {
     "lang": "ru",
@@ -486,25 +486,25 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 9,
-        "judge": 22
+        "judge": 23,
+        "generate": 10
       },
       "failed_calls": 0,
-      "prompt_tokens": 26037,
+      "prompt_tokens": 26835,
       "cached_tokens": 1280,
-      "completion_tokens": 10578,
+      "completion_tokens": 10624,
       "reasoning_tokens": 5694,
       "retries": 5,
       "samples": 0,
       "judge_flags": {
         "input.review.unreadable": 1,
-        "mistake.sayExample": 1,
-        "math.speech.fractionSimple": 4
+        "math.speech.fractionSimple": 4,
+        "mistake.sayExample": 1
       },
-      "judged_items": 30,
+      "judged_items": 31,
       "dropped": []
     },
-    "last_usd": 0.00564,
+    "last_usd": 0.00537,
     "changes": [
       {
         "path": "input.review.unreadable",
@@ -537,7 +537,7 @@
         "why": "judge: Написано для примера задачи, а не для задачи вашего ученика: (The phrase «для примера задачи» is ungrammatical/unnatural and means more like “for an example of a problem,” not “for an example/sample problem.”)"
       }
     ],
-    "usd": 1.00315
+    "usd": 1.00852
   },
   "es": {
     "lang": "es",
@@ -545,27 +545,27 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 25,
-        "judge": 39
+        "generate": 26,
+        "judge": 40
       },
       "failed_calls": 0,
-      "prompt_tokens": 48684,
+      "prompt_tokens": 49478,
       "cached_tokens": 2560,
-      "completion_tokens": 8538,
+      "completion_tokens": 8582,
       "reasoning_tokens": 195,
       "retries": 7,
       "samples": 0,
       "judge_flags": {
-        "math.speech.positive": 1,
-        "input.review.unreadable": 1,
         "mistake.explain": 1,
-        "math.speech.negative": 1,
-        "input.mode.type": 2
+        "input.mode.type": 2,
+        "input.review.unreadable": 1,
+        "math.speech.positive": 1,
+        "math.speech.negative": 1
       },
-      "judged_items": 314,
+      "judged_items": 315,
       "dropped": []
     },
-    "last_usd": 0.005595,
+    "last_usd": 0.00529,
     "changes": [
       {
         "path": "home.prepareText",
@@ -622,7 +622,7 @@
         "why": "judge: TR: {arg} positivo (This reads as '{arg} positive' rather than 'positive {arg}' ('positivo {arg}' or 'más {arg}'), changing the intended spoken order for a signed expression.)"
       }
     ],
-    "usd": 0.48804000000000003
+    "usd": 0.49333000000000005
   },
   "sv": {
     "lang": "sv",
@@ -630,24 +630,24 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 5,
-        "judge": 9
+        "generate": 6,
+        "judge": 10
       },
       "failed_calls": 0,
-      "prompt_tokens": 10713,
+      "prompt_tokens": 11511,
       "cached_tokens": 0,
-      "completion_tokens": 1930,
+      "completion_tokens": 1980,
       "reasoning_tokens": 169,
       "retries": 2,
       "samples": 0,
       "judge_flags": {
-        "math.op.add": 2,
-        "math.speech.fractionSimple": 1
+        "math.speech.fractionSimple": 1,
+        "math.op.add": 2
       },
-      "judged_items": 25,
+      "judged_items": 26,
       "dropped": []
     },
-    "last_usd": 0.00563,
+    "last_usd": 0.00549,
     "changes": [
       {
         "path": "math.op.add",
@@ -668,7 +668,7 @@
         "why": "judge: The Swedish phrase uses 'till' instead of the idiomatic/prepositional construction for adding to both sides ('addera ... till' is not acceptable here). (In Swedish math language this should be 'addera {arg} på båda sidor' or 'lägg till {arg} på båda sidor'; 'till båda sidor' is unnatural and can be misunderstood.)"
       }
     ],
-    "usd": 0.69235
+    "usd": 0.69784
   },
   "pl": {
     "lang": "pl",
@@ -676,23 +676,23 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 4,
-        "judge": 6
+        "generate": 5,
+        "judge": 7
       },
       "failed_calls": 0,
-      "prompt_tokens": 7875,
+      "prompt_tokens": 8677,
       "cached_tokens": 1280,
-      "completion_tokens": 1405,
+      "completion_tokens": 1454,
       "reasoning_tokens": 207,
       "retries": 1,
       "samples": 0,
       "judge_flags": {
         "math.speech.plus": 1
       },
-      "judged_items": 23,
+      "judged_items": 24,
       "dropped": []
     },
-    "last_usd": 0.008855,
+    "last_usd": 0.00548,
     "changes": [
       {
         "path": "math.speech.plus",
@@ -701,7 +701,7 @@
         "why": "judge: TR: {left} plus {right} (Uses the English/Latin word 'plus' instead of the Polish term 'dodać' or 'plus' as a spoken operator? In Polish math speech 'plus' is acceptable, so this is not an error.)"
       }
     ],
-    "usd": 0.759755
+    "usd": 0.765235
   },
   "ar": {
     "lang": "ar",
@@ -709,25 +709,25 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 11,
-        "judge": 30
+        "judge": 31,
+        "generate": 12
       },
       "failed_calls": 0,
-      "prompt_tokens": 21286,
+      "prompt_tokens": 22109,
       "cached_tokens": 0,
-      "completion_tokens": 11507,
+      "completion_tokens": 11553,
       "reasoning_tokens": 6145,
       "retries": 6,
       "samples": 0,
       "judge_flags": {
         "input.review.toCheck": 6,
-        "mistake.possibilities": 3,
-        "mistake.sayWorded": 1
+        "mistake.sayWorded": 1,
+        "mistake.possibilities": 3
       },
-      "judged_items": 35,
+      "judged_items": 36,
       "dropped": []
     },
-    "last_usd": 0.0291,
+    "last_usd": 0.005495,
     "changes": [
       {
         "path": "math.speech.fractionSimple",
@@ -766,7 +766,7 @@
         "why": "judge: The Arabic translation is ungrammatical in the second part ('تحققت من الأعداد محرك الرياضيات') and does not correctly convey 'numbers checked by the math engine'. (It has incorrect word order/structure; a native reader would not understand it as intended. It should say that the math engine checked the numbers.)"
       }
     ],
-    "usd": 1.146105
+    "usd": 1.1516
   },
   "fa": {
     "lang": "fa",
@@ -774,28 +774,28 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 30,
-        "judge": 47
+        "generate": 31,
+        "judge": 48
       },
       "failed_calls": 0,
-      "prompt_tokens": 57295,
+      "prompt_tokens": 58109,
       "cached_tokens": 2560,
-      "completion_tokens": 11159,
-      "reasoning_tokens": 1233,
+      "completion_tokens": 11260,
+      "reasoning_tokens": 1280,
       "retries": 10,
       "samples": 0,
       "judge_flags": {
         "input.review.op": 1,
-        "home.prepareText": 1,
-        "topic.outlineTotal": 1,
+        "input.mode.type": 2,
         "mistake.right": 1,
+        "home.prepareText": 1,
         "demo.intro": 1,
-        "input.mode.type": 2
+        "topic.outlineTotal": 1
       },
-      "judged_items": 317,
+      "judged_items": 318,
       "dropped": []
     },
-    "last_usd": 0.00599,
+    "last_usd": 0.0071,
     "changes": [
       {
         "path": "home.prepareText",
@@ -864,7 +864,7 @@
         "why": "judge: The translation renders 'Type' as 'typing' rather than the noun 'type/kind'. (In Persian, 'تایپ کردن' means to type on a keyboard, not 'type' as a category; the correct meaning would be 'نوع'.)"
       }
     ],
-    "usd": 0.6097250000000001
+    "usd": 0.6168250000000001
   },
   "fr": {
     "lang": "fr",
@@ -872,31 +872,31 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 30,
-        "judge": 50
+        "judge": 51,
+        "generate": 31
       },
       "failed_calls": 0,
-      "prompt_tokens": 59799,
+      "prompt_tokens": 60595,
       "cached_tokens": 2560,
-      "completion_tokens": 12050,
+      "completion_tokens": 12095,
       "reasoning_tokens": 2018,
       "retries": 10,
       "samples": 0,
       "judge_flags": {
-        "home.intro": 1,
         "mistake.whatTheyWrote": 1,
-        "demo.fractionStepsLabel": 1,
-        "input.review.unreadable": 1,
+        "common.grade": 1,
         "input.error.unclear": 1,
         "topic.mistakesHeading": 1,
-        "common.grade": 1,
+        "input.review.unreadable": 1,
         "math.op.sub": 1,
-        "input.mode.type": 2
+        "input.mode.type": 2,
+        "home.intro": 1,
+        "demo.fractionStepsLabel": 1
       },
-      "judged_items": 320,
+      "judged_items": 321,
       "dropped": []
     },
-    "last_usd": 0.005635,
+    "last_usd": 0.00533,
     "changes": [
       {
         "path": "practice.badReason.false_equality",
@@ -983,7 +983,7 @@
         "why": "judge: TR translates “Type” as “Saisie” (“input/entry”), which changes the meaning; it should refer to a type/category. (“Saisie” does not mean “type” in French.)"
       }
     ],
-    "usd": 0.648975
+    "usd": 0.6543049999999999
   },
   "it": {
     "lang": "it",
@@ -991,27 +991,27 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 25,
-        "judge": 35
+        "judge": 36,
+        "generate": 26
       },
       "failed_calls": 0,
-      "prompt_tokens": 48242,
+      "prompt_tokens": 49038,
       "cached_tokens": 3840,
-      "completion_tokens": 9173,
+      "completion_tokens": 9219,
       "reasoning_tokens": 171,
       "retries": 7,
       "samples": 0,
       "judge_flags": {
-        "math.speech.power": 1,
         "input.review.unreadable": 1,
-        "practice.badReason.unparsable": 1,
         "math.speech.powerGroup": 1,
-        "input.mode.type": 1
+        "input.mode.type": 1,
+        "practice.badReason.unparsable": 1,
+        "math.speech.power": 1
       },
-      "judged_items": 313,
+      "judged_items": 314,
       "dropped": []
     },
-    "last_usd": 0.005665,
+    "last_usd": 0.00536,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1062,7 +1062,7 @@
         "why": "{count, plural} needs many for it"
       }
     ],
-    "usd": 0.49912
+    "usd": 0.50448
   },
   "uk": {
     "lang": "uk",
@@ -1166,27 +1166,27 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 26,
-        "judge": 38
+        "generate": 27,
+        "judge": 39
       },
       "failed_calls": 0,
-      "prompt_tokens": 49575,
+      "prompt_tokens": 50369,
       "cached_tokens": 5120,
-      "completion_tokens": 9466,
-      "reasoning_tokens": 360,
+      "completion_tokens": 9606,
+      "reasoning_tokens": 449,
       "retries": 8,
       "samples": 0,
       "judge_flags": {
+        "mistake.sayWorded": 1,
         "mistake.right": 1,
         "math.speech.power": 1,
         "practice.allFollow": 1,
-        "mistake.sayWorded": 1,
         "input.mode.type": 1
       },
-      "judged_items": 313,
+      "judged_items": 314,
       "dropped": []
     },
-    "last_usd": 0.02324,
+    "last_usd": 0.00817,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1243,7 +1243,7 @@
         "why": "judge: The Turkish uses 'AI' instead of the standard Turkish abbreviation/name for artificial intelligence. (In Turkish teaching material, 'yapay zekâ' or 'YZ' would be expected; leaving the English abbreviation 'AI' is not an accurate Turkish rendering.)"
       }
     ],
-    "usd": 0.508815
+    "usd": 0.516985
   },
   "ur": {
     "lang": "ur",
@@ -1251,37 +1251,37 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 31,
-        "judge": 57
+        "generate": 32,
+        "judge": 58
       },
       "failed_calls": 0,
-      "prompt_tokens": 65497,
+      "prompt_tokens": 66293,
       "cached_tokens": 0,
-      "completion_tokens": 14239,
+      "completion_tokens": 14286,
       "reasoning_tokens": 2171,
       "retries": 13,
       "samples": 0,
       "judge_flags": {
-        "topic.kind.evaluate": 1,
-        "mistake.sayExample": 1,
-        "math.speech.fractionSimple": 1,
-        "practice.badReason.false_equality": 1,
-        "input.review.right": 1,
         "practice.doneNote": 1,
+        "math.speech.fractionSimple": 1,
         "mistake.workedOut": 1,
-        "input.mode.type": 2,
-        "input.review.left": 1,
-        "mistake.problemHint": 1,
         "shell.mainNav": 3,
+        "input.mode.type": 2,
+        "mistake.sayExample": 1,
+        "input.review.right": 1,
         "shell.skipToContent": 1,
+        "topic.kind.evaluate": 1,
+        "input.review.left": 1,
         "home.eyebrow": 1,
         "shell.footerChecked": 1,
-        "demo.title": 1
+        "demo.title": 1,
+        "practice.badReason.false_equality": 1,
+        "mistake.problemHint": 1
       },
-      "judged_items": 326,
+      "judged_items": 327,
       "dropped": []
     },
-    "last_usd": 0.008015,
+    "last_usd": 0.00539,
     "changes": [
       {
         "path": "input.review.left",
@@ -1404,7 +1404,7 @@
         "why": "judge: The Urdu says it was written for an example question, 'not for your student,' instead of 'not your student’s' (e.g., not your student’s problem/work). (It drops the possessive meaning after 'student’s' and changes the intended contrast.)"
       }
     ],
-    "usd": 0.754655
+    "usd": 0.760045
   },
   "hi": {
     "lang": "hi",
@@ -1412,30 +1412,30 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 29,
-        "judge": 49
+        "generate": 30,
+        "judge": 50
       },
       "failed_calls": 0,
-      "prompt_tokens": 61510,
+      "prompt_tokens": 62303,
       "cached_tokens": 3840,
-      "completion_tokens": 10730,
+      "completion_tokens": 10775,
       "reasoning_tokens": 226,
       "retries": 9,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "practice.header": 1,
-        "input.write.undo": 1,
         "mistake.say.tell": 2,
         "input.write.did.undo": 1,
         "math.speech.fractionSimple": 1,
+        "input.review.unreadable": 1,
         "shell.footerChecked": 1,
-        "demo.title": 1
+        "practice.header": 1,
+        "demo.title": 1,
+        "input.write.undo": 1
       },
-      "judged_items": 319,
+      "judged_items": 320,
       "dropped": []
     },
-    "last_usd": 0.005905,
+    "last_usd": 0.005315,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1504,7 +1504,7 @@
         "why": "judge: For denominator 2, the English distinguishes singular/plural as 'half/halves', but the Hindi renders both as 'बटा 2' ('over 2'), changing the spoken fraction term and losing the intended simple fraction wording. (The translation replaces denominator-name forms like half/third/quarter with generic 'बटा n', so meanings such as 'one half' become 'एक बटा 2' rather than the intended Hindi fraction term.)"
       }
     ],
-    "usd": 0.61217
+    "usd": 0.617485
   },
   "bn": {
     "lang": "bn",
@@ -1512,28 +1512,28 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 29,
-        "judge": 45
+        "generate": 30,
+        "judge": 46
       },
       "failed_calls": 0,
-      "prompt_tokens": 56430,
+      "prompt_tokens": 57225,
       "cached_tokens": 7680,
-      "completion_tokens": 11538,
+      "completion_tokens": 11583,
       "reasoning_tokens": 1589,
       "retries": 9,
       "samples": 0,
       "judge_flags": {
         "input.review.op": 1,
+        "input.mode.type": 1,
         "mistake.sayExample": 1,
-        "mistake.workingLabel": 1,
         "demo.ink": 2,
         "topic.check": 1,
-        "input.mode.type": 1
+        "mistake.workingLabel": 1
       },
-      "judged_items": 317,
+      "judged_items": 318,
       "dropped": []
     },
-    "last_usd": 0.008715,
+    "last_usd": 0.005325,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1596,7 +1596,7 @@
         "why": "judge: Translation is correct (The phrase “আপনার শিক্ষার্থীরটির” is ungrammatical/unnatural Bengali; it does not clearly convey “your student’s [problem/work].”)"
       }
     ],
-    "usd": 0.59373
+    "usd": 0.599055
   },
   "zh-Hans": {
     "lang": "zh-Hans",
@@ -1604,27 +1604,27 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 30,
-        "judge": 47
+        "generate": 31,
+        "judge": 48
       },
       "failed_calls": 0,
-      "prompt_tokens": 54580,
+      "prompt_tokens": 55382,
       "cached_tokens": 1280,
-      "completion_tokens": 9458,
+      "completion_tokens": 9503,
       "reasoning_tokens": 744,
       "retries": 12,
       "samples": 0,
       "judge_flags": {
         "input.review.op": 2,
-        "mistake.possibilities": 1,
-        "topic.kind.solve": 1,
+        "input.mode.type": 3,
         "math.speech.over": 1,
-        "input.mode.type": 3
+        "mistake.possibilities": 1,
+        "topic.kind.solve": 1
       },
-      "judged_items": 316,
+      "judged_items": 317,
       "dropped": []
     },
-    "last_usd": 0.005595,
+    "last_usd": 0.00536,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1717,7 +1717,7 @@
         "why": "judge: The translation renders “Type” as “键入” (to type/enter text) instead of the noun “类型/种类.” (It changes the meaning from a category/type label to an action of typing.)"
       }
     ],
-    "usd": 0.55088
+    "usd": 0.5562400000000001
   },
   "sw": {
     "lang": "sw",
@@ -1908,30 +1908,30 @@
     "failing": [],
     "stats": {
       "calls": {
-        "generate": 32,
-        "judge": 60
+        "generate": 33,
+        "judge": 61
       },
       "failed_calls": 0,
-      "prompt_tokens": 80539,
+      "prompt_tokens": 81370,
       "cached_tokens": 5120,
-      "completion_tokens": 19484,
+      "completion_tokens": 19531,
       "reasoning_tokens": 4138,
       "retries": 12,
       "samples": 0,
       "judge_flags": {
-        "demo.fractionStepsLabel": 1,
-        "input.review.unreadable": 1,
-        "math.speech.powerGroup": 1,
         "math.speech.power": 1,
-        "math.speech.fractionSimple": 6,
         "math.speech.over": 2,
+        "math.speech.powerGroup": 1,
         "mistake.sameAmount": 2,
-        "input.mode.type": 1
+        "math.speech.fractionSimple": 6,
+        "input.mode.type": 1,
+        "input.review.unreadable": 1,
+        "demo.fractionStepsLabel": 1
       },
-      "judged_items": 390,
+      "judged_items": 391,
       "dropped": []
     },
-    "last_usd": 0.00605,
+    "last_usd": 0.005565,
     "changes": [
       {
         "path": "home.prepareText",
@@ -2042,6 +2042,6 @@
         "why": "judge: The Kazakh output duplicates the numerator for unit fractions, e.g. num=1, den=2 becomes 'бір екіден бір' instead of just 'екіден бір'/'one half'. (The English pattern also uses 'one half' as a complete phrase, but the Kazakh pattern prepends the numerator outside and also includes it inside the denominator-specific unit-fraction phrase, causing 'one one half' semantics.)"
       }
     ],
-    "usd": 0.9641750000000001
+    "usd": 0.9697400000000002
   }
 }

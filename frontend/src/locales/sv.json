@@ -348,6 +348,7 @@
     "barCaption": "Svaret som en stapelmodell.",
     "whatToSay": "Vad du kan säga",
     "sayExample": "Skrivet för ett exempelproblem, inte din elevs:",
+    "sayAnswer": "Skrivet för ett annat felaktigt svar på den här uppgiften:",
     "sayWorded": "formulerad av AI för detta problem · tal kontrollerade av matematikmotorn",
     "say": {
       "ask": "fråga",

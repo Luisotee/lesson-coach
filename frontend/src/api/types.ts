@@ -167,8 +167,12 @@ export interface Diagnosis {
   explanation: string
   margin_note: string | null
   what_to_say: WhatToSay
+  /** Who wrote `what_to_say`: the pack's card unchanged (no AI), or the AI. */
+  say_source: 'card' | 'ai'
   /** Set when `what_to_say` is the card's own moves, written for this example problem. */
   say_example: Problem | null
+  /** Set when they are the card's moves for this problem but another wrong answer. */
+  say_answer: string | null
   try_next: { problem: Problem; prompt: string } | null
   /** Language of `explanation`, `margin_note` and `what_to_say`. */
   lang: string

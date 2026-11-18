@@ -348,6 +348,7 @@
     "barCaption": "Yanıtın çubuk modeli.",
     "whatToSay": "Ne söyleyebilirsiniz",
     "sayExample": "Öğrencinizin değil, bir örnek problem için yazılmıştır:",
+    "sayAnswer": "Bu problemde başka bir yanlış cevap için yazılmıştır:",
     "sayWorded": "bu problem için yapay zekâ tarafından söze döküldü · sayılar matematik motoru tarafından kontrol edildi",
     "say": {
       "ask": "sor",

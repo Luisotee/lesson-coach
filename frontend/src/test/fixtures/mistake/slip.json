@@ -40,7 +40,9 @@
       "nudge": "What is 10 take away 6?",
       "tell": "10 − 6 is 4, so 2x = 4 and x = 2."
     },
+    "say_source": "ai",
     "say_example": null,
+    "say_answer": null,
     "try_next": null,
     "lang": "en",
     "cards_lang": null,

@@ -11,8 +11,9 @@ diagnose it. Every call is given sympy's verified answer, and its numbers are ch
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Literal
 
+import sympy
 from fastapi import APIRouter, Request
 
 from app.api.convert import bad_line, line_text, math_text, steps_out, working_out
@@ -38,9 +39,9 @@ from app.llm.prompts import (
     mistake_schema,
     rule_say_messages,
 )
-from app.math.nodes import MathError
+from app.math.nodes import Eq, MathError, to_sympy
 from app.math.pipeline import MathText, MistakeFindings, analyse_mistake, read_problem
-from app.math.problems import Kind
+from app.math.problems import Kind, isolated, parse_input, same_value
 from app.mathpool import MathFailure, MathPool, MathTimeout
 
 router = APIRouter(prefix="/api", tags=["mistake"])
@@ -136,26 +137,49 @@ def _same_problem(problem: PackProblem, found: MistakeFindings) -> bool:
     return _normalised(problem.expr, problem.kind) == found.expr
 
 
+def _answer_value(text: str) -> sympy.Expr | None:
+    """An answer's value; `x = 8` counts as 8."""
+    try:
+        node = parse_input(text)
+        if isinstance(node, Eq):
+            side = isolated(node)
+            if side is None:
+                return None
+            node = side[1]
+        return to_sympy(node)
+    except (MathError, ValueError, TypeError, ZeroDivisionError):
+        return None
+
+
 def _same_answer(answer: str, found: MistakeFindings) -> bool:
+    """Whether the student's answer has the value of the card's example wrong answer."""
     if found.student_answer is None:
         return False
-    return _normalised(answer, "evaluate") == _normalised(found.student_answer, "evaluate")
+    a, b = _answer_value(answer), _answer_value(found.student_answer)
+    return a is not None and b is not None and same_value(a, b)
 
 
 async def _rule_diagnosis(
     llm: LLM, pack: Pack, cards: list[Misconception], found: MistakeFindings, lang: str
 ) -> Diagnosis:
     first = cards[0]
+    same_problem = _same_problem(first.example_problem, found)
     # The card's own example with its wrong answer: its moves fit as they are.
-    same = _same_problem(first.example_problem, found) and _same_answer(
-        first.example_wrong_answer, found
-    )
+    same = same_problem and _same_answer(first.example_wrong_answer, found)
     phrased = None if same else await _rule_say(llm, first, found, lang)
+    say_example: PackProblem | None = None
+    say_answer: str | None = None
+    say_source: Literal["card", "ai"]
     if phrased is not None:
-        say, say_lang, say_example = phrased, lang, None
+        say, say_lang, say_source = phrased, lang, "ai"
     else:
         say, say_lang = WhatToSayOut(**first.what_to_say.model_dump()), pack.lang
-        say_example = None if same else first.example_problem
+        say_source = "card"
+        if not same:  # the card's moves are about another problem, or another wrong answer
+            if same_problem:
+                say_answer = first.example_wrong_answer
+            else:
+                say_example = first.example_problem
     return Diagnosis(
         source="rule",
         rule_checked=True,
@@ -163,7 +187,9 @@ async def _rule_diagnosis(
         explanation="",  # the card's belief and why it feels right are in `misconceptions`
         margin_note=None,
         what_to_say=say,
+        say_source=say_source,
         say_example=say_example,
+        say_answer=say_answer,
         try_next=_try_next(pack, first, found),
         lang=say_lang,
         cards_lang=pack.lang,

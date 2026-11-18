@@ -505,7 +505,7 @@ def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
             ),
             # The card's own moves were shown, framed by its example problem, because the call
             # failed, abstained or wrote a number sympy didn't give it.
-            "fell_back": metrics.counts(_fallback(r) for r in rule_moves if _fallback(r)),
+            "fell_back": metrics.counts(f for f in map(_fallback, rule_moves) if f),
         },
         "request_latency_ms": {
             "no_ai": _latency([r["latency_ms"] for r in records if not r["calls"]]),

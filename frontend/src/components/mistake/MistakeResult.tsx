@@ -120,7 +120,13 @@ function WhatToSay({ d }: { d: Diagnosis }) {
           <MathExpr expr={d.say_example.expr} className="text-xl" />
         </p>
       )}
-      {d.source === 'rule' && !d.say_example && (
+      {d.say_answer && (
+        <p className="flex flex-wrap items-center gap-2 text-[15px]" data-say-answer>
+          {t('mistake.sayAnswer')}
+          <MathExpr expr={d.say_answer} className="text-xl" />
+        </p>
+      )}
+      {d.source === 'rule' && d.say_source === 'ai' && (
         <p className="text-[13px] text-muted-foreground" data-say-worded>
           {t('mistake.sayWorded')}
         </p>

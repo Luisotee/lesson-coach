@@ -141,8 +141,21 @@ describe('MistakeResult', () => {
     expect(screen.getAllByText(/add the tops and add the bottoms/)).toHaveLength(1)
     expect(screen.getAllByText(/two separate whole numbers/)).toHaveLength(1)
     expect(document.querySelector('[data-say-example]')).toBeNull()
-    // The moves were worded by the AI for this problem, so the card says so.
+    // The card's own example: its moves are shown unchanged, so no AI note.
+    expect(screen.queryByText(/worded by AI/)).toBeNull()
+  })
+
+  test('rule match with moves worded by the AI for this problem says so', () => {
+    show({ ...diagnosed, diagnosis: { ...diagnosed.diagnosis, say_source: 'ai' } })
     expect(screen.getByText(/worded by AI for this problem/)).toBeInTheDocument()
+  })
+
+  test('the card’s moves for another wrong answer to this problem are framed by that answer', () => {
+    show({ ...diagnosed, diagnosis: { ...diagnosed.diagnosis, say_answer: '4' } })
+    const framing = document.querySelector('[data-say-answer]')!
+    expect(framing).toHaveTextContent('Written for another wrong answer to this problem:')
+    expect(document.querySelector('[data-say-example]')).toBeNull()
+    expect(screen.queryByText(/worded by AI/)).toBeNull()
   })
 
   test('the card’s own moves are framed by the example problem they are written for', () => {

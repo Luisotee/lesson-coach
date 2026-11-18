@@ -46,7 +46,9 @@
       "nudge": "Can you add halves and thirds directly, or do you first need parts of the same size?",
       "tell": "Cut both into sixths: `3/6 + 2/6` is `5/6`."
     },
+    "say_source": "card",
     "say_example": null,
+    "say_answer": null,
     "try_next": {
       "problem": {
         "kind": "evaluate",
