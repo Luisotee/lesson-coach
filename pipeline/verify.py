@@ -91,24 +91,25 @@ def verify_topic(topic: TopicId, lang: str, steps_for: StepsFor = worked_steps) 
 
 
 async def judge_translation(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str]]:
-    """The translation judge over every text of a translated pack, unit by unit, as
-    translate.py runs it."""
+    """The translation review over every text of a translated pack, unit by unit: the same
+    `translate.review` (item checks, then the judge) that passed it."""
     from pipeline.generate import Runner, Stats
     from pipeline.languages import LANGUAGES
-    from pipeline.translate import units
-    from pipeline.translate_prompts import judge_messages
+    from pipeline.translate import TranslationError, review, units
 
     pack, english = load_pack(topic, lang), load_pack(topic, "en")
     runner = Runner(llm, Stats())
     ours = prose_paths(pack)
-    jobs = []
-    for _, group in units(english):
-        pairs = {p: f"EN: {text}\nTR: {ours[p]}" for p, text in group.items() if p in ours}
-        messages = judge_messages(LANGUAGES[lang], pairs)
-        jobs.append(runner.judge("", "", pairs, messages=messages))
+
+    async def one(group: dict[str, str]) -> dict[str, list[str]]:
+        try:
+            return await review(runner, LANGUAGES[lang], group, ours)
+        except TranslationError:  # the judge gave no verdict
+            return NO_VERDICT
+
     flagged: dict[str, list[str]] = {}
-    for found in await asyncio.gather(*jobs):
-        flagged.update(found if found is not None else NO_VERDICT)
+    for found in await asyncio.gather(*(one(group) for _, group in units(english))):
+        flagged.update(found)
     return flagged
 
 

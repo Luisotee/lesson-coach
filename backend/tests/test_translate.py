@@ -363,3 +363,11 @@ def test_recheck_finds_a_reworded_english_string(
     english["nav"]["topics"] = "All topics"  # same arguments, new meaning
     (tmp_path / "en.json").write_text(json.dumps(english))
     assert translate_ui.failing_keys("de") == {"nav.topics"}
+
+
+def test_verify_judges_a_translation_with_the_pipelines_review() -> None:
+    from pipeline.verify import judge_translation
+
+    assert asyncio.run(judge_translation("fractions", "de", FakeTranslator())) == {}
+    flagged = asyncio.run(judge_translation("fractions", "de", FakeTranslator(flag="idea")))
+    assert flagged and all("idea" in path for path in flagged)
