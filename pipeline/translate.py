@@ -96,7 +96,7 @@ def prompt_problems(path: str, text: str) -> list[str]:
     if any(c.isdigit() for c in text):
         problems.append("no digits in a prompt")
     wants = 1 if path == "prompts.solve" else 0
-    if text.count("{var}") != wants or text.count("{") != wants:
+    if text.count("{var}") != wants or text.count("{") != wants or text.count("}") != wants:
         problems.append("`{var}` exactly once in the solve prompt, nowhere else")
     if len(text) > 60:
         problems.append("at most 60 characters")
@@ -148,6 +148,16 @@ async def review(
     return {**judged, **failing}
 
 
+def cache_file(language: str, context: str, english: dict[str, str]) -> Path:
+    """Where a unit that passed is kept, keyed by everything that makes its translation."""
+    key = hashlib.sha256(
+        json.dumps(
+            [language, translate_prompts_hash(), context, english], ensure_ascii=False
+        ).encode()
+    ).hexdigest()
+    return CACHE / f"{key}.json"
+
+
 async def translate_unit(
     runner: Runner,
     language: str,
@@ -162,12 +172,7 @@ async def translate_unit(
     times. Raises when any text still fails: a language ships complete or not at all. Each
     repair is appended to `log` (path, before, after, why)."""
 
-    key = hashlib.sha256(
-        json.dumps(
-            [language, translate_prompts_hash(), context, english], ensure_ascii=False
-        ).encode()
-    ).hexdigest()
-    cached = CACHE / f"{key}.json"
+    cached = cache_file(language, context, english)
     if cached.exists():  # checked and judged before; the checks are cheap, so run them again
         got: dict[str, str] = json.loads(cached.read_text(encoding="utf-8"))
         if not item_problems(english, got, extra, limit):
@@ -281,20 +286,19 @@ async def translate_language(
     language = LANGUAGES[lang]
     runner = Runner(llm, stats, slots=slots)
     english_prompts = {f"prompts.{kind}": text for kind, text in PROMPTS["en"].items()}
-    prompt_job = translate_unit(
-        runner,
-        language,
+    prompt_context = (
         "Instructions shown above a math problem, such as `2*x + 6 = 10`. `{var}` is the "
-        "letter to solve for. Keep them short and end each the way the English does.",
-        english_prompts,
-        prompts_check,
+        "letter to solve for. Keep them short and end each the way the English does."
     )
+    prompt_job = translate_unit(runner, language, prompt_context, english_prompts, prompts_check)
     englishes = {topic: load_pack(topic, "en") for topic in TOPIC_IDS}
     owners: list[TopicId] = []
     jobs = []
+    unit_files: dict[TopicId, list[Path]] = {t: [] for t in TOPIC_IDS}
     for topic in TOPIC_IDS:
         for context, group in units(englishes[topic]):
             owners.append(topic)
+            unit_files[topic].append(cache_file(language, context, group))
             jobs.append(named(topic, translate_unit(runner, language, context, group)))
     results = await asyncio.gather(named("prompts", prompt_job), *jobs, return_exceptions=True)
     errors = [r for r in results if isinstance(r, BaseException)]
@@ -311,6 +315,7 @@ async def translate_language(
         translated[topic].update(r)
 
     PROMPTS[lang] = prompts  # the schema validates prompts against PROMPTS
+    topic = TOPIC_IDS[0]
     try:
         packs = []
         for topic in TOPIC_IDS:
@@ -334,6 +339,10 @@ async def translate_language(
             packs.append(pack)
     except Exception:
         PROMPTS.pop(lang, None)
+        # The units passed alone but not in the pack: forget them, so a rerun asks again
+        # instead of loading the same texts from the cache forever.
+        for stale in [cache_file(language, prompt_context, english_prompts), *unit_files[topic]]:
+            stale.unlink(missing_ok=True)
         raise
     return packs, prompts
 

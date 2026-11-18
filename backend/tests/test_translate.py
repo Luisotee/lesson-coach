@@ -324,3 +324,26 @@ def test_prune_removes_the_packs_of_a_language_whose_ui_failed(
     assert set(json.loads(prompts.read_text())) == {"en", "de"}
     assert json.loads(packs.read_text())["xx"]["shipped"] is False
     assert translate.prune() == []
+
+
+def test_a_stray_brace_in_a_prompt_is_caught_before_it_is_cached() -> None:
+    assert translate.prompt_problems("prompts.solve", "Résoudre pour {var}:}")
+    assert not translate.prompt_problems("prompts.solve", "Résoudre pour {var} :")
+
+
+def test_units_that_fail_in_the_pack_are_not_kept_in_the_cache(
+    clean_prompts: None, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    real = translation_findings
+    failing = TOPIC_IDS[1]
+
+    def findings(pack: Pack, *args: Any) -> list[Any]:
+        return ["broken"] if pack.topic == failing else real(pack, *args)
+
+    monkeypatch.setattr(translate, "translation_findings", findings)
+    with pytest.raises(translate.TranslationError, match="broken"):
+        run(FakeTranslator())
+    kept = len(list(translate.CACHE.glob("*.json")))
+    # The prompts and the failing topic's six units are dropped; the first topic's six stay
+    # (the topics after the failing one are never assembled, so theirs stay too).
+    assert kept == 6 * len(TOPIC_IDS) - 6
