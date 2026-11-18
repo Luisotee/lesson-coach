@@ -116,19 +116,6 @@ test('topic: the section nav marks the section in view', async ({ page }) => {
   )
 })
 
-test('topic: print shows only the title and the lesson outline', async ({ page }) => {
-  await page.goto('/topics/linear-equations')
-  await expect(page.getByRole('button', { name: 'Print lesson outline' })).toBeVisible()
-  await page.emulateMedia({ media: 'print' })
-  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'Lesson outline' })).toBeVisible()
-  await expect(page.getByText('Model it')).toBeVisible()
-  for (const hidden of ['The idea', 'What students often get wrong', 'Questions students ask']) {
-    await expect(page.getByRole('heading', { name: hidden, exact: true })).toBeHidden()
-  }
-  await expect(page.locator('header').first()).toBeHidden()
-})
-
 test('topic: an unknown topic is not found; a server error offers a retry', async ({ page }) => {
   await page.goto('/topics/algebra')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found')

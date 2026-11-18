@@ -28,7 +28,7 @@ export function IdeaCards({ pack }: { pack: Pack }) {
     <section
       id="idea"
       aria-label={t('topic.sections.idea')}
-      className="grid scroll-mt-24 grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-4 print:hidden"
+      className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-4 print:hidden"
     >
       <div className="rounded-[20px] border border-line bg-white p-6 text-[#3a4458]">
         <h2 className="mb-2.5 text-xl font-semibold text-navy">{t('topic.idea')}</h2>
@@ -49,7 +49,7 @@ export function RefreshFirst({ ids }: { ids: string[] }) {
     <section
       id="refresh"
       aria-labelledby="refresh-heading"
-      className="flex scroll-mt-24 flex-wrap items-center gap-2.5 print:hidden"
+      className="flex flex-wrap items-center gap-2.5 print:hidden"
     >
       <h2 id="refresh-heading" className="me-1 text-[15px] font-semibold text-muted-foreground">
         {t('topic.refreshFirst')}
@@ -103,7 +103,7 @@ function MisconceptionCard({ m }: { m: Misconception }) {
 export function Misconceptions({ items }: { items: Misconception[] }) {
   const { t } = useTranslation()
   return (
-    <section id="mistakes" aria-labelledby="mistakes-heading" className="scroll-mt-24 print:hidden">
+    <section id="mistakes" aria-labelledby="mistakes-heading" className="print:hidden">
       <h2 id="mistakes-heading" className="mb-4 text-2xl font-semibold">
         {t('topic.mistakesHeading')}
       </h2>
@@ -119,11 +119,7 @@ export function Misconceptions({ items }: { items: Misconception[] }) {
 export function StudentQuestions({ items }: { items: Pack['questions'] }) {
   const { t } = useTranslation()
   return (
-    <section
-      id="questions"
-      aria-labelledby="questions-heading"
-      className="scroll-mt-24 print:hidden"
-    >
+    <section id="questions" aria-labelledby="questions-heading" className="print:hidden">
       <h2 id="questions-heading" className="mb-4 text-2xl font-semibold">
         {t('topic.questionsHeading')}
       </h2>
@@ -214,7 +210,7 @@ export function LessonOutline({ pack }: { pack: Pack }) {
     <section
       id="outline"
       aria-labelledby="outline-heading"
-      className="flex scroll-mt-24 flex-col gap-4"
+      className="flex flex-col gap-4"
       data-print
     >
       <div className="flex flex-wrap items-baseline justify-between gap-2">

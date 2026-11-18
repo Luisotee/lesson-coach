@@ -149,6 +149,11 @@
   h3 {
     @apply font-heading;
   }
+  /* Scrolled-to and focused elements stop below the sticky header, never under it (WCAG
+     2.4.11). --header-h is the header's live height (useHeaderHeight). */
+  html {
+    scroll-padding-top: calc(var(--header-h, 0px) + 0.75rem);
+  }
   /* A visible focus ring everywhere (WCAG 2.4.7 / 2.4.11). Navy has 3:1+ against white and ground. */
   :focus-visible {
     outline: 3px solid var(--color-navy);
