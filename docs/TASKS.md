@@ -66,7 +66,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - `pipeline/verify.py`: every check in PLAN, plus a targeted retry and majority vote.
   - Commit `content/generated/en/*.json`.
   - **Done when:** every pack passes verification, and the verify report goes in `evals/verify-report.md`.
-- [ ] **T6 Backend API** (needs T1, T4)
+- [x] **T6 Backend API** (needs T1, T4)
   - `GET /api/topics`, `GET /api/topics/{id}?lang=`.
   - `POST /api/mistake`: the full pipeline in PLAN, with structured LLM output and abstain paths, in the teacher's language.
   - `POST /api/transcribe`: image in, structured lines with confidence out, never stored.
