@@ -61,8 +61,18 @@ def test_score_transcription() -> None:
     }
     score = metrics.score_transcription(result, truth)
     assert score == {"lines": 2, "right": 1, "image_ok": False, "wrong": 2, "wrong_flagged": 1}
-    empty = metrics.score_transcription({"status": "unclear", "lines": []}, [])
-    assert empty["image_ok"]
+    no_math = {"status": "unclear", "reason": "no_math", "lines": []}
+    assert metrics.score_transcription(no_math, [])["image_ok"]
+    outage = {"status": "unclear", "reason": "ai_unavailable", "lines": []}
+    assert not metrics.score_transcription(outage, [])["image_ok"]
+    assert not metrics.score_transcription({"detail": "x"}, [], http=500)["image_ok"]
+    assert not metrics.score_transcription(result, truth, http=500)["right"]
+
+
+def test_text_hash() -> None:
+    text = {"explanation": "e", "margin_note": None, "what_to_say": {"nudge": "n"}}
+    assert metrics.text_hash(text) == metrics.text_hash(dict(reversed(text.items())))
+    assert metrics.text_hash(text) != metrics.text_hash(text | {"explanation": "f"})
 
 
 def test_score_mistake() -> None:

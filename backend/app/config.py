@@ -33,7 +33,8 @@ class Settings(BaseSettings):
     model_offline: str = "gpt-5.5-offline"
 
     # Per task: the mistake explainer and the transcription of photos and drawings.
-    # `none`, from the evals (evals/README.md): same accuracy as `low`, steadier, a bit cheaper.
+    # `none`, from the evals (evals/README.md): same accuracy as `low` and steadier; cost and
+    # latency within noise.
     mistake_reasoning_effort: ReasoningEffort = "none"
     mistake_max_completion_tokens: int = 4000
     mistake_deadline_s: float = 30.0

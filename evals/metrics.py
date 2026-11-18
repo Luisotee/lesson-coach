@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import math
 from collections import Counter
 from collections.abc import Iterable, Sequence
@@ -101,12 +103,15 @@ def line_matches(got: dict[str, Any], want: dict[str, str]) -> bool:
     )
 
 
-def score_transcription(result: dict[str, Any], truth: list[dict[str, str]]) -> dict[str, Any]:
+def score_transcription(
+    result: dict[str, Any], truth: list[dict[str, str]], http: int = 200
+) -> dict[str, Any]:
     """Per image: lines right (by position), whether the whole image is right, and how many
-    wrong lines the API flagged as uncertain (the teacher confirms those)."""
-    got = result.get("lines") or []
+    wrong lines the API flagged as uncertain (the teacher confirms those). An image with no
+    math is right only when the API answered and said so (not on an outage or an error)."""
+    got = result.get("lines") or [] if http == 200 else []
     if not truth:
-        ok = result.get("status") == "unclear" or not got
+        ok = http == 200 and result.get("reason") == "no_math" and not got
         return {"lines": 0, "right": 0, "image_ok": ok, "wrong": 0, "wrong_flagged": 0}
     right = wrong = flagged = 0
     for i in range(max(len(got), len(truth))):
@@ -122,6 +127,12 @@ def score_transcription(result: dict[str, Any], truth: list[dict[str, str]]) -> 
         "wrong": wrong,
         "wrong_flagged": flagged,
     }
+
+
+def text_hash(ai_text: dict[str, Any]) -> str:
+    """A short hash of an AI text, to pin judge scores and hand labels to the text they saw."""
+    blob = json.dumps(ai_text, sort_keys=True, ensure_ascii=False)
+    return hashlib.sha256(blob.encode()).hexdigest()[:16]
 
 
 EXPECTED_STATUS = {"correct": "correct", "equivalent_not_simplified": "not_simplified"}

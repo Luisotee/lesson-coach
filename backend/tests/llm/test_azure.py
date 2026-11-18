@@ -84,14 +84,14 @@ def test_retries_transient_errors_then_succeeds(caplog: pytest.LogCaptureFixture
 def test_gives_up_at_the_deadline() -> None:
     client = FakeClient(*[tls_eof() for _ in range(50)])
     result = call(client, mistake_deadline_s=0.0)
-    assert (result.value, result.error) == (None, "unavailable")
+    assert (result.value, result.error, result.attempts) == (None, "unavailable", 1)
     assert len(client.calls) == 1
 
 
 def test_does_not_retry_a_bad_request() -> None:
     client = FakeClient(bad_request(), response('{"x": 1}'))
     result = call(client)
-    assert result.error == "unavailable" and len(client.calls) == 1
+    assert result.error == "unavailable" and len(client.calls) == 1 and result.attempts == 1
 
 
 @pytest.mark.parametrize(

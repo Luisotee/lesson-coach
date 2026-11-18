@@ -43,7 +43,7 @@ import app.api.mistake  # noqa: E402
 from app.config import ReasoningEffort, Settings  # noqa: E402
 from app.content.schema import RULE_IDS, TopicId  # noqa: E402
 from app.llm.azure import AzureLLM  # noqa: E402
-from app.llm.client import LLM, LLMResult, Task  # noqa: E402
+from app.llm.client import LLM, LLMResult, Task, Usage  # noqa: E402
 from app.main import create_app  # noqa: E402
 from app.math.pipeline import MistakeFindings, analyse_mistake  # noqa: E402
 from evals import metrics  # noqa: E402
@@ -88,7 +88,7 @@ class RecordingLLM:
         result = await self.inner.structured(
             task=task, messages=messages, schema_name=schema_name, schema=schema, output=output
         )
-        usage = dataclasses.asdict(result.usage) if result.usage else _no_usage()
+        usage = dataclasses.asdict(result.usage)
         call_cost = metrics.cost(usage, metrics.PRICES["data_zone"])
         self.spent[0] += call_cost
         self.calls.append(
@@ -103,10 +103,6 @@ class RecordingLLM:
             }
         )
         return result
-
-
-def _no_usage() -> dict[str, int]:
-    return {"prompt_tokens": 0, "cached_tokens": 0, "completion_tokens": 0, "reasoning_tokens": 0}
 
 
 def without_rules(*args: Any) -> MistakeFindings:
@@ -170,9 +166,13 @@ def timed(call: Callable[..., Any], *args: Any, **kwargs: Any) -> tuple[Any, int
 
 
 def run_mistakes(
-    cases: list[dict[str, Any]], effort: ReasoningEffort, runs: int, ai_only: bool, **kw: Any
-) -> list[dict[str, Any]]:
-    records = []
+    records: list[dict[str, Any]],
+    cases: list[dict[str, Any]],
+    effort: ReasoningEffort,
+    runs: int,
+    ai_only: bool,
+    **kw: Any,
+) -> None:
     with client(effort, ai_only=ai_only, **kw) as (test_client, llm):
         for run in range(runs):
             for case in cases:
@@ -212,13 +212,15 @@ def run_mistakes(
                     }
                 )
                 print(f"  {records[-1]['id']}: {result.get('status')} {result.get('reason')}")
-    return records
 
 
 def run_transcription(
-    images: list[dict[str, Any]], effort: ReasoningEffort, runs: int, **kw: Any
-) -> list[dict[str, Any]]:
-    records = []
+    records: list[dict[str, Any]],
+    images: list[dict[str, Any]],
+    effort: ReasoningEffort,
+    runs: int,
+    **kw: Any,
+) -> None:
     with client(effort, ai_only=False, **kw) as (test_client, llm):
         for run in range(runs):
             for image in images:
@@ -237,12 +239,13 @@ def run_transcription(
                         "http": response.status_code,
                         "latency_ms": ms,
                         "result": result,
-                        "score": metrics.score_transcription(result, image["lines"]),
+                        "score": metrics.score_transcription(
+                            result, image["lines"], http=response.status_code
+                        ),
                         "calls": llm.calls[before:],
                     }
                 )
                 print(f"  {records[-1]['id']}: {records[-1]['score']}")
-    return records
 
 
 def write_jsonl(path: Path, records: list[dict[str, Any]]) -> None:
@@ -261,41 +264,54 @@ def load_cases() -> list[dict[str, Any]]:
     return cases
 
 
+def load_images() -> list[dict[str, Any]]:
+    images: list[dict[str, Any]] = yaml.safe_load((IMAGES / "truth.yaml").read_text())["images"]
+    return images
+
+
 def rule_labelled(cases: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return [c for c in cases if c["expected"].get("misconception_id") in RULE_IDS[c["topic"]]]
 
 
 def cmd_run(args: argparse.Namespace) -> None:
-    cases, images = load_cases(), yaml.safe_load((IMAGES / "truth.yaml").read_text())["images"]
+    cases, images = load_cases(), load_images()
+    # A filtered run (--cases) writes `*-subset.jsonl`, which `summarize` ignores, so it never
+    # replaces the full outputs.
+    suffix = ""
     if args.cases:
-        cases = [c for c in cases if c["id"] in args.cases.split(",")]
-        images = [i for i in images if Path(i["file"]).stem in args.cases.split(",")] or images
+        wanted = set(args.cases.split(","))
+        cases = [c for c in cases if c["id"] in wanted]
+        images = [i for i in images if Path(i["file"]).stem in wanted]
+        suffix = "-subset"
     spent = [0.0]
     kw = {"spent": spent, "budget": args.budget, "content": args.content}
-    try:
-        for effort in [cast(ReasoningEffort, e) for e in args.efforts.split(",")]:
-            if "mistakes" in args.only:
-                print(f"mistakes, {effort}")
-                records = run_mistakes(cases, effort, args.runs, ai_only=False, **kw)
-                write_jsonl(OUT / f"mistakes-{effort}.jsonl", records)
-            if "ai_only" in args.only:
-                print(f"AI only, {effort}")
-                records = run_mistakes(rule_labelled(cases), effort, args.runs, True, **kw)
-                write_jsonl(OUT / f"ai-only-{effort}.jsonl", records)
-            if "transcription" in args.only:
-                print(f"transcription, {effort}")
-                records = run_transcription(images, effort, args.runs, **kw)
-                write_jsonl(OUT / f"transcription-{effort}.jsonl", records)
-            print(f"spent so far: ${spent[0]:.2f}")
-    except Budget as stop:
-        sys.exit(f"Stopped: {stop}. Outputs written so far are partial.")
+    modes: list[tuple[str, str, Callable[..., None], list[dict[str, Any]], bool]] = [
+        ("mistakes", "mistakes", run_mistakes, cases, False),
+        ("ai_only", "ai-only", run_mistakes, rule_labelled(cases), True),
+        ("transcription", "transcription", run_transcription, images, False),
+    ]
+    for effort in [cast(ReasoningEffort, e) for e in args.efforts.split(",")]:
+        for mode, stem, run_mode, items, ai_only in modes:
+            if mode not in args.only or not items:
+                continue
+            print(f"{mode}, {effort}")
+            records: list[dict[str, Any]] = []
+            extra = {"ai_only": ai_only} if run_mode is run_mistakes else {}
+            try:
+                run_mode(records, items, effort, args.runs, **extra, **kw)
+            except Budget as stop:
+                write_jsonl(OUT / f"{stem}-{effort}{suffix}.jsonl", records)
+                sys.exit(f"Stopped: {stop}. The outputs are partial; summarize will refuse them.")
+            write_jsonl(OUT / f"{stem}-{effort}{suffix}.jsonl", records)
+        print(f"spent so far: ${spent[0]:.2f}")
 
 
 def ai_records() -> list[dict[str, Any]]:
     """Every AI text that was shown, from both modes and both efforts."""
     records = []
     for path in sorted(OUT.glob("mistakes-*.jsonl")) + sorted(OUT.glob("ai-only-*.jsonl")):
-        records += [r for r in read_jsonl(path) if r["ai_text"]]
+        if not path.stem.endswith("-subset"):
+            records += [r for r in read_jsonl(path) if r["ai_text"]]
     return records
 
 
@@ -311,7 +327,7 @@ def cmd_judge(args: argparse.Namespace) -> None:
             for group in by_stratum.values():
                 if group and len(sample) < args.sample:
                     sample.append(group.pop(rng.randrange(len(group))))
-        write_jsonl(OUT / "label-sample.jsonl", sample)
+        write_jsonl(OUT / "label-sample.jsonl", [r | {"text_hash": _hash(r)} for r in sample])
         print(f"wrote {len(sample)} outputs to label to {OUT / 'label-sample.jsonl'}")
         return
     llm = judge_llm()
@@ -321,10 +337,11 @@ def cmd_judge(args: argparse.Namespace) -> None:
         for record in records:
             start = time.perf_counter()
             reply = await judge(llm, record)
-            usage = dataclasses.asdict(reply.usage) if reply.usage else _no_usage()
+            usage = dataclasses.asdict(reply.usage)
             out.append(
                 {
                     "id": record["id"],
+                    "text_hash": _hash(record),
                     "scores": reply.value.model_dump() if reply.value else None,
                     "error": reply.error,
                     "latency_ms": round((time.perf_counter() - start) * 1000),
@@ -338,6 +355,11 @@ def cmd_judge(args: argparse.Namespace) -> None:
     write_jsonl(OUT / "judge.jsonl", asyncio.run(go()))
 
 
+def _hash(record: dict[str, Any]) -> str:
+    """Pins a judge score or hand label to the text it was given: ids repeat on every rerun."""
+    return metrics.text_hash(record["ai_text"])
+
+
 def _latency(values: list[int]) -> dict[str, float | None]:
     return {"p50": metrics.quantile(values, 0.5), "p90": metrics.quantile(values, 0.9)}
 
@@ -346,12 +368,10 @@ def _calls_summary(calls: list[dict[str, Any]]) -> dict[str, Any]:
     if not calls:
         return {"calls": 0}
     n = len(calls)
-    mean = {k: round(sum(c["usage"][k] for c in calls) / n) for k in _no_usage()}
+    mean = {k: round(sum(c["usage"][k] for c in calls) / n) for k in dataclasses.asdict(Usage())}
     return {
         "calls": n,
-        "schema_valid": metrics.rate(
-            c["error"] not in ("invalid_output", "refused") for c in calls
-        ),
+        "schema_valid": metrics.rate(c["error"] not in INVALID for c in calls),
         "errors": metrics.counts(c["error"] for c in calls),
         "retried": metrics.rate(c["attempts"] > 1 for c in calls),
         "latency_ms": _latency([c["latency_ms"] for c in calls]),
@@ -401,7 +421,10 @@ def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
             ),
         },
         "consistent_over_runs": metrics.consistent(outcomes),
-        "answered_by": metrics.counts(r["source"] or "sympy" for r in records),
+        # "ai_abstained": the LLM was called but nothing it wrote was shown.
+        "answered_by": metrics.counts(
+            r["source"] or ("ai_abstained" if r["calls"] else "sympy") for r in records
+        ),
         "ai_path": {
             "runs": len(ai_path),
             "status": metrics.counts(r["status"] for r in ai_path),
@@ -454,17 +477,22 @@ def summarize_transcription(records: list[dict[str, Any]]) -> dict[str, Any]:
 
 
 def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
-    judged = read_jsonl(OUT / "judge.jsonl")
-    if not judged:
+    """Judge scores and labels count only where their text hash matches the current outputs'
+    text: a stale score or label (from an earlier run with the same id) is skipped and counted."""
+    current = {r["id"]: _hash(r) for r in records if r["ai_text"]}
+    all_judged = read_jsonl(OUT / "judge.jsonl")
+    if not all_judged:
         return None
+    judged = [j for j in all_judged if current.get(j["id"]) == j.get("text_hash")]
     labels = (yaml.safe_load(LABELS.read_text()) or {}).get("labels") if LABELS.exists() else None
     by_id = {j["id"]: j for j in judged}
     ok = [j for j in judged if j["scores"] and not j["scores"]["cannot_judge"]]
     calibration: dict[str, Any] = {}
+    stale_labels = 0
     if labels:
-        pairs = [
-            (lab, by_id[lab["id"]]) for lab in labels if by_id.get(lab["id"], {}).get("scores")
-        ]
+        fresh = [lab for lab in labels if current.get(lab["id"]) == lab.get("text_hash")]
+        stale_labels = len(labels) - len(fresh)
+        pairs = [(lab, by_id[lab["id"]]) for lab in fresh if by_id.get(lab["id"], {}).get("scores")]
         for d in DIMENSIONS:
             human = [lab[d] for lab, _ in pairs]
             model = [j["scores"][d] for _, j in pairs]
@@ -477,10 +505,13 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
                 "quoted": kappa is not None and kappa >= 0.6,
             }
     record_by_id = {r["id"]: r for r in records}
-    scores: dict[str, Any] = {}
-    for effort in sorted({record_by_id[j["id"]]["effort"] for j in ok if j["id"] in record_by_id}):
-        rows = [j for j in ok if record_by_id.get(j["id"], {}).get("effort") == effort]
-        scores[effort] = {
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    for j in ok:
+        r = record_by_id[j["id"]]
+        groups[(r["effort"], r["mode"])].append(j)
+    scores: dict[str, dict[str, Any]] = defaultdict(dict)
+    for (effort, mode), rows in sorted(groups.items()):
+        scores[effort][mode] = {
             d: {
                 "n": len(rows),
                 "yes": metrics.rate(j["scores"][d] == "yes" for j in rows),
@@ -491,29 +522,56 @@ def summarize_judge(records: list[dict[str, Any]]) -> dict[str, Any] | None:
     return {
         "model": JUDGE_MODEL,
         "reasoning_effort": JUDGE_EFFORT,
+        "stale_scores_skipped": len(all_judged) - len(judged),
+        "stale_labels_skipped": stale_labels,
         "judged": len(judged),
         "failures": len(judged) - len(ok),
         "failure_reasons": metrics.counts(
             j["error"] or ("cannot_judge" if j["scores"] else None) for j in judged if j not in ok
         ),
         "calibration": calibration,
-        "scores_by_effort": scores,
+        "scores_by_effort_and_mode": dict(scores),
         "cost_usd": round(sum(j["cost"] for j in judged), 4),
     }
 
 
+def _check_complete(path: Path, records: list[dict[str, Any]], want: set[str]) -> None:
+    """Refuse partial outputs (a budget stop, or an old filtered run): every item, equally
+    often."""
+    key = "image" if path.stem.startswith("transcription") else "case"
+    runs: dict[str, int] = defaultdict(int)
+    for r in records:
+        runs[r[key]] += 1
+    if set(runs) != want or len(set(runs.values())) > 1:
+        missing = sorted(want - set(runs))
+        sys.exit(f"{path.name} is partial (missing {missing[:5]}, or uneven runs): rerun `run`.")
+
+
 def cmd_summarize(args: argparse.Namespace) -> None:
     efforts = sorted(
-        {p.stem.split("-")[-1] for p in OUT.glob("*.jsonl") if p.stem.split("-")[0] != "judge"}
-        - {"sample"}
+        {
+            p.stem.split("-")[-1]
+            for p in OUT.glob("*.jsonl")
+            if p.stem.split("-")[0] in ("mistakes", "ai", "transcription")
+            and not p.stem.endswith("-subset")
+        }
     )
+    cases = load_cases()
+    want = {
+        "mistakes": {c["id"] for c in cases},
+        "ai-only": {c["id"] for c in rule_labelled(cases)},
+        "transcription": {i["file"] for i in load_images()},
+    }
     all_mistakes: list[dict[str, Any]] = []
     per_effort: dict[str, Any] = {}
     total = 0.0
     for effort in efforts:
-        mistakes = read_jsonl(OUT / f"mistakes-{effort}.jsonl")
-        ai_only = read_jsonl(OUT / f"ai-only-{effort}.jsonl")
-        transcription = read_jsonl(OUT / f"transcription-{effort}.jsonl")
+        mistakes, ai_only, transcription = (
+            read_jsonl(OUT / f"{stem}-{effort}.jsonl") for stem in want
+        )
+        for stem, records in zip(want, (mistakes, ai_only, transcription), strict=True):
+            if records:
+                _check_complete(OUT / f"{stem}-{effort}.jsonl", records, want[stem])
         all_mistakes += mistakes + ai_only
         per_effort[effort] = {
             "mistakes": summarize_mistakes(mistakes) if mistakes else None,
@@ -525,6 +583,9 @@ def cmd_summarize(args: argparse.Namespace) -> None:
     if judge_summary:
         total += judge_summary["cost_usd"]
     defaults = {f: Settings.model_fields[f].default for f in ("model_live",)}
+    recommendation = args.recommend
+    if not recommendation and RESULTS.exists():  # keep the recorded one
+        recommendation = (yaml.safe_load(RESULTS.read_text()) or {}).get("recommendation", "")
     results = {
         "fingerprint": fingerprint(),
         "date": dt.date.today().isoformat(),
@@ -533,7 +594,7 @@ def cmd_summarize(args: argparse.Namespace) -> None:
         "reasoning_efforts": per_effort,
         "judge": judge_summary,
         "total_cost_usd": round(total, 3),
-        "recommendation": args.recommend,
+        "recommendation": recommendation,
     }
     RESULTS.write_text(
         "# Written by `evals/run.py summarize` from evals/outputs/. Don't edit by hand:\n"
@@ -556,7 +617,9 @@ def main() -> None:
     judge_cmd = sub.add_parser("judge", help="the LLM judge on the AI's shown text")
     judge_cmd.add_argument("--sample", type=int, default=0, help="only write a sample to label")
     summarize = sub.add_parser("summarize", help="write results.yaml from the outputs")
-    summarize.add_argument("--recommend", default="", help="the recommendation to record")
+    summarize.add_argument(
+        "--recommend", default="", help="the recommendation to record (default: keep the last)"
+    )
     args = parser.parse_args()
     {"run": cmd_run, "judge": cmd_judge, "summarize": cmd_summarize}[args.cmd](args)
 

@@ -27,3 +27,6 @@ coverage/
 .DS_Store
 .idea/
 .vscode/
+
+# Filtered eval runs (evals/run.py run --cases): never summarised or committed.
+evals/outputs/*-subset.jsonl

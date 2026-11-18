@@ -2,9 +2,13 @@
 
 It covers the prompts and schemas (rendered from `app.llm.prompts`, so formatting-only code
 changes don't count), the packs the eval cases read (English only: language packs added later
-don't make the results stale), the model-facing config defaults, the judge's prompt and model,
-and the eval inputs (cases, images, truth, hand labels). `backend/tests/test_evals.py`
-recomputes it without calling any model.
+don't make the results stale), the model-facing config defaults, the judge's prompt, model and
+effort, the source of the code that decides the results (the rules, the mistake pipeline, the
+two endpoints, the numbers guard, the scoring), and the eval inputs (cases, images, truth,
+hand labels). `backend/tests/test_evals.py` recomputes it without calling any model.
+
+Not covered: `.env` or Container Apps overrides of the config (only the code defaults are
+pinned), and app code outside the files listed in `SOURCES`.
 """
 
 from __future__ import annotations
@@ -34,6 +38,15 @@ CONFIG_FIELDS = (
     "transcribe_reasoning_effort",
     "transcribe_max_completion_tokens",
 )
+BACKEND = ROOT / "backend" / "app"
+SOURCES = (
+    *sorted((BACKEND / "math" / "rules").glob("*.py")),
+    BACKEND / "math" / "pipeline.py",
+    BACKEND / "api" / "mistake.py",
+    BACKEND / "api" / "transcribe.py",  # holds the image checks before the model call
+    BACKEND / "llm" / "guard.py",  # new_numbers
+    EVALS / "metrics.py",
+)
 
 
 def _files(paths: list[Path]) -> dict[str, str]:
@@ -45,7 +58,7 @@ def _files(paths: list[Path]) -> dict[str, str]:
 
 
 def parts() -> dict[str, Any]:
-    from evals.judge import JUDGE_MODEL, JUDGE_SYSTEM, judge_schema
+    from evals.judge import JUDGE_EFFORT, JUDGE_MODEL, JUDGE_SYSTEM, judge_schema
 
     sample = mistake_messages(
         topic="fractions",
@@ -68,7 +81,13 @@ def parts() -> dict[str, Any]:
         },
         "packs": _files([p for lang in PACK_LANGS for p in (content / lang).glob("*.json")]),
         "config": {f: Settings.model_fields[f].default for f in CONFIG_FIELDS},
-        "judge": {"system": JUDGE_SYSTEM, "schema": judge_schema(), "model": JUDGE_MODEL},
+        "judge": {
+            "system": JUDGE_SYSTEM,
+            "schema": judge_schema(),
+            "model": JUDGE_MODEL,
+            "effort": JUDGE_EFFORT,
+        },
+        "sources": _files(list(SOURCES)),
         "inputs": _files(
             [
                 EVALS / "mistakes.yaml",

@@ -94,13 +94,13 @@ class AzureLLM:
                 delay *= 0.5 + random.random()  # jitter
                 if time.monotonic() + delay >= deadline:
                     error: LLMError = "deadline" if attempts > 1 else "unavailable"
-                    result = LLMResult(None, error)
+                    result = LLMResult(None, error, attempts=attempts)
                     self._log(task, model, start, attempts, result, type(err).__name__)
                     return result
                 await sleep(delay)
                 continue
             except openai.OpenAIError as err:  # 400, 401, 404...: retrying won't help
-                result = LLMResult(None, "unavailable")
+                result = LLMResult(None, "unavailable", attempts=attempts)
                 self._log(task, model, start, attempts, result, type(err).__name__)
                 return result
             result = _read(response, output)
