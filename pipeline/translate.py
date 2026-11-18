@@ -39,16 +39,22 @@ from pipeline.checks import (
     translation_findings,
 )
 from pipeline.core import LLM, StepsFor, offline_llm, worked_steps
-from pipeline.generate import CONCURRENCY, Failing, Runner, Stats, skipped
+from pipeline.generate import CONCURRENCY, Failing, Runner, Stats
 from pipeline.languages import LANGUAGES, WAVE_1, WAVE_2
 from pipeline.prompts import example_facts
 from pipeline.sources import load_pack, translation_hash, write_pack
-from pipeline.translate_prompts import TranslationOut, judge_messages, translate_messages
+from pipeline.translate_prompts import (
+    TranslationOut,
+    judge_messages,
+    repair_messages,
+    translate_messages,
+)
 
 PROMPTS_FILE = ROOT / "backend" / "app" / "content" / "prompts.json"
 STATS_FILE = ROOT / "evals" / "translation-stats.json"
 REPORT_FILE = ROOT / "evals" / "translation-report.md"
 AT_ONCE = 3  # languages translated at the same time
+REPAIRS = 3  # times the texts that fail are asked for again
 GUESS_USD = 1.8  # the cost of one language before any has been measured
 
 
@@ -65,34 +71,32 @@ class LanguageResult:
     failing: list[str] = field(default_factory=list)
 
 
-def unit_findings(english: dict[str, str], out: TranslationOut) -> Failing:
-    got = {item.id: item.text for item in out.items}
-    if set(got) != set(english) or len(out.items) != len(english):
-        return {"*": [f"ids {sorted(got)} differ from {sorted(english)}"]}
+ItemCheck = Callable[[str, str], list[str]]  # (path, translated text) -> problems
+
+
+def prompt_problems(path: str, text: str) -> list[str]:
+    """A problem prompt is short, has no digits, and only the solve prompt has `{var}`."""
+    problems = []
+    if any(c.isdigit() for c in text):
+        problems.append("no digits in a prompt")
+    wants = 1 if path == "prompts.solve" else 0
+    if text.count("{var}") != wants or text.count("{") != wants:
+        problems.append("`{var}` exactly once in the solve prompt, nowhere else")
+    if len(text) > 60:
+        problems.append("at most 60 characters")
+    return problems
+
+
+def item_problems(english: dict[str, str], got: dict[str, str], extra: ItemCheck | None) -> Failing:
     failing: Failing = {}
     for path, text in english.items():
-        for f in item_findings(path, text, got[path]):
-            failing.setdefault(path, []).append(f"{f.check}: {f.detail}")
-    return failing
-
-
-def prompt_findings(out: TranslationOut, english: dict[str, str]) -> Failing:
-    failing = unit_findings(english, out)
-    if "*" in failing:
-        return failing
-    for item in out.items:
-        problems = []
-        if any(c.isdigit() for c in item.text):
-            problems.append("no digits in a prompt")
-        wants_var = item.id == "prompts.solve"
-        if item.text.count("{var}") != (1 if wants_var else 0) or item.text.count("{") != (
-            1 if wants_var else 0
-        ):
-            problems.append("`{var}` exactly once in the solve prompt, nowhere else")
-        if len(item.text) > 60:
-            problems.append("at most 60 characters")
+        if path not in got:
+            failing[path] = ["missing"]
+            continue
+        problems = [f"{f.check}: {f.detail}" for f in item_findings(path, text, got[path])]
+        problems += extra(path, got[path]) if extra else []
         if problems:
-            failing.setdefault(item.id, []).extend(problems)
+            failing[path] = problems
     return failing
 
 
@@ -101,30 +105,51 @@ async def translate_unit(
     language: str,
     context: str,
     english: dict[str, str],
-    check: Callable[[TranslationOut], Failing] | None = None,
+    extra: ItemCheck | None = None,
 ) -> dict[str, str]:
-    """One unit of texts, through the check, judge, retry and sample loop. Raises when any
-    text still fails: a language ships complete or not at all."""
+    """One unit of texts: translated in one call, then every text is checked and judged; the
+    texts that fail are asked for again on their own, with their problems, up to REPAIRS
+    times. Raises when any text still fails: a language ships complete or not at all."""
 
-    async def verdict(c: TranslationOut, failing: Failing) -> Failing | None:
-        got = {item.id: item.text for item in c.items}
-        pairs = {
-            path: f"EN: {english[path]}\nTR: {got[path]}"
-            for path in english
-            if not skipped(path, failing)
+    async def evaluate(paths: list[str]) -> Failing:
+        subset = {p: english[p] for p in paths}
+        failing = item_problems(subset, got, extra)
+        pairs = {p: f"EN: {english[p]}\nTR: {got[p]}" for p in paths if p not in failing}
+        judged = await runner.judge("", "", pairs, messages=judge_messages(language, pairs))
+        if judged is None:
+            raise TranslationError("the judge gave no verdict")
+        if "*" in judged:  # a judge field that names no item: ask for every judged text
+            judged = {p: judged["*"] for p in pairs}
+        return {**judged, **failing}
+
+    out = None
+    for _ in range(2):
+        out = await runner.call(
+            "generate", translate_messages(language, context, english), TranslationOut
+        )
+        if out is not None:
+            break
+    if out is None:
+        raise TranslationError("no output")
+    got = {item.id: item.text.strip() for item in out.items if item.id in english}
+    failing = await evaluate(list(english))
+    for _ in range(REPAIRS):
+        if not failing:
+            break
+        runner.stats.retries += 1
+        asked = {
+            p: {"english": english[p], "earlier": got.get(p, ""), "problems": "; ".join(why)}
+            for p, why in failing.items()
         }
-        return await runner.judge("", "", pairs, messages=judge_messages(language, pairs))
-
-    out, failing = await runner.unit(
-        translate_messages(language, context, english),
-        TranslationOut,
-        check or (lambda c: unit_findings(english, c)),
-        verdict,
-    )
-    if out is None or failing:
-        details = [f"{path}: {'; '.join(why)}" for path, why in failing.items()]
-        raise TranslationError("\n".join(details) or "no output")
-    return {item.id: item.text.strip() for item in out.items}
+        again = await runner.call(
+            "generate", repair_messages(language, context, asked), TranslationOut
+        )
+        if again is not None:
+            got.update({i.id: i.text.strip() for i in again.items if i.id in asked})
+        failing = await evaluate(list(failing))
+    if failing:
+        raise TranslationError("\n".join(f"{p}: {'; '.join(why)}" for p, why in failing.items()))
+    return got
 
 
 async def named[T](name: str, job: Awaitable[T]) -> T:
@@ -187,7 +212,7 @@ async def translate_language(
         "Instructions shown above a math problem, such as `2*x + 6 = 10`. `{var}` is the "
         "letter to solve for. Keep them short and end each the way the English does.",
         english_prompts,
-        lambda c: prompt_findings(c, english_prompts),
+        prompt_problems,
     )
     englishes = {topic: load_pack(topic, "en") for topic in TOPIC_IDS}
     owners: list[TopicId] = []
@@ -324,7 +349,7 @@ async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_step
     todo = list(langs)
     while todo:
         spent = sum(r["usd"] for r in results.values())
-        measured = [r["usd"] for r in results.values() if r["usd"] > 0]
+        measured = [r.get("last_usd", r["usd"]) for r in results.values() if r["usd"] > 0]
         per_lang = float(max(measured)) if measured else GUESS_USD
         batch: list[str] = []
         while todo and len(batch) < AT_ONCE and spent + per_lang * (len(batch) + 1) <= budget:
@@ -348,7 +373,11 @@ async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_step
 
         for result in await asyncio.gather(*(one(lang) for lang in batch)):
             earlier = results.get(result.lang, {}).get("usd", 0.0)  # a rerun adds to it
-            results[result.lang] = {**asdict(result), "usd": result.usd + earlier}
+            results[result.lang] = {
+                **asdict(result),
+                "usd": result.usd + earlier,
+                "last_usd": result.usd,
+            }
             print(
                 f"{result.lang}: {'shipped' if result.shipped else 'LEFT OUT'}, ${result.usd:.2f}"
             )

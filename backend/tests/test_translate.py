@@ -40,6 +40,7 @@ class FakeTranslator:
     def __init__(self, mangle: str = "", flag: str = "") -> None:
         self.mangle, self.flag = mangle, flag
         self.calls: dict[str, int] = {}
+        self.asked: list[str] = []
 
     async def structured[T: BaseModel](
         self,
@@ -54,9 +55,12 @@ class FakeTranslator:
 
         self.calls[task] = self.calls.get(task, 0) + 1
         asked = [str(m["content"]) for m in messages if "<items>" in str(m["content"])]
+        if task == "generate":
+            self.asked.append(asked[-1])
         found = ITEMS.search(asked[-1])
         assert found is not None
-        items: dict[str, str] = json.loads(found.group(1))
+        raw: dict[str, Any] = json.loads(found.group(1))
+        items = {k: v["english"] if isinstance(v, dict) else v for k, v in raw.items()}
         if output is JudgeOut:
             claims = [
                 ClaimOut(field=key, claim="x", verdict="unsupported", reason="meaning")
@@ -105,7 +109,7 @@ def test_a_faithful_translation_passes(clean_prompts: None) -> None:
         assert pack.machine_translated and pack.lang == "xx-test"
         assert translation_findings(pack, english, translation_hash(pack.topic), steps) == []
         assert all(t.startswith("[xx] ") for t in prose_paths(pack).values())
-    assert stats.retries == 0
+    assert stats.retries == 0 and stats.calls["judge"] == 1 + 3 * 6
     assert stats.calls["generate"] == 1 + 3 * 6  # the prompts, then six units per pack
 
 
@@ -116,8 +120,19 @@ def test_a_translation_that_changes_math_is_left_out(clean_prompts: None) -> Non
 
 
 def test_a_translation_the_judge_keeps_flagging_is_left_out(clean_prompts: None) -> None:
-    with pytest.raises(translate.TranslationError, match="judge"):
-        run(FakeTranslator(flag="idea"))
+    llm = FakeTranslator(flag="idea")
+    with pytest.raises(translate.TranslationError, match="idea: judge"):
+        run(llm)
+
+
+def test_only_the_failing_texts_are_asked_for_again(clean_prompts: None) -> None:
+    llm = FakeTranslator(mangle="practice[0].hints[0]")
+    with pytest.raises(translate.TranslationError, match=r"practice\[0\]\.hints\[0\]"):
+        run(llm)
+    repairs = [m for m in llm.asked if "earlier" in m]
+    assert repairs and all(
+        '"practice[0].hints[0].text"' in m and "hints[1]" not in m for m in repairs
+    )
 
 
 @pytest.mark.parametrize(

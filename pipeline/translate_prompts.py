@@ -12,7 +12,7 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict
 
-TRANSLATE_VERSION = "1"  # bump when a prompt here changes, so every translation is redone
+TRANSLATE_VERSION = "2"  # bump when a prompt here changes, so every translation is redone
 
 OUTPUT_ONLY = "Output content only. Do not address the user."
 
@@ -37,13 +37,13 @@ Rules:
 
 def judge_system(language: str) -> str:
     return f"""You check a translation from English into {language} of teaching material for math
-teachers. Each item gives the English (EN) and the translation (TR). List every problem in the
-translations, one per entry, with the item's id as the field name and a verdict:
-- unsupported: the translation changes, adds or drops meaning or a fact; uses a wrong or
-  unusual math term; changes math; or is ungrammatical or awkward for a native reader;
-- unsure: you cannot tell;
-- supported: use it only to confirm an item you looked at closely.
-Give a short reason for anything not supported. Use the ids exactly as given.
+teachers. Each item gives the English (EN) and the translation (TR). Report only real errors,
+one entry per error, with the item's id as the field name and the verdict "unsupported":
+- the translation changes, adds or drops meaning or a fact;
+- it changes the math, or uses a wrong math term (not the one teachers use in {language});
+- it is ungrammatical, or a native reader would not understand it as intended.
+Do not report style preferences, or wording that is correct but could be smoother. Leave out
+items with no error; for a good translation the list is empty. Give a short reason in English.
 {OUTPUT_ONLY}"""
 
 
@@ -78,5 +78,23 @@ def judge_messages(language: str, pairs: dict[str, str]) -> list[dict[str, Any]]
         {
             "role": "user",
             "content": f"<items>\n{json.dumps(pairs, indent=1, ensure_ascii=False)}\n</items>",
+        },
+    ]
+
+
+def repair_messages(
+    language: str, context: str, items: dict[str, dict[str, str]]
+) -> list[dict[str, Any]]:
+    """Asks again for only the items that failed: each with its English, the translation that
+    failed and the problems found."""
+    return [
+        {"role": "system", "content": translate_system(language)},
+        {
+            "role": "user",
+            "content": f"<context>\n{context}\n</context>\n<items>\n"
+            f"{json.dumps(items, indent=1, ensure_ascii=False)}\n</items>\n"
+            f"Each item has the English, your earlier translation and the problems a checker "
+            f"found in it. Translate these {len(items)} items into {language} again with the "
+            "problems fixed, following every rule.",
         },
     ]
