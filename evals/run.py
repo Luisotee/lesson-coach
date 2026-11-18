@@ -145,6 +145,7 @@ def client(
             yield test_client, llm
         finally:
             # Close the connections on the app's own event loop, before it ends.
+            assert test_client.portal is not None  # set while the client is open
             test_client.portal.call(azure.client.close)
 
 
