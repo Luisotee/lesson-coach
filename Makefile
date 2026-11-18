@@ -25,11 +25,11 @@ test:
 	$(FRONTEND) pnpm test
 
 lint:
-	$(BACKEND) uv run ruff check . && uv run ruff format --check . && uv run mypy
+	$(BACKEND) uv run ruff check . ../pipeline && uv run ruff format --check . ../pipeline && uv run mypy
 	$(FRONTEND) pnpm lint
 
 fmt:
-	$(BACKEND) uv run ruff check --fix . && uv run ruff format .
+	$(BACKEND) uv run ruff check --fix . ../pipeline && uv run ruff format . ../pipeline
 	$(FRONTEND) pnpm fmt
 
 build:

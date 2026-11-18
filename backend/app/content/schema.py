@@ -96,7 +96,7 @@ class Step(Model):
     op: Op = ""
 
 
-class StepExplanations(Model):
+class StepExplanations(AiMarked):
     """The three explanation modes of a step. `visual` is a one-sentence caption: the frontend
     draws the picture (balance scale, bar model, counters) from the step's own math."""
 
@@ -248,7 +248,7 @@ class OutlineStep(Model):
     activity: Text
 
 
-class Pack(Model):
+class Pack(AiMarked):
     """A generated pack (`content/generated/<lang>/<topic>.json`), built by pipeline/generate.py
     and checked by pipeline/verify.py. A prose field that failed verification is `None` (shown
     as "unavailable") and its path is listed in `unavailable`; it is never shipped unverified."""
@@ -268,7 +268,6 @@ class Pack(Model):
     akelius_lessons: list[AkeliusLesson] = Field(min_length=1)
     practice: list[PracticeItem] = []
     machine_translated: bool = False
-    ai_generated: list[str] = []
     unavailable: list[str] = []
     source_hash: Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{64}$")]
     model: Short
