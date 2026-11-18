@@ -5,6 +5,10 @@ import type { MarginOp, MathNode, OpKind, ParseResult } from '@/math/types'
  * variables, + - * / and ** (or ^), parentheses, unary minus, implicit products (`2x`, `2(x + 1)`)
  * and `=`. It only builds a tree to draw; it never evaluates or simplifies. Anything else
  * (functions, multi-letter names) is an error, and the caller shows the text as written.
+ *
+ * One deviation from sympy's grammar, for drawing only: an integer over an integer (`2/3`) binds
+ * tighter than `*`, so `2/3*4/5` is drawn as a product of two fractions and `3*2/5` as 3 · ⅖,
+ * as a fractions lesson means them. The value is the same either way.
  */
 
 type Token =
@@ -83,7 +87,7 @@ class Parser {
   }
 
   expr(minBp: number): MathNode {
-    let left = this.prefix()
+    let left = this.prefix(minBp)
     for (;;) {
       const t = this.peek()
       if (!t) break
@@ -113,15 +117,35 @@ class Parser {
     return left
   }
 
-  private prefix(): MathNode {
+  /** True when the next tokens are `/ <integer>` not followed by `^` (2/3^2 is 2/(3^2)). */
+  private integerDenominatorFollows(): boolean {
+    const [slash, den, after] = this.tokens.slice(this.pos, this.pos + 3)
+    return (
+      slash?.kind === 'op' &&
+      slash.value === '/' &&
+      den?.kind === 'num' &&
+      /^\d+$/.test(den.value) &&
+      !(after?.kind === 'op' && after.value === '^')
+    )
+  }
+
+  private prefix(minBp: number): MathNode {
     const t = this.next()
-    if (t.kind === 'num') return { type: 'num', value: t.value }
+    if (t.kind === 'num') {
+      const num: MathNode = { type: 'num', value: t.value }
+      // int/int is one fraction, except inside an exponent (2^3/4 is (2^3)/4).
+      if (minBp < POW && /^\d+$/.test(t.value) && this.integerDenominatorFollows()) {
+        this.next()
+        return { type: 'frac', num, den: { type: 'num', value: this.next().value } }
+      }
+      return num
+    }
     if (t.kind === 'ident') {
       if (t.value.length !== 1) throw new Error(`Unsupported name '${t.value}'`)
       return { type: 'var', name: t.value }
     }
     if (t.value === '-') return { type: 'neg', arg: this.expr(NEG) }
-    if (t.value === '+') return this.expr(NEG)
+    if (t.value === '+') return { type: 'pos', arg: this.expr(NEG) }
     if (t.value === '(') {
       const inner = this.expr(0)
       if (!this.isOp(')')) throw new Error('Missing )')
@@ -160,6 +184,7 @@ export function startsWithNumber(node: MathNode): boolean {
   switch (node.type) {
     case 'num':
     case 'neg':
+    case 'pos':
       return true
     case 'var':
     case 'group':
@@ -183,6 +208,7 @@ export function hasVariable(node: MathNode): boolean {
     case 'var':
       return true
     case 'neg':
+    case 'pos':
       return hasVariable(node.arg)
     case 'group':
       return hasVariable(node.inner)

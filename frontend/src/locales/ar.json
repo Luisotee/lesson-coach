@@ -70,11 +70,12 @@
       "times": "{left} ضرب {right}",
       "juxtaposed": "{left} {right}",
       "negative": "سالب {arg}",
+      "positive": "موجب {arg}",
       "equals": "{left} يساوي {right}",
       "continued": "يساوي {expr}",
       "group": "قوس، {inner}، أغلق القوس",
       "over": "{num} على {den}",
-      "fraction": "الكسر الذي بسطه {num} ومقامه {den}",
+      "fraction": "الكسر الذي بسطه {num} ومقامه {den}، نهاية الكسر",
       "fractionSimple": "{num} على {den}",
       "power": "{power, select, squared {{base} تربيع} cubed {{base} تكعيب} other {{base} أس {exp}}}",
       "powerGroup": "{base} أس {exp}، نهاية الأس",
@@ -105,6 +106,8 @@
     "replay": "اكتبها مرة أخرى",
     "rtlHeading": "داخل نص من اليمين إلى اليسار",
     "rtlNote": "النص المحيط يُقرأ من اليمين إلى اليسار؛ والرياضيات تبقى من اليسار إلى اليمين.",
-    "fractionStepsHeading": "خطوات الكسور"
+    "fractionStepsHeading": "خطوات الكسور",
+    "longHeading": "معادلة أطول",
+    "longLabel": "حل 2(x + 3) − 4(x − 1) = 3x + 10"
   }
 }

@@ -10,7 +10,14 @@ describe('spoken text in English', () => {
     ['3/4 - 1/4', '3 quarters minus one quarter'],
     ['7/12', '7 over 12'],
     ['x/2', 'x over 2'],
-    ['(1+1)/(2+3)', 'the fraction with numerator 1 plus 1 and denominator 2 plus 3'],
+    [
+      '(1+1)/(2+3)',
+      'the fraction with numerator 1 plus 1 and denominator 2 plus 3, end of fraction',
+    ],
+    ['3*2/5', '3 times 2 fifths'],
+    ['2/3*4/5', '2 thirds times 4 fifths'],
+    ['-3/4', 'negative 3 quarters'],
+    ['5 - (+3)', '5 minus positive 3'],
     ['5 - (-3)', '5 minus negative 3'],
     ['(-2)*(-3)', 'negative 2 times negative 3'],
     ['-5 + 3', 'negative 5 plus 3'],
@@ -38,6 +45,18 @@ describe('spoken text in English', () => {
     ['x**(2)', 'x squared'],
   ])('powers are unambiguous: %s', (src, spoken) => {
     expect(speakText(src, t)).toBe(spoken)
+  })
+
+  test.each([
+    ['(x+1)/(2+3) + 1', '(x+1)/(2+3+1)'],
+    ['1/(x+1) + 2', '1/(x+1+2)'],
+  ])('compound fractions say where they end: %s vs %s', (a, b) => {
+    expect(speakText(a, t)).not.toBe(speakText(b, t))
+    expect(speakText(a, t)).toBe(
+      a.startsWith('(')
+        ? 'the fraction with numerator x plus 1 and denominator 2 plus 3, end of fraction plus 1'
+        : 'the fraction with numerator 1 and denominator x plus 1, end of fraction plus 2',
+    )
   })
 
   test('unparseable text is read as written', () => {
@@ -73,6 +92,9 @@ describe('spoken text in Arabic', () => {
     const t = i18n.getFixedT('ar')
     expect(speakText('1/2 + 1/3', t)).toBe('1 على 2 زائد 1 على 3')
     expect(speakText('2**(x + 1)', t)).toBe('2 أس x زائد 1، نهاية الأس')
+    expect(speakText('1/(x+1) + 2', t)).toBe(
+      'الكسر الذي بسطه 1 ومقامه x زائد 1، نهاية الكسر زائد 2',
+    )
     expect(speakLine({ left: '3*x + 5', right: '20', op: '-5' }, t)).toBe(
       '3 x زائد 5 يساوي 20؛ اطرح 5 من الطرفين',
     )

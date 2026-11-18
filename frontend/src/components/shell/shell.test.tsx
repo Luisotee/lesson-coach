@@ -66,13 +66,22 @@ test('the language picker switches the UI to Arabic, right to left', async () =>
   expect(screen.getByLabelText('اللغة')).toHaveValue('ar')
 })
 
-test('the Practice link is current on every practice page', () => {
-  renderAt('/practice/fractions/2')
+test.each([
+  ['/practice/fractions/2', 'Practice', 'true'],
+  ['/practice/fractions/9', 'Practice', null],
+  ['/topics/fractions', 'Topics', 'true'],
+  ['/topics/algebra', 'Topics', null],
+  ['/', 'Topics', null],
+])('on %s the %s link has aria-current=%s', (path, name, current) => {
+  renderAt(path)
   const nav = screen.getByRole('navigation', { name: 'Main' })
-  expect(within(nav).getByRole('link', { name: 'Practice' })).toHaveAttribute(
-    'aria-current',
-    'page',
-  )
+  const link = within(nav).getByRole('link', { name })
+  if (current) expect(link).toHaveAttribute('aria-current', current)
+  else expect(link).not.toHaveAttribute('aria-current')
+})
+
+test('the practice page title is one translated message', () => {
+  renderAt('/practice/fractions/2')
   expect(document.title).toBe('Practice: Fractions, Problem 2 of 8 · Lesson Coach')
 })
 
@@ -90,6 +99,12 @@ test('a malformed #hash does not break the page', async () => {
   const router = renderAt('/')
   await act(() => router.navigate('/mistake#%E0%A4%A'))
   expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('A student wrote this')
+})
+
+test('an unknown #target falls back to the page heading', async () => {
+  const router = renderAt('/')
+  await act(() => router.navigate('/mistake#nowhere'))
+  expect(screen.getByRole('heading', { level: 1 })).toHaveFocus()
 })
 
 test('following a link to the page you are on moves focus again', async () => {

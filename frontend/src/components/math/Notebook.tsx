@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { EquationLine } from '@/components/math/EquationLine'
 import { NotebookContext } from '@/components/math/notebook-context'
 import { penClass, type PenVariant } from '@/components/math/pens'
@@ -7,7 +7,27 @@ import { isContinued } from '@/math/parse'
 import type { Step } from '@/math/types'
 
 /**
- * Squared paper with handwritten lines. Lines are a list whose rows share one grid, so every
+ * Whether the element's content is wider than the element. Updates when either is resized
+ * (the language, font or viewport changes).
+ */
+function useOverflowsX(ref: React.RefObject<HTMLElement | null>): boolean {
+  const [overflows, setOverflows] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const check = () => setOverflows(el.scrollWidth > el.clientWidth + 1)
+    const observer = new ResizeObserver(check)
+    observer.observe(el)
+    if (el.firstElementChild) observer.observe(el.firstElementChild)
+    check()
+    return () => observer.disconnect()
+  }, [ref])
+  return overflows
+}
+
+/**
+ * Squared paper with handwritten lines. A line too long for the screen scrolls inside the
+ * notebook, never the page (WCAG 1.4.10); the scroll area then takes keyboard focus. Lines are a list whose rows share one grid, so every
  * `=` sits in the same column. The page around it may be right to left; the math never is.
  */
 export function Notebook({
@@ -25,11 +45,16 @@ export function Notebook({
   className?: string
   children: ReactNode
 }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const scrollable = useOverflowsX(ref)
   return (
     <div
+      ref={ref}
       dir="ltr"
+      {...(scrollable && { tabIndex: 0, role: 'region', 'aria-label': label })}
+      data-scrollable={scrollable || undefined}
       className={cn(
-        'paper font-hand rounded-2xl border border-border px-4 py-5 text-2xl sm:px-6 sm:text-3xl',
+        'paper font-hand overflow-x-auto rounded-2xl border border-border bg-local px-4 py-5 text-2xl sm:px-6 sm:text-3xl',
         penClass[pen],
         className,
       )}

@@ -2,16 +2,9 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 import { usePageTitle } from '@/components/shell/hooks'
-import { PRACTICE_COUNT, isTopicId } from '@/content/topics'
+import { PRACTICE_COUNT, isTopicId, problemNumber } from '@/content/topics'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { PageFrame } from '@/pages/PageFrame'
-
-/** Parses the 1-based problem number; anything else is not a page. */
-function problemNumber(raw: string | undefined): number | null {
-  if (!raw || !/^\d+$/.test(raw)) return null
-  const n = Number(raw)
-  return n >= 1 && n <= PRACTICE_COUNT ? n : null
-}
 
 /** Placeholder until T8 adds the problems and hints; previous and next already work. */
 export function PracticePage() {

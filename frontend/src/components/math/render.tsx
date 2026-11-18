@@ -15,6 +15,8 @@ export function renderNode(node: MathNode): ReactNode {
       return node.value
     case 'var':
       return <i>{node.name}</i>
+    case 'pos':
+      return <>+{renderNode(node.arg)}</>
     case 'neg':
       return (
         <>

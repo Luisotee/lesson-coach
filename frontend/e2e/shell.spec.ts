@@ -121,6 +121,7 @@ test.describe('math demo', () => {
 
   test('the write-on animation is off under reduced motion', async ({ page }) => {
     await page.goto('/demo/math')
+    await expect(page.getByRole('button', { name: 'Write it again' })).toHaveCount(0)
     const line = page.locator('[data-math="line"]').first()
     expect(await line.evaluate((el) => getComputedStyle(el).animationName)).toBe('none')
   })
@@ -131,8 +132,28 @@ test.describe('math demo', () => {
       await page.goto('/demo/math')
       const line = page.locator('[data-math="line"]').first()
       expect(await line.evaluate((el) => getComputedStyle(el).animationName)).toBe('write')
+      await expect(page.getByRole('button', { name: 'Write it again' })).toBeVisible()
     })
   })
+})
+
+test('at 320 px a long notebook line scrolls inside the notebook, focusable and labelled', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 800 })
+  await page.goto('/demo/math')
+  const region = page.getByRole('region', { name: 'Solving 2(x + 3) − 4(x − 1) = 3x + 10' })
+  await expect(region).toHaveAttribute('tabindex', '0')
+  expect(await region.evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true)
+  await expectNoAxeViolations(page)
+})
+
+test('at 1280 px the same notebook fits and is not a tab stop', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.goto('/demo/math')
+  const list = page.getByRole('list', { name: 'Solving 2(x + 3) − 4(x − 1) = 3x + 10' })
+  await expect(list).toBeVisible()
+  await expect(list.locator('xpath=..')).not.toHaveAttribute('tabindex')
 })
 
 test('pages reflow at 320 px without horizontal scrolling', async ({ page }) => {

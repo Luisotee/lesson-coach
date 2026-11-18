@@ -1,4 +1,5 @@
 import { RotateCcw } from 'lucide-react'
+import { useReducedMotion } from 'motion/react'
 import { useState, type ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Button } from '@/components/ui/button'
@@ -38,6 +39,16 @@ const FRACTION_STEPS: Step[] = [
   { left: '5/6', right: '', op: '' },
 ]
 
+// A line too wide for a phone: the notebook scrolls, the page doesn't.
+const LONG_EQUATION: Step[] = [
+  { left: '2*(x + 3) - 4*(x - 1)', right: '3*x + 10', op: '' },
+  { left: '2*x + 6 - 4*x + 4', right: '3*x + 10', op: '' },
+  { left: '-2*x + 10', right: '3*x + 10', op: '-10' },
+  { left: '-2*x', right: '3*x', op: '-3*x' },
+  { left: '-5*x', right: '0', op: '/(-5)' },
+  { left: 'x', right: '0', op: '' },
+]
+
 const PENS: PenVariant[] = ['pencil', 'ink', 'green']
 
 function Spoken({ text }: { text: string }) {
@@ -64,6 +75,8 @@ export function MathDemoPage() {
   usePageTitle(t('demo.title'))
   // Remounting the notebook replays its write-on animation.
   const [run, setRun] = useState(0)
+  // Under reduced motion nothing is written on, so there is nothing to replay.
+  const reduceMotion = useReducedMotion()
 
   return (
     <PageFrame title={t('demo.title')}>
@@ -109,10 +122,12 @@ export function MathDemoPage() {
             writeOn
             className="min-w-0 flex-1"
           />
-          <Button variant="outline" className="min-h-11" onClick={() => setRun((r) => r + 1)}>
-            <RotateCcw aria-hidden="true" />
-            {t('demo.replay')}
-          </Button>
+          {!reduceMotion && (
+            <Button variant="outline" className="min-h-11" onClick={() => setRun((r) => r + 1)}>
+              <RotateCcw aria-hidden="true" />
+              {t('demo.replay')}
+            </Button>
+          )}
         </div>
         <Spoken text={spokenSteps(EQUATION, t)} />
       </Card>
@@ -127,6 +142,11 @@ export function MathDemoPage() {
           <Spoken text={spokenSteps(FRACTION_STEPS, t)} />
         </Card>
       </div>
+
+      <Card title={t('demo.longHeading')}>
+        <StepsNotebook steps={LONG_EQUATION} label={t('demo.longLabel')} />
+        <Spoken text={spokenSteps(LONG_EQUATION, t)} />
+      </Card>
 
       <div dir="rtl" data-testid="rtl-panel">
         <Card title={t('demo.rtlHeading')}>

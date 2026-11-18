@@ -12,6 +12,8 @@ export type MathNode =
   | { type: 'num'; value: string }
   | { type: 'var'; name: string }
   | { type: 'neg'; arg: MathNode }
+  /** An explicit plus sign, as in 5 − (+3). */
+  | { type: 'pos'; arg: MathNode }
   | { type: 'add'; op: '+' | '-'; left: MathNode; right: MathNode }
   | { type: 'mul'; left: MathNode; right: MathNode }
   | { type: 'frac'; num: MathNode; den: MathNode }

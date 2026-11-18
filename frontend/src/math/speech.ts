@@ -10,7 +10,8 @@ import type { MarginOp, MathNode } from '@/math/types'
 
 const isPlain = (n: MathNode): boolean => n.type === 'num' || n.type === 'var'
 
-const isAtom = (n: MathNode): boolean => isPlain(n) || (n.type === 'neg' && isAtom(n.arg))
+const isAtom = (n: MathNode): boolean =>
+  isPlain(n) || ((n.type === 'neg' || n.type === 'pos') && isAtom(n.arg))
 
 const isInteger = (n: MathNode): n is { type: 'num'; value: string } =>
   n.type === 'num' && /^\d+$/.test(n.value)
@@ -25,6 +26,8 @@ export function speak(node: MathNode, t: TFunction): string {
       return node.name
     case 'neg':
       return t('math.speech.negative', { arg: s(node.arg) })
+    case 'pos':
+      return t('math.speech.positive', { arg: s(node.arg) })
     case 'add':
       return t(node.op === '+' ? 'math.speech.plus' : 'math.speech.minus', {
         left: s(node.left),

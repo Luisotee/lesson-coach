@@ -35,7 +35,8 @@ export function useRouteFocus(): void {
   useEffect(() => {
     if (!navigated.current && key === initialKey.current) return
     navigated.current = true
-    const target = hash ? hashTarget(hash) : document.querySelector<HTMLElement>('main h1')
+    // An unknown #target falls back to the page heading, so focus never stays on a stale link.
+    const target = (hash && hashTarget(hash)) || document.querySelector<HTMLElement>('main h1')
     if (!target) return
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1')
     target.focus({ preventScroll: true })

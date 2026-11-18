@@ -2,9 +2,10 @@ import { ShieldCheck } from 'lucide-react'
 import { MotionConfig } from 'motion/react'
 import type { MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link, NavLink, Outlet, ScrollRestoration, useLocation } from 'react-router'
+import { Link, NavLink, Outlet, ScrollRestoration, useMatch } from 'react-router'
 import { LanguagePicker } from '@/components/shell/LanguagePicker'
 import { useRouteFocus } from '@/components/shell/hooks'
+import { isTopicId, problemNumber } from '@/content/topics'
 import { cn } from '@/lib/utils'
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
@@ -35,9 +36,14 @@ function Mark() {
 
 export function Shell() {
   const { t } = useTranslation()
-  const { pathname } = useLocation()
-  // The Practice link opens problem 1 of the first topic, but it is current on every practice page.
-  const inPractice = pathname.startsWith('/practice/')
+  // Topics and Practice link to one place but stand for a section: they are current on every
+  // real page of it (not on a "Page not found" under it). aria-current="true", not "page",
+  // because the link's own target is a different page.
+  const topicMatch = useMatch('/topics/:id')
+  const practiceMatch = useMatch('/practice/:topic/:n')
+  const inTopics = isTopicId(topicMatch?.params.id)
+  const inPractice =
+    isTopicId(practiceMatch?.params.topic) && problemNumber(practiceMatch?.params.n) !== null
   useRouteFocus()
   return (
     <MotionConfig reducedMotion="user">
@@ -63,7 +69,8 @@ export function Shell() {
             <nav aria-label={t('shell.mainNav')} className="flex flex-wrap items-center gap-1">
               <Link
                 to={{ pathname: '/', hash: '#topics' }}
-                className={navClass({ isActive: false })}
+                className={navClass({ isActive: inTopics })}
+                aria-current={inTopics ? 'true' : undefined}
               >
                 {t('nav.topics')}
               </Link>
@@ -73,7 +80,7 @@ export function Shell() {
               <Link
                 to="/practice/negative-numbers/1"
                 className={navClass({ isActive: inPractice })}
-                aria-current={inPractice ? 'page' : undefined}
+                aria-current={inPractice ? 'true' : undefined}
               >
                 {t('nav.practice')}
               </Link>
