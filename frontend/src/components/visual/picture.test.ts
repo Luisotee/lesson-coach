@@ -29,6 +29,23 @@ test('small whole numbers are counters, with the written operator', () => {
   })
 })
 
+test.each([
+  ['-5 + 3', [-5, 3], [1, 1]],
+  ['-2', [-2], [1]],
+  ['-3 - 2', [-3, 2], [1, -1]],
+])('a leading minus is drawn: %s', (left, ns, signs) => {
+  const p = pictureFor({ left, right: '' })
+  expect(p?.kind).toBe('counters')
+  if (p?.kind !== 'counters') return
+  expect(p.terms.map((t) => t.n)).toEqual(ns)
+  expect(p.terms.map((t) => t.sign)).toEqual(signs)
+})
+
+test('fractions with a leading minus have no bar picture', () => {
+  expect(pictureFor({ left: '-1/2 + 3/4', right: '' })).toBeNull()
+  expect(pictureFor({ left: '3/4 - 1/2', right: '' })?.kind).toBe('bars')
+})
+
 test.each(['x/2 + 1', '120/252', '15 + (-32)', '2*(x + 3)'])('no picture for %s', (left) => {
   expect(pictureFor({ left, right: '' })).toBeNull()
 })

@@ -134,3 +134,24 @@ test('following a link to the page you are on moves focus again', async () => {
   await userEvent.click(topics)
   expect(document.getElementById('topics')).toHaveFocus()
 })
+
+test('a #section link into a topic that is still loading reaches the section once it loads', async () => {
+  const router = renderAt('/')
+  await act(() => router.navigate('/topics/linear-equations#example'))
+  await waitFor(() => expect(document.getElementById('example')).toHaveFocus())
+})
+
+test('switching topics keeps working when the next pack is cached and had a later step chosen', async () => {
+  const router = renderAt('/topics/fractions')
+  await screen.findByRole('heading', { level: 1, name: 'Fractions' })
+  await act(() => router.navigate('/topics/linear-equations'))
+  await screen.findByRole('heading', { level: 1, name: 'Solving linear equations' })
+  await userEvent.click(screen.getByRole('button', { name: 'Next worked example' }))
+  const lines = within(document.getElementById('example')!).getAllByRole('button', {
+    pressed: false,
+  })
+  await userEvent.click(lines[lines.length - 1])
+  await act(() => router.navigate('/topics/fractions'))
+  expect(await screen.findByRole('heading', { level: 1, name: 'Fractions' })).toBeInTheDocument()
+  expect(screen.getByText('Worked example 1 of 3')).toBeInTheDocument()
+})

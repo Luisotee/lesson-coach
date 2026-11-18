@@ -42,7 +42,9 @@ function TopicLoader({ id }: { id: string }) {
       </PageFrame>
     )
   }
-  return <TopicView pack={pack.data} />
+  // Keyed by topic: /topics/:id keeps this element mounted, and a cached pack arrives at once,
+  // so without a key one topic's example and step would carry over to the next.
+  return <TopicView key={pack.data.topic} pack={pack.data} />
 }
 
 function TopicView({ pack }: { pack: Pack }) {

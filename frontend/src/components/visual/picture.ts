@@ -20,16 +20,22 @@ export function pictureFor(step: Pick<Step, 'left' | 'right'>): Picture | null {
     return right ? { kind: 'balance', left: termsOf(left), right: termsOf(right) } : null
   }
   const terms = termsOf(left)
+  // A bar is a positive amount; a leading minus has no bar picture, so show the caption only.
+  const leadingMinus = terms[0]?.sign === -1
   const fracs = terms.map((t) => ({ sign: t.sign, f: fractionOf(t.node) }))
-  if (fracs.every((x) => x.f && x.f.den <= MAX_DEN && x.f.num <= 3 * x.f.den)) {
+  if (!leadingMinus && fracs.every((x) => x.f && x.f.den <= MAX_DEN && x.f.num <= 3 * x.f.den)) {
     return { kind: 'bars', terms: fracs.map((x) => ({ sign: x.sign, ...x.f! })) }
   }
   const ints = terms.map((t) => ({ sign: t.sign, n: integerOf(t.node) }))
   if (ints.every((x) => x.n !== null && Math.abs(x.n) <= MAX_COUNTERS)) {
     return {
       kind: 'counters',
-      // Fold a term's own sign (−(−3)) into the counters' colour, keep the written operator.
-      terms: ints.map((x) => ({ sign: x.sign, n: x.n! })),
+      // Between terms the sign is the written operator and `n` is the term's own value, so
+      // 5 − (−3) keeps its −. The first term has no operator, so its sign goes into `n`: −5 + 3
+      // is five negative counters, then three positive ones.
+      terms: ints.map((x, k) =>
+        k === 0 ? { sign: 1 as const, n: x.sign * x.n! } : { sign: x.sign, n: x.n! },
+      ),
     }
   }
   return null

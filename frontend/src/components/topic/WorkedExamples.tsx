@@ -39,12 +39,15 @@ function lineText(step: { left: string; right: string }): string {
 export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
   const { t } = useTranslation()
   const phone = useMediaQuery(PHONE_QUERY)
-  const [exampleIndex, setExampleIndex] = useState(0)
-  const [stepIndex, setStepIndex] = useState(0)
+  const [exampleState, setExampleIndex] = useState(0)
+  const [stepState, setStepIndex] = useState(0)
   const [mode, setMode] = useState<ExplanationMode>('why')
   const [sheetOpen, setSheetOpen] = useState(false)
 
+  // Clamped so a stale index can never point past the examples or steps on screen.
+  const exampleIndex = Math.min(exampleState, examples.length - 1)
   const example = examples[exampleIndex]
+  const stepIndex = Math.min(stepState, example.steps.length - 1)
   const step = example.steps[stepIndex]
   const heading = useStepHeading(example, stepIndex)
   const aiWritten = (example.ai_generated?.length ?? 0) > 0

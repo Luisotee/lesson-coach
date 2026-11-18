@@ -35,23 +35,35 @@ export function useRouteFocus(): void {
   useEffect(() => {
     if (!navigated.current && key === initialKey.current) return
     navigated.current = true
-    // An unknown #target falls back to the page heading, so focus never stays on a stale link.
-    const target = (hash && hashTarget(hash)) || document.querySelector<HTMLElement>('main h1')
-    if (!target) return
     const focus = (el: HTMLElement) => {
       if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1')
       el.focus({ preventScroll: true })
     }
-    focus(target)
-    if (hash) return
-    // A page that loads its content replaces its loading heading: follow it to the new <h1>,
-    // unless the user has already moved focus elsewhere.
-    let current = target
+    const found = hash ? hashTarget(hash) : null
+    if (found) {
+      focus(found)
+      return
+    }
+    // Until the page has its content (an unknown #target, or a page still loading), focus the
+    // page heading, so focus never stays on a stale link.
+    let current = document.querySelector<HTMLElement>('main h1')
+    if (current) focus(current)
     const main = document.querySelector('main')
     if (!main) return
+    // A page that loads its content replaces its loading heading. Follow it: to the #target
+    // once it exists (scrolled into view, since ScrollRestoration found nothing to scroll to),
+    // otherwise to the new <h1>. Not if the user has already moved focus elsewhere.
     const observer = new MutationObserver(() => {
-      if (current.isConnected) return
-      if (document.activeElement && document.activeElement !== document.body) return
+      const active = document.activeElement
+      if (active && active !== document.body && active !== current) return
+      const target = hash ? hashTarget(hash) : null
+      if (target) {
+        observer.disconnect()
+        focus(target)
+        target.scrollIntoView?.()
+        return
+      }
+      if (current?.isConnected) return
       const h1 = document.querySelector<HTMLElement>('main h1')
       if (h1) {
         current = h1
