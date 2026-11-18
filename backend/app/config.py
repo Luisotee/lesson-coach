@@ -15,7 +15,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-ReasoningEffort = Literal["minimal", "low", "medium", "high"]
+# gpt-5.5 takes none, low, medium, high and xhigh ("minimal" gets a 400; checked live).
+ReasoningEffort = Literal["none", "low", "medium", "high", "xhigh"]
 
 
 class Settings(BaseSettings):
@@ -32,10 +33,12 @@ class Settings(BaseSettings):
     model_offline: str = "gpt-5.5-offline"
 
     # Per task: the mistake explainer and the transcription of photos and drawings.
-    mistake_reasoning_effort: ReasoningEffort = "low"
+    # `none`, from the evals (evals/README.md): accuracy, cost and latency within noise of
+    # `low`, and steadier over runs.
+    mistake_reasoning_effort: ReasoningEffort = "none"
     mistake_max_completion_tokens: int = 4000
     mistake_deadline_s: float = 30.0
-    transcribe_reasoning_effort: ReasoningEffort = "low"
+    transcribe_reasoning_effort: ReasoningEffort = "none"
     transcribe_max_completion_tokens: int = 4000
     transcribe_deadline_s: float = 45.0
     llm_attempt_timeout_s: float = 25.0

@@ -30,8 +30,10 @@ Decide what most likely happened and reply with:
 - explanation: 1-3 short sentences for the teacher on what the student probably did.
 - margin_note: at most 60 characters to write next to the student's work, such as "added the
   bottoms too", or null.
-- what_to_say: probe (a question the teacher can ask the student), nudge (a hint that keeps the
-  student thinking), tell (what to explain if the student is still stuck).
+- what_to_say: probe (a question the teacher can ask the student), nudge (a short hint or
+  question that points the student at where to look, without naming the rule or the steps to
+  fix it: the student should still find the method), tell (what to explain if the student is
+  still stuck; only here may you state the method).
 - follow_up_id: one id from the follow-up list that would check the student's understanding
   next, or null.
 

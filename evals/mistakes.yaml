@@ -1,5 +1,7 @@
 # Mistake-diagnosis eval cases. Read and validated by backend/tests/test_content.py
-# (model: app.content.schema.MistakeEvalSet). T10 adds our own cases, controls and slips.
+# (model: app.content.schema.MistakeEvalSet). Rows with dataset ours (T10) are our own:
+# misconceptions the MaE rows miss, controls where the student is right, and slip or
+# abstain cases.
 #
 # Rows with dataset MaE are adapted from MaE (Math Misconceptions and Errors),
 # https://github.com/nancyotero-projects/math-misconceptions at commit
@@ -123,3 +125,106 @@ cases:
     student_answer: "5"
     expected: {classification: wrong, status: unclear}
     source: {<<: *mae, misconception: MaE52, example: 3, changes: Numbers changed from m - 3 = 4m with m = 3; variable renamed to k.}
+
+  # Our own rows (T10): misconceptions the MaE rows don't cover.
+  - id: ours-neg-1
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "6 - (-2)"}
+    student_answer: "4"
+    expected: {classification: wrong, status: diagnosed, misconception_id: minus_negative_stays_minus}
+    source: &ours {dataset: ours, license: CC-BY-4.0, changes: Written for the evals.}
+  - id: ours-neg-2
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "(-4)*(-5)"}
+    student_answer: "-20"
+    expected: {classification: wrong, status: diagnosed, misconception_id: neg_times_neg_is_neg}
+    source: *ours
+  - id: ours-neg-3
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "-8 + 3"}
+    student_answer: "-11"
+    expected: {classification: wrong, status: diagnosed, misconception_id: add_magnitudes_keep_sign}
+    source: *ours
+  - id: ours-frac-1
+    topic: fractions
+    problem: {kind: simplify, expr: "(4+10)/2"}
+    student_answer: "9"
+    expected: {classification: wrong, status: diagnosed, misconception_id: cancel_across_addition}
+    source: *ours
+  - id: ours-lin-1
+    topic: linear-equations
+    problem: {kind: solve, expr: "4*x + 8 = 20"}
+    student_answer: "-3"
+    student_working:
+      - {left: "x + 8", right: "5", op: "-8"}
+      - {left: "x", right: "-3"}
+    expected: {classification: wrong, status: diagnosed, misconception_id: divide_one_term}
+    source: *ours
+  - id: ours-lin-2
+    topic: linear-equations
+    problem: {kind: solve, expr: "3*(x + 4) = 27"}
+    student_answer: "23/3"
+    student_working:
+      - {left: "3*x + 4", right: "27", op: "-4"}
+      - {left: "3*x", right: "23", op: "/3"}
+      - {left: "x", right: "23/3"}
+    expected: {classification: wrong, status: diagnosed, misconception_id: distribute_first_term_only}
+    source: *ours
+
+  # Controls (T10): the student is right, or right but not simplified. No AI call.
+  - id: ctrl-1
+    topic: fractions
+    problem: {kind: evaluate, expr: "3/5 + 1/4"}
+    student_answer: "17/20"
+    expected: {classification: correct}
+    source: *ours
+  - id: ctrl-2
+    topic: fractions
+    problem: {kind: evaluate, expr: "3/5 + 1/4"}
+    student_answer: "34/40"
+    expected: {classification: equivalent_not_simplified}
+    source: *ours
+  - id: ctrl-3
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "-3 - 5"}
+    student_answer: "-8"
+    expected: {classification: correct}
+    source: *ours
+  - id: ctrl-4
+    topic: linear-equations
+    problem: {kind: solve, expr: "5*x - 7 = 18"}
+    student_answer: "5"
+    student_working:
+      - {left: "5*x", right: "25", op: "/5"}
+      - {left: "x", right: "5"}
+    expected: {classification: correct}
+    source: *ours
+  - id: ctrl-5
+    topic: fractions
+    problem: {kind: simplify, expr: "12/18"}
+    student_answer: "2/3"
+    expected: {classification: correct}
+    source: *ours
+
+  # Slip and abstain cases (T10).
+  - id: slip-1
+    topic: linear-equations
+    problem: {kind: solve, expr: "2*x + 7 = 15"}
+    student_answer: "3"
+    student_working:
+      - {left: "2*x", right: "8", op: "/2"}
+      - {left: "x", right: "3"}
+    expected: {classification: wrong, status: slip}
+    source: {<<: *ours, changes: Written for the evals; the method is right and 8/2 is miscalculated.}
+  - id: unclear-1
+    topic: fractions
+    problem: {kind: evaluate, expr: "2/3 + 1/6"}
+    student_answer: "17"
+    expected: {classification: wrong, status: unclear}
+    source: {<<: *ours, changes: Written for the evals; no misconception explains the answer.}
+  - id: oos-1
+    topic: linear-equations
+    problem: {kind: solve, expr: "6/x = 2"}
+    student_answer: "12"
+    expected: {classification: wrong, status: out_of_scope}
+    source: {<<: *ours, changes: Written for the evals; a letter in a denominator is out of scope.}

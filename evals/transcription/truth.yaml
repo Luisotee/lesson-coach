@@ -1,0 +1,54 @@
+# Ground truth for the transcription evals: each image's lines, top to bottom, as the
+# transcription API returns them ({left, right, op}; right is empty when there is no "=").
+# A line is right when both sides and the op parse to the same written form with our parser
+# (so `3x` and `3*x` match, and `2/4` and `1/2` don't). Images are drawn by make_images.py,
+# except 00, which is infra/fixtures/equation.png (typed text).
+images:
+  - file: 00-typed-fixture.png
+    kind: typed
+    lines:
+      - {left: "3*x + 5", right: "20", op: ""}
+      - {left: "3*x", right: "15", op: ""}
+  - file: 01-clean-sum.png
+    kind: clean
+    lines:
+      - {left: "3/4 + 1/6", right: "", op: ""}
+  - file: 02-stacked-fraction.png
+    kind: clean
+    lines:
+      - {left: "5/8 - 1/4", right: "", op: ""}
+  - file: 03-negatives.png
+    kind: clean
+    lines:
+      - {left: "-7 - (-3)", right: "", op: ""}
+  - file: 04-working-ops.png
+    kind: clean
+    lines:
+      - {left: "3*x + 5", right: "20", op: "-5"}
+      - {left: "3*x", right: "15", op: "/3"}
+      - {left: "x", right: "5", op: ""}
+  - file: 05-messy-working.png
+    kind: messy
+    lines:
+      - {left: "2*x - 4", right: "10", op: "+4"}
+      - {left: "2*x", right: "14", op: "/2"}
+      - {left: "x", right: "7", op: ""}
+  - file: 06-rotated.jpg
+    kind: photo
+    lines:
+      - {left: "5*x + 2", right: "3*x + 8", op: ""}
+  - file: 07-sideways.jpg
+    kind: photo
+    lines:
+      - {left: "4*(x + 1)", right: "20", op: ""}
+  - file: 08-dim-skewed.jpg
+    kind: photo
+    lines:
+      - {left: "-2 + (-6)", right: "-8", op: ""}
+  - file: 09-drawing-board.png
+    kind: drawing
+    lines:
+      - {left: "2/3*9", right: "6", op: ""}
+  - file: 10-no-math.png
+    kind: no_math
+    lines: []

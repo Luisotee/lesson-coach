@@ -1,5 +1,5 @@
 # Lesson Coach. Run `make install` once after cloning, then any target below.
-.PHONY: install dev test lint fmt build e2e
+.PHONY: install dev test lint fmt build e2e evals
 SHELL := /bin/bash
 
 BACKEND := cd backend &&
@@ -25,11 +25,11 @@ test:
 	$(FRONTEND) pnpm test
 
 lint:
-	$(BACKEND) uv run ruff check . ../pipeline && uv run ruff format --check . ../pipeline && uv run mypy
+	$(BACKEND) uv run ruff check . ../pipeline ../evals && uv run ruff format --check . ../pipeline ../evals && uv run mypy
 	$(FRONTEND) pnpm lint
 
 fmt:
-	$(BACKEND) uv run ruff check --fix . ../pipeline && uv run ruff format . ../pipeline
+	$(BACKEND) uv run ruff check --fix . ../pipeline ../evals && uv run ruff format . ../pipeline ../evals
 	$(FRONTEND) pnpm fmt
 
 build:
@@ -38,3 +38,9 @@ build:
 # Builds the frontend, then Playwright + axe-core against FastAPI serving it.
 e2e:
 	$(FRONTEND) pnpm e2e
+
+# Live evals against Azure (needs .env, about $2.50): see evals/README.md.
+evals:
+	uv run --project backend python evals/run.py run
+	uv run --project backend python evals/run.py judge
+	uv run --project backend python evals/run.py summarize

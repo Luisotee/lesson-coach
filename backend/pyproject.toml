@@ -36,11 +36,15 @@ select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
 [tool.mypy]
 python_version = "3.12"
 strict = true
-files = ["app", "tests", "../pipeline"]
+files = ["app", "tests", "../pipeline", "../evals"]
 mypy_path = ".."
+# A standalone script with its own dependencies (opencv, numpy).
+exclude = ['make_images\.py$']
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# ".." makes `evals` importable (backend/tests/test_evals.py).
+pythonpath = [".", ".."]
 # Live tests call Azure: run them with `uv run pytest -m live`.
 addopts = "-m 'not live'"
 markers = ["live: calls the real Azure OpenAI deployment (needs .env)"]

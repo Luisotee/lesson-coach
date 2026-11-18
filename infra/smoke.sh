@@ -50,25 +50,32 @@ lines_schema='{
       "properties": {"left": {"type": "string"}, "right": {"type": "string"},
         "confidence": {"type": "number"}}}}}}}'
 
+# The reasoning efforts the app sends (defaults from backend/app/config.py), so a model that
+# rejects one fails here rather than in production.
+live_effort="${MISTAKE_REASONING_EFFORT:-none}"
+transcribe_effort="${TRANSCRIBE_REASONING_EFFORT:-none}"
+offline_effort="${GENERATE_REASONING_EFFORT:-low}"
+
 fail=0
-for dep in "$MODEL_LIVE" "$MODEL_OFFLINE"; do
-  echo "--> $dep: structured output"
-  out="$(jq -n --argjson s "$solve_schema" '{
+for pair in "$MODEL_LIVE:$live_effort" "$MODEL_OFFLINE:$offline_effort"; do
+  dep="${pair%:*}" effort="${pair##*:}"
+  echo "--> $dep: structured output (reasoning_effort $effort)"
+  out="$(jq -n --arg e "$effort" --argjson s "$solve_schema" '{
       messages: [{role: "user", content: "Solve 3x + 5 = 20 for x. One-sentence explanation."}],
       response_format: {type: "json_schema", json_schema: $s},
-      max_completion_tokens: 2000, reasoning_effort: "low"}' | call "$dep")" || { fail=1; continue; }
+      max_completion_tokens: 2000, reasoning_effort: $e}' | call "$dep")" || { fail=1; continue; }
   echo "   $out"
   if jq -e '.x == 5' <<<"$out" >/dev/null; then echo "   ok"; else echo "   FAIL: x != 5"; fail=1; fi
 done
 
-echo "--> $MODEL_LIVE: image input (fixtures/equation.png)"
+echo "--> $MODEL_LIVE: image input (fixtures/equation.png, reasoning_effort $transcribe_effort)"
 img="data:image/png;base64,$(base64 -w0 "$(dirname "$0")/fixtures/equation.png")"
-if out="$(jq -n --arg img "$img" --argjson s "$lines_schema" '{
+if out="$(jq -n --arg img "$img" --arg e "$transcribe_effort" --argjson s "$lines_schema" '{
     messages: [{role: "user", content: [
       {type: "text", text: "Transcribe each line of math in this image as left and right sides of the equals sign, using sympy syntax (3*x)."},
       {type: "image_url", image_url: {url: $img}}]}],
     response_format: {type: "json_schema", json_schema: $s},
-    max_completion_tokens: 2000, reasoning_effort: "low"}' | call "$MODEL_LIVE")"; then
+    max_completion_tokens: 2000, reasoning_effort: $e}' | call "$MODEL_LIVE")"; then
   echo "   $out"
   if jq -e '.lines | length == 2' <<<"$out" >/dev/null; then echo "   ok"; else echo "   FAIL: expected 2 lines"; fail=1; fi
 else
