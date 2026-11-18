@@ -6,6 +6,11 @@
 @import '@fontsource/kalam/400.css';
 @import '@fontsource/kalam/700.css';
 
+/* Room for a sticky header: a window at least 768 px wide and 600 px tall. On a phone, at 200%
+   zoom or in landscape the header (up to 6 rows when it wraps) would cover a third of the
+   screen, so there it scrolls away with the page. */
+@custom-variant roomy (@media (min-width: 48rem) and (min-height: 37.5rem));
+
 /* Akelius tokens (docs/PLAN.md, "Look and feel"). Use these in components. */
 @theme {
   --color-navy: #172b53;

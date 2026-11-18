@@ -64,7 +64,7 @@ export function Shell() {
         <div className="flex min-h-svh flex-col">
           <header
             ref={header}
-            className="sticky top-0 z-10 border-b border-line bg-ground/85 backdrop-blur-md print:hidden"
+            className="z-10 border-b border-line bg-ground/85 backdrop-blur-md print:hidden roomy:sticky roomy:top-0"
           >
             <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
               <Link
