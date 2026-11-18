@@ -86,7 +86,7 @@ docs/        PLAN.md, TASKS.md, REASONING.md, COST.md, A11Y.md
 | They **dislike chatbots** | No chat box anywhere. Buttons, pages and structured results; each AI output is small and has a fixed place | [REASONING: decisions](docs/REASONING.md#the-decisions-that-matter) |
 | **No tests, judgment, exams, scores or certificates** | Nothing is graded or recorded. Practice says "just for you, nothing is recorded"; "check my working" says privately which line first doesn't follow. Nothing is stored | [DATA.md](DATA.md) |
 | **Good internet** | Content is served as static JSON; only per-teacher input calls a model | [PLAN: Architecture](docs/PLAN.md#architecture) |
-| **20,000–50,000 teachers, so cost per teacher matters** | Content generated once, offline; known mistakes diagnosed by rules, with one short model call to word what to say; one small model call to diagnose the rest; scale to zero. About **$0.11 of AI per teacher per month** | [COST.md](docs/COST.md) |
+| **20,000–50,000 teachers, so cost per teacher matters** | Content generated once, offline; known mistakes diagnosed by rules, with one short model call to word what to say; one small model call to diagnose the rest; scale to zero. About **$0.10 of AI per teacher per month** | [COST.md](docs/COST.md) |
 
 ### What we were asked to do
 

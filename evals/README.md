@@ -16,48 +16,49 @@ the models and efforts that actually ran.
 |---|---|---|
 | Verdict right (sympy: correct / not simplified / wrong) | 90/90 | 90/90 |
 | False "mistake" on the 5 controls (student right) | 0/15 | 0/15 |
-| Status as expected (diagnosed, slip, unclear, out of scope…) | 90.0% | 92.2% |
-| Misconception id right, all 21 named cases | 81.0% | 81.0% |
+| Status as expected (diagnosed, slip, unclear, out of scope…) | 91.1% | 91.1% |
+| Misconception id right, all 21 named cases | 82.5% | 81.0% |
 | … the 13 a rule answers (no LLM diagnosis) | 100% | 100% |
-| … the 8 the LLM answers | 50.0% | 50.0% |
+| … the 8 the LLM answers | 54.2% | 50.0% |
 | Rule matches whose moves were written for the student's problem | 39/39 | 39/39 |
-| Same outcome in all 3 runs | 30/30 cases | 29/30 cases |
+| Same outcome in all 3 runs | 29/30 cases | 29/30 cases |
 | AI text held back as `ai_unverified_math` | 0/33 | 0/33 |
 | LLM output that failed the schema | 0/72 | 0/72 |
-| "AI only" id right (rules hidden; **not product accuracy**) | 87.2% | 97.4% |
+| "AI only" id right (rules hidden; **not product accuracy**) | 94.9% | 94.9% |
 | Transcription: lines right / images right | 45/45, 33/33 | 45/45, 33/33 |
-| Diagnosis call, latency p50 / p90 | 3.09 / 3.54 s | 3.05 / 3.41 s |
-| Rule-match moves call, latency p50 / p90 | 2.36 / 2.84 s | 1.68 / 2.25 s |
-| Transcription call, latency p50 / p90 | 1.63 / 2.16 s | 2.23 / 3.77 s |
-| Diagnosis call: prompt / cached / completion / reasoning tokens | 1512 / 1047 / 174 / 0 | 1512 / 970 / 176 / 0 |
-| Moves call: prompt / cached / completion / reasoning tokens | 680 / 0 / 117 / 0 | 680 / 0 / 110 / 0 |
-| Transcription call: prompt / completion / reasoning tokens | 482 / 39 / 0 | 482 / 48 / 8 |
-| Cost per diagnosis / moves / transcription call | $0.0089 / $0.0076 / $0.0040 | $0.0093 / $0.0074 / $0.0042 |
+| Diagnosis call, latency p50 / p90 | 3.05 / 3.41 s | 3.07 / 3.36 s |
+| Rule-match moves call, latency p50 / p90 | 2.00 / 2.58 s | 1.73 / 2.27 s |
+| Transcription call, latency p50 / p90 | 1.63 / 2.12 s | 1.67 / 2.25 s |
+| Diagnosis call: prompt / cached / completion / reasoning tokens | 1512 / 1241 / 177 / 0 | 1512 / 1280 / 176 / 0 |
+| Moves call: prompt / cached / completion / reasoning tokens | 680 / 0 / 110 / 0 | 680 / 0 / 110 / 0 |
+| Transcription call: prompt / completion / reasoning tokens | 482 / 39 / 0 | 482 / 52 / 11 |
+| Cost per diagnosis / moves / transcription call | $0.0080 / $0.0074 / $0.0039 | $0.0078 / $0.0074 / $0.0044 |
 
-Counts are over 3 runs (15 lines and 11 images per run). A request answered by sympy alone (controls, out of
-scope) took 3 ms at p50 and needed no LLM call; 18 of 90 product runs were answered that way.
-A rule match (39 runs) needs no LLM diagnosis, but one short call words the card's moves for
-the student's problem; if it failed, abstained or brought a number sympy didn't give it, the
-card's own moves would be shown, framed by the card's example problem. It never fell back in
-this run. Those moves are not judged or hand-labelled; read by eye, they fit each problem,
-and some nudges give the method away as the cards' own do ("divide every term on both sides
-by four"). Latency and cache numbers move between runs of the same eval (the
-mistake call's p50 was 2.5 to 3.1 s with `none` across three runs, the cache share 60% to
-80%), so compare the two columns, not runs.
+Counts are over 3 runs (15 lines and 11 images per run). A request answered by sympy alone
+(controls, out of scope) took 2–3 ms at p50 and needed no LLM call; 18 of 90 product runs
+were answered that way. A rule match (39 runs) needs no LLM diagnosis, but one short call
+(`mistake_moves`, 6 s deadline) words the card's moves for the student's problem; if it
+failed, abstained, left a move blank or brought a number sympy didn't give it, the card's
+own moves would be shown, framed by the card's example problem. It never fell back in this
+run. Those moves are judged and hand-labelled with the AI's diagnoses (below), and scored
+apart (`product_rule_moves` in `results.yaml`). Latency and cache numbers move between runs
+of the same eval (the diagnosis call's p50 was 2.5 to 3.1 s with `none` across four runs, the
+cache share 60% to 82%), so compare the two columns, not runs.
 
 **Recommendation: `reasoning_effort: none` for both live tasks** (now the default in
-`backend/app/config.py`). Accuracy is within noise: the misconception ids are identical,
-and the status differs by two runs (`low` 92.2%, `none` 90.0%). `none` gave the same outcome in
-all 3 runs for every case and cost about the same; `low` spent no reasoning tokens on
-diagnoses. `low` was faster on the moves call in this run, and the earlier runs split the
-other way on "AI only" and status, so the readings are small against a small sample.
-`minimal`, which the plan named, doesn't exist on gpt-5.5: the API answers `400 -
-Unsupported value: 'reasoning_effort' does not support 'minimal' with this model. Supported
-values are: 'none', 'low', 'medium', 'high', and 'xhigh'.`
+`backend/app/config.py`). Accuracy is within noise: the status is the same (91.1%), and the
+misconception ids differ by one run of one case. Both gave the same outcome in all 3 runs for
+29 of 30 cases, and they cost about the same; `low` spent no reasoning tokens on diagnoses.
+`low` was a little faster on the moves call; earlier runs split either way on status and
+"AI only", so the readings are small against a small sample. `minimal`, which the plan
+named, doesn't exist on gpt-5.5: the API answers `400 - Unsupported value:
+'reasoning_effort' does not support 'minimal' with this model. Supported values are:
+'none', 'low', 'medium', 'high', and 'xhigh'.`
 
-The whole run cost **$2.85**: $2.13 for 288 live calls, all of which succeeded (4 needed a
-retry), and $0.71 for 143 judge calls on the offline deployment. `results.yaml` records the
-models and efforts that actually ran (from `Settings`, so `.env` included).
+The whole run cost **$3.25**: $2.00 for 288 live calls, all of which succeeded (2 needed a
+retry), and $1.25 for 222 judge calls on the offline deployment (144 diagnoses and 78
+rule-match moves). `results.yaml` records the models and efforts that actually ran (from
+`Settings`, so `.env` included).
 
 ## Nudges give the method away less often
 
@@ -65,11 +66,13 @@ The first run found that 11 of 20 hand-labelled nudges spelled out the method ("
 first fraction, change to multiplication, flip the divisor"). The mistake prompt now says a
 nudge is a short hint or question that points at where to look without naming the rule or the
 steps, and that only the "tell" may state the method. In the latest run, **6 of 20** nudges in
-a new hand-labelled sample still give part of the method away; most walk the number line
-("start at 8 and move 3 in the negative direction") or give the first step ("after
-subtracting 9…"). Earlier runs with the same prompt had 3 and 5 of 20. The judge, though
-uncalibrated, moved the same way: it rated 13 of 143 nudges "to some extent" revealing, down
-from 57 of 144 before the prompt change. The samples are different outputs of the same 30 cases, so
+a new hand-labelled sample still give part of the method away. Five walk the number line
+("start at 8 and move 3 in the negative direction") or state the method ("divide the top and
+the bottom by the same number"); one is a rule match's moves, whose nudge gives the step
+outright ("write `| +120` in the margin and apply it to both sides", as the card's own nudge
+does). Earlier runs with the same prompt had 3, 5 and 6 of 20. The judge, though
+uncalibrated, moved the same way: it rated 20 of 144 diagnosis nudges and 15 of 78 rule-match
+nudges as at least partly revealing, against 57 of 144 before the prompt change. The samples are different outputs of the same 30 cases, so
 this is a before/after on the same inputs, not on the same texts.
 
 ## The LLM judge is not calibrated, so its scores are not quoted
@@ -83,16 +86,18 @@ it rates, so a label or score left over from an earlier run is skipped (and coun
 
 | Dimension | Agreement | Weighted kappa | Quoted |
 |---|---|---|---|
-| located | 11/20 | 0.00 | no |
+| located | 16/20 | 0.41 | no |
 | actionable | 20/20 | undefined (every label "yes") | no |
-| not revealing | 14/20 | 0.00 | no |
+| not revealing | 14/20 | 0.39 | no |
 | non-judgmental | 20/20 | undefined (every label "yes") | no |
 
-The judge is more lenient than the hand labels: it answered "yes" on every dimension for all
-20 sampled outputs. It called all 9 explanations the hand labels found only partly "located"
-(mostly honest `unclear`s) fully located, and it passed all 6 nudges the hand labels found
-revealing. On "actionable" and "non-judgmental" every output got "yes" from both, so the sample can't show whether
-the judge tells the levels apart. All 144 judge calls returned valid output.
+The judge agreed more than in earlier runs, but not enough to quote. It still called 4 of the
+honest `unclear` explanations fully "located" where the hand labels said "to some extent". On
+"not revealing" it missed 2 of the 6 nudges the hand labels found revealing, rated the
+rule-match nudge that gives the step "to some extent" where the hand label says "no", and
+flagged 3 nudges the hand labels passed (questions such as "what number times 2 gives 8?").
+On "actionable" and "non-judgmental" every output got "yes" from both, so the sample can't
+show whether the judge tells the levels apart. All 222 judge calls returned valid output.
 
 What the hand labels themselves found in the 20 outputs: no blame or labels about the student
 in any of them, and a concrete next step in all of them.
@@ -119,8 +124,8 @@ in any of them, and a concrete next step in all of them.
 - **Transcription scored 100%, so these images are too easy to tell versions apart.** They are
   drawn with a stroke font, not written by people. Treat 100% as an upper bound for real
   teachers' photos; the next step is a set of real handwriting photos (with consent).
-- **The prompt cache is best effort.** It covered 64–69% of diagnosis prompt tokens in the latest
-  run, 79–82% in the one before and about 60% in earlier ones. The moves call's prompt (680
+- **The prompt cache is best effort.** It covered 82–85% of diagnosis prompt tokens in the latest
+  run, 64–69% and 79–82% in the two before and about 60% in earlier ones. The moves call's prompt (680
   tokens) is under the 1024-token caching minimum, like transcription's. Azure caches the stable prefix (system prompt plus topic
   cards, about 1280 tokens). Transcription prompts (482 tokens) are under the 1024-token
   caching minimum.
@@ -176,7 +181,7 @@ in any of them, and a concrete next step in all of them.
 ## Rerun
 
 ```sh
-make evals    # run (about $2.15), judge (about $0.75), summarize; needs the repo's .env
+make evals    # run (about $2.00), judge (about $1.25), summarize; needs the repo's .env
 ```
 
 Or one step at a time:

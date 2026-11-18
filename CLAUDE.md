@@ -52,7 +52,7 @@ The `Makefile` is the authority.
 - `make test` runs pytest and vitest. `make lint` runs ruff, ruff format, mypy, tsc, eslint and prettier. `make fmt` fixes formatting. `make build` builds `frontend/dist`. `make e2e` builds the frontend, then runs Playwright with axe-core against FastAPI serving it.
 - Single tests: `cd backend && uv run pytest tests/test_math.py::test_name -q`, or `cd frontend && pnpm vitest run path/to/file.test.ts -t "name"`.
 - Pipeline: `uv run python pipeline/generate.py --topic <id> --lang <code>`, then `uv run python pipeline/verify.py`.
-- Evals: `make evals` (live, about $2.90; needs `.env`), or one step at a time: `uv run --project backend python evals/run.py run|judge|summarize` (see `evals/README.md`).
+- Evals: `make evals` (live, about $3.25; needs `.env`), or one step at a time: `uv run --project backend python evals/run.py run|judge|summarize` (see `evals/README.md`).
 
 Use `uv` for Python and `pnpm` for Node. CI may not run because GitHub Actions is unpaid, so run `make test lint` locally before every PR.
 
