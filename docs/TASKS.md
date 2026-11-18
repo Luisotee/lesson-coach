@@ -24,7 +24,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
 
 ## Wave 1: parallel after T0
 
-- [ ] **T1 sympy math core** (`backend/app/math/`)
+- [x] **T1 sympy math core** (`backend/app/math/`)
   - Parse plain text and LaTeX (from MathLive) into sympy.
   - Solve a problem, and canonical-form checks.
   - `classify_answer` returns `correct`, `equivalent_not_simplified` or `wrong`.

@@ -43,6 +43,7 @@ I (Luis) acted as product owner. Claude Code researched, planned and designed, a
 10. **Me:** "Add every language you can, strong accessibility, a drawing board in practice, no mock buttons, and a short reasoning doc." **Claude:** wrote the final plan, a task list in waves, and agent instructions (`CLAUDE.md`).
 11. **Build:** tasks are handed to Claude Code workers through agent-mesh (`/delegate-claude`). Each works on its own branch, and each PR is reviewed before merge. *(Log continues below as the build runs.)*
 12. **T4 infra:** `gpt-5.4-mini` DataZoneStandard quota is 0 on Azure for Students; switched live to `gpt-5.5` DataZoneStandard to keep EU processing. Offline uses `gpt-5.5` on GlobalStandard, because GlobalBatch can't be called interactively or smoke-tested.
+13. **T1 math core:** Claude wrote its own small parser instead of sympy's `parse_expr` or `parse_latex`. `parse_expr` runs Python `eval` on its input, and `parse_latex` computes as it reads (`\frac{2}{4}` becomes `1/2`, and `1\frac{1}{2}` loses its whole part). The core must keep what the student wrote, so it can tell `2/4` from `1/2` and match misconception rules. sympy still computes every value.
 
 Every factual claim (licenses, dataset contents, model availability) was checked before it went into the plan.
 
