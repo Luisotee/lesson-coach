@@ -41,8 +41,9 @@ export const ready = i18n
     // own file; a regional code (de-AT, zh-CN) falls back to the listed language findLanguage
     // picks, then English.
     fallbackLng: (code: string) => [findLanguage(code).code, DEFAULT_LANGUAGE],
+    // No nonExplicitSupportedLngs: it checks only the language part, so zh-Hans would be
+    // judged by "zh", which isn't listed. Regional codes are mapped by findLanguage instead.
     supportedLngs: LANGUAGES.map((l) => l.code),
-    nonExplicitSupportedLngs: true,
     load: 'currentOnly',
     interpolation: { escapeValue: false },
     // The choice is a UI preference kept only in this browser; no personal data.

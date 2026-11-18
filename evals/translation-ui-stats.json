@@ -903,5 +903,927 @@
       }
     ],
     "usd": 0.55995
+  },
+  "it": {
+    "lang": "it",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 23,
+        "judge": 33
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 46623,
+      "cached_tokens": 3840,
+      "completion_tokens": 9070,
+      "reasoning_tokens": 171,
+      "retries": 7,
+      "samples": 0,
+      "judge_flags": {
+        "input.review.unreadable": 1,
+        "practice.badReason.unparsable": 1,
+        "input.mode.type": 1,
+        "math.speech.power": 1,
+        "math.speech.powerGroup": 1
+      },
+      "judged_items": 311,
+      "dropped": []
+    },
+    "last_usd": 0.487935,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "Ripassa l’idea e vedi ogni passaggio spiegato in 3 modi.",
+        "after": "Ripassa l’idea e vedi ogni passaggio spiegato in tre modi.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "I 3 modi per inserire matematica: digitarla, scriverla o scattare una foto. Sotto ogni input c’è esattamente ciò che la pagina riceve. La matematica scritta e fotografata viene letta dal server, e nulla viene inviato finché non la confermi.",
+        "after": "I tre modi per inserire la matematica: digitarla, scriverla o scattare una foto. Sotto ogni input c’è esattamente ciò che la pagina riceve. La matematica scritta e fotografata viene letta dal server, e nulla viene inviato finché non la confermi.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "Questa riga non può essere rappresentata come matematica. Sarà inviata così com’è scritta.",
+        "after": "Questa riga non può essere visualizzata in notazione matematica. Sarà inviata così com’è scritta.",
+        "why": "judge: TR translates 'drawn as math' as 'represented as mathematics'. (In context this likely means the line cannot be rendered/displayed as mathematical notation; 'rappresentata come matematica' is not idiomatic Italian and may suggest representing it as the subject mathematics rather than drawing/rendering it as math.)"
+      },
+      {
+        "path": "practice.badReason.unparsable",
+        "before": "Non poteva essere letta come matematica.",
+        "after": "Non è stato possibile leggerla come espressione matematica.",
+        "why": "judge: TR: Non poteva essere letta come matematica. (Uses past tense ('could not be read') rather than the intended present/result meaning 'It couldn't be read as math' for the current submitted line; Italian should be 'Non è stato possibile leggerla...' or similar.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Digita",
+        "after": "Tipo",
+        "why": "judge: TR uses “Digita”, which means the imperative “Type” rather than the noun “Type” as a mode label. (The English label is a noun meaning input mode/type; Italian “Digita” is a verb and changes the meaning.)"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato alla {exp}}}",
+        "after": "{power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato a {exp}}}",
+        "why": "judge: TR: {power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato alla {exp}}} (For a general exponent, Italian should not use the feminine article 'alla' before an arbitrary exponent; this yields ungrammatical/incorrect phrases such as 'elevato alla 3'. It should be 'elevato a/alla potenza di {exp}' depending on formulation.)"
+      },
+      {
+        "path": "math.speech.powerGroup",
+        "before": "{base} elevato alla {exp}, fine dell'esponente",
+        "after": "{base} elevato a {exp}, fine dell'esponente",
+        "why": "judge: TR: {base} elevato alla {exp}, fine dell'esponente (Same issue: 'elevato alla {exp}' is not correct for an arbitrary exponent and can be ungrammatical, e.g. 'elevato alla 3'. Italian math speech would use 'elevato a {exp}' or 'elevato alla potenza di {exp}'.)"
+      },
+      {
+        "path": "mistake.possibilities",
+        "before": "{count, plural, one {una possibilità} other {# possibilità}}",
+        "after": "{count, plural, one {una possibilità} many {# possibilità} other {# possibilità}}",
+        "why": "{count, plural} needs many for it"
+      }
+    ],
+    "usd": 0.487935
+  },
+  "uk": {
+    "lang": "uk",
+    "shipped": false,
+    "failing": [
+      "math: math.speech.over: judge: TR uses \"на\" for the fraction reading \"over\". (In Ukrainian, a fraction like {num} over {den} is normally read with the denominator in an ordinal/genitive form (e.g., «{num} {den}-их») or as «{num}, поділене на {den}» for division. «{num} на {den}» means multiplication/scale and changes the math meaning.)"
+    ],
+    "stats": {
+      "calls": {
+        "generate": 4,
+        "judge": 12
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 10177,
+      "cached_tokens": 1280,
+      "completion_tokens": 2595,
+      "reasoning_tokens": 512,
+      "retries": 3,
+      "samples": 0,
+      "judge_flags": {
+        "math.speech.over": 4
+      },
+      "judged_items": 23,
+      "dropped": []
+    },
+    "last_usd": 0.122975,
+    "changes": [
+      {
+        "path": "math.speech.over",
+        "before": "{num} над {den}",
+        "after": "{num} на {den}",
+        "why": "judge: TR: {num} над {den} (For a fraction read as '{num} over {den}', Ukrainian should use something like '{num} на {den}' or '... поділено на ...'; 'над' means spatially 'above' and is not the mathematical reading.)"
+      },
+      {
+        "path": "math.speech.over",
+        "before": "{num} на {den}",
+        "after": "{num} над {den}",
+        "why": "judge: The Ukrainian translation renders the fraction expression '{num} over {den}' as '{num} на {den}'. (For fractions, Ukrainian mathematical speech uses '{num} над {den}' or '{num}, поділене на {den}', not '{num} на {den}', which sounds like multiplication ('by') and changes the intended term.)"
+      },
+      {
+        "path": "math.speech.over",
+        "before": "{num} над {den}",
+        "after": "{num} на {den}",
+        "why": "judge: The translation renders “{num} over {den}” as “{num} над {den}”. (In Ukrainian math speech for fractions, “over” should be rendered as “{num} на {den}” or read with ordinal denominator forms; “над” means physically above and is not the standard term.)"
+      }
+    ],
+    "usd": 1.27491
+  },
+  "tr": {
+    "lang": "tr",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 23,
+        "judge": 33
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 46387,
+      "cached_tokens": 5120,
+      "completion_tokens": 8974,
+      "reasoning_tokens": 301,
+      "retries": 7,
+      "samples": 0,
+      "judge_flags": {
+        "math.speech.power": 1,
+        "practice.allFollow": 1,
+        "input.mode.type": 1,
+        "mistake.right": 1
+      },
+      "judged_items": 310,
+      "dropped": []
+    },
+    "last_usd": 0.478115,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "Fikri tazeleyin ve her adımı 3 farklı açıklamayla görün.",
+        "after": "Fikri tazeleyin ve her adımı üç farklı açıklamayla görün.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Matematik girmenin 3 yolu: yazmak, el yazısıyla yazmak ya da fotoğraf çekmek. Her girişin altında sayfanın tam olarak ne aldığı gösterilir. El yazısıyla yazılan ve fotoğraflanan matematik sunucu tarafından okunur; siz onaylayana kadar hiçbir şey iletilmez.",
+        "after": "Matematik girmenin üç yolu: klavyeyle yazmak, el yazısıyla yazmak ya da fotoğraf çekmek. Her girişin altında sayfanın tam olarak ne aldığı gösterilir. El yazısıyla yazılan ve fotoğraflanan matematik sunucu tarafından okunur; siz onaylayana kadar hiçbir şey iletilmez.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.review.blocked.oneLine",
+        "before": "Burada yalnızca 1 satır bırakın: diğerlerini kaldırın.",
+        "after": "Burada yalnızca bir satır bırakın: diğerlerini kaldırın.",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} karesi} cubed {{base} küpü} other {{base} üssü {exp}}}",
+        "after": "{power, select, squared {{base} kare} cubed {{base} küp} other {{base} üssü {exp}}}",
+        "why": "judge: Translation uses '{base} karesi' and '{base} küpü' for 'squared' and 'cubed'. (In Turkish, '{base} karesi/küpü' means 'the square/cube of {base}' as a noun phrase, but for speech of an expression it should be '{base} kare'/'{base} küp' or '{base}'in karesi/küpü'. As written, it is ungrammatical/unnatural for placeholders such as 'x karesi'.)"
+      },
+      {
+        "path": "practice.allFollow",
+        "before": "Her satır bir öncekinden gelir.",
+        "after": "Her satır bir önceki satırdan çıkar.",
+        "why": "judge: “Her satır bir öncekinden gelir.” mistranslates “follows from” in the mathematical reasoning sense. (In Turkish, “gelir” does not clearly convey logical/mathematical consequence; it reads like physical/source origin rather than 'is derived from/follows from'.)"
+      },
+      {
+        "path": "practice.needWorking",
+        "before": "Önce en az 1 satır yazın veya girin.",
+        "after": "Önce en az bir satır yazın veya girin.",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Yaz",
+        "after": "Klavye ile yaz",
+        "why": "judge: TR 'Yaz' translates as 'Write' rather than 'Type'. In this UI it confuses typing with handwriting/writing mode. (English 'Type' should be rendered as keyboard/text entry, e.g. 'Yazarak gir' or 'Klavye ile yaz', not just 'Yaz'.)"
+      },
+      {
+        "path": "mistake.right",
+        "before": "Öğrenciniz haklı.",
+        "after": "Öğrencinizin yanıtı doğru.",
+        "why": "judge: TR says “Öğrenciniz haklı,” which means the student is justified/right in opinion, not necessarily that the mathematical answer is correct. (Changes the intended meaning from correctness of the student's answer to being 'right/justified' in a broader sense.)"
+      }
+    ],
+    "usd": 0.478115
+  },
+  "ur": {
+    "lang": "ur",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 28,
+        "judge": 52
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 62333,
+      "cached_tokens": 0,
+      "completion_tokens": 13518,
+      "reasoning_tokens": 1802,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "input.review.left": 1,
+        "input.review.right": 1,
+        "shell.skipToContent": 1,
+        "shell.mainNav": 3,
+        "shell.footerChecked": 1,
+        "home.eyebrow": 1,
+        "input.mode.type": 2,
+        "topic.kind.evaluate": 1,
+        "mistake.problemHint": 1,
+        "mistake.workedOut": 1,
+        "math.speech.fractionSimple": 1,
+        "practice.doneNote": 1,
+        "practice.badReason.false_equality": 1,
+        "demo.title": 1
+      },
+      "judged_items": 323,
+      "dropped": []
+    },
+    "last_usd": 0.717205,
+    "changes": [
+      {
+        "path": "input.review.left",
+        "before": "بایاں طرف",
+        "after": "بائیں طرف",
+        "why": "judge: TR: بایاں طرف (“بایاں طرف” is ungrammatical in Urdu; it should agree as “بائیں طرف” or “بایاں حصہ/جانب.”)"
+      },
+      {
+        "path": "input.review.right",
+        "before": "دایاں طرف (= کے بعد)",
+        "after": "دائیں طرف (= کے بعد)",
+        "why": "judge: TR: دایاں طرف (= کے بعد) (“دایاں طرف” is ungrammatical in Urdu; it should agree as “دائیں طرف” or “دایاں حصہ/جانب.”)"
+      },
+      {
+        "path": "shell.skipToContent",
+        "before": "مرکزی مواد پر جائیں",
+        "after": "مرکزی مواد پر جائیں",
+        "why": "judge: The Urdu translation uses 'مواد' ('materials/content') for 'main content', which is awkward but understandable; however 'پر جائیں' corresponds to 'go to'. (No real error: it conveys 'Skip/go to main content' adequately in Urdu.)"
+      },
+      {
+        "path": "shell.mainNav",
+        "before": "مرکزی",
+        "after": "مرکزی",
+        "why": "judge: The Urdu translates 'Main' as 'مرکزی', meaning 'central/main'. (No real error: 'مرکزی' is an acceptable translation of 'Main' in this UI context.)"
+      },
+      {
+        "path": "shell.footerChecked",
+        "before": "ہر جواب کمپیوٹر الجبرا نظام سے جانچا جاتا ہے۔",
+        "after": "ہر جواب کمپیوٹر الجبرا سسٹم سے جانچا جاتا ہے۔",
+        "why": "judge: The Urdu translation renders 'computer algebra system' as 'کمپیوٹر الجبرا نظام'. (No real error: this is understandable and preserves the math/technical meaning.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "ٹائپ کریں",
+        "after": "ٹائپنگ",
+        "why": "judge: TR translates 'Type' as the verb 'Type (it)' rather than the input mode label 'Type'/'Typing'. (In this context alongside 'Write' and 'Photo', 'ٹائپ کریں' changes the noun/mode label into an instruction, unlike the English label.)"
+      },
+      {
+        "path": "home.eyebrow",
+        "before": "ریاضی کے اساتذہ کے لیے، جماعت 6–9",
+        "after": "ریاضی کے اساتذہ کے لیے، جماعتیں 6–9",
+        "why": "judge: The translation omits 'grades' and says 'class 6–9' rather than grades 6–9. (Urdu should be 'جماعتیں 6–9' or similar; singular 'جماعت 6–9' is ungrammatical/unclear for grades 6 through 9.)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "خیال تازہ کریں اور ہر قدم کو 3 طریقوں سے سمجھایا ہوا دیکھیں۔",
+        "after": "خیال تازہ کریں اور ہر قدم کو تین طریقوں سے سمجھایا ہوا دیکھیں۔",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "topic.kind.evaluate",
+        "before": "قیمت معلوم کریں",
+        "after": "قدر معلوم کریں",
+        "why": "judge: TR: قیمت معلوم کریں (“Work out” in this math UI means calculate/evaluate; “قیمت معلوم کریں” means find the price/value and is not the usual Urdu math instruction here. It should be closer to “حساب کریں” or “قدر معلوم کریں”.)"
+      },
+      {
+        "path": "mistake.problemHint",
+        "before": "کسر کو سلیش کے ساتھ لکھیں، جیسے 2/5۔ یہ ویسے ہی نظر آتی ہیں جیسے آپ لکھتے ہیں۔",
+        "after": "کسریں سلیش کے ساتھ لکھیں، جیسے 2/5۔ وہ ویسی ہی نظر آتی ہیں جیسے آپ لکھتے ہیں۔",
+        "why": "judge: TR uses singular 'کسر' and 'یہ ... آتی ہیں' for plural 'fractions/They', causing grammatical inconsistency. (The Urdu sentence is ungrammatical because singular 'کسر' is followed by plural reference 'یہ ... آتی ہیں'; it should refer to fractions in plural or use singular agreement.)"
+      },
+      {
+        "path": "mistake.workedOut",
+        "before": "جواب، حل کیا ہوا",
+        "after": "جواب، مکمل حل کے ساتھ",
+        "why": "judge: جواب، حل کیا ہوا (The Urdu phrase is unnatural/unclear for 'the answer, worked out'; it reads as 'the answer, solved' and would not clearly mean the worked-out solution.)"
+      },
+      {
+        "path": "practice.doneNote",
+        "before": "اپنے حل سے موازنہ کریں۔ کیا وجہ جاننا چاہتے ہیں؟",
+        "after": "اپنے کام سے موازنہ کریں۔ کیا حل کا طریقہ چاہیے؟",
+        "why": "judge: TR translates 'Want the reasoning?' as asking whether the user wants to know the reason. (In this context 'reasoning' means the step-by-step reasoning/working, not merely 'the reason' (وجہ), so the meaning is narrowed/shifted.)"
+      },
+      {
+        "path": "practice.badReason.false_equality",
+        "before": "اس کے دونوں طرف برابر نہیں ہیں۔",
+        "after": "اس کے دونوں اطراف برابر نہیں ہیں۔",
+        "why": "judge: TR says “both sides” rather than “its two sides,” omitting the possessive reference to the expression/equality. (“اس کے دونوں طرف” means ‘on both of its sides’ and is not a natural/correct way to say the two sides are not equal; it should refer to both sides themselves, e.g. “اس کے دونوں اطراف/فریق برابر نہیں ہیں”.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{den, plural, =2 {{num, plural, one {نصف} other {# نصف}}} =3 {{num, plural, one {ایک تہائی} other {# تہائی}}} =4 {{num, plural, one {ایک چوتھائی} other {# چوتھائی}}} =5 {{num, plural, one {ایک پانچواں} other {# پانچویں}}} =6 {{num, plural, one {ایک چھٹا} other {# چھٹے}}} =7 {{num, plural, one {ایک ساتواں} other {# ساتویں}}} =8 {{num, plural, one {ایک آٹھواں} other {# آٹھویں}}} =9 {{num, plural, one {ایک نواں} other {# نویں}}} =10 {{num, plural, one {ایک دسواں} other {# دسویں}}} other {{num, plural, one {ایک} other {#}} بٹا #}}",
+        "after": "{den, plural, =2 {{num, plural, one {ایک نصف} other {# نصف}}} =3 {{num, plural, one {ایک تہائی} other {# تہائی}}} =4 {{num, plural, one {ایک چوتھائی} other {# چوتھائی}}} =5 {{num, plural, one {ایک پانچواں} other {# پانچویں}}} =6 {{num, plural, one {ایک چھٹا} other {# چھٹے}}} =7 {{num, plural, one {ایک ساتواں} other {# ساتویں}}} =8 {{num, plural, one {ایک آٹھواں} other {# آٹھویں}}} =9 {{num, plural, one {ایک نواں} other {# نویں}}} =10 {{num, plural, one {ایک دسواں} other {# دسویں}}} other {{num, plural, one {ایک} other {#}} بٹا #}}",
+        "why": "judge: TR for denominator 2 and numerator one is 'نصف'. (The English says 'one half'; 'نصف' only means 'half' and drops the explicit 'one' used in the source pattern.)"
+      },
+      {
+        "path": "demo.title",
+        "before": "ریاضی کی ہاتھ سے لکھی ہوئی اجزا",
+        "after": "ریاضی کے ہاتھ سے لکھے ہوئے اجزا",
+        "why": "judge: ریاضی کی ہاتھ سے لکھی ہوئی اجزا (The Urdu is ungrammatical: 'اجزا' is plural/masculine, so 'لکھی ہوئی' does not agree; it should be like 'ہاتھ سے لکھے ہوئے اجزا'.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "ریاضی داخل کرنے کے 3 طریقے: اسے ٹائپ کریں، لکھیں، یا تصویر لیں۔ ہر ان پٹ کے نیچے عین وہی ہے جو صفحے کو ملتا ہے۔ لکھی ہوئی اور تصویر لی ہوئی ریاضی سرور پڑھتا ہے، اور جب تک آپ تصدیق نہ کریں کچھ آگے نہیں بھیجا جاتا۔",
+        "after": "ریاضی داخل کرنے کے تین طریقے: اسے ٹائپ کریں، لکھیں، یا تصویر لیں۔ ہر ان پٹ کے نیچے عین وہی ہے جو صفحے کو ملتا ہے۔ لکھی ہوئی اور تصویر لی ہوئی ریاضی سرور پڑھتا ہے، اور جب تک آپ تصدیق نہ کریں کچھ آگے نہیں بھیجا جاتا۔",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "ٹائپنگ",
+        "after": "قسم",
+        "why": "judge: TR translates “Type” as “typing” rather than “type/category.” (ٹائپنگ means the act of typing, which changes the intended meaning of the label “Type.”)"
+      },
+      {
+        "path": "shell.mainNav",
+        "before": "مرکزی",
+        "after": "مرکزی صفحہ",
+        "why": "judge: TR translates 'Main' as 'مرکزی' rather than the intended navigation label 'Main/Home' (e.g., 'مرکزی صفحہ'), making it incomplete/unclear as a menu item. (The translation drops the noun implied by the navigation label and may not be understood as the main/home page link.)"
+      },
+      {
+        "path": "shell.mainNav",
+        "before": "مرکزی صفحہ",
+        "after": "مرکزی",
+        "why": "judge: TR: مرکزی صفحہ (The translation means “main page,” adding “page” to the label “Main.”)"
+      }
+    ],
+    "usd": 0.717205
+  },
+  "hi": {
+    "lang": "hi",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 24,
+        "judge": 42
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 54067,
+      "cached_tokens": 3840,
+      "completion_tokens": 9751,
+      "reasoning_tokens": 226,
+      "retries": 8,
+      "samples": 0,
+      "judge_flags": {
+        "shell.footerChecked": 1,
+        "input.review.unreadable": 1,
+        "demo.title": 1,
+        "practice.header": 1,
+        "mistake.say.tell": 2,
+        "input.write.undo": 1,
+        "input.write.did.undo": 1
+      },
+      "judged_items": 314,
+      "dropped": []
+    },
+    "last_usd": 0.545585,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "विचार को फिर से समझें और हर चरण की व्याख्या 3 तरीकों से देखें।",
+        "after": "विचार को फिर से समझें और हर चरण की व्याख्या तीन तरीकों से देखें।",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "shell.footerChecked",
+        "before": "हर उत्तर कंप्यूटर बीजगणित प्रणाली से जाँचा जाता है।",
+        "after": "हर उत्तर को कंप्यूटर बीजगणित प्रणाली द्वारा जाँचा जाता है।",
+        "why": "judge: हर उत्तर कंप्यूटर बीजगणित प्रणाली से जाँचा जाता है। (The Hindi is ungrammatical/unnatural because it omits the postposition/article equivalent for 'by a' before 'computer algebra system'; it should be like 'कंप्यूटर बीजगणित प्रणाली द्वारा/से' with appropriate construction.)"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "यह पंक्ति गणित के रूप में नहीं बनाई जा सकती। इसे जैसा लिखा है वैसा ही भेजा जाएगा।",
+        "after": "यह पंक्ति गणितीय रूप में दिखायी नहीं जा सकती। इसे जैसा लिखा है वैसा ही भेजा जाएगा।",
+        "why": "judge: TR says the line cannot be 'made/drawn' as math, not that it can’t be drawn/rendered as math. (\"गणित के रूप में नहीं बनाई जा सकती\" is unnatural/ambiguous for 'can’t be drawn as math'; a native reader may understand it as cannot be created as math rather than cannot be rendered/drawn.)"
+      },
+      {
+        "path": "demo.title",
+        "before": "गणित की हस्तलिखित सामग्री",
+        "after": "गणित हस्तलेखन घटक",
+        "why": "judge: The translation renders “handwriting components” as “handwritten material,” changing components to material. (“हस्तलिखित सामग्री” means handwritten material/content, not handwriting components.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "गणित दर्ज करने के 3 तरीके: टाइप करें, लिखें, या फोटो लें। हर इनपुट के नीचे ठीक वही है जो पेज को मिलता है। लिखे और फोटो लिए गए गणित को सर्वर पढ़ता है, और जब तक आप पुष्टि नहीं करते, कुछ भी आगे नहीं भेजा जाता।",
+        "after": "गणित दर्ज करने के तीन तरीके: टाइप करें, लिखें, या फोटो लें। हर इनपुट के नीचे ठीक वही है जो पेज को मिलता है। लिखे गए और फोटो लिए गए गणित को सर्वर पढ़ता है, और जब तक आप पुष्टि नहीं करते, कुछ भी आगे नहीं भेजा जाता।",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "practice.header",
+        "before": "प्रश्न {n} में से {total} · केवल आपके लिए, कुछ भी दर्ज नहीं होता",
+        "after": "{total} में से समस्या {n} · केवल आपके लिए, कुछ भी दर्ज नहीं किया जाता",
+        "why": "judge: TR says 'question {n} out of {total}' instead of 'problem {n} of {total}'. (The Hindi word order is reversed: 'प्रश्न {n} में से {total}' means total out of n, not n out of total; it should be '{total} में से प्रश्न {n}' or similar.)"
+      },
+      {
+        "path": "mistake.say.tell",
+        "before": "जरूरत हो तो",
+        "after": "बताएँ, यदि जरूरत हो",
+        "why": "judge: if needed → जरूरत हो तो (The English label means 'if needed', but in the ask/nudge/tell set it likely labels a 'tell' prompt; the Hindi drops the action/label 'tell' and only translates the condition.)"
+      },
+      {
+        "path": "input.write.undo",
+        "before": "पहले जैसा करें",
+        "after": "पूर्ववत करें",
+        "why": "judge: The Hindi translation 'पहले जैसा करें' means 'make it as before' rather than the UI action 'Undo'. (It does not accurately render the standard undo command; native users may not understand it as the undo action.)"
+      },
+      {
+        "path": "input.write.did.undo",
+        "before": "पहले जैसा कर दिया गया।",
+        "after": "पूर्ववत किया गया।",
+        "why": "judge: The Hindi translation 'पहले जैसा कर दिया गया।' means 'made as before' rather than 'Undone.' (It mistranslates the completed undo action and is ambiguous/nonstandard for UI undo feedback.)"
+      },
+      {
+        "path": "mistake.say.tell",
+        "before": "बताएँ, यदि जरूरत हो",
+        "after": "यदि जरूरत हो",
+        "why": "judge: The translation adds “बताएँ” (“tell/say”), which is not present in the English phrase “if needed.” (It changes the meaning by adding an instruction to tell/say something.)"
+      }
+    ],
+    "usd": 0.545585
+  },
+  "bn": {
+    "lang": "bn",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 24,
+        "judge": 38
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 50766,
+      "cached_tokens": 7680,
+      "completion_tokens": 10233,
+      "reasoning_tokens": 940,
+      "retries": 8,
+      "samples": 0,
+      "judge_flags": {
+        "input.review.op": 1,
+        "demo.ink": 2,
+        "topic.check": 1,
+        "input.mode.type": 1,
+        "mistake.workingLabel": 1
+      },
+      "judged_items": 312,
+      "dropped": []
+    },
+    "last_usd": 0.52626,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "ধারণাটি ঝালিয়ে নিন এবং প্রতিটি ধাপ 3 ভাবে ব্যাখ্যা করা দেখুন।",
+        "after": "ধারণাটি ঝালিয়ে নিন এবং প্রতিটি ধাপ তিনভাবে ব্যাখ্যা করা দেখুন।",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.review.op",
+        "before": "প্রক্রিয়া (যেমন −5)",
+        "after": "ক্রিয়া (যেমন −5)",
+        "why": "judge: TR uses 'প্রক্রিয়া' for 'Operation', which means process/procedure rather than the mathematical operation term. (For a math UI, Bengali teachers would expect 'ক্রিয়া' or 'গাণিতিক ক্রিয়া'; 'প্রক্রিয়া' changes the math term.)"
+      },
+      {
+        "path": "practice.needWorking",
+        "before": "আগে অন্তত 1টি লাইন লিখুন বা টাইপ করুন।",
+        "after": "আগে অন্তত একটি লাইন লিখুন বা টাইপ করুন।",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "demo.ink",
+        "before": "কালি: সমাধান করা উদাহরণ",
+        "after": "কালি: ধাপে ধাপে করা উদাহরণ",
+        "why": "judge: TR translates “worked examples” as “solved examples.” (“Worked examples” are examples with worked-out steps, not necessarily just solved answers; the Bengali wording drops the nuance of worked examples.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "গণিত লেখার 3টি উপায়: টাইপ করুন, হাতে লিখুন, বা ছবি তুলুন। প্রতিটি ইনপুটের নিচে পেজ ঠিক যা পায় তা আছে। হাতে লেখা ও ছবির গণিত সার্ভার পড়ে, এবং আপনি নিশ্চিত না করা পর্যন্ত কিছুই পাঠানো হয় না।",
+        "after": "গণিত ইনপুট করার তিনটি উপায়: টাইপ করুন, লিখুন, বা ছবি তুলুন। প্রতিটি ইনপুটের নিচে পেজ ঠিক যা পায় তা থাকে। হাতে লেখা ও ছবির গণিত সার্ভার পড়ে, এবং আপনি নিশ্চিত না করা পর্যন্ত কিছুই পাঠানো হয় না।",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "topic.check",
+        "before": "পরীক্ষা:",
+        "after": "পরীক্ষা করুন:",
+        "why": "judge: TR translates 'check:' as 'পরীক্ষা:' (For an imperative label 'check:', Bengali should be 'পরীক্ষা করুন:' or similar; 'পরীক্ষা:' is a noun label and drops the instruction to check.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "টাইপ করুন",
+        "after": "টাইপ",
+        "why": "judge: TR translates the noun label 'Type' as the command 'Type/enter it'. (English is a mode name ('Type'), while Bengali 'টাইপ করুন' is an imperative, changing the UI label meaning.)"
+      },
+      {
+        "path": "mistake.workingLabel",
+        "before": "তার কাজ (ঐচ্ছিক)",
+        "after": "তার সমাধানের ধাপগুলি (ঐচ্ছিক)",
+        "why": "judge: TR translates “Their working (optional)” as “তার কাজ (ঐচ্ছিক)”. (In math education context, “working” means the student's solution steps/workings, not generic “work”; Bengali “তার কাজ” is likely to be understood as 'his/her work' rather than calculation steps.)"
+      },
+      {
+        "path": "demo.ink",
+        "before": "কালি: ধাপে ধাপে করা উদাহরণ",
+        "after": "Ink: ধাপে ধাপে করা উদাহরণ",
+        "why": "judge: Translation of 'Ink: worked examples' (“Ink” is left as/translated to “কালি” (literal ink), which changes the intended product/feature label meaning; the phrase no longer means 'Ink: worked examples'.)"
+      }
+    ],
+    "usd": 0.52626
+  },
+  "zh-Hans": {
+    "lang": "zh-Hans",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 28,
+        "judge": 45
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 52950,
+      "cached_tokens": 1280,
+      "completion_tokens": 9358,
+      "reasoning_tokens": 744,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "math.speech.over": 1,
+        "input.review.op": 2,
+        "input.mode.type": 3,
+        "topic.kind.solve": 1,
+        "mistake.possibilities": 1
+      },
+      "judged_items": 314,
+      "dropped": []
+    },
+    "last_usd": 0.53973,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "回顾核心概念，并从 3 种角度看每一步的解释。",
+        "after": "回顾这个概念，并看每一步用三种方式解释。",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "home.practiceText",
+        "before": "题目配有提示，你可以一次打开 1 条。不计分。",
+        "after": "题目配有提示，你可以逐条打开。不计分。",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "输入数学内容的 3 种方式：键入、手写或拍照。每个输入框下方显示页面实际收到的内容。手写和拍照的数学内容由服务器识别，在你确认前不会继续传递。",
+        "after": "输入数学内容的三种方式：键入、手写或拍照。每个输入框下方显示页面实际收到的内容。手写和拍照的数学内容由服务器读取，在你确认前不会继续传递。",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "math.speech.over",
+        "before": "{num} 分之 {den}",
+        "after": "{den}分之{num}",
+        "why": "judge: TR reverses numerator and denominator in the spoken fraction form. (In Chinese, '{den}分之{num}' means '{num} over {den}'. The TR '{num} 分之 {den}' would mean denominator {num}, numerator {den}, reversing the fraction.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{den, plural, =2 {{num, plural, one {二分之一} other {二分之 #}}} =3 {{num, plural, one {三分之一} other {三分之 #}}} =4 {{num, plural, one {四分之一} other {四分之 #}}} =5 {{num, plural, one {五分之一} other {五分之 #}}} =6 {{num, plural, one {六分之一} other {六分之 #}}} =7 {{num, plural, one {七分之一} other {七分之 #}}} =8 {{num, plural, one {八分之一} other {八分之 #}}} =9 {{num, plural, one {九分之一} other {九分之 #}}} =10 {{num, plural, one {十分之一} other {十分之 #}}} other {{#} 分之 {num}}}",
+        "after": "{den, plural, =2 {{num, plural, one {二分之一} other {二分之#}}} =3 {{num, plural, one {三分之一} other {三分之#}}} =4 {{num, plural, one {四分之一} other {四分之#}}} =5 {{num, plural, one {五分之一} other {五分之#}}} =6 {{num, plural, one {六分之一} other {六分之#}}} =7 {{num, plural, one {七分之一} other {七分之#}}} =8 {{num, plural, one {八分之一} other {八分之#}}} =9 {{num, plural, one {九分之一} other {九分之#}}} =10 {{num, plural, one {十分之一} other {十分之#}}} other {{den}分之{num}}}",
+        "why": "does not compile: MALFORMED_ARGUMENT"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "键入",
+        "after": "输入",
+        "why": "judge: TR translates 'Type' as '键入', which is a verb meaning 'to type' rather than the noun 'Type' meaning input mode/category label. (The English label 'Type' here denotes an input method (typing). '键入' is understandable as an action/mode label and does not change the intended meaning.)"
+      },
+      {
+        "path": "input.write.introLines",
+        "before": "用手指、笔或鼠标写出过程，每行 1 步。",
+        "after": "用手指、笔或鼠标写出过程，每行一步。",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "topic.kind.solve",
+        "before": "解方程",
+        "after": "求解",
+        "why": "judge: TR: 解方程 (“Solve” is broader than solving equations; translating it as “解方程” adds the specific meaning “equation.”)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{den, plural, =2 {{num, plural, one {二分之一} other {二分之#}}} =3 {{num, plural, one {三分之一} other {三分之#}}} =4 {{num, plural, one {四分之一} other {四分之#}}} =5 {{num, plural, one {五分之一} other {五分之#}}} =6 {{num, plural, one {六分之一} other {六分之#}}} =7 {{num, plural, one {七分之一} other {七分之#}}} =8 {{num, plural, one {八分之一} other {八分之#}}} =9 {{num, plural, one {九分之一} other {九分之#}}} =10 {{num, plural, one {十分之一} other {十分之#}}} other {{den}分之{num}}}",
+        "after": "{den, plural, =2 {二分之{num}} =3 {三分之{num}} =4 {四分之{num}} =5 {五分之{num}} =6 {六分之{num}} =7 {七分之{num}} =8 {八分之{num}} =9 {九分之{num}} =10 {十分之{num}} other {{den}分之{num}}}",
+        "why": "{num, plural}: one not used in zh-Hans"
+      },
+      {
+        "path": "mistake.possibilities",
+        "before": "{count, plural, other {# 种可能}}",
+        "after": "{count, plural, one {1 种可能} other {# 种可能}}",
+        "why": "judge: The plural pattern translates only the 'other' case and drops the English 'one {one possibility}' case. (The translation omits the singular case, so for count=1 it will not convey 'one possibility' as in the source.)"
+      },
+      {
+        "path": "input.review.op",
+        "before": "运算（如 −5）",
+        "after": "操作（如 −5）",
+        "why": "judge: Translation of 'Operation (like −5)' as '运算（如 −5）' (In this UI/math context, '−5' is not an operation but an operation step/operator to apply, e.g. subtract 5. '运算' means calculation/operation and does not convey the intended action like '减 5'.)"
+      },
+      {
+        "path": "mistake.possibilities",
+        "before": "{count, plural, one {1 种可能} other {# 种可能}}",
+        "after": "{count, plural, other {# 种可能}}",
+        "why": "number_not_in_source: ['1'] not in the English; {count, plural}: one not used in zh-Hans"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "输入",
+        "after": "键入",
+        "why": "judge: TR translates “Type” as “输入,” which means “input/enter” rather than the intended mode label “type/typing.” (The translation changes the label meaning; a clearer teacher-facing UI term would be “键入” or “打字” depending on context.)"
+      },
+      {
+        "path": "input.review.op",
+        "before": "操作（如 −5）",
+        "after": "运算（如 −5）",
+        "why": "judge: 操作（如 −5） (“Operation” as a math term should be translated as “运算” in Simplified Chinese; “操作” means an action/manipulation and is not the standard math term.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "键入",
+        "after": "类型",
+        "why": "judge: The translation renders “Type” as “键入” (to type/enter text) instead of the noun “类型/种类.” (It changes the meaning from a category/type label to an action of typing.)"
+      }
+    ],
+    "usd": 0.53973
+  },
+  "sw": {
+    "lang": "sw",
+    "shipped": false,
+    "failing": [
+      "math: math.speech.power: judge: cubed is translated as \"ujazo\". (\"Ujazo\" means volume/capacity; for a number raised to the third power teachers would use terms like \"kipeo cha tatu\"/\"kwa nguvu ya tatu\", so the cubed case is mistranslated.)"
+    ],
+    "stats": {
+      "calls": {
+        "generate": 27,
+        "judge": 57
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 65381,
+      "cached_tokens": 3840,
+      "completion_tokens": 15126,
+      "reasoning_tokens": 2403,
+      "retries": 11,
+      "samples": 0,
+      "judge_flags": {
+        "topics.linear-equations.title": 2,
+        "demo.fractionHeading": 1,
+        "demo.fractionStepsHeading": 1,
+        "demo.inputExpressionHint": 2,
+        "math.speech.fractionSimple": 1,
+        "input.mode.type": 1,
+        "input.typeInstead": 1,
+        "input.review.blocked.tooLong": 1,
+        "math.speech.power": 3
+      },
+      "judged_items": 318,
+      "dropped": []
+    },
+    "last_usd": 0.763405,
+    "changes": [
+      {
+        "path": "topics.linear-equations.title",
+        "before": "Kutatua milinganyo ya mstari",
+        "after": "Kutatua milinganyo ya kwanza",
+        "why": "judge: “Kutatua milinganyo ya mstari” mistranslates “linear equations”; in Swahili math teaching this should be “milinganyo ya mstari/linear” only if referring to lines, but the standard term is “milinganyo ya kwanza” or “milinganyo sahili/linear”. (The translation uses a nonstandard/ambiguous term for linear equations; “milinganyo ya mstari” can mean equations of a line rather than linear equations in general.)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "Jikumbushe wazo na uone kila hatua ikielezwa kwa njia 3.",
+        "after": "Jikumbushe wazo na uone kila hatua ikielezwa kwa njia tatu.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "demo.fractionHeading",
+        "before": "Klasu",
+        "after": "Sehemu",
+        "why": "judge: TR uses “Klasu” for “Fraction”. (“Klasu” is not the standard Swahili math term for fraction; teachers use terms such as “sehemu” or “kasiri.”)"
+      },
+      {
+        "path": "demo.fractionStepsHeading",
+        "before": "Hatua za klasu",
+        "after": "Hatua za sehemu",
+        "why": "judge: TR uses “Hatua za klasu” for “Fraction steps”. (“Klasu” is not the standard Swahili math term for fraction, so the heading is not understandable as intended.)"
+      },
+      {
+        "path": "demo.inputExpressionHint",
+        "before": "Chapa klasu kwa kutumia mstari mkwaju, kama 2/5.",
+        "after": "Chapa sehemu kwa kutumia mkwaju, kama 2/5.",
+        "why": "judge: TR uses “klasu” for “fractions” in the input hint. (“Klasu” is not the standard Swahili math term for fractions; this changes/obscures the intended math term.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Njia 3 za kuingiza hisabati: kuchapa, kuandika, au kupiga picha. Chini ya kila ingizo kuna kile hasa ambacho ukurasa hupokea. Hisabati iliyoandikwa na kupigwa picha husomwa na seva, na hakuna kinachopitishwa hadi uithibitishe.",
+        "after": "Njia tatu za kuingiza hisabati: kuichapa, kuiandika, au kupiga picha. Chini ya kila ingizo kuna kile hasa ambacho ukurasa hupokea. Hisabati iliyoandikwa na iliyopigwa picha husomwa na seva, na hakuna kinachopitishwa hadi uithibitishe.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "practice.badReason.false_equality",
+        "before": "Pande zake 2 si sawa.",
+        "after": "Pande zake mbili si sawa.",
+        "why": "number_not_in_source: ['2'] not in the English"
+      },
+      {
+        "path": "practice.needWorking",
+        "before": "Andika kwa mkono au charaza angalau mstari 1 kwanza.",
+        "after": "Andika kwa mkono au charaza angalau mstari mmoja kwanza.",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Chapa",
+        "after": "Andika",
+        "why": "judge: TR uses “Chapa” for “Type”. (“Chapa” means print/stamp or type in some contexts, but as a mode label for entering text on a device, Swahili users expect “Charaza” or “Andika”; “Chapa” is misleading.)"
+      },
+      {
+        "path": "input.typeInstead",
+        "before": "Ichape badala yake",
+        "after": "Iandike badala yake",
+        "why": "judge: TR uses “Ichape badala yake” for “Type it instead”. (“Ichape” is misleading for typing text/math into a field; it can mean print/stamp it rather than enter it by keyboard.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{num, plural, one {moja} other {#}} {den, plural, =2 {{num, plural, one {nusu} other {nusu}}} =3 {{num, plural, one {theluthi} other {theluthi}}} =4 {{num, plural, one {robo} other {robo}}} =5 {{num, plural, one {humusi} other {humusi}}} =6 {{num, plural, one {sudusi} other {sudusi}}} =7 {{num, plural, one {saba} other {saba}}} =8 {{num, plural, one {nane} other {nane}}} =9 {{num, plural, one {tisa} other {tisa}}} =10 {{num, plural, one {kumi} other {kumi}}} other {juu ya #}}",
+        "after": "{num, plural, one {moja} other {#}} {den, plural, =2 {{num, plural, one {nusu} other {nusu}}} =3 {{num, plural, one {theluthi} other {theluthi}}} =4 {{num, plural, one {robo} other {robo}}} =5 {{num, plural, one {humusi} other {humusi}}} =6 {{num, plural, one {sudusi} other {sudusi}}} =7 {{num, plural, one {subui} other {subui}}} =8 {{num, plural, one {thumuni} other {thumuni}}} =9 {{num, plural, one {tusui} other {tusui}}} =10 {{num, plural, one {ushuri} other {ushuri}}} other {juu ya #}}",
+        "why": "judge: TR uses 'saba', 'nane', 'tisa', and 'kumi' for sevenths, eighths, ninths, and tenths. (These are cardinal numbers (seven, eight, nine, ten), not the Swahili fraction terms for seventh/eighth/ninth/tenth, so the math meaning is wrong.)"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} kipeo cha 2} cubed {{base} kipeo cha 3} other {{base} kipeo cha {exp}}}",
+        "after": "{power, select, squared {{base} mraba} cubed {{base} mchemraba} other {{base} kipeo cha {exp}}}",
+        "why": "number_not_in_source: ['2', '3'] not in the English"
+      },
+      {
+        "path": "input.review.blocked.tooLong",
+        "before": "Mstari ni mrefu sana kukaguliwa (angalau herufi {chars} kwa kila upande). Ufupishe.",
+        "after": "Mstari ni mrefu sana kukaguliwa (si zaidi ya herufi {chars} kwa kila upande). Ufupishe.",
+        "why": "judge: TR says “at least {chars} characters per side” instead of “at most {chars} characters a side.” (“Angalau” means “at least,” reversing the limit in the English.)"
+      },
+      {
+        "path": "demo.inputExpressionHint",
+        "before": "Chapa sehemu kwa kutumia mkwaju, kama 2/5.",
+        "after": "Chapa sehemu kwa kutumia alama ya kufyeka, kama 2/5.",
+        "why": "judge: TR uses 'mkwaju' for slash in 'Type fractions with a slash'. ('Mkwaju' is not a standard/understandable Swahili term for the slash character in this context; teachers would expect a term such as 'alama ya kufyeka' or similar.)"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} mraba} cubed {{base} mchemraba} other {{base} kipeo cha {exp}}}",
+        "after": "{power, select, squared {{base} mraba} cubed {{base} kipeo cha tatu} other {{base} kipeo cha {exp}}}",
+        "why": "judge: TR translates 'cubed' as 'mchemraba'. (In Swahili, 'cubed' in mathematics is normally expressed as 'mchemraba' only as a noun meaning cube/solid cube; for exponentiation it should be 'kipeo cha tatu' or similar. '{base} mchemraba' is not the intended 'base cubed'.)"
+      },
+      {
+        "path": "topics.linear-equations.title",
+        "before": "Kutatua milinganyo ya kwanza",
+        "after": "Kutatua milinganyo ya mstari",
+        "why": "judge: TR: Kutatua milinganyo ya kwanza (“Milinganyo ya kwanza” is not the proper/clear Swahili term for linear equations; it should be “milinganyo ya mstari/lineari” or “milinganyo ya shahada ya kwanza.”)"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} mraba} cubed {{base} kipeo cha tatu} other {{base} kipeo cha {exp}}}",
+        "after": "{power, select, squared {{base} mraba} cubed {{base} ujazo} other {{base} kipeo cha {exp}}}",
+        "why": "judge: The translation for 'cubed' says '{base} kipeo cha tatu', which means 'base to the third power' rather than the standard speech form 'base cubed' ('{base} ujazo'). (Uses a nonstandard/incorrect math speech term for 'cubed' in Swahili; 'ujazo' is the expected term analogous to 'mraba' for squared.)"
+      }
+    ],
+    "usd": 0.763405
+  },
+  "kk": {
+    "lang": "kk",
+    "shipped": false,
+    "failing": [
+      "math: math.speech.fractionSimple: judge: The translation of the fallback case `other {over #}` is rendered as `#-дан {num}`, which puts the denominator placeholder before the numerator and uses an invalid suffix construction for arbitrary denominators; it should express something like `{#}-дан {num}` / `{#} over {num}` depending on placeholder order. (For arbitrary denominators, the Kazakh TR changes the placeholder order/structure from numerator over denominator and is not a clear grammatical rendering of the intended fraction.)"
+    ],
+    "stats": {
+      "calls": {
+        "generate": 26,
+        "judge": 46
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 59743,
+      "cached_tokens": 3840,
+      "completion_tokens": 13753,
+      "reasoning_tokens": 2199,
+      "retries": 10,
+      "samples": 0,
+      "judge_flags": {
+        "demo.fractionStepsLabel": 1,
+        "input.review.unreadable": 1,
+        "input.mode.type": 1,
+        "mistake.sameAmount": 2,
+        "math.speech.over": 1,
+        "math.speech.fractionSimple": 4,
+        "math.speech.power": 1,
+        "math.speech.powerGroup": 1
+      },
+      "judged_items": 317,
+      "dropped": []
+    },
+    "last_usd": 0.694025,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "Негізгі ойды еске түсіріп, әр қадамның 3 түрлі түсіндірмесін көріңіз.",
+        "after": "Негізгі ойды еске түсіріп, әр қадамның үш түрлі түсіндірмесін көріңіз.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "Бұл жолды математика ретінде салу мүмкін емес. Ол жазылған күйінде жіберіледі.",
+        "after": "Бұл жолды математикалық жазба ретінде тану мүмкін емес. Ол жазылған күйінде жіберіледі.",
+        "why": "judge: Translation says the line cannot be 'drawn' as math instead of read/recognized as math. (Kazakh 'салу' means to draw/put, which changes the intended meaning of 'can’t be drawn as math' in this UI context; it should mean the math cannot be rendered/interpreted/read as math.)"
+      },
+      {
+        "path": "input.review.blocked.oneLine",
+        "before": "Мұнда тек 1 жол қалдырыңыз: қалғандарын өшіріңіз.",
+        "after": "Мұнда тек бір жол қалдырыңыз: қалғандарын өшіріңіз.",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "demo.fractionStepsLabel",
+        "before": "Бір жарым мен бір үштен бірді қосу",
+        "after": "Бірден 2-ден 1 мен 3-тен 1-ді қосу",
+        "why": "judge: TR translates 'Adding one half and one third' as 'Adding one and a half and one and one third'. ('Бір жарым мен бір үштен бірді қосу' means adding 1½ and 1⅓, not 1/2 and 1/3.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Математиканы енгізудің 3 жолы: теру, жазу немесе фотоға түсіру. Әр енгізудің астында бет дәл не алатыны көрсетілген. Жазылған және фотоға түсірілген математика серверде оқылады, ал сіз растағанша ештеңе жіберілмейді.",
+        "after": "Математиканы енгізудің үш жолы: теру, жазу немесе фотоға түсіру. Әр енгізудің астында бет дәл не алатыны көрсетілген. Жазылған және фотоға түсірілген математика серверде оқылады, ал сіз растағанша ештеңе әрі қарай жіберілмейді.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Теру",
+        "after": "Теріп енгізу",
+        "why": "judge: TR: Теру (EN 'Type' is a noun label for an input mode, while 'Теру' means the action 'to type'; as a mode label it should be 'Typing/typed input' such as 'Теріп енгізу', otherwise it can be understood as 'typing' rather than the type/category.)"
+      },
+      {
+        "path": "demo.fractionStepsLabel",
+        "before": "Бірден 2-ден 1 мен 3-тен 1-ді қосу",
+        "after": "Жартыны және үштен бірді қосу",
+        "why": "number_not_in_source: ['1', '2', '3'] not in the English"
+      },
+      {
+        "path": "mistake.sameAmount",
+        "before": "Оның жауабы және қысқартылған жауап",
+        "after": "Оның жауабы мен ықшамдалған жауап — бірдей шама",
+        "why": "judge: The translation drops 'the same amount' and renders it as 'Their answer and the simplified answer'. (EN labels that the two values are the same amount, but TR only lists the student's answer and simplified answer, losing the sameness meaning.)"
+      },
+      {
+        "path": "mistake.sameAmount",
+        "before": "Оның жауабы мен ықшамдалған жауап — бірдей шама",
+        "after": "Оның жауабы және ықшамдалған жауап",
+        "why": "judge: The translation adds that the two answers are “the same amount,” which is not present in the English phrase. (The English only says “Their answer and the simplified answer” and does not state that they are equal/the same amount.)"
+      },
+      {
+        "path": "math.speech.over",
+        "before": "{den}-ден {num}",
+        "after": "{num} бөлінген {den}",
+        "why": "judge: TR: {den}-ден {num} (This reverses the English order in a way that is only idiomatic for simple fractions; for general 'num over den' Kazakh should express numerator over denominator (e.g. '{num} бөлінген {den}').)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{den, plural, =2 {{num, plural, one {жарты} other {2-ден #}}} =3 {{num, plural, one {3-тен бір} other {3-тен #}}} =4 {{num, plural, one {4-тен бір} other {4-тен #}}} =5 {{num, plural, one {5-тен бір} other {5-тен #}}} =6 {{num, plural, one {6-дан бір} other {6-дан #}}} =7 {{num, plural, one {7-ден бір} other {7-ден #}}} =8 {{num, plural, one {8-ден бір} other {8-ден #}}} =9 {{num, plural, one {9-дан бір} other {9-дан #}}} =10 {{num, plural, one {10-нан бір} other {10-нан #}}} other {{den}-ден {num}}}",
+        "after": "{den, plural, =2 {{num, plural, one {жарты} other {# жарты}}} =3 {{num, plural, one {3-тен бір} other {{num} 3-тен}}} =4 {{num, plural, one {4-тен бір} other {{num} 4-тен}}} =5 {{num, plural, one {5-тен бір} other {{num} 5-тен}}} =6 {{num, plural, one {6-дан бір} other {{num} 6-дан}}} =7 {{num, plural, one {7-ден бір} other {{num} 7-ден}}} =8 {{num, plural, one {8-ден бір} other {{num} 8-ден}}} =9 {{num, plural, one {9-дан бір} other {{num} 9-дан}}} =10 {{num, plural, one {10-нан бір} other {{num} 10-нан}}} other {{num} бөлінген #}}",
+        "why": "judge: TR: {den, plural, =2 {{num, plural, one {жарты} other {2-ден #}}} ...} (The plural branch uses # inside the denominator plural, so # refers to the denominator, not the numerator; e.g. 2/5 would be read as '5-тен 5' instead of '5-тен 2'.)"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} квадрат} cubed {{base} куб} other {{base}, {exp} дәрежесі}}",
+        "after": "{power, select, squared {{base} квадраты} cubed {{base} кубы} other {{base}-тің {exp}-дәрежесі}}",
+        "why": "judge: TR: {power, select, squared {{base} квадрат} cubed {{base} куб} other {{base}, {exp} дәрежесі}} ('{base}, {exp} дәрежесі' means roughly 'base, its exp-th degree' and drops the idea 'base to the power of exp'; the expected mathematical wording is '{base} {exp}-дәрежесі' or '{base}-тің {exp}-дәрежесі'.)"
+      },
+      {
+        "path": "math.speech.powerGroup",
+        "before": "{base}, {exp} дәрежесі, дәреже көрсеткішінің соңы",
+        "after": "{base}-тің {exp}-дәрежесі, дәреже көрсеткішінің соңы",
+        "why": "judge: TR: {base}, {exp} дәрежесі, дәреже көрсеткішінің соңы (The phrase '{base}, {exp} дәрежесі' does not correctly express '{base} to the power of {exp}' in Kazakh; it should indicate the base's exp-th power.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{den, plural, =2 {{num, plural, one {жарты} other {# жарты}}} =3 {{num, plural, one {3-тен бір} other {{num} 3-тен}}} =4 {{num, plural, one {4-тен бір} other {{num} 4-тен}}} =5 {{num, plural, one {5-тен бір} other {{num} 5-тен}}} =6 {{num, plural, one {6-дан бір} other {{num} 6-дан}}} =7 {{num, plural, one {7-ден бір} other {{num} 7-ден}}} =8 {{num, plural, one {8-ден бір} other {{num} 8-ден}}} =9 {{num, plural, one {9-дан бір} other {{num} 9-дан}}} =10 {{num, plural, one {10-нан бір} other {{num} 10-нан}}} other {{num} бөлінген #}}",
+        "after": "{den, plural, =2 {{num, plural, one {жарты} other {# жарты}}} =3 {{num, plural, one {үштен бір} other {үштен #}}} =4 {{num, plural, one {төрттен бір} other {төрттен #}}} =5 {{num, plural, one {бестен бір} other {бестен #}}} =6 {{num, plural, one {алтыдан бір} other {алтыдан #}}} =7 {{num, plural, one {жетіден бір} other {жетіден #}}} =8 {{num, plural, one {сегізден бір} other {сегізден #}}} =9 {{num, plural, one {тоғыздан бір} other {тоғыздан #}}} =10 {{num, plural, one {оннан бір} other {оннан #}}} other {{num} бөлінген #}}",
+        "why": "judge: The translation for fractions with denominators 3–10 plural forms renders e.g. '2 thirds' as '2 3-тен', omitting 'one/бір' or an equivalent fractional denominator term, so it is not understandable as the intended fraction. (Kazakh would need forms like 'үштен екі'/'3-тен 2'; '{num} 3-тен' means essentially 'from 3' and drops the fractional unit.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{den, plural, =2 {{num, plural, one {жарты} other {# жарты}}} =3 {{num, plural, one {үштен бір} other {үштен #}}} =4 {{num, plural, one {төрттен бір} other {төрттен #}}} =5 {{num, plural, one {бестен бір} other {бестен #}}} =6 {{num, plural, one {алтыдан бір} other {алтыдан #}}} =7 {{num, plural, one {жетіден бір} other {жетіден #}}} =8 {{num, plural, one {сегізден бір} other {сегізден #}}} =9 {{num, plural, one {тоғыздан бір} other {тоғыздан #}}} =10 {{num, plural, one {оннан бір} other {оннан #}}} other {{num} бөлінген #}}",
+        "after": "{den, plural, =2 {{num, plural, one {жарты} other {# жарты}}} =3 {{num, plural, one {үштен бір} other {үштен #}}} =4 {{num, plural, one {төрттен бір} other {төрттен #}}} =5 {{num, plural, one {бестен бір} other {бестен #}}} =6 {{num, plural, one {алтыдан бір} other {алтыдан #}}} =7 {{num, plural, one {жетіден бір} other {жетіден #}}} =8 {{num, plural, one {сегізден бір} other {сегізден #}}} =9 {{num, plural, one {тоғыздан бір} other {тоғыздан #}}} =10 {{num, plural, one {оннан бір} other {оннан #}}} other {#-дан {num}}}",
+        "why": "judge: For denominators other than 2–10, the translation uses '{num} бөлінген #', which means 'num divided by #' rather than the intended fraction reading 'num over #'. (Kazakh math speech would read a fraction with an arbitrary denominator as '#-дан/ден {num}' or similar; 'бөлінген' changes it to a division expression and is not the intended fraction term.)"
+      }
+    ],
+    "usd": 0.694025
   }
 }

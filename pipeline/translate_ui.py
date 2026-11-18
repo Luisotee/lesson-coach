@@ -36,6 +36,7 @@ from pipeline.translate import (
     TranslationError,
     _plain,
     load_stats,
+    merged,
     named,
     translate_unit,
 )
@@ -235,7 +236,9 @@ async def run(langs: list[str], budget: float) -> None:
 
         for result in await asyncio.gather(*(one(lang) for lang in batch)):
             lang = result["lang"]
-            result["usd"] = result["last_usd"] + results.get(lang, {}).get("usd", 0.0)
+            before = results.get(lang, {})  # a rerun adds to the earlier runs
+            result["usd"] = result["last_usd"] + before.get("usd", 0.0)
+            result["stats"] = merged(before.get("stats", {}), result["stats"])
             results[lang] = result
             status = "shipped" if result["shipped"] else "LEFT OUT"
             print(

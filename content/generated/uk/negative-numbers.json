@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "uk",
+  "title": "Від’ємні числа",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Використовуйте числову пряму й протилежні числа, щоб додавати, віднімати й множити від’ємні числа.",
+  "idea": "Від’ємне число менше від нуля. На числовій прямій `-3` розташоване на три кроки ліворуч від нуля, а `3` — на три кроки праворуч. Це протилежні числа, бо вони на однаковій відстані від нуля, але по різні боки.\n\nДодавання додатного числа переміщує праворуч. Додавання від’ємного числа переміщує ліворуч. Віднімання числа переміщує у бік, протилежний до його додавання, тому віднімання від’ємного числа переміщує праворуч. Наприклад, `5 - (-3)` стає `5 + 3`.\n\nКоли додають числа з різними знаками, знаки тягнуть у протилежні боки. Відповідь має знак числа, яке далі від нуля, а її модуль дорівнює різниці двох модулів. Отже, `-7 + 4` стає `-(7 - 4)`.",
+  "why_it_works": "Віднімання може означати відстань між двома числами. Різниця від `-3` до `5` охоплює кроки від `-3` до нуля, а потім від нуля до `5`. Тому віднімати від’ємне число — те саме, що додавати протилежне до нього: `5 - (-3)` стає `5 + 3`.\n\nДля множення закономірність пояснює правило знаків. Коли перший множник зменшується на один у `3*(-2)`, `2*(-2)`, `1*(-2)` і `0*(-2)`, значення добутку збільшується на два. Продовження закономірності дає додатні результати для добутку від’ємного на від’ємне.\n\nОтже, `(-4)*(-6)` стає `4*6`. Від’ємне число, помножене на від’ємне, дає додатне, бо закономірність множення має зберігатися послідовно.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Обчисліть:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "У виразі є знак віднімання і знак від’ємного числа. Не змішуйте їх: треба знайти `5` мінус `-3`.",
+            "another_way": "Уявіть `-3` як 3 кроки ліворуч від нуля. Вираз `5 - (-3)` питає про відстань від `-3` до `5`.",
+            "visual": "На координатній прямій позначте `-3` ліворуч від нуля, а `5` праворуч від нуля."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Віднімання від’ємного числа рухає у протилежний бік порівняно з додаванням від’ємного, тобто праворуч. Тому `5 - (-3)` перетворюється на `5 + 3`.",
+            "another_way": "Зменшення боргу має той самий ефект, що й прибуток. Тому відняти `-3` — це те саме, що додати `3`.",
+            "visual": "Почніть у точці `5` на координатній прямій, а потім покажіть рух на `3` кроки праворуч."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Після перетворення маємо звичайне додавання. `5 + 3` дорівнює `8`, отже значення початкового виразу — `8`.",
+            "another_way": "На координатній прямій рух на `3` кроки праворуч від `5` приводить у точку `8`. Відстань від `-3` до `5` також дорівнює `8` крокам.",
+            "visual": "Рух праворуч від `5` закінчується в точці `8` на координатній прямій."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Обчисліть:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Вираз `-7 + 4` додає числа з різними знаками. Це як перетягування каната: `-7` далі від нуля, ніж `4`, тому результат залишиться від’ємним.",
+            "another_way": "Почніть з `-7` і додайте `4`, рухаючись праворуч на `4` кроки. Рух іде до нуля, але не переходить через нього.",
+            "visual": "На числовій прямій почніть з `-7` і відкладіть `4` кроки праворуч."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Оскільки `7` більше за `4`, збережіть знак мінус і порівняйте модулі. Тому `-7 + 4` перетворюється на `-(7 - 4)`.",
+            "another_way": "Уявіть `-7` як тягнення ліворуч, а `4` як тягнення праворуч. Залишкове тягнення спрямоване ліворуч, із величиною `7 - 4`.",
+            "visual": "На числовій прямій тягнення ліворуч на `7` і праворуч на `4` залишають тягнення ліворуч на `7 - 4`."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Величина, що залишилася після перетягування, дорівнює `3`, а знак мінус показує напрям ліворуч від нуля. Тож відповідь: `-3`.",
+            "another_way": "Від `-7`, рухаючись праворуч на `4` кроки, потрапляємо в `-3`. Це збігається зі спрощеним результатом.",
+            "visual": "На числовій прямій стрілка закінчується в `-3`, на 3 кроки ліворуч від нуля."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Обчисліть:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Обидва множники від’ємні. Від’ємне число, помножене на від’ємне, дає додатний добуток, тому добуток можна записати без знаків мінус.",
+            "another_way": "Скористайся ідеєю закономірності: множення на від’ємне число змінює напрям, а якщо зробити це двічі, отримаємо додатний добуток.",
+            "visual": "На числовій прямій `(-4)*(-6)` показує рівні від’ємні стрибки, взяті від’ємну кількість разів, що змінює напрям праворуч."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Після визначення знака множимо лише модулі. Рядок `4*6` зберігає частини множників, що відповідають відстаням.",
+            "another_way": "Уяви чотири групи по шість після того, як два мінуси зробили добуток додатним.",
+            "visual": "На числовій прямій `4*6` показує 4 рівні стрибки по 6 праворуч від нуля."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Множення завершено: `4*6` дорівнює `24`. Отже, `24` — це значення початкового виразу.",
+            "another_way": "Початковий вираз перетворився на додатний добуток, а цей добуток дорівнює `24`.",
+            "visual": "На числовій прямій стрибки закінчуються в точці `24` праворуч від нуля."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Віднімання від’ємного числа робить відповідь меншою.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Віднімання зазвичай робить величини меншими, а учень бачить два знаки мінус і залишає мінус.",
+      "what_to_say": {
+        "probe": "Звідки ви починаєте на числовій прямій і в який бік вас переміщує віднімання `-3`?",
+        "nudge": "Яка різниця між `5` і `-3`? Порахуйте кроки від `-3` до `5`.",
+        "tell": "Відняти від’ємне число — це те саме, що додати протилежне до нього, тому `5 - (-3)` — це `5 + 3`, тобто `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "8"
+      },
+      "source_quote": "Деякі учні вважають, що віднімання від’ємного числа робить відповідь меншою."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Від’ємне, помножене на від’ємне, є від’ємним.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Обидва числа від’ємні, тому здається природним, що відповідь теж від’ємна.",
+      "what_to_say": {
+        "probe": "Чому дорівнює `1*(-3)` і `0*(-3)`? Що відбувається з відповіддю щоразу, коли перше число зменшується на 1?",
+        "nudge": "Продовжте закономірність `1*(-3)`, `0*(-3)`, `-1*(-3)` і подивіться, в який бік змінюються відповіді.",
+        "tell": "У цій закономірності кожен крок збільшує результат на 3, тому `(-2)*(-3)` дорівнює `6`. Від’ємне, помножене на від’ємне, є додатним."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "20"
+      },
+      "source_quote": "Деякі учні вважають, що від’ємне, помножене на від’ємне, є від’ємним."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "Коли додаємо числа з різними знаками, треба додати їхні модулі й залишити перший знак.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "Учень засвоїв, що додавання збільшує числа за величиною, а перший знак — це той, який він бачить першим.",
+      "what_to_say": {
+        "probe": "Якщо ви починаєте з `-5` і рухаєтеся на три кроки, у який бік ви рухаєтеся?",
+        "nudge": "Уявіть перетягування каната між `-5` і `3`. Який бік перемагає і на скільки?",
+        "tell": "Додатне 3 тягне назад до нуля, тому `-5 + 3` дорівнює `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "-5"
+      },
+      "source_quote": "Деякі учні додають модулі й залишають знак першого числа."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Завжди треба віднімати менше число від більшого.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Працюючи з натуральними числами, учням казали, що не можна від меншого числа відняти більше.",
+      "what_to_say": {
+        "probe": "Куди ви потрапите, якщо почнете з `3` і зробите сім кроків ліворуч?",
+        "nudge": "Чи `3 - 7` те саме, що й `7 - 3`? Перевірте обидва на числовій прямій.",
+        "tell": "Сім кроків ліворуч від трьох приводять у точку `-4`, тому `3 - 7` дорівнює `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "-7"
+      },
+      "source_quote": "Деякі учні завжди віднімають менше число від більшого."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "Два мінуси дають плюс, також під час додавання.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "Правило «два мінуси дають плюс» коротке й добре запам’ятовується, тому його застосовують до кожної пари знаків мінус.",
+      "what_to_say": {
+        "probe": "Якщо ви винні 4, а потім заборгували ще 3, скільки ви винні?",
+        "nudge": "Почніть у точці `-4` на числовій прямій і додайте `-3`. У який бік ви рухаєтеся?",
+        "tell": "Додавання від’ємного числа переміщує ліворуч, тому `-4 + (-3)` дорівнює `-7`. Правило знаків стосується множення й ділення."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "-8"
+      },
+      "source_quote": "Деякі учні застосовують правило «два мінуси дають плюс» до додавання."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Чому віднімання від’ємного числа переміщує праворуч?",
+      "answer": "Віднімання переміщує у бік, протилежний до додавання. Додавання від’ємного числа переміщує ліворуч, тому віднімання від’ємного числа переміщує праворуч. Наприклад, `5 - (-3)` стає `5 + 3`."
+    },
+    {
+      "question": "Чи два мінуси завжди дають плюс?",
+      "answer": "Ні. Це правило стосується множення й ділення. У додаванні важливий напрям. Додавання двох від’ємних чисел переміщує далі ліворуч на числовій прямій."
+    },
+    {
+      "question": "Чому `-7 + 4` є від’ємним?",
+      "answer": "Числа тягнуть у протилежні боки. `-7` далі від нуля, ніж `4`, тому відповідь зберігає знак мінус. `-7 + 4` стає `-(7 - 4)`."
+    },
+    {
+      "question": "Чому від’ємне число, помножене на від’ємне, дає додатне?",
+      "answer": "Закономірність множення має продовжуватися. Коли один множник проходить через нуль і далі зменшується, результати щоразу збільшуються на однакову величину, що приводить до додатних відповідей."
+    },
+    {
+      "question": "Чи може `3 - 7` мати відповідь?",
+      "answer": "Так. Почніть у точці `3` і перемістіться на сім кроків ліворуч по числовій прямій. Точка зупинки буде нижче нуля."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Розмістіть від’ємні числа",
+      "activity": "Накресліть числову пряму з нулем у центрі. Розмістіть додатні й від’ємні числа на однакових кроках від нуля. Підкресліть протилежні числа, як-от `-3` і `3`, як числа на однаковій відстані від нуля по різні боки."
+    },
+    {
+      "minutes": 10,
+      "title": "Додавання як рух",
+      "activity": "Використайте числову пряму, щоб показати: додавання додатного числа переміщує праворуч, а додавання від’ємного — ліворуч. Додайте приклад із різними знаками й опишіть його як перетягування каната."
+    },
+    {
+      "minutes": 10,
+      "title": "Віднімайте від’ємні числа",
+      "activity": "Розділяйте дію і знак, кажучи «відняти» та «від’ємне». Покажіть, що віднімання переміщує протилежно до додавання, тому `5 - (-3)` стає `5 + 3`."
+    },
+    {
+      "minutes": 10,
+      "title": "Різні знаки в додаванні",
+      "activity": "Змоделюйте приклади, у яких знаки тягнуть у протилежні боки. Відповідь набуває знака числа, що далі від нуля, а модуль є різницею модулів. Використайте: `-7 + 4` стає `-(7 - 4)`."
+    },
+    {
+      "minutes": 10,
+      "title": "Множте за закономірністю",
+      "activity": "Покажіть закономірність від додатних множників вниз через нуль. Використайте її, щоб пояснити, чому від’ємне число, помножене на від’ємне, дає додатне, а потім пов’яжіть це з тим, що `(-4)*(-6)` стає `4*6`."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Відняти від’ємне число — це те саме, що додати протилежне до нього."
+        },
+        {
+          "rung": "computation",
+          "text": "Перепишіть як `-7 + 4` і перемістіться на 4 кроки праворуч від `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Відняти від’ємне число — це те саме, що додати протилежне до нього."
+        },
+        {
+          "rung": "computation",
+          "text": "Перепишіть як `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "Коли знаки різні, відніміть модулі чисел і залиште знак числа, що далі від нуля."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` дорівнює `17`, а `-32` далі від нуля, ніж `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "Коли обидва числа від’ємні, додайте їхні модулі й залиште знак мінус."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` дорівнює `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "Добуток двох від’ємних чисел є додатним."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` дорівнює `14`, і знаки однакові."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "Коли два знаки різні, добуток є від’ємним."
+        },
+        {
+          "rung": "computation",
+          "text": "Спочатку не зважайте на знак: `9*3` дорівнює `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Ділення від’ємного числа на від’ємне дає додатне, як і під час множення."
+        },
+        {
+          "rung": "computation",
+          "text": "Спочатку не зважайте на знаки: `100/4` дорівнює `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Множення виконуємо перед додаванням і відніманням."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` дорівнює `-30`, а `7*(-2)` дорівнює `-14`, тому маємо `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

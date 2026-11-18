@@ -58,13 +58,19 @@ const AVAILABLE = new Set([
   'fr',
   'de',
   'el',
+  'it',
   'pt',
   'pt-BR',
   'ru',
   'es',
   'sv',
   'pl',
+  'tr',
   'fa',
+  'ur',
+  'hi',
+  'bn',
+  'zh-Hans',
 ])
 
 /** Every language the app offers. A language listed here must have a complete locale file. */

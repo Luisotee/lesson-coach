@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "tr",
+  "title": "Negatif sayılar",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Negatif sayıları toplamak, çıkarmak ve çarpmak için sayı doğrusunu ve zıt sayıları kullanın.",
+  "idea": "Negatif sayı sıfırın altındadır. Sayı doğrusunda `-3`, sıfırın 3 adım solundadır; `3` ise 3 adım sağındadır. Sıfırdan aynı uzaklıkta ama farklı taraflarda oldukları için zıt sayılardır.\n\nPozitif bir sayı eklemek sağa hareket ettirir. Negatif bir sayı eklemek sola hareket ettirir. Bir sayıyı çıkarmak, onu eklemenin tersi yönde hareket ettirir; bu yüzden negatif bir sayıyı çıkarmak sağa hareket ettirir. Örneğin, `5 - (-3)` ifadesi `5 + 3` olur.\n\nFarklı işaretli sayılar toplandığında, işaretler zıt yönlere çeker. Sonuç, sıfırdan daha uzak olan sayının işaretini alır; büyüklüğü ise iki büyüklüğün farkıdır. Bu yüzden `-7 + 4` ifadesi `-(7 - 4)` olur.",
+  "why_it_works": "Çıkarma, iki sayı arasındaki uzaklık anlamına gelebilir. `-3`ten `5`e kadar olan fark, `-3`ten sıfıra ve sonra sıfırdan `5`e kadar olan adımları kapsar. Bu yüzden negatif bir sayıyı çıkarmak, onun zıtını eklemekle aynıdır: `5 - (-3)` ifadesi `5 + 3` olur.\n\nÇarpma için işaret kuralını bir örüntü açıklar. `3*(-2)`, `2*(-2)`, `1*(-2)` ve `0*(-2)` içinde birinci çarpan birer azalırken, sonuç ikişer artar. Örüntüyü sürdürmek, negatif ile negatifin çarpımı için pozitif sonuçlar verir.\n\nBu yüzden `(-4)*(-6)` ifadesi `4*6` olur. Negatif ile negatifin çarpımı pozitiftir çünkü çarpma örüntüsü tutarlı biçimde devam etmelidir.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Hesaplayın:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "İfadede bir çıkarma işareti ve bir negatif işareti var. Bunları ayrı tutun: `5` eksi `-3` istenir.",
+            "another_way": "`-3` sayısını sıfırın solunda üç adım olarak düşünün. `5 - (-3)` ifadesi, `-3` ile `5` arasındaki uzaklığı sorar.",
+            "visual": "Sayı doğrusunda, `-3` sayısını sıfırın solunda ve `5` sayısını sıfırın sağında işaretleyin."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Negatif bir sayıyı çıkarmak, negatif bir sayı eklemenin ters yönünde hareket ettirir; bu yüzden sağa gidilir. Bu nedenle `5 - (-3)`, `5 + 3` olur.",
+            "another_way": "Bir borcu ortadan kaldırmak, kazanmakla aynı etkiyi yapar. Bu yüzden `-3` çıkarmak, `3` eklemekle aynı harekettir.",
+            "visual": "Sayı doğrusunda `5` noktasından başlayın, sonra sağa doğru `3` adımlık bir hareket gösterin."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Yeniden yazdıktan sonra işlem sıradan bir toplamadır. `5 + 3`, `8` eder; bu yüzden başlangıçtaki ifadenin değeri `8` olur.",
+            "another_way": "Sayı doğrusunda `5` noktasından sağa `3` adım gidince `8` noktasına varılır. `-3` ile `5` arasındaki uzaklık da `8` adımdır.",
+            "visual": "`5` noktasından sağa doğru yapılan hareket, sayı doğrusunda `8` noktasında biter."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Hesaplayın:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`-7 + 4` ifadesi, işaretleri farklı sayıları toplar. Bu bir halat çekme gibidir: `-7`, sıfıra `4`ten daha uzaktır, bu yüzden sonuç negatif kalır.",
+            "another_way": "`-7`den başla ve `4` eklemek için sağa `4` adım ilerle. Hareket sıfıra doğru gider ama sıfırı geçmez.",
+            "visual": "Sayı doğrusunda `-7`den başla ve sağa doğru `4` adım çiz."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`7`, `4`ten büyük olduğu için negatif işareti koru ve büyüklükleri karşılaştır. Bu yüzden `-7 + 4`, `-(7 - 4)` olur.",
+            "another_way": "`-7`yi sola doğru bir çekme, `4`ü sağa doğru bir çekme olarak düşün. Kalan çekme sola doğrudur ve büyüklüğü `7 - 4`tür.",
+            "visual": "Sayı doğrusunda, `7`lik sola çekme ile `4`lük sağa çekme, `7 - 4` büyüklüğünde sola bir çekme bırakır."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Halat çekmeden sonra kalan büyüklük `3`tür ve negatif işaret yönün sıfırın solu olduğunu gösterir. Bu yüzden cevap `-3`tür.",
+            "another_way": "`-7`den başlayıp sağa `4` adım ilerlemek `-3`e götürür. Bu, sadeleştirilmiş sonuçla aynıdır.",
+            "visual": "Sayı doğrusunda ok, sıfırın solunda 3 adım olan `-3`te biter."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Hesaplayın:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Çarpanların ikisi de negatiftir. Negatif ile negatifin çarpımı pozitiftir, bu yüzden çarpım negatif işaretler olmadan yeniden yazılabilir.",
+            "another_way": "Örüntü fikrini kullanın: negatif bir sayı ile çarpmak yönü tersine çevirir; bunu iki kez yapmak pozitif bir çarpım verir.",
+            "visual": "Sayı doğrusunda `(-4)*(-6)`, eşit negatif sıçramaların negatif sayıda kez yapıldığını, bunun da sağa doğru tersine döndüğünü gösterir."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "İşaret belirlendikten sonra yalnızca büyüklükler çarpılır. `4*6` satırı çarpanların uzaklık kısımlarını korur.",
+            "another_way": "İki negatif çarpımı pozitif yaptıktan sonra, altılı dört grup olarak düşünün.",
+            "visual": "Sayı doğrusunda `4*6`, sıfırdan sağa doğru altışar birimlik dört eşit sıçramayı gösterir."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Çarpma işlemi tamamlandı: `4*6`, `24` eder. Bu nedenle `24`, başlangıçtaki ifadenin değeridir.",
+            "another_way": "Başlangıçtaki ifade pozitif bir çarpıma dönüştü ve bu çarpım `24` eder.",
+            "visual": "Sayı doğrusunda sıçramalar, sıfırın sağında `24` noktasında biter."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Negatif bir sayıyı çıkarmak sonucu küçültür.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Çıkarma genellikle nicelikleri küçültür ve öğrenci iki eksi işareti görüp eksiyi korur.",
+      "what_to_say": {
+        "probe": "Sayı doğrusunda nereden başlarsın ve `-3` çıkarmak seni hangi yöne hareket ettirir?",
+        "nudge": "`5` ile `-3` arasındaki fark nedir? `-3`ten `5`e kadar adımları say.",
+        "tell": "Negatif bir sayıyı çıkarmak, onun karşıtını eklemekle aynıdır; bu yüzden `5 - (-3)`, `5 + 3` olur, bu da `8`dir."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "8"
+      },
+      "source_quote": "Bazı öğrenciler negatif bir sayıyı çıkarmanın sonucu küçülttüğüne inanır."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Negatif ile negatifin çarpımı negatiftir.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "İki sayı da negatiftir, bu yüzden cevabın da negatif olması doğal görünür.",
+      "what_to_say": {
+        "probe": "`1*(-3)` ve `0*(-3)` nedir? İlk sayı her seferinde 1 azaldığında cevapta ne olur?",
+        "nudge": "`1*(-3)`, `0*(-3)`, `-1*(-3)` örüntüsünü sürdür ve cevapların hangi yöne gittiğine bak.",
+        "tell": "Örüntü her adımda 3 artar, bu yüzden `(-2)*(-3)` sonucu `6`dır. Negatif ile negatifin çarpımı pozitiftir."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "20"
+      },
+      "source_quote": "Bazı öğrenciler negatif ile negatifin çarpımının negatif olduğuna inanır."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "Farklı işaretli sayıları toplarken, büyüklükleri topla ve ilk işareti koru.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "Öğrenci toplamanın sayıları büyüklük olarak artırdığını öğrenmiştir ve ilk işaret ilk gördüğü işarettir.",
+      "what_to_say": {
+        "probe": "`-5`ten başlayıp üç adım hareket edersen, hangi yöne gidersin?",
+        "nudge": "`-5` ile `3` arasında bir halat çekme oyunu düşün. Hangi taraf kazanır ve ne kadar farkla?",
+        "tell": "Pozitif üç sıfıra doğru geri çeker, bu yüzden `-5 + 3` sonucu `-2`dir."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "-5"
+      },
+      "source_quote": "Bazı öğrenciler büyüklükleri toplar ve ilk sayının işaretini korur."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Her zaman küçük sayıyı büyük sayıdan çıkarırsın.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Doğal sayılarda öğrencilere, küçük bir sayıdan daha büyük bir sayının çıkarılamayacağı söylenmiştir.",
+      "what_to_say": {
+        "probe": "`3`ten başlayıp sola doğru yedi adım atarsan nereye varırsın?",
+        "nudge": "`3 - 7`, `7 - 3` ile aynı mıdır? İkisini de sayı doğrusunda dene.",
+        "tell": "Üçten sola doğru yedi adım `-4`e götürür, bu yüzden `3 - 7` sonucu `-4`tür."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "-7"
+      },
+      "source_quote": "Bazı öğrenciler her zaman küçük sayıyı büyük sayıdan çıkarır."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "İki negatif pozitif yapar, toplamada da böyledir.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "“İki negatif pozitif yapar” kuralı kısa ve akılda kalıcıdır, bu yüzden her eksi işareti çiftine uygulanır.",
+      "what_to_say": {
+        "probe": "4 borcun varsa ve sonra 3 daha borçlanırsan, ne kadar borcun olur?",
+        "nudge": "Sayı doğrusunda `-4`ten başla ve `-3` ekle. Hangi yöne hareket edersin?",
+        "tell": "Negatif eklemek sola hareket ettirir, bu yüzden `-4 + (-3)` sonucu `-7`dir. İşaret kuralı çarpma ve bölme içindir."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "-8"
+      },
+      "source_quote": "Bazı öğrenciler “iki negatif pozitif yapar” sözünü toplamaya uygular."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Negatif bir sayıyı çıkarmak neden sağa hareket ettirir?",
+      "answer": "Çıkarma, eklemenin tersi yönde hareket ettirir. Negatif bir sayı eklemek sola hareket ettirir, bu yüzden negatif bir sayıyı çıkarmak sağa hareket ettirir. Örneğin, `5 - (-3)` ifadesi `5 + 3` olur."
+    },
+    {
+      "question": "İki negatif her zaman pozitif yapar mı?",
+      "answer": "Hayır. Bu kural çarpma ve bölme içindir. Toplamada yön önemlidir. İki negatif sayı eklemek, sayı doğrusunda daha sola götürür."
+    },
+    {
+      "question": "`-7 + 4` neden negatiftir?",
+      "answer": "Sayılar zıt yönlere çeker. `-7`, sıfırdan `4`ten daha uzaktır; bu yüzden sonuç negatif işareti korur. `-7 + 4` ifadesi `-(7 - 4)` olur."
+    },
+    {
+      "question": "Negatif ile negatifin çarpımı neden pozitiftir?",
+      "answer": "Çarpma örüntüsü devam etmelidir. Bir çarpan sıfırın altına doğru azalırken, sonuçlar aynı miktarda artmaya devam eder; bu da pozitif sonuçlara götürür."
+    },
+    {
+      "question": "`3 - 7`nin cevabı var mı?",
+      "answer": "Evet. `3`ten başlayın ve sayı doğrusunda yedi adım sola gidin. Varılan nokta sıfırın altındadır."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Negatifleri yerleştirme",
+      "activity": "Ortada sıfır olan bir sayı doğrusu çizin. Pozitif ve negatif sayıları sıfırdan eşit adımlarla yerleştirin. `-3` ve `3` gibi zıt sayıların, sıfırdan aynı uzaklıkta ama farklı taraflarda olduğunu vurgulayın."
+    },
+    {
+      "minutes": 10,
+      "title": "Toplamayı hareket olarak gösterme",
+      "activity": "Sayı doğrusunu kullanarak pozitif bir sayı eklemenin sağa, negatif bir sayı eklemenin sola hareket ettirdiğini gösterin. Farklı işaretli bir örnek ekleyin ve bunu bir halat çekme gibi anlatın."
+    },
+    {
+      "minutes": 10,
+      "title": "Negatifleri çıkarma",
+      "activity": "“Çıkarma” ve “negatif” diyerek işlemi ve işareti ayrı tutun. Çıkarmanın eklemenin tersi yönde hareket ettirdiğini gösterin; bu yüzden `5 - (-3)` ifadesi `5 + 3` olur."
+    },
+    {
+      "minutes": 10,
+      "title": "Toplamada farklı işaretler",
+      "activity": "İşaretlerin zıt yönlere çektiği örnekler modelleyin. Sonuç, sıfırdan daha uzak olan sayının işaretini alır; büyüklük ise büyüklüklerin farkıdır. `-7 + 4` ifadesi `-(7 - 4)` olur örneğini kullanın."
+    },
+    {
+      "minutes": 10,
+      "title": "Örüntüyle çarpma",
+      "activity": "Pozitif çarpanlardan sıfıra doğru inen örüntüyü gösterin. Bunu, negatif ile negatifin çarpımının neden pozitif olduğunu açıklamak için kullanın; sonra bunu `(-4)*(-6)` ifadesinin `4*6` olmasına bağlayın."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-7 - (-4)` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Negatif bir sayıyı çıkarmak, onun işaret değiştirmiş halini eklemekle aynıdır."
+        },
+        {
+          "rung": "computation",
+          "text": "Bunu `-7 + 4` olarak yaz ve `-7`den sağa doğru 4 adım ilerle."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`9 - (-15)` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Negatif bir sayıyı çıkarmak, onun işaret değiştirmiş halini eklemekle aynıdır."
+        },
+        {
+          "rung": "computation",
+          "text": "Bunu `9 + 15` olarak yaz."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`15 + (-32)` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "İşaretler farklıysa büyüklükleri çıkar ve sıfıra daha uzak olan sayının işaretini kullan."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` sonucu `17`dir ve `-32`, `15`ten sıfıra daha uzaktır."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-31 + (-19)` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Her iki sayı da negatifse büyüklükleri topla ve negatif işareti koru."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` sonucu `50`dir."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-1*(-14)` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Negatif ile negatifin çarpımı pozitiftir."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` sonucu `14`tür ve işaretler aynıdır."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-9*3` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "İki işaret farklı olduğunda çarpım negatiftir."
+        },
+        {
+          "rung": "computation",
+          "text": "Önce işareti yok say: `9*3` sonucu `27`dir."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-100/(-4)` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Negatif bir sayıyı negatif bir sayıya bölmek, çarpmada olduğu gibi pozitif sonuç verir."
+        },
+        {
+          "rung": "computation",
+          "text": "Önce işaretleri yok say: `100/4` sonucu `25`tir."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`5*(-6) + 7*(-2) - 3` ifadesinin değerini bulmak istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Toplama ve çıkarmadan önce çarpma yapılır."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` sonucu `-30` ve `7*(-2)` sonucu `-14`tür; böylece `-30 - 14 - 3` elde ederiz."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

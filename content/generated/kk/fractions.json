@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "kk",
+  "title": "Бөлшектер",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Бөлшектер тең бөліктерді атайды; амалдарда бөлік өлшемін анық сақтап, бөліктерді санаймыз.",
+  "idea": "Бөлшек бүтіннің тең бөліктерін атайды. `3/4` бөлшегінде төменгі сан бүтіннің тең бөліктерге бөлінгенін көрсетеді. Жоғарғы сан сол бөліктердің нешеуі алынғанын санайды.\n\nМәндес бөлшектер бірдей шаманы өлшемі әртүрлі бөліктермен атайды. Жоғарғы және төменгі санды бірдей санға көбейту немесе бөлу шаманы өзгертпейді.\n\nҚосу үшін бөліктерді санаудан бұрын олардың өлшемі бірдей болуы керек. Көбейту кезінде бүтін санды бөлшекке көбейту сол бөлшектің қайталанатын топтарын санайды. Бөлуде сұрақ: бір бөлшек екіншісіне неше рет сыяды.",
+  "why_it_works": "Тек бірдей бөліктерді қосуға болады. `1/2 + 1/3` үшін жарты мен үштен бірдің өлшемдері әртүрлі, сондықтан екеуі де алтыдан бірлер түрінде жазылады. `1/2 + 1/3` өрнегі `3/6 + 2/6` болады, ал `3/6 + 2/6` мәні `5/6`.\n\nКөбейту бөліктер санын өзгертеді. `3*(2/5)` ішінде бестен бірлер бестен бір болып қалады. `3*(2/5)` өрнегі `(3*2)/5` болады, ал `(3*2)/5` мәні `6/5`.\n\nБөлу бөлгіштің нешеуі сыятынын сұрайды. `(2/3)/(3/4)` өрнегі `(2/3)*(4/3)` болады. Содан кейін `(2/3)*(4/3)` өрнегі `(2*4)/(3*3)` болады, ал `(2*4)/(3*3)` мәні `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Есептеңіз:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Бөлшектердің бөліктері әртүрлі өлшемді, сондықтан оларды бірден қосуға болмайды. Оларды ортақ бөлімге келтіріп жазыңыз.",
+            "another_way": "Алтыншы үлестерді қолданыңыз, өйткені жартыны да, үштен бірді де алтыншы үлестерге бөлуге болады. Бұл әр бөлшектің мәнін өзгертпей, бөліктерді бірдей етеді.",
+            "visual": "Жолақ `1/2 + 1/3` өрнегін бір жарты өлшемді бөлік пен бір үштен бір өлшемді бөлік ретінде көрсетеді."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Енді екі бөлшек те алтыншы үлестермен жазылған. `1/2` бөлшегі `3/6` болады, ал `1/3` бөлшегі `2/6` болады, сондықтан бөліктердің өлшемі бірдей.",
+            "another_way": "Әр жартыны үш алтыншы үлес, ал әр үштен бірді екі алтыншы үлес деп ойлаңыз. Сонда есеп тек алтыншы үлестерді санауға айналады.",
+            "visual": "Жолақ `3/6 + 2/6` өрнегін бірдей өлшемді бөліктердің үш алтыншы үлесі және екі алтыншы үлесі ретінде көрсетеді."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Бөлімдері бірдей болғанда, алымдарды қосып, бөлімді сол күйінде қалдырыңыз. `3/6 + 2/6` өрнегі `5/6` болады, сондықтан жауап осы.",
+            "another_way": "Алтыншы өлшемді бөліктердің бәрін бірге санаңыз. Үш алтыншы үлес пен екі алтыншы үлес бес алтыншы үлес болады.",
+            "visual": "Жолақ `5/6` бөлшегін бір бүтіннің бес бірдей алтыншы өлшемді бөлігі боялған түрде көрсетеді."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Есептеңіз:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Бұл `3*(2/5)` өрнегінен басталады, ол `2/5`-тің 3 тобы дегенді білдіреді. Әр бөліктің өлшемі бестік үлестер болып қалады.",
+            "another_way": "Бүтін санды бөлшектің алымына көбейткіш деп ойлаңыз. Сонда `3*(2/5)` — бүтін санның бөлшекке көбейтіндісі.",
+            "visual": "Жолақ моделі әрқайсысында `2/5` боялған үш бірдей жолақты көрсетеді."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Бүтін сан алымды көбейтеді, сондықтан `3*(2/5)` өрнегі `(3*2)/5` болады. Бөлім `5` болып қалады, өйткені бөліктер әлі де бестік үлестер.",
+            "another_way": "Бестік үлестерді санаңыз: `2` бестік үлес `3` рет алынса, `(3*2)` бестік үлес шығады.",
+            "visual": "Жолақ моделі үш топтағы бестен бір өлшемді бөліктердің саналып жатқанын көрсетеді."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Алымдағы көбейтінді табылды, сондықтан `(3*2)/5` өрнегі `6/5` болады. Бұл — жауап, өйткені өрнектің мәні есептелді.",
+            "another_way": "`2/5`-тің үш тобы `6/5` болады. Нәтиже бір бүтіннен артық, өйткені `5` бестік үлестен көп бар.",
+            "visual": "Жолақ моделі бестен бір өлшемді `6` бөліктің боялғанын, яғни `6/5` екенін көрсетеді."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Есептеңіз:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Өрнек `2/3` ішіне қанша `3/4` сыятынын сұрайды. Бөлшекке бөлгенде `2/3` қалдырып, `3/4` санының кері санына көбейтеміз.",
+            "another_way": "Сұрақты бөлуден сәйкес көбейтуге ауыстыру деп ойлаңыз. Бөлгіш `3/4` аударылады, сондықтан `(2/3)/(3/4)` өрнегі `(2/3)*(4/3)` болады.",
+            "visual": "Жолақ бүтіннің `2/3` бөлігі `3/4` өлшемді бөліктермен өлшеніп жатқанын көрсетеді."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Енді бөлшектерді көбейтеміз. Алымдарды бірге, бөлімдерді бірге көбейтеміз, сондықтан `(2/3)*(4/3)` өрнегі `(2*4)/(3*3)` болады.",
+            "another_way": "Бұл бөліктер санын және бөлік өлшемдерін бөлек көрсетеді. Алымда `2*4`, ал бөлімде `3*3` есептеледі.",
+            "visual": "Жолақ бір бағытта үштен бірлерге және басқа бағытта үштен бірлерге бөлінген, `2*4` кіші бөлік саналған."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Алым мен бөлімдегі көбейтінділер жазылып тұр. Бұл жол сол көбейтінділерді есептеп ықшамдауға дайын.",
+            "another_way": "`(2*4)/(3*3)` өрнегін көбейтуі әлі көрініп тұрған бөлшек ретінде қараңыз. Келесі қадамда сол көбейтінділер бір сандармен жазылады.",
+            "visual": "Жолақ моделінде бүтін `3*3` тең кіші бөлікке бөлінген, олардың `2*4` бөлігі боялған."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Көбейткенде соңғы бөлшек шығады, сондықтан `(2*4)/(3*3)` өрнегі `8/9` болады. Басқа амал көрсетілмегендіктен, бұл жауап.",
+            "another_way": "Бөлінді бір бүтіннен кіші, бұл мағынасына сай: `3/4` саны `2/3` санынан үлкен, сондықтан оның біреуінен азы ғана сыяды.",
+            "visual": "`9` тең бөлікке бөлінген жолақта `8` бөлік боялған, бұл `8/9` екенін көрсетеді."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Бөлшектерді қосу үшін алымдарын қосып, бөлімдерін қосу керек.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Бұл бөлшекті екі бөлек бүтін сан сияқты қарастырады және бөлшектерді көбейту сияқты орындалады.",
+      "what_to_say": {
+        "probe": "Жауабың `1/2`-ден үлкен бе, әлде кіші ме? Солай болуы керек пе?",
+        "nudge": "Жартылар мен үштен бірлерді бірден қоса аласың ба, әлде алдымен бірдей өлшемді бөліктер керек пе?",
+        "tell": "Екеуін де алтыдан бірлерге бөл: `3/6 + 2/6` — `5/6`. Біз тек бөліктерді санаймыз; олардың өлшемі өзгермейді."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "3/4"
+      },
+      "source_quote": "Кейбір оқушылар бөлшектерді алымдарын қосып, бөлімдерін қосу арқылы қосады."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Бөлшекті бүтін санға көбейту үшін алымын да, бөлімін де көбейту керек.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Оқушылар тең бөлшектерден алымға да, бөлімге де бірдей амал жасау дұрыс екенін үйренген.",
+      "what_to_say": {
+        "probe": "`6/15` саны `2/5`-тен көп пе, аз ба, әлде тең бе? `2/5`-тің үш есесі қандай болуы керек?",
+        "nudge": "Екі бестен бірдің үшеуін қосу түрінде жазып, бестен бірлерді сана.",
+        "tell": "Екі бестен бірдің үшеуі — алты бестен бір, `6/5`. Тек бөліктер саны өзгереді."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "12/7"
+      },
+      "source_quote": "Кейбір оқушылар алымды да, бөлімді де бүтін санға көбейтеді."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Бөлшектерді бөлгенде бірінші бөлшекті аудару керек.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"Аудар да көбейт\" деген сөз қай бөлшекті аудару керегін ескермей, ұран сияқты есте қалады.",
+      "what_to_say": {
+        "probe": "Үштен екіге төрттен үш неше рет сыяды: бірден көп пе, әлде аз ба?",
+        "nudge": "Біз қай бөлшекпен санап отырмыз? Аударылатын бөлшек — сол.",
+        "tell": "Тек бөлгіш аударылады: `(2/3)*(4/3)` — `8/9`, бірден сәл кіші."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "6/5"
+      },
+      "source_quote": "Кейбір оқушылар бөлгенде екінші емес, бірінші бөлшекті аударады."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Қосу таңбасы арқылы да алымдағы санды бөлімдегі санмен қысқартуға болады.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Ортақ сандарды қысқарту көбейтінділерде дұрыс, ал оқушы алымда 2 және бөлімде 2 көріп тұр.",
+      "what_to_say": {
+        "probe": "Бөлмей тұрып, бөлшектің алымы түгелдей неге тең?",
+        "nudge": "Алдымен алымды есепте, содан кейін бөл. Сол жауап шыға ма?",
+        "tell": "Бөлшек сызығы алымның бәрін бөледі: `(2+4)/2` — `6/2`, ол `3`-ке тең."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Ықшамдаңыз:",
+        "answer": "5"
+      },
+      "source_quote": "Кейбір оқушылар қосу таңбасы арқылы қысқартады."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Бөлшекті қысқарту үшін тек алымын немесе тек бөлімін бөлуге болады.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Санды екі есе азайту қысқарту сияқты көрінеді, ал оқушы шаманың өзгермей қалғанын тексермейді.",
+      "what_to_say": {
+        "probe": "`3/8` шамасы `6/8` шамасымен бірдей ме? Екеуін де жолақ түрінде сал.",
+        "nudge": "Қандай сан алымды да, бөлімді де бөледі?",
+        "tell": "Алымды да, бөлімді де бірдей санға бөл: `6/8` — `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Ықшамдаңыз:",
+        "answer": "2/3"
+      },
+      "source_quote": "Кейбір оқушылар бөлшектің бір ғана бөлігін өзгертіп қысқартады."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Неге жоғарғы сандарды және төменгі сандарды қоса алмаймыз?",
+      "answer": "Төменгі сан бөліктердің өлшемін атайды. Жарты мен үштен бірдің өлшемдері әртүрлі, сондықтан санаудан бұрын бөліктерді бірдей өлшемге келтіру керек."
+    },
+    {
+      "question": "Неге `1/2 + 1/3` өрнегі `3/6 + 2/6` болады?",
+      "answer": "Екі бөлшек те алтыдан бірлер түрінде жазылады. Шамалар өзгермейді, бірақ енді бөліктердің өлшемі бірдей болып, оларды қосуға болады."
+    },
+    {
+      "question": "Неге `3*(2/5)` төменгі санды өзгертпейді?",
+      "answer": "Бестен бірлердің өлшемі сол күйі қалады. `3`-ке көбейту `2/5`-тің үш тобын береді, сондықтан тек бестен бірлер саны өзгереді."
+    },
+    {
+      "question": "Бөлгенде қай бөлшек кері аударылады?",
+      "answer": "Тек бөлгіш кері аударылады. `(2/3)/(3/4)` өрнегі `(2/3)*(4/3)` болады, өйткені бөлу `3/4` саны `2/3` ішіне неше рет сыятынын сұрайды."
+    },
+    {
+      "question": "Плюс таңбасы арқылы қысқартуға бола ма?",
+      "answer": "Жоқ. Бөлшек сызығы алымдағы бүкіл өрнекті бөлімге бөледі. Қосындыдағы мүшелерді бөлек көбейткіштер сияқты ішінара қысқартуға болмайды."
+    },
+    {
+      "question": "Оқушылар жауаптың мағынасы бар-жоғын қалай тексере алады?",
+      "answer": "Алдымен шамалап бағалаңыз. Нәтиже `1/2`-ден артық па, кем бе, немесе `1`-ден артық па, кем бе деп сұраңыз. Шамамен өлшемін тексеру бөлшектердегі көп қатені табады."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Бөліктерді атау",
+      "activity": "Тең бөліктерге бөлінген қарапайым бүтінді қолданыңыз. Төменгі санды бөліктердің өлшемімен, жоғарғы санды бөліктер санымен байланыстырыңыз. Тірек бөлшек ретінде `3/4` қолданыңыз."
+    },
+    {
+      "minutes": 10,
+      "title": "Мәндес бөлшектер",
+      "activity": "Әртүрлі бөлшектер бірдей шаманы атай алатынын көрсетіңіз. `1/2`, `2/4` және `3/6` қолданыңыз. Жоғарғы және төменгі сан бірге өзгеруі керек екенін атап өтіңіз."
+    },
+    {
+      "minutes": 10,
+      "title": "Бірдей бөліктерді қосу",
+      "activity": "`1/2 + 1/3` өрнегінен бастаңыз. Жарты мен үштен бірді неге бірге санауға болмайтынын сұраңыз. Алтыдан бірлерге келтіріңіз: `1/2 + 1/3` өрнегі `3/6 + 2/6` болады, ал `3/6 + 2/6` мәні `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Бөлшекті көбейту",
+      "activity": "`3*(2/5)` өрнегін бестен екіден үш топ ретінде қолданыңыз. `3*(2/5)` өрнегі `(3*2)/5` болатынын, ал `(3*2)/5` мәні `6/5` екенін көрсетіңіз. Бөлік өлшемі бестен бір болып қалатынын баса айтыңыз."
+    },
+    {
+      "minutes": 9,
+      "title": "Бөлшектерді бөлу",
+      "activity": "«Нешеуі сыяды?» деген сұрақты қолданыңыз. `(2/3)/(3/4)` үшін `(2/3)/(3/4)` өрнегі `(2/3)*(4/3)` болатынын, содан кейін `(2*4)/(3*3)` болатынын және нәтиже `8/9` екенін көрсетіңіз."
+    },
+    {
+      "minutes": 5,
+      "title": "Бағалау және қателерді табу",
+      "activity": "Жиі кездесетін қате әрекеттерді талқылаңыз: алымдар мен бөлімдерді қосу, тек бір бөлігін өзгерту, бірінші бөлшекті кері аудару немесе қосу арқылы қысқарту. Тексеру үшін бағалау мен жолақ модельдерін қолданыңыз."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `1/2 + 1/7` өрнегіне тең бір бөлшек керек."
+        },
+        {
+          "rung": "information",
+          "text": "Бөлшектерді қосу үшін алдымен олардың бөлімдерін бірдей етіңіз."
+        },
+        {
+          "rung": "computation",
+          "text": "Ортақ бөлім — `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `7/12 + 5/18` өрнегіне тең бір бөлшек керек."
+        },
+        {
+          "rung": "information",
+          "text": "12 мен 18-дің ең кіші ортақ еселігін қолданыңыз, ол — `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` дегеніміз `21/36`, ал `5/18` дегеніміз `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `7/12 - 9/16` өрнегіне тең бір бөлшек керек."
+        },
+        {
+          "rung": "information",
+          "text": "12 мен 16-ның ең кіші ортақ еселігін қолданыңыз, ол — `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` дегеніміз `28/48`, ал `9/16` дегеніміз `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Ықшамдаңыз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `120/252` бөлшегіне тең ең қарапайым бөлшек керек."
+        },
+        {
+          "rung": "information",
+          "text": "Алым мен бөлімді олардың ең үлкен ортақ бөлгішіне бөліңіз."
+        },
+        {
+          "rung": "computation",
+          "text": "Алым мен бөлімді 120 мен 252-нің ең үлкен ортақ бөлгіші `12` санына бөліңіз."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `(-3/4)*(-4/9)` өрнегінің мәні керек."
+        },
+        {
+          "rung": "information",
+          "text": "Екі таңба бірдей, сондықтан көбейтінді оң болады. Алымдарды және бөлімдерді көбейтіңіз."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` дегеніміз `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `(3/4)/(5/8)` өрнегінің мәні керек."
+        },
+        {
+          "rung": "information",
+          "text": "Бөлшекке бөлу үшін оның кері санына көбейтіңіз. Бөлгіштің кері саны — `1/(5/8)`, яғни `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` дегеніміз `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `(2/3)/(5/6)` өрнегінің мәні керек."
+        },
+        {
+          "rung": "information",
+          "text": "Бөлшекке бөлу үшін оның кері санына көбейтіңіз. Бөлгіштің кері саны — `1/(5/6)`, яғни `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` дегеніміз `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Бізге `-23/24 - 13/24` өрнегіне тең бір бөлшек керек."
+        },
+        {
+          "rung": "information",
+          "text": "Бөлімдер қазірдің өзінде бірдей, сондықтан алымдарды азайтыңыз."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` дегеніміз `-36`, сондықтан `-36/24` аламыз."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

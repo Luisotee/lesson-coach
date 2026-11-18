@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "ur",
+  "title": "کسریں",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "کسریں برابر حصوں کے نام بتاتی ہیں؛ اعمال میں حصے کا سائز واضح رکھا جاتا ہے اور حصے گنے جاتے ہیں۔",
+  "idea": "کسر ایک کل کے برابر حصوں کا نام بتاتی ہے۔ `3/4` میں نیچے والا عدد بتاتا ہے کہ کل کو برابر حصوں میں کاٹا گیا ہے۔ اوپر والا عدد گنتا ہے کہ ان میں سے کتنے حصے لیے گئے ہیں۔\n\nمساوی کسریں مختلف سائز کے حصوں سے ایک ہی مقدار بتاتی ہیں۔ اوپر اور نیچے کو ایک ہی عدد سے ضرب یا تقسیم کرنے سے مقدار وہی رہتی ہے۔\n\nجمع کے لیے حصے گننے سے پہلے ایک ہی سائز کے ہونے چاہییں۔ ضرب کے لیے، ایک صحیح عدد ضرب کسر اس کسر کے بار بار گروہوں کو گنتا ہے۔ تقسیم کے لیے سوال یہ ہے کہ ایک کسر دوسری میں کتنی بار پوری آتی ہے۔",
+  "why_it_works": "صرف ایک جیسے حصے جمع کیے جا سکتے ہیں۔ `1/2 + 1/3` کے لیے، نصف اور تہائی مختلف سائز کے ہیں، اس لیے دونوں کو چھٹے حصوں کے طور پر دوبارہ لکھا جاتا ہے۔ `1/2 + 1/3` بن جاتا ہے `3/6 + 2/6`، اور `3/6 + 2/6` ہے `5/6`۔\n\nضرب حصوں کی تعداد بدلتی ہے۔ `3*(2/5)` میں، پانچویں حصے پانچویں ہی رہتے ہیں۔ `3*(2/5)` بن جاتا ہے `(3*2)/5`، اور `(3*2)/5` ہے `6/5`۔\n\nتقسیم پوچھتی ہے کہ مقسوم علیہ کتنی بار پورا آتا ہے۔ `(2/3)/(3/4)` بن جاتا ہے `(2/3)*(4/3)`۔ پھر `(2/3)*(4/3)` بن جاتا ہے `(2*4)/(3*3)`، اور `(2*4)/(3*3)` ہے `8/9`۔",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "حل کریں:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "کسروں کے حصوں کے سائز مختلف ہیں، اس لیے انہیں براہ راست جمع نہیں کیا جا سکتا۔ انہیں مشترک مخرج کے ساتھ دوبارہ لکھیں۔",
+            "another_way": "چھٹے حصے استعمال کریں کیونکہ نصف اور تہائی دونوں کو چھٹے حصوں میں کاٹا جا سکتا ہے۔ اس سے ہر کسر کی قیمت وہی رہتی ہے اور حصے ایک جیسے ہو جاتے ہیں۔",
+            "visual": "ایک بار `1/2 + 1/3` کو ایک نصف سائز کے حصے کے ساتھ ایک تہائی سائز کا حصہ دکھاتی ہے۔"
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اب دونوں کسرے چھٹے حصوں میں ہیں۔ `1/2`، `3/6` بن جاتا ہے، اور `1/3`، `2/6` بن جاتا ہے، اس لیے حصے ایک ہی سائز کے ہیں۔",
+            "another_way": "ہر نصف کو تین چھٹے حصے اور ہر تہائی کو دو چھٹے حصے سمجھیں۔ پھر سوال صرف چھٹے حصے گننے کا ہے۔",
+            "visual": "ایک بار `3/6 + 2/6` کو ایک ہی سائز کے ٹکڑوں میں تین چھٹے حصے اور دو چھٹے حصے دکھاتی ہے۔"
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "جب مخرج ایک جیسا ہو تو شمار کنندگان کو جمع کریں اور مخرج وہی رکھیں۔ `3/6 + 2/6`، `5/6` بن جاتا ہے، اس لیے یہی جواب ہے۔",
+            "another_way": "چھٹے سائز کے سب ٹکڑے اکٹھے گنیں۔ تین چھٹے حصے اور دو چھٹے حصے مل کر پانچ چھٹے حصے بنتے ہیں۔",
+            "visual": "ایک بار `5/6` کو ایک کل کے پانچ برابر چھٹے سائز کے حصوں کے طور پر رنگا ہوا دکھاتی ہے۔"
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "حل کریں:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "یہ `3*(2/5)` سے شروع ہوتا ہے، جس کا مطلب `2/5` کے تین گروہ ہیں۔ ہر حصے کا سائز پانچویں حصوں ہی میں رہتا ہے۔",
+            "another_way": "پورے عدد کو کسر کے اوپر والے عدد کے لیے ضرب دینے والا سمجھیں۔ پھر `3*(2/5)` ایک پورا عدد ضرب ایک کسر ہے۔",
+            "visual": "بار ماڈل میں ایک بار کی تین نقلیں دکھائی جاتی ہیں، جن میں ہر نقل میں `2/5` سایہ دار ہے۔"
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "پورا عدد اوپر والے عدد کو ضرب دیتا ہے، اس لیے `3*(2/5)`، `(3*2)/5` بن جاتا ہے۔ مخرج `5` ہی رہتا ہے کیونکہ حصے اب بھی پانچویں ہیں۔",
+            "another_way": "پانچویں حصے گنیں: `2` پانچویں حصے، `3` بار لیے جائیں، تو `(3*2)` پانچویں حصے ملتے ہیں۔",
+            "visual": "بار ماڈل میں پانچویں حصے کے برابر ٹکڑے تین گروہوں میں گنے جاتے دکھائی دیتے ہیں۔"
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "صورت میں حاصلِ ضرب نکال لیا جاتا ہے، اس لیے `(3*2)/5`، `6/5` بن جاتا ہے۔ یہی جواب ہے کیونکہ عبارت کی قیمت نکال لی گئی ہے۔",
+            "another_way": "`2/5` کے تین گروہ `6/5` بناتے ہیں۔ نتیجہ ایک پورے سے زیادہ ہے کیونکہ `5` سے زیادہ پانچویں حصے ہیں۔",
+            "visual": "بار ماڈل میں پانچویں سائز کے `6` ٹکڑے سایہ دار دکھائے جاتے ہیں، جو `6/5` بناتے ہیں۔"
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "حل کریں:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عبارت پوچھتی ہے کہ `2/3` میں کتنے `3/4` آتے ہیں۔ کسر سے تقسیم میں، `2/3` کو ویسا ہی رکھیں اور `3/4` کے الٹ سے ضرب دیں۔",
+            "another_way": "سوال کو تقسیم سے ملتی جلتی ضرب میں بدلنے کا سوچیں۔ مقسوم علیہ `3/4` الٹ دیا جاتا ہے، اس لیے `(2/3)/(3/4)` بن جاتا ہے `(2/3)*(4/3)`۔",
+            "visual": "ایک پٹی دکھاتی ہے کہ ایک کل کے `2/3` کو `3/4` سائز کے ٹکڑوں سے ناپا جا رہا ہے۔"
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اب کسروں کو ضرب دیں۔ اوپر والے اعداد کو آپس میں اور نیچے والے اعداد کو آپس میں ضرب دیں، اس لیے `(2/3)*(4/3)` بن جاتا ہے `(2*4)/(3*3)`۔",
+            "another_way": "یہ حصوں کی تعداد اور حصوں کے سائز کو الگ الگ دکھاتا ہے۔ اوپر `2*4` شمار ہوتا ہے، اور نیچے `3*3` شمار ہوتا ہے۔",
+            "visual": "ایک پٹی کو ایک طرف سے تہائیوں میں اور دوسری طرف سے بھی تہائیوں میں تقسیم کیا گیا ہے، اور `2*4` چھوٹے حصے شمار کیے گئے ہیں۔"
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "شمار کنندہ اور مخرج میں حاصل ضرب لکھ دیے گئے ہیں۔ یہ سطر ان حاصل ضربوں کو نکال کر آسان کرنے کے لیے تیار ہے۔",
+            "another_way": "`(2*4)/(3*3)` کو ایسی کسر سمجھیں جس میں ضرب ابھی نظر آ رہی ہے۔ اگلا قدم ان حاصل ضربوں کو ایک ایک عدد کے طور پر لکھتا ہے۔",
+            "visual": "ایک پٹی کے نمونے میں کل `3*3` برابر چھوٹے حصے ہیں اور ان میں سے `2*4` رنگے ہوئے ہیں۔"
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "ضرب دینے سے آخری کسر ملتی ہے، اس لیے `(2*4)/(3*3)` بن جاتا ہے `8/9`۔ یہی جواب ہے کیونکہ مزید کوئی عمل نہیں دکھایا گیا۔",
+            "another_way": "خارج قسمت ایک کل سے کم ہے، جو معنی کے مطابق ہے: `3/4`، `2/3` سے بڑا ہے، اس لیے اس کا ایک سے کم حصہ آتا ہے۔",
+            "visual": "`9` برابر حصوں میں تقسیم ایک پٹی کے `8` حصے رنگے ہوئے ہیں، جو `8/9` دکھاتے ہیں۔"
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "کسروں کو جمع کرنے کے لیے اوپر والے اعداد جمع کریں اور نیچے والے اعداد جمع کریں۔",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "یہ کسر کو الگ الگ صحیح اعداد کی طرح لیتا ہے، اور یہ کسروں کو ضرب دینے ہی کی طرح کام کرتا دکھائی دیتا ہے۔",
+      "what_to_say": {
+        "probe": "کیا آپ کا جواب `1/2` سے بڑا ہے یا چھوٹا؟ کیا ایسا ہونا چاہیے؟",
+        "nudge": "کیا آپ نصفوں اور تہائیوں کو براہ راست جمع کر سکتے ہیں، یا پہلے ایک ہی سائز کے حصے چاہیے؟",
+        "tell": "دونوں کو چھٹے حصوں میں کاٹیں: `3/6 + 2/6`، `5/6` ہے۔ ہم صرف حصے گنتے ہیں؛ ان کا سائز وہی رہتا ہے۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "حل کریں:",
+        "answer": "3/4"
+      },
+      "source_quote": "کچھ طلبہ کسروں کو اوپر والے اعداد جمع کر کے اور نیچے والے اعداد جمع کر کے جمع کرتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "کسی کسر کو صحیح عدد سے ضرب دینے کے لیے، اوپر اور نیچے دونوں کو ضرب دیں۔",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "طلبہ نے مساوی کسروں سے سیکھا کہ اوپر اور نیچے ایک ہی عمل کرنا محفوظ ہے۔",
+      "what_to_say": {
+        "probe": "کیا `6/15`، `2/5` سے زیادہ ہے، کم ہے، یا برابر؟ `2/5` کے تین مجموعے کتنے ہونے چاہییں؟",
+        "nudge": "دو پانچویں کے تین مجموعے جمع کی صورت میں لکھیں اور پانچویں حصے گنیں۔",
+        "tell": "دو پانچویں کے تین مجموعے چھ پانچویں ہیں، `6/5`۔ صرف حصوں کی تعداد بدلتی ہے۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "حل کریں:",
+        "answer": "12/7"
+      },
+      "source_quote": "کچھ طلبہ اوپر اور نیچے دونوں کو صحیح عدد سے ضرب دیتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "کسروں کو تقسیم کرتے وقت پہلی کسر کو الٹ دیں۔",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"الٹیں اور ضرب دیں\" ایک نعرے کے طور پر یاد رہتا ہے، بغیر اس کے کہ کون سی کسر الٹنی ہے۔",
+      "what_to_say": {
+        "probe": "دو تہائی میں تین چوتھائی کتنی بار آتا ہے: ایک سے زیادہ، یا کم؟",
+        "nudge": "ہم کس کسر سے گن رہے ہیں؟ اسی کو الٹنا ہے۔",
+        "tell": "صرف مقسوم علیہ کو الٹا جاتا ہے: `(2/3)*(4/3)`، `8/9` ہے، جو ایک سے تھوڑا کم ہے۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "حل کریں:",
+        "answer": "6/5"
+      },
+      "source_quote": "کچھ طلبہ تقسیم کرتے وقت دوسری کے بجائے پہلی کسر الٹ دیتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "آپ جمع کے نشان کے پار بھی اوپر کے عدد کو نیچے کے عدد سے کاٹ سکتے ہیں۔",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "مشترک اعداد کو کاٹنا ضرب میں درست ہوتا ہے، اور طالب علم اوپر 2 اور نیچے 2 دیکھتا ہے۔",
+      "what_to_say": {
+        "probe": "تقسیم کرنے سے پہلے کسر کا پورا اوپر والا حصہ کیا ہے؟",
+        "nudge": "پہلے اوپر والا حصہ حل کریں، پھر تقسیم کریں۔ کیا آپ کو وہی جواب ملتا ہے؟",
+        "tell": "خطِ کسر پورے اوپر والے حصے کو تقسیم کرتا ہے: `(2+4)/2`، `6/2` ہے، جو `3` ہے۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "سادہ کریں:",
+        "answer": "5"
+      },
+      "source_quote": "کچھ طلبہ جمع کے نشان کے پار کاٹ دیتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "کسر کو سادہ کرنے کے لیے آپ صرف اوپر یا صرف نیچے کو تقسیم کر سکتے ہیں۔",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "کسی عدد کو نصف کرنا سادہ کرنے جیسا لگتا ہے، اور طالب علم یہ نہیں دیکھتا کہ مقدار وہی رہتی ہے یا نہیں۔",
+      "what_to_say": {
+        "probe": "کیا `3/8`، `6/8` کے برابر مقدار ہے؟ دونوں کو پٹیوں کی صورت میں بنائیں۔",
+        "nudge": "کون سا عدد اوپر اور نیچے دونوں کو تقسیم کرتا ہے؟",
+        "tell": "اوپر اور نیچے دونوں کو ایک ہی عدد سے تقسیم کریں: `6/8`، `3/4` ہے۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "سادہ کریں:",
+        "answer": "2/3"
+      },
+      "source_quote": "کچھ طلبہ کسر کے صرف ایک حصے کو بدل کر اسے سادہ کرتے ہیں۔"
+    }
+  ],
+  "questions": [
+    {
+      "question": "ہم اوپر والے اعداد اور نیچے والے اعداد کو جمع کیوں نہیں کر سکتے؟",
+      "answer": "نیچے والا عدد حصوں کا سائز بتاتا ہے۔ نصف اور تہائی مختلف سائز کے ہیں، اس لیے گننے سے پہلے حصوں کو ایک ہی سائز میں دوبارہ لکھنا ضروری ہے۔"
+    },
+    {
+      "question": "`1/2 + 1/3`، `3/6 + 2/6` کیوں بن جاتا ہے؟",
+      "answer": "دونوں کسریں چھٹے حصوں میں دوبارہ لکھی جاتی ہیں۔ مقداریں وہی رہتی ہیں، لیکن اب حصے ایک ہی سائز کے ہیں اور جمع کیے جا سکتے ہیں۔"
+    },
+    {
+      "question": "`3*(2/5)` نیچے والا عدد کیوں نہیں بدلتا؟",
+      "answer": "پانچویں حصے اسی سائز کے رہتے ہیں۔ `3` سے ضرب دینے سے `2/5` کے تین گروہ ملتے ہیں، اس لیے صرف پانچویں حصوں کی تعداد بدلتی ہے۔"
+    },
+    {
+      "question": "تقسیم کرتے وقت کون سی کسر الٹی کی جاتی ہے؟",
+      "answer": "صرف مقسوم علیہ الٹا کیا جاتا ہے۔ `(2/3)/(3/4)` بن جاتا ہے `(2/3)*(4/3)` کیونکہ تقسیم پوچھتی ہے کہ `3/4`، `2/3` میں کتنی بار پورا آتا ہے۔"
+    },
+    {
+      "question": "کیا ہم جمع کے نشان کے پار مختصر کر سکتے ہیں؟",
+      "answer": "نہیں۔ کسر کی لکیر پورے اوپر والے حصے کو تقسیم کرتی ہے۔ جمع میں موجود اجزا کو الگ الگ عوامل کی طرح جزوی طور پر مختصر نہیں کیا جا سکتا۔"
+    },
+    {
+      "question": "طلبہ کیسے جانچ سکتے ہیں کہ جواب معقول ہے؟",
+      "answer": "پہلے اندازہ لگائیں۔ پوچھیں کہ نتیجہ `1/2` سے زیادہ یا کم ہونا چاہیے، یا `1` سے زیادہ یا کم۔ سائز کی موٹی جانچ کسر کی بہت سی غلطیاں پکڑ لیتی ہے۔"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "حصوں کے نام بتائیں",
+      "activity": "ایک سادہ کل استعمال کریں جسے برابر حصوں میں کاٹا گیا ہو۔ نیچے والے عدد کو حصوں کے سائز سے اور اوپر والے عدد کو حصوں کی تعداد سے جوڑیں۔ حوالہ کسر کے طور پر `3/4` استعمال کریں۔"
+    },
+    {
+      "minutes": 10,
+      "title": "مساوی کسریں",
+      "activity": "دکھائیں کہ مختلف کسریں ایک ہی مقدار کا نام بتا سکتی ہیں۔ `1/2`، `2/4`، اور `3/6` استعمال کریں۔ زور دیں کہ اوپر اور نیچے ساتھ ساتھ بدلنے چاہییں۔"
+    },
+    {
+      "minutes": 10,
+      "title": "ایک جیسے حصے جمع کریں",
+      "activity": "`1/2 + 1/3` سے شروع کریں۔ پوچھیں کہ نصف اور تہائی کو ایک ساتھ کیوں نہیں گنا جا سکتا۔ چھٹے حصوں میں دوبارہ لکھیں: `1/2 + 1/3` بن جاتا ہے `3/6 + 2/6`، اور `3/6 + 2/6` ہے `5/6`۔"
+    },
+    {
+      "minutes": 8,
+      "title": "کسر کو ضرب دیں",
+      "activity": "`3*(2/5)` کو دو پانچویں کے تین حصوں کے طور پر استعمال کریں۔ دکھائیں کہ `3*(2/5)` بن جاتا ہے `(3*2)/5`، اور `(3*2)/5` ہے `6/5`۔ زور دیں کہ حصے کا سائز پانچویں ہی رہتا ہے۔"
+    },
+    {
+      "minutes": 9,
+      "title": "کسریں تقسیم کریں",
+      "activity": "سوال “کتنے پورے آتے ہیں؟” استعمال کریں۔ `(2/3)/(3/4)` کے لیے، دکھائیں کہ `(2/3)/(3/4)` بن جاتا ہے `(2/3)*(4/3)`، پھر `(2*4)/(3*3)`، اور نتیجہ `8/9` ہے۔"
+    },
+    {
+      "minutes": 5,
+      "title": "اندازہ لگائیں اور غلطیاں پکڑیں",
+      "activity": "عام غلط طریقوں پر گفتگو کریں: اوپر اور نیچے کو جمع کرنا، صرف ایک حصہ بدلنا، پہلی کسر کو الٹنا، یا جمع کے پار مختصر کرنا۔ جانچ کے طور پر اندازہ اور بار ماڈل استعمال کریں۔"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `1/2 + 1/7` کے برابر ایک کسر چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "کسروں کو جمع کرنے کے لیے، پہلے ان کے مخرج ایک جیسے کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "مشترک مخرج `14` ہے: `7/14 + 2/14`۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`۔"
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `7/12 + 5/18` کے برابر ایک کسر چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "12 اور 18 کا کم سے کم مشترک مضرب استعمال کریں، جو `36` ہے۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12`، `21/36` ہے اور `5/18`، `10/36` ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`۔"
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `7/12 - 9/16` کے برابر ایک کسر چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "12 اور 16 کا کم سے کم مشترک مضرب استعمال کریں، جو `48` ہے۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12`، `28/48` ہے اور `9/16`، `27/48` ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`۔"
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "سادہ کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `120/252` کے برابر سادہ ترین کسر چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "صورت اور مخرج کو ان کے عادِ اعظم سے تقسیم کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "صورت اور مخرج کو `12` سے تقسیم کریں، جو 120 اور 252 کا عادِ اعظم ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`۔"
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `(-3/4)*(-4/9)` کی قیمت چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "دونوں علامتیں ایک جیسی ہیں، اس لیے حاصلِ ضرب مثبت ہے۔ صورتوں اور مخرجوں کو ضرب دیں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)`، `12/36` ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`۔"
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `(3/4)/(5/8)` کی قیمت چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "کسی کسر سے تقسیم کرنے کے لیے، اس کے مقلوب سے ضرب دیں۔ مقسوم علیہ کا مقلوب `1/(5/8)` ہے، جو `8/5` ہے۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)`، `24/20` ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`۔"
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `(2/3)/(5/6)` کی قیمت چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "کسی کسر سے تقسیم کرنے کے لیے، اس کے مقلوب سے ضرب دیں۔ مقسوم علیہ کا مقلوب `1/(5/6)` ہے، جو `6/5` ہے۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)`، `12/15` ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`۔"
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `-23/24 - 13/24` کے برابر ایک کسر چاہتے ہیں۔"
+        },
+        {
+          "rung": "information",
+          "text": "مخرج پہلے ہی ایک جیسے ہیں، اس لیے صورتوں کو منہا کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13`، `-36` ہے، اس لیے ہمیں `-36/24` ملتا ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`۔"
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

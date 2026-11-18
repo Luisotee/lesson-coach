@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "zh-Hans",
+  "title": "解一元一次方程",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "通过对等式两边做相同的运算来解一元一次方程，并检验答案。",
+  "idea": "方程表示两个式子的值相等。解方程就是找出使等式成立的 `x` 的值。\n\n天平模型是主要图像。对一边做什么，就必须对另一边也做什么。可以把运算写在旁边，如减去 `6`，表示两边都发生变化。\n\n要让 `x` 单独在一边，就按相反顺序撤销运算。对于 `2*x + 6 = 10`，两边都减去 `6` 得到 `2*x = 4`。两边都除以 `2` 得到 `x = 2`。\n\n如果有括号，要把整个括号看作被乘。 在 `5*(x + 3) = 35` 中，两边都除以 `5` 得到 `x + 3 = 7`，再减去 `3` 得到 `x = 4`。",
+  "why_it_works": "每一步都保持两边相等，因为对两边做了相同的运算。方程的形式变了，但解不变。\n\n运算要按相反顺序撤销。在 `2*x + 6 = 10` 中，含有 `x` 的式子先乘以 `2`，再加上 `6`。所以先减去 `6`，再除以 `2`。\n\n当两边都有字母时，同样使用天平思想。在 `3*x + 4 = x + 10` 中，两边都减去 `x` 得到 `2*x + 4 = 10`。再减去 `4` 得到 `2*x = 6`，除以 `2` 得到 `x = 3`。\n\n检验可以用代入法。对于 `x = 2`，`2*2 + 6` 是 `10`，所以原方程成立。",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "解出 x：",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6` 使 `x` 不能单独在一边。两边都减去 `6`，使天平保持平衡，并把加上的 `6` 抵消。",
+            "another_way": "按相反顺序思考。因为 `6` 是在 `2*x` 之后加上的，所以先在两边用 `-6` 把它抵消。",
+            "visual": "天平一边是 `2*x + 6`，另一边是 `10`，并且两边都去掉 `6`。"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "现在 `2*x = 4`，所以 `x` 仍然乘以 `2`。两边都除以 `2`，把乘法抵消，并保持方程平衡。",
+            "another_way": "`2*x` 表示两个相等的 `x` 组。把两边都分成 `2` 个相等的部分，就留下一个 `x` 组。",
+            "visual": "天平一边是 `2*x`，另一边是 `4`，并且两边都分成 `2` 个相等的部分。"
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "这就是答案，因为 `x` 已经单独在一边，方程直接给出了它的值：`x = 2`。",
+            "another_way": "代入检验：`2*2 + 6` 是 `10`，所以原方程成立。",
+            "visual": "天平一边是一个 `x`，另一边是 `2`，保持平衡。"
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "解出 x：",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "括号里的式子乘以 `5`。两边同时除以 `5` 可以抵消这个乘法，并保持等式平衡。",
+            "another_way": "这样可以避免先展开括号。因为整个左边是 `x + 3` 的 `5` 倍，所以把等式两边整体都除以 `5`。",
+            "visual": "天平一边表示 `5*(x + 3)`，另一边表示 `35`，天平平衡，准备把两边都分成 `5` 个相等的组。"
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "现在 `x` 加上了 `3`。两边同时减去 `3` 可以抵消这个加法，并保持等式平衡。",
+            "another_way": "可以想成从天平两边各去掉同样的 `3`。这样左边就只剩未知数。",
+            "visual": "天平一边表示 `x + 3`，另一边表示 `7`，两边都去掉 `3` 后仍保持平衡。"
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "变量已经单独在一边，所以这一行给出了方程的解。使原方程成立的值是 `x = 4`。",
+            "another_way": "检验时，把 `4` 代回原方程中的 `x`，可以确认两边相等。",
+            "visual": "天平一边只表示 `x`，另一边表示 `4`。"
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "解出 x：",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "先从两边都减去 `x`，消去右边的 `x` 项。这样等式保持平衡，并把含变量的项放在一起。",
+            "another_way": "可以想成从每一边各拿走一个 `x`。这样左边变成 `2*x + 4`，右边就不再有 `x` 项。",
+            "visual": "天平显示 `3*x + 4` 和 `x + 10`，两边各拿走一个 `x`。"
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "从两边都减去 `4`，消去左边的常数 `4`。这样左边只剩下 `x` 项。",
+            "another_way": "因为 `4` 是加到 `2*x` 上的，所以用减法来抵消这个加法。右边也同样变化，以保持平衡。",
+            "visual": "天平显示 `2*x + 4` 和 `10`，两边都拿走 `4`。"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2` 正在乘 `x`，所以两边都除以 `2` 来抵消乘法。这样得到单独的一个 `x`。",
+            "another_way": "`2*x` 表示两个相等的 `x` 组。把两边都分成 `2` 等份，就能看出一个组的值。",
+            "visual": "天平显示 `2*x` 和 `6`，每边都分成 `2` 等份。"
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "这是答案，因为 `x` 已经单独在一边，并且它的值已经给出。等式说明 `x` 是 `3`。",
+            "another_way": "可以把它代入原方程来检验。用 `3` 代替 `x`，两边的值相等。",
+            "visual": "天平显示一个 `x` 与 `3` 平衡。"
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "一个数移到等号另一边时，符号可以不变。",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "“移到另一边”是常见的简便说法，学生会忘记这里的“移”表示减去。",
+      "what_to_say": {
+        "probe": "你对等号两边都做了什么，才消去 `+ 6`？",
+        "nudge": "在旁边写出运算“| -6”，并把它用于等号两边。",
+        "tell": "等号两边都减去 6：`2*x = 4`，所以 `x = 2`。代入检验：`2*2 + 6` 是 `10`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "解出 x：",
+        "answer": "5"
+      },
+      "source_quote": "有些学生把一个数移过等号时不改变它的符号。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "可以只把一边中的一项除以系数。",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "学生只想着让 `x` 单独在一边，就把它旁边的项相除，忘了这一边的其余部分。",
+      "what_to_say": {
+        "probe": "当你除以二时，`6` 发生了什么？",
+        "nudge": "把等号两边的每一项都除以二，再和你的那一行比较。",
+        "tell": "一边除以一个数，就是这一边的每一项都除以这个数：`x + 3 = 5`，所以 `x = 2`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "解出 x：",
+        "answer": "3"
+      },
+      "source_quote": "有些学生只把一项除以 `x` 前面的数。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "要消去 `x` 前面的数，就减去它。",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "减法是学生最早学会的逆运算，而且 `3*x` 看起来像是 `3` 在 `x` 旁边。",
+      "what_to_say": {
+        "probe": "`3*x` 表示什么？`3` 和 `x` 之间是什么运算？",
+        "nudge": "检验你的答案：`3*9` 等于 `12` 吗？",
+        "tell": "`3*x` 表示 3 乘 `x`，所以等号两边都除以 3：`x = 4`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "解出 x：",
+        "answer": "7"
+      },
+      "source_quote": "有些学生会减去 `x` 前面的数，而不是除以它。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "可以按任意顺序撤销对 `x` 做的运算。",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "减去 `x` 旁边的数通常是第一步，所以即使这个数在除法里面，学生也这样做。",
+      "what_to_say": {
+        "probe": "在 `(x + 6)/2` 中，先对 `x` 做了什么，最后做了什么？",
+        "nudge": "减半是最后做的。要撤销它，等号两边应乘以什么？",
+        "tell": "先撤销除以 2：`x + 6 = 20`，所以 `x = 14`。检验：`(14 + 6)/2` 是 `10`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "解出 x：",
+        "answer": "11"
+      },
+      "source_quote": "有些学生会用错误的顺序撤销这些步骤。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "括号外的数只乘括号内的第一项。",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` 紧挨着 `x`，所以学生会去乘最近的那一项。",
+      "what_to_say": {
+        "probe": "`5*(x + 3)` 中有几个 3？",
+        "nudge": "把 `5*(x + 3)` 写成 `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)`，然后数一数。",
+        "tell": "这个 5 要乘括号里的每一项：`5*x + 15 = 35`，所以 `x = 4`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "解出 x：",
+        "answer": "5"
+      },
+      "source_quote": "有些学生只把括号外的数乘括号内的第一项。"
+    }
+  ],
+  "questions": [
+    {
+      "question": "为什么要对两边做相同的事？",
+      "answer": "方程是平衡的。对相等的量做相同的运算，它们仍然相等，所以解不变。"
+    },
+    {
+      "question": "为什么 `+ 6` 变成减去 `6`？",
+      "answer": "解方程就是撤销运算。在 `2*x + 6 = 10` 中，两边都减去 `6` 得到 `2*x = 4`。"
+    },
+    {
+      "question": "为什么除以 `2`，而不是减去 `2`？",
+      "answer": "`2*x` 表示 `2` 乘以 `x`。乘法用除法来撤销，所以 `2*x = 4` 变为 `x = 2`。"
+    },
+    {
+      "question": "如果两边都有 `x` 怎么办？",
+      "answer": "使用同样的平衡步骤。在 `3*x + 4 = x + 10` 中，两边都减去 `x` 得到 `2*x + 4 = 10`。"
+    },
+    {
+      "question": "括号会怎样改变解题过程？",
+      "answer": "括号外的数乘以整个括号。在 `5*(x + 3) = 35` 中，两边都除以 `5` 得到 `x + 3 = 7`。"
+    },
+    {
+      "question": "学生怎样知道答案是否正确？",
+      "answer": "把答案代入原方程。如果两边相等，答案就正确。"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "方程是平衡",
+      "activity": "把 `2*x + 6 = 10` 展示成相等的两边。强调方程表示两个式子的值相等。介绍把相同的运算写在旁边，如减去 `6`。"
+    },
+    {
+      "minutes": 10,
+      "title": "按相反顺序撤销",
+      "activity": "讲解 `2*x + 6 = 10`。两边都减去 `6` 得到 `2*x = 4`。两边都除以 `2` 得到 `x = 2`。用代入检验。"
+    },
+    {
+      "minutes": 8,
+      "title": "常见错误",
+      "activity": "讨论典型错误：把项移到等号另一边却不改变符号或运算，只除一项，以及把系数减去而不是除以系数。重点始终放在等式平衡步骤上。"
+    },
+    {
+      "minutes": 8,
+      "title": "括号",
+      "activity": "使用 `5*(x + 3) = 35`。两边都除以 `5` 得到 `x + 3 = 7`。再减去 `3` 得到 `x = 4`。注意 `5` 作用于整个括号。"
+    },
+    {
+      "minutes": 10,
+      "title": "两边都有字母",
+      "activity": "讲解 `3*x + 4 = x + 10`。两边都减去 `x` 得到 `2*x + 4 = 10`。减去 `4` 得到 `2*x = 6`。除以 `2` 得到 `x = 3`。"
+    },
+    {
+      "minutes": 6,
+      "title": "检验答案",
+      "activity": "学生把答案代入原方程。检验不成立说明某一步需要重新检查。检验是解方程过程的一部分，不是额外任务。"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "解出 x：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `8*x = 56` 成立的 `x` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` 表示 8 乘 `x`，所以两边都除以 `8` 来消去它。"
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`。"
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "解出 c：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `-5*c = 55` 成立的 `c` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "两边都除以 `c` 前面的数 `-5`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` 是负数，因为符号不同。"
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`。"
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "解出 x：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `7*x + 8 = -13` 成立的 `x` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "按相反顺序消去运算：两边先减去 `8`，再除以 `7`。"
+        },
+        {
+          "rung": "computation",
+          "text": "减去 `8` 后：`7*x = -21`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`。检验：`7*(-3) + 8` 是 `-13`。"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "解出 x：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `3*x + 4 = -8` 成立的 `x` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "两边都减去 `4`，再两边都除以 `3`。"
+        },
+        {
+          "rung": "computation",
+          "text": "减去 `4` 后：`3*x = -12`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`。检验：`3*(-4) + 4` 是 `-8`。"
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "解出 x：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `5*(x + 3) = 35` 成立的 `x` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "5 乘的是整个括号。可以两边都除以 `5`，也可以展开括号。"
+        },
+        {
+          "rung": "computation",
+          "text": "两边都除以 `5`，得到 `x + 3 = 7`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`。检验：`5*(4 + 3)` 是 `35`。"
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "解出 m：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `2*(m - 4) + 3 = -1` 成立的 `m` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "先展开括号，再合并数字。"
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`，所以 `2*m - 5 = -1`，`2*m = 4`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`。检验：`2*(2 - 4) + 3` 是 `-1`。"
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "解出 x：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `7*x + 5 = 6*x + 2` 成立的 `x` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "把含 `x` 的项移到一边：两边都减去 `6*x`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`，然后两边都减去 `5`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`。检验：两边都是 `-16`。"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "解出 x：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求使 `12*x + 8 = 6*x + 2` 成立的 `x` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "两边都减去 `6*x`，再两边都减去 `8`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`，所以 `6*x = -6`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`。检验：两边都是 `-4`。"
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

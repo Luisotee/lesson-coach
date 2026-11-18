@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "hi",
+  "title": "रैखिक समीकरण हल करना",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "दोनों पक्षों पर समान संक्रिया करके और उत्तर की जाँच करके रैखिक समीकरण हल करें।",
+  "idea": "समीकरण बताता है कि दो व्यंजकों का मान समान है। हल करने का अर्थ है `x` का वह मान खोजना जिससे कथन सत्य हो।\n\nतराजू मॉडल मुख्य चित्र है। एक पक्ष पर जो भी किया जाए, वही दूसरे पक्ष पर भी करना चाहिए। संक्रिया को हाशिए में लिखा जा सकता है, जैसे `6` घटाएँ, ताकि दिखे कि दोनों पक्ष बदलते हैं।\n\n`x` को अकेला पाने के लिए, संक्रियाओं को उल्टे क्रम में हटाएँ। `2*x + 6 = 10` के लिए, दोनों पक्षों से `6` घटाने पर `2*x = 4` मिलता है। दोनों पक्षों को `2` से भाग देने पर `x = 2` मिलता है।\n\nयदि कोष्ठक हों, तो पूरे कोष्ठक को गुणा किया हुआ मानें। `5*(x + 3) = 35` में, दोनों पक्षों को `5` से भाग देने पर `x + 3 = 7` मिलता है, फिर `3` घटाने पर `x = 4` मिलता है।",
+  "why_it_works": "हर चरण दोनों पक्षों को बराबर रखता है, क्योंकि दोनों पक्षों पर वही संक्रिया लगाई जाती है। समीकरण का रूप बदलता है, पर हल वही रहता है।\n\nसंक्रियाएँ उल्टे क्रम में हटाई जाती हैं। `2*x + 6 = 10` में, `x` वाला व्यंजक `2` से गुणा किया गया था और फिर `6` जोड़ा गया था। इसलिए पहले `6` घटाएँ, फिर `2` से भाग दें।\n\nदोनों पक्षों पर चर होने पर भी वही तराजू वाला विचार लागू होता है। `3*x + 4 = x + 10` में, दोनों पक्षों से `x` घटाने पर `2*x + 4 = 10` मिलता है। फिर `4` घटाने पर `2*x = 6` मिलता है, और `2` से भाग देने पर `x = 3` मिलता है।\n\nजाँच प्रतिस्थापन से होती है। `x = 2` के लिए, `2*2 + 6` का मान `10` है, इसलिए मूल समीकरण सत्य है।",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6` के कारण `x` अकेला नहीं है। दोनों पक्षों से `6` घटाएँ ताकि संतुलन बना रहे और जोड़ा गया `6` हट जाए।",
+            "another_way": "उल्टे क्रम में सोचें। क्योंकि `2*x` के बाद `6` जोड़ा गया था, इसलिए दोनों पक्षों पर `-6` करके पहले उसे हटाएँ।",
+            "visual": "एक तराजू में एक पक्ष पर `2*x + 6` और दूसरे पक्ष पर `10` दिखता है, और दोनों पक्षों से `6` हटाया गया है।"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अब `2*x = 4` है, इसलिए `x` अभी भी `2` से गुणा है। गुणा हटाने और समीकरण को संतुलित रखने के लिए दोनों पक्षों को `2` से भाग दें।",
+            "another_way": "`2*x` का अर्थ है `x` के दो बराबर समूह। दोनों पक्षों को `2` बराबर भागों में बाँटने पर `x` का एक समूह बचता है।",
+            "visual": "एक तराजू में एक पक्ष पर `2*x` और दूसरे पक्ष पर `4` दिखता है, और दोनों पक्ष `2` बराबर भागों में बाँटे गए हैं।"
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "यह उत्तर है क्योंकि `x` अकेला है और समीकरण उसका मान सीधे बताता है: `x = 2`।",
+            "another_way": "प्रतिस्थापन करके जाँचें: `2*2 + 6` का मान `10` है, इसलिए मूल समीकरण सत्य है।",
+            "visual": "एक तराजू में एक पक्ष पर एक `x` और दूसरे पक्ष पर `2` दिखता है, संतुलित।"
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "कोष्ठक वाला व्यंजक `5` से गुणा किया गया है। दोनों पक्षों को `5` से भाग देने पर वह गुणा हट जाता है और समीकरण संतुलित रहता है।",
+            "another_way": "इससे पहले कोष्ठक खोलने से बचते हैं। क्योंकि पूरा बायाँ पक्ष `x + 3` का `5` गुना है, इसलिए दोनों पक्षों के पूरे भाग को `5` से भाग दें।",
+            "visual": "एक संतुलित तराजू में एक तरफ `5*(x + 3)` और दूसरी तरफ `35` दिखता है, जो दोनों पक्षों को `5` बराबर समूहों में बाँटने के लिए तैयार है।"
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अब `x` में `3` जोड़ा गया है। दोनों पक्षों से `3` घटाने पर जोड़ हट जाता है और समीकरण संतुलित रहता है।",
+            "another_way": "सोचिए कि तराजू के प्रत्येक पक्ष से वही `3` हटा रहे हैं। इससे बाईं ओर अज्ञात अकेला रह जाता है।",
+            "visual": "एक संतुलित तराजू में एक तरफ `x + 3` और दूसरी तरफ `7` दिखता है, और दोनों पक्षों से `3` हटाया गया है।"
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "चर अकेला है, इसलिए यह पंक्ति हल देती है। वह मान जो मूल समीकरण को सत्य बनाता है, `x = 4` है।",
+            "another_way": "जाँच में मूल समीकरण में `x` की जगह `4` रखेंगे और पुष्टि करेंगे कि दोनों पक्ष बराबर हैं।",
+            "visual": "एक संतुलित तराजू में एक तरफ `x` अकेला और दूसरी तरफ `4` दिखता है।"
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "दाईं ओर के `x` पद को पहले दोनों पक्षों से `x` घटाकर हटाया जाता है। इससे समीकरण संतुलित रहता है और चर पद एक साथ आ जाते हैं।",
+            "another_way": "सोचिए कि हर पक्ष से एक `x` ले रहे हैं। तब बायाँ पक्ष `2*x + 4` बनता है, और दाएँ पक्ष में अब कोई `x` पद नहीं रहता।",
+            "visual": "एक तराजू `3*x + 4` और `x + 10` दिखाता है, जिसमें हर पक्ष से एक `x` हटाया गया है।"
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अचर `4` को दोनों पक्षों से `4` घटाकर बाईं ओर से हटाया जाता है। इससे बाईं ओर `x` पद अकेला रह जाता है।",
+            "another_way": "क्योंकि `2*x` में `4` जोड़ा गया था, उस जोड़ को घटाव से उलटें। संतुलन बनाए रखने के लिए दायाँ पक्ष भी उसी तरह बदलता है।",
+            "visual": "एक तराजू `2*x + 4` और `10` दिखाता है, जिसमें दोनों पक्षों से `4` हटाया गया है।"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2`, `x` से गुणा कर रहा है, इसलिए गुणा को उलटने के लिए दोनों पक्षों को `2` से भाग दें। इससे एक `x` अकेला मिल जाता है।",
+            "another_way": "`2*x` का अर्थ है `x` के दो बराबर समूह। दोनों पक्षों को `2` बराबर भागों में बाँटने से एक समूह का मान दिखता है।",
+            "visual": "एक तराजू `2*x` और `6` दिखाता है, जिन्हें हर पक्ष पर `2` बराबर भागों में बाँटा गया है।"
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "यह उत्तर है क्योंकि `x` अकेला है और उसका मान दिखाया गया है। समीकरण बताता है कि `x`, `3` है।",
+            "another_way": "मूल समीकरण में प्रतिस्थापन करके इसकी जाँच की जा सकती है। `x` की जगह `3` रखने पर दोनों पक्ष बराबर हो जाते हैं।",
+            "visual": "एक तराजू एक `x` को `3` के साथ संतुलित दिखाता है।"
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "कोई संख्या बराबर के चिह्न के पार जा सकती है और अपना चिह्न वही रख सकती है।",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"इसे दूसरी तरफ ले जाओ\" एक आम छोटा तरीका है, और विद्यार्थी भूल जाता है कि ले जाने का मतलब घटाना है।",
+      "what_to_say": {
+        "probe": "`+ 6` हटाने के लिए आपने दोनों पक्षों पर क्या किया?",
+        "nudge": "हाशिये में क्रिया लिखें, \"| -6\", और इसे दोनों पक्षों पर लागू करें।",
+        "tell": "दोनों पक्षों में से छह घटाएँ: `2*x = 4`, इसलिए `x = 2`। रखकर जाँचें: `2*2 + 6` का मान `10` है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "x के लिए हल कीजिए:",
+        "answer": "5"
+      },
+      "source_quote": "कुछ विद्यार्थी किसी संख्या का चिह्न बदले बिना उसे बराबर के चिह्न के पार ले जाते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "आप किसी पक्ष के केवल एक पद को गुणांक से भाग दे सकते हैं।",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "विद्यार्थी `x` को अकेला करने पर ध्यान देता है और उसके पास के पदों को भाग देता है, पक्ष के बाकी भाग को भूल जाता है।",
+      "what_to_say": {
+        "probe": "जब आपने दो से भाग दिया, तो `6` का क्या हुआ?",
+        "nudge": "दोनों पक्षों के हर पद को दो से भाग दें और अपनी पंक्ति से तुलना करें।",
+        "tell": "किसी पक्ष को भाग देने पर उसके हर पद में भाग लगता है: `x + 3 = 5`, इसलिए `x = 2`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "x के लिए हल कीजिए:",
+        "answer": "3"
+      },
+      "source_quote": "कुछ विद्यार्थी केवल एक पद को `x` के आगे की संख्या से भाग देते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "`x` के आगे की संख्या हटाने के लिए उसे घटा देना चाहिए।",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "घटाना वह पहली उलटी क्रिया है जो विद्यार्थी ने सीखी, और `3*x` में `3`, `x` के पास दिखता है।",
+      "what_to_say": {
+        "probe": "`3*x` का क्या अर्थ है? `3` और `x` को कौन-सी क्रिया जोड़ती है?",
+        "nudge": "अपना उत्तर जाँचें: क्या `3*9` बराबर `12` है?",
+        "tell": "`3*x` का अर्थ है `x` का तीन गुना, इसलिए दोनों पक्षों को तीन से भाग दें: `x = 4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "x के लिए हल कीजिए:",
+        "answer": "7"
+      },
+      "source_quote": "कुछ विद्यार्थी `x` के आगे की संख्या से भाग देने के बजाय उसे घटा देते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "आप `x` पर की गई क्रियाओं को किसी भी क्रम में उलट सकते हैं।",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "`x` के पास की संख्या घटाना आम तौर पर पहला कदम होता है, इसलिए विद्यार्थी ऐसा करता है, भले ही वह संख्या किसी भाग के अंदर हो।",
+      "what_to_say": {
+        "probe": "`(x + 6)/2` में, `x` के साथ पहले क्या होता है, और अंत में क्या होता है?",
+        "nudge": "आधा करना अंत में किया गया था। इसे उलटने के लिए आप दोनों पक्षों को किससे गुणा करेंगे?",
+        "tell": "पहले आधा करने को उलटें: `x + 6 = 20`, इसलिए `x = 14`। जाँचें: `(14 + 6)/2` का मान `10` है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "x के लिए हल कीजिए:",
+        "answer": "11"
+      },
+      "source_quote": "कुछ विद्यार्थी चरणों को गलत क्रम में उलटते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "कोष्ठक के बाहर की संख्या अंदर के केवल पहले पद से गुणा करती है।",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5`, `x` के ठीक पास है, इसलिए विद्यार्थी सबसे पास वाली चीज़ से गुणा करता है।",
+      "what_to_say": {
+        "probe": "`5*(x + 3)` में 3 कितनी बार है?",
+        "nudge": "`5*(x + 3)` को `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` के रूप में लिखें और गिनें।",
+        "tell": "पाँच कोष्ठक में मौजूद हर चीज़ से गुणा करता है: `5*x + 15 = 35`, इसलिए `x = 4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "x के लिए हल कीजिए:",
+        "answer": "5"
+      },
+      "source_quote": "कुछ विद्यार्थी कोष्ठक के बाहर की संख्या को केवल पहले पद से गुणा करते हैं।"
+    }
+  ],
+  "questions": [
+    {
+      "question": "दोनों पक्षों पर वही काम क्यों करें?",
+      "answer": "समीकरण संतुलित होता है। बराबर राशियों पर समान संक्रिया करने से वे बराबर ही रहती हैं, इसलिए हल नहीं बदलता।"
+    },
+    {
+      "question": "`+ 6` को हटाने के लिए `6` क्यों घटाते हैं?",
+      "answer": "हल करना संक्रियाओं को हटाना है। `2*x + 6 = 10` में, दोनों पक्षों से `6` घटाने पर `2*x = 4` मिलता है।"
+    },
+    {
+      "question": "`2` घटाने के बजाय `2` से भाग क्यों दें?",
+      "answer": "`2*x` का अर्थ है `2` गुणा `x`। गुणा को भाग से हटाया जाता है, इसलिए `2*x = 4` से `x = 2` मिलता है।"
+    },
+    {
+      "question": "यदि दोनों पक्षों पर `x` हो तो क्या करें?",
+      "answer": "वही संतुलन वाला चरण उपयोग करें। `3*x + 4 = x + 10` में, दोनों पक्षों से `x` घटाने पर `2*x + 4 = 10` मिलता है।"
+    },
+    {
+      "question": "कोष्ठक काम को कैसे बदलते हैं?",
+      "answer": "बाहर की संख्या पूरे कोष्ठक को गुणा करती है। `5*(x + 3) = 35` में, दोनों पक्षों को `5` से भाग देने पर `x + 3 = 7` मिलता है।"
+    },
+    {
+      "question": "विद्यार्थी कैसे जान सकते हैं कि उत्तर सही है?",
+      "answer": "उत्तर को मूल समीकरण में प्रतिस्थापित करें। यदि दोनों पक्ष मिलते हैं, तो उत्तर सही है।"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "संतुलन के रूप में समीकरण",
+      "activity": "`2*x + 6 = 10` को दो बराबर पक्षों के रूप में दिखाएँ। ज़ोर दें कि समीकरण बताता है कि दो व्यंजकों का मान समान है। हाशिए में वही संक्रिया लिखना शुरू कराएँ, जैसे `6` घटाएँ।"
+    },
+    {
+      "minutes": 10,
+      "title": "उल्टे क्रम में हटाना",
+      "activity": "`2*x + 6 = 10` को हल करके दिखाएँ। दोनों पक्षों से `6` घटाने पर `2*x = 4` मिलता है। दोनों पक्षों को `2` से भाग देने पर `x = 2` मिलता है। प्रतिस्थापन करके जाँचें।"
+    },
+    {
+      "minutes": 8,
+      "title": "सामान्य गलत मोड़",
+      "activity": "सामान्य त्रुटियों पर चर्चा करें: संक्रिया बदले बिना पक्ष बदलना, केवल एक पद को भाग देना, और गुणांक से भाग देने के बजाय उसे घटाना। ध्यान संतुलन वाले चरण पर रखें।"
+    },
+    {
+      "minutes": 8,
+      "title": "कोष्ठक",
+      "activity": "`5*(x + 3) = 35` का उपयोग करें। `x + 3 = 7` पाने के लिए दोनों पक्षों को `5` से भाग दें। फिर `x = 4` पाने के लिए `3` घटाएँ। ध्यान दें कि `5` पूरे कोष्ठक पर लागू होता है।"
+    },
+    {
+      "minutes": 10,
+      "title": "दोनों पक्षों पर चर",
+      "activity": "`3*x + 4 = x + 10` को हल करके दिखाएँ। दोनों पक्षों से `x` घटाने पर `2*x + 4 = 10` मिलता है। `4` घटाने पर `2*x = 6` मिलता है। `2` से भाग देने पर `x = 3` मिलता है।"
+    },
+    {
+      "minutes": 6,
+      "title": "उत्तरों की जाँच",
+      "activity": "विद्यार्थी उत्तरों को मूल समीकरण में प्रतिस्थापित करें। असफल जाँच का अर्थ है कि किसी चरण को फिर से देखना चाहिए। जाँच हल करने की प्रक्रिया का हिस्सा है, अतिरिक्त काम नहीं।"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `x` का वह मान चाहते हैं जिससे `8*x = 56` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` का अर्थ है `x` का आठ गुना, इसलिए दोनों पक्षों को `8` से भाग देकर इसे उलटें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "c के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `c` का वह मान चाहते हैं जिससे `-5*c = 55` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "दोनों पक्षों को `-5` से भाग दें, जो `c` के आगे की संख्या है।"
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` ऋणात्मक है क्योंकि चिह्न अलग हैं।"
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `x` का वह मान चाहते हैं जिससे `7*x + 8 = -13` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "कदमों को उल्टे क्रम में करें: दोनों पक्षों में से `8` घटाएँ, फिर `7` से भाग दें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`8` घटाने के बाद: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. जाँचें: `7*(-3) + 8` का मान `-13` है।"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `x` का वह मान चाहते हैं जिससे `3*x + 4 = -8` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "दोनों पक्षों में से `4` घटाएँ, फिर दोनों पक्षों को `3` से भाग दें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`4` घटाने के बाद: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. जाँचें: `3*(-4) + 4` का मान `-8` है।"
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `x` का वह मान चाहते हैं जिससे `5*(x + 3) = 35` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "5 पूरे कोष्ठक से गुणा करता है। दोनों पक्षों को `5` से भाग दें, या कोष्ठक खोलें।"
+        },
+        {
+          "rung": "computation",
+          "text": "दोनों पक्षों को `5` से भाग देने पर `x + 3 = 7` मिलता है।"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. जाँचें: `5*(4 + 3)` का मान `35` है।"
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "m के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `m` का वह मान चाहते हैं जिससे `2*(m - 4) + 3 = -1` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "पहले कोष्ठक खोलकर गुणा करें, फिर संख्याओं को मिलाएँ।"
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, इसलिए `2*m - 5 = -1` और `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. जाँचें: `2*(2 - 4) + 3` का मान `-1` है।"
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `x` का वह मान चाहते हैं जिससे `7*x + 5 = 6*x + 2` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "`x` वाले पदों को एक पक्ष में लाएँ: दोनों पक्षों में से `6*x` घटाएँ।"
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, फिर दोनों पक्षों में से `5` घटाएँ।"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. जाँचें: दोनों पक्ष `-16` हैं।"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "x के लिए हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हम `x` का वह मान चाहते हैं जिससे `12*x + 8 = 6*x + 2` सत्य हो।"
+        },
+        {
+          "rung": "information",
+          "text": "दोनों पक्षों में से `6*x` घटाएँ, फिर दोनों पक्षों में से `8` घटाएँ।"
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, इसलिए `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. जाँचें: दोनों पक्ष `-4` हैं।"
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

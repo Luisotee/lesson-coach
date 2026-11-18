@@ -120,38 +120,35 @@
   },
   "it": {
     "lang": "it",
-    "shipped": false,
-    "usd": 1.291658,
+    "shipped": true,
+    "usd": 2.425805,
     "stats": {
       "calls": {
-        "generate": 35,
-        "judge": 73
+        "generate": 31,
+        "judge": 57
       },
       "failed_calls": 0,
-      "prompt_tokens": 115132,
-      "cached_tokens": 10496,
-      "completion_tokens": 25441,
-      "reasoning_tokens": 1458,
-      "retries": 16,
+      "prompt_tokens": 105015,
+      "cached_tokens": 9984,
+      "completion_tokens": 21800,
+      "reasoning_tokens": 647,
+      "retries": 12,
       "samples": 0,
       "judge_flags": {
-        "worked_examples[2].steps[0].explanations.visual": 3,
-        "worked_examples[0].steps[2].explanations.visual": 2,
-        "worked_examples[1].steps[0].explanations.visual": 1,
-        "outline[3].activity": 1,
+        "worked_examples[0].steps[2].explanations.visual": 1,
         "worked_examples[1].steps[0].explanations.another_way": 1,
-        "questions[4].question": 1,
-        "misconceptions[2].what_to_say.nudge": 2,
-        "practice[5].hints[1].text": 1,
-        "outline[2].activity": 4
+        "misconceptions[4].what_to_say.tell": 1,
+        "outline[4].activity": 1,
+        "why_it_works": 1,
+        "misconceptions[2].what_to_say.nudge": 1,
+        "outline[2].activity": 2,
+        "misconceptions[4].what_to_say.probe": 2
       },
-      "judged_items": 371,
+      "judged_items": 366,
       "dropped": []
     },
-    "failing": [
-      "linear-equations: outline[2].activity: judge: “Keep the focus on the balance step” is translated as “Mantieni l’attenzione sul passaggio di equilibrio.” (In Italian math teaching, “balance step” here refers to maintaining equation balance by applying the same operation to both sides; “passaggio di equilibrio” is not a standard or clear term and may not be understood as intended.)"
-    ],
-    "last_usd": 1.291658
+    "failing": [],
+    "last_usd": 1.134147
   },
   "pt": {
     "lang": "pt",
@@ -362,43 +359,28 @@
   },
   "kk": {
     "lang": "kk",
-    "shipped": false,
-    "usd": 1.276463,
+    "shipped": true,
+    "usd": 2.614193,
     "stats": {
       "calls": {
-        "generate": 31,
-        "judge": 59
+        "generate": 2,
+        "judge": 4
       },
       "failed_calls": 0,
-      "prompt_tokens": 102325,
-      "cached_tokens": 2816,
-      "completion_tokens": 25917,
-      "reasoning_tokens": 1408,
-      "retries": 12,
+      "prompt_tokens": 8508,
+      "cached_tokens": 1792,
+      "completion_tokens": 2765,
+      "reasoning_tokens": 1024,
+      "retries": 1,
       "samples": 0,
       "judge_flags": {
-        "worked_examples[0].steps[0].explanations.another_way": 1,
-        "worked_examples[0].steps[0].explanations.why": 1,
-        "questions[3].answer": 1,
-        "misconceptions[2].what_to_say.nudge": 2,
-        "questions[4].answer": 1,
-        "worked_examples[1].steps[0].explanations.why": 1,
-        "worked_examples[1].steps[1].explanations.why": 1,
-        "worked_examples[1].steps[1].explanations.another_way": 1,
-        "worked_examples[1].steps[1].explanations.visual": 1,
-        "worked_examples[1].steps[2].explanations.visual": 1,
-        "misconceptions[4].what_to_say.probe": 2,
-        "misconceptions[1].what_to_say.probe": 2,
-        "misconceptions[1].what_to_say.nudge": 2
+        "misconceptions[2].why_it_feels_right": 1
       },
-      "judged_items": 371,
+      "judged_items": 31,
       "dropped": []
     },
-    "failing": [
-      "linear-equations: misconceptions[1].what_to_say.probe: judge: TR uses “two-ға” instead of the Kazakh Cyrillic “екіге” for “by two”. (The translation leaves the English word “two” in Latin script with a Kazakh suffix, which is not proper Kazakh Cyrillic and is ungrammatical/nonnative in this teaching context.)",
-      "linear-equations: misconceptions[1].what_to_say.nudge: judge: TR uses “two-ға” instead of the Kazakh Cyrillic “екіге” for “by two”. (The translation leaves the English word “two” in Latin script with a Kazakh suffix, which is not proper Kazakh Cyrillic and is ungrammatical/nonnative in this teaching context.)"
-    ],
-    "last_usd": 1.276463
+    "failing": [],
+    "last_usd": 0.117426
   },
   "fa": {
     "lang": "fa",
@@ -435,5 +417,227 @@
     },
     "failing": [],
     "last_usd": 1.2577
+  },
+  "uk": {
+    "lang": "uk",
+    "shipped": true,
+    "usd": 1.218398,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 55
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 104944,
+      "cached_tokens": 13056,
+      "completion_tokens": 25081,
+      "reasoning_tokens": 97,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "why_it_works": 2,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "misconceptions[1].belief": 1,
+        "outline[2].activity": 2,
+        "misconceptions[0].what_to_say.probe": 1,
+        "misconceptions[0].what_to_say.nudge": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "misconceptions[1].what_to_say.tell": 1,
+        "misconceptions[2].what_to_say.tell": 1,
+        "misconceptions[3].what_to_say.nudge": 1,
+        "misconceptions[1].what_to_say.probe": 1
+      },
+      "judged_items": 370,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.218398
+  },
+  "tr": {
+    "lang": "tr",
+    "shipped": true,
+    "usd": 1.262734,
+    "stats": {
+      "calls": {
+        "generate": 35,
+        "judge": 65
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 116432,
+      "cached_tokens": 13568,
+      "completion_tokens": 24721,
+      "reasoning_tokens": 195,
+      "retries": 16,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.why": 2,
+        "practice[0].hints[1].text": 2,
+        "worked_examples[2].steps[2].explanations.why": 2,
+        "misconceptions[3].why_it_feels_right": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "practice[1].hints[1].text": 1,
+        "questions[4].question": 1,
+        "why_it_works": 1,
+        "practice[4].hints[1].text": 1,
+        "idea": 1,
+        "misconceptions[4].belief": 1,
+        "misconceptions[4].what_to_say.tell": 1,
+        "questions[4].answer": 1
+      },
+      "judged_items": 372,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.262734
+  },
+  "ur": {
+    "lang": "ur",
+    "shipped": true,
+    "usd": 1.409021,
+    "stats": {
+      "calls": {
+        "generate": 36,
+        "judge": 74
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 126259,
+      "cached_tokens": 14592,
+      "completion_tokens": 28113,
+      "reasoning_tokens": 2649,
+      "retries": 17,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.why": 1,
+        "misconceptions[3].why_it_feels_right": 2,
+        "worked_examples[0].steps[0].explanations.why": 1,
+        "practice[0].hints[1].text": 1,
+        "practice[1].hints[1].text": 1,
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "practice[7].hints[1].text": 1,
+        "questions[4].question": 1,
+        "why_it_works": 1,
+        "practice[6].hints[1].text": 2,
+        "misconceptions[1].belief": 2,
+        "questions[4].answer": 2,
+        "misconceptions[0].why_it_feels_right": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "misconceptions[2].belief": 1,
+        "misconceptions[2].why_it_feels_right": 1,
+        "misconceptions[2].source_quote": 2
+      },
+      "judged_items": 378,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.409021
+  },
+  "hi": {
+    "lang": "hi",
+    "shipped": true,
+    "usd": 1.147166,
+    "stats": {
+      "calls": {
+        "generate": 33,
+        "judge": 55
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 102490,
+      "cached_tokens": 10752,
+      "completion_tokens": 22770,
+      "reasoning_tokens": 442,
+      "retries": 14,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "worked_examples[2].steps[0].explanations.another_way": 1,
+        "misconceptions[2].what_to_say.probe": 3,
+        "questions[5].answer": 1,
+        "practice[0].hints[1].text": 1,
+        "misconceptions[2].belief": 1,
+        "questions[1].question": 1,
+        "misconceptions[4].what_to_say.probe": 1
+      },
+      "judged_items": 366,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.147166
+  },
+  "bn": {
+    "lang": "bn",
+    "shipped": true,
+    "usd": 1.096021,
+    "stats": {
+      "calls": {
+        "generate": 29,
+        "judge": 49
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 100337,
+      "cached_tokens": 15872,
+      "completion_tokens": 22192,
+      "reasoning_tokens": 224,
+      "retries": 10,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[1].explanations.visual": 3,
+        "misconceptions[3].why_it_feels_right": 1,
+        "misconceptions[2].what_to_say.nudge": 1,
+        "why_it_works": 1,
+        "outline[2].activity": 1,
+        "misconceptions[1].why_it_feels_right": 1
+      },
+      "judged_items": 364,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.096021
+  },
+  "zh-Hans": {
+    "lang": "zh-Hans",
+    "shipped": true,
+    "usd": 1.380693,
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 4
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 7658,
+      "cached_tokens": 0,
+      "completion_tokens": 1852,
+      "reasoning_tokens": 0,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {},
+      "judged_items": 24,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.09385
+  },
+  "sw": {
+    "lang": "sw",
+    "shipped": true,
+    "usd": 1.735885,
+    "stats": {
+      "calls": {
+        "generate": 1,
+        "judge": 1
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 2300,
+      "cached_tokens": 0,
+      "completion_tokens": 711,
+      "reasoning_tokens": 0,
+      "retries": 0,
+      "samples": 0,
+      "judge_flags": {},
+      "judged_items": 12,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.03283
   }
 }

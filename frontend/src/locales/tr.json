@@ -1,0 +1,382 @@
+{
+  "app": {
+    "title": "Ders Koçu",
+    "pageTitle": "{page} · Ders Koçu"
+  },
+  "shell": {
+    "skipToContent": "Ana içeriğe geç",
+    "mainNav": "Ana menü",
+    "nothingSaved": "Hesap yok. Yalnızca dil seçiminiz bu tarayıcıda tutulur.",
+    "footerNoScores": "Test yok. Puan yok. Siz veya öğrencileriniz hakkında hiçbir şey kaydedilmez.",
+    "footerChecked": "Her yanıt bir bilgisayar cebiri sistemi tarafından kontrol edilir."
+  },
+  "nav": {
+    "topics": "Konular",
+    "mistake": "Bir öğrenci bunu yazdı",
+    "practice": "Alıştırma"
+  },
+  "language": {
+    "label": "Dil",
+    "machine": "{name} (makine çevirisi)"
+  },
+  "home": {
+    "eyebrow": "Matematik öğretmenleri için, 6–9. sınıflar",
+    "title": "Dersi anlatmadan önce matematikten emin olun.",
+    "intro": "Yarının konusunu seçin. Her adımın neden işe yaradığını, öğrencilerin genellikle nerede hata yaptığını ve böyle olduğunda ne söyleyeceğinizi görün.",
+    "topicsHeading": "Bir konu seçin",
+    "topicsIntro": "Her konuda: fikir, çözümlü örnekler, sık yapılan hatalar ve bir ders planı.",
+    "openTopic": "Konuyu aç",
+    "waysHeading": "Başlama yolları",
+    "prepareTitle": "Bir ders hazırlayın",
+    "prepareText": "Fikri tazeleyin ve her adımı üç farklı açıklamayla görün.",
+    "mistakeTitle": "Bir hatayı anlayın",
+    "mistakeText": "Bir öğrencinin yazdığını yazın. Olası nedeni ve ne soracağınızı görün.",
+    "practiceTitle": "Kendi kendinize alıştırma yapın",
+    "practiceText": "İpuçlarını tek tek açtığınız problemler. Puan yok.",
+    "titleHighlight": "önce",
+    "mistakeCta": "Bir öğrenci şunu yazdı…",
+    "heroWorked": "çözümlü örnek",
+    "heroWhyTitle": "Bu adım neden işe yarar?",
+    "heroWhyText": "5’i yalnızca bir taraftan çıkarırsanız denge bozulur. İki taraftan da çıkarırsanız taraflar eşit kalır.",
+    "heroExampleLink": "Çözümlü bir örnek görün: 3x + 5 = 20 denklemini çözme",
+    "noTopics": "Henüz kullanılabilir konu yok."
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "Negatif sayılar",
+      "grade": "6–7. sınıf"
+    },
+    "fractions": {
+      "title": "Kesirler",
+      "grade": "6–7. sınıf"
+    },
+    "linear-equations": {
+      "title": "Doğrusal denklemleri çözme",
+      "grade": "7–8. sınıf"
+    }
+  },
+  "pages": {
+    "practiceTitle": "Alıştırma: {topic}",
+    "practiceProblem": "Soru {n} / {total}",
+    "previous": "Önceki soru",
+    "next": "Sonraki soru",
+    "practiceNav": "Sorular",
+    "practicePageTitle": "{title}, {problem}"
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "body": "Bu adreste bir sayfa yok.",
+    "home": "Başlangıç sayfasına git"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} artı {right}",
+      "minus": "{left} eksi {right}",
+      "times": "{left} çarpı {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "eksi {arg}",
+      "positive": "artı {arg}",
+      "equals": "{left} eşittir {right}",
+      "continued": "eşittir {expr}",
+      "group": "parantez aç, {inner}, parantez kapa",
+      "over": "{num} bölü {den}",
+      "fraction": "payı {num} ve paydası {den} olan kesir, kesrin sonu",
+      "fractionSimple": "{num, plural, one {bir} other {#}} {den, plural, =2 {{num, plural, one {bölü 2} other {bölü 2}}} =3 {{num, plural, one {bölü 3} other {bölü 3}}} =4 {{num, plural, one {bölü 4} other {bölü 4}}} =5 {{num, plural, one {bölü 5} other {bölü 5}}} =6 {{num, plural, one {bölü 6} other {bölü 6}}} =7 {{num, plural, one {bölü 7} other {bölü 7}}} =8 {{num, plural, one {bölü 8} other {bölü 8}}} =9 {{num, plural, one {bölü 9} other {bölü 9}}} =10 {{num, plural, one {bölü 10} other {bölü 10}}} other {bölü #}}",
+      "power": "{power, select, squared {{base} kare} cubed {{base} küp} other {{base} üssü {exp}}}",
+      "powerGroup": "{base} üssü {exp}, üssün sonu",
+      "lineWithOp": "{line}; {op}",
+      "withNote": "{line}; işaretli: {note}"
+    },
+    "op": {
+      "add": "her iki tarafa {arg} ekle",
+      "sub": "her iki taraftan {arg} çıkar",
+      "mul": "her iki tarafı {arg} ile çarp",
+      "div": "her iki tarafı {arg} ile böl"
+    }
+  },
+  "demo": {
+    "title": "Matematik el yazısı bileşenleri",
+    "intro": "İçerik paketlerinin sakladığı düz metin adımlarından çizilen her matematik bileşeni. Her birinin altında ekran okuyucunun seslendirdiği metin bulunur.",
+    "spoken": "Seslendirilen: {text}",
+    "fractionHeading": "Kesir",
+    "expressionsHeading": "İfadeler",
+    "pensHeading": "Kalemler",
+    "pencil": "Kurşun kalem: öğrenci çalışması",
+    "ink": "Mürekkepli kalem: çözülmüş örnekler",
+    "green": "Yeşil kalem: düzeltmeler",
+    "equationHeading": "Denklem, = üzerinde hizalı",
+    "equationLabel": "3x + 5 = 20 denklemini çözme",
+    "expressionHeading": "İfade adımları",
+    "expressionLabel": "−5 − (−3) işlemini yapma",
+    "fractionStepsLabel": "Bir bölü iki ile bir bölü üçü toplama",
+    "replay": "Tekrar yaz",
+    "rtlHeading": "Sağdan sola metnin içinde",
+    "rtlNote": "Çevredeki metin sağdan sola akar; matematik soldan sağa kalır.",
+    "fractionStepsHeading": "Kesir adımları",
+    "longHeading": "Daha uzun bir denklem",
+    "longLabel": "2(x + 3) − 4(x − 1) = 3x + 10 denklemini çözme",
+    "inputTitle": "Matematik giriş bileşenleri",
+    "inputIntro": "Matematik girmenin üç yolu: klavyeyle yazmak, el yazısıyla yazmak ya da fotoğraf çekmek. Her girişin altında sayfanın tam olarak ne aldığı gösterilir. El yazısıyla yazılan ve fotoğraflanan matematik sunucu tarafından okunur; siz onaylayana kadar hiçbir şey iletilmez.",
+    "inputExpression": "Bir ifade",
+    "inputExpressionLabel": "Problem",
+    "inputExpressionHint": "Kesirleri 2/5 gibi eğik çizgiyle yazın.",
+    "inputLines": "Çözüm satırları",
+    "inputLinesLabel": "Öğrencinin çözümü",
+    "inputReceived": "Sayfanın aldığı",
+    "inputNothing": "Henüz hiçbir şey yok."
+  },
+  "input": {
+    "modes": "{label} girme yolları",
+    "mode": {
+      "type": "Klavye ile yaz",
+      "write": "Elde yaz",
+      "photo": "Fotoğraf"
+    },
+    "typeInstead": "Bunun yerine yazarak gir",
+    "type": {
+      "loading": "Matematik alanı yükleniyor…",
+      "fallback": "Matematik alanı yüklenmedi, bu yüzden bu düz metin alanıdır. Kesirleri 2/5 gibi eğik çizgiyle yazın.",
+      "tooLong": "Bu, kontrol etmek için çok uzun. Kısaltın ya da satırlara ayırın.",
+      "lineLabel": "{label}, satır {n}",
+      "addLine": "Satır ekle",
+      "removeLine": "{n}. satırı kaldır",
+      "emptyBox": "Önce boş kutuyu doldurun."
+    },
+    "write": {
+      "introOne": "Parmağınızla, kalemle veya fareyle tek satıra yazın.",
+      "introLines": "İşlemleri parmağınızla, kalemle veya fareyle, her satıra bir adım olacak şekilde yazın.",
+      "board": "{label} için yazı tahtası",
+      "empty": "boş",
+      "strokes": "{count, plural, one {# çizgi} other {# çizgi}}",
+      "undo": "Geri al",
+      "redo": "Yinele",
+      "clear": "Temizle",
+      "did": {
+        "undo": "Geri alındı.",
+        "redo": "Yinelendi.",
+        "clear": "Temizlendi."
+      },
+      "read": "Yazımı oku",
+      "reading": "Yazınız okunuyor…",
+      "again": "Yeniden çiz"
+    },
+    "photo": {
+      "intro": "Öğrencinin çalışmasının fotoğrafını çekin veya bir fotoğraf yükleyin. Sonra kırpabilir ve çevirebilirsiniz. Okunana kadar bu tarayıcıda kalır ve asla saklanmaz.",
+      "take": "Fotoğraf çek",
+      "upload": "Fotoğraf yükle",
+      "cropHelp": "Kutuyu veya köşelerini matematiğin çevresine sürükleyin. Klavyeyle: ok tuşları kutuyu taşır, Shift ile ok tuşları boyutunu değiştirir.",
+      "cropBox": "Kırpma alanı",
+      "cropState": "Kırpma alanı %{w} genişliğinde ve %{h} yüksekliğinde, soldan %{x} ve üstten %{y} uzaklıkta.",
+      "photoAlt": "Fotoğrafınız",
+      "croppedAlt": "Okunan kırpılmış fotoğraf",
+      "useCrop": "Bu bölümü oku",
+      "useWhole": "Tüm fotoğrafı oku",
+      "rotate": "90° döndür",
+      "other": "Başka bir fotoğraf seç",
+      "reading": "Fotoğraf okunuyor…",
+      "retake": "Başka bir fotoğraf çek",
+      "tryAgain": "Tekrar dene"
+    },
+    "review": {
+      "heading": "Yazılan bu mu?",
+      "intro": "Her satırı kontrol edin. Yanlış okunmuş olanları düzenleyin. Siz onaylayana kadar hiçbir şey kontrol edilmez.",
+      "toCheck": "{count, plural, one {# satırın kontrol edilmesi gerekiyor.} other {# satırın kontrol edilmesi gerekiyor.}}",
+      "lines": "Okunan satırlar",
+      "lineN": "Satır {n}",
+      "uncertain": "bu satırı kontrol et",
+      "edit": "Düzenle",
+      "done": "Bitti",
+      "editLine": "{n}. satırı düzenle",
+      "doneLine": "{n}. satırı düzenleme tamamlandı",
+      "removeLine": "{n}. satırı kaldır",
+      "blank": "Boş satır",
+      "unreadable": "Bu satır matematik olarak çizilemez. Yazıldığı gibi gönderilecek.",
+      "left": "Sol taraf",
+      "right": "Sağ taraf (= sonrasında)",
+      "op": "İşlem (−5 gibi)",
+      "addLine": "Satır ekle",
+      "confirm": "Evet, bu satırları kullan",
+      "confirmed": "Onaylandı.",
+      "blocked": {
+        "none": "Kullanılacak satır yok. Bir satır ekleyin veya tekrar deneyin.",
+        "oneLine": "Burada yalnızca bir satır bırakın: diğerlerini kaldırın.",
+        "tooMany": "{max} satırdan fazla satır var. Onaylamadan önce bazılarını kaldırın.",
+        "tooLong": "Bir satır kontrol etmek için çok uzun (bir tarafta en fazla {chars} karakter). Kısaltın."
+      }
+    },
+    "error": {
+      "unclear": "Burada hiçbir matematik okunamadı. Daha net bir yazıyla tekrar deneyin veya bunun yerine yazın.",
+      "unavailable": "Okuma şu anda kullanılamıyor. Bunun yerine yazın veya daha sonra tekrar deneyin.",
+      "too_large": "Bu görsel gönderilemeyecek kadar büyük. Daha küçük kırpın veya bunun yerine yazın.",
+      "bad_image": "Bu görsel okunamadı. PNG, JPEG veya WebP fotoğraf kullanın ya da bunun yerine yazın.",
+      "rate_limited": "Şu anda çok fazla istek var. {seconds} saniye sonra tekrar deneyin veya bunun yerine yazın.",
+      "image": "Görsel hazırlanamadı. Tekrar deneyin veya bunun yerine yazın.",
+      "open": "Bu fotoğraf açılamadı. PNG, JPEG veya WebP fotoğraf kullanın ya da bunun yerine yazın."
+    }
+  },
+  "common": {
+    "grade": "{grade}. sınıf",
+    "grades": "{from}–{to}. sınıf",
+    "loading": "Yükleniyor…",
+    "loadError": "Bu yüklenemedi.",
+    "retry": "Tekrar dene",
+    "retryIn": "{seconds} sn sonra tekrar dene",
+    "rateLimited": "Şu anda çok fazla istek var. Lütfen biraz bekleyin.",
+    "rateLimitedFor": "Şu anda çok fazla istek var. Lütfen {seconds} saniye bekleyin.",
+    "machineTranslated": "makine çevirisi",
+    "newTab": "(yeni sekmede açılır)"
+  },
+  "topic": {
+    "allTopics": "Tüm konular",
+    "printOutline": "Ders planını yazdır",
+    "servedInEnglish": "İngilizce gösteriliyor: henüz çevrilmedi",
+    "onThisPage": "Bu sayfada",
+    "sections": {
+      "idea": "Ana fikir",
+      "refresh": "Önce hatırla",
+      "example": "Çözümlü örnek",
+      "mistakes": "Yaygın hatalar",
+      "questions": "Öğrencilerin sorduğu sorular",
+      "outline": "Ders planı"
+    },
+    "idea": "Ana fikir",
+    "whyItWorks": "Neden işe yarar",
+    "textUnavailable": "Bu açıklama henüz yok.",
+    "refreshFirst": "Önce hatırla:",
+    "exampleOf": "Çözümlü örnek {n} / {total}",
+    "previousExample": "Önceki çözümlü örnek",
+    "nextExample": "Sonraki çözümlü örnek",
+    "exampleLabel": "Çözümlü örnek {n}",
+    "kind": {
+      "solve": "Çöz",
+      "simplify": "Sadeleştir",
+      "evaluate": "Hesapla"
+    },
+    "checkedBadge": "Her adım bir matematik motoru tarafından kontrol edildi",
+    "tapLine": "neden işe yaradığını görmek için bir satıra dokunun",
+    "check": "kontrol:",
+    "checkHolds": "sağlanır",
+    "explanationStyle": "Açıklama biçimi",
+    "modes": {
+      "why": "Neden?",
+      "another": "Başka bir yol",
+      "visual": "Görsel"
+    },
+    "stepStart": "Adım {n} · başlangıç",
+    "stepWithOp": "Adım {n} · {op}",
+    "step": "Adım {n}",
+    "explanationUnavailable": "Bu adımın açıklaması yok. Adımın kendisi kontrol edildi.",
+    "countersKey": "Sarı pullar +1, lacivert pullar −1’dir.",
+    "aiLabel": "YZ ile yazıldı · matematik bir matematik motoru tarafından kontrol edildi",
+    "checkedLabel": "matematik bir matematik motoru tarafından kontrol edildi",
+    "previousStep": "Önceki adım",
+    "nextStep": "Sonraki adım",
+    "mistakesHeading": "Öğrencilerin sıkça yanlış yaptığı noktalar",
+    "studentWrites": "öğrenci şöyle yazar",
+    "whyItFeelsRight": "Neden doğru gibi gelir.",
+    "ask": "Sor:",
+    "questionsHeading": "Öğrencilerin sorduğu sorular",
+    "outlineHeading": "Ders planı",
+    "outlineTotal": "Yaklaşık {minutes} dakika · serbestçe uyarlayın",
+    "outlineTime": "{from}–{to} dk",
+    "akeliusHeading": "Eşleşen Akelius Matematik dersi",
+    "akeliusLesson": "{title} ({grade}. sınıf)",
+    "tryYourself": "Önce bu problemleri kendiniz deneyin"
+  },
+  "practice": {
+    "noneYet": "Henüz alıştırma sorusu yok.",
+    "hintsHeading": "İstediğinizde ipuçları",
+    "startOver": "Baştan başla",
+    "hidden": "(açılmadı)",
+    "rung": {
+      "goal": "Hedef",
+      "information": "Gerekenler",
+      "computation": "Hesaplama",
+      "answer": "Cevap"
+    },
+    "showNextHint": "Sonraki ipucunu göster",
+    "showAnswer": "Cevabı göster",
+    "doneNote": "Çözümünüzle karşılaştırın. Akıl yürütmeyi ister misiniz?",
+    "openExample": "Çözümlü örneği açın.",
+    "allFollow": "Her satır bir önceki satırdan çıkar.",
+    "final": {
+      "correct": "Son satır da cevaptır.",
+      "equivalent_not_simplified": "Son satır doğru, ama henüz sadeleştirilmemiş.",
+      "wrong": "Ama son satır henüz cevap değil."
+    },
+    "lineDoesntFollow": "{n}. satır bir önceki satırdan gelmiyor.",
+    "badReason": {
+      "unparsable": "Matematiksel olarak okunamadı.",
+      "false_equality": "İki tarafı eşit değil.",
+      "not_equivalent": "Bir önceki satıra eşit değil.",
+      "unsupported": "Denetleyicinin kapsamadığı matematik kullanıyor."
+    },
+    "status": {
+      "unclear": "Çözüm denetlenemedi.",
+      "out_of_scope": "Bu çözüm, denetleyicinin kapsamı dışında."
+    },
+    "yourLines": "Çözümünüz",
+    "header": "Soru {n} / {total} · yalnızca sizin için, hiçbir şey kaydedilmez",
+    "backToTopic": "{topic} konusuna dön",
+    "workingLabel": "Çözümünüz",
+    "workingHint": "Yalnızca Çözümümü denetle’ye bastığınızda gönderilir. Hiçbir şey saklanmaz.",
+    "check": "Çözümümü denetle",
+    "checking": "Denetleniyor…",
+    "needWorking": "Önce en az bir satır yazın veya girin.",
+    "sourceLabel": "Kaynak:"
+  },
+  "mistake": {
+    "title": "Bir öğrenci bunu yazdı…",
+    "intro": "Soruyu ve öğrencinizin verdiği yanıtı yazın. Koç, olası nedeni bulur ve ne sorabileceğinizi önerir.",
+    "topicLegend": "konu",
+    "problemLabel": "Soru",
+    "problemHint": "Kesirleri 2/5 gibi eğik çizgiyle yazın. Yazdığınız biçimde görünürler.",
+    "answerLabel": "Öğrencinizin verdiği yanıt",
+    "workingLabel": "Çözüm yolu (isteğe bağlı)",
+    "privacy": "Lütfen öğrenci adlarını yazmayın. Burada hiçbir şey saklanmaz.",
+    "explain": "Bunu açıkla",
+    "explaining": "İnceleniyor…",
+    "needProblem": "Önce soruyu ekleyin.",
+    "needAnswer": "Öğrencinizin yanıtını ekleyin.",
+    "likelyReason": "olası neden",
+    "looksLikeSlip": "dikkatsizlik gibi görünüyor",
+    "slipTitle": "Bir dikkatsizlik, yanlış anlama değil.",
+    "ruleBadge": "kontrol edildi: bu kural tam olarak onun yanıtını veriyor",
+    "aiBadge": "YZ tarafından önerildi · matematik, bir matematik motoru tarafından kontrol edildi",
+    "whatTheyWrote": "yazdığı şey",
+    "workedOut": "çözülmüş yanıt",
+    "barCaption": "Yanıtın çubuk modeli.",
+    "whatToSay": "Ne söyleyebilirsiniz",
+    "say": {
+      "ask": "sor",
+      "nudge": "ipucu ver",
+      "tell": "gerekirse söyle"
+    },
+    "tryNext": "öğrencinizle sonra bunu deneyin",
+    "fromTopic": "{topic} konusundan",
+    "right": "Öğrencinizin yanıtı doğru.",
+    "correct": "Yanıtı doğru.",
+    "notSimplified": "Aynı miktar, sadece sadeleştirilmemiş. Sınıfınız yanıtları en sade biçimde yazıyorsa, bunu nasıl sadeleştirebileceğini sorun.",
+    "sameAmount": "Yanıtı ve sadeleştirilmiş yanıt",
+    "notSure": "tek bir yanıttan emin olunmaz",
+    "askHow": "Bunu nasıl bulduğunu sorun.",
+    "possibilities": "{count, plural, one {bir olasılık} other {# olasılık}}",
+    "possibly": "Olabilir",
+    "or": "Ya da",
+    "outOfScope": "Bu, koçun kapsadığı alanın dışında.",
+    "reason": {
+      "problem_unreadable": "Soru matematiksel olarak okunamadı. Kontrol edip tekrar deneyin.",
+      "answer_unreadable": "Yanıt matematiksel olarak okunamadı. Kontrol edip tekrar deneyin.",
+      "unsupported": "Bu tür matematik henüz kapsanmıyor.",
+      "timeout": "Çözüm çok uzun sürdü. Lütfen tekrar deneyin.",
+      "ai_unavailable": "Açıklama hizmeti şu anda kullanılamıyor. Yukarıdaki matematik kontrolü yine de geçerlidir.",
+      "ai_unclear": "Koç, yalnızca bu yanıttan anlayamadı.",
+      "ai_out_of_scope": "Koç, bunu kapsadığı konuların dışında buldu.",
+      "ai_unverified_math": "Açıklama matematik motoru tarafından kontrol edilemediği için gösterilmiyor. Yukarıdaki matematik kontrol edildi.",
+      "math_error": "Matematik motoru bunu çözemedi. Lütfen girdiyi kontrol edip tekrar deneyin."
+    },
+    "tryAnother": "Başka bir yanıt deneyin",
+    "resultHeading": "Sonuç",
+    "reasonUnavailable": "Olası neden kullanılamıyor."
+  }
+}

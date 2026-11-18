@@ -369,6 +369,7 @@ def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
     UI review pass made."""
     ui = _load(UI_STATS_FILE)
     langs = [lang for lang in LANGUAGES if lang in results or lang in ui]
+    not_run = [lang for lang in LANGUAGES if lang not in results and lang not in ui]
     ships = [
         lang
         for lang in langs
@@ -392,6 +393,12 @@ def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
         "- Judge flag rate: the share of judged texts a judge majority flagged at least once.",
         "",
         f"Ships: {', '.join(ships) or 'none'}. Total cost: about ${total:.2f}.",
+        f"Not run (the $50 cap was reached): {', '.join(not_run) or 'none'}.",
+        "",
+        "Cost is the sum of every run of a language. Calls, repairs and flag rate are from "
+        "each language's last run in this round (earlier runs' counts were not kept; later "
+        "runs add up). A retry reuses the units that already passed, so a retried language's "
+        "counts are small: fr, ar, zh-Hans, kk and sw packs; ru, sv, pl and ar UI.",
         "",
         "| Language | Packs ship | Calls | Repairs | Flag rate | Cost | UI ships | Calls | Repairs "
         "| Flag rate | Cost |",
@@ -426,7 +433,12 @@ def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
     REPORT_FILE.write_text("\n".join(lines) + "\n")
 
 
-async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_steps) -> None:
+async def run(
+    langs: list[str],
+    budget: float,
+    steps_for: StepsFor = worked_steps,
+    per_lang_usd: float | None = None,
+) -> None:
     """Translates `langs`, AT_ONCE at a time, stopping before the total cost (including
     earlier runs recorded in the stats file) would pass `budget`."""
     from pipeline.verify import cost_usd
@@ -440,6 +452,8 @@ async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_step
         spent += sum(r["usd"] for r in _load(UI_STATS_FILE).values())
         measured = [r.get("last_usd", r["usd"]) for r in results.values() if r["usd"] > 0]
         per_lang = float(max(measured)) if measured else GUESS_USD
+        if per_lang_usd is not None:  # a retry from the cache costs far less than a language
+            per_lang = per_lang_usd
         batch: list[str] = []
         while todo and len(batch) < AT_ONCE and spent + per_lang * (len(batch) + 1) <= budget:
             batch.append(todo.pop(0))
@@ -461,10 +475,11 @@ async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_step
             return LanguageResult(lang, True, cost_usd(stats), _plain(stats))
 
         for result in await asyncio.gather(*(one(lang) for lang in batch)):
-            earlier = results.get(result.lang, {}).get("usd", 0.0)  # a rerun adds to it
+            before = results.get(result.lang, {})  # a rerun adds to the earlier runs
             results[result.lang] = {
                 **asdict(result),
-                "usd": result.usd + earlier,
+                "stats": merged(before.get("stats", {}), result.stats),
+                "usd": result.usd + before.get("usd", 0.0),
                 "last_usd": result.usd,
             }
             print(
@@ -475,6 +490,17 @@ async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_step
         STATS_FILE.write_text(json.dumps(results, indent=2, ensure_ascii=False) + "\n")
         write_report(results, model)
     print(f"total: ${sum(r['usd'] for r in results.values()):.2f}")
+
+
+def merged(old: dict[str, Any], new: dict[str, Any]) -> dict[str, Any]:
+    """Two runs' stats added up, so a retry adds to a language's numbers."""
+    out = dict(new)
+    for key, value in old.items():
+        if isinstance(value, (int, float)) and isinstance(new.get(key), (int, float)):
+            out[key] = value + new[key]
+        elif isinstance(value, dict) and isinstance(new.get(key), dict):
+            out[key] = {k: value.get(k, 0) + new[key].get(k, 0) for k in {*value, *new[key]}}
+    return out
 
 
 def _plain(stats: Stats) -> dict[str, Any]:
@@ -489,13 +515,16 @@ def main() -> None:
     parser.add_argument("--lang", nargs="*", default=[], choices=list(LANGUAGES))
     parser.add_argument("--wave", type=int, choices=[1, 2])
     parser.add_argument("--budget", type=float, default=50.0, help="USD cap, all runs together")
+    parser.add_argument(
+        "--per-lang-usd", type=float, help="the cost to assume per language (a cached retry)"
+    )
     args = parser.parse_args()
     langs = list(args.lang)
     if args.wave:
         langs += list(WAVE_1 if args.wave == 1 else WAVE_2)
     if not langs:
         parser.error("give --lang or --wave")
-    asyncio.run(run(langs, args.budget))
+    asyncio.run(run(langs, args.budget, per_lang_usd=args.per_lang_usd))
 
 
 if __name__ == "__main__":

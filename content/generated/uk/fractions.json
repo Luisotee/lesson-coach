@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "uk",
+  "title": "Дроби",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Дроби називають рівні частини; дії з ними виконують, зберігаючи чітким розмір частини й рахуючи частини.",
+  "idea": "Дріб називає рівні частини цілого. У `3/4` нижнє число показує, на скільки рівних частин поділено ціле. Верхнє число рахує, скільки таких частин узято.\n\nРівні дроби називають ту саму величину частинами різного розміру. Множення або ділення чисельника і знаменника на одне й те саме число зберігає величину незмінною.\n\nДля додавання частини мають бути одного розміру, перш ніж їх можна рахувати. Під час множення натуральне число на дріб рахує повторювані групи цього дробу. Під час ділення запитуємо, скільки разів один дріб уміщується в іншому.",
+  "why_it_works": "Додавати можна лише однакові частини. Для `1/2 + 1/3` половини й третини мають різний розмір, тому обидва дроби переписують у шостих. `1/2 + 1/3` стає `3/6 + 2/6`, а `3/6 + 2/6` дорівнює `5/6`.\n\nМноження змінює кількість частин. У `3*(2/5)` п’яті залишаються п’ятими. `3*(2/5)` стає `(3*2)/5`, а `(3*2)/5` дорівнює `6/5`.\n\nДілення запитує, скільки разів дільник уміщується. `(2/3)/(3/4)` стає `(2/3)*(4/3)`. Потім `(2/3)*(4/3)` стає `(2*4)/(3*3)`, а `(2*4)/(3*3)` дорівнює `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Обчисліть:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Дроби мають частини різного розміру, тому їх не можна додати напряму. Запишіть їх зі спільним знаменником.",
+            "another_way": "Використайте шості частини, бо і половини, і третини можна поділити на шості. Так значення кожного дробу не змінюється, а частини стають однаковими.",
+            "visual": "Смужка показує `1/2 + 1/3` як одну частину розміром у половину поруч з однією частиною розміром у третину."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Тепер обидва дроби подані в шостих. `1/2` стає `3/6`, а `1/3` стає `2/6`, тому частини мають однаковий розмір.",
+            "another_way": "Уявіть кожну половину як три шості, а кожну третину як дві шості. Тоді задача зводиться до лічби шостих.",
+            "visual": "Смужка показує `3/6 + 2/6` як три шості й дві шості частини однакового розміру."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "За однакового знаменника додайте чисельники, а знаменник залиште. `3/6 + 2/6` стає `5/6`, отже, це відповідь.",
+            "another_way": "Порахуйте разом усі частини розміром в одну шосту. Три шості й дві шості дають п’ять шостих.",
+            "visual": "Смужка показує `5/6`: заштриховано п’ять рівних частин розміром в одну шосту від цілого."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Обчисліть:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Починаємо з `3*(2/5)`, що означає 3 групи по `2/5`. Розмір кожної частини залишається п’ятими.",
+            "another_way": "Думайте про ціле число як про множник для чисельника дробу. Тоді `3*(2/5)` — це ціле число, помножене на дріб.",
+            "visual": "Модель-смужка показує три копії смужки, у кожній з яких зафарбовано `2/5`."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ціле число множить чисельник, тому `3*(2/5)` перетворюється на `(3*2)/5`. Знаменник залишається `5`, бо частини все ще є п’ятими.",
+            "another_way": "Рахуйте п’яті: `2` п’ятих, узяті `3` рази, дають `(3*2)` п’ятих.",
+            "visual": "Модель-смужка показує, як частини розміром в одну п’яту рахують у трьох групах."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Знаходимо добуток у чисельнику, тому `(3*2)/5` перетворюється на `6/5`. Це відповідь, бо вираз обчислено.",
+            "another_way": "Три групи по `2/5` утворюють `6/5`. Результат більший за одне ціле, бо п’ятих частин більше, ніж `5`.",
+            "visual": "Модель-смужка показує `6` зафарбованих частин розміром в одну п’яту, тобто `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Обчисліть:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Вираз запитує, скільки `3/4` міститься в `2/3`. Щоб поділити на дріб, залишаємо `2/3` і множимо на дріб, обернений до `3/4`.",
+            "another_way": "Уявіть, що ми замінюємо ділення відповідним множенням. Дільник `3/4` перевертаємо, тому `(2/3)/(3/4)` стає `(2/3)*(4/3)`.",
+            "visual": "Смужка показує `2/3` цілого, які вимірюють частинами розміру `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Тепер множимо дроби. Множимо чисельники між собою і знаменники між собою, тому `(2/3)*(4/3)` стає `(2*4)/(3*3)`.",
+            "another_way": "Так окремо показано кількість частин і розміри частин. У чисельнику маємо `2*4`, а в знаменнику — `3*3`.",
+            "visual": "Смужку поділено на третини в один спосіб і на третини в інший спосіб, при цьому пораховано `2*4` малих частин."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Добутки в чисельнику і знаменнику записано явно. Рядок готовий до спрощення через обчислення цих добутків.",
+            "another_way": "Розглядайте `(2*4)/(3*3)` як дріб, у якому ще видно множення. Наступний крок записує ці добутки окремими числами.",
+            "visual": "У моделі зі смужкою ціле має `3*3` рівних малих частин, і `2*4` з них зафарбовано."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Множення дає остаточний дріб, тому `(2*4)/(3*3)` стає `8/9`. Це відповідь, бо більше жодної дії не показано.",
+            "another_way": "Частка менша за одне ціле, і це відповідає змісту: `3/4` більше за `2/3`, тому вміщується менше ніж один такий дріб.",
+            "visual": "Смужка, поділена на `9` рівних частин, має `8` зафарбованих частин, що показує `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Щоб додати дроби, додай чисельники і додай знаменники.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Так дріб сприймається як два окремі цілі числа, і це працює так само, як множення дробів.",
+      "what_to_say": {
+        "probe": "Твоя відповідь більша чи менша за `1/2`? Так має бути?",
+        "nudge": "Чи можна прямо додати половини і третини, чи спочатку потрібні частини однакового розміру?",
+        "tell": "Поділи обидва на шості: `3/6 + 2/6` дорівнює `5/6`. Ми рахуємо лише частини; їхній розмір лишається тим самим."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "3/4"
+      },
+      "source_quote": "Деякі учні додають дроби, додаючи чисельники і додаючи знаменники."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Щоб помножити дріб на ціле число, помнож на це ціле число і чисельник, і знаменник.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "З рівних дробів учні засвоїли, що робити те саме з чисельником і знаменником безпечно.",
+      "what_to_say": {
+        "probe": "`6/15` більше за `2/5`, менше чи стільки ж? Скільки має бути три рази по `2/5`?",
+        "nudge": "Запиши три рази по дві п’ятих як додавання і порахуй п’яті.",
+        "tell": "Три рази по дві п’ятих — це шість п’ятих, `6/5`. Змінюється лише кількість частин."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "12/7"
+      },
+      "source_quote": "Деякі учні множать і чисельник, і знаменник на ціле число."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Під час ділення дробів треба перевернути перший дріб.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "«Переверни і помнож» запам’ятовується як правило без уточнення, який дріб перевертати.",
+      "what_to_say": {
+        "probe": "Скільки трьох четвертих уміститься у двох третіх: більше за один чи менше?",
+        "nudge": "Яким дробом ми рахуємо? Саме його й треба перевернути.",
+        "tell": "Перевертаємо лише дільник: `(2/3)*(4/3)` дорівнює `8/9`, трохи менше ніж один."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Обчисліть:",
+        "answer": "6/5"
+      },
+      "source_quote": "Деякі учні під час ділення перевертають перший дріб, а не другий."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Можна скоротити число в чисельнику зі знаменником навіть через знак плюс.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Скорочення спільних чисел працює для добутків, а учень бачить 2 у чисельнику і 2 у знаменнику.",
+      "what_to_say": {
+        "probe": "Чому дорівнює весь чисельник дробу, перш ніж ділити?",
+        "nudge": "Спочатку обчисли чисельник, а потім поділи. Чи отримаєш ту саму відповідь?",
+        "tell": "Риска дробу ділить увесь чисельник: `(2+4)/2` дорівнює `6/2`, тобто `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Спростіть:",
+        "answer": "5"
+      },
+      "source_quote": "Деякі учні скорочують через знак плюс."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Щоб скоротити дріб, можна поділити лише чисельник або лише знаменник.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Поділ числа навпіл схожий на спрощення, і учень не перевіряє, чи значення лишилося тим самим.",
+      "what_to_say": {
+        "probe": "Чи `3/8` — це стільки само, як `6/8`? Зобрази обидва дроби смужками.",
+        "nudge": "Яке число ділить і чисельник, і знаменник?",
+        "tell": "Поділи чисельник і знаменник на те саме число: `6/8` дорівнює `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Спростіть:",
+        "answer": "2/3"
+      },
+      "source_quote": "Деякі учні спрощують дріб, змінюючи лише одну його частину."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Чому не можна додати верхні числа і нижні числа?",
+      "answer": "Нижнє число називає розмір частин. Половини й третини мають різний розмір, тому перед підрахунком частини треба переписати до одного розміру."
+    },
+    {
+      "question": "Чому `1/2 + 1/3` стає `3/6 + 2/6`?",
+      "answer": "Обидва дроби переписано в шостих. Величини залишаються тими самими, але тепер частини одного розміру, і їх можна додати."
+    },
+    {
+      "question": "Чому в `3*(2/5)` нижнє число не змінюється?",
+      "answer": "П’яті залишаються того самого розміру. Множення на `3` дає три групи по `2/5`, тому змінюється лише кількість п’ятих."
+    },
+    {
+      "question": "Який дріб перевертають під час ділення?",
+      "answer": "Перевертають лише дільник. `(2/3)/(3/4)` стає `(2/3)*(4/3)`, бо ділення запитує, скільки `3/4` уміщується в `2/3`."
+    },
+    {
+      "question": "Чи можна скорочувати через знак плюс?",
+      "answer": "Ні. Риска дробу ділить увесь чисельник. Доданки в сумі не можна частково скорочувати так, ніби це окремі множники."
+    },
+    {
+      "question": "Як учні можуть перевірити, чи відповідь має сенс?",
+      "answer": "Спершу оцініть. Запитайте, чи результат має бути більшим або меншим за `1/2`, чи більшим або меншим за `1`. Приблизна перевірка величини виявляє багато помилок із дробами."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Назвіть частини",
+      "activity": "Візьміть просте ціле, поділене на рівні частини. Пов’яжіть нижнє число з розміром частин, а верхнє число — з кількістю частин. Використайте `3/4` як опорний дріб."
+    },
+    {
+      "minutes": 10,
+      "title": "Рівні дроби",
+      "activity": "Покажіть, що різні дроби можуть називати ту саму величину. Використайте `1/2`, `2/4` і `3/6`. Наголосіть, що чисельник і знаменник мають змінюватися разом."
+    },
+    {
+      "minutes": 10,
+      "title": "Додавайте однакові частини",
+      "activity": "Почніть із `1/2 + 1/3`. Запитайте, чому половини й третини не можна рахувати разом. Перепишіть у шостих: `1/2 + 1/3` стає `3/6 + 2/6`, а `3/6 + 2/6` дорівнює `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Множте дріб",
+      "activity": "Розгляньте `3*(2/5)` як три набори по дві п’ятих. Покажіть, що `3*(2/5)` стає `(3*2)/5`, а `(3*2)/5` дорівнює `6/5`. Підкресліть, що розмір частини залишається п’ятими."
+    },
+    {
+      "minutes": 9,
+      "title": "Діліть дроби",
+      "activity": "Використайте запитання «Скільки вміщується?» Для `(2/3)/(3/4)` покажіть, що `(2/3)/(3/4)` стає `(2/3)*(4/3)`, потім `(2*4)/(3*3)`, а результат дорівнює `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Оцінюйте й знаходьте помилки",
+      "activity": "Обговоріть типові хибні дії: додавання чисельників і знаменників, зміну лише однієї частини, перевертання першого дробу або скорочення через додавання. Використовуйте оцінювання і смужкові моделі для перевірки."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти один дріб, що дорівнює `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "Щоб додати дроби, спочатку зведіть їх до спільного знаменника."
+        },
+        {
+          "rung": "computation",
+          "text": "Спільний знаменник — `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти один дріб, що дорівнює `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Використайте найменше спільне кратне чисел 12 і 18, тобто `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` — це `21/36`, а `5/18` — це `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти один дріб, що дорівнює `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Використайте найменше спільне кратне чисел 12 і 16, тобто `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` — це `28/48`, а `9/16` — це `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Спростіть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти найпростіший дріб, що дорівнює `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Поділіть чисельник і знаменник на їхній найбільший спільний дільник."
+        },
+        {
+          "rung": "computation",
+          "text": "Поділіть чисельник і знаменник на `12`, найбільший спільний дільник чисел 120 і 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "Два знаки однакові, тому добуток додатний. Помножте чисельники і знаменники."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` — це `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "Щоб поділити на дріб, помножте на обернений до нього дріб. Обернений до дільника дріб — це `1/(5/8)`, тобто `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` — це `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти значення `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "Щоб поділити на дріб, помножте на обернений до нього дріб. Обернений до дільника дріб — це `1/(5/6)`, тобто `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` — це `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Обчисліть:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Потрібно знайти один дріб, що дорівнює `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "Знаменники уже однакові, тому відніміть чисельники."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` — це `-36`, отже, отримуємо `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

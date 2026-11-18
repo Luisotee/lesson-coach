@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "sw",
+  "title": "Kutatua milinganyo ya mstari",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Tatua milinganyo ya mstari kwa kufanya operesheni ileile pande zote mbili na kukagua jibu.",
+  "idea": "Mlinganyo husema kuwa semi mbili zina thamani sawa. Kutatua maana yake ni kupata thamani ya `x` inayofanya kauli iwe kweli.\n\nMfano wa mizani ndio picha kuu. Chochote kinachofanywa upande mmoja lazima kifanywe upande mwingine. Operesheni inaweza kuandikwa pembeni, kama vile kutoa `6`, kuonyesha kuwa pande zote mbili zinabadilika.\n\nIli `x` ibaki peke yake, batilisha operesheni kwa mpangilio wa kinyume. Kwa `2*x + 6 = 10`, kutoa `6` pande zote mbili kunatoa `2*x = 4`. Kugawanya pande zote mbili kwa `2` kunatoa `x = 2`.\n\nKama kuna mabano, chukulia bano lote kuwa limezidishwa. Katika `5*(x + 3) = 35`, kugawanya pande zote mbili kwa `5` kunatoa `x + 3 = 7`, kisha kutoa `3` kunatoa `x = 4`.",
+  "why_it_works": "Kila hatua hudumisha usawa wa pande mbili kwa sababu operesheni ileile hutumika pande zote mbili. Mlinganyo hubadilisha umbo, lakini suluhisho hubaki lilelile.\n\nOperesheni hubatilishwa kwa mpangilio wa kinyume. Katika `2*x + 6 = 10`, usemi wenye `x` ulizidishwa kwa `2` kisha `6` ikaongezwa. Kwa hiyo toa `6` kwanza, kisha gawanya kwa `2`.\n\nKukiwa na vigeu pande zote mbili, wazo lilelile la mizani bado hutumika. Katika `3*x + 4 = x + 10`, kutoa `x` pande zote mbili kunatoa `2*x + 4 = 10`. Kisha kutoa `4` kunatoa `2*x = 6`, na kugawanya kwa `2` kunatoa `x = 3`.\n\nKukagua hufanywa kwa kubadilisha kwa thamani. Kwa `x = 2`, `2*2 + 6` ni `10`, kwa hiyo mlinganyo wa awali ni kweli.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6` inazuia `x` kuwa peke yake. Toa `6` kutoka pande zote mbili ili mizani ibaki sawa na `6` iliyoongezwa iondolewe.",
+            "another_way": "Fikiri kwa mpangilio wa kurudi nyuma. Kwa kuwa `6` iliongezwa baada ya `2*x`, iondoe kwanza kwa `-6` pande zote mbili.",
+            "visual": "Mizani inaonyesha `2*x + 6` upande mmoja na `10` upande mwingine, huku `6` ikiondolewa pande zote mbili."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Sasa `2*x = 4`, hivyo `x` bado imezidishwa kwa `2`. Gawanya pande zote mbili kwa `2` ili kuondoa kuzidisha na kuweka mlinganyo sawa.",
+            "another_way": "`2*x` maana yake ni makundi 2 yaliyo sawa ya `x`. Kugawa pande zote mbili katika sehemu 2 sawa kunaacha kundi moja la `x`.",
+            "visual": "Mizani inaonyesha `2*x` upande mmoja na `4` upande mwingine, huku pande zote mbili zikigawanywa katika sehemu `2` sawa."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Hili ndilo jibu kwa sababu `x` iko peke yake na mlinganyo unasema thamani yake moja kwa moja: `x = 2`.",
+            "another_way": "Hakiki kwa kuweka thamani: `2*2 + 6` ni `10`, hivyo mlinganyo wa awali ni kweli.",
+            "visual": "Mizani inaonyesha `x` moja upande mmoja na `2` upande mwingine, ikiwa sawa."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Usemi ulio kwenye mabano umezidishwa kwa `5`. Kugawanya pande zote mbili kwa `5` kunabatilisha uzidishaji huo na kuweka mlinganyo katika mizani.",
+            "another_way": "Hii huepuka kufungua mabano kwanza. Kwa kuwa upande wote wa kushoto ni `5` mara `x + 3`, gawanya pande zote mbili kwa `5`.",
+            "visual": "Mizani iliyo sawa inaonyesha `5*(x + 3)` upande mmoja na `35` upande mwingine, tayari kugawa pande zote mbili katika makundi `5` sawa."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Sasa `3` imeongezwa kwa `x`. Kutoa `3` kutoka pande zote mbili kunabatilisha kujumlisha na kuweka mlinganyo katika mizani.",
+            "another_way": "Fikiria kuondoa `3` ileile kutoka kila upande wa mizani. Hilo huacha kisichojulikana peke yake upande wa kushoto.",
+            "visual": "Mizani iliyo sawa inaonyesha `x + 3` upande mmoja na `7` upande mwingine, huku `3` ikiondolewa kutoka pande zote mbili."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Kigeu kiko peke yake, hivyo mstari huu unatoa jawabu. Thamani inayofanya mlinganyo wa awali uwe kweli ni `x = 4`.",
+            "another_way": "Ukaguzi ungeweka `4` tena badala ya `x` katika mlinganyo wa awali na kuthibitisha kuwa pande mbili zinalingana.",
+            "visual": "Mizani iliyo sawa inaonyesha `x` peke yake upande mmoja na `4` upande mwingine."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Kipengele cha `x` upande wa kulia kinaondolewa kwanza kwa kutoa `x` pande zote mbili. Hii hudumisha usawa wa mlinganyo na kuweka vipengele vya kigeu pamoja.",
+            "another_way": "Fikiria kuondoa `x` moja kutoka kila upande. Kisha upande wa kushoto unakuwa `2*x + 4`, na upande wa kulia hauna tena kipengele cha `x`.",
+            "visual": "Mizani ya usawa inaonyesha `3*x + 4` na `x + 10`, huku `x` moja ikiondolewa kutoka kila upande."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Konstanti `4` inaondolewa upande wa kushoto kwa kutoa `4` pande zote mbili. Hii huacha kipengele cha `x` peke yake upande wa kushoto.",
+            "another_way": "Kwa kuwa `4` ilijumlishwa kwa `2*x`, tengua ujumlishaji huo kwa kutoa. Upande wa kulia hubadilika vivyo hivyo ili kudumisha usawa.",
+            "visual": "Mizani ya usawa inaonyesha `2*x + 4` na `10`, huku `4` ikiondolewa pande zote mbili."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2` inazidisha `x`, kwa hiyo gawa pande zote mbili kwa `2` ili kutengua kuzidisha. Hii hutoa `x` moja peke yake.",
+            "another_way": "`2*x` maana yake ni makundi 2 sawa ya `x`. Kugawa pande zote mbili katika sehemu 2 sawa huonyesha thamani ya kundi moja.",
+            "visual": "Mizani ya usawa inaonyesha `2*x` na `6`, zikiwa zimegawanywa katika sehemu `2` sawa kila upande."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Hili ndilo jibu kwa sababu `x` iko peke yake na thamani yake imeonyeshwa. Mlinganyo unasema kuwa `x` ni `3`.",
+            "another_way": "Uingizaji wa thamani unaweza kukagua katika mlinganyo wa awali. Kubadilisha `x` na `3` hufanya pande zote mbili zilingane.",
+            "visual": "Mizani ya usawa inaonyesha `x` moja ikilingana na `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Namba inaweza kuvuka alama ya usawa na kubaki na alama yake.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "“Ihamishe upande mwingine” ni njia fupi ya kawaida, na mwanafunzi husahau kuwa kuhamisha maana yake ni kutoa.",
+      "what_to_say": {
+        "probe": "Ulifanya nini kwenye pande zote mbili ili kuondoa `+ 6`?",
+        "nudge": "Andika tendo pembezoni, “| -6”, kisha litumie kwenye pande zote mbili.",
+        "tell": "Toa sita kwenye pande zote mbili: `2*x = 4`, kwa hiyo `x = 2`. Kubadilisha kwa kuweka thamani kunathibitisha: `2*2 + 6` ni `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Tafuta thamani ya x:",
+        "answer": "5"
+      },
+      "source_quote": "Baadhi ya wanafunzi huhamisha namba kuvuka alama ya usawa bila kubadilisha alama yake."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Unaweza kugawanya termu moja tu ya upande kwa kigawo.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Mwanafunzi hulenga kupata `x` ibaki peke yake na hugawanya termu zilizo karibu nayo, akisahau sehemu nyingine ya upande.",
+      "what_to_say": {
+        "probe": "Ulipogawanya kwa mbili, nini kilitokea kwa `6`?",
+        "nudge": "Gawanya kila termu katika pande zote mbili kwa mbili, kisha linganisha na mstari wako.",
+        "tell": "Kugawanya upande hugawanya kila termu iliyomo: `x + 3 = 5`, kwa hiyo `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Tafuta thamani ya x:",
+        "answer": "3"
+      },
+      "source_quote": "Baadhi ya wanafunzi hugawanya termu moja tu kwa namba iliyo mbele ya `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "Ili kuondoa namba iliyo mbele ya `x`, itoe.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Kutoa ndilo tendo la kwanza la kutengua ambalo mwanafunzi alijifunza, na `3*x` huonekana kama `3` karibu na `x`.",
+      "what_to_say": {
+        "probe": "`3*x` maana yake nini? Ni tendo gani linaunganisha `3` na `x`?",
+        "nudge": "Kagua jibu lako: je, `3*9` ni sawa na `12`?",
+        "tell": "`3*x` maana yake mara tatu ya `x`, kwa hiyo gawanya pande zote mbili kwa tatu: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Tafuta thamani ya x:",
+        "answer": "7"
+      },
+      "source_quote": "Baadhi ya wanafunzi hutoa namba iliyo mbele ya `x` badala ya kugawanya kwayo."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Unaweza kutengua matendo kwenye `x` kwa mpangilio wowote.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Kutoa namba iliyo karibu na `x` huwa hatua ya kwanza ya kawaida, hivyo mwanafunzi hufanya hivyo hata namba hiyo ikiwa ndani ya mgawanyo.",
+      "what_to_say": {
+        "probe": "Katika `(x + 6)/2`, nini hutokea kwa `x` kwanza, na nini hutokea mwisho?",
+        "nudge": "Kupunguza kwa nusu kulifanywa mwisho. Unazidisha pande zote mbili kwa nini ili kulitengua?",
+        "tell": "Tengua kugawa kwa 2 kwanza: `x + 6 = 20`, kwa hiyo `x = 14`. Kagua: `(14 + 6)/2` ni `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Tafuta thamani ya x:",
+        "answer": "11"
+      },
+      "source_quote": "Baadhi ya wanafunzi hutengua hatua kwa mpangilio usio sahihi."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Namba iliyo nje ya mabano huzidisha termu ya kwanza tu ndani.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` iko karibu kabisa na `x`, hivyo mwanafunzi huzidisha kilicho karibu zaidi.",
+      "what_to_say": {
+        "probe": "Kuna tatu ngapi katika `5*(x + 3)`?",
+        "nudge": "Andika `5*(x + 3)` kama `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` kisha hesabu.",
+        "tell": "Tano huzidisha kila kitu ndani ya mabano: `5*x + 15 = 35`, kwa hiyo `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Tafuta thamani ya x:",
+        "answer": "5"
+      },
+      "source_quote": "Baadhi ya wanafunzi huzidisha namba iliyo nje ya mabano kwa termu ya kwanza tu."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Kwa nini tufanye kitu kilekile pande zote mbili?",
+      "answer": "Mlinganyo uko katika mizani. Kufanya operesheni ileile kwa kiasi sawa hudumisha usawa, kwa hiyo suluhisho halibadiliki."
+    },
+    {
+      "question": "Kwa nini `+ 6` huwa kutoa `6`?",
+      "answer": "Kutatua hubatilisha operesheni. Katika `2*x + 6 = 10`, kutoa `6` pande zote mbili kunatoa `2*x = 4`."
+    },
+    {
+      "question": "Kwa nini tugawanye kwa `2` badala ya kutoa `2`?",
+      "answer": "`2*x` maana yake ni `2` mara `x`. Kuzidisha hubatilishwa kwa kugawanya, kwa hiyo `2*x = 4` huwa `x = 2`."
+    },
+    {
+      "question": "Itakuwaje kama kuna `x` pande zote mbili?",
+      "answer": "Tumia hatua ileile ya mizani. Katika `3*x + 4 = x + 10`, kutoa `x` pande zote mbili kunatoa `2*x + 4 = 10`."
+    },
+    {
+      "question": "Mabano hubadilishaje kazi?",
+      "answer": "Namba iliyo nje huzidisha bano lote. Katika `5*(x + 3) = 35`, kugawanya pande zote mbili kwa `5` kunatoa `x + 3 = 7`."
+    },
+    {
+      "question": "Wanafunzi wanawezaje kujua kama jibu ni sahihi?",
+      "answer": "Badilisha jibu ndani ya mlinganyo wa awali. Kama pande zote mbili zinalingana, jibu linafaa."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Mlinganyo kama mizani",
+      "activity": "Onyesha `2*x + 6 = 10` kama pande mbili zilizo sawa. Sisitiza kuwa mlinganyo husema semi mbili zina thamani sawa. Anzisha kuandika operesheni ileile pembeni, kama vile kutoa `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Batilisha kwa mpangilio wa kinyume",
+      "activity": "Fanyia kazi `2*x + 6 = 10`. Kutoa `6` pande zote mbili kunatoa `2*x = 4`. Kugawanya pande zote mbili kwa `2` kunatoa `x = 2`. Kagua kwa kubadilisha kwa thamani."
+    },
+    {
+      "minutes": 8,
+      "title": "Makosa ya kawaida",
+      "activity": "Jadili makosa ya kawaida: kuhamisha upande bila kubadilisha tendo, kugawanya neno moja tu, na kutoa kizidishi badala ya kugawanya. Endelea kuzingatia hatua ya kuweka usawa."
+    },
+    {
+      "minutes": 8,
+      "title": "Mabano",
+      "activity": "Tumia `5*(x + 3) = 35`. Gawanya pande zote mbili kwa `5` kupata `x + 3 = 7`. Kisha toa `3` kupata `x = 4`. Kumbusha kuwa `5` inatumika kwa bano lote."
+    },
+    {
+      "minutes": 10,
+      "title": "Vigeu pande zote mbili",
+      "activity": "Fanyia kazi `3*x + 4 = x + 10`. Kutoa `x` pande zote mbili kunatoa `2*x + 4 = 10`. Kutoa `4` kunatoa `2*x = 6`. Kugawanya kwa `2` kunatoa `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Kagua majibu",
+      "activity": "Wanafunzi hubadilisha majibu ndani ya mlinganyo wa awali. Ukaguzi ukishindwa, maana yake hatua fulani inapaswa kurejelewa. Ukaguzi ni sehemu ya mchakato wa kutatua, si kazi ya ziada."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `x` inayofanya `8*x = 56` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` maana yake ni 8 mara `x`, kwa hiyo ibatilisha kwa kugawanya pande zote mbili kwa `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Tafuta thamani ya c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `c` inayofanya `-5*c = 55` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "Gawanya pande zote mbili kwa `-5`, namba iliyo mbele ya `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` ni hasi kwa sababu alama zinatofautiana."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `x` inayofanya `7*x + 8 = -13` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "Batilisha hatua kwa mpangilio wa kinyume: toa `8` pande zote mbili, kisha gawanya kwa `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "Baada ya kutoa `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Hakiki: `7*(-3) + 8` ni `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `x` inayofanya `3*x + 4 = -8` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "Toa `4` pande zote mbili, kisha gawanya pande zote mbili kwa `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "Baada ya kutoa `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Hakiki: `3*(-4) + 4` ni `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `x` inayofanya `5*(x + 3) = 35` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "5 inazidisha mabano yote. Gawanya pande zote mbili kwa `5`, au fungua mabano."
+        },
+        {
+          "rung": "computation",
+          "text": "Kugawanya pande zote mbili kwa `5` kunatoa `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Hakiki: `5*(4 + 3)` ni `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Tafuta thamani ya m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `m` inayofanya `2*(m - 4) + 3 = -1` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "Fungua mabano kwanza, kisha kusanya namba."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, kwa hiyo `2*m - 5 = -1` na `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Hakiki: `2*(2 - 4) + 3` ni `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `x` inayofanya `7*x + 5 = 6*x + 2` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "Weka vipengele vya `x` upande mmoja: toa `6*x` pande zote mbili."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, kisha toa `5` pande zote mbili."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Hakiki: pande zote mbili ni `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Tafuta thamani ya x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Tunataka thamani ya `x` inayofanya `12*x + 8 = 6*x + 2` iwe kweli."
+        },
+        {
+          "rung": "information",
+          "text": "Toa `6*x` pande zote mbili, kisha toa `8` pande zote mbili."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, kwa hiyo `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Hakiki: pande zote mbili ni `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "tr",
+  "title": "Kesirler",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Kesirler eş parçalara ad verir; işlemlerde parça büyüklüğü açık tutulur ve parçalar sayılır.",
+  "idea": "Bir kesir, bir bütünün eş parçalarını adlandırır. `3/4` kesrinde alttaki sayı, bütünün eş parçalara ayrıldığını söyler. Üstteki sayı, bu parçalardan kaçının alındığını sayar.\n\nDenk kesirler, aynı miktarı farklı büyüklükte parçalarla adlandırır. Üst ve alt sayıyı aynı sayı ile çarpmak ya da bölmek miktarı aynı tutar.\n\nToplama için parçalar sayılmadan önce aynı büyüklükte olmalıdır. Çarpmada, bir tam sayı ile bir kesrin çarpımı o kesirden tekrarlanan grupları sayar. Bölmede soru, bir kesrin diğerinin içine kaç tane sığdığıdır.",
+  "why_it_works": "Yalnızca aynı tür parçalar toplanabilir. `1/2 + 1/3` için yarımlar ve üçte birler farklı büyüklüktedir, bu yüzden ikisi de altıda bir olarak yeniden yazılır. `1/2 + 1/3`, `3/6 + 2/6` olur ve `3/6 + 2/6`, `5/6` eder.\n\nÇarpma parça sayısını değiştirir. `3*(2/5)` içinde beşte birler beşte bir olarak kalır. `3*(2/5)`, `(3*2)/5` olur ve `(3*2)/5`, `6/5` eder.\n\nBölme, bölenin bölünene kaç kez sığdığını sorar. `(2/3)/(3/4)`, `(2/3)*(4/3)` olur. Sonra `(2/3)*(4/3)`, `(2*4)/(3*3)` olur ve `(2*4)/(3*3)`, `8/9` eder.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Hesaplayın:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Kesirlerin parça büyüklükleri farklıdır, bu yüzden doğrudan toplanamazlar. Onları ortak paydalı olarak yeniden yazın.",
+            "another_way": "Altıda birleri kullanın; çünkü hem yarımlar hem de üçte birler altıda birlere bölünebilir. Bu, parçaları eşitlerken her kesrin değerini aynı tutar.",
+            "visual": "Bir çubuk model, `1/2 + 1/3` ifadesini bir yarım büyüklüğünde parçanın yanında bir üçte bir büyüklüğünde parça olarak gösterir."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Şimdi iki kesir de altıda bir cinsindendir. `1/2`, `3/6` olur; `1/3` ise `2/6` olur. Böylece parçalar aynı büyüklüktedir.",
+            "another_way": "Her yarımı üç altıda bir, her üçte biri iki altıda bir olarak düşünün. O zaman işlem yalnızca altıda birleri saymaktır.",
+            "visual": "Bir çubuk model, `3/6 + 2/6` ifadesini aynı büyüklükteki parçalardan 3 altıda bir ve 2 altıda bir olarak gösterir."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Paydalar aynı olduğunda payları toplayın ve paydayı koruyun. `3/6 + 2/6`, `5/6` olur; bu da cevaptır.",
+            "another_way": "Altıda bir büyüklüğündeki tüm parçaları birlikte sayın. Üç altıda bir ve iki altıda bir, beş altıda bir eder.",
+            "visual": "Bir çubuk model, `5/6` kesrini bir bütünün 5 eşit altıda bir büyüklüğündeki parçası boyalı olarak gösterir."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Hesaplayın:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Bu, `3*(2/5)` ile başlar; bu da `2/5`lik 3 grup demektir. Her parçanın büyüklüğü beşte birler olarak kalır.",
+            "another_way": "Tam sayıyı kesrin üst kısmı için bir çarpan olarak düşünün. O zaman `3*(2/5)`, bir tam sayının bir kesirle çarpımıdır.",
+            "visual": "Bir çubuk modeli, her kopyasında `2/5`i boyalı olan bir çubuğun üç kopyasını gösterir."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Tam sayı üstteki sayıyı çarpar; bu yüzden `3*(2/5)`, `(3*2)/5` olur. Payda `5` olarak kalır çünkü parçalar hâlâ beşte birdir.",
+            "another_way": "Beşte birleri sayın: `2` beşte bir, `3` kez alınınca `(3*2)` beşte bir eder.",
+            "visual": "Bir çubuk modeli, beşlik büyüklüğündeki parçaların üç grup boyunca sayıldığını gösterir."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Paydaki çarpım bulunur; bu yüzden `(3*2)/5`, `6/5` olur. İfade hesaplandığı için cevap budur.",
+            "another_way": "`2/5`ten üç grup `6/5` eder. Sonuç bir bütünden fazladır çünkü `5`ten fazla beşte bir vardır.",
+            "visual": "Bir çubuk modeli, `6/5` oluşturacak şekilde `6` beşte bir büyüklüğünde parçanın boyalı olduğunu gösterir."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Hesaplayın:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "İfade, `2/3` içine kaç tane `3/4` sığdığını sorar. Bir kesre bölerken `2/3` korunur ve `3/4` kesrinin tersiyle çarpılır.",
+            "another_way": "Soruyu bölmeden, buna karşılık gelen bir çarpmaya dönüştürmeyi düşünün. Bölen `3/4` ters çevrilir; böylece `(2/3)/(3/4)`, `(2/3)*(4/3)` olur.",
+            "visual": "Bir çubuk, bir bütünün `2/3`ünün `3/4` büyüklüğündeki parçalarla ölçüldüğünü gösterir."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Şimdi kesirleri çarpın. Üsttekileri birbiriyle, alttakileri birbiriyle çarpın; böylece `(2/3)*(4/3)`, `(2*4)/(3*3)` olur.",
+            "another_way": "Bu, parça sayılarını ve parça büyüklüklerini ayrı ayrı gösterir. Üstte `2*4`, altta `3*3` sayılır.",
+            "visual": "Bir çubuk bir yönde üçte birlere, başka bir yönde yine üçte birlere ayrılır ve `2*4` küçük parça sayılır."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Paydaki ve paydadaki çarpımlar yazılmıştır. Bu satır, bu çarpımların değerleri bulunarak sadeleştirilmeye hazırdır.",
+            "another_way": "`(2*4)/(3*3)` ifadesini, çarpmanın hâlâ göründüğü bir kesir olarak görün. Sonraki adım bu çarpımları tek sayılar olarak yazar.",
+            "visual": "Bir çubuk modelde bütün, `3*3` eş küçük parçaya ayrılmıştır ve bunların `2*4` tanesi boyalıdır."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Çarpma işlemi son kesri verir; böylece `(2*4)/(3*3)`, `8/9` olur. Başka işlem gösterilmediği için cevap budur.",
+            "another_way": "Bölüm bir bütünden küçüktür; bu da anlama uyar: `3/4`, `2/3`ten büyüktür, bu yüzden ondan bir taneden azı sığar.",
+            "visual": "`9` eş parçaya ayrılmış bir çubuğun `8` parçası boyalıdır; bu `8/9`u gösterir."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Kesirleri toplamak için payları topla, paydaları da topla.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Kesri iki ayrı doğal sayı gibi ele alır ve kesirleri çarpmayla aynı şekilde işler.",
+      "what_to_say": {
+        "probe": "Cevabın `1/2`den büyük mü, küçük mü? Öyle mi olmalı?",
+        "nudge": "Yarımları ve üçte birleri doğrudan toplayabilir misin, yoksa önce aynı büyüklükte parçalara mı ihtiyacın var?",
+        "tell": "İkisini de altıda birliklere ayır: `3/6 + 2/6`, `5/6` eder. Yalnızca parçaları sayarız; parçaların büyüklüğü aynı kalır."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "3/4"
+      },
+      "source_quote": "Bazı öğrenciler kesirleri, payları toplayıp paydaları toplayarak toplar."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Bir kesri bir doğal sayıyla çarpmak için hem payı hem paydayı çarp.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Öğrenciler, denk kesirlerden, paya ve paydaya aynı işlemi yapmanın güvenli olduğunu öğrendi.",
+      "what_to_say": {
+        "probe": "`6/15`, `2/5`ten büyük mü, küçük mü, yoksa aynı mı? Üç tane `2/5` ne olmalı?",
+        "nudge": "Üç tane iki beşte biri toplama olarak yaz ve beşte birleri say.",
+        "tell": "Üç tane iki beşte bir, altı beşte birdir, `6/5`. Yalnızca parça sayısı değişir."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "12/7"
+      },
+      "source_quote": "Bazı öğrenciler hem payı hem paydayı doğal sayıyla çarpar."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Kesirleri bölerken ilk kesri ters çevir.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"Ters çevir ve çarp\" sözü, hangi kesrin ters çevrileceği olmadan akılda kalır.",
+      "what_to_say": {
+        "probe": "İki bölü üçün içine kaç tane üç bölü dört sığar: birden fazla mı, az mı?",
+        "nudge": "Hangi kesirle sayıyoruz? Ters çevrilecek olan odur.",
+        "tell": "Yalnızca bölen ters çevrilir: `(2/3)*(4/3)`, `8/9` eder; birden biraz küçüktür."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Hesaplayın:",
+        "answer": "6/5"
+      },
+      "source_quote": "Bazı öğrenciler bölme yaparken ikinci kesri değil, ilk kesri ters çevirir."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Artı işaretinin iki yanında olsa bile paydaki bir sayıyı paydayla sadeleştirebilirsin.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Ortak sayıları sadeleştirmek çarpımlarda işe yarar ve öğrenci üstte bir 2, altta bir 2 görür.",
+      "what_to_say": {
+        "probe": "Bölmeden önce kesrin payı toplamda nedir?",
+        "nudge": "Önce payı hesapla, sonra böl. Aynı cevabı alıyor musun?",
+        "tell": "Kesir çizgisi payın tamamını böler: `(2+4)/2`, `6/2` eder; bu da `3`tür."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Sadeleştirin:",
+        "answer": "5"
+      },
+      "source_quote": "Bazı öğrenciler artı işaretinin iki yanını sadeleştirir."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Bir kesri sadeleştirmek için yalnızca payı ya da yalnızca paydayı bölebilirsin.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Bir sayıyı yarıya indirmek sadeleştirme gibi gelir ve öğrenci miktarın aynı kaldığını kontrol etmez.",
+      "what_to_say": {
+        "probe": "`3/8`, `6/8` ile aynı miktar mı? İkisini de şerit olarak çiz.",
+        "nudge": "Hangi sayı hem payı hem paydayı böler?",
+        "tell": "Payı ve paydayı aynı sayıya böl: `6/8`, `3/4` eder."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Sadeleştirin:",
+        "answer": "2/3"
+      },
+      "source_quote": "Bazı öğrenciler kesrin yalnızca bir bölümünü değiştirerek sadeleştirir."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Üst sayıları ve alt sayıları neden toplayamayız?",
+      "answer": "Alttaki sayı, parçaların büyüklüğünü adlandırır. Yarımlar ve üçte birler farklı büyüklüktedir, bu yüzden parçalar sayılmadan önce aynı büyüklükte yeniden yazılmalıdır."
+    },
+    {
+      "question": "`1/2 + 1/3` neden `3/6 + 2/6` olur?",
+      "answer": "İki kesir de altıda birler cinsinden yeniden yazılır. Miktarlar aynı kalır, ama artık parçalar aynı büyüklüktedir ve toplanabilir."
+    },
+    {
+      "question": "`3*(2/5)` neden alt sayıyı değiştirmez?",
+      "answer": "Beşte birler aynı büyüklükte kalır. `3` ile çarpmak, `2/5` kesrinden 3 grup verir; bu yüzden yalnızca beşte birlerin sayısı değişir."
+    },
+    {
+      "question": "Bölme yaparken hangi kesir ters çevrilir?",
+      "answer": "Yalnızca bölen ters çevrilir. `(2/3)/(3/4)`, `(2/3)*(4/3)` olur; çünkü bölme, `3/4` kesrinin `2/3` içine kaç tane sığdığını sorar."
+    },
+    {
+      "question": "Artı işareti üzerinden sadeleştirme yapabilir miyiz?",
+      "answer": "Hayır. Kesir çizgisi, üst kısmın tamamını böler. Bir toplamdaki terimler, ayrı çarpanlarmış gibi kısmen sadeleştirilemez."
+    },
+    {
+      "question": "Öğrenciler bir cevabın mantıklı olup olmadığını nasıl kontrol edebilir?",
+      "answer": "Önce tahmin edin. Sonucun `1/2` değerinden büyük mü küçük mü, ya da `1` değerinden büyük mü küçük mü olması gerektiğini sorun. Yaklaşık büyüklük kontrolü birçok kesir hatasını yakalar."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Parçaları adlandırın",
+      "activity": "Eş parçalara bölünmüş basit bir bütün kullanın. Alttaki sayıyı parçaların büyüklüğüne, üstteki sayıyı parça sayısına bağlayın. Başvuru kesri olarak `3/4` kullanın."
+    },
+    {
+      "minutes": 10,
+      "title": "Denk kesirler",
+      "activity": "Farklı kesirlerin aynı miktarı adlandırabileceğini gösterin. `1/2`, `2/4` ve `3/6` kullanın. Üst ve alt sayının birlikte değişmesi gerektiğini vurgulayın."
+    },
+    {
+      "minutes": 10,
+      "title": "Aynı tür parçaları toplayın",
+      "activity": "`1/2 + 1/3` ile başlayın. Yarımların ve üçte birlerin neden birlikte sayılamayacağını sorun. Altıda bir olarak yeniden yazın: `1/2 + 1/3`, `3/6 + 2/6` olur ve `3/6 + 2/6`, `5/6` eder."
+    },
+    {
+      "minutes": 8,
+      "title": "Bir kesri çarpın",
+      "activity": "`3*(2/5)` ifadesini, iki beşte birden oluşan 3 grup olarak kullanın. `3*(2/5)` ifadesinin `(3*2)/5` olduğunu ve `(3*2)/5` ifadesinin `6/5` ettiğini gösterin. Parça büyüklüğünün beşte bir olarak kaldığını vurgulayın."
+    },
+    {
+      "minutes": 9,
+      "title": "Kesirleri bölün",
+      "activity": "“Kaç tane sığar?” sorusunu kullanın. `(2/3)/(3/4)` için, `(2/3)/(3/4)` ifadesinin `(2/3)*(4/3)` olduğunu, sonra `(2*4)/(3*3)` olduğunu ve sonucun `8/9` olduğunu gösterin."
+    },
+    {
+      "minutes": 5,
+      "title": "Tahmin edin ve hataları yakalayın",
+      "activity": "Yaygın yanlış adımları tartışın: üstleri ve altları toplamak, yalnızca bir kısmı değiştirmek, ilk kesri ters çevirmek veya toplama üzerinden sadeleştirmek. Kontrol için tahmin ve çubuk modeller kullanın."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`1/2 + 1/7` değerine eşit tek bir kesir istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Kesirleri toplamak için önce paydalarını eşitleyin."
+        },
+        {
+          "rung": "computation",
+          "text": "Ortak payda `14` olur: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`7/12 + 5/18` değerine eşit tek bir kesir istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "12 ve 18'in en küçük ortak katını kullanın; bu `36`dır."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12`, `21/36`; `5/18` ise `10/36` olur."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`7/12 - 9/16` değerine eşit tek bir kesir istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "12 ve 16'nın en küçük ortak katını kullanın; bu `48`dir."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12`, `28/48`; `9/16` ise `27/48` olur."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Sadeleştirin:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`120/252` değerine eşit en sade kesri istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Payı ve paydayı en büyük ortak bölenlerine bölün."
+        },
+        {
+          "rung": "computation",
+          "text": "Payı ve paydayı 120 ile 252'nin en büyük ortak böleni olan `12`ye bölün."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`(-3/4)*(-4/9)` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "İki işaret aynı olduğu için çarpım pozitiftir. Payları ve paydaları çarpın."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)`, `12/36` olur."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`(3/4)/(5/8)` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Bir kesre bölmek için onun çarpmaya göre tersini çarpın. Bölenin çarpmaya göre tersi `1/(5/8)`, yani `8/5`tir."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)`, `24/20` olur."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`(2/3)/(5/6)` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Bir kesre bölmek için onun çarpmaya göre tersini çarpın. Bölenin çarpmaya göre tersi `1/(5/6)`, yani `6/5`tir."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)`, `12/15` olur."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Hesaplayın:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-23/24 - 13/24` değerine eşit tek bir kesir istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Paydalar zaten aynı, bu yüzden payları çıkarın."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13`, `-36` olur; bu yüzden `-36/24` elde ederiz."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

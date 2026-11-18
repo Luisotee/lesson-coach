@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "bn",
+  "title": "ভগ্নাংশ",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "ভগ্নাংশ সমান অংশকে নাম দেয়; অংশের আকার স্পষ্ট রেখে এবং অংশ গুনে ক্রিয়াগুলি কাজ করে।",
+  "idea": "ভগ্নাংশ একটি পূর্ণের সমান অংশ বোঝায়। `3/4`-এ নিচের সংখ্যা বলে পূর্ণটি সমান অংশে কাটা হয়েছে। উপরের সংখ্যা গোনে, সেই অংশগুলির কতগুলি নেওয়া হয়েছে।\n\nসমতুল্য ভগ্নাংশ ভিন্ন আকারের অংশ দিয়ে একই পরিমাণ বোঝায়। উপরের ও নিচের সংখ্যাকে একই সংখ্যা দিয়ে গুণ বা ভাগ করলে পরিমাণ একই থাকে।\n\nযোগের জন্য, অংশগুলি গোনার আগে একই আকারের হতে হয়। গুণের জন্য, একটি পূর্ণ সংখ্যা গুণ একটি ভগ্নাংশ মানে সেই ভগ্নাংশের পুনরাবৃত্ত দল গোনা। ভাগের জন্য, প্রশ্নটি হলো এক ভগ্নাংশের মধ্যে অন্য ভগ্নাংশ কতবার ধরে।",
+  "why_it_works": "শুধু একই ধরনের অংশ যোগ করা যায়। `1/2 + 1/3`-এর জন্য, অর্ধেক ও তৃতীয়াংশের আকার আলাদা, তাই দুটিকেই ষষ্ঠাংশে লেখা হয়। `1/2 + 1/3` হয় `3/6 + 2/6`, এবং `3/6 + 2/6` হলো `5/6`।\n\nগুণ অংশের সংখ্যা বদলায়। `3*(2/5)`-এ, পঞ্চমাংশ পঞ্চমাংশই থাকে। `3*(2/5)` হয় `(3*2)/5`, এবং `(3*2)/5` হলো `6/5`।\n\nভাগ জানতে চায়, ভাজ্যের মধ্যে ভাজক কতবার ধরে। `(2/3)/(3/4)` হয় `(2/3)*(4/3)`। তারপর `(2/3)*(4/3)` হয় `(2*4)/(3*3)`, এবং `(2*4)/(3*3)` হলো `8/9`।",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "হিসাব করো:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "ভগ্নাংশগুলির অংশের আকার আলাদা, তাই এগুলি সরাসরি যোগ করা যায় না। এগুলিকে একটি সাধারণ হর দিয়ে আবার লিখুন।",
+            "another_way": "ষষ্ঠাংশ ব্যবহার করুন, কারণ অর্ধাংশ ও তৃতীয়াংশ দুটোকেই ষষ্ঠাংশে কাটা যায়। এতে অংশগুলির মাপ মেলানোর সময় প্রতিটি ভগ্নাংশের মান একই থাকে।",
+            "visual": "একটি বার `1/2 + 1/3`-কে এক অর্ধ-আকারের অংশের পাশে এক তৃতীয়াংশ-আকারের অংশ হিসেবে দেখায়।"
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এখন দুটি ভগ্নাংশই ষষ্ঠাংশে আছে। `1/2` হয়ে যায় `3/6`, এবং `1/3` হয়ে যায় `2/6`, তাই অংশগুলির আকার একই।",
+            "another_way": "প্রতিটি অর্ধাংশকে তিনটি ষষ্ঠাংশ এবং প্রতিটি তৃতীয়াংশকে দুটি ষষ্ঠাংশ ভাবুন। তখন সমস্যাটি শুধু ষষ্ঠাংশ গোনার বিষয়।",
+            "visual": "একটি বার `3/6 + 2/6`-কে একই আকারের টুকরোর 3টি ষষ্ঠাংশ এবং 2টি ষষ্ঠাংশ হিসেবে দেখায়।"
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "হর একই হলে, লবগুলি যোগ করুন এবং হর অপরিবর্তিত রাখুন। `3/6 + 2/6` হয়ে যায় `5/6`, তাই এটিই উত্তর।",
+            "another_way": "ষষ্ঠাংশ-আকারের সব টুকরো একসঙ্গে গুনুন। তিনটি ষষ্ঠাংশ এবং দুটি ষষ্ঠাংশ মিলে পাঁচটি ষষ্ঠাংশ হয়।",
+            "visual": "একটি বার `5/6`-কে একটি পূর্ণের 5টি সমান ষষ্ঠাংশ-আকারের টুকরো রঙ করা হিসেবে দেখায়।"
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "হিসাব করো:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এটি `3*(2/5)` দিয়ে শুরু হয়, যার মানে `2/5`-এর তিনটি দল। প্রতিটি অংশের মাপ পঞ্চমাংশই থাকে।",
+            "another_way": "পূর্ণ সংখ্যাটিকে ভগ্নাংশের উপরের সংখ্যার গুণক হিসেবে ভাবুন। তখন `3*(2/5)` হলো একটি পূর্ণ সংখ্যা গুণ একটি ভগ্নাংশ।",
+            "visual": "একটি বার মডেল তিনটি বারের কপি দেখায়, যেখানে প্রতিটি কপিতে `2/5` রং করা।"
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "পূর্ণ সংখ্যাটি উপরের সংখ্যাকে গুণ করে, তাই `3*(2/5)` হয়ে যায় `(3*2)/5`। হর `5` থাকে, কারণ অংশগুলো এখনও পঞ্চমাংশ।",
+            "another_way": "পঞ্চমাংশ গুনুন: `2` পঞ্চমাংশ, `3` বার নিলে, `(3*2)` পঞ্চমাংশ পাওয়া যায়।",
+            "visual": "একটি বার মডেল দেখায়, পঞ্চমাংশ আকারের টুকরোগুলো তিনটি দলে গোনা হচ্ছে।"
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "লবের গুণফল পাওয়া গেছে, তাই `(3*2)/5` হয়ে যায় `6/5`। এটিই উত্তর, কারণ রাশিটির মান নির্ণয় করা হয়েছে।",
+            "another_way": "`2/5`-এর তিনটি দল মিলে `6/5` হয়। ফলাফল এক পূর্ণের বেশি, কারণ `5`-এর বেশি পঞ্চমাংশ আছে।",
+            "visual": "একটি বার মডেল `6`টি পঞ্চমাংশ আকারের টুকরো রং করা দেখায়, যা `6/5` তৈরি করে।"
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "হিসাব করো:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "রাশিটি জানতে চায়, `2/3`-এর মধ্যে কতগুলি `3/4` ধরে। ভগ্নাংশ দিয়ে ভাগের ক্ষেত্রে, `2/3` একই রেখে `3/4`-এর বিপরীত ভগ্নাংশ দিয়ে গুণ করি।",
+            "another_way": "প্রশ্নটিকে ভাগ থেকে মিলযুক্ত গুণে বদলানোর কথা ভাবো। ভাজক `3/4` উল্টে যায়, তাই `(2/3)/(3/4)` হয়ে যায় `(2/3)*(4/3)`।",
+            "visual": "একটি বার দেখায় যে একটি পূর্ণের `2/3` অংশকে `3/4` আকারের টুকরো দিয়ে মাপা হচ্ছে।"
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এখন ভগ্নাংশগুলি গুণ করি। ওপরের সংখ্যাগুলি একসঙ্গে এবং নিচের সংখ্যাগুলি একসঙ্গে গুণ করি, তাই `(2/3)*(4/3)` হয়ে যায় `(2*4)/(3*3)`।",
+            "another_way": "এটি অংশের সংখ্যা এবং অংশের আকার আলাদা করে দেখায়। ওপরের দিকে `2*4` গণনা হয়, আর নিচের দিকে `3*3` গণনা হয়।",
+            "visual": "একটি বারকে একদিকে তৃতীয়াংশে এবং অন্যদিকে তৃতীয়াংশে ভাগ করা হয়েছে, যেখানে `2*4`টি ছোট অংশ গণনা করা হয়েছে।"
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "লব ও হরের গুণফলগুলি লিখে দেখানো হয়েছে। এখন ওই গুণফলগুলির মান বের করে সরল করার জন্য লাইনটি প্রস্তুত।",
+            "another_way": "`(2*4)/(3*3)`-কে এমন একটি ভগ্নাংশ হিসেবে দেখো, যেখানে গুণ এখনও দেখা যাচ্ছে। পরের ধাপে ওই গুণফলগুলি একেকটি সংখ্যা হিসেবে লেখা হবে।",
+            "visual": "একটি বার মডেলে পুরোটি `3*3`টি সমান ছোট অংশে ভাগ করা আছে, আর তার মধ্যে `2*4`টি রঙ করা আছে।"
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "গুণ করলে চূড়ান্ত ভগ্নাংশ পাওয়া যায়, তাই `(2*4)/(3*3)` হয়ে যায় `8/9`। আর কোনো প্রক্রিয়া দেখানো নেই বলে এটিই উত্তর।",
+            "another_way": "ভাগফল এক পূর্ণের কম, যা অর্থের সঙ্গে মেলে: `3/4`, `2/3`-এর চেয়ে বড়, তাই এর একটিরও কম ধরে।",
+            "visual": "`9`টি সমান অংশে ভাগ করা একটি বারে `8`টি অংশ রঙ করা আছে, যা `8/9` দেখায়।"
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "ভগ্নাংশ যোগ করতে হলে, উপরের সংখ্যাগুলি যোগ করো এবং নিচের সংখ্যাগুলি যোগ করো।",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "এতে ভগ্নাংশটিকে দুটি আলাদা পূর্ণ সংখ্যার মতো ধরা হয়, আর এটি ভগ্নাংশ গুণ করার মতোই কাজ করে।",
+      "what_to_say": {
+        "probe": "তোমার উত্তর কি `1/2`-এর চেয়ে বড়, না ছোট? তা কি হওয়া উচিত?",
+        "nudge": "তুমি কি অর্ধেক আর এক-তৃতীয়াংশ সরাসরি যোগ করতে পারো, নাকি আগে একই মাপের অংশ দরকার?",
+        "tell": "দুটিকেই ষষ্ঠাংশে কেটে নাও: `3/6 + 2/6` হলো `5/6`। আমরা শুধু অংশগুলি গুনি; তাদের মাপ একই থাকে।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "3/4"
+      },
+      "source_quote": "কিছু শিক্ষার্থী ভগ্নাংশ যোগ করার সময় উপরের সংখ্যাগুলি যোগ করে এবং নিচের সংখ্যাগুলি যোগ করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "কোনো ভগ্নাংশকে পূর্ণ সংখ্যা দিয়ে গুণ করতে হলে, উপরের সংখ্যা ও নিচের সংখ্যা দুটিকেই গুণ করো।",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "সমতুল্য ভগ্নাংশ থেকে শিক্ষার্থীরা শিখেছে যে উপরে ও নিচে একই কাজ করা নিরাপদ।",
+      "what_to_say": {
+        "probe": "`6/15` কি `2/5`-এর চেয়ে বেশি, কম, না একই? `2/5`-এর তিন গুণ কত হওয়া উচিত?",
+        "nudge": "দুই-পঞ্চমাংশের তিনটি দলকে যোগ হিসেবে লেখো এবং পঞ্চমাংশগুলি গুনো।",
+        "tell": "দুই-পঞ্চমাংশের তিন গুণ হলো ছয়-পঞ্চমাংশ, `6/5`। শুধু অংশের সংখ্যা বদলায়।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "12/7"
+      },
+      "source_quote": "কিছু শিক্ষার্থী পূর্ণ সংখ্যাটি দিয়ে উপরের সংখ্যা ও নিচের সংখ্যা দুটিকেই গুণ করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "ভগ্নাংশ ভাগ করার সময়, প্রথম ভগ্নাংশটি উল্টে দাও।",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"উল্টাও ও গুণ করো\" স্লোগান হিসেবে মনে থাকে, কিন্তু কোন ভগ্নাংশ উল্টাতে হবে তা মনে থাকে না।",
+      "what_to_say": {
+        "probe": "দুই-তৃতীয়াংশের মধ্যে তিন-চতুর্থাংশ কয়টি ধরে: একের বেশি, না কম?",
+        "nudge": "আমরা কোন ভগ্নাংশকে একক ধরে মাপছি? সেটিকেই উল্টাতে হবে।",
+        "tell": "শুধু ভাজককে উল্টানো হয়: `(2/3)*(4/3)` হলো `8/9`, একের থেকে একটু কম।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "6/5"
+      },
+      "source_quote": "কিছু শিক্ষার্থী ভাগ করার সময় দ্বিতীয়টি নয়, প্রথম ভগ্নাংশটি উল্টায়।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "যোগ চিহ্নের এপার-ওপার থেকেও উপরের একটি সংখ্যা নিচেরটির সঙ্গে কাটাকাটি করা যায়।",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "সাধারণ গুণনীয়ক কাটাকাটি করা গুণের ক্ষেত্রে কাজ করে, আর শিক্ষার্থী উপরে একটি 2 এবং নিচে একটি 2 দেখে।",
+      "what_to_say": {
+        "probe": "ভাগ করার আগে ভগ্নাংশের উপরের অংশটি সব মিলিয়ে কত?",
+        "nudge": "আগে উপরের অংশটি বের করো, তারপর ভাগ করো। একই উত্তর পাও কি?",
+        "tell": "ভগ্নাংশের দাগ পুরো উপরের অংশকে ভাগ করে: `(2+4)/2` হলো `6/2`, যা `3`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "সরল করো:",
+        "answer": "5"
+      },
+      "source_quote": "কিছু শিক্ষার্থী যোগ চিহ্ন পেরিয়ে কাটাকাটি করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "ভগ্নাংশ সরল করতে হলে, শুধু উপরের সংখ্যা বা শুধু নিচের সংখ্যা ভাগ করা যায়।",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "কোনো সংখ্যাকে অর্ধেক করা সরল করার মতো লাগে, আর শিক্ষার্থী পরিমাণ একই থাকছে কি না দেখে না।",
+      "what_to_say": {
+        "probe": "`3/8` কি `6/8`-এর সমান পরিমাণ? দুটিই দণ্ডচিত্র হিসেবে আঁকো।",
+        "nudge": "কোন সংখ্যা উপরের সংখ্যা ও নিচের সংখ্যা দুটিকেই ভাগ করে?",
+        "tell": "উপরের সংখ্যা ও নিচের সংখ্যা একই সংখ্যা দিয়ে ভাগ করো: `6/8` হলো `3/4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "সরল করো:",
+        "answer": "2/3"
+      },
+      "source_quote": "কিছু শিক্ষার্থী ভগ্নাংশের শুধু একটি অংশ বদলে সরল করে।"
+    }
+  ],
+  "questions": [
+    {
+      "question": "আমরা কেন উপরের সংখ্যা ও নিচের সংখ্যা যোগ করতে পারি না?",
+      "answer": "নিচের সংখ্যা অংশগুলির আকার বোঝায়। অর্ধেক ও তৃতীয়াংশের আকার আলাদা, তাই গোনার আগে অংশগুলিকে একই আকারে লিখতে হয়।"
+    },
+    {
+      "question": "কেন `1/2 + 1/3` হয়ে যায় `3/6 + 2/6`?",
+      "answer": "দুটি ভগ্নাংশকেই ষষ্ঠাংশে লেখা হয়। পরিমাণ একই থাকে, কিন্তু এখন অংশগুলির আকার একই, তাই যোগ করা যায়।"
+    },
+    {
+      "question": "কেন `3*(2/5)` নিচের সংখ্যা বদলায় না?",
+      "answer": "পঞ্চমাংশের আকার একই থাকে। `3` দিয়ে গুণ করলে `2/5`-এর তিনটি দল পাওয়া যায়, তাই শুধু পঞ্চমাংশের সংখ্যা বদলায়।"
+    },
+    {
+      "question": "ভাগ করার সময় কোন ভগ্নাংশটি উল্টানো হয়?",
+      "answer": "শুধু ভাজক উল্টানো হয়। `(2/3)/(3/4)` হয় `(2/3)*(4/3)`, কারণ ভাগ জিজ্ঞাসা করে `2/3`-এর মধ্যে `3/4` কতবার ধরে।"
+    },
+    {
+      "question": "আমরা কি যোগ চিহ্নের এপার-ওপার কাটাকাটি করতে পারি?",
+      "answer": "না। ভগ্নাংশের দাগ পুরো উপরের অংশকে ভাগ করে। যোগফলের পদগুলিকে আলাদা গুণনীয়কের মতো আংশিক কাটাকাটি করা যায় না।"
+    },
+    {
+      "question": "শিক্ষার্থীরা কীভাবে দেখে নিতে পারে উত্তরটি যুক্তিযুক্ত কি না?",
+      "answer": "আগে আনুমানিক হিসাব করো। ফলটি `1/2`-এর বেশি না কম, অথবা `1`-এর বেশি না কম হবে তা জিজ্ঞাসা করো। মোটামুটি আকার যাচাই করলে ভগ্নাংশের অনেক ভুল ধরা পড়ে।"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "অংশগুলির নাম দাও",
+      "activity": "সমান অংশে কাটা একটি সহজ পূর্ণ ব্যবহার করুন। নিচের সংখ্যাকে অংশের আকারের সঙ্গে এবং উপরের সংখ্যাকে অংশের সংখ্যার সঙ্গে যুক্ত করুন। নির্দেশক ভগ্নাংশ হিসেবে `3/4` ব্যবহার করুন।"
+    },
+    {
+      "minutes": 10,
+      "title": "সমতুল্য ভগ্নাংশ",
+      "activity": "দেখান যে ভিন্ন ভগ্নাংশ একই পরিমাণ বোঝাতে পারে। `1/2`, `2/4`, এবং `3/6` ব্যবহার করুন। জোর দিন যে উপরের ও নিচের সংখ্যা একসঙ্গে বদলাতে হবে।"
+    },
+    {
+      "minutes": 10,
+      "title": "একই ধরনের অংশ যোগ করুন",
+      "activity": "`1/2 + 1/3` দিয়ে শুরু করুন। জিজ্ঞাসা করুন, অর্ধেক ও তৃতীয়াংশ একসঙ্গে কেন গোনা যায় না। ষষ্ঠাংশে লিখুন: `1/2 + 1/3` হয় `3/6 + 2/6`, এবং `3/6 + 2/6` হলো `5/6`।"
+    },
+    {
+      "minutes": 8,
+      "title": "একটি ভগ্নাংশ গুণ করুন",
+      "activity": "`3*(2/5)`-কে দুই পঞ্চমাংশের তিনটি দল হিসেবে ব্যবহার করুন। দেখান যে `3*(2/5)` হয় `(3*2)/5`, এবং `(3*2)/5` হলো `6/5`। জোর দিন যে অংশের আকার পঞ্চমাংশই থাকে।"
+    },
+    {
+      "minutes": 9,
+      "title": "ভগ্নাংশ ভাগ করুন",
+      "activity": "“কতগুলি ধরে?” প্রশ্নটি ব্যবহার করুন। `(2/3)/(3/4)`-এর জন্য, দেখান যে `(2/3)/(3/4)` হয় `(2/3)*(4/3)`, তারপর `(2*4)/(3*3)`, এবং ফল হলো `8/9`।"
+    },
+    {
+      "minutes": 5,
+      "title": "আনুমানিক হিসাব করুন এবং ভুল ধরুন",
+      "activity": "সাধারণ ভুল পদক্ষেপ নিয়ে আলোচনা করুন: উপরের ও নিচের সংখ্যা যোগ করা, শুধু একটি অংশ বদলানো, প্রথম ভগ্নাংশ উল্টানো, অথবা যোগের মধ্যে কাটাকাটি করা। যাচাইয়ের জন্য আনুমানিক হিসাব ও বার মডেল ব্যবহার করুন।"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `1/2 + 1/7`-এর সমান একটি ভগ্নাংশ চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "ভগ্নাংশ যোগ করতে, প্রথমে তাদের একই হর করে নাও।"
+        },
+        {
+          "rung": "computation",
+          "text": "সাধারণ হর হলো `14`: `7/14 + 2/14`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`।"
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `7/12 + 5/18`-এর সমান একটি ভগ্নাংশ চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "12 ও 18-এর লঘিষ্ঠ সাধারণ গুণিতক ব্যবহার করো, যা `36`।"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` হলো `21/36` এবং `5/18` হলো `10/36`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`।"
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `7/12 - 9/16`-এর সমান একটি ভগ্নাংশ চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "12 ও 16-এর লঘিষ্ঠ সাধারণ গুণিতক ব্যবহার করো, যা `48`।"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` হলো `28/48` এবং `9/16` হলো `27/48`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`।"
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "সরল করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `120/252`-এর সমান সরলতম ভগ্নাংশ চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "লব ও হরকে তাদের গরিষ্ঠ সাধারণ গুণনীয়ক দিয়ে ভাগ করো।"
+        },
+        {
+          "rung": "computation",
+          "text": "লব ও হরকে `12` দিয়ে ভাগ করো, যা 120 ও 252-এর গরিষ্ঠ সাধারণ গুণনীয়ক।"
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`।"
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `(-3/4)*(-4/9)`-এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "দুটি চিহ্ন একই, তাই গুণফল ধনাত্মক। লবগুলিকে এবং হরগুলিকে গুণ করো।"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` হলো `12/36`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`।"
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `(3/4)/(5/8)`-এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "কোনো ভগ্নাংশ দিয়ে ভাগ করতে, তার বিপরীত ভগ্নাংশ দিয়ে গুণ করো। ভাজকের বিপরীত ভগ্নাংশ হলো `1/(5/8)`, যা `8/5`।"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` হলো `24/20`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`।"
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `(2/3)/(5/6)`-এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "কোনো ভগ্নাংশ দিয়ে ভাগ করতে, তার বিপরীত ভগ্নাংশ দিয়ে গুণ করো। ভাজকের বিপরীত ভগ্নাংশ হলো `1/(5/6)`, যা `6/5`।"
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` হলো `12/15`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`।"
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `-23/24 - 13/24`-এর সমান একটি ভগ্নাংশ চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "হরগুলি আগে থেকেই একই, তাই লবগুলি বিয়োগ করো।"
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` হলো `-36`, তাই আমরা `-36/24` পাই।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`।"
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

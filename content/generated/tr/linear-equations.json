@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "tr",
+  "title": "Birinci dereceden denklemleri çözme",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Birinci dereceden denklemleri, iki tarafa aynı işlemi yaparak ve sonucu kontrol ederek çözün.",
+  "idea": "Bir denklem, iki ifadenin aynı değere sahip olduğunu söyler. Çözmek, ifadeyi doğru yapan `x` değerini bulmak demektir.\n\nTerazi modeli temel görseldir. Bir tarafa ne yapılırsa diğer tarafa da yapılmalıdır. İşlem, iki tarafın da değiştiğini göstermek için kenara, örneğin `6` çıkarma, diye yazılabilir.\n\n`x`i yalnız bırakmak için işlemleri ters sırayla geri alın. `2*x + 6 = 10` için iki taraftan `6` çıkarmak `2*x = 4` verir. İki tarafı `2`ye bölmek `x = 2` verir.\n\nParantez varsa, bütün parantezi çarpılmış olarak düşünün. `5*(x + 3) = 35` denkleminde iki tarafı `5`e bölmek `x + 3 = 7` verir, sonra `3` çıkarmak `x = 4` verir.",
+  "why_it_works": "Her adım iki tarafı eşit tutar, çünkü aynı işlem iki tarafa da uygulanır. Denklem biçim değiştirir, ama çözüm aynı kalır.\n\nİşlemler ters sırayla geri alınır. `2*x + 6 = 10` denkleminde `x`li ifade `2` ile çarpılmış ve sonra `6` eklenmiştir. Bu yüzden önce `6` çıkarın, sonra `2`ye bölün.\n\nİki tarafta da değişken varsa, aynı terazi fikri yine geçerlidir. `3*x + 4 = x + 10` denkleminde iki taraftan `x` çıkarmak `2*x + 4 = 10` verir. Sonra `4` çıkarmak `2*x = 6` verir ve `2`ye bölmek `x = 3` verir.\n\nKontrol yerine koyma ile yapılır. `x = 2` için `2*2 + 6`, `10` eder; bu yüzden başlangıçtaki denklem doğrudur.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "x için çözün:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6`, `x`in yalnız kalmasını engeller. Denge bozulmasın ve eklenen `6` geri alınsın diye iki taraftan da `6` çıkarın.",
+            "another_way": "Ters sırayla düşünün. `6`, `2*x`ten sonra eklendiği için bunu önce iki tarafa da `-6` uygulayarak geri alın.",
+            "visual": "Bir terazi, bir tarafta `2*x + 6`, diğer tarafta `10` gösterir; iki taraftan da `6` kaldırılır."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Şimdi `2*x = 4`, yani `x` hâlâ `2` ile çarpılıyor. Çarpmayı geri almak ve denklemi dengede tutmak için iki tarafı da `2`ye bölün.",
+            "another_way": "`2*x`, `x`ten oluşan iki eş grup demektir. İki tarafı da `2` eş parçaya ayırmak, bir `x` grubunu bırakır.",
+            "visual": "Bir terazi, bir tarafta `2*x`, diğer tarafta `4` gösterir; iki taraf da `2` eş parçaya ayrılır."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Cevap budur çünkü `x` yalnızdır ve denklem değerini doğrudan söyler: `x = 2`.",
+            "another_way": "Yerine koyarak kontrol edin: `2*2 + 6`, `10` eder; bu yüzden başlangıçtaki denklem doğrudur.",
+            "visual": "Bir terazi, bir tarafta bir `x`, diğer tarafta `2` gösterir ve dengededir."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x için çözün:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Parantezli ifade `5` ile çarpılmıştır. Her iki tarafı `5` ile bölmek bu çarpmayı geri alır ve denklemin dengesini korur.",
+            "another_way": "Bu, önce parantezi açmayı gerektirmez. Sol tarafın tamamı `x + 3` ifadesinin `5` katı olduğundan, her iki tarafın tamamını `5` ile bölün.",
+            "visual": "Dengeli bir terazi, bir tarafta `5*(x + 3)`, diğer tarafta `35` gösterir; her iki tarafı `5` eşit gruba ayırmaya hazırdır."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Şimdi `x` değişkenine `3` eklenmiştir. Her iki taraftan `3` çıkarmak bu toplamayı geri alır ve denklemin dengesini korur.",
+            "another_way": "Terazinin her iki tarafından aynı `3` değerini kaldırmayı düşünün. Böylece bilinmeyen solda tek başına kalır.",
+            "visual": "Dengeli bir terazi, bir tarafta `x + 3`, diğer tarafta `7` gösterir; her iki taraftan `3` kaldırılmıştır."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Değişken tek başına olduğundan bu satır çözümü verir. Başlangıçtaki denklemi doğru yapan değer `x = 4` olur.",
+            "another_way": "Kontrol için başlangıçtaki denklemde `x` yerine `4` yazılır ve iki tarafın eşit olduğu doğrulanır.",
+            "visual": "Dengeli bir terazi, bir tarafta tek başına `x`, diğer tarafta `4` gösterir."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "x için çözün:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Sağdaki `x` terimi önce her iki taraftan `x` çıkarılarak yok edilir. Bu, eşitliğin dengesini korur ve değişkenli terimleri bir araya getirir.",
+            "another_way": "Her iki taraftan bir `x` alındığını düşünün. O zaman sol taraf `2*x + 4` olur, sağ tarafta ise artık `x` terimi kalmaz.",
+            "visual": "Bir terazi, `3*x + 4` ve `x + 10` ifadelerini, her iki taraftan bir `x` çıkarılmış olarak gösterir."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Sabit terim `4`, her iki taraftan `4` çıkarılarak soldan yok edilir. Böylece sol tarafta `x` terimi yalnız kalır.",
+            "another_way": "`2*x` üzerine `4` eklendiği için bu toplamayı çıkarma ile geri alın. Dengeyi korumak için sağ taraf da aynı şekilde değişir.",
+            "visual": "Bir terazi, `2*x + 4` ve `10` ifadelerini, her iki taraftan `4` çıkarılmış olarak gösterir."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2`, `x` ile çarpılıyor; bu yüzden çarpmayı geri almak için her iki tarafı `2` ile bölün. Böylece bir `x` yalnız kalır.",
+            "another_way": "`2*x`, `x`’ten oluşan iki eşit grup demektir. Her iki tarafı `2` eşit parçaya ayırmak bir grubun değerini gösterir.",
+            "visual": "Bir terazi, `2*x` ve `6` değerlerini, her iki tarafta `2` eşit parçaya ayrılmış olarak gösterir."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Bu cevaptır çünkü `x` yalnızdır ve değeri gösterilmiştir. Denklem, `x` değerinin `3` olduğunu belirtir.",
+            "another_way": "Yerine koyma, bunu başlangıçtaki denklemde kontrol edebilir. `x` yerine `3` yazmak iki tarafı eşit yapar.",
+            "visual": "Bir terazi, bir `x`’in `3` ile dengede olduğunu gösterir."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Bir sayı eşittir işaretinin karşı tarafına geçip işaretini koruyabilir.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"Diğer tarafa geçir\" yaygın bir kısa yoldur ve öğrenci geçirmenin çıkarma yapmak demek olduğunu unutur.",
+      "what_to_say": {
+        "probe": "`+ 6` ifadesinden kurtulmak için iki tarafa da ne yaptın?",
+        "nudge": "İşlemi kenara \"| -6\" diye yaz ve iki tarafa da uygula.",
+        "tell": "İki taraftan da 6 çıkar: `2*x = 4`, bu yüzden `x = 2`. Yerine koyarak kontrol edelim: `2*2 + 6`, `10` eder."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "x için çözün:",
+        "answer": "5"
+      },
+      "source_quote": "Bazı öğrenciler bir sayıyı işaretini değiştirmeden eşittir işaretinin karşı tarafına geçirir."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Bir tarafın sadece bir terimini katsayıya bölebilirsin.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Öğrenci `x`i yalnız bırakmaya odaklanır ve yanındaki terimleri böler, tarafın geri kalanını unutur.",
+      "what_to_say": {
+        "probe": "İkiye böldüğünde `6`ya ne oldu?",
+        "nudge": "Her iki taraftaki her terimi ikiye böl ve kendi satırınla karşılaştır.",
+        "tell": "Bir tarafı bölmek, o taraftaki her terimi böler: `x + 3 = 5`, bu yüzden `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "x için çözün:",
+        "answer": "3"
+      },
+      "source_quote": "Bazı öğrenciler yalnızca bir terimi `x`in önündeki sayıya böler."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "`x`in önündeki sayıdan kurtulmak için onu çıkarmalısın.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Çıkarma, öğrencinin öğrendiği ilk ters işlemdir ve `3*x`, `x`in yanındaki `3` gibi görünür.",
+      "what_to_say": {
+        "probe": "`3*x` ne demektir? `3` ile `x`i hangi işlem birleştirir?",
+        "nudge": "Cevabını kontrol et: `3*9`, `12`ye eşit mi?",
+        "tell": "`3*x`, `x`in 3 katı demektir; bu yüzden iki tarafı da 3'e böl: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "x için çözün:",
+        "answer": "7"
+      },
+      "source_quote": "Bazı öğrenciler `x`in önündeki sayıya bölmek yerine onu çıkarır."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "`x` üzerindeki işlemleri istediğin sırayla tersine çevirebilirsin.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "`x`in yanındaki sayıyı çıkarmak genelde ilk adımdır, bu yüzden öğrenci o sayı bir bölmenin içinde olsa bile bunu yapar.",
+      "what_to_say": {
+        "probe": "`(x + 6)/2` içinde `x`e önce ne olur, en son ne olur?",
+        "nudge": "Yarıya bölme en son yapıldı. Bunu tersine çevirmek için iki tarafı neyle çarparsın?",
+        "tell": "Önce yarıya bölmeyi tersine çevir: `x + 6 = 20`, bu yüzden `x = 14`. Kontrol: `(14 + 6)/2`, `10` eder."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "x için çözün:",
+        "answer": "11"
+      },
+      "source_quote": "Bazı öğrenciler adımları yanlış sırayla tersine çevirir."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Parantezin dışındaki sayı, içerideki yalnızca ilk terimle çarpılır.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5`, `x`in hemen yanında durur; bu yüzden öğrenci en yakındakini çarpar.",
+      "what_to_say": {
+        "probe": "`5*(x + 3)` içinde kaç tane 3 vardır?",
+        "nudge": "`5*(x + 3)` ifadesini `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` olarak yaz ve say.",
+        "tell": "5, parantezin içindeki her terime dağılır: `5*x + 15 = 35`, bu yüzden `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "x için çözün:",
+        "answer": "5"
+      },
+      "source_quote": "Bazı öğrenciler parantezin dışındaki sayıyı yalnızca ilk terimle çarpar."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Neden iki tarafa aynı şey yapılır?",
+      "answer": "Bir denklem dengededir. Eşit miktarlara aynı işlemi yapmak onları eşit tutar, bu yüzden çözüm değişmez."
+    },
+    {
+      "question": "Neden `+ 6`, `6` çıkarmaya dönüşür?",
+      "answer": "Çözmek, işlemleri geri almaktır. `2*x + 6 = 10` denkleminde iki taraftan `6` çıkarmak `2*x = 4` verir."
+    },
+    {
+      "question": "Neden `2` çıkarmak yerine `2`ye bölüyoruz?",
+      "answer": "`2*x`, `2` çarpı `x` demektir. Çarpma bölme ile geri alınır, bu yüzden `2*x = 4`, `x = 2` olur."
+    },
+    {
+      "question": "İki tarafta da `x` varsa ne olur?",
+      "answer": "Aynı denge adımını kullanın. `3*x + 4 = x + 10` denkleminde iki taraftan `x` çıkarmak `2*x + 4 = 10` verir."
+    },
+    {
+      "question": "Parantezler işlemi nasıl değiştirir?",
+      "answer": "Dıştaki sayı bütün parantezi çarpar. `5*(x + 3) = 35` denkleminde iki tarafı `5`e bölmek `x + 3 = 7` verir."
+    },
+    {
+      "question": "Öğrenciler cevabın doğru olduğunu nasıl bilebilir?",
+      "answer": "Cevabı başlangıçtaki denklemde yerine koyun. İki taraf eşitse cevap doğrudur."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Denge olarak denklem",
+      "activity": "`2*x + 6 = 10` denklemini iki eşit taraf olarak gösterin. Bir denklemin, iki ifadenin aynı değere sahip olduğunu söylediğini vurgulayın. Kenara aynı işlemi yazmayı tanıtın; örneğin `6` çıkar."
+    },
+    {
+      "minutes": 10,
+      "title": "Ters sırayla geri alma",
+      "activity": "`2*x + 6 = 10` üzerinde çalışın. İki taraftan `6` çıkarmak `2*x = 4` verir. İki tarafı `2`ye bölmek `x = 2` verir. Yerine koyarak kontrol edin."
+    },
+    {
+      "minutes": 8,
+      "title": "Yaygın yanlış yollar",
+      "activity": "Tipik hataları tartışın: işlemi değiştirmeden taraf değiştirmek, yalnızca bir terimi bölmek ve katsayıya bölmek yerine katsayıyı çıkarmak. Odağı denge adımında tutun."
+    },
+    {
+      "minutes": 8,
+      "title": "Parantezler",
+      "activity": "`5*(x + 3) = 35` kullanın. `x + 3 = 7` elde etmek için iki tarafı `5`e bölün. Sonra `x = 4` elde etmek için `3` çıkarın. `5`in bütün paranteze uygulandığını belirtin."
+    },
+    {
+      "minutes": 10,
+      "title": "İki tarafta değişkenler",
+      "activity": "`3*x + 4 = x + 10` üzerinde çalışın. İki taraftan `x` çıkarmak `2*x + 4 = 10` verir. `4` çıkarmak `2*x = 6` verir. `2`ye bölmek `x = 3` verir."
+    },
+    {
+      "minutes": 6,
+      "title": "Cevapları kontrol etme",
+      "activity": "Öğrenciler cevapları başlangıçtaki denklemde yerine koyar. Başarısız bir kontrol, bir adıma yeniden bakılması gerektiği anlamına gelir. Kontrol, çözme sürecinin bir parçasıdır; ek bir görev değildir."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "x için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`8*x = 56` eşitliğini doğru yapan `x` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x`, `x`'in 8 katı demektir; bu yüzden her iki tarafı `8`'e bölerek işlemi geri alın."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "c için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-5*c = 55` eşitliğini doğru yapan `c` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Her iki tarafı, `c`'nin önündeki sayı olan `-5`'e bölün."
+        },
+        {
+          "rung": "computation",
+          "text": "İşaretler farklı olduğu için `55/(-5)` negatiftir."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "x için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`7*x + 8 = -13` eşitliğini doğru yapan `x` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Adımları ters sırayla geri alın: her iki taraftan `8` çıkarın, sonra `7`'ye bölün."
+        },
+        {
+          "rung": "computation",
+          "text": "`8` çıkarıldıktan sonra: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Kontrol: `7*(-3) + 8`, `-13` eder."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "x için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`3*x + 4 = -8` eşitliğini doğru yapan `x` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Her iki taraftan `4` çıkarın, sonra her iki tarafı `3`'e bölün."
+        },
+        {
+          "rung": "computation",
+          "text": "`4` çıkarıldıktan sonra: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Kontrol: `3*(-4) + 4`, `-8` eder."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`5*(x + 3) = 35` eşitliğini doğru yapan `x` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "5, parantezin içindeki ifadenin tamamıyla çarpılır. Her iki tarafı `5`'e bölün ya da parantezi açın."
+        },
+        {
+          "rung": "computation",
+          "text": "Her iki tarafı `5`'e bölmek `x + 3 = 7` sonucunu verir."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Kontrol: `5*(4 + 3)`, `35` eder."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "m için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`2*(m - 4) + 3 = -1` eşitliğini doğru yapan `m` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Önce parantezi açın, sonra sayıları toplayın."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, bu nedenle `2*m - 5 = -1` ve `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Kontrol: `2*(2 - 4) + 3`, `-1` eder."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "x için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`7*x + 5 = 6*x + 2` eşitliğini doğru yapan `x` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "`x` terimlerini bir tarafta toplayın: her iki taraftan `6*x` çıkarın."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, sonra her iki taraftan `5` çıkarın."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Kontrol: her iki taraf da `-16` olur."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "x için çözün:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`12*x + 8 = 6*x + 2` eşitliğini doğru yapan `x` değerini istiyoruz."
+        },
+        {
+          "rung": "information",
+          "text": "Her iki taraftan `6*x` çıkarın, sonra her iki taraftan `8` çıkarın."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, bu nedenle `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Kontrol: her iki taraf da `-4` olur."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

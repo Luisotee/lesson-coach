@@ -1,0 +1,382 @@
+{
+  "app": {
+    "title": "备课教练",
+    "pageTitle": "{page} · 备课教练"
+  },
+  "shell": {
+    "skipToContent": "跳到主要内容",
+    "mainNav": "主页",
+    "nothingSaved": "没有账户。只在此浏览器中保留你的语言选择。",
+    "footerNoScores": "没有测试。没有分数。不会保存任何关于你或学生的信息。",
+    "footerChecked": "每个答案都由计算机代数系统检查。"
+  },
+  "nav": {
+    "topics": "主题",
+    "mistake": "一名学生这样写",
+    "practice": "练习"
+  },
+  "language": {
+    "label": "语言",
+    "machine": "{name}（机器翻译）"
+  },
+  "home": {
+    "eyebrow": "面向 6–9 年级数学教师",
+    "title": "先弄懂数学，再安心教学。",
+    "intro": "选择明天要讲的主题。了解每一步为什么成立，学生通常会错在哪里，以及他们出错时该怎么说。",
+    "topicsHeading": "选择主题",
+    "topicsIntro": "每个主题包括：核心概念、例题讲解、常见错误和一份教学提纲。",
+    "openTopic": "打开主题",
+    "waysHeading": "进入方式",
+    "prepareTitle": "备一节课",
+    "prepareText": "回顾这个概念，并看每一步用三种方式解释。",
+    "mistakeTitle": "理解一个错误",
+    "mistakeText": "输入学生写下的内容。查看可能原因和可以提的问题。",
+    "practiceTitle": "私下练习",
+    "practiceText": "题目配有提示，你可以逐条打开。不计分。",
+    "titleHighlight": "先",
+    "mistakeCta": "一名学生这样写……",
+    "heroWorked": "例题讲解",
+    "heroWhyTitle": "为什么这一步成立",
+    "heroWhyText": "只从一边减去 5，天平就会倾斜。两边都减去 5，两边就仍然相等。",
+    "heroExampleLink": "查看例题讲解：解 3x + 5 = 20",
+    "noTopics": "目前还没有可用的主题。"
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "负数",
+      "grade": "6–7 年级"
+    },
+    "fractions": {
+      "title": "分数",
+      "grade": "6–7 年级"
+    },
+    "linear-equations": {
+      "title": "解一元一次方程",
+      "grade": "7–8 年级"
+    }
+  },
+  "pages": {
+    "practiceTitle": "练习：{topic}",
+    "practiceProblem": "第 {n} 题，共 {total} 题",
+    "previous": "上一题",
+    "next": "下一题",
+    "practiceNav": "题目",
+    "practicePageTitle": "{title}，{problem}"
+  },
+  "notFound": {
+    "title": "找不到页面",
+    "body": "这个地址没有对应的页面。",
+    "home": "前往起始页"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} 加 {right}",
+      "minus": "{left} 减 {right}",
+      "times": "{left} 乘 {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "负 {arg}",
+      "positive": "正 {arg}",
+      "equals": "{left} 等于 {right}",
+      "continued": "等于 {expr}",
+      "group": "左括号，{inner}，右括号",
+      "over": "{den}分之{num}",
+      "fraction": "分子为 {num}、分母为 {den} 的分数，分数结束",
+      "fractionSimple": "{den, plural, =2 {二分之{num}} =3 {三分之{num}} =4 {四分之{num}} =5 {五分之{num}} =6 {六分之{num}} =7 {七分之{num}} =8 {八分之{num}} =9 {九分之{num}} =10 {十分之{num}} other {{den}分之{num}}}",
+      "power": "{power, select, squared {{base} 的平方} cubed {{base} 的立方} other {{base} 的 {exp} 次方}}",
+      "powerGroup": "{base} 的 {exp} 次方，指数结束",
+      "lineWithOp": "{line}；{op}",
+      "withNote": "{line}；标记为：{note}"
+    },
+    "op": {
+      "add": "等式两边都加 {arg}",
+      "sub": "等式两边都减 {arg}",
+      "mul": "等式两边都乘以 {arg}",
+      "div": "等式两边都除以 {arg}"
+    }
+  },
+  "demo": {
+    "title": "数学手写组件",
+    "intro": "每个数学组件都来自内容包保存的纯文本步骤。每个组件下方是屏幕阅读器读出的文本。",
+    "spoken": "读出：{text}",
+    "fractionHeading": "分数",
+    "expressionsHeading": "表达式",
+    "pensHeading": "笔",
+    "pencil": "铅笔：学生作答",
+    "ink": "墨水笔：解题示例",
+    "green": "绿笔：订正",
+    "equationHeading": "方程，按 = 对齐",
+    "equationLabel": "解 3x + 5 = 20",
+    "expressionHeading": "表达式步骤",
+    "expressionLabel": "计算 −5 − (−3)",
+    "fractionStepsLabel": "计算二分之一加三分之一",
+    "replay": "再写一遍",
+    "rtlHeading": "在从右到左的文本中",
+    "rtlNote": "周围文本从右向左排列；数学内容仍从左向右排列。",
+    "fractionStepsHeading": "分数步骤",
+    "longHeading": "较长的方程",
+    "longLabel": "解 2(x + 3) − 4(x − 1) = 3x + 10",
+    "inputTitle": "数学输入组件",
+    "inputIntro": "输入数学内容的三种方式：键入、手写或拍照。每个输入框下方显示页面实际收到的内容。手写和拍照的数学内容由服务器读取，在你确认前不会继续传递。",
+    "inputExpression": "一个表达式",
+    "inputExpressionLabel": "题目",
+    "inputExpressionHint": "用斜杠输入分数，如 2/5。",
+    "inputLines": "解题过程行",
+    "inputLinesLabel": "学生的解题过程",
+    "inputReceived": "页面收到的内容",
+    "inputNothing": "还没有内容。"
+  },
+  "input": {
+    "modes": "输入{label}的方式",
+    "mode": {
+      "type": "类型",
+      "write": "书写",
+      "photo": "照片"
+    },
+    "typeInstead": "改为键入",
+    "type": {
+      "loading": "正在加载数学输入框…",
+      "fallback": "数学输入框未加载，所以这是普通文本框。用斜杠输入分数，如 2/5。",
+      "tooLong": "内容太长，无法检查。请缩短，或分成多行。",
+      "lineLabel": "{label}，第 {n} 行",
+      "addLine": "添加一行",
+      "removeLine": "删除第 {n} 行",
+      "emptyBox": "请先填空。"
+    },
+    "write": {
+      "introOne": "用手指、笔或鼠标在一行中写出。",
+      "introLines": "用手指、笔或鼠标写出过程，每行一步。",
+      "board": "{label}的书写板",
+      "empty": "空",
+      "strokes": "{count, plural, other {# 笔}}",
+      "undo": "撤销",
+      "redo": "重做",
+      "clear": "清除",
+      "did": {
+        "undo": "已撤销。",
+        "redo": "已重做。",
+        "clear": "已清除。"
+      },
+      "read": "识别我的书写",
+      "reading": "正在识别你的书写…",
+      "again": "重新画"
+    },
+    "photo": {
+      "intro": "给学生的作业拍照，或上传一张照片。接下来可以裁剪和旋转。它会保留在此浏览器中，直到被识别，绝不会被存储。",
+      "take": "拍照",
+      "upload": "上传照片",
+      "cropHelp": "拖动方框或它的角，使其围住数学内容。使用键盘时：方向键移动方框，按住 Shift 加方向键改变大小。",
+      "cropBox": "裁剪区域",
+      "cropState": "裁剪区域宽 {w}%，高 {h}%，距左侧 {x}%，距顶部 {y}%。",
+      "photoAlt": "你的照片",
+      "croppedAlt": "已识别的裁剪照片",
+      "useCrop": "识别这一部分",
+      "useWhole": "识别整张照片",
+      "rotate": "旋转 90°",
+      "other": "选择另一张照片",
+      "reading": "正在识别照片…",
+      "retake": "再拍一张",
+      "tryAgain": "重试"
+    },
+    "review": {
+      "heading": "这是所写内容吗？",
+      "intro": "检查每一行。修改任何识别有误的内容。确认之前不会检查。",
+      "toCheck": "{count, plural, other {# 行需要检查。}}",
+      "lines": "识别出的行",
+      "lineN": "第 {n} 行",
+      "uncertain": "检查这一行",
+      "edit": "编辑",
+      "done": "完成",
+      "editLine": "编辑第 {n} 行",
+      "doneLine": "已完成第 {n} 行的编辑",
+      "removeLine": "删除第 {n} 行",
+      "blank": "空行",
+      "unreadable": "这一行无法识别为数学式。将按原样发送。",
+      "left": "左边",
+      "right": "右边（= 之后）",
+      "op": "运算（如 −5）",
+      "addLine": "添加一行",
+      "confirm": "是的，使用这些行",
+      "confirmed": "已确认。",
+      "blocked": {
+        "none": "没有可用的行。添加一行，或重试。",
+        "oneLine": "这里只保留一行：请删除其他行。",
+        "tooMany": "行数超过 {max} 行。请先删除一些，再确认。",
+        "tooLong": "有一行太长，无法检查（每边最多 {chars} 个字符）。请缩短它。"
+      }
+    },
+    "error": {
+      "unclear": "这里未能读出数学内容。请书写更清楚后重试，或改为输入。",
+      "unavailable": "现在无法使用识别功能。请改为输入，或稍后重试。",
+      "too_large": "这张图片太大，无法发送。请裁小一些，或改为输入。",
+      "bad_image": "无法读取这张图片。请使用 PNG、JPEG 或 WebP 照片，或改为输入。",
+      "rate_limited": "刚才请求过多。请在 {seconds} 秒后重试，或改为输入。",
+      "image": "无法准备这张图片。请重试，或改为输入。",
+      "open": "无法打开这张照片。请使用 PNG、JPEG 或 WebP 照片，或改为输入。"
+    }
+  },
+  "common": {
+    "grade": "{grade} 年级",
+    "grades": "{from}–{to} 年级",
+    "loading": "正在加载…",
+    "loadError": "无法加载此内容。",
+    "retry": "重试",
+    "retryIn": "{seconds} 秒后重试",
+    "rateLimited": "刚才请求过多。请稍等片刻。",
+    "rateLimitedFor": "刚才请求过多。请等待 {seconds} 秒。",
+    "machineTranslated": "机器翻译",
+    "newTab": "（在新标签页中打开）"
+  },
+  "topic": {
+    "allTopics": "所有主题",
+    "printOutline": "打印课程提纲",
+    "servedInEnglish": "以英语显示：尚未翻译",
+    "onThisPage": "本页内容",
+    "sections": {
+      "idea": "核心想法",
+      "refresh": "先复习",
+      "example": "例题讲解",
+      "mistakes": "常见错误",
+      "questions": "学生常问的问题",
+      "outline": "课程提纲"
+    },
+    "idea": "核心想法",
+    "whyItWorks": "为什么这样做成立",
+    "textUnavailable": "这段说明暂不可用。",
+    "refreshFirst": "先复习：",
+    "exampleOf": "例题讲解 {n} / {total}",
+    "previousExample": "上一条例题讲解",
+    "nextExample": "下一条例题讲解",
+    "exampleLabel": "例题讲解 {n}",
+    "kind": {
+      "solve": "求解",
+      "simplify": "化简",
+      "evaluate": "计算"
+    },
+    "checkedBadge": "每一步都由数学引擎检查",
+    "tapLine": "点击一行，查看为什么这样做成立",
+    "check": "检查：",
+    "checkHolds": "成立",
+    "explanationStyle": "说明方式",
+    "modes": {
+      "why": "为什么？",
+      "another": "另一种方法",
+      "visual": "图示"
+    },
+    "stepStart": "步骤 {n} · 开始",
+    "stepWithOp": "步骤 {n} · {op}",
+    "step": "步骤 {n}",
+    "explanationUnavailable": "这一步的说明暂不可用。这一步本身已检查。",
+    "countersKey": "黄色计数片表示 +1，深蓝色计数片表示 −1。",
+    "aiLabel": "由 AI 编写 · 数学由数学引擎检查",
+    "checkedLabel": "数学由数学引擎检查",
+    "previousStep": "上一步",
+    "nextStep": "下一步",
+    "mistakesHeading": "学生常出错的地方",
+    "studentWrites": "学生写道",
+    "whyItFeelsRight": "为什么看起来有道理。",
+    "ask": "提问：",
+    "questionsHeading": "学生常问的问题",
+    "outlineHeading": "课程提纲",
+    "outlineTotal": "约 {minutes} 分钟 · 可灵活调整",
+    "outlineTime": "{from}–{to} 分钟",
+    "akeliusHeading": "对应的 Akelius 数学课",
+    "akeliusLesson": "{title}（{grade} 年级）",
+    "tryYourself": "先自己试做这些题"
+  },
+  "practice": {
+    "noneYet": "还没有练习题。",
+    "hintsHeading": "需要时查看提示",
+    "startOver": "重新开始",
+    "hidden": "（未打开）",
+    "rung": {
+      "goal": "目标",
+      "information": "需要的信息",
+      "computation": "计算",
+      "answer": "答案"
+    },
+    "showNextHint": "显示下一个提示",
+    "showAnswer": "显示答案",
+    "doneNote": "和你的过程比较。想看推理吗？",
+    "openExample": "打开解题示例。",
+    "allFollow": "每一行都由前一行推出。",
+    "final": {
+      "correct": "最后一行就是答案。",
+      "equivalent_not_simplified": "最后一行是对的，但还没有化简。",
+      "wrong": "但最后一行还不是答案。"
+    },
+    "lineDoesntFollow": "第 {n} 行不能由前一行推出。",
+    "badReason": {
+      "unparsable": "无法按数学表达式读取。",
+      "false_equality": "等式两边不相等。",
+      "not_equivalent": "它与前一行不相等。",
+      "unsupported": "它用了检查器不覆盖的数学内容。"
+    },
+    "status": {
+      "unclear": "无法检查这个过程。",
+      "out_of_scope": "这个过程超出检查器覆盖的范围。"
+    },
+    "yourLines": "你的过程",
+    "header": "第 {n} 题，共 {total} 题 · 只给你使用，不会记录",
+    "backToTopic": "返回 {topic}",
+    "workingLabel": "你的过程",
+    "workingHint": "只有按下“检查我的过程”时才会发送。不会存储任何内容。",
+    "check": "检查我的过程",
+    "checking": "正在检查…",
+    "needWorking": "请先写出或输入至少一行。",
+    "sourceLabel": "来源："
+  },
+  "mistake": {
+    "title": "一名学生这样写……",
+    "intro": "输入题目和学生的答案。教练会找出可能的原因，并建议可以问什么。",
+    "topicLegend": "主题",
+    "problemLabel": "题目",
+    "problemHint": "用斜杠输入分数，如 2/5。它们会按你书写的样子显示。",
+    "answerLabel": "学生的答案",
+    "workingLabel": "他们的过程（可选）",
+    "privacy": "请不要输入学生姓名。这里不会存储任何内容。",
+    "explain": "解释这个",
+    "explaining": "正在查看……",
+    "needProblem": "请先添加题目。",
+    "needAnswer": "请添加学生的答案。",
+    "likelyReason": "可能的原因",
+    "looksLikeSlip": "看起来像笔误",
+    "slipTitle": "是失误，不是理解错误。",
+    "ruleBadge": "已检查：这条规则正好得到他们的答案",
+    "aiBadge": "AI 建议 · 数学引擎已检查数学",
+    "whatTheyWrote": "他们写的内容",
+    "workedOut": "算出的答案",
+    "barCaption": "用条形模型表示答案。",
+    "whatToSay": "你可以这样说",
+    "say": {
+      "ask": "提问",
+      "nudge": "提示",
+      "tell": "必要时说明"
+    },
+    "tryNext": "接下来和学生试一试",
+    "fromTopic": "来自 {topic} 主题",
+    "right": "你的学生答对了。",
+    "correct": "他们的答案是正确的。",
+    "notSimplified": "它表示的量相同，只是没有化简。如果你们班要求用最简形式作答，可以问他们怎样化简。",
+    "sameAmount": "他们的答案和化简后的答案",
+    "notSure": "只看一个答案还不能确定",
+    "askHow": "问问他们是怎么得到的。",
+    "possibilities": "{count, plural, other {# 种可能}}",
+    "possibly": "可能是",
+    "or": "或者",
+    "outOfScope": "这一题超出了教练覆盖的范围。",
+    "reason": {
+      "problem_unreadable": "无法把题目读成数学表达。请检查后再试。",
+      "answer_unreadable": "无法把答案读成数学表达。请检查后再试。",
+      "unsupported": "这类数学内容目前还未覆盖。",
+      "timeout": "计算用时过长。请再试一次。",
+      "ai_unavailable": "解释服务暂时不可用。上面的数学检查仍然有效。",
+      "ai_unclear": "教练无法仅凭这个答案判断。",
+      "ai_out_of_scope": "教练发现这超出了它覆盖的主题。",
+      "ai_unverified_math": "数学引擎无法检查这段解释，所以不显示。上面的数学内容已检查。",
+      "math_error": "数学引擎无法算出这个结果。请检查输入后再试。"
+    },
+    "tryAnother": "试试另一个答案",
+    "resultHeading": "结果",
+    "reasonUnavailable": "可能的原因不可用。"
+  }
+}
