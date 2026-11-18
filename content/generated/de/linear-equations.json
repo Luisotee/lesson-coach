@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "de",
+  "title": "Lineare Gleichungen lösen",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Löse lineare Gleichungen, indem du auf beiden Seiten dieselbe Operation ausführst und die Lösung prüfst.",
+  "idea": "Eine Gleichung sagt, dass 2 Terme denselben Wert haben. Lösen bedeutet, den Wert von `x` zu finden, der die Aussage wahr macht.\n\nDas Waagemodell ist das zentrale Bild. Was auf einer Seite gemacht wird, muss auch auf der anderen Seite gemacht werden. Die Operation kann am Rand notiert werden, zum Beispiel subtrahiere `6`, um zu zeigen, dass sich beide Seiten ändern.\n\nUm `x` allein zu erhalten, machst du die Operationen in umgekehrter Reihenfolge rückgängig. Bei `2*x + 6 = 10` ergibt das Subtrahieren von `6` auf beiden Seiten `2*x = 4`. Das Dividieren beider Seiten durch `2` ergibt `x = 2`.\n\nWenn es Klammern gibt, behandle die ganze Klammer als multipliziert. In `5*(x + 3) = 35` ergibt das Dividieren beider Seiten durch `5` die Gleichung `x + 3 = 7`, dann ergibt das Subtrahieren von `3` die Gleichung `x = 4`.",
+  "why_it_works": "Jeder Schritt hält die 2 Seiten gleich, weil auf beiden Seiten dieselbe Operation angewendet wird. Die Gleichung ändert ihre Form, aber die Lösung bleibt gleich.\n\nOperationen werden in umgekehrter Reihenfolge rückgängig gemacht. In `2*x + 6 = 10` wurde der Term mit `x` mit `2` multipliziert und dann wurde `6` addiert. Also subtrahiere zuerst `6`, dann dividiere durch `2`.\n\nBei Variablen auf beiden Seiten gilt weiter dieselbe Waageidee. In `3*x + 4 = x + 10` ergibt das Subtrahieren von `x` auf beiden Seiten `2*x + 4 = 10`. Dann ergibt das Subtrahieren von `4` die Gleichung `2*x = 6`, und das Dividieren durch `2` ergibt `x = 3`.\n\nDie Probe funktioniert durch Einsetzen. Für `x = 2` ist `2*2 + 6` gleich `10`, also ist die ursprüngliche Gleichung wahr.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Löse nach x auf:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Das `+ 6` verhindert, dass `x` allein steht. Subtrahiere `6` auf beiden Seiten, damit die Waage im Gleichgewicht bleibt und die addierte `6` rückgängig gemacht wird.",
+            "another_way": "Denke in umgekehrter Reihenfolge. Da `6` nach `2*x` addiert wurde, mache das zuerst mit `-6` auf beiden Seiten rückgängig.",
+            "visual": "Eine Waage zeigt `2*x + 6` auf der einen Seite und `10` auf der anderen, wobei `6` auf beiden Seiten entfernt wird."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Jetzt gilt `2*x = 4`, also wird `x` noch mit `2` multipliziert. Dividiere beide Seiten durch `2`, um die Multiplikation rückgängig zu machen und die Gleichung im Gleichgewicht zu halten.",
+            "another_way": "`2*x` bedeutet zwei gleich große Gruppen von `x`. Teilt man beide Seiten in `2` gleich große Teile, bleibt eine Gruppe von `x` übrig.",
+            "visual": "Eine Waage zeigt `2*x` auf der einen Seite und `4` auf der anderen, wobei beide Seiten in `2` gleich große Teile geteilt werden."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Das ist die Lösung, weil `x` allein steht und die Gleichung seinen Wert direkt angibt: `x = 2`.",
+            "another_way": "Prüfe durch Einsetzen: `2*2 + 6` ist `10`, also ist die ursprüngliche Gleichung wahr.",
+            "visual": "Eine Waage zeigt ein `x` auf der einen Seite und `2` auf der anderen, im Gleichgewicht."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Löse nach x auf:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Der Klammerausdruck wird mit `5` multipliziert. Das Teilen beider Seiten durch `5` macht diese Multiplikation rückgängig und hält die Gleichung im Gleichgewicht.",
+            "another_way": "So vermeidet man es, die Klammer zuerst auszumultiplizieren. Da die ganze linke Seite `5` mal `x + 3` ist, teile beide Seiten vollständig durch `5`.",
+            "visual": "Eine Waage im Gleichgewicht zeigt `5*(x + 3)` auf der einen Seite und `35` auf der anderen, bereit, beide Seiten in `5` gleich große Gruppen aufzuteilen."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Jetzt wird `3` zu `x` addiert. Das Subtrahieren von `3` auf beiden Seiten macht die Addition rückgängig und hält die Gleichung im Gleichgewicht.",
+            "another_way": "Stell dir vor, du nimmst auf jeder Seite der Waage dieselbe `3` weg. Dann bleibt links die Unbekannte allein.",
+            "visual": "Eine Waage im Gleichgewicht zeigt `x + 3` auf der einen Seite und `7` auf der anderen, wobei `3` von beiden Seiten entfernt wird."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Die Variable steht allein, also gibt diese Zeile die Lösung an. Der Wert, der die ursprüngliche Gleichung wahr macht, ist `x = 4`.",
+            "another_way": "Eine Probe würde `4` in der ursprünglichen Gleichung für `x` einsetzen und bestätigen, dass beide Seiten übereinstimmen.",
+            "visual": "Eine Waage im Gleichgewicht zeigt `x` allein auf der einen Seite und `4` auf der anderen."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Löse nach x auf:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Der `x`-Term auf der rechten Seite wird zuerst entfernt, indem man auf beiden Seiten `x` subtrahiert. So bleibt die Gleichung im Gleichgewicht, und die Variablenterme stehen zusammen.",
+            "another_way": "Stell dir vor, du nimmst von jeder Seite ein `x` weg. Dann wird die linke Seite zu `2*x + 4`, und die rechte Seite hat keinen `x`-Term mehr.",
+            "visual": "Eine Waage zeigt `3*x + 4` und `x + 10`, wobei von jeder Seite ein `x` entfernt wird."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Die Konstante `4` wird von der linken Seite entfernt, indem man auf beiden Seiten `4` subtrahiert. So bleibt der `x`-Term allein auf der linken Seite.",
+            "another_way": "Da zu `2*x` die `4` addiert wurde, macht man diese Addition durch Subtraktion rückgängig. Die rechte Seite ändert sich genauso, damit das Gleichgewicht erhalten bleibt.",
+            "visual": "Eine Waage zeigt `2*x + 4` und `10`, wobei `4` von beiden Seiten entfernt wird."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Die `2` wird mit `x` multipliziert. Deshalb teilt man beide Seiten durch `2`, um die Multiplikation rückgängig zu machen. So erhält man ein einzelnes `x`.",
+            "another_way": "`2*x` bedeutet 2 gleich große Gruppen von `x`. Teilt man beide Seiten in `2` gleich große Teile, sieht man den Wert einer Gruppe.",
+            "visual": "Eine Waage zeigt `2*x` und `6`, auf jeder Seite in `2` gleich große Teile geteilt."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Das ist die Lösung, weil `x` allein steht und sein Wert angegeben ist. Die Gleichung sagt aus, dass `x` gleich `3` ist.",
+            "another_way": "Durch Einsetzen kann man dies in der ursprünglichen Gleichung überprüfen. Ersetzt man `x` durch `3`, stimmen beide Seiten überein.",
+            "visual": "Eine Waage zeigt, dass ein `x` mit `3` im Gleichgewicht ist."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Eine Zahl kann über das Gleichheitszeichen wandern und ihr Vorzeichen behalten.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "„Bring es auf die andere Seite“ ist eine häufige Kurzform, und der Schüler vergisst, dass Verschieben Subtrahieren bedeutet.",
+      "what_to_say": {
+        "probe": "Was hast du auf beiden Seiten gemacht, um `+ 6` loszuwerden?",
+        "nudge": "Schreibe die Rechenoperation an den Rand, „| -6“, und wende sie auf beide Seiten an.",
+        "tell": "Subtrahiere 6 von beiden Seiten: `2*x = 4`, also `x = 2`. Durch Einsetzen lässt es sich überprüfen: `2*2 + 6` ist `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Löse nach x auf:",
+        "answer": "5"
+      },
+      "source_quote": "Manche Schüler verschieben eine Zahl über das Gleichheitszeichen, ohne ihr Vorzeichen zu ändern."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Man kann nur einen Term einer Seite durch den Koeffizienten teilen.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Der Schüler konzentriert sich darauf, `x` allein zu bekommen, und teilt die Terme direkt daneben. Den Rest der Seite vergisst er.",
+      "what_to_say": {
+        "probe": "Als du durch zwei geteilt hast, was ist mit der `6` passiert?",
+        "nudge": "Teile jeden Term auf beiden Seiten durch zwei und vergleiche mit deiner Zeile.",
+        "tell": "Eine Seite zu teilen heißt, jeden Term darauf zu teilen: `x + 3 = 5`, also `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Löse nach x auf:",
+        "answer": "3"
+      },
+      "source_quote": "Manche Schüler teilen nur einen Term durch die Zahl vor `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "Um die Zahl vor `x` loszuwerden, subtrahiert man sie.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Subtrahieren ist die erste Umkehroperation, die der Schüler gelernt hat, und `3*x` sieht aus wie `3` neben `x`.",
+      "what_to_say": {
+        "probe": "Was bedeutet `3*x`? Welche Rechenoperation verbindet die `3` und das `x`?",
+        "nudge": "Prüfe deine Antwort: Ist `3*9` gleich `12`?",
+        "tell": "`3*x` bedeutet 3 mal `x`, also teile beide Seiten durch 3: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Löse nach x auf:",
+        "answer": "7"
+      },
+      "source_quote": "Manche Schüler subtrahieren die Zahl vor `x`, statt durch sie zu teilen."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Man kann die Rechenoperationen bei `x` in beliebiger Reihenfolge rückgängig machen.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Die Zahl neben `x` zu subtrahieren ist oft der erste Schritt. Deshalb macht der Schüler das, auch wenn diese Zahl in einer Division steht.",
+      "what_to_say": {
+        "probe": "Was passiert in `(x + 6)/2` zuerst mit `x`, und was passiert zuletzt?",
+        "nudge": "Das Halbieren wurde zuletzt gemacht. Womit multiplizierst du beide Seiten, um es rückgängig zu machen?",
+        "tell": "Mache zuerst das Halbieren rückgängig: `x + 6 = 20`, also `x = 14`. Probe: `(14 + 6)/2` ist `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Löse nach x auf:",
+        "answer": "11"
+      },
+      "source_quote": "Manche Schüler machen die Schritte in der falschen Reihenfolge rückgängig."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Die Zahl vor einer Klammer multipliziert nur den ersten Term in der Klammer.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "Die `5` steht direkt neben dem `x`, also multipliziert der Schüler das, was am nächsten steht.",
+      "what_to_say": {
+        "probe": "Wie viele Dreien gibt es in `5*(x + 3)`?",
+        "nudge": "Schreibe `5*(x + 3)` als `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` und zähle.",
+        "tell": "Die 5 multipliziert alles in der Klammer: `5*x + 15 = 35`, also `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Löse nach x auf:",
+        "answer": "5"
+      },
+      "source_quote": "Manche Schüler multiplizieren die Zahl vor einer Klammer nur mit dem ersten Term."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Warum macht man auf beiden Seiten dasselbe?",
+      "answer": "Eine Gleichung ist im Gleichgewicht. Führt man bei gleichen Werten dieselbe Operation aus, bleiben sie gleich, also ändert sich die Lösung nicht."
+    },
+    {
+      "question": "Warum wird aus `+ 6` das Subtrahieren von `6`?",
+      "answer": "Beim Lösen macht man Operationen rückgängig. In `2*x + 6 = 10` ergibt das Subtrahieren von `6` auf beiden Seiten `2*x = 4`."
+    },
+    {
+      "question": "Warum durch `2` dividieren, statt `2` zu subtrahieren?",
+      "answer": "`2*x` bedeutet `2` mal `x`. Multiplikation macht man durch Division rückgängig, also wird aus `2*x = 4` die Gleichung `x = 2`."
+    },
+    {
+      "question": "Was ist, wenn auf beiden Seiten ein `x` steht?",
+      "answer": "Nutze denselben Waageschritt. In `3*x + 4 = x + 10` ergibt das Subtrahieren von `x` auf beiden Seiten `2*x + 4 = 10`."
+    },
+    {
+      "question": "Wie verändern Klammern die Rechnung?",
+      "answer": "Die Zahl vor der Klammer multipliziert die ganze Klammer. In `5*(x + 3) = 35` ergibt das Dividieren beider Seiten durch `5` die Gleichung `x + 3 = 7`."
+    },
+    {
+      "question": "Wie können Schülerinnen und Schüler wissen, ob die Antwort richtig ist?",
+      "answer": "Setze die Antwort in die ursprüngliche Gleichung ein. Wenn beide Seiten übereinstimmen, passt die Antwort."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Gleichung als Waage",
+      "activity": "Zeige `2*x + 6 = 10` als 2 gleiche Seiten. Betone, dass eine Gleichung sagt, dass 2 Terme denselben Wert haben. Führe ein, dieselbe Operation am Rand zu notieren, zum Beispiel subtrahiere `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "In umgekehrter Reihenfolge rückgängig machen",
+      "activity": "Arbeite `2*x + 6 = 10` durch. Das Subtrahieren von `6` auf beiden Seiten ergibt `2*x = 4`. Das Dividieren beider Seiten durch `2` ergibt `x = 2`. Prüfe durch Einsetzen."
+    },
+    {
+      "minutes": 8,
+      "title": "Typische Fehlwege",
+      "activity": "Besprecht typische Fehler: die Seite wechseln, ohne die Umkehroperation auszuführen, nur einen Term dividieren und den Koeffizienten subtrahieren statt zu dividieren. Der Fokus bleibt auf dem Waageschritt."
+    },
+    {
+      "minutes": 8,
+      "title": "Klammern",
+      "activity": "Verwende `5*(x + 3) = 35`. Dividiere beide Seiten durch `5`, um `x + 3 = 7` zu erhalten. Subtrahiere dann `3`, um `x = 4` zu erhalten. Hinweis: Die `5` gilt für die ganze Klammer."
+    },
+    {
+      "minutes": 10,
+      "title": "Variablen auf beiden Seiten",
+      "activity": "Arbeite `3*x + 4 = x + 10` durch. Das Subtrahieren von `x` auf beiden Seiten ergibt `2*x + 4 = 10`. Das Subtrahieren von `4` ergibt `2*x = 6`. Das Dividieren durch `2` ergibt `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Lösungen prüfen",
+      "activity": "Schülerinnen und Schüler setzen Lösungen in die ursprüngliche Gleichung ein. Eine fehlgeschlagene Probe bedeutet, dass ein Schritt noch einmal angesehen werden sollte. Die Probe gehört zum Lösungsprozess und ist keine Zusatzaufgabe."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Löse nach x auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `x`, für den `8*x = 56` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` bedeutet 8 mal `x`, also machen wir das rückgängig, indem wir beide Seiten durch `8` teilen."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Löse nach c auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `c`, für den `-5*c = 55` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Teile beide Seiten durch `-5`, die Zahl vor `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` ist negativ, weil die Vorzeichen verschieden sind."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Löse nach x auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `x`, für den `7*x + 8 = -13` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Mache die Schritte in umgekehrter Reihenfolge rückgängig: Subtrahiere `8` auf beiden Seiten, dann teile durch `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "Nach dem Subtrahieren von `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Probe: `7*(-3) + 8` ist `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Löse nach x auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `x`, für den `3*x + 4 = -8` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Subtrahiere `4` auf beiden Seiten, dann teile beide Seiten durch `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "Nach dem Subtrahieren von `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Probe: `3*(-4) + 4` ist `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Löse nach x auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `x`, für den `5*(x + 3) = 35` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Die 5 multipliziert die ganze Klammer. Teile beide Seiten durch `5`, oder multipliziere die Klammer aus."
+        },
+        {
+          "rung": "computation",
+          "text": "Beide Seiten durch `5` zu teilen ergibt `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Probe: `5*(4 + 3)` ist `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Löse nach m auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `m`, für den `2*(m - 4) + 3 = -1` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Multipliziere zuerst die Klammer aus, dann fasse die Zahlen zusammen."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, also `2*m - 5 = -1` und `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Probe: `2*(2 - 4) + 3` ist `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Löse nach x auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `x`, für den `7*x + 5 = 6*x + 2` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Bringe die Terme mit `x` auf eine Seite: Subtrahiere `6*x` auf beiden Seiten."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, dann subtrahiere `5` auf beiden Seiten."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Probe: Beide Seiten sind `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Löse nach x auf:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `x`, für den `12*x + 8 = 6*x + 2` wahr ist."
+        },
+        {
+          "rung": "information",
+          "text": "Subtrahiere `6*x` auf beiden Seiten, dann subtrahiere `8` auf beiden Seiten."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, also `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Probe: Beide Seiten sind `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

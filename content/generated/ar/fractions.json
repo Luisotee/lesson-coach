@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "ar",
+  "title": "الكسور",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "تسمّي الكسور أجزاءً متساوية؛ وتعمل العمليات بحفظ حجم الجزء واضحًا وعدّ الأجزاء.",
+  "idea": "يسمّي الكسر أجزاءً متساوية من كلّ. في `3/4`، يبيّن العدد السفلي أن الكل مقسّم إلى أجزاء متساوية. ويعدّ العدد العلوي كم جزءًا مأخوذًا من هذه الأجزاء.\n\nتسمّي الكسور المتكافئة المقدار نفسه بأجزاء ذات أحجام مختلفة. ضرب العدد العلوي والسفلي أو قسمتهما على العدد نفسه يبقي المقدار كما هو.\n\nفي الجمع، يجب أن تكون الأجزاء بالحجم نفسه قبل عدّها. في الضرب، عدد صحيح في كسر يعني عدّ مجموعات متكررة من ذلك الكسر. في القسمة، يكون السؤال: كم مرة يدخل كسر في كسر آخر.",
+  "why_it_works": "لا يمكن جمع إلا الأجزاء المتشابهة. في `1/2 + 1/3`، الأنصاف والأثلاث أحجامها مختلفة، لذلك نعيد كتابة الكسرين على صورة أسداس. يصبح `1/2 + 1/3` هو `3/6 + 2/6`، و`3/6 + 2/6` يساوي `5/6`.\n\nيغيّر الضرب عدد الأجزاء. في `3*(2/5)`، تبقى الأخماس أخماسًا. يصبح `3*(2/5)` هو `(3*2)/5`، و`(3*2)/5` يساوي `6/5`.\n\nتسأل القسمة: كم من المقسوم عليه يدخل في المقدار؟ يصبح `(2/3)/(3/4)` هو `(2/3)*(4/3)`. ثم يصبح `(2/3)*(4/3)` هو `(2*4)/(3*3)`، و`(2*4)/(3*3)` يساوي `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "احسب:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "للكسرين أجزاء بأحجام مختلفة، لذلك لا يمكن جمعهما مباشرة. أعد كتابتهما بمقام مشترك.",
+            "another_way": "استعمل الأسداس لأن الأنصاف والأثلاث يمكن تقسيمها إلى أسداس. هذا يبقي قيمة كل كسر كما هي، ويجعل الأجزاء متطابقة.",
+            "visual": "يوضح شريط `1/2 + 1/3` على أنه جزء بحجم النصف بجانب جزء بحجم الثلث."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "الآن الكسران كلاهما مكتوبان بالأسداس. يصبح `1/2` هو `3/6`، ويصبح `1/3` هو `2/6`، لذلك تكون الأجزاء بالحجم نفسه.",
+            "another_way": "تخيّل كل نصف على أنه ثلاثة أسداس، وكل ثلث على أنه سدسان. عندئذ تصبح المسألة مجرد عدّ للأسداس.",
+            "visual": "يوضح شريط `3/6 + 2/6` على أنها 3 أسداس و2 من الأسداس من قطع لها الحجم نفسه."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عندما يكون المقام نفسه، اجمع البسطين وأبق المقام كما هو. يصبح `3/6 + 2/6` هو `5/6`، لذلك هذه هي الإجابة.",
+            "another_way": "عدّ كل القطع التي حجمها سدس معًا. ثلاثة أسداس وسدسان يكوّنان خمسة أسداس.",
+            "visual": "يوضح شريط `5/6` مظللة على أنها 5 قطع متساوية، حجم كل منها سدس من كل واحد."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "احسب:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "يبدأ هذا بـ `3*(2/5)`، وهذا يعني 3 مجموعات من `2/5`. يبقى حجم كل جزء أخماسًا.",
+            "another_way": "فكّر في العدد الصحيح بوصفه عاملًا يضرب بسط الكسر. إذن `3*(2/5)` هو عدد صحيح مضروب في كسر.",
+            "visual": "يوضح نموذج الشريط ثلاث نسخ من شريط مظلَّل في كل نسخة منه `2/5`."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "يضرب العدد الصحيح العدد العلوي، لذلك تصبح `3*(2/5)` هي `(3*2)/5`. يبقى المقام `5` لأن الأجزاء ما زالت أخماسًا.",
+            "another_way": "عُدَّ الأخماس: `2` من الأخماس، تؤخذ `3` مرات، فتعطي `(3*2)` من الأخماس.",
+            "visual": "يوضح نموذج الشريط قطعًا بحجم الخمس تُعَدّ عبر ثلاث مجموعات."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "نجد حاصل الضرب في البسط، لذلك تصبح `(3*2)/5` هي `6/5`. هذه هي الإجابة لأن قيمة العبارة قد حُسبت.",
+            "another_way": "ثلاث مجموعات من `2/5` تساوي `6/5`. الناتج أكبر من واحد صحيح لأن عدد الأخماس أكبر من `5`.",
+            "visual": "يوضح نموذج الشريط `6` قطع بحجم الخمس مظللة، فتكوّن `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "احسب:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "تسأل العبارة: كم مرة يتسع `3/4` داخل `2/3`. عند القسمة على كسر، نُبقي `2/3` ونضرب في مقلوب `3/4`.",
+            "another_way": "فكّر في تغيير السؤال من قسمة إلى ضرب مكافئ. يُقلب المقسوم عليه `3/4`، لذلك تصبح `(2/3)/(3/4)` هي `(2/3)*(4/3)`.",
+            "visual": "يُظهر شريط `2/3` من كلّ يُقاس بقطع حجم كل منها `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "الآن نضرب الكسرين. نضرب البسطين معًا والمقامين معًا، لذلك تصبح `(2/3)*(4/3)` هي `(2*4)/(3*3)`.",
+            "another_way": "هذا يُظهر أعداد الأجزاء وأحجام الأجزاء كلًّا على حدة. يحسب البسط `2*4`، ويحسب المقام `3*3`.",
+            "visual": "يُقسَّم شريط إلى أثلاث في اتجاه وإلى أثلاث في اتجاه آخر، مع عدّ `2*4` أجزاء صغيرة."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "نُظهِر نواتج الضرب في البسط والمقام. أصبح السطر جاهزًا للتبسيط بحساب تلك النواتج.",
+            "another_way": "انظر إلى `(2*4)/(3*3)` ككسر لا يزال الضرب فيه ظاهرًا. تكتب الخطوة التالية هذه النواتج في صورة أعداد مفردة.",
+            "visual": "في نموذج شريطي، يحتوي الكل على `3*3` أجزاء صغيرة متساوية، ومظلّل منها `2*4`."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "يعطي الضرب الكسر النهائي، لذلك تصبح `(2*4)/(3*3)` هي `8/9`. هذه هي الإجابة لأنه لا تظهر عملية أخرى.",
+            "another_way": "ناتج القسمة أقل من واحد صحيح، وهذا يناسب المعنى: `3/4` أكبر من `2/3`، لذلك يتسع منه أقل من واحد.",
+            "visual": "شريط مقسّم إلى `9` أجزاء متساوية، فيه `8` أجزاء مظلّلة، فيُظهر `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "لجمع الكسور، اجمع البسطين واجمع المقامين.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "هذا يعامل الكسر كأنه عددان صحيحان منفصلان، ويجري بالطريقة نفسها مثل ضرب الكسور.",
+      "what_to_say": {
+        "probe": "هل إجابتك أكبر من `1/2` أم أصغر؟ وهل ينبغي أن تكون كذلك؟",
+        "nudge": "هل تستطيع جمع الأنصاف والأثلاث مباشرة، أم تحتاج أولًا إلى أجزاء من الحجم نفسه؟",
+        "tell": "اقطع كليهما إلى أسداس: `3/6 + 2/6` هي `5/6`. نحن نعد الأجزاء فقط؛ أما حجمها فيبقى كما هو."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "احسب:",
+        "answer": "3/4"
+      },
+      "source_quote": "بعض الطلاب يجمعون الكسور بجمع البسطين وجمع المقامين."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "لضرب كسر في عدد صحيح، اضرب البسط والمقام كليهما.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "تعلم الطلاب في سياق الكسور المتكافئة أن فعل الشيء نفسه بالبسط والمقام آمن.",
+      "what_to_say": {
+        "probe": "هل `6/15` أكبر من `2/5` أم أصغر أم مساوٍ له؟ وماذا يجب أن تكون ثلاثة أمثال `2/5`؟",
+        "nudge": "اكتب ثلاثة أمثال خُمْسَين في صورة جمع، ثم عد الأخماس.",
+        "tell": "ثلاثة أمثال خُمْسَين تساوي ستة أخماس، `6/5`. عدد الأجزاء فقط هو الذي يتغير."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "احسب:",
+        "answer": "12/7"
+      },
+      "source_quote": "بعض الطلاب يضربون البسط والمقام كليهما في العدد الصحيح."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "عند قسمة الكسور، اقلب الكسر الأول.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "تُتذكر عبارة \"اقلب واضرب\" كشعار من غير تذكر أي كسر يُقلب.",
+      "what_to_say": {
+        "probe": "كم ثلاثة أرباع تدخل في ثلثين: أكثر من واحد أم أقل؟",
+        "nudge": "أي كسر نعد به؟ هذا هو الكسر الذي نقلبه.",
+        "tell": "المقسوم عليه وحده هو الذي يُقلب: `(2/3)*(4/3)` هي `8/9`، أقل قليلًا من واحد."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "احسب:",
+        "answer": "6/5"
+      },
+      "source_quote": "بعض الطلاب يقلبون الكسر الأول عند القسمة، لا الثاني."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "يمكنك اختصار عدد في البسط مع المقام حتى عبر علامة جمع.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "اختصار الأعداد المشتركة ينجح في الضرب، والطالب يرى 2 في البسط و2 في المقام.",
+      "what_to_say": {
+        "probe": "ما قيمة بسط الكسر كله قبل أن تقسم؟",
+        "nudge": "احسب البسط أولًا، ثم اقسم. هل تحصل على الإجابة نفسها؟",
+        "tell": "خط الكسر يقسم البسط كله: `(2+4)/2` هي `6/2`، وهي `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "بسّط:",
+        "answer": "5"
+      },
+      "source_quote": "بعض الطلاب يختصرون عبر علامة الجمع."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "لتبسيط كسر، يجوز أن تقسم البسط فقط أو المقام فقط.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "تنصيف عدد يبدو كأنه تبسيط، والطالب لا يتحقق من أن المقدار بقي كما هو.",
+      "what_to_say": {
+        "probe": "هل `3/8` هو المقدار نفسه مثل `6/8`؟ ارسم كليهما على شكل شريطين.",
+        "nudge": "ما العدد الذي يقسم البسط والمقام كليهما؟",
+        "tell": "اقسم البسط والمقام على العدد نفسه: `6/8` هي `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "بسّط:",
+        "answer": "2/3"
+      },
+      "source_quote": "بعض الطلاب يبسطون بتغيير جزء واحد فقط من الكسر."
+    }
+  ],
+  "questions": [
+    {
+      "question": "لماذا لا نستطيع جمع العددين العلويين والعددين السفليين؟",
+      "answer": "العدد السفلي يسمّي حجم الأجزاء. الأنصاف والأثلاث أحجامها مختلفة، لذلك يجب إعادة كتابة الأجزاء بالحجم نفسه قبل العدّ."
+    },
+    {
+      "question": "لماذا يصبح `1/2 + 1/3` هو `3/6 + 2/6`؟",
+      "answer": "أعيدت كتابة الكسرين على صورة أسداس. تبقى المقادير نفسها، لكن الأجزاء الآن بالحجم نفسه ويمكن جمعها."
+    },
+    {
+      "question": "لماذا لا يغيّر `3*(2/5)` العدد السفلي؟",
+      "answer": "تبقى الأخماس بالحجم نفسه. الضرب في `3` يعطي ثلاث مجموعات من `2/5`، لذلك يتغير عدد الأخماس فقط."
+    },
+    {
+      "question": "أي كسر يُقلب عند القسمة؟",
+      "answer": "يُقلب المقسوم عليه فقط. يصبح `(2/3)/(3/4)` هو `(2/3)*(4/3)` لأن القسمة تسأل: كم `3/4` يدخل في `2/3`."
+    },
+    {
+      "question": "هل يمكن الاختصار عبر إشارة جمع؟",
+      "answer": "لا. خط الكسر يقسم البسط كله. لا يمكن اختصار حدود مجموع جزئيًا كما لو كانت عوامل منفصلة."
+    },
+    {
+      "question": "كيف يمكن للطلاب التحقق من أن الإجابة معقولة؟",
+      "answer": "قدّر أولًا. اسأل هل يجب أن تكون النتيجة أكبر أم أصغر من `1/2`، أو أكبر أم أصغر من `1`. فحص تقريبي للحجم يكشف كثيرًا من أخطاء الكسور."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "سمِّ الأجزاء",
+      "activity": "استخدم كلًّا بسيطًا مقسّمًا إلى أجزاء متساوية. اربط العدد السفلي بحجم الأجزاء والعدد العلوي بعدد الأجزاء. استخدم `3/4` ككسر مرجعي."
+    },
+    {
+      "minutes": 10,
+      "title": "الكسور المتكافئة",
+      "activity": "بيّن أن كسورًا مختلفة يمكن أن تسمّي المقدار نفسه. استخدم `1/2` و`2/4` و`3/6`. أكّد أن العدد العلوي والسفلي يجب أن يتغيرا معًا."
+    },
+    {
+      "minutes": 10,
+      "title": "اجمع الأجزاء المتشابهة",
+      "activity": "ابدأ بـ `1/2 + 1/3`. اسأل لماذا لا يمكن عدّ الأنصاف والأثلاث معًا. أعد الكتابة على صورة أسداس: يصبح `1/2 + 1/3` هو `3/6 + 2/6`، و`3/6 + 2/6` يساوي `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "اضرب كسرًا",
+      "activity": "استخدم `3*(2/5)` على أنه ثلاث مجموعات من خُمسين. بيّن أن `3*(2/5)` يصبح `(3*2)/5`، وأن `(3*2)/5` هو `6/5`. أكّد أن حجم الجزء يبقى أخماسًا."
+    },
+    {
+      "minutes": 9,
+      "title": "اقسم الكسور",
+      "activity": "استخدم سؤال «كم مرة يدخل؟». في `(2/3)/(3/4)`، بيّن أن `(2/3)/(3/4)` يصبح `(2/3)*(4/3)`، ثم `(2*4)/(3*3)`، والنتيجة هي `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "قدّر واكتشف الأخطاء",
+      "activity": "ناقش الأخطاء الشائعة: جمع البسوط والمقامات، تغيير جزء واحد فقط، قلب الكسر الأول، أو الاختصار عبر الجمع. استخدم التقدير ونماذج الأشرطة للتحقق."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد كسرًا واحدًا يساوي `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "لجمع الكسور، نجعل مقاماتها متساوية أولًا."
+        },
+        {
+          "rung": "computation",
+          "text": "المقام المشترك هو `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد كسرًا واحدًا يساوي `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "نستخدم المضاعف المشترك الأصغر للعددين 12 و18، وهو `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` هو `21/36` و`5/18` هو `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد كسرًا واحدًا يساوي `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "نستخدم المضاعف المشترك الأصغر للعددين 12 و16، وهو `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` هو `28/48` و`9/16` هو `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "بسّط:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد أبسط كسر يساوي `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "نقسم البسط والمقام على عاملهما المشترك الأكبر."
+        },
+        {
+          "rung": "computation",
+          "text": "نقسم البسط والمقام على `12`، العامل المشترك الأكبر للعددين 120 و252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "الإشارتان متماثلتان، إذن الناتج موجب. نضرب البسطين والمقامين."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` هو `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "للقسمة على كسر، نضرب في مقلوبه. مقلوب المقسوم عليه هو `1/(5/8)`، وهو `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` هو `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "للقسمة على كسر، نضرب في مقلوبه. مقلوب المقسوم عليه هو `1/(5/6)`، وهو `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` هو `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد كسرًا واحدًا يساوي `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "المقامات متساوية بالفعل، لذلك نطرح البسطين."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` هو `-36`، لذلك نحصل على `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "kk",
+  "title": "Теріс сандар",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Сан түзуі мен қарама-қарсы сандарды қолданып, теріс сандарды қосыңыз, азайтыңыз және көбейтіңіз.",
+  "idea": "Теріс сан нөлден кіші. Сан түзуінде `-3` нөлден солға қарай үш қадам, ал `3` нөлден оңға қарай үш қадам жерде орналасады. Олар қарама-қарсы сандар, өйткені нөлден қашықтықтары бірдей, бірақ екі түрлі жақта.\n\nОң санды қосу оңға жылжытады. Теріс санды қосу солға жылжытады. Санды азайту оны қосуға қарама-қарсы бағытта жылжытады, сондықтан теріс санды азайту оңға жылжытады. Мысалы, `5 - (-3)` өрнегі `5 + 3` болады.\n\nТаңбалары әртүрлі сандар қосылғанда, таңбалар қарама-қарсы бағытқа тартады. Жауап нөлден алысырақ тұрған санның таңбасын алады, ал оның модулі екі модульдің айырмасына тең. Сондықтан `-7 + 4` өрнегі `-(7 - 4)` болады.",
+  "why_it_works": "Азайту екі санның арасындағы қашықтықты білдіруі мүмкін. `-3` санынан `5` санына дейінгі айырма `-3`-тен нөлге дейінгі, содан кейін нөлден `5`-ке дейінгі қадамдарды қамтиды. Сондықтан теріс санды азайту оның қарама-қарсы санын қосумен бірдей: `5 - (-3)` өрнегі `5 + 3` болады.\n\nКөбейтуде таңба ережесін заңдылық түсіндіреді. `3*(-2)`, `2*(-2)`, `1*(-2)` және `0*(-2)` өрнектерінде бірінші көбейткіш 1-ге кеміген сайын, нәтиже 2-ге артады. Заңдылықты жалғастырсақ, теріс санды теріс санға көбейткенде оң нәтижелер шығады.\n\nСондықтан `(-4)*(-6)` өрнегі `4*6` болады. Теріс санды теріс санға көбейткенде оң сан шығады, өйткені көбейту заңдылығы бірізді жалғасуы керек.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Есептеңіз:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Өрнекте азайту таңбасы және теріс санның таңбасы бар. Оларды бөлек қарастырыңыз: ол `5` санынан `-3` санын азайтуды сұрайды.",
+            "another_way": "`-3` санын нөлден солға қарай үш қадам деп ойлаңыз. `5 - (-3)` өрнегі `-3` санынан `5` санына дейінгі қашықтықты сұрайды.",
+            "visual": "Сан түзуінде `-3` санын нөлдің сол жағына, ал `5` санын нөлдің оң жағына белгілеңіз."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Теріс санды азайтқанда, теріс санды қосқандағыға қарама-қарсы бағытта, яғни оңға қарай жүреміз. Сондықтан `5 - (-3)` өрнегі `5 + 3` болады.",
+            "another_way": "Қарызды алып тастау ұтыс алғанмен бірдей әсер береді. Сондықтан `-3` санын азайту `3` санын қосумен бірдей қадам.",
+            "visual": "Сан түзуінде `5` нүктесінен бастаңыз, содан кейін оңға қарай `3` қадам жылжуды көрсетіңіз."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Қайта жазғаннан кейін есептеу кәдімгі қосу болады. `5 + 3` мәні `8`, сондықтан бастапқы өрнектің мәні `8`.",
+            "another_way": "Сан түзуінде `5` санынан оңға қарай `3` қадам жылжыса, `8` санына келеміз. `-3` санынан `5` санына дейінгі қашықтық та `8` қадам.",
+            "visual": "Сан түзуінде `5` санынан оңға қарай жылжу `8` санында аяқталады."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Есептеңіз:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`-7 + 4` өрнегі таңбалары әртүрлі сандарды қосады. Бұл арқан тартыс сияқты: `-7` нөлден `4`-ке қарағанда алысырақ, сондықтан нәтиже теріс болып қалады.",
+            "another_way": "`-7` санынан бастап, `4` қосу үшін оңға қарай `4` қадам жылжыңыз. Жылжу нөлге қарай болады, бірақ одан өтіп кетпейді.",
+            "visual": "Сан түзуінде `-7` санынан бастап, оңға қарай `4` қадам сызыңыз."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`7` саны `4` санынан үлкен болғандықтан, теріс таңбаны сақтап, өлшемдерін салыстырамыз. Сондықтан `-7 + 4` өрнегі `-(7 - 4)` болады.",
+            "another_way": "`-7` санын солға тарту, ал `4` санын оңға тарту деп ойлаңыз. Қалған тартылыс солға бағытталған, оның шамасы `7 - 4`.",
+            "visual": "Сан түзуінде `7`-ге тең солға тарту мен `4`-ке тең оңға тарту `7 - 4`-ке тең солға тартуды қалдырады."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Арқан тартыстан кейін қалған шама `3`, ал теріс таңба бағыттың нөлден сол жақта екенін көрсетеді. Сондықтан жауап `-3`.",
+            "another_way": "`-7` санынан оңға қарай `4` қадам жылжығанда, `-3` санына келеміз. Бұл ықшамдалған нәтижемен сәйкес келеді.",
+            "visual": "Сан түзуінде жебе нөлден үш қадам сол жақтағы `-3` санында аяқталады."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Есептеңіз:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Көбейткіштердің екеуі де теріс. Теріс санды теріс санға көбейтсе, оң сан шығады, сондықтан көбейтіндіні теріс таңбаларсыз қайта жазуға болады.",
+            "another_way": "Заңдылық идеясын қолданыңыз: теріс санға көбейту бағытты өзгертеді, ал мұны екі рет жасау оң көбейтінді береді.",
+            "visual": "Сан түзуінде `(-4)*(-6)` тең теріс секірулерді теріс рет алғанды көрсетеді, сондықтан бағыт оңға ауысады."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Таңба ескерілгеннен кейін тек шамалары көбейтіледі. `4*6` жолы көбейткіштердің қашықтық бөліктерін сақтайды.",
+            "another_way": "Екі теріс таңба көбейтіндіні оң еткеннен кейін, алтыдан төрт топ деп ойлаңыз.",
+            "visual": "Сан түзуінде `4*6` нөлден бастап оңға қарай алтыдан 4 тең секіруді көрсетеді."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Көбейту аяқталды: `4*6` — `24`. Сондықтан `24` — бастапқы өрнектің мәні.",
+            "another_way": "Бастапқы өрнек оң көбейтіндіге айналды, ал ол көбейтінді `24`-ке тең.",
+            "visual": "Сан түзуінде секірулер нөлдің оң жағындағы `24` нүктесінде аяқталады."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Теріс санды азайтса, жауап кішірейеді.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Азайту әдетте шаманы кішірейтеді, ал оқушы екі минус таңбасын көріп, минусты қалдырады.",
+      "what_to_say": {
+        "probe": "Сан түзуінде қай жерден бастайсың, және `-3`-ті азайту сені қай бағытқа жылжытады?",
+        "nudge": "`5` пен `-3`-тің айырмасы қандай? `-3`-тен `5`-ке дейінгі қадамдарды сана.",
+        "tell": "Теріс санды азайту оның қарама-қарсы санын қосумен бірдей, сондықтан `5 - (-3)` дегеніміз `5 + 3`, ол `8`-ге тең."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "8"
+      },
+      "source_quote": "Кейбір оқушылар теріс санды азайту жауапты кішірейтеді деп ойлайды."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Теріс санды теріс санға көбейтсе, теріс сан шығады.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Екі сан да теріс болғандықтан, жауап та теріс болуы табиғи сияқты көрінеді.",
+      "what_to_say": {
+        "probe": "`1*(-3)` және `0*(-3)` неге тең? Бірінші сан әр жолы 1-ге кемігенде, жауапта не болады?",
+        "nudge": "`1*(-3)`, `0*(-3)`, `-1*(-3)` заңдылығын жалғастырып, жауаптардың қай бағытта өзгеретінін көр.",
+        "tell": "Заңдылық бойынша әр қадамда 3-ке артады, сондықтан `(-2)*(-3)` мәні `6`. Теріс санды теріс санға көбейтсе, оң сан шығады."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "20"
+      },
+      "source_quote": "Кейбір оқушылар теріс санды теріс санға көбейтсе, теріс сан шығады деп ойлайды."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "Таңбалары әртүрлі сандарды қосқанда, модульдерін қосып, бірінші таңбаны қалдыру керек.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "Оқушы қосу санның шамасын үлкейтеді деп үйренген, ал бірінші таңба алдымен көрінеді.",
+      "what_to_say": {
+        "probe": "Егер `-5`-тен бастап үш қадам жүрсең, қай бағытқа қозғаласың?",
+        "nudge": "`-5` пен `3` арасындағы арқан тартысты елестет. Қай жақ жеңеді және қаншаға?",
+        "tell": "Оң үш нөлге қарай тартады, сондықтан `-5 + 3` мәні `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "-5"
+      },
+      "source_quote": "Кейбір оқушылар модульдерін қосып, бірінші санның таңбасын қалдырады."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Әрқашан үлкен саннан кіші санды азайту керек.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Натурал сандарда оқушыларға кіші саннан үлкен санды азайтуға болмайды деп айтылған.",
+      "what_to_say": {
+        "probe": "Егер `3`-тен бастап солға қарай жеті қадам жасасаң, қай жерге келесің?",
+        "nudge": "`3 - 7` пен `7 - 3` бірдей ме? Екеуін де сан түзуінде тексер.",
+        "tell": "Үштен солға қарай 7 қадам жасасақ, `-4`-ке келеміз, сондықтан `3 - 7` мәні `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "-7"
+      },
+      "source_quote": "Кейбір оқушылар әрқашан үлкен саннан кіші санды азайтады."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "Екі теріс таңба қосуда да оң сан береді.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "«Екі теріс оң болады» ережесі қысқа әрі есте қаларлық, сондықтан ол минус таңбаларының кез келген жұбына қолданылады.",
+      "what_to_say": {
+        "probe": "Егер 4 қарызың болып, тағы 3 қарыз алсаң, қанша қарызың болады?",
+        "nudge": "Сан түзуінде `-4`-тен бастап, `-3`-ті қос. Қай бағытқа қозғаласың?",
+        "tell": "Теріс санды қосу солға жылжытады, сондықтан `-4 + (-3)` мәні `-7`. Таңба ережесі көбейту мен бөлуге арналған."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Есептеңіз:",
+        "answer": "-8"
+      },
+      "source_quote": "Кейбір оқушылар «екі теріс оң болады» ережесін қосуға да қолданады."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Неліктен теріс санды азайту оңға жылжытады?",
+      "answer": "Азайту қосуға қарама-қарсы бағытта жылжытады. Теріс санды қосу солға жылжытады, сондықтан теріс санды азайту оңға жылжытады. Мысалы, `5 - (-3)` өрнегі `5 + 3` болады."
+    },
+    {
+      "question": "Екі теріс сан әрқашан оң сан бере ме?",
+      "answer": "Жоқ. Бұл ереже көбейту мен бөлуге арналған. Қосуда бағыт маңызды. Екі теріс санды қосу сан түзуінде одан әрі солға жылжытады."
+    },
+    {
+      "question": "Неліктен `-7 + 4` теріс болады?",
+      "answer": "Сандар қарама-қарсы бағыттарға тартады. `-7` нөлден `4` санына қарағанда алысырақ, сондықтан жауап теріс таңбаны сақтайды. `-7 + 4` өрнегі `-(7 - 4)` болады."
+    },
+    {
+      "question": "Неліктен теріс санды теріс санға көбейткенде оң сан шығады?",
+      "answer": "Көбейту заңдылығы жалғасуы керек. Бір көбейткіш нөл арқылы кемігенде, нәтижелер бірдей шамаға арта береді, бұл оң нәтижелерге әкеледі."
+    },
+    {
+      "question": "`3 - 7` өрнегінің жауабы бола ма?",
+      "answer": "Иә. `3` санынан бастап, сан түзуі бойымен солға жеті қадам жылжыңыз. Тоқтаған нүкте нөлден төмен болады."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Теріс сандарды орналастыру",
+      "activity": "Ортасында нөлі бар сан түзуін салыңыз. Оң және теріс сандарды нөлден бірдей қадамдармен орналастырыңыз. `-3` және `3` сияқты қарама-қарсы сандардың нөлден қашықтықтары бірдей, бірақ екі түрлі жақта екенін атап көрсетіңіз."
+    },
+    {
+      "minutes": 10,
+      "title": "Қосуды қозғалыс ретінде көрсету",
+      "activity": "Сан түзуін пайдаланып, оң санды қосу оңға, ал теріс санды қосу солға жылжытатынын көрсетіңіз. Таңбалары әртүрлі мысал қосып, оны арқан тартыс сияқты сипаттаңыз."
+    },
+    {
+      "minutes": 10,
+      "title": "Теріс сандарды азайту",
+      "activity": "«Азайту» және «теріс» деп айтып, амал мен таңбаны бөлек ұстаңыз. Азайту қосуға қарама-қарсы бағытта жылжытатынын көрсетіңіз, сондықтан `5 - (-3)` өрнегі `5 + 3` болады."
+    },
+    {
+      "minutes": 10,
+      "title": "Қосудағы әртүрлі таңбалар",
+      "activity": "Таңбалар қарама-қарсы бағытқа тартатын мысалдарды модельдеңіз. Жауап нөлден алысырақ санның таңбасын алады, ал модулі модульдердің айырмасына тең. `-7 + 4` өрнегі `-(7 - 4)` болатынын қолданыңыз."
+    },
+    {
+      "minutes": 10,
+      "title": "Заңдылықпен көбейту",
+      "activity": "Оң көбейткіштерден нөл арқылы төмен қарай өтетін заңдылықты көрсетіңіз. Оны теріс санды теріс санға көбейткенде оң сан шығатынын түсіндіруге қолданыңыз, содан кейін мұны `(-4)*(-6)` өрнегінің `4*6` болуымен байланыстырыңыз."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-7 - (-4)` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Теріс санды азайту — азайтылатын теріс санның қарама-қарсысын қосумен бірдей."
+        },
+        {
+          "rung": "computation",
+          "text": "Оны `-7 + 4` деп жазып, `-7` санынан оңға қарай 4 қадам жылжыңыз."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`9 - (-15)` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Теріс санды азайту — оған қарама-қарсы санды қосумен бірдей."
+        },
+        {
+          "rung": "computation",
+          "text": "Оны `9 + 15` деп жазыңыз."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`15 + (-32)` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Таңбалары әртүрлі болса, модульдерін азайтып, нөлден алысырақ тұрған санның таңбасын қалдырамыз."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` — `17`, ал `-32` саны `15` санына қарағанда нөлден алысырақ."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-31 + (-19)` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Екі сан да теріс болса, модульдерін қосып, теріс таңбаны қалдырамыз."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` — `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-1*(-14)` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Теріс санды теріс санға көбейтсек, нәтиже оң болады."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` — `14`, әрі таңбалары бірдей."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-9*3` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Екі таңба әртүрлі болса, көбейтінді теріс болады."
+        },
+        {
+          "rung": "computation",
+          "text": "Алдымен таңбаны ескермейік: `9*3` — `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`-100/(-4)` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Теріс санды теріс санға бөлсек, көбейтудегідей нәтиже оң болады."
+        },
+        {
+          "rung": "computation",
+          "text": "Алдымен таңбаларды ескермейік: `100/4` — `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Есептеңіз:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "`5*(-6) + 7*(-2) - 3` мәнін табу керек."
+        },
+        {
+          "rung": "information",
+          "text": "Қосу мен азайтудан бұрын көбейтуді орындаймыз."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` — `-30`, ал `7*(-2)` — `-14`, сондықтан `-30 - 14 - 3` аламыз."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

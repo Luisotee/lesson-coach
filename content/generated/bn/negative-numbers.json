@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "bn",
+  "title": "ঋণাত্মক সংখ্যা",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "সংখ্যারেখা এবং বিপরীত সংখ্যা ব্যবহার করে ঋণাত্মক সংখ্যা যোগ, বিয়োগ ও গুণ করুন।",
+  "idea": "ঋণাত্মক সংখ্যা শূন্যের নিচে থাকে। সংখ্যারেখায় `-3` হলো শূন্যের বামে তিন ধাপ, আর `3` হলো ডানে তিন ধাপ। তারা বিপরীত সংখ্যা, কারণ তারা শূন্য থেকে সমান দূরত্বে, কিন্তু ভিন্ন পাশে।\n\nধনাত্মক সংখ্যা যোগ করলে ডানে যাওয়া হয়। ঋণাত্মক সংখ্যা যোগ করলে বামে যাওয়া হয়। কোনো সংখ্যা বিয়োগ করলে তাকে যোগ করার বিপরীত দিকে যাওয়া হয়, তাই ঋণাত্মক সংখ্যা বিয়োগ করলে ডানে যাওয়া হয়। যেমন, `5 - (-3)` হয়ে যায় `5 + 3`।\n\nভিন্ন চিহ্নের সংখ্যা যোগ করলে চিহ্নগুলো বিপরীত দিকে টানে। উত্তরটির চিহ্ন হয় শূন্য থেকে বেশি দূরের সংখ্যার চিহ্ন, আর তার মান হয় দুই মানের পার্থক্য। তাই `-7 + 4` হয়ে যায় `-(7 - 4)`।",
+  "why_it_works": "বিয়োগ বলতে দুই সংখ্যার মধ্যের দূরত্ব বোঝাতে পারে। `-3` থেকে `5` পর্যন্ত পার্থক্যটি `-3` থেকে শূন্য পর্যন্ত ধাপ এবং তারপর শূন্য থেকে `5` পর্যন্ত ধাপ জুড়ে থাকে। তাই ঋণাত্মক সংখ্যা বিয়োগ করা তার বিপরীত সংখ্যা যোগ করার মতোই: `5 - (-3)` হয়ে যায় `5 + 3`।\n\nগুণের ক্ষেত্রে, একটি ধারা চিহ্নের নিয়ম বোঝায়। `3*(-2)`, `2*(-2)`, `1*(-2)`, এবং `0*(-2)`-এ প্রথম গুণনীয়ক এক করে কমলে, উত্তর দুই করে বাড়ে। ধারাটি চালিয়ে গেলে ঋণাত্মক গুণ ঋণাত্মকের জন্য ধনাত্মক উত্তর পাওয়া যায়।\n\nতাই `(-4)*(-6)` হয়ে যায় `4*6`। ঋণাত্মক গুণ ঋণাত্মক ধনাত্মক হয়, কারণ গুণের ধারাটি একইভাবে চলতে হবে।",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "হিসাব করো:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "রাশিটিতে একটি বিয়োগ চিহ্ন এবং একটি ঋণাত্মক চিহ্ন আছে। এগুলো আলাদা রাখুন: এটি `5` থেকে `-3` বিয়োগ করতে বলছে।",
+            "another_way": "`-3`-কে শূন্যের বাম দিকে 3 ধাপ ভাবুন। `5 - (-3)` রাশিটি `-3` থেকে `5` পর্যন্ত দূরত্ব জানতে চায়।",
+            "visual": "সংখ্যারেখায়, শূন্যের বামে `-3` এবং শূন্যের ডানে `5` চিহ্নিত করুন।"
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "ঋণাত্মক সংখ্যা বিয়োগ করলে, ঋণাত্মক সংখ্যা যোগ করার বিপরীত দিকে চলা হয়, তাই এটি ডান দিকে যায়। তাই `5 - (-3)` হয়ে যায় `5 + 3`।",
+            "another_way": "ঋণ সরিয়ে নেওয়ার প্রভাব লাভ করার মতোই। তাই `-3` বিয়োগ করা `3` যোগ করার একই চলন।",
+            "visual": "সংখ্যারেখায় `5` থেকে শুরু করুন, তারপর ডান দিকে `3` ধাপের চলন দেখান।"
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "পুনর্লিখনের পরে, হিসাবটি সাধারণ যোগ। `5 + 3` হলো `8`, তাই মূল রাশিটির মান `8`।",
+            "another_way": "সংখ্যারেখায়, `5` থেকে ডান দিকে `3` ধাপ গেলে `8`-এ পৌঁছায়। `-3` থেকে `5` পর্যন্ত দূরত্বও `8` ধাপ।",
+            "visual": "`5` থেকে ডান দিকের চলন সংখ্যারেখায় `8`-এ শেষ হয়।"
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "হিসাব করো:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "রাশি `-7 + 4`-এ ভিন্ন চিহ্নের সংখ্যা যোগ করা হয়েছে। এটি দড়ি টানাটানির মতো: `-7` শূন্য থেকে `4`-এর চেয়ে বেশি দূরে, তাই ফল ঋণাত্মকই থাকবে।",
+            "another_way": "`-7` থেকে শুরু করো এবং ডান দিকে `4` ধাপ সরে `4` যোগ করো। চলনটি শূন্যের দিকে যায়, কিন্তু শূন্য পার হয় না।",
+            "visual": "সংখ্যারেখায়, `-7` থেকে শুরু করো এবং ডান দিকে `4` ধাপ আঁকো।"
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "যেহেতু `7`, `4`-এর চেয়ে বড়, ঋণাত্মক চিহ্নটি রাখো এবং মানগুলোর তুলনা করো। তাই `-7 + 4` হয়ে যায় `-(7 - 4)`।",
+            "another_way": "`-7`-কে বাম দিকে টান এবং `4`-কে ডান দিকে টান হিসেবে ভাবো। অবশিষ্ট টান বাম দিকে, যার মান `7 - 4`।",
+            "visual": "সংখ্যারেখায়, `7`-এর বাম দিকের টান এবং `4`-এর ডান দিকের টান মিলে `7 - 4`-এর বাম দিকের টান থাকে।"
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "দড়ি টানাটানির পরে অবশিষ্ট মান `3`, আর ঋণাত্মক চিহ্ন দেখায় দিকটি শূন্যের বামে। তাই উত্তর `-3`।",
+            "another_way": "`-7` থেকে ডান দিকে `4` ধাপ সরলে `-3`-এ পৌঁছায়। এটি সরলীকৃত ফলের সঙ্গে মিলে যায়।",
+            "visual": "সংখ্যারেখায়, তীরটি শূন্যের বামে 3 ধাপ দূরে `-3`-এ শেষ হয়।"
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "হিসাব করো:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "উৎপাদক দুটি-ই ঋণাত্মক। ঋণাত্মক গুণ ঋণাত্মক হলে ধনাত্মক হয়, তাই গুণফলটি ঋণচিহ্ন ছাড়া আবার লেখা যায়।",
+            "another_way": "ধারার ধারণা ব্যবহার করুন: ঋণাত্মক সংখ্যা দিয়ে গুণ করলে দিক উল্টে যায়, আর তা দুবার করলে ধনাত্মক গুণফল পাওয়া যায়।",
+            "visual": "সংখ্যারেখায়, `(-4)*(-6)` সমান সমান ঋণাত্মক লাফকে ঋণাত্মক সংখ্যক বার নেওয়া বোঝায়, তাই তা উল্টে ডান দিকে যায়।"
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "চিহ্নের ব্যাপারটি ঠিক করার পর, শুধু মানগুলি গুণ করা হয়। `4*6` রেখাটি উৎপাদকগুলির দূরত্বের অংশগুলি রাখে।",
+            "another_way": "দুটি ঋণাত্মক গুণফলকে ধনাত্মক করার পর, ছয়ের চারটি দল ভাবুন।",
+            "visual": "সংখ্যারেখায়, `4*6` শূন্য থেকে ডান দিকে 6-এর 4টি সমান লাফ দেখায়।"
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "গুণটি সম্পূর্ণ হয়েছে: `4*6` হল `24`। তাই মূল রাশিটির মান `24`।",
+            "another_way": "মূল রাশিটি একটি ধনাত্মক গুণফলে পরিণত হয়েছে, এবং সেই গুণফল `24`।",
+            "visual": "সংখ্যারেখায়, লাফগুলি শূন্যের ডান দিকে `24`-এ শেষ হয়।"
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "ঋণাত্মক সংখ্যা বিয়োগ করলে উত্তর ছোট হয়।",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "বিয়োগ করলে সাধারণত জিনিস ছোট হয়, আর শিক্ষার্থী দুটি বিয়োগ চিহ্ন দেখে একটি বিয়োগ রেখে দেয়।",
+      "what_to_say": {
+        "probe": "সংখ্যারেখায় তুমি কোথা থেকে শুরু করো, আর `-3` বিয়োগ করলে কোন দিকে সরো?",
+        "nudge": "`5` এবং `-3`-এর মধ্যে পার্থক্য কত? `-3` থেকে `5` পর্যন্ত ধাপগুলো গোনো।",
+        "tell": "ঋণাত্মক সংখ্যা বিয়োগ করা মানে তার বিপরীত সংখ্যা যোগ করা। তাই `5 - (-3)` হলো `5 + 3`, যার মান `8`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "8"
+      },
+      "source_quote": "কিছু শিক্ষার্থী মনে করে, ঋণাত্মক সংখ্যা বিয়োগ করলে উত্তর ছোট হয়।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "ঋণাত্মককে ঋণাত্মক দিয়ে গুণ করলে ঋণাত্মক হয়।",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "দুটি সংখ্যাই ঋণাত্মক, তাই স্বাভাবিক মনে হয় যে উত্তরটিও ঋণাত্মক হবে।",
+      "what_to_say": {
+        "probe": "`1*(-3)` কত, আর `0*(-3)` কত? প্রথম সংখ্যা প্রতিবার 1 করে কমলে উত্তরে কী হয়?",
+        "nudge": "ধারাটি চালিয়ে যাও: `1*(-3)`, `0*(-3)`, `-1*(-3)` এবং দেখো উত্তরগুলো কোন দিকে যায়।",
+        "tell": "প্রতিটি ধাপে ধারা 3 করে বাড়ে, তাই `(-2)*(-3)` হলো `6`। ঋণাত্মককে ঋণাত্মক দিয়ে গুণ করলে ধনাত্মক হয়।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "20"
+      },
+      "source_quote": "কিছু শিক্ষার্থী মনে করে, ঋণাত্মককে ঋণাত্মক দিয়ে গুণ করলে ঋণাত্মক হয়।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "ভিন্ন চিহ্নের সংখ্যা যোগ করার সময়, মানগুলো যোগ করে প্রথম চিহ্নটি রাখো।",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "শিক্ষার্থী শিখেছে যে যোগ করলে সংখ্যার মান বড় হয়, আর প্রথম চিহ্নটিই সে আগে দেখে।",
+      "what_to_say": {
+        "probe": "যদি তুমি `-5` থেকে শুরু করে তিন ধাপ সরো, কোন দিকে সরবে?",
+        "nudge": "`-5` এবং `3`-এর মধ্যে দড়ি টানাটানির কথা ভাবো। কোন দিক জেতে, আর কত বেশি?",
+        "tell": "ধনাত্মক 3 শূন্যের দিকে টানে, তাই `-5 + 3` হলো `-2`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "-5"
+      },
+      "source_quote": "কিছু শিক্ষার্থী মানগুলো যোগ করে প্রথম সংখ্যার চিহ্ন রেখে দেয়।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "সব সময় বড় সংখ্যা থেকে ছোট সংখ্যা বিয়োগ করতে হয়।",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "অঋণাত্মক পূর্ণ সংখ্যার ক্ষেত্রে শিক্ষার্থীদের বলা হয়েছিল, ছোট সংখ্যা থেকে বড় সংখ্যা নেওয়া যায় না।",
+      "what_to_say": {
+        "probe": "তুমি যদি `3` থেকে শুরু করে বাম দিকে সাত ধাপ যাও, কোথায় পৌঁছাবে?",
+        "nudge": "`3 - 7` কি `7 - 3`-এর সমান? সংখ্যারেখা দিয়ে দুটোই করে দেখো।",
+        "tell": "তিন থেকে বাম দিকে 7 ধাপ গেলে `-4`-এ পৌঁছায়, তাই `3 - 7` হলো `-4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "-7"
+      },
+      "source_quote": "কিছু শিক্ষার্থী সব সময় বড় সংখ্যা থেকে ছোট সংখ্যা বিয়োগ করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "দুটি ঋণাত্মক মিলে ধনাত্মক হয়, যোগের ক্ষেত্রেও।",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "“দুটি ঋণাত্মক মিলে ধনাত্মক হয়” নিয়মটি ছোট ও মনে রাখার মতো, তাই এটি বিয়োগ চিহ্নের প্রতিটি জোড়ায় প্রয়োগ করা হয়।",
+      "what_to_say": {
+        "probe": "যদি তোমার 4 টাকা ঋণ থাকে এবং তারপর আরও 3 টাকা ঋণ হয়, মোট কত টাকা ঋণ থাকবে?",
+        "nudge": "সংখ্যারেখায় `-4` থেকে শুরু করে `-3` যোগ করো। কোন দিকে সরবে?",
+        "tell": "ঋণাত্মক যোগ করলে বাম দিকে সরা হয়, তাই `-4 + (-3)` হলো `-7`। চিহ্নের নিয়মটি গুণ ও ভাগের জন্য।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "হিসাব করো:",
+        "answer": "-8"
+      },
+      "source_quote": "কিছু শিক্ষার্থী যোগের ক্ষেত্রেও “দুটি ঋণাত্মক মিলে ধনাত্মক হয়” প্রয়োগ করে।"
+    }
+  ],
+  "questions": [
+    {
+      "question": "ঋণাত্মক সংখ্যা বিয়োগ করলে ডানে যাওয়া হয় কেন?",
+      "answer": "বিয়োগ করা মানে যোগ করার বিপরীত দিকে যাওয়া। ঋণাত্মক সংখ্যা যোগ করলে বামে যাওয়া হয়, তাই ঋণাত্মক সংখ্যা বিয়োগ করলে ডানে যাওয়া হয়। যেমন, `5 - (-3)` হয়ে যায় `5 + 3`।"
+    },
+    {
+      "question": "দুটি ঋণাত্মক কি সব সময় ধনাত্মক করে?",
+      "answer": "না। এই নিয়ম গুণ ও ভাগের জন্য। যোগে দিক গুরুত্বপূর্ণ। দুটি ঋণাত্মক যোগ করলে সংখ্যারেখায় আরও বামে যাওয়া হয়।"
+    },
+    {
+      "question": "`-7 + 4` ঋণাত্মক কেন?",
+      "answer": "সংখ্যাগুলো বিপরীত দিকে টানে। `-7` শূন্য থেকে `4`-এর চেয়ে বেশি দূরে, তাই উত্তরটি ঋণাত্মক চিহ্ন রাখে। `-7 + 4` হয়ে যায় `-(7 - 4)`।"
+    },
+    {
+      "question": "ঋণাত্মক গুণ ঋণাত্মক ধনাত্মক কেন?",
+      "answer": "গুণের ধারাটি চলতেই হবে। একটি গুণনীয়ক শূন্য পার হয়ে কমতে থাকলে, উত্তরগুলো একই পরিমাণে বাড়তে থাকে, যা ধনাত্মক উত্তরে নিয়ে যায়।"
+    },
+    {
+      "question": "`3 - 7`-এর উত্তর হতে পারে কি?",
+      "answer": "হ্যাঁ। `3` থেকে শুরু করে সংখ্যারেখায় সাত ধাপ বামে যান। যেখানে পৌঁছবেন, তা শূন্যের নিচে।"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "ঋণাত্মক সংখ্যা চিহ্নিত করুন",
+      "activity": "মাঝখানে শূন্য রেখে একটি সংখ্যারেখা আঁকুন। ধনাত্মক ও ঋণাত্মক সংখ্যাগুলোকে শূন্য থেকে সমান ধাপে বসান। `-3` এবং `3`-এর মতো বিপরীত সংখ্যার ওপর জোর দিন, যেগুলো শূন্য থেকে সমান দূরত্বে, কিন্তু ভিন্ন পাশে।"
+    },
+    {
+      "minutes": 10,
+      "title": "যোগকে চলন হিসেবে দেখান",
+      "activity": "সংখ্যারেখা ব্যবহার করে দেখান, ধনাত্মক সংখ্যা যোগ করলে ডানে যাওয়া হয় এবং ঋণাত্মক সংখ্যা যোগ করলে বামে যাওয়া হয়। ভিন্ন চিহ্নের একটি উদাহরণ দিন এবং একে দড়ি টানাটানির মতো বর্ণনা করুন।"
+    },
+    {
+      "minutes": 10,
+      "title": "ঋণাত্মক সংখ্যা বিয়োগ করুন",
+      "activity": "“বিয়োগ” এবং “ঋণাত্মক” বলে প্রক্রিয়া ও চিহ্নকে আলাদা রাখুন। দেখান, বিয়োগ করলে যোগের বিপরীত দিকে যাওয়া হয়, তাই `5 - (-3)` হয়ে যায় `5 + 3`।"
+    },
+    {
+      "minutes": 10,
+      "title": "যোগে ভিন্ন চিহ্ন",
+      "activity": "যেসব উদাহরণে চিহ্নগুলো বিপরীত দিকে টানে, তা মডেল করুন। উত্তরটি শূন্য থেকে বেশি দূরের সংখ্যার চিহ্ন নেয়, আর মান হয় মানগুলোর পার্থক্য। `-7 + 4` হয়ে যায় `-(7 - 4)` ব্যবহার করুন।"
+    },
+    {
+      "minutes": 10,
+      "title": "ধারা দিয়ে গুণ করুন",
+      "activity": "ধনাত্মক গুণনীয়ক থেকে শূন্য পর্যন্ত নামার ধারা দেখান। এটি দিয়ে ব্যাখ্যা করুন কেন ঋণাত্মক গুণ ঋণাত্মক ধনাত্মক হয়, তারপর এটিকে `(-4)*(-6)` হয়ে `4*6` হওয়ার সঙ্গে যুক্ত করুন।"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `-7 - (-4)` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "ঋণাত্মক সংখ্যা বিয়োগ করা মানে তার বিপরীত সংখ্যা যোগ করার মতোই।"
+        },
+        {
+          "rung": "computation",
+          "text": "এটিকে `-7 + 4` হিসেবে লিখুন এবং `-7` থেকে ডানদিকে 4 ধাপ যান।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`।"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `9 - (-15)` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "ঋণাত্মক সংখ্যা বিয়োগ করা মানে তার বিপরীত সংখ্যা যোগ করার মতোই।"
+        },
+        {
+          "rung": "computation",
+          "text": "এটিকে `9 + 15` হিসেবে লিখুন।"
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`।"
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `15 + (-32)` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "চিহ্ন ভিন্ন হলে, সংখ্যাগুলির পরম মান বিয়োগ করুন এবং শূন্য থেকে বেশি দূরের সংখ্যার চিহ্ন রাখুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` হলো `17`, এবং `-32` শূন্য থেকে `15`-এর চেয়ে বেশি দূরে।"
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`।"
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `-31 + (-19)` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "দুটি সংখ্যাই ঋণাত্মক হলে, তাদের পরম মান যোগ করুন এবং ঋণাত্মক চিহ্ন রাখুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` হলো `50`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`।"
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `-1*(-14)` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "ঋণাত্মক সংখ্যার সঙ্গে ঋণাত্মক সংখ্যার গুণফল ধনাত্মক হয়।"
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` হলো `14`, এবং চিহ্ন দুটি একই।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`।"
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `-9*3` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "দুটি চিহ্ন ভিন্ন হলে, গুণফল ঋণাত্মক হয়।"
+        },
+        {
+          "rung": "computation",
+          "text": "প্রথমে চিহ্ন বাদ দিন: `9*3` হলো `27`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`।"
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `-100/(-4)` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "ঋণাত্মক সংখ্যাকে ঋণাত্মক সংখ্যা দিয়ে ভাগ করলে ধনাত্মক হয়, ঠিক গুণের মতো।"
+        },
+        {
+          "rung": "computation",
+          "text": "প্রথমে চিহ্ন বাদ দিন: `100/4` হলো `25`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`।"
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "হিসাব করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `5*(-6) + 7*(-2) - 3` এর মান চাই।"
+        },
+        {
+          "rung": "information",
+          "text": "যোগ ও বিয়োগের আগে গুণ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` হলো `-30` এবং `7*(-2)` হলো `-14`, তাই আমরা পাই `-30 - 14 - 3`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`।"
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

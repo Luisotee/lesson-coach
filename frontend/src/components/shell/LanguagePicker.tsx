@@ -18,7 +18,9 @@ export function LanguagePicker() {
         id={id}
         value={current}
         onChange={(e) => void i18n.changeLanguage(e.target.value)}
-        className="min-h-11 rounded-lg border border-input bg-white ps-3 pe-8 text-sm font-medium text-navy"
+        // A native select is as wide as its longest option ("… (machine-translated)"); capped, a
+        // 320 px phone never scrolls sideways, and the open list still shows every name whole.
+        className="min-h-11 max-w-52 rounded-lg border border-input bg-white ps-3 pe-8 text-sm font-medium text-navy"
       >
         {LANGUAGES.map((l) => (
           <option key={l.code} value={l.code} lang={l.code}>

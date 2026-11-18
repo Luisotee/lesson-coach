@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "hi",
+  "title": "भिन्न",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "भिन्न बराबर भागों को बताते हैं; संक्रियाएँ भाग का आकार स्पष्ट रखकर और भागों की गिनती करके काम करती हैं।",
+  "idea": "भिन्न किसी पूर्ण के बराबर भागों को बताता है। `3/4` में, नीचे की संख्या बताती है कि पूर्ण को बराबर भागों में काटा गया है। ऊपर की संख्या गिनती है कि उन भागों में से कितने लिए गए हैं।\n\nसमतुल्य भिन्न अलग-अलग आकार के भागों से समान मात्रा बताते हैं। ऊपर और नीचे को एक ही संख्या से गुणा या भाग देने पर मात्रा वही रहती है।\n\nजोड़ में, भागों को गिनने से पहले उनका आकार समान होना चाहिए। गुणा में, एक पूर्ण संख्या गुणा एक भिन्न उस भिन्न के बार-बार बने समूहों को गिनता है। भाग में, प्रश्न यह है कि एक भिन्न दूसरे में कितनी बार समा सकता है।",
+  "why_it_works": "केवल समान प्रकार के भाग जोड़े जा सकते हैं। `1/2 + 1/3` के लिए, आधे और तिहाई अलग आकार के हैं, इसलिए दोनों को छठे भागों के रूप में लिखा जाता है। `1/2 + 1/3` बदलकर `3/6 + 2/6` बनता है, और `3/6 + 2/6` `5/6` है।\n\nगुणा भागों की संख्या बदलता है। `3*(2/5)` में, पाँचवें भाग पाँचवें ही रहते हैं। `3*(2/5)` बदलकर `(3*2)/5` बनता है, और `(3*2)/5` `6/5` है।\n\nभाग पूछता है कि भाजक कितनी बार समाता है। `(2/3)/(3/4)` बदलकर `(2/3)*(4/3)` बनता है। फिर `(2/3)*(4/3)` बदलकर `(2*4)/(3*3)` बनता है, और `(2*4)/(3*3)` `8/9` है।",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "हल कीजिए:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "भिन्नों के भाग अलग-अलग आकार के हैं, इसलिए उन्हें सीधे नहीं जोड़ा जा सकता। उन्हें समान हर में लिखें।",
+            "another_way": "छठे भागों का उपयोग करें क्योंकि आधे और तिहाई, दोनों को छठे भागों में काटा जा सकता है। इससे हर भिन्न का मान वही रहता है और भाग समान हो जाते हैं।",
+            "visual": "एक पट्टी `1/2 + 1/3` को आधे आकार के एक भाग के साथ तिहाई आकार के एक भाग के रूप में दिखाती है।"
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अब दोनों भिन्न छठे भागों में हैं। `1/2` बदलकर `3/6` हो जाता है, और `1/3` बदलकर `2/6` हो जाता है, इसलिए भाग समान आकार के हैं।",
+            "another_way": "हर आधे को तीन छठे भाग और हर तिहाई को दो छठे भाग मानें। फिर सवाल केवल छठे भाग गिनने का है।",
+            "visual": "एक पट्टी `3/6 + 2/6` को समान आकार के टुकड़ों के तीन छठे भाग और दो छठे भाग के रूप में दिखाती है।"
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "समान हर होने पर अंशों को जोड़ें और हर वही रखें। `3/6 + 2/6` बदलकर `5/6` हो जाता है, इसलिए यही उत्तर है।",
+            "another_way": "छठे आकार के सभी टुकड़ों को साथ गिनें। तीन छठे भाग और दो छठे भाग मिलकर पाँच छठे भाग बनते हैं।",
+            "visual": "एक पट्टी `5/6` को एक पूरे के पाँच समान छठे आकार के टुकड़ों के रूप में छायांकित दिखाती है।"
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "हल कीजिए:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "यह `3*(2/5)` से शुरू होता है, जिसका अर्थ है `2/5` के 3 समूह। हर भाग का आकार पाँचवाँ ही रहता है।",
+            "another_way": "पूर्ण संख्या को भिन्न के ऊपर की संख्या के गुणक के रूप में सोचें। तब `3*(2/5)` एक पूर्ण संख्या गुणा एक भिन्न है।",
+            "visual": "एक बार मॉडल में एक बार की तीन प्रतियाँ दिखती हैं, जिनमें हर प्रति में `2/5` छायांकित है।"
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "पूर्ण संख्या ऊपर की संख्या को गुणा करती है, इसलिए `3*(2/5)` बदलकर `(3*2)/5` हो जाता है। हर `5` ही रहता है क्योंकि भाग अभी भी पाँचवें हैं।",
+            "another_way": "पाँचवें गिनें: `2` पाँचवें, `3` बार लेने पर, `(3*2)` पाँचवें मिलते हैं।",
+            "visual": "एक बार मॉडल में पाँचवें आकार के टुकड़े तीन समूहों में गिने जाते दिखते हैं।"
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अंश में गुणनफल निकाल लिया गया है, इसलिए `(3*2)/5` बदलकर `6/5` हो जाता है। यह उत्तर है क्योंकि व्यंजक का मान निकाल लिया गया है।",
+            "another_way": "`2/5` के तीन समूह मिलकर `6/5` बनाते हैं। परिणाम एक पूर्ण से अधिक है क्योंकि `5` पाँचवें से अधिक हैं।",
+            "visual": "एक बार मॉडल में पाँचवें आकार के `6` टुकड़े छायांकित दिखते हैं, जो `6/5` बनाते हैं।"
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "हल कीजिए:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "व्यंजक पूछता है कि `2/3` में `3/4` कितनी बार समा सकता है। किसी भिन्न से भाग देने के लिए, `2/3` को वैसा ही रखें और `3/4` के व्युत्क्रम से गुणा करें।",
+            "another_way": "प्रश्न को भाग से उसके अनुरूप गुणा में बदलने के रूप में सोचें। भाजक `3/4` को उलट दिया जाता है, इसलिए `(2/3)/(3/4)` बन जाता है `(2/3)*(4/3)`।",
+            "visual": "एक पट्टी दिखाती है कि पूरे के `2/3` को `3/4` आकार के टुकड़ों से मापा जा रहा है।"
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अब भिन्नों का गुणा करें। अंशों को आपस में और हरों को आपस में गुणा करें, इसलिए `(2/3)*(4/3)` बन जाता है `(2*4)/(3*3)`।",
+            "another_way": "यह भागों की संख्या और भागों के आकार को अलग-अलग दिखाता है। ऊपर `2*4` की संख्या है, और नीचे `3*3` की संख्या है।",
+            "visual": "एक पट्टी को एक दिशा में तिहाइयों में और दूसरी दिशा में तिहाइयों में बाँटा गया है, जिसमें `2*4` छोटे भाग गिने गए हैं।"
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "अंश और हर में गुणनफलों को लिखकर दिखाया गया है। अब उन गुणनफलों का मान निकालकर सरल करने के लिए पंक्ति तैयार है।",
+            "another_way": "`(2*4)/(3*3)` को ऐसी भिन्न के रूप में देखें जिसमें गुणा अभी भी दिख रहा है। अगला चरण उन गुणनफलों को एकल संख्याओं के रूप में लिखता है।",
+            "visual": "पट्टी मॉडल में पूरे में `3*3` बराबर छोटे भाग हैं और उनमें से `2*4` रंगे हुए हैं।"
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "गुणा करने पर अंतिम भिन्न मिलती है, इसलिए `(2*4)/(3*3)` बन जाता है `8/9`। यही उत्तर है क्योंकि अब कोई और क्रिया नहीं दिखाई गई है।",
+            "another_way": "भागफल एक पूरे से कम है, जो अर्थ से मेल खाता है: `3/4`, `2/3` से बड़ा है, इसलिए उसका एक से कम भाग ही समाता है।",
+            "visual": "`9` बराबर भागों में बँटी पट्टी में `8` भाग रंगे हुए हैं, जो `8/9` दिखाता है।"
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "भिन्न जोड़ने के लिए, ऊपर की संख्याएँ जोड़ें और नीचे की संख्याएँ जोड़ें।",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "इसमें भिन्न को दो अलग-अलग पूर्ण संख्याओं की तरह माना जाता है, और यह भिन्नों के गुणा की तरह ही काम करता है।",
+      "what_to_say": {
+        "probe": "क्या आपका उत्तर `1/2` से बड़ा है या छोटा? क्या ऐसा होना चाहिए?",
+        "nudge": "क्या आप आधों और तिहाइयों को सीधे जोड़ सकते हैं, या पहले समान आकार के भाग चाहिए?",
+        "tell": "दोनों को छठे भागों में काटें: `3/6 + 2/6` है `5/6`। हम केवल भागों को गिनते हैं; उनका आकार वही रहता है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "3/4"
+      },
+      "source_quote": "कुछ विद्यार्थी भिन्नों को ऊपर की संख्याएँ जोड़कर और नीचे की संख्याएँ जोड़कर जोड़ते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "किसी भिन्न को पूर्ण संख्या से गुणा करने के लिए, ऊपर और नीचे दोनों को गुणा करें।",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "विद्यार्थियों ने तुल्य भिन्नों से सीखा कि ऊपर और नीचे दोनों पर वही क्रिया करना सुरक्षित है।",
+      "what_to_say": {
+        "probe": "क्या `6/15` `2/5` से अधिक है, कम है, या समान है? `2/5` के तीन समूह कितने होने चाहिए?",
+        "nudge": "दो-पाँचवें के तीन समूहों को जोड़ के रूप में लिखें और पाँचवें भाग गिनें।",
+        "tell": "दो-पाँचवें के तीन समूह छह-पाँचवें होते हैं, `6/5`। केवल भागों की संख्या बदलती है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "12/7"
+      },
+      "source_quote": "कुछ विद्यार्थी पूर्ण संख्या से ऊपर और नीचे दोनों को गुणा कर देते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "भिन्नों में भाग करते समय, पहले भिन्न को उलट दें।",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"उलटकर गुणा करो\" नारे की तरह याद रहता है, बिना यह याद रखे कि कौन-सा भिन्न उलटना है।",
+      "what_to_say": {
+        "probe": "दो-तिहाई में तीन-चौथाई कितनी बार समाता है: एक से अधिक बार, या कम?",
+        "nudge": "हम किस भिन्न से गिन रहे हैं? वही उलटना है।",
+        "tell": "केवल भाजक को उलटा जाता है: `(2/3)*(4/3)` है `8/9`, एक से थोड़ा कम।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "6/5"
+      },
+      "source_quote": "कुछ विद्यार्थी भाग देते समय दूसरे को नहीं, पहले भिन्न को उलटते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "आप जोड़ के चिह्न के आर-पार भी ऊपर की संख्या को नीचे की संख्या से काट सकते हैं।",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "समान संख्याओं को काटना गुणनफल में काम करता है, और विद्यार्थी ऊपर 2 और नीचे 2 देखता है।",
+      "what_to_say": {
+        "probe": "भाग देने से पहले, भिन्न के ऊपर की पूरी संख्या क्या है?",
+        "nudge": "पहले ऊपर का भाग निकालें, फिर भाग दें। क्या वही उत्तर मिलता है?",
+        "tell": "भिन्न रेखा पूरे ऊपर के भाग को विभाजित करती है: `(2+4)/2` है `6/2`, जो `3` है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "सरल कीजिए:",
+        "answer": "5"
+      },
+      "source_quote": "कुछ विद्यार्थी जोड़ के चिह्न के आर-पार काट देते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "भिन्न को सरल करने के लिए, आप केवल ऊपर या केवल नीचे को भाग दे सकते हैं।",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "किसी संख्या को आधा करना सरल करना जैसा लगता है, और विद्यार्थी यह नहीं जाँचता कि मात्रा वही रहती है या नहीं।",
+      "what_to_say": {
+        "probe": "क्या `3/8` की मात्रा `6/8` के समान है? दोनों को पट्टियों के रूप में बनाइए।",
+        "nudge": "कौन-सी संख्या ऊपर और नीचे दोनों को विभाजित करती है?",
+        "tell": "ऊपर और नीचे को उसी संख्या से भाग दें: `6/8` है `3/4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "सरल कीजिए:",
+        "answer": "2/3"
+      },
+      "source_quote": "कुछ विद्यार्थी भिन्न के केवल एक भाग को बदलकर सरल करते हैं।"
+    }
+  ],
+  "questions": [
+    {
+      "question": "हम ऊपर की संख्याएँ और नीचे की संख्याएँ क्यों नहीं जोड़ सकते?",
+      "answer": "नीचे की संख्या भागों का आकार बताती है। आधे और तिहाई अलग आकार के होते हैं, इसलिए गिनने से पहले भागों को समान आकार में फिर से लिखना चाहिए।"
+    },
+    {
+      "question": "`1/2 + 1/3` बदलकर `3/6 + 2/6` क्यों बनता है?",
+      "answer": "दोनों भिन्नों को छठे भागों में फिर से लिखा जाता है। मात्राएँ वही रहती हैं, पर अब भाग समान आकार के हैं और जोड़े जा सकते हैं।"
+    },
+    {
+      "question": "`3*(2/5)` में नीचे की संख्या क्यों नहीं बदलती?",
+      "answer": "पाँचवें भागों का आकार वही रहता है। `3` से गुणा करने पर `2/5` के तीन समूह मिलते हैं, इसलिए केवल पाँचवें भागों की संख्या बदलती है।"
+    },
+    {
+      "question": "भाग देते समय कौन-सा भिन्न उलटा किया जाता है?",
+      "answer": "केवल भाजक को उलटा किया जाता है। `(2/3)/(3/4)` बदलकर `(2/3)*(4/3)` बनता है क्योंकि भाग पूछता है कि `3/4`, `2/3` में कितनी बार समाता है।"
+    },
+    {
+      "question": "क्या हम धन चिह्न के आर-पार काट सकते हैं?",
+      "answer": "नहीं। भिन्न रेखा पूरे ऊपर के भाग को विभाजित करती है। योग के पदों को ऐसे आंशिक रूप से नहीं काटा जा सकता जैसे वे अलग-अलग गुणनखंड हों।"
+    },
+    {
+      "question": "विद्यार्थी कैसे जाँच सकते हैं कि उत्तर ठीक लगता है या नहीं?",
+      "answer": "पहले अनुमान लगाएँ। पूछें कि परिणाम `1/2` से अधिक या कम होना चाहिए, या `1` से अधिक या कम। मोटे तौर पर परिमाण की जाँच करने से भिन्नों की कई गलतियाँ पकड़ में आ जाती हैं।"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "भागों के नाम बताना",
+      "activity": "बराबर भागों में काटे गए एक सरल पूर्ण का उपयोग करें। नीचे की संख्या को भागों के आकार से और ऊपर की संख्या को भागों की गिनती से जोड़ें। संदर्भ भिन्न के रूप में `3/4` का उपयोग करें।"
+    },
+    {
+      "minutes": 10,
+      "title": "समतुल्य भिन्न",
+      "activity": "दिखाएँ कि अलग-अलग भिन्न समान मात्रा बता सकते हैं। `1/2`, `2/4`, और `3/6` का उपयोग करें। ज़ोर दें कि ऊपर और नीचे साथ-साथ बदलने चाहिए।"
+    },
+    {
+      "minutes": 10,
+      "title": "समान भागों को जोड़ना",
+      "activity": "`1/2 + 1/3` से शुरू करें। पूछें कि आधे और तिहाई को साथ क्यों नहीं गिना जा सकता। छठे भागों के रूप में लिखें: `1/2 + 1/3` बदलकर `3/6 + 2/6` बनता है, और `3/6 + 2/6` `5/6` है।"
+    },
+    {
+      "minutes": 8,
+      "title": "भिन्न का गुणा करना",
+      "activity": "`3*(2/5)` को दो पाँचवें भागों के तीन समूह के रूप में लें। दिखाएँ कि `3*(2/5)` बदलकर `(3*2)/5` बनता है, और `(3*2)/5` `6/5` है। ज़ोर दें कि भाग का आकार पाँचवाँ ही रहता है।"
+    },
+    {
+      "minutes": 9,
+      "title": "भिन्नों का भाग",
+      "activity": "प्रश्न “कितने समाते हैं?” का उपयोग करें। `(2/3)/(3/4)` के लिए, दिखाएँ कि `(2/3)/(3/4)` बदलकर `(2/3)*(4/3)` बनता है, फिर `(2*4)/(3*3)`, और परिणाम `8/9` है।"
+    },
+    {
+      "minutes": 5,
+      "title": "अनुमान लगाकर गलतियाँ पकड़ना",
+      "activity": "सामान्य गलत तरीकों पर चर्चा करें: ऊपर और नीचे को जोड़ना, केवल एक भाग बदलना, पहले भिन्न को उलटना, या जोड़ के आर-पार काटना। जाँच के लिए अनुमान और बार मॉडल का उपयोग करें।"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `1/2 + 1/7` के बराबर एक भिन्न चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "भिन्नों को जोड़ने के लिए, पहले उनके हर समान करें।"
+        },
+        {
+          "rung": "computation",
+          "text": "समान हर `14` है: `7/14 + 2/14`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`।"
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `7/12 + 5/18` के बराबर एक भिन्न चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "12 और 18 का लघुत्तम समापवर्त्य लें, जो `36` है।"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` है `21/36` और `5/18` है `10/36`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`।"
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `7/12 - 9/16` के बराबर एक भिन्न चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "12 और 16 का लघुत्तम समापवर्त्य लें, जो `48` है।"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` है `28/48` और `9/16` है `27/48`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`।"
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "सरल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `120/252` के बराबर सरलतम भिन्न चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "अंश और हर को उनके महत्तम समापवर्तक से भाग दें।"
+        },
+        {
+          "rung": "computation",
+          "text": "अंश और हर को `12` से भाग दें, जो 120 और 252 का महत्तम समापवर्तक है।"
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`।"
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `(-3/4)*(-4/9)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "दोनों चिह्न समान हैं, इसलिए गुणनफल धनात्मक है। अंशों और हरों को गुणा करें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` है `12/36`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`।"
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `(3/4)/(5/8)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "किसी भिन्न से भाग देने के लिए, उसके व्युत्क्रम से गुणा करें। भाजक का व्युत्क्रम `1/(5/8)` है, जो `8/5` है।"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` है `24/20`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`।"
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `(2/3)/(5/6)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "किसी भिन्न से भाग देने के लिए, उसके व्युत्क्रम से गुणा करें। भाजक का व्युत्क्रम `1/(5/6)` है, जो `6/5` है।"
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` है `12/15`।"
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`।"
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `-23/24 - 13/24` के बराबर एक भिन्न चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "हर पहले से ही समान हैं, इसलिए अंशों को घटाएँ।"
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` है `-36`, इसलिए हमें `-36/24` मिलता है।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`।"
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

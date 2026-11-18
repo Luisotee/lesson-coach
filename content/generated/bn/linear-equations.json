@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "bn",
+  "title": "রৈখিক সমীকরণ সমাধান",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "উভয় পাশে একই প্রক্রিয়া করে এবং উত্তর যাচাই করে রৈখিক সমীকরণ সমাধান করো।",
+  "idea": "একটি সমীকরণ বলে যে দুটি রাশির মান একই। সমাধান করা মানে `x`-এর সেই মান খোঁজা, যাতে উক্তিটি সত্য হয়।\n\nদাঁড়িপাল্লার মডেলই মূল ছবি। এক পাশে যা করা হবে, অন্য পাশেও তা-ই করতে হবে। প্রক্রিয়াটি পাশে লেখা যেতে পারে, যেমন subtract `6`, যাতে বোঝা যায় উভয় পাশ বদলাচ্ছে।\n\n`x`-কে একা পেতে, প্রক্রিয়াগুলি উল্টো ক্রমে বাতিল করো। `2*x + 6 = 10`-এর জন্য, উভয় পাশ থেকে `6` বিয়োগ করলে `2*x = 4` পাওয়া যায়। উভয় পাশকে `2` দিয়ে ভাগ করলে `x = 2` পাওয়া যায়।\n\nবন্ধনী থাকলে, পুরো বন্ধনীটিকে গুণ করা হয়েছে বলে ধরো। `5*(x + 3) = 35`-এ, উভয় পাশকে `5` দিয়ে ভাগ করলে `x + 3 = 7` পাওয়া যায়, তারপর `3` বিয়োগ করলে `x = 4` পাওয়া যায়।",
+  "why_it_works": "প্রতিটি ধাপ দুই পাশকে সমান রাখে, কারণ একই প্রক্রিয়া উভয় পাশে প্রয়োগ করা হয়। সমীকরণের রূপ বদলায়, কিন্তু সমাধান একই থাকে।\n\nপ্রক্রিয়াগুলি উল্টো ক্রমে বাতিল করা হয়। `2*x + 6 = 10`-এ, `x`-সহ রাশিটিকে `2` দিয়ে গুণ করা হয়েছিল এবং তারপর `6` যোগ করা হয়েছিল। তাই আগে `6` বিয়োগ করো, তারপর `2` দিয়ে ভাগ করো।\n\nউভয় পাশে চলক থাকলেও একই দাঁড়িপাল্লার ধারণা প্রযোজ্য। `3*x + 4 = x + 10`-এ, উভয় পাশ থেকে `x` বিয়োগ করলে `2*x + 4 = 10` পাওয়া যায়। তারপর `4` বিয়োগ করলে `2*x = 6` পাওয়া যায়, এবং `2` দিয়ে ভাগ করলে `x = 3` পাওয়া যায়।\n\nযাচাই হয় প্রতিস্থাপন দিয়ে। `x = 2` হলে, `2*2 + 6` হল `10`, তাই মূল সমীকরণটি সত্য।",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6` থাকার কারণে `x` একা নেই। দুপাশ থেকে `6` বিয়োগ করো, যাতে ভারসাম্য ঠিক থাকে এবং যোগ করা `6` সরে যায়।",
+            "another_way": "উল্টো ক্রমে ভাবো। যেহেতু `2*x`-এর পরে `6` যোগ করা হয়েছিল, তাই আগে দুপাশে `-6` করে সেটি সরাও।",
+            "visual": "একটি দাঁড়িপাল্লায় এক পাশে `2*x + 6` এবং অন্য পাশে `10` আছে, আর দুপাশ থেকে `6` সরানো হয়েছে।"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এখন `2*x = 4`, তাই `x` এখনও `2` দিয়ে গুণ করা আছে। গুণটি সরাতে এবং সমীকরণের ভারসাম্য রাখতে দুপাশকে `2` দিয়ে ভাগ করো।",
+            "another_way": "`2*x` মানে `x`-এর দুটি সমান দল। দুপাশকে `2` সমান ভাগে ভাগ করলে `x`-এর একটি দল থাকে।",
+            "visual": "একটি দাঁড়িপাল্লায় এক পাশে `2*x` এবং অন্য পাশে `4` আছে, আর দুপাশকে `2` সমান ভাগে ভাগ করা হয়েছে।"
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এটাই উত্তর, কারণ `x` একা আছে এবং সমীকরণ সরাসরি তার মান বলছে: `x = 2`।",
+            "another_way": "বসিয়ে যাচাই করো: `2*2 + 6` হলো `10`, তাই মূল সমীকরণটি সত্য।",
+            "visual": "একটি দাঁড়িপাল্লায় এক পাশে একটি `x` এবং অন্য পাশে `2` আছে, ভারসাম্যে।"
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "বন্ধনীর রাশিটিকে `5` দিয়ে গুণ করা হয়েছে। দুই দিককে `5` দিয়ে ভাগ করলে সেই গুণ বাতিল হয় এবং সমীকরণের ভারসাম্য বজায় থাকে।",
+            "another_way": "এতে আগে বন্ধনী বিস্তার করা এড়ানো যায়। যেহেতু পুরো বাম দিকটি `x + 3`-এর `5` গুণ, তাই দুই দিকের পুরোটাই `5` দিয়ে ভাগ করো।",
+            "visual": "একটি ভারসাম্যপূর্ণ দাঁড়িপাল্লায় এক পাশে `5*(x + 3)` এবং অন্য পাশে `35` আছে, দুই পাশকেই `5`টি সমান দলে ভাগ করার জন্য প্রস্তুত।"
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এখন `x`-এর সঙ্গে `3` যোগ করা হয়েছে। দুই দিক থেকে `3` বিয়োগ করলে যোগটি বাতিল হয় এবং সমীকরণের ভারসাম্য বজায় থাকে।",
+            "another_way": "দাঁড়িপাল্লার প্রতিটি পাশ থেকে একই `3` সরিয়ে নেওয়ার কথা ভাবো। এতে বাম পাশে অজানা রাশিটি একা থাকে।",
+            "visual": "একটি ভারসাম্যপূর্ণ দাঁড়িপাল্লায় এক পাশে `x + 3` এবং অন্য পাশে `7` আছে, দুই পাশ থেকেই `3` সরানো হয়েছে।"
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "চলকটি একা আছে, তাই এই পংক্তি সমাধান দেয়। যে মানটি মূল সমীকরণকে সত্য করে, তা হলো `x = 4`।",
+            "another_way": "যাচাই করতে মূল সমীকরণে `x`-এর জায়গায় `4` বসালে দেখা যাবে দুই দিক মিলে যায়।",
+            "visual": "একটি ভারসাম্যপূর্ণ দাঁড়িপাল্লায় এক পাশে শুধু `x` এবং অন্য পাশে `4` আছে।"
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "ডান পাশের `x` পদটি আগে দুই পাশ থেকে `x` বিয়োগ করে সরানো হয়। এতে সমীকরণের ভারসাম্য থাকে এবং চলক পদগুলি একসঙ্গে আসে।",
+            "another_way": "ভাবো, প্রতিটি পাশ থেকে একটি `x` নেওয়া হচ্ছে। তখন বাম পাশ হয় `2*x + 4`, আর ডান পাশে আর কোনো `x` পদ থাকে না।",
+            "visual": "একটি তুলাদণ্ডে `3*x + 4` এবং `x + 10` দেখা যায়, প্রতিটি পাশ থেকে একটি `x` সরানো হয়েছে।"
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "ধ্রুবক `4` বাম পাশ থেকে সরানো হয় দুই পাশ থেকে `4` বিয়োগ করে। এতে বাম পাশে `x` পদটি একা থাকে।",
+            "another_way": "যেহেতু `2*x`-এর সঙ্গে `4` যোগ করা ছিল, বিয়োগ করে সেই যোগের বিপরীত কাজ করো। ভারসাম্য রাখতে ডান পাশও একইভাবে বদলায়।",
+            "visual": "একটি তুলাদণ্ডে `2*x + 4` এবং `10` দেখা যায়, দুই পাশ থেকেই `4` সরানো হয়েছে।"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2` দিয়ে `x` গুণ করা হয়েছে, তাই গুণের বিপরীত করতে দুই পাশকে `2` দিয়ে ভাগ করো। এতে একটি `x` একা পাওয়া যায়।",
+            "another_way": "`2*x` মানে `x`-এর 2টি সমান দল। দুই পাশকে `2` সমান ভাগে ভাগ করলে এক দলের মান দেখা যায়।",
+            "visual": "একটি তুলাদণ্ডে `2*x` এবং `6` দেখা যায়, প্রতিটি পাশ `2` সমান ভাগে ভাগ করা হয়েছে।"
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "এটাই উত্তর, কারণ `x` একা আছে এবং তার মান দেখানো হয়েছে। সমীকরণটি বলে যে `x` হলো `3`।",
+            "another_way": "মূল সমীকরণে বসিয়ে এটি যাচাই করা যায়। `x`-এর জায়গায় `3` বসালে দুই পাশ মিলে যায়।",
+            "visual": "একটি তুলাদণ্ডে একটি `x`-এর সঙ্গে `3` ভারসাম্যে আছে।"
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "একটি সংখ্যা সমান চিহ্নের ওপারে গিয়েও তার চিহ্ন রাখতে পারে।",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"ওটাকে অন্য পাশে নিয়ে যাও\" একটি প্রচলিত সংক্ষিপ্ত উপায়, আর শিক্ষার্থী ভুলে যায় যে নিয়ে যাওয়া মানে বিয়োগ করা।",
+      "what_to_say": {
+        "probe": "`+ 6` দূর করতে তুমি দুই পাশেই কী করেছিলে?",
+        "nudge": "পাশের ফাঁকা জায়গায় ক্রিয়াটি লিখো, \"| -6\", এবং দুই পাশেই তা প্রয়োগ করো।",
+        "tell": "দুই পাশ থেকে ছয় বিয়োগ করো: `2*x = 4`, তাই `x = 2`। বসিয়ে দেখলে মেলে: `2*2 + 6` হলো `10`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "x-এর মান নির্ণয় করো:",
+        "answer": "5"
+      },
+      "source_quote": "কিছু শিক্ষার্থী সমান চিহ্নের ওপারে একটি সংখ্যা নিয়ে যায়, কিন্তু তার চিহ্ন বদলায় না।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "কোনো পাশের শুধু একটি পদকে সহগ দিয়ে ভাগ করা যায়।",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "শিক্ষার্থী `x`-কে একা করতে মন দেয় এবং তার সঙ্গে থাকা পদকে ভাগ করে, কিন্তু সেই পাশের বাকি অংশ ভুলে যায়।",
+      "what_to_say": {
+        "probe": "তুমি যখন দুই দিয়ে ভাগ করলে, `6`-এর কী হলো?",
+        "nudge": "দুই পাশের প্রতিটি পদকে দুই দিয়ে ভাগ করো এবং তোমার লাইনের সঙ্গে মিলিয়ে দেখো।",
+        "tell": "কোনো পাশ ভাগ করলে তার প্রতিটি পদ ভাগ হয়: `x + 3 = 5`, তাই `x = 2`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "x-এর মান নির্ণয় করো:",
+        "answer": "3"
+      },
+      "source_quote": "কিছু শিক্ষার্থী `x`-এর সামনে থাকা সংখ্যা দিয়ে শুধু একটি পদ ভাগ করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "`x`-এর সামনে থাকা সংখ্যাটি দূর করতে হলে সেটি বিয়োগ করতে হয়।",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "বিয়োগ করাই শিক্ষার্থী প্রথম উল্টো কাজ হিসেবে শিখেছে, আর `3*x` দেখে মনে হয় `3`, `x`-এর পাশে আছে।",
+      "what_to_say": {
+        "probe": "`3*x` মানে কী? `3` আর `x`-কে কোন ক্রিয়া যুক্ত করেছে?",
+        "nudge": "তোমার উত্তর যাচাই করো: `3*9` কি `12`-এর সমান?",
+        "tell": "`3*x` মানে `x`-এর তিন গুণ, তাই দুই পাশকে তিন দিয়ে ভাগ করো: `x = 4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "x-এর মান নির্ণয় করো:",
+        "answer": "7"
+      },
+      "source_quote": "কিছু শিক্ষার্থী `x`-এর সামনে থাকা সংখ্যা দিয়ে ভাগ না করে সেটি বিয়োগ করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "`x`-এর উপর করা ক্রিয়াগুলো যেকোনো ক্রমে উল্টো করা যায়।",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "`x`-এর পাশে থাকা সংখ্যা বিয়োগ করাই সাধারণ প্রথম ধাপ, তাই শিক্ষার্থী তা করে, এমনকি সংখ্যাটি ভাগের ভিতরে থাকলেও।",
+      "what_to_say": {
+        "probe": "`(x + 6)/2`-এ `x`-এর সঙ্গে প্রথমে কী ঘটে, আর শেষে কী ঘটে?",
+        "nudge": "অর্ধেক করা শেষ ধাপে হয়েছিল। সেটি উল্টো করতে তুমি দুই পাশকে কী দিয়ে গুণ করবে?",
+        "tell": "আগে অর্ধেক করাটি উল্টো করো: `x + 6 = 20`, তাই `x = 14`। যাচাই: `(14 + 6)/2` হলো `10`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "x-এর মান নির্ণয় করো:",
+        "answer": "11"
+      },
+      "source_quote": "কিছু শিক্ষার্থী ভুল ক্রমে ধাপগুলো উল্টো করে।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "বন্ধনীর বাইরে থাকা সংখ্যা ভিতরের শুধু প্রথম পদকে গুণ করে।",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` সরাসরি `x`-এর পাশে আছে, তাই শিক্ষার্থী সবচেয়ে কাছের অংশটিকেই গুণ করে।",
+      "what_to_say": {
+        "probe": "`5*(x + 3)`-এ কয়টি তিন আছে?",
+        "nudge": "`5*(x + 3)`-কে `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` হিসেবে লিখে গুনে দেখো।",
+        "tell": "পাঁচ বন্ধনীর ভেতরের সবকিছুকে গুণ করে: `5*x + 15 = 35`, তাই `x = 4`।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "x-এর মান নির্ণয় করো:",
+        "answer": "5"
+      },
+      "source_quote": "কিছু শিক্ষার্থী বন্ধনীর বাইরে থাকা সংখ্যাটি শুধু প্রথম পদে গুণ করে।"
+    }
+  ],
+  "questions": [
+    {
+      "question": "উভয় পাশে একই কাজ কেন করি?",
+      "answer": "একটি সমীকরণ সাম্যাবস্থায় থাকে। সমান পরিমাণের উপর একই প্রক্রিয়া করলে তারা সমানই থাকে, তাই সমাধান বদলায় না।"
+    },
+    {
+      "question": "`+ 6` কেন subtract `6` হয়?",
+      "answer": "সমাধান করা মানে প্রক্রিয়া বাতিল করা। `2*x + 6 = 10`-এ, উভয় পাশ থেকে `6` বিয়োগ করলে `2*x = 4` পাওয়া যায়।"
+    },
+    {
+      "question": "`2` বিয়োগ না করে `2` দিয়ে ভাগ করি কেন?",
+      "answer": "`2*x` মানে `2` গুণ `x`। গুণকে ভাগ দিয়ে বাতিল করা হয়, তাই `2*x = 4` থেকে `x = 2` হয়।"
+    },
+    {
+      "question": "উভয় পাশে যদি একটি `x` থাকে, তাহলে কী হবে?",
+      "answer": "একই দাঁড়িপাল্লার ধাপ ব্যবহার করো। `3*x + 4 = x + 10`-এ, উভয় পাশ থেকে `x` বিয়োগ করলে `2*x + 4 = 10` পাওয়া যায়।"
+    },
+    {
+      "question": "বন্ধনী থাকলে কাজ কীভাবে বদলায়?",
+      "answer": "বাইরের সংখ্যাটি পুরো বন্ধনীকে গুণ করে। `5*(x + 3) = 35`-এ, উভয় পাশকে `5` দিয়ে ভাগ করলে `x + 3 = 7` পাওয়া যায়।"
+    },
+    {
+      "question": "শিক্ষার্থীরা কীভাবে জানবে উত্তরটি ঠিক কি না?",
+      "answer": "উত্তরটি মূল সমীকরণে প্রতিস্থাপন করো। যদি উভয় পাশ মিলে যায়, উত্তরটি সঠিক।"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "দাঁড়িপাল্লা হিসেবে সমীকরণ",
+      "activity": "`2*x + 6 = 10`-কে দুটি সমান পাশ হিসেবে দেখাও। জোর দাও যে একটি সমীকরণ বলে দুটি রাশির মান একই। পাশে একই প্রক্রিয়া লেখা শুরু করাও, যেমন subtract `6`।"
+    },
+    {
+      "minutes": 10,
+      "title": "উল্টো ক্রমে বাতিল করা",
+      "activity": "`2*x + 6 = 10` ধাপে ধাপে করো। উভয় পাশ থেকে `6` বিয়োগ করলে `2*x = 4` পাওয়া যায়। উভয় পাশকে `2` দিয়ে ভাগ করলে `x = 2` পাওয়া যায়। প্রতিস্থাপন করে যাচাই করো।"
+    },
+    {
+      "minutes": 8,
+      "title": "সাধারণ ভুল পথ",
+      "activity": "সাধারণ ভুলগুলি আলোচনা করুন: এক পাশ থেকে অন্য পাশে পদ নেওয়ার সময় প্রক্রিয়া না বদলানো, শুধু একটি পদকে ভাগ করা, এবং ভাগ করার বদলে সহগ বিয়োগ করা। সমতার ধাপে মনোযোগ রাখুন।"
+    },
+    {
+      "minutes": 8,
+      "title": "বন্ধনী",
+      "activity": "`5*(x + 3) = 35` ব্যবহার করো। `x + 3 = 7` পেতে উভয় পাশকে `5` দিয়ে ভাগ করো। তারপর `x = 4` পেতে `3` বিয়োগ করো। লক্ষ করো, `5` পুরো বন্ধনীর উপর প্রযোজ্য।"
+    },
+    {
+      "minutes": 10,
+      "title": "উভয় পাশে চলক",
+      "activity": "`3*x + 4 = x + 10` ধাপে ধাপে করো। উভয় পাশ থেকে `x` বিয়োগ করলে `2*x + 4 = 10` পাওয়া যায়। `4` বিয়োগ করলে `2*x = 6` পাওয়া যায়। `2` দিয়ে ভাগ করলে `x = 3` পাওয়া যায়।"
+    },
+    {
+      "minutes": 6,
+      "title": "উত্তর যাচাই",
+      "activity": "শিক্ষার্থীরা উত্তরগুলি মূল সমীকরণে প্রতিস্থাপন করবে। যাচাই মেলেনি মানে কোনো ধাপে ফিরে দেখা দরকার। যাচাই সমাধান প্রক্রিয়ার অংশ, বাড়তি কাজ নয়।"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `x`-এর এমন মান চাই, যাতে `8*x = 56` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` মানে `x`-এর 8 গুণ, তাই উভয় পক্ষকে `8` দিয়ে ভাগ করে এটি উল্টো করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "c-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `c`-এর এমন মান চাই, যাতে `-5*c = 55` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "`c`-এর সামনে থাকা সংখ্যা `-5` দিয়ে উভয় পক্ষকে ভাগ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` ঋণাত্মক, কারণ চিহ্ন দুটি আলাদা।"
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `x`-এর এমন মান চাই, যাতে `7*x + 8 = -13` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "ধাপগুলো উল্টো ক্রমে করুন: উভয় পক্ষ থেকে `8` বিয়োগ করুন, তারপর `7` দিয়ে ভাগ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`8` বিয়োগ করার পর: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. যাচাই: `7*(-3) + 8` হলো `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `x`-এর এমন মান চাই, যাতে `3*x + 4 = -8` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "উভয় পক্ষ থেকে `4` বিয়োগ করুন, তারপর উভয় পক্ষকে `3` দিয়ে ভাগ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`4` বিয়োগ করার পর: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. যাচাই: `3*(-4) + 4` হলো `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `x`-এর এমন মান চাই, যাতে `5*(x + 3) = 35` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "5 পুরো বন্ধনীকে গুণ করছে। উভয় পক্ষকে `5` দিয়ে ভাগ করুন, অথবা বন্ধনী খুলে গুণ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "উভয় পক্ষকে `5` দিয়ে ভাগ করলে `x + 3 = 7` পাওয়া যায়।"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. যাচাই: `5*(4 + 3)` হলো `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "m-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `m`-এর এমন মান চাই, যাতে `2*(m - 4) + 3 = -1` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "প্রথমে বন্ধনী খুলে গুণ করুন, তারপর সংখ্যাগুলো একত্র করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, তাই `2*m - 5 = -1` এবং `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. যাচাই: `2*(2 - 4) + 3` হলো `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `x`-এর এমন মান চাই, যাতে `7*x + 5 = 6*x + 2` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "`x`-যুক্ত পদগুলো এক পাশে আনুন: উভয় পক্ষ থেকে `6*x` বিয়োগ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, তারপর উভয় পক্ষ থেকে `5` বিয়োগ করুন।"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. যাচাই: উভয় পক্ষই `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "x-এর মান নির্ণয় করো:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "আমরা `x`-এর এমন মান চাই, যাতে `12*x + 8 = 6*x + 2` সত্য হয়।"
+        },
+        {
+          "rung": "information",
+          "text": "উভয় পক্ষ থেকে `6*x` বিয়োগ করুন, তারপর উভয় পক্ষ থেকে `8` বিয়োগ করুন।"
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, তাই `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. যাচাই: উভয় পক্ষই `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

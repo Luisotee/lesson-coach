@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "sv",
+  "title": "Lösa linjära ekvationer",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Lös linjära ekvationer genom att göra samma operation på båda sidor och kontrollera svaret.",
+  "idea": "En ekvation säger att två uttryck har samma värde. Att lösa betyder att hitta värdet på `x` som gör påståendet sant.\n\nBalansmodellen är huvudbilden. Det som görs på ena sidan måste också göras på andra sidan. Operationen kan skrivas i marginalen, till exempel subtrahera `6`, för att visa att båda sidor ändras.\n\nFör att få `x` ensamt gör man operationerna ogjorda i omvänd ordning. För `2*x + 6 = 10` ger subtraktion med `6` på båda sidor `2*x = 4`. Division av båda sidor med `2` ger `x = 2`.\n\nOm det finns parenteser behandlas hela parentesen som multiplicerad. I `5*(x + 3) = 35` ger division av båda sidor med `5` `x + 3 = 7`, och sedan ger subtraktion med `3` `x = 4`.",
+  "why_it_works": "Varje steg gör att de två sidorna förblir lika, eftersom samma operation används på båda sidor. Ekvationen ändrar form, men lösningen är densamma.\n\nOperationer görs ogjorda i omvänd ordning. I `2*x + 6 = 10` multiplicerades uttrycket med `x` med `2` och sedan adderades `6`. Subtrahera därför `6` först och dividera sedan med `2`.\n\nMed variabler på båda sidor gäller samma balansidé. I `3*x + 4 = x + 10` ger subtraktion med `x` på båda sidor `2*x + 4 = 10`. Sedan ger subtraktion med `4` `2*x = 6`, och division med `2` ger `x = 3`.\n\nKontroll fungerar genom insättning. För `x = 2` är `2*2 + 6` lika med `10`, alltså är den ursprungliga ekvationen sann.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Lös ut x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6` gör att `x` inte står ensamt. Subtrahera `6` från båda sidor så att balansen behålls och den adderade `6` tas bort.",
+            "another_way": "Tänk i omvänd ordning. Eftersom `6` adderades efter `2*x`, gör du det ogjort först med `-6` på båda sidor.",
+            "visual": "En balansvåg visar `2*x + 6` på ena sidan och `10` på den andra, med `6` borttaget från båda sidor."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Nu är `2*x = 4`, så `x` är fortfarande multiplicerat med `2`. Dividera båda sidor med `2` för att göra multiplikationen ogjord och behålla ekvationen balanserad.",
+            "another_way": "`2*x` betyder två lika stora grupper med `x`. Om båda sidor delas i `2` lika delar blir en grupp med `x` kvar.",
+            "visual": "En balansvåg visar `2*x` på ena sidan och `4` på den andra, med båda sidor delade i `2` lika delar."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Detta är svaret eftersom `x` står ensamt och ekvationen säger värdet direkt: `x = 2`.",
+            "another_way": "Kontrollera genom att sätta in värdet: `2*2 + 6` är `10`, så den ursprungliga ekvationen stämmer.",
+            "visual": "En balansvåg visar ett `x` på ena sidan och `2` på den andra, i balans."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Lös ut x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Uttrycket i parentesen multipliceras med `5`. Att dividera båda leden med `5` gör multiplikationen ogjord och håller ekvationen balanserad.",
+            "another_way": "Det här gör att vi slipper utveckla parentesen först. Eftersom hela vänsterledet är `5` gånger `x + 3`, dividerar vi hela båda leden med `5`.",
+            "visual": "En balansvåg visar `5*(x + 3)` på ena sidan och `35` på den andra, redo att dela båda sidor i `5` lika grupper."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Nu adderas `3` till `x`. Att subtrahera `3` från båda leden gör additionen ogjord och håller ekvationen balanserad.",
+            "another_way": "Tänk att vi tar bort samma `3` från varje sida av vågen. Då blir den obekanta ensam kvar i vänsterledet.",
+            "visual": "En balansvåg visar `x + 3` på ena sidan och `7` på den andra, med `3` borttaget från båda sidor."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Variabeln står ensam, så den här raden ger lösningen. Värdet som gör den ursprungliga ekvationen sann är `x = 4`.",
+            "another_way": "En kontroll skulle sätta in `4` i stället för `x` i den ursprungliga ekvationen och bekräfta att de två leden är lika.",
+            "visual": "En balansvåg visar `x` ensamt på ena sidan och `4` på den andra."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Lös ut x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`x`-termen på höger sida tas först bort genom att subtrahera `x` från båda sidor. Det håller ekvationen i balans och samlar variabeltermerna.",
+            "another_way": "Tänk att du tar bort ett `x` från varje sida. Då blir vänster sida `2*x + 4`, och höger sida har inte längre någon `x`-term.",
+            "visual": "En balansvåg visar `3*x + 4` och `x + 10`, med ett `x` borttaget från varje sida."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Konstanten `4` tas bort från vänster sida genom att subtrahera `4` från båda sidor. Då blir `x`-termen ensam på vänster sida.",
+            "another_way": "Eftersom `4` adderades till `2*x`, gör vi den additionen ogjord med subtraktion. Höger sida ändras på samma sätt för att behålla balansen.",
+            "visual": "En balansvåg visar `2*x + 4` och `10`, med `4` borttaget från båda sidor."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2` multipliceras med `x`, så dividera båda sidor med `2` för att göra multiplikationen ogjord. Då får vi ett ensamt `x`.",
+            "another_way": "`2*x` betyder två lika stora grupper med `x`. Om vi delar båda sidor i `2` lika stora delar ser vi värdet av en grupp.",
+            "visual": "En balansvåg visar `2*x` och `6`, uppdelade i `2` lika stora delar på varje sida."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Detta är svaret eftersom `x` står ensamt och värdet visas. Ekvationen säger att `x` är `3`.",
+            "another_way": "Insättning kan kontrollera det i den ursprungliga ekvationen. Om vi ersätter `x` med `3` blir båda sidor lika.",
+            "visual": "En balansvåg visar ett `x` i balans med `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Ett tal kan flyttas över likhetstecknet och behålla sitt tecken.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"Flytta över det till andra sidan\" är en vanlig genväg, och eleven glömmer att flytta betyder att subtrahera.",
+      "what_to_say": {
+        "probe": "Vad gjorde du med båda leden för att bli av med `+ 6`?",
+        "nudge": "Skriv operationen i marginalen, \"| -6\", och gör den på båda leden.",
+        "tell": "Subtrahera 6 från båda leden: `2*x = 4`, så `x = 2`. Insättning kontrollerar det: `2*2 + 6` är `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Lös ut x:",
+        "answer": "5"
+      },
+      "source_quote": "Vissa elever flyttar ett tal över likhetstecknet utan att ändra dess tecken."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Man kan dividera bara en term i ett led med koefficienten.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Eleven fokuserar på att få `x` ensamt och dividerar termerna intill det, men glömmer resten av ledet.",
+      "what_to_say": {
+        "probe": "När du dividerade med två, vad hände med `6`?",
+        "nudge": "Dividera varje term i båda leden med två och jämför med din rad.",
+        "tell": "Att dividera ett led dividerar varje term i ledet: `x + 3 = 5`, så `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Lös ut x:",
+        "answer": "3"
+      },
+      "source_quote": "Vissa elever dividerar bara en term med talet framför `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "För att bli av med talet framför `x` ska man subtrahera det.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Subtraktion är den första motsatta räkneoperationen eleven lärde sig, och `3*x` ser ut som `3` bredvid `x`.",
+      "what_to_say": {
+        "probe": "Vad betyder `3*x`? Vilken räkneoperation binder ihop `3` och `x`?",
+        "nudge": "Kontrollera ditt svar: är `3*9` lika med `12`?",
+        "tell": "`3*x` betyder tre gånger `x`, så dividera båda leden med 3: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Lös ut x:",
+        "answer": "7"
+      },
+      "source_quote": "Vissa elever subtraherar talet framför `x` i stället för att dividera med det."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Man kan göra motsatta räkneoperationer på `x` i vilken ordning som helst.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Att subtrahera talet intill `x` är det vanliga första steget, så eleven gör det även när talet står inne i en division.",
+      "what_to_say": {
+        "probe": "I `(x + 6)/2`, vad händer med `x` först, och vad händer sist?",
+        "nudge": "Halveringen gjordes sist. Vad multiplicerar du båda leden med för att göra den ogjord?",
+        "tell": "Gör halveringen ogjord först: `x + 6 = 20`, så `x = 14`. Kontrollera: `(14 + 6)/2` är `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Lös ut x:",
+        "answer": "11"
+      },
+      "source_quote": "Vissa elever gör stegen i fel ordning när de går baklänges."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Talet utanför en parentes multiplicerar bara den första termen inuti.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` står precis intill `x`, så eleven multiplicerar det som är närmast.",
+      "what_to_say": {
+        "probe": "Hur många treor finns det i `5*(x + 3)`?",
+        "nudge": "Skriv `5*(x + 3)` som `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` och räkna.",
+        "tell": "Femman multiplicerar allt i parentesen: `5*x + 15 = 35`, så `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Lös ut x:",
+        "answer": "5"
+      },
+      "source_quote": "Vissa elever multiplicerar talet utanför en parentes bara med den första termen."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Varför gör man samma sak på båda sidor?",
+      "answer": "En ekvation är i balans. Om man gör samma operation på lika stora värden förblir de lika, så lösningen ändras inte."
+    },
+    {
+      "question": "Varför blir `+ 6` att subtrahera `6`?",
+      "answer": "När man löser gör man operationer ogjorda. I `2*x + 6 = 10` ger subtraktion med `6` på båda sidor `2*x = 4`."
+    },
+    {
+      "question": "Varför dividera med `2` i stället för att subtrahera `2`?",
+      "answer": "`2*x` betyder `2` gånger `x`. Multiplikation görs ogjord med division, så `2*x = 4` blir `x = 2`."
+    },
+    {
+      "question": "Vad händer om det finns ett `x` på båda sidor?",
+      "answer": "Använd samma balanssteg. I `3*x + 4 = x + 10` ger subtraktion med `x` på båda sidor `2*x + 4 = 10`."
+    },
+    {
+      "question": "Hur ändrar parenteser arbetet?",
+      "answer": "Talet utanför multiplicerar hela parentesen. I `5*(x + 3) = 35` ger division av båda sidor med `5` `x + 3 = 7`."
+    },
+    {
+      "question": "Hur kan elever veta om svaret är rätt?",
+      "answer": "Sätt in svaret i den ursprungliga ekvationen. Om båda sidor stämmer överens fungerar svaret."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Ekvation som balans",
+      "activity": "Visa `2*x + 6 = 10` som två lika sidor. Betona att en ekvation säger att två uttryck har samma värde. Introducera att skriva samma operation i marginalen, till exempel subtrahera `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Gör ogjort i omvänd ordning",
+      "activity": "Arbeta igenom `2*x + 6 = 10`. Subtraktion med `6` på båda sidor ger `2*x = 4`. Division av båda sidor med `2` ger `x = 2`. Kontrollera genom insättning."
+    },
+    {
+      "minutes": 8,
+      "title": "Vanliga felsteg",
+      "activity": "Diskutera typiska fel: att byta sida utan att ändra räknesätt, att dividera bara en term och att subtrahera koefficienten i stället för att dividera. Håll fokus på balanssteget."
+    },
+    {
+      "minutes": 8,
+      "title": "Parenteser",
+      "activity": "Använd `5*(x + 3) = 35`. Dividera båda sidor med `5` för att få `x + 3 = 7`. Subtrahera sedan `3` för att få `x = 4`. Påpeka att `5` gäller hela parentesen."
+    },
+    {
+      "minutes": 10,
+      "title": "Variabler på båda sidor",
+      "activity": "Arbeta igenom `3*x + 4 = x + 10`. Subtraktion med `x` på båda sidor ger `2*x + 4 = 10`. Subtraktion med `4` ger `2*x = 6`. Division med `2` ger `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Kontrollera svar",
+      "activity": "Eleverna sätter in svaren i den ursprungliga ekvationen. En kontroll som inte stämmer betyder att ett steg bör ses över. Kontrollen är en del av lösningsprocessen, inte en extra uppgift."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Lös ut x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `x` som gör att `8*x = 56` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` betyder 8 gånger `x`, så gör det ogjort genom att dividera båda leden med `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Lös ut c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `c` som gör att `-5*c = 55` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Dividera båda leden med `-5`, talet framför `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` är negativt eftersom tecknen är olika."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Lös ut x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `x` som gör att `7*x + 8 = -13` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Gör stegen ogjorda i omvänd ordning: subtrahera `8` från båda leden och dividera sedan med `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "Efter att ha subtraherat `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Kontroll: `7*(-3) + 8` är `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Lös ut x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `x` som gör att `3*x + 4 = -8` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Subtrahera `4` från båda leden och dividera sedan båda leden med `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "Efter att ha subtraherat `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Kontroll: `3*(-4) + 4` är `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Lös ut x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `x` som gör att `5*(x + 3) = 35` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Femman multiplicerar hela parentesen. Dividera båda leden med `5`, eller multiplicera ut parentesen."
+        },
+        {
+          "rung": "computation",
+          "text": "Att dividera båda leden med `5` ger `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Kontroll: `5*(4 + 3)` är `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Lös ut m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `m` som gör att `2*(m - 4) + 3 = -1` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Multiplicera ut parentesen först och samla sedan talen."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, så `2*m - 5 = -1` och `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Kontroll: `2*(2 - 4) + 3` är `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Lös ut x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `x` som gör att `7*x + 5 = 6*x + 2` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Samla `x`-termerna i ett led: subtrahera `6*x` från båda leden."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, subtrahera sedan `5` från båda leden."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Kontroll: båda leden är `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Lös ut x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet på `x` som gör att `12*x + 8 = 6*x + 2` stämmer."
+        },
+        {
+          "rung": "information",
+          "text": "Subtrahera `6*x` från båda leden och subtrahera sedan `8` från båda leden."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, så `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Kontroll: båda leden är `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

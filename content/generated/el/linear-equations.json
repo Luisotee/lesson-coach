@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "el",
+  "title": "Επίλυση γραμμικών εξισώσεων",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Λύνουμε γραμμικές εξισώσεις κάνοντας την ίδια πράξη και στα δύο μέλη και ελέγχοντας την απάντηση.",
+  "idea": "Μια εξίσωση λέει ότι δύο παραστάσεις έχουν την ίδια τιμή. Λύνω σημαίνει βρίσκω την τιμή του `x` που κάνει την πρόταση αληθή.\n\nΤο μοντέλο της ζυγαριάς είναι η βασική εικόνα. Ό,τι γίνεται στο ένα μέλος πρέπει να γίνεται και στο άλλο. Η πράξη μπορεί να γραφτεί στο περιθώριο, όπως αφαίρεση `6`, για να φαίνεται ότι αλλάζουν και τα δύο μέλη.\n\nΓια να μείνει μόνο του το `x`, αναιρούμε τις πράξεις με αντίστροφη σειρά. Για `2*x + 6 = 10`, αφαιρώντας `6` και από τα δύο μέλη παίρνουμε `2*x = 4`. Διαιρώντας και τα δύο μέλη με `2` παίρνουμε `x = 2`.\n\nΑν υπάρχουν παρενθέσεις, θεωρούμε ότι πολλαπλασιάζεται ολόκληρη η παρένθεση. Στο `5*(x + 3) = 35`, διαιρώντας και τα δύο μέλη με `5` παίρνουμε `x + 3 = 7`, και ύστερα αφαιρώντας `3` παίρνουμε `x = 4`.",
+  "why_it_works": "Κάθε βήμα κρατά τα δύο μέλη ίσα, επειδή εφαρμόζεται η ίδια πράξη και στα δύο μέλη. Η εξίσωση αλλάζει μορφή, αλλά η λύση μένει η ίδια.\n\nΟι πράξεις αναιρούνται με αντίστροφη σειρά. Στο `2*x + 6 = 10`, η παράσταση με το `x` πολλαπλασιάστηκε με `2` και μετά προστέθηκε `6`. Άρα αφαιρούμε πρώτα `6` και μετά διαιρούμε με `2`.\n\nΜε μεταβλητές και στα δύο μέλη, ισχύει πάλι η ίδια ιδέα της ζυγαριάς. Στο `3*x + 4 = x + 10`, αφαιρώντας `x` και από τα δύο μέλη παίρνουμε `2*x + 4 = 10`. Έπειτα, αφαιρώντας `4` παίρνουμε `2*x = 6`, και διαιρώντας με `2` παίρνουμε `x = 3`.\n\nΟ έλεγχος γίνεται με αντικατάσταση. Για `x = 2`, το `2*2 + 6` είναι `10`, άρα η αρχική εξίσωση είναι αληθής.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Το `+ 6` εμποδίζει το `x` να μείνει μόνο του. Αφαίρεσε `6` και από τις δύο πλευρές, ώστε η ισορροπία να μείνει ίδια και να αναιρεθεί το `6` που προστέθηκε.",
+            "another_way": "Σκέψου με αντίστροφη σειρά. Αφού το `6` προστέθηκε μετά το `2*x`, αναιρούμε πρώτα αυτό με `-6` και στις δύο πλευρές.",
+            "visual": "Μια ζυγαριά δείχνει `2*x + 6` στη μία πλευρά και `10` στην άλλη, με το `6` να αφαιρείται και από τις δύο πλευρές."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Τώρα `2*x = 4`, άρα το `x` εξακολουθεί να πολλαπλασιάζεται με `2`. Διαίρεσε και τις δύο πλευρές με `2`, για να αναιρέσεις τον πολλαπλασιασμό και να κρατήσεις την εξίσωση ισορροπημένη.",
+            "another_way": "Το `2*x` σημαίνει δύο ίσες ομάδες από `x`. Χωρίζοντας και τις δύο πλευρές σε `2` ίσα μέρη, μένει μία ομάδα από `x`.",
+            "visual": "Μια ζυγαριά δείχνει `2*x` στη μία πλευρά και `4` στην άλλη, με τις δύο πλευρές χωρισμένες σε `2` ίσα μέρη."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Αυτή είναι η απάντηση, επειδή το `x` είναι μόνο του και η εξίσωση δίνει απευθείας την τιμή του: `x = 2`.",
+            "another_way": "Έλεγξε με αντικατάσταση: το `2*2 + 6` είναι `10`, άρα η αρχική εξίσωση είναι αληθής.",
+            "visual": "Μια ζυγαριά δείχνει ένα `x` στη μία πλευρά και `2` στην άλλη, σε ισορροπία."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η παράσταση στην παρένθεση πολλαπλασιάζεται με `5`. Διαιρώντας και τα δύο μέλη με `5`, αναιρούμε αυτόν τον πολλαπλασιασμό και η εξίσωση μένει ισοδύναμη.",
+            "another_way": "Έτσι αποφεύγουμε να ανοίξουμε πρώτα την παρένθεση. Αφού όλο το αριστερό μέλος είναι `5` φορές το `x + 3`, διαιρούμε ολόκληρα και τα δύο μέλη με `5`.",
+            "visual": "Μια ισορροπημένη ζυγαριά δείχνει `5*(x + 3)` στη μία πλευρά και `35` στην άλλη, έτοιμη να χωρίσει και τις δύο πλευρές σε `5` ίσες ομάδες."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Τώρα το `3` προστίθεται στο `x`. Αφαιρώντας `3` και από τα δύο μέλη, αναιρούμε την πρόσθεση και η εξίσωση μένει ισοδύναμη.",
+            "another_way": "Σκέψου ότι αφαιρούμε το ίδιο `3` από κάθε πλευρά της ζυγαριάς. Έτσι ο άγνωστος μένει μόνος στο αριστερό μέλος.",
+            "visual": "Μια ισορροπημένη ζυγαριά δείχνει `x + 3` στη μία πλευρά και `7` στην άλλη, με το `3` να έχει αφαιρεθεί και από τις δύο πλευρές."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η μεταβλητή είναι μόνη της, άρα αυτή η γραμμή δίνει τη λύση. Η τιμή που επαληθεύει την αρχική εξίσωση είναι `x = 4`.",
+            "another_way": "Για έλεγχο, θα βάζαμε το `4` στη θέση του `x` στην αρχική εξίσωση και θα επιβεβαιώναμε ότι τα δύο μέλη είναι ίσα.",
+            "visual": "Μια ισορροπημένη ζυγαριά δείχνει το `x` μόνο του στη μία πλευρά και το `4` στην άλλη."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ο όρος `x` στο δεξί μέλος αφαιρείται πρώτα αφαιρώντας `x` και από τα δύο μέλη. Έτσι η εξίσωση μένει ισοδύναμη και οι όροι με τη μεταβλητή συγκεντρώνονται.",
+            "another_way": "Σκέψου ότι παίρνουμε ένα `x` από κάθε μέλος. Τότε το αριστερό μέλος γίνεται `2*x + 4`, και το δεξί μέλος δεν έχει πια όρο `x`.",
+            "visual": "Μια ζυγαριά ισορροπίας δείχνει `3*x + 4` και `x + 10`, με ένα `x` να αφαιρείται από κάθε μέλος."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η σταθερά `4` αφαιρείται από το αριστερό μέλος αφαιρώντας `4` και από τα δύο μέλη. Έτσι μένει ο όρος `x` μόνος του στο αριστερό μέλος.",
+            "another_way": "Αφού το `4` προστέθηκε στο `2*x`, αναιρούμε αυτή την πρόσθεση με αφαίρεση. Το δεξί μέλος αλλάζει με τον ίδιο τρόπο, για να διατηρηθεί η ισορροπία.",
+            "visual": "Μια ζυγαριά ισορροπίας δείχνει `2*x + 4` και `10`, με το `4` να αφαιρείται και από τα 2 μέλη."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Το `2` πολλαπλασιάζει το `x`, άρα διαιρούμε και τα 2 μέλη με `2` για να αναιρέσουμε τον πολλαπλασιασμό. Έτσι παίρνουμε ένα `x` μόνο του.",
+            "another_way": "Το `2*x` σημαίνει 2 ίσες ομάδες του `x`. Χωρίζοντας και τα 2 μέλη σε `2` ίσα μέρη βρίσκουμε την τιμή της μίας ομάδας.",
+            "visual": "Μια ζυγαριά ισορροπίας δείχνει `2*x` και `6`, χωρισμένα σε `2` ίσα μέρη σε κάθε μέλος."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Αυτή είναι η απάντηση, γιατί το `x` είναι μόνο του και φαίνεται η τιμή του. Η εξίσωση δηλώνει ότι το `x` είναι `3`.",
+            "another_way": "Η αντικατάσταση μπορεί να το ελέγξει στην αρχική εξίσωση. Αντικαθιστώντας το `x` με `3`, τα δύο μέλη γίνονται ίσα.",
+            "visual": "Μια ζυγαριά ισορροπίας δείχνει ένα `x` να ισορροπεί με το `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Ένας αριθμός μπορεί να περάσει στην άλλη πλευρά του ίσον και να κρατήσει το πρόσημό του.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Το «Πέρνα το στην άλλη πλευρά» είναι μια συνηθισμένη συντόμευση, και ο μαθητής ξεχνά ότι η μεταφορά σημαίνει αφαίρεση.",
+      "what_to_say": {
+        "probe": "Τι έκανες και στα δύο μέλη για να φύγει το `+ 6`;",
+        "nudge": "Γράψε την πράξη στο περιθώριο, «| -6», και εφάρμοσέ την και στα δύο μέλη.",
+        "tell": "Αφαίρεσε 6 και από τα 2 μέλη: `2*x = 4`, άρα `x = 2`. Με αντικατάσταση το ελέγχουμε: `2*2 + 6` είναι `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Λύστε ως προς x:",
+        "answer": "5"
+      },
+      "source_quote": "Μερικοί μαθητές μεταφέρουν έναν αριθμό στην άλλη πλευρά του ίσον χωρίς να αλλάξουν το πρόσημό του."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Μπορείς να διαιρέσεις μόνο έναν όρο ενός μέλους με τον συντελεστή.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Ο μαθητής εστιάζει στο να μείνει το `x` μόνο του και διαιρεί τους όρους δίπλα του, ξεχνώντας το υπόλοιπο μέλος.",
+      "what_to_say": {
+        "probe": "Όταν διαίρεσες με το δύο, τι έγινε με το `6`;",
+        "nudge": "Διαίρεσε κάθε όρο και στα δύο μέλη με το δύο και σύγκρινε με τη δική σου γραμμή.",
+        "tell": "Όταν διαιρούμε ένα μέλος, διαιρούμε κάθε όρο του: `x + 3 = 5`, άρα `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Λύστε ως προς x:",
+        "answer": "3"
+      },
+      "source_quote": "Μερικοί μαθητές διαιρούν μόνο έναν όρο με τον αριθμό μπροστά από το `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "Για να φύγει ο αριθμός μπροστά από το `x`, τον αφαιρείς.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Η αφαίρεση είναι η πρώτη αντίστροφη πράξη που έμαθε ο μαθητής, και το `3*x` μοιάζει με `3` δίπλα στο `x`.",
+      "what_to_say": {
+        "probe": "Τι σημαίνει `3*x`; Ποια πράξη συνδέει το `3` και το `x`;",
+        "nudge": "Έλεγξε την απάντησή σου: είναι το `3*9` ίσο με `12`;",
+        "tell": "Το `3*x` σημαίνει τρεις φορές το `x`, άρα διαίρεσε και τα δύο μέλη με το τρία: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Λύστε ως προς x:",
+        "answer": "7"
+      },
+      "source_quote": "Μερικοί μαθητές αφαιρούν τον αριθμό μπροστά από το `x` αντί να διαιρέσουν με αυτόν."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Μπορείς να αναιρέσεις τις πράξεις στο `x` με οποιαδήποτε σειρά.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Η αφαίρεση του αριθμού δίπλα στο `x` είναι συνήθως το πρώτο βήμα, οπότε ο μαθητής την κάνει ακόμα κι όταν ο αριθμός βρίσκεται μέσα σε διαίρεση.",
+      "what_to_say": {
+        "probe": "Στο `(x + 6)/2`, τι συμβαίνει πρώτα στο `x` και τι συμβαίνει τελευταίο;",
+        "nudge": "Ο υποδιπλασιασμός έγινε τελευταίος. Με τι πολλαπλασιάζεις και τα δύο μέλη για να τον αναιρέσεις;",
+        "tell": "Αναιρούμε πρώτα τον υποδιπλασιασμό: `x + 6 = 20`, άρα `x = 14`. Έλεγχος: `(14 + 6)/2` είναι `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Λύστε ως προς x:",
+        "answer": "11"
+      },
+      "source_quote": "Μερικοί μαθητές αναιρούν τα βήματα με λάθος σειρά."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Ο αριθμός έξω από μια παρένθεση πολλαπλασιάζει μόνο τον πρώτο όρο μέσα.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "Το `5` βρίσκεται ακριβώς δίπλα στο `x`, οπότε ο μαθητής πολλαπλασιάζει αυτό που είναι πιο κοντά.",
+      "what_to_say": {
+        "probe": "Πόσα τριάρια υπάρχουν στο `5*(x + 3)`;",
+        "nudge": "Γράψε το `5*(x + 3)` ως `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` και μέτρησε.",
+        "tell": "Το 5 πολλαπλασιάζει όλα όσα είναι στην παρένθεση: `5*x + 15 = 35`, άρα `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Λύστε ως προς x:",
+        "answer": "5"
+      },
+      "source_quote": "Μερικοί μαθητές πολλαπλασιάζουν τον αριθμό έξω από μια παρένθεση μόνο με τον πρώτο όρο."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Γιατί κάνουμε το ίδιο πράγμα και στα δύο μέλη;",
+      "answer": "Μια εξίσωση είναι ισορροπημένη. Κάνοντας την ίδια πράξη σε ίσα ποσά, αυτά παραμένουν ίσα, άρα η λύση δεν αλλάζει."
+    },
+    {
+      "question": "Γιατί το `+ 6` γίνεται αφαίρεση `6`;",
+      "answer": "Η επίλυση αναιρεί πράξεις. Στο `2*x + 6 = 10`, αφαιρώντας `6` και από τα δύο μέλη παίρνουμε `2*x = 4`."
+    },
+    {
+      "question": "Γιατί διαιρούμε με `2` αντί να αφαιρέσουμε `2`;",
+      "answer": "Το `2*x` σημαίνει `2` φορές το `x`. Ο πολλαπλασιασμός αναιρείται με διαίρεση, άρα το `2*x = 4` γίνεται `x = 2`."
+    },
+    {
+      "question": "Τι γίνεται αν υπάρχει `x` και στα δύο μέλη;",
+      "answer": "Χρησιμοποιούμε το ίδιο βήμα ισορροπίας. Στο `3*x + 4 = x + 10`, αφαιρώντας `x` και από τα δύο μέλη παίρνουμε `2*x + 4 = 10`."
+    },
+    {
+      "question": "Πώς αλλάζουν τη διαδικασία οι παρενθέσεις;",
+      "answer": "Ο αριθμός έξω πολλαπλασιάζει ολόκληρη την παρένθεση. Στο `5*(x + 3) = 35`, διαιρώντας και τα δύο μέλη με `5` παίρνουμε `x + 3 = 7`."
+    },
+    {
+      "question": "Πώς μπορούν οι μαθητές να ξέρουν αν η απάντηση είναι σωστή;",
+      "answer": "Αντικαθιστούμε την απάντηση στην αρχική εξίσωση. Αν τα δύο μέλη ταιριάζουν, η απάντηση είναι σωστή."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Η εξίσωση ως ζυγαριά",
+      "activity": "Δείξτε το `2*x + 6 = 10` ως δύο ίσα μέλη. Τονίστε ότι μια εξίσωση λέει πως δύο παραστάσεις έχουν την ίδια τιμή. Εισαγάγετε τη γραφή της ίδιας πράξης στο περιθώριο, όπως αφαίρεση `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Αναίρεση με αντίστροφη σειρά",
+      "activity": "Δουλέψτε το `2*x + 6 = 10`. Αφαιρώντας `6` και από τα δύο μέλη παίρνουμε `2*x = 4`. Διαιρώντας και τα δύο μέλη με `2` παίρνουμε `x = 2`. Ελέγξτε με αντικατάσταση."
+    },
+    {
+      "minutes": 8,
+      "title": "Συνηθισμένα λάθος βήματα",
+      "activity": "Συζητήστε τυπικά λάθη: αλλαγή μέλους χωρίς αλλαγή της πράξης, διαίρεση μόνο ενός όρου και αφαίρεση του συντελεστή αντί για διαίρεση. Κρατήστε την εστίαση στο βήμα της ισορροπίας."
+    },
+    {
+      "minutes": 8,
+      "title": "Παρενθέσεις",
+      "activity": "Χρησιμοποιήστε το `5*(x + 3) = 35`. Διαιρέστε και τα δύο μέλη με `5` για να πάρετε `x + 3 = 7`. Έπειτα αφαιρέστε `3` για να πάρετε `x = 4`. Σημειώστε ότι το `5` εφαρμόζεται σε ολόκληρη την παρένθεση."
+    },
+    {
+      "minutes": 10,
+      "title": "Μεταβλητές και στα δύο μέλη",
+      "activity": "Δουλέψτε το `3*x + 4 = x + 10`. Αφαιρώντας `x` και από τα δύο μέλη παίρνουμε `2*x + 4 = 10`. Αφαιρώντας `4` παίρνουμε `2*x = 6`. Διαιρώντας με `2` παίρνουμε `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Έλεγχος απαντήσεων",
+      "activity": "Οι μαθητές αντικαθιστούν τις απαντήσεις στην αρχική εξίσωση. Ένας αποτυχημένος έλεγχος σημαίνει ότι πρέπει να ξαναδούμε κάποιο βήμα. Ο έλεγχος είναι μέρος της διαδικασίας επίλυσης, όχι επιπλέον εργασία."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `x` που κάνει την `8*x = 56` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Το `8*x` σημαίνει 8 φορές το `x`, οπότε το αναιρούμε διαιρώντας και τα δύο μέλη με `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Λύστε ως προς c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `c` που κάνει την `-5*c = 55` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Διαιρούμε και τα δύο μέλη με `-5`, τον αριθμό μπροστά από το `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `55/(-5)` είναι αρνητικό, επειδή τα πρόσημα διαφέρουν."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `x` που κάνει την `7*x + 8 = -13` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Αναιρούμε τα βήματα με αντίστροφη σειρά: αφαιρούμε `8` και από τα δύο μέλη, έπειτα διαιρούμε με `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "Αφού αφαιρέσουμε `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Έλεγχος: το `7*(-3) + 8` είναι `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `x` που κάνει την `3*x + 4 = -8` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Αφαιρούμε `4` και από τα δύο μέλη, έπειτα διαιρούμε και τα δύο μέλη με `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "Αφού αφαιρέσουμε `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Έλεγχος: το `3*(-4) + 4` είναι `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `x` που κάνει την `5*(x + 3) = 35` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Το πέντε πολλαπλασιάζει όλη την παρένθεση. Διαιρούμε και τα δύο μέλη με `5` ή κάνουμε επιμερισμό στην παρένθεση."
+        },
+        {
+          "rung": "computation",
+          "text": "Διαιρώντας και τα δύο μέλη με `5` παίρνουμε `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Έλεγχος: το `5*(4 + 3)` είναι `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Λύστε ως προς m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `m` που κάνει την `2*(m - 4) + 3 = -1` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Κάνουμε πρώτα επιμερισμό στην παρένθεση και μετά συγκεντρώνουμε τους αριθμούς."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, άρα `2*m - 5 = -1` και `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Έλεγχος: το `2*(2 - 4) + 3` είναι `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `x` που κάνει την `7*x + 5 = 6*x + 2` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Φέρνουμε τους όρους με `x` στο ένα μέλος: αφαιρούμε `6*x` και από τα δύο μέλη."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, έπειτα αφαιρούμε `5` και από τα 2 μέλη."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Έλεγχος: και τα δύο μέλη είναι `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Λύστε ως προς x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `x` που κάνει την `12*x + 8 = 6*x + 2` αληθή."
+        },
+        {
+          "rung": "information",
+          "text": "Αφαιρούμε `6*x` και από τα δύο μέλη, έπειτα αφαιρούμε `8` και από τα δύο μέλη."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, άρα `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Έλεγχος: και τα δύο μέλη είναι `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

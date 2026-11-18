@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "el",
+  "title": "Κλάσματα",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Τα κλάσματα ονομάζουν ίσα μέρη. Οι πράξεις γίνονται κρατώντας καθαρό το μέγεθος του μέρους και μετρώντας μέρη.",
+  "idea": "Ένα κλάσμα ονομάζει ίσα μέρη ενός όλου. Στο `3/4`, ο κάτω αριθμός δείχνει ότι το όλο χωρίζεται σε ίσα μέρη. Ο πάνω αριθμός μετρά πόσα από αυτά τα μέρη παίρνουμε.\n\nΙσοδύναμα κλάσματα ονομάζουν την ίδια ποσότητα με μέρη διαφορετικού μεγέθους. Αν πολλαπλασιάσουμε ή διαιρέσουμε τον πάνω και τον κάτω αριθμό με τον ίδιο αριθμό, η ποσότητα μένει ίδια.\n\nΣτην πρόσθεση, τα μέρη πρέπει να έχουν το ίδιο μέγεθος πριν τα μετρήσουμε. Στον πολλαπλασιασμό, ένας φυσικός αριθμός επί ένα κλάσμα μετρά επαναλαμβανόμενες ομάδες αυτού του κλάσματος. Στη διαίρεση, το ερώτημα είναι πόσες φορές χωρά το ένα κλάσμα στο άλλο.",
+  "why_it_works": "Μόνο ομώνυμα μέρη μπορούν να προστεθούν. Στο `1/2 + 1/3`, τα μισά και τα τρίτα έχουν διαφορετικά μεγέθη, οπότε και τα δύο ξαναγράφονται ως έκτα. Το `1/2 + 1/3` γίνεται `3/6 + 2/6`, και το `3/6 + 2/6` είναι `5/6`.\n\nΟ πολλαπλασιασμός αλλάζει το πλήθος των μερών. Στο `3*(2/5)`, τα πέμπτα μένουν πέμπτα. Το `3*(2/5)` γίνεται `(3*2)/5`, και το `(3*2)/5` είναι `6/5`.\n\nΗ διαίρεση ρωτά πόσες φορές χωρά ο διαιρέτης. Το `(2/3)/(3/4)` γίνεται `(2/3)*(4/3)`. Έπειτα το `(2/3)*(4/3)` γίνεται `(2*4)/(3*3)`, και το `(2*4)/(3*3)` είναι `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Υπολογίστε:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Τα κλάσματα έχουν μέρη διαφορετικού μεγέθους, άρα δεν μπορούν να προστεθούν απευθείας. Ξαναγράψτε τα με κοινό παρονομαστή.",
+            "another_way": "Χρησιμοποιήστε έκτα, γιατί και τα μισά και τα τρίτα μπορούν να χωριστούν σε έκτα. Έτσι η αξία κάθε κλάσματος μένει ίδια, ενώ τα μέρη ταιριάζουν.",
+            "visual": "Μια μπάρα δείχνει το `1/2 + 1/3` ως ένα μέρος μεγέθους μισού δίπλα σε ένα μέρος μεγέθους τρίτου."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Τώρα και τα 2 κλάσματα είναι σε έκτα. Το `1/2` γίνεται `3/6`, και το `1/3` γίνεται `2/6`, οπότε τα μέρη έχουν το ίδιο μέγεθος.",
+            "another_way": "Σκεφτείτε κάθε μισό ως τρία έκτα και κάθε τρίτο ως δύο έκτα. Τότε το πρόβλημα είναι απλώς να μετρήσουμε έκτα.",
+            "visual": "Μια μπάρα δείχνει το `3/6 + 2/6` ως 3 έκτα και 2 έκτα από κομμάτια ίδιου μεγέθους."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Με τον ίδιο παρονομαστή, προσθέτουμε τους αριθμητές και κρατάμε τον παρονομαστή. Το `3/6 + 2/6` γίνεται `5/6`, άρα αυτή είναι η απάντηση.",
+            "another_way": "Μετρήστε μαζί όλα τα κομμάτια μεγέθους ενός έκτου. Τρία έκτα και δύο έκτα κάνουν πέντε έκτα.",
+            "visual": "Μια μπάρα δείχνει το `5/6` σκιασμένο ως 5 ίσα κομμάτια μεγέθους έκτου από ένα όλο."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Υπολογίστε:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Αυτό ξεκινά με `3*(2/5)`, που σημαίνει 3 ομάδες των `2/5`. Το μέγεθος κάθε μέρους παραμένει πέμπτα.",
+            "another_way": "Σκέψου τον ακέραιο αριθμό ως πολλαπλασιαστή του αριθμητή του κλάσματος. Τότε το `3*(2/5)` είναι ένας ακέραιος αριθμός επί ένα κλάσμα.",
+            "visual": "Ένα μοντέλο ράβδου δείχνει τρία αντίγραφα μιας ράβδου με `2/5` σκιασμένα σε κάθε αντίγραφο."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ο ακέραιος αριθμός πολλαπλασιάζει τον αριθμητή, άρα το `3*(2/5)` γίνεται `(3*2)/5`. Ο παρονομαστής παραμένει `5`, επειδή τα μέρη είναι ακόμη πέμπτα.",
+            "another_way": "Μέτρησε πέμπτα: `2` πέμπτα, παρμένα `3` φορές, δίνουν `(3*2)` πέμπτα.",
+            "visual": "Ένα μοντέλο ράβδου δείχνει κομμάτια μεγέθους ενός πέμπτου να μετριούνται σε τρεις ομάδες."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Βρίσκουμε το γινόμενο στον αριθμητή, άρα το `(3*2)/5` γίνεται `6/5`. Αυτή είναι η απάντηση, επειδή η παράσταση έχει υπολογιστεί.",
+            "another_way": "Τρεις ομάδες των `2/5` κάνουν `6/5`. Το αποτέλεσμα είναι μεγαλύτερο από μία ακέραιη μονάδα, επειδή υπάρχουν περισσότερα από `5` πέμπτα.",
+            "visual": "Ένα μοντέλο ράβδου δείχνει `6` κομμάτια μεγέθους ενός πέμπτου σκιασμένα, σχηματίζοντας `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Υπολογίστε:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η παράσταση ρωτά πόσα `3/4` χωρούν στο `2/3`. Για διαίρεση με κλάσμα, κρατάμε το `2/3` και πολλαπλασιάζουμε με το αντίστροφο κλάσμα του `3/4`.",
+            "another_way": "Σκεφτόμαστε ότι αλλάζουμε το ερώτημα από διαίρεση σε αντίστοιχο πολλαπλασιασμό. Ο διαιρέτης `3/4` αντιστρέφεται, άρα το `(2/3)/(3/4)` γίνεται `(2/3)*(4/3)`.",
+            "visual": "Μια ράβδος δείχνει τα `2/3` ενός όλου να μετριούνται με κομμάτια μεγέθους `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Τώρα πολλαπλασιάζουμε τα κλάσματα. Πολλαπλασιάζουμε τους αριθμητές μεταξύ τους και τους παρονομαστές μεταξύ τους, οπότε το `(2/3)*(4/3)` γίνεται `(2*4)/(3*3)`.",
+            "another_way": "Αυτό δείχνει χωριστά τα πλήθη των μερών και τα μεγέθη των μερών. Ο αριθμητής μετρά `2*4` και ο παρονομαστής μετρά `3*3`.",
+            "visual": "Μια ράβδος χωρίζεται σε τρίτα με έναν τρόπο και σε τρίτα με έναν άλλο τρόπο, με `2*4` μικρά μέρη μετρημένα."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Τα γινόμενα στον αριθμητή και στον παρονομαστή έχουν γραφτεί αναλυτικά. Η γραμμή είναι έτοιμη να απλοποιηθεί υπολογίζοντας αυτά τα γινόμενα.",
+            "another_way": "Βλέπουμε το `(2*4)/(3*3)` ως κλάσμα όπου ο πολλαπλασιασμός φαίνεται ακόμη. Το επόμενο βήμα γράφει αυτά τα γινόμενα ως έναν αριθμό το καθένα.",
+            "visual": "Ένα μοντέλο ράβδου έχει `3*3` ίσα μικρά μέρη στο όλο και `2*4` από αυτά σκιασμένα."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ο πολλαπλασιασμός δίνει το τελικό κλάσμα, οπότε το `(2*4)/(3*3)` γίνεται `8/9`. Αυτή είναι η απάντηση, επειδή δεν φαίνεται άλλη πράξη.",
+            "another_way": "Το πηλίκο είναι μικρότερο από ένα όλο, κάτι που ταιριάζει με τη σημασία: το `3/4` είναι μεγαλύτερο από το `2/3`, άρα χωρά λιγότερο από μία φορά.",
+            "visual": "Μια ράβδος χωρισμένη σε `9` ίσα μέρη έχει `8` μέρη σκιασμένα, δείχνοντας `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Για να προσθέσουμε κλάσματα, προσθέτουμε τους αριθμητές και προσθέτουμε τους παρονομαστές.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Αντιμετωπίζει το κλάσμα σαν δύο ξεχωριστούς φυσικούς αριθμούς, και λειτουργεί με τον ίδιο τρόπο όπως ο πολλαπλασιασμός κλασμάτων.",
+      "what_to_say": {
+        "probe": "Η απάντησή σου είναι μεγαλύτερη ή μικρότερη από `1/2`; Θα έπρεπε να είναι;",
+        "nudge": "Μπορείς να προσθέσεις μισά και τρίτα απευθείας ή χρειάζεσαι πρώτα μέρη ίδιου μεγέθους;",
+        "tell": "Χώρισε και τα δύο σε έκτα: `3/6 + 2/6` είναι `5/6`. Μετράμε μόνο τα μέρη· το μέγεθός τους μένει το ίδιο."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "3/4"
+      },
+      "source_quote": "Μερικοί μαθητές προσθέτουν κλάσματα προσθέτοντας τους αριθμητές και προσθέτοντας τους παρονομαστές."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Για να πολλαπλασιάσουμε ένα κλάσμα με έναν ακέραιο αριθμό, πολλαπλασιάζουμε και τον αριθμητή και τον παρονομαστή.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Οι μαθητές έμαθαν από τα ισοδύναμα κλάσματα ότι είναι ασφαλές να κάνουμε το ίδιο στον αριθμητή και στον παρονομαστή.",
+      "what_to_say": {
+        "probe": "Είναι το `6/15` μεγαλύτερο από το `2/5`, μικρότερο ή ίσο; Πόσο πρέπει να είναι τρεις φορές το `2/5`;",
+        "nudge": "Γράψε τρεις φορές τα δύο πέμπτα ως πρόσθεση και μέτρησε τα πέμπτα.",
+        "tell": "Τρεις φορές τα δύο πέμπτα είναι έξι πέμπτα, `6/5`. Αλλάζει μόνο ο αριθμός των μερών."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "12/7"
+      },
+      "source_quote": "Μερικοί μαθητές πολλαπλασιάζουν και τον αριθμητή και τον παρονομαστή με τον ακέραιο αριθμό."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Όταν διαιρούμε κλάσματα, αντιστρέφουμε το πρώτο κλάσμα.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "Το «αντιστρέφω και πολλαπλασιάζω» μένει ως σύνθημα, χωρίς να θυμόμαστε ποιο κλάσμα αντιστρέφεται.",
+      "what_to_say": {
+        "probe": "Πόσα τρία τέταρτα χωρούν στα δύο τρίτα: περισσότερο από ένα ή λιγότερο;",
+        "nudge": "Με ποιο κλάσμα μετράμε; Αυτό είναι που πρέπει να αντιστρέψουμε.",
+        "tell": "Μόνο ο διαιρέτης αντιστρέφεται: `(2/3)*(4/3)` είναι `8/9`, λίγο μικρότερο από ένα."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "6/5"
+      },
+      "source_quote": "Μερικοί μαθητές αντιστρέφουν το πρώτο κλάσμα στη διαίρεση, όχι το δεύτερο."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Μπορείς να απλοποιήσεις έναν αριθμό στον αριθμητή με έναν στον παρονομαστή, ακόμη και όταν ανάμεσά τους υπάρχει σύμβολο πρόσθεσης.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Η απλοποίηση κοινών αριθμών λειτουργεί στα γινόμενα, και ο μαθητής βλέπει ένα 2 στον αριθμητή και ένα 2 στον παρονομαστή.",
+      "what_to_say": {
+        "probe": "Ποιος είναι ο αριθμητής του κλάσματος συνολικά, πριν κάνεις τη διαίρεση;",
+        "nudge": "Υπολόγισε πρώτα τον αριθμητή και μετά διαίρεσε. Παίρνεις την ίδια απάντηση;",
+        "tell": "Η κλασματική γραμμή διαιρεί όλο τον αριθμητή: `(2+4)/2` είναι `6/2`, που είναι `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Απλοποιήστε:",
+        "answer": "5"
+      },
+      "source_quote": "Μερικοί μαθητές απλοποιούν όρους που χωρίζονται από σύμβολο πρόσθεσης."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Για να απλοποιήσεις ένα κλάσμα, μπορείς να διαιρέσεις μόνο τον αριθμητή ή μόνο τον παρονομαστή.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Το να παίρνουμε το μισό ενός αριθμού μοιάζει με απλοποίηση, και ο μαθητής δεν ελέγχει ότι η ποσότητα μένει η ίδια.",
+      "what_to_say": {
+        "probe": "Είναι το `3/8` η ίδια ποσότητα με το `6/8`; Σχεδίασε και τα δύο ως ράβδους.",
+        "nudge": "Ποιος αριθμός διαιρεί και τον αριθμητή και τον παρονομαστή;",
+        "tell": "Διαίρεσε τον αριθμητή και τον παρονομαστή με τον ίδιο αριθμό: `6/8` είναι `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Απλοποιήστε:",
+        "answer": "2/3"
+      },
+      "source_quote": "Μερικοί μαθητές απλοποιούν αλλάζοντας μόνο ένα μέρος του κλάσματος."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Γιατί δεν μπορούμε να προσθέσουμε τους πάνω αριθμούς και τους κάτω αριθμούς;",
+      "answer": "Ο κάτω αριθμός ονομάζει το μέγεθος των μερών. Τα μισά και τα τρίτα έχουν διαφορετικά μεγέθη, άρα τα μέρη πρέπει να ξαναγραφούν στο ίδιο μέγεθος πριν μετρηθούν."
+    },
+    {
+      "question": "Γιατί το `1/2 + 1/3` γίνεται `3/6 + 2/6`;",
+      "answer": "Και τα δύο κλάσματα ξαναγράφονται σε έκτα. Οι ποσότητες μένουν ίδιες, αλλά τώρα τα μέρη έχουν το ίδιο μέγεθος και μπορούν να προστεθούν."
+    },
+    {
+      "question": "Γιατί το `3*(2/5)` δεν αλλάζει τον κάτω αριθμό;",
+      "answer": "Τα πέμπτα μένουν στο ίδιο μέγεθος. Ο πολλαπλασιασμός με `3` δίνει 3 ομάδες από `2/5`, άρα αλλάζει μόνο το πλήθος των πέμπτων."
+    },
+    {
+      "question": "Ποιο κλάσμα αντιστρέφεται στη διαίρεση;",
+      "answer": "Μόνο ο διαιρέτης αντιστρέφεται. Το `(2/3)/(3/4)` γίνεται `(2/3)*(4/3)`, γιατί η διαίρεση ρωτά πόσες φορές χωρά το `3/4` στο `2/3`."
+    },
+    {
+      "question": "Μπορούμε να κάνουμε απλοποίηση διαγώνια σε πρόσθεση;",
+      "answer": "Όχι. Η κλασματική γραμμή διαιρεί όλο τον αριθμητή. Οι όροι σε ένα άθροισμα δεν μπορούν να απλοποιηθούν μερικά σαν να ήταν χωριστοί παράγοντες."
+    },
+    {
+      "question": "Πώς μπορούν οι μαθητές να ελέγχουν αν μια απάντηση έχει νόημα;",
+      "answer": "Πρώτα κάνουν εκτίμηση. Ρωτούν αν το αποτέλεσμα πρέπει να είναι μεγαλύτερο ή μικρότερο από `1/2`, ή μεγαλύτερο ή μικρότερο από `1`. Ένας πρόχειρος έλεγχος μεγέθους εντοπίζει πολλά λάθη στα κλάσματα."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Ονομάζουμε τα μέρη",
+      "activity": "Χρησιμοποιήστε ένα απλό όλο χωρισμένο σε ίσα μέρη. Συνδέστε τον κάτω αριθμό με το μέγεθος των μερών και τον πάνω αριθμό με το πλήθος των μερών. Χρησιμοποιήστε το `3/4` ως κλάσμα αναφοράς."
+    },
+    {
+      "minutes": 10,
+      "title": "Ισοδύναμα κλάσματα",
+      "activity": "Δείξτε ότι διαφορετικά κλάσματα μπορούν να ονομάζουν την ίδια ποσότητα. Χρησιμοποιήστε τα `1/2`, `2/4` και `3/6`. Τονίστε ότι ο πάνω και ο κάτω αριθμός πρέπει να αλλάζουν μαζί."
+    },
+    {
+      "minutes": 10,
+      "title": "Προσθέτουμε ομώνυμα μέρη",
+      "activity": "Ξεκινήστε με το `1/2 + 1/3`. Ρωτήστε γιατί τα μισά και τα τρίτα δεν μπορούν να μετρηθούν μαζί. Ξαναγράψτε τα ως έκτα: το `1/2 + 1/3` γίνεται `3/6 + 2/6`, και το `3/6 + 2/6` είναι `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Πολλαπλασιάζουμε ένα κλάσμα",
+      "activity": "Χρησιμοποιήστε το `3*(2/5)` ως 3 ομάδες από δύο πέμπτα. Δείξτε ότι το `3*(2/5)` γίνεται `(3*2)/5`, και το `(3*2)/5` είναι `6/5`. Τονίστε ότι το μέγεθος των μερών μένει πέμπτα."
+    },
+    {
+      "minutes": 9,
+      "title": "Διαιρούμε κλάσματα",
+      "activity": "Χρησιμοποιήστε την ερώτηση «Πόσα χωρούν;» Για το `(2/3)/(3/4)`, δείξτε ότι το `(2/3)/(3/4)` γίνεται `(2/3)*(4/3)`, έπειτα `(2*4)/(3*3)`, και το αποτέλεσμα είναι `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Κάνουμε εκτίμηση και εντοπίζουμε λάθη",
+      "activity": "Συζητήστε συνηθισμένες λανθασμένες κινήσεις: πρόσθεση αριθμητών και παρονομαστών, αλλαγή μόνο ενός μέρους, αντιστροφή του πρώτου κλάσματος ή απλοποίηση σε πρόσθεση. Χρησιμοποιήστε εκτίμηση και μοντέλα με ράβδους ως ελέγχους."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε ένα κλάσμα ίσο με `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "Για να προσθέσουμε κλάσματα, πρώτα τα κάνουμε να έχουν τον ίδιο παρονομαστή."
+        },
+        {
+          "rung": "computation",
+          "text": "Ο κοινός παρονομαστής είναι `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε ένα κλάσμα ίσο με `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Χρησιμοποιούμε το ελάχιστο κοινό πολλαπλάσιο του 12 και του 18, που είναι `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `7/12` είναι `21/36` και το `5/18` είναι `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε ένα κλάσμα ίσο με `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Χρησιμοποιούμε το ελάχιστο κοινό πολλαπλάσιο του 12 και του 16, που είναι `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `7/12` είναι `28/48` και το `9/16` είναι `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Απλοποιήστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε το απλούστερο κλάσμα ίσο με `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Διαιρούμε τον αριθμητή και τον παρονομαστή με τον μέγιστο κοινό διαιρέτη τους."
+        },
+        {
+          "rung": "computation",
+          "text": "Διαιρούμε τον αριθμητή και τον παρονομαστή με το `12`, τον μέγιστο κοινό διαιρέτη του 120 και του 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "Τα δύο πρόσημα είναι ίδια, άρα το γινόμενο είναι θετικό. Πολλαπλασιάζουμε τους αριθμητές και τους παρονομαστές."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `(3*4)/(4*9)` είναι `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "Για να διαιρέσουμε με κλάσμα, πολλαπλασιάζουμε με το αντίστροφό του. Το αντίστροφο του διαιρέτη είναι `1/(5/8)`, δηλαδή `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `(3/4)*(8/5)` είναι `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "Για να διαιρέσουμε με κλάσμα, πολλαπλασιάζουμε με το αντίστροφό του. Το αντίστροφο του διαιρέτη είναι `1/(5/6)`, δηλαδή `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `(2/3)*(6/5)` είναι `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε ένα κλάσμα ίσο με `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "Οι παρονομαστές είναι ήδη ίδιοι, οπότε αφαιρούμε τους αριθμητές."
+        },
+        {
+          "rung": "computation",
+          "text": "Το `-23 - 13` είναι `-36`, οπότε παίρνουμε `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

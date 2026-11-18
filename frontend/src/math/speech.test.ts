@@ -90,11 +90,9 @@ describe('spoken text in Arabic', () => {
 
   test('uses the Arabic locale', () => {
     const t = i18n.getFixedT('ar')
-    expect(speakText('1/2 + 1/3', t)).toBe('1 على 2 زائد 1 على 3')
+    expect(speakText('1/2 + 1/3', t)).toBe('نصف زائد ثلث')
     expect(speakText('2**(x + 1)', t)).toBe('2 أس x زائد 1، نهاية الأس')
-    expect(speakText('1/(x+1) + 2', t)).toBe(
-      'الكسر الذي بسطه 1 ومقامه x زائد 1، نهاية الكسر زائد 2',
-    )
+    expect(speakText('1/(x+1) + 2', t)).toBe('الكسر بسطه 1 ومقامه x زائد 1، نهاية الكسر زائد 2')
     expect(speakLine({ left: '3*x + 5', right: '20', op: '-5' }, t)).toBe(
       '3 x زائد 5 يساوي 20؛ اطرح 5 من الطرفين',
     )

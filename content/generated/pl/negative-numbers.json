@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "pl",
+  "title": "Liczby ujemne",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Użyj osi liczbowej i liczb przeciwnych, aby dodawać, odejmować i mnożyć liczby ujemne.",
+  "idea": "Liczba ujemna jest mniejsza od zera. Na osi liczbowej `-3` leży 3 kroki na lewo od zera, a `3` leży 3 kroki na prawo. Są to liczby przeciwne, ponieważ leżą w tej samej odległości od zera po różnych stronach.\n\nDodawanie liczby dodatniej przesuwa w prawo. Dodawanie liczby ujemnej przesuwa w lewo. Odejmowanie liczby przesuwa w stronę przeciwną niż jej dodawanie, więc odejmowanie liczby ujemnej przesuwa w prawo. Na przykład `5 - (-3)` staje się `5 + 3`.\n\nGdy dodajemy liczby o różnych znakach, znaki ciągną w przeciwne strony. Wynik ma znak tej liczby, która jest dalej od zera, a jego wartość jest różnicą dwóch wartości. Dlatego `-7 + 4` staje się `-(7 - 4)`.",
+  "why_it_works": "Odejmowanie może oznaczać odległość między dwiema liczbami. Różnica od `-3` do `5` obejmuje kroki od `-3` do zera, a potem od zera do `5`. Dlatego odejmowanie liczby ujemnej jest tym samym co dodawanie liczby przeciwnej do niej: `5 - (-3)` staje się `5 + 3`.\n\nPrzy mnożeniu regułę znaków wyjaśnia wzorzec. Gdy pierwszy czynnik zmniejsza się o jeden w `3*(-2)`, `2*(-2)`, `1*(-2)` i `0*(-2)`, wynik rośnie o dwa. Kontynuowanie tego wzorca daje wyniki dodatnie dla iloczynu liczby ujemnej i liczby ujemnej.\n\nDlatego `(-4)*(-6)` staje się `4*6`. Iloczyn liczby ujemnej i liczby ujemnej jest dodatni, ponieważ wzorzec mnożenia musi być konsekwentnie kontynuowany.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Oblicz:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "W wyrażeniu jest znak odejmowania i znak liczby ujemnej. Traktuj je osobno: chodzi o `5` minus `-3`.",
+            "another_way": "Pomyśl o `-3` jako o 3 krokach w lewo od zera. Wyrażenie `5 - (-3)` pyta o odległość od `-3` do `5`.",
+            "visual": "Na osi liczbowej zaznacz `-3` na lewo od zera i `5` na prawo od zera."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Odejmowanie liczby ujemnej przesuwa w stronę przeciwną niż dodawanie liczby ujemnej, więc przesuwa w prawo. Dlatego `5 - (-3)` staje się `5 + 3`.",
+            "another_way": "Pozbycie się długu daje taki sam skutek jak zysk. Dlatego odjęcie `-3` jest tym samym ruchem co dodanie `3`.",
+            "visual": "Zacznij od `5` na osi liczbowej, a potem pokaż ruch o `3` kroki w prawo."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Po przepisaniu działanie jest zwykłym dodawaniem. `5 + 3` to `8`, więc wartość początkowego wyrażenia wynosi `8`.",
+            "another_way": "Na osi liczbowej ruch o `3` kroki w prawo od `5` kończy się w `8`. Odległość od `-3` do `5` też wynosi `8` kroków.",
+            "visual": "Ruch w prawo od `5` kończy się w punkcie `8` na osi liczbowej."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Oblicz:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Wyrażenie `-7 + 4` dodaje liczby o różnych znakach. To jak przeciąganie liny: `-7` jest dalej od zera niż `4`, więc wynik pozostanie ujemny.",
+            "another_way": "Zacznij od `-7` i dodaj `4`, przesuwając się o `4` kroki w prawo. Ruch idzie w stronę zera, ale go nie mija.",
+            "visual": "Na osi liczbowej zacznij od `-7` i narysuj `4` kroki w prawo."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ponieważ `7` jest większe niż `4`, zostaw znak minus i porównaj wartości. Dlatego `-7 + 4` staje się `-(7 - 4)`.",
+            "another_way": "Pomyśl o `-7` jako o ciągnięciu w lewo, a o `4` jako o ciągnięciu w prawo. Pozostałe ciągnięcie jest w lewo i ma wielkość `7 - 4`.",
+            "visual": "Na osi liczbowej ciągnięcie w lewo o `7` i w prawo o `4` zostawia ciągnięcie w lewo o `7 - 4`."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Wielkość, która zostaje po przeciąganiu liny, to `3`, a znak minus pokazuje kierunek na lewo od zera. Dlatego odpowiedź to `-3`.",
+            "another_way": "Od `-7` przesunięcie o `4` kroki w prawo prowadzi do `-3`. To zgadza się z uproszczonym wynikiem.",
+            "visual": "Na osi liczbowej strzałka kończy się w `-3`, 3 kroki na lewo od zera."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Oblicz:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Oba czynniki są ujemne. Liczba ujemna razy liczba ujemna daje liczbę dodatnią, więc iloczyn można zapisać bez znaków minus.",
+            "another_way": "Użyj pomysłu z prawidłowością: mnożenie przez liczbę ujemną odwraca kierunek, a wykonanie tego dwa razy daje iloczyn dodatni.",
+            "visual": "Na osi liczbowej `(-4)*(-6)` pokazuje równe ujemne skoki brane ujemną liczbę razy, co odwraca kierunek w prawo."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Po ustaleniu znaku mnożymy już tylko wartości bezwzględne. Wiersz `4*6` zachowuje części czynników odpowiadające odległościom.",
+            "another_way": "Pomyśl o czterech grupach po sześć, gdy dwie liczby ujemne sprawiły już, że iloczyn jest dodatni.",
+            "visual": "Na osi liczbowej `4*6` pokazuje 4 równe skoki po 6 w prawo od zera."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Mnożenie jest zakończone: `4*6` to `24`. Zatem `24` jest wartością początkowego wyrażenia.",
+            "another_way": "Początkowe wyrażenie stało się iloczynem dodatnim, a ten iloczyn jest równy `24`.",
+            "visual": "Na osi liczbowej skoki kończą się w punkcie `24` na prawo od zera."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Odejmowanie liczby ujemnej daje mniejszy wynik.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Odejmowanie zwykle zmniejsza liczby, a uczeń widzi dwa znaki minus i zostawia minus.",
+      "what_to_say": {
+        "probe": "Gdzie zaczynasz na osi liczbowej i w którą stronę przesuwa cię odejmowanie `-3`?",
+        "nudge": "Jaka jest różnica między `5` a `-3`? Policz kroki od `-3` do `5`.",
+        "tell": "Odejmowanie liczby ujemnej jest tym samym co dodawanie liczby przeciwnej, więc `5 - (-3)` to `5 + 3`, czyli `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Oblicz:",
+        "answer": "8"
+      },
+      "source_quote": "Niektórzy uczniowie uważają, że odejmowanie liczby ujemnej daje mniejszy wynik."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Liczba ujemna razy liczba ujemna daje liczbę ujemną.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Obie liczby są ujemne, więc wydaje się naturalne, że wynik też jest ujemny.",
+      "what_to_say": {
+        "probe": "Ile to jest `1*(-3)` i `0*(-3)`? Co dzieje się z wynikiem za każdym razem, gdy pierwsza liczba zmniejsza się o 1?",
+        "nudge": "Kontynuuj ciąg `1*(-3)`, `0*(-3)`, `-1*(-3)` i zobacz, w którą stronę idą wyniki.",
+        "tell": "Wyniki w tym ciągu rosną o 3 w każdym kroku, więc `(-2)*(-3)` to `6`. Liczba ujemna razy liczba ujemna daje liczbę dodatnią."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Oblicz:",
+        "answer": "20"
+      },
+      "source_quote": "Niektórzy uczniowie uważają, że liczba ujemna razy liczba ujemna daje liczbę ujemną."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "Przy dodawaniu liczb o różnych znakach dodaje się wartości i zostawia pierwszy znak.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "Uczeń nauczył się, że dodawanie zwiększa wartość liczby, a pierwszy znak widzi jako pierwszy.",
+      "what_to_say": {
+        "probe": "Jeśli zaczynasz od `-5` i przesuwasz się o trzy kroki, to w którą stronę idziesz?",
+        "nudge": "Wyobraź sobie przeciąganie liny między `-5` a `3`. Która strona wygrywa i o ile?",
+        "tell": "Dodatnie 3 ciągnie z powrotem w stronę zera, więc `-5 + 3` to `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Oblicz:",
+        "answer": "-5"
+      },
+      "source_quote": "Niektórzy uczniowie dodają wartości i zostawiają znak pierwszej liczby."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Zawsze odejmuje się mniejszą liczbę od większej.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Przy liczbach naturalnych uczniom mówiono, że nie można odjąć większej liczby od mniejszej.",
+      "what_to_say": {
+        "probe": "Gdzie wylądujesz, jeśli zaczniesz od `3` i zrobisz siedem kroków w lewo?",
+        "nudge": "Czy `3 - 7` to to samo co `7 - 3`? Sprawdź oba działania na osi liczbowej.",
+        "tell": "Siedem kroków w lewo od trójki prowadzi do `-4`, więc `3 - 7` to `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Oblicz:",
+        "answer": "-7"
+      },
+      "source_quote": "Niektórzy uczniowie zawsze odejmują mniejszą liczbę od większej."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "Dwa minusy dają plus, także przy dodawaniu.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "Reguła „dwa minusy dają plus” jest krótka i łatwa do zapamiętania, więc bywa stosowana do każdej pary znaków minus.",
+      "what_to_say": {
+        "probe": "Jeśli jesteś winien 4, a potem jeszcze 3, to ile jesteś winien?",
+        "nudge": "Zacznij od `-4` na osi liczbowej i dodaj `-3`. W którą stronę się przesuwasz?",
+        "tell": "Dodawanie liczby ujemnej przesuwa w lewo, więc `-4 + (-3)` to `-7`. Reguła znaków dotyczy mnożenia i dzielenia."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Oblicz:",
+        "answer": "-8"
+      },
+      "source_quote": "Niektórzy uczniowie stosują zasadę „dwa minusy dają plus” do dodawania."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Dlaczego odejmowanie liczby ujemnej przesuwa w prawo?",
+      "answer": "Odejmowanie przesuwa w stronę przeciwną niż dodawanie. Dodawanie liczby ujemnej przesuwa w lewo, więc odejmowanie liczby ujemnej przesuwa w prawo. Na przykład `5 - (-3)` staje się `5 + 3`."
+    },
+    {
+      "question": "Czy dwa minusy zawsze dają plus?",
+      "answer": "Nie. Ta reguła dotyczy mnożenia i dzielenia. Przy dodawaniu ważny jest kierunek. Dodawanie dwóch liczb ujemnych przesuwa dalej w lewo na osi liczbowej."
+    },
+    {
+      "question": "Dlaczego `-7 + 4` jest ujemne?",
+      "answer": "Liczby ciągną w przeciwne strony. `-7` jest dalej od zera niż `4`, więc wynik zachowuje znak ujemny. `-7 + 4` staje się `-(7 - 4)`."
+    },
+    {
+      "question": "Dlaczego liczba ujemna razy liczba ujemna daje liczbę dodatnią?",
+      "answer": "Wzór mnożenia musi się zgadzać dalej. Gdy jeden czynnik maleje i przechodzi przez zero, wyniki nadal rosną o tę samą wartość, co prowadzi do wyników dodatnich."
+    },
+    {
+      "question": "Czy `3 - 7` może mieć wynik?",
+      "answer": "Tak. Zacznij od `3` i przesuń się o siedem kroków w lewo na osi liczbowej. Punkt, w którym się zatrzymasz, jest poniżej zera."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Umiejsców liczby ujemne",
+      "activity": "Narysuj oś liczbową z zerem pośrodku. Zaznacz liczby dodatnie i ujemne jako równe kroki od zera. Podkreśl liczby przeciwne, takie jak `-3` i `3`, jako leżące w tej samej odległości od zera po różnych stronach."
+    },
+    {
+      "minutes": 10,
+      "title": "Dodawaj jako ruch",
+      "activity": "Użyj osi liczbowej, aby pokazać, że dodawanie liczby dodatniej przesuwa w prawo, a dodawanie liczby ujemnej przesuwa w lewo. Dodaj przykład z różnymi znakami i opisz go jako przeciąganie liny."
+    },
+    {
+      "minutes": 10,
+      "title": "Odejmuj liczby ujemne",
+      "activity": "Oddziel działanie od znaku, mówiąc „odejmij” i „ujemna”. Pokaż, że odejmowanie przesuwa przeciwnie do dodawania, więc `5 - (-3)` staje się `5 + 3`."
+    },
+    {
+      "minutes": 10,
+      "title": "Różne znaki przy dodawaniu",
+      "activity": "Pokaż przykłady, w których znaki ciągną w przeciwne strony. Wynik przyjmuje znak liczby dalej od zera, a jego wartość jest różnicą wartości. Użyj: `-7 + 4` staje się `-(7 - 4)`."
+    },
+    {
+      "minutes": 10,
+      "title": "Mnóż według wzoru",
+      "activity": "Pokaż wzór od czynników dodatnich w dół, przez zero. Użyj go, aby wyjaśnić, dlaczego liczba ujemna razy liczba ujemna daje liczbę dodatnią, a potem połącz to z tym, że `(-4)*(-6)` staje się `4*6`."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Odejmowanie liczby ujemnej jest tym samym co dodawanie liczby do niej przeciwnej."
+        },
+        {
+          "rung": "computation",
+          "text": "Zapisz to jako `-7 + 4` i przesuń się o 4 kroki w prawo od `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Odejmowanie liczby ujemnej jest tym samym co dodawanie liczby do niej przeciwnej."
+        },
+        {
+          "rung": "computation",
+          "text": "Zapisz to jako `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "Gdy znaki są różne, odejmij wartości bezwzględne i zostaw znak liczby dalej od zera."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` to `17`, a `-32` jest dalej od zera niż `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "Gdy obie liczby są ujemne, dodaj wartości bezwzględne i zostaw znak minus."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` to `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "Liczba ujemna razy liczba ujemna daje liczbę dodatnią."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` to `14`, a znaki są takie same."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "Gdy dwa znaki są różne, iloczyn jest ujemny."
+        },
+        {
+          "rung": "computation",
+          "text": "Najpierw pomiń znak: `9*3` to `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Dzielenie liczby ujemnej przez ujemną daje liczbę dodatnią, tak jak przy mnożeniu."
+        },
+        {
+          "rung": "computation",
+          "text": "Najpierw pomiń znaki: `100/4` to `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość wyrażenia `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Mnożymy przed dodawaniem i odejmowaniem."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` to `-30`, a `7*(-2)` to `-14`, więc otrzymujemy `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

@@ -73,5 +73,27 @@ def write_pack(pack: Pack) -> Path:
     path = pack_path(pack.topic, pack.lang)
     path.parent.mkdir(parents=True, exist_ok=True)
     data = pack.model_dump(mode="json")
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return path
+
+
+TRANSLATE_PROMPTS = ROOT / "pipeline" / "translate_prompts.py"
+
+
+def translate_prompts_hash() -> str:
+    """The translation prompts' bytes (TRANSLATE_VERSION among them): the one fingerprint of
+    how translations are made, in every translated pack's `source_hash` and in the unit cache
+    key, so a changed prompt makes both stale together."""
+    return hashlib.sha256(TRANSLATE_PROMPTS.read_bytes()).hexdigest()
+
+
+def translation_hash(topic: TopicId) -> str:
+    """A translated pack's `source_hash`: the English pack and the translation prompts, so a
+    translation is stale when either changes."""
+    from pipeline.translate_prompts import TRANSLATE_VERSION
+
+    digest = hashlib.sha256(f"translate-{TRANSLATE_VERSION}".encode())
+    for path in (pack_path(topic, "en"), TRANSLATE_PROMPTS):
+        digest.update(path.name.encode())
+        digest.update(path.read_bytes())
+    return digest.hexdigest()

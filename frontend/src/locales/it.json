@@ -1,0 +1,382 @@
+{
+  "app": {
+    "title": "Lesson Coach",
+    "pageTitle": "{page} · Lesson Coach"
+  },
+  "shell": {
+    "skipToContent": "Vai al contenuto principale",
+    "mainNav": "Principale",
+    "nothingSaved": "Nessun account. Viene conservata solo la tua scelta della lingua, in questo browser.",
+    "footerNoScores": "Nessun test. Nessun punteggio. Non viene salvato nulla su di te o sui tuoi studenti.",
+    "footerChecked": "Ogni risposta è controllata da un sistema di algebra computazionale."
+  },
+  "nav": {
+    "topics": "Argomenti",
+    "mistake": "Uno studente ha scritto questo",
+    "practice": "Esercizi"
+  },
+  "language": {
+    "label": "Lingua",
+    "machine": "{name} (tradotto automaticamente)"
+  },
+  "home": {
+    "eyebrow": "Per insegnanti di matematica, classi 6–9",
+    "title": "Sentiti sicuro della matematica prima di insegnarla.",
+    "intro": "Scegli l’argomento di domani. Vedi perché ogni passaggio funziona, dove gli studenti di solito sbagliano e che cosa dire quando succede.",
+    "topicsHeading": "Scegli un argomento",
+    "topicsIntro": "Per ogni argomento: l’idea, esempi svolti, errori comuni e una traccia di lezione.",
+    "openTopic": "Apri argomento",
+    "waysHeading": "Modi per iniziare",
+    "prepareTitle": "Prepara una lezione",
+    "prepareText": "Ripassa l’idea e vedi ogni passaggio spiegato in tre modi.",
+    "mistakeTitle": "Capire un errore",
+    "mistakeText": "Scrivi che cosa ha scritto uno studente. Vedi la probabile ragione e che cosa chiedere.",
+    "practiceTitle": "Esercitati in privato",
+    "practiceText": "Problemi con suggerimenti da aprire uno alla volta. Nessun punteggio.",
+    "titleHighlight": "prima",
+    "mistakeCta": "Uno studente ha scritto questo…",
+    "heroWorked": "esempio svolto",
+    "heroWhyTitle": "Perché questo passaggio funziona",
+    "heroWhyText": "Togli 5 da un solo membro e l’equilibrio si rompe. Toglilo da entrambi, e i membri restano uguali.",
+    "heroExampleLink": "Vedi un esempio svolto: risolvere 3x + 5 = 20",
+    "noTopics": "Non ci sono ancora argomenti disponibili."
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "Numeri negativi",
+      "grade": "Classe 6–7"
+    },
+    "fractions": {
+      "title": "Frazioni",
+      "grade": "Classe 6–7"
+    },
+    "linear-equations": {
+      "title": "Risolvere equazioni lineari",
+      "grade": "Classe 7–8"
+    }
+  },
+  "pages": {
+    "practiceTitle": "Esercizi: {topic}",
+    "practiceProblem": "Problema {n} di {total}",
+    "previous": "Problema precedente",
+    "next": "Problema successivo",
+    "practiceNav": "Problemi",
+    "practicePageTitle": "{title}, {problem}"
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "body": "Non c'è nessuna pagina a questo indirizzo.",
+    "home": "Vai alla pagina iniziale"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} più {right}",
+      "minus": "{left} meno {right}",
+      "times": "{left} per {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "meno {arg}",
+      "positive": "più {arg}",
+      "equals": "{left} uguale a {right}",
+      "continued": "uguale a {expr}",
+      "group": "apri parentesi, {inner}, chiudi parentesi",
+      "over": "{num} fratto {den}",
+      "fraction": "la frazione con numeratore {num} e denominatore {den}, fine della frazione",
+      "fractionSimple": "{num, plural, one {un} many {#} other {#}} {den, plural, =2 {{num, plural, one {mezzo} many {mezzi} other {mezzi}}} =3 {{num, plural, one {terzo} many {terzi} other {terzi}}} =4 {{num, plural, one {quarto} many {quarti} other {quarti}}} =5 {{num, plural, one {quinto} many {quinti} other {quinti}}} =6 {{num, plural, one {sesto} many {sesti} other {sesti}}} =7 {{num, plural, one {settimo} many {settimi} other {settimi}}} =8 {{num, plural, one {ottavo} many {ottavi} other {ottavi}}} =9 {{num, plural, one {nono} many {noni} other {noni}}} =10 {{num, plural, one {decimo} many {decimi} other {decimi}}} many {fratto #} other {fratto #}}",
+      "power": "{power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato a {exp}}}",
+      "powerGroup": "{base} elevato a {exp}, fine dell'esponente",
+      "lineWithOp": "{line}; {op}",
+      "withNote": "{line}; segnato: {note}"
+    },
+    "op": {
+      "add": "aggiungi {arg} a entrambi i membri",
+      "sub": "sottrai {arg} da entrambi i membri",
+      "mul": "moltiplica entrambi i membri per {arg}",
+      "div": "dividi entrambi i membri per {arg}"
+    }
+  },
+  "demo": {
+    "title": "Componenti di scrittura matematica a mano",
+    "intro": "Ogni componente matematica, ricavata dai passaggi in testo semplice salvati dai pacchetti di contenuti. Sotto ciascuna c’è il testo letto da uno screen reader.",
+    "spoken": "Letto: {text}",
+    "fractionHeading": "Frazione",
+    "expressionsHeading": "Espressioni",
+    "pensHeading": "Penne",
+    "pencil": "Matita: lavoro dello studente",
+    "ink": "Inchiostro: esempi svolti",
+    "green": "Penna verde: correzioni",
+    "equationHeading": "Equazione, allineata su =",
+    "equationLabel": "Risolvere 3x + 5 = 20",
+    "expressionHeading": "Passaggi di un’espressione",
+    "expressionLabel": "Calcolare −5 − (−3)",
+    "fractionStepsLabel": "Somma di un mezzo e un terzo",
+    "replay": "Scrivilo di nuovo",
+    "rtlHeading": "Dentro un testo da destra a sinistra",
+    "rtlNote": "Il testo intorno scorre da destra a sinistra; la matematica resta da sinistra a destra.",
+    "fractionStepsHeading": "Passaggi con frazioni",
+    "longHeading": "Un’equazione più lunga",
+    "longLabel": "Risolvere 2(x + 3) − 4(x − 1) = 3x + 10",
+    "inputTitle": "Componenti per inserire matematica",
+    "inputIntro": "I tre modi per inserire la matematica: digitarla, scriverla o scattare una foto. Sotto ogni input c’è esattamente ciò che la pagina riceve. La matematica scritta e fotografata viene letta dal server, e nulla viene inviato finché non la confermi.",
+    "inputExpression": "Un’espressione",
+    "inputExpressionLabel": "Il problema",
+    "inputExpressionHint": "Scrivi le frazioni con una barra, come 2/5.",
+    "inputLines": "Righe di svolgimento",
+    "inputLinesLabel": "Lo svolgimento dello studente",
+    "inputReceived": "Ciò che la pagina riceve",
+    "inputNothing": "Ancora nulla."
+  },
+  "input": {
+    "modes": "Modi per inserire {label}",
+    "mode": {
+      "type": "Tipo",
+      "write": "Scrivi",
+      "photo": "Foto"
+    },
+    "typeInstead": "Digitalo invece",
+    "type": {
+      "loading": "Caricamento del campo matematico…",
+      "fallback": "Il campo matematico non si è caricato, quindi questo è un campo di testo semplice. Digita le frazioni con una barra, come 2/5.",
+      "tooLong": "È troppo lungo da controllare. Accorcialo, oppure dividilo in righe.",
+      "lineLabel": "{label}, riga {n}",
+      "addLine": "Aggiungi una riga",
+      "removeLine": "Rimuovi la riga {n}",
+      "emptyBox": "Compila prima la casella vuota."
+    },
+    "write": {
+      "introOne": "Scrivilo con il dito, una penna o il mouse, su una riga.",
+      "introLines": "Scrivi lo svolgimento con il dito, una penna o il mouse, un passaggio per riga.",
+      "board": "Lavagna di disegno per {label}",
+      "empty": "vuoto",
+      "strokes": "{count, plural, one {# tratto} many {# tratti} other {# tratti}}",
+      "undo": "Annulla",
+      "redo": "Ripeti",
+      "clear": "Cancella",
+      "did": {
+        "undo": "Annullato.",
+        "redo": "Ripetuto.",
+        "clear": "Cancellato."
+      },
+      "read": "Leggi la mia scrittura",
+      "reading": "Lettura della tua scrittura…",
+      "again": "Disegna di nuovo"
+    },
+    "photo": {
+      "intro": "Scatta una foto del lavoro dello studente, oppure caricane una. Poi puoi ritagliarla e ruotarla. Resta in questo browser finché non viene letta e non viene mai memorizzata.",
+      "take": "Scatta una foto",
+      "upload": "Carica una foto",
+      "cropHelp": "Trascina il riquadro o i suoi angoli intorno alla matematica. Con la tastiera: i tasti freccia spostano il riquadro, Maiusc con i tasti freccia ne cambia la dimensione.",
+      "cropBox": "Area di ritaglio",
+      "cropState": "L’area di ritaglio è larga {w}% e alta {h}%, a {x}% da sinistra e a {y}% dall’alto.",
+      "photoAlt": "La tua foto",
+      "croppedAlt": "La foto ritagliata che è stata letta",
+      "useCrop": "Leggi questa parte",
+      "useWhole": "Leggi tutta la foto",
+      "rotate": "Ruota di 90°",
+      "other": "Scegli un’altra foto",
+      "reading": "Lettura della foto…",
+      "retake": "Scatta un’altra foto",
+      "tryAgain": "Riprova"
+    },
+    "review": {
+      "heading": "È questo che è stato scritto?",
+      "intro": "Controlla ogni riga. Modifica tutto ciò che è stato letto male. Nulla viene controllato finché non confermi.",
+      "toCheck": "{count, plural, one {# riga da controllare.} many {# righe da controllare.} other {# righe da controllare.}}",
+      "lines": "Righe che sono state lette",
+      "lineN": "Riga {n}",
+      "uncertain": "controlla questa riga",
+      "edit": "Modifica",
+      "done": "Fatto",
+      "editLine": "Modifica la riga {n}",
+      "doneLine": "Modifica della riga {n} completata",
+      "removeLine": "Rimuovi la riga {n}",
+      "blank": "Riga vuota",
+      "unreadable": "Questa riga non può essere visualizzata in notazione matematica. Sarà inviata così com’è scritta.",
+      "left": "Membro sinistro",
+      "right": "Membro destro (dopo =)",
+      "op": "Operazione (come −5)",
+      "addLine": "Aggiungi una riga",
+      "confirm": "Sì, usa queste righe",
+      "confirmed": "Confermato.",
+      "blocked": {
+        "none": "Non ci sono righe da usare. Aggiungine una o riprova.",
+        "oneLine": "Tieni qui una sola riga: rimuovi le altre.",
+        "tooMany": "Ci sono più di {max} righe. Rimuovine alcune prima di confermare.",
+        "tooLong": "Una riga è troppo lunga da controllare (al massimo {chars} caratteri per lato). Accorciala."
+      }
+    },
+    "error": {
+      "unclear": "Qui non si è potuta leggere alcuna matematica. Riprova con una scrittura più chiara oppure digitala.",
+      "unavailable": "La lettura non è disponibile al momento. Digitala invece, oppure riprova più tardi.",
+      "too_large": "Questa immagine è troppo grande da inviare. Ritagliala più piccola oppure digitala.",
+      "bad_image": "Non è stato possibile leggere questa immagine. Usa una foto PNG, JPEG o WebP, oppure digitala.",
+      "rate_limited": "Troppe richieste proprio ora. Riprova tra {seconds} secondi oppure digitala.",
+      "image": "Non è stato possibile preparare l’immagine. Riprova oppure digitala.",
+      "open": "Non è stato possibile aprire questa foto. Usa una foto PNG, JPEG o WebP, oppure digitala."
+    }
+  },
+  "common": {
+    "grade": "Classe {grade}",
+    "grades": "Classi {from}–{to}",
+    "loading": "Caricamento…",
+    "loadError": "Non è stato possibile caricare questo contenuto.",
+    "retry": "Riprova",
+    "retryIn": "Riprova tra {seconds} s",
+    "rateLimited": "Troppe richieste in questo momento. Attendi un momento.",
+    "rateLimitedFor": "Troppe richieste in questo momento. Attendi {seconds} secondi.",
+    "machineTranslated": "tradotto automaticamente",
+    "newTab": "(si apre in una nuova scheda)"
+  },
+  "topic": {
+    "allTopics": "Tutti gli argomenti",
+    "printOutline": "Stampa la traccia della lezione",
+    "servedInEnglish": "Mostrato in inglese: non ancora tradotto",
+    "onThisPage": "In questa pagina",
+    "sections": {
+      "idea": "L’idea",
+      "refresh": "Ripassa prima",
+      "example": "Esempio svolto",
+      "mistakes": "Errori comuni",
+      "questions": "Domande degli studenti",
+      "outline": "Traccia della lezione"
+    },
+    "idea": "L’idea",
+    "whyItWorks": "Perché funziona",
+    "textUnavailable": "Questa spiegazione non è ancora disponibile.",
+    "refreshFirst": "Ripassa prima:",
+    "exampleOf": "Esempio svolto {n} di {total}",
+    "previousExample": "Esempio svolto precedente",
+    "nextExample": "Esempio svolto successivo",
+    "exampleLabel": "Esempio svolto {n}",
+    "kind": {
+      "solve": "Risolvi",
+      "simplify": "Semplifica",
+      "evaluate": "Calcola"
+    },
+    "checkedBadge": "Ogni passaggio controllato da un motore matematico",
+    "tapLine": "tocca una riga per vedere perché funziona",
+    "check": "controllo:",
+    "checkHolds": "è vero",
+    "explanationStyle": "Stile della spiegazione",
+    "modes": {
+      "why": "Perché?",
+      "another": "Un altro modo",
+      "visual": "Figura"
+    },
+    "stepStart": "Passaggio {n} · inizio",
+    "stepWithOp": "Passaggio {n} · {op}",
+    "step": "Passaggio {n}",
+    "explanationUnavailable": "La spiegazione di questo passaggio non è disponibile. Il passaggio stesso è controllato.",
+    "countersKey": "I gettoni gialli valgono +1, i gettoni blu scuro valgono −1.",
+    "aiLabel": "scritto con AI · matematica controllata da un motore matematico",
+    "checkedLabel": "matematica controllata da un motore matematico",
+    "previousStep": "Passaggio precedente",
+    "nextStep": "Passaggio successivo",
+    "mistakesHeading": "Dove gli studenti spesso sbagliano",
+    "studentWrites": "lo studente scrive",
+    "whyItFeelsRight": "Perché sembra giusto.",
+    "ask": "Chiedi:",
+    "questionsHeading": "Domande degli studenti",
+    "outlineHeading": "Traccia della lezione",
+    "outlineTotal": "Circa {minutes} minuti · adatta liberamente",
+    "outlineTime": "{from}–{to} min",
+    "akeliusHeading": "La lezione Akelius Math corrispondente",
+    "akeliusLesson": "{title} (classe {grade})",
+    "tryYourself": "Prova prima tu questi problemi"
+  },
+  "practice": {
+    "noneYet": "Non ci sono ancora esercizi di pratica.",
+    "hintsHeading": "Suggerimenti, quando li vuoi",
+    "startOver": "Ricomincia",
+    "hidden": "(non aperto)",
+    "rung": {
+      "goal": "L’obiettivo",
+      "information": "Che cosa ti serve",
+      "computation": "Il calcolo",
+      "answer": "La risposta"
+    },
+    "showNextHint": "Mostra il prossimo suggerimento",
+    "showAnswer": "Mostra la risposta",
+    "doneNote": "Confronta con il tuo svolgimento. Vuoi il ragionamento?",
+    "openExample": "Apri l’esempio svolto.",
+    "allFollow": "Ogni riga segue da quella precedente.",
+    "final": {
+      "correct": "E l’ultima riga è la risposta.",
+      "equivalent_not_simplified": "L’ultima riga è corretta, ma non è ancora semplificata.",
+      "wrong": "Ma l’ultima riga non è ancora la risposta."
+    },
+    "lineDoesntFollow": "La riga {n} non segue dalla riga precedente.",
+    "badReason": {
+      "unparsable": "Non è stato possibile leggerla come espressione matematica.",
+      "false_equality": "I suoi due membri non sono uguali.",
+      "not_equivalent": "Non è uguale alla riga precedente.",
+      "unsupported": "Usa matematica che il controllo non copre."
+    },
+    "status": {
+      "unclear": "Non è stato possibile controllare lo svolgimento.",
+      "out_of_scope": "Questo svolgimento è fuori da ciò che il controllo copre."
+    },
+    "yourLines": "Il tuo svolgimento",
+    "header": "Problema {n} di {total} · solo per te, non viene registrato nulla",
+    "backToTopic": "Torna a {topic}",
+    "workingLabel": "Il tuo svolgimento",
+    "workingHint": "Viene inviato solo quando premi Controlla il mio svolgimento. Non viene salvato nulla.",
+    "check": "Controlla il mio svolgimento",
+    "checking": "Controllo in corso…",
+    "needWorking": "Prima scrivi o digita almeno una riga.",
+    "sourceLabel": "Fonte:"
+  },
+  "mistake": {
+    "title": "Uno studente ha scritto questo…",
+    "intro": "Scrivi il problema e la risposta del tuo studente. Il coach trova il motivo probabile e suggerisce che cosa chiedere.",
+    "topicLegend": "argomento",
+    "problemLabel": "Il problema",
+    "problemHint": "Scrivi le frazioni con una barra, come 2/5. Appariranno come le scriveresti tu.",
+    "answerLabel": "Che cosa ha risposto il tuo studente",
+    "workingLabel": "Il suo procedimento (facoltativo)",
+    "privacy": "Per favore, non scrivere i nomi degli studenti. Qui non viene salvato nulla.",
+    "explain": "Spiega questo",
+    "explaining": "Lo sto esaminando…",
+    "needProblem": "Aggiungi prima il problema.",
+    "needAnswer": "Aggiungi la risposta del tuo studente.",
+    "likelyReason": "motivo probabile",
+    "looksLikeSlip": "sembra una svista",
+    "slipTitle": "Una svista, non un fraintendimento.",
+    "ruleBadge": "controllato: questa regola dà esattamente la sua risposta",
+    "aiBadge": "suggerito dall’IA · matematica controllata da un motore matematico",
+    "whatTheyWrote": "che cosa ha scritto",
+    "workedOut": "la risposta, svolta",
+    "barCaption": "La risposta come modello a barre.",
+    "whatToSay": "Che cosa potresti dire",
+    "say": {
+      "ask": "chiedi",
+      "nudge": "dai un suggerimento",
+      "tell": "se serve"
+    },
+    "tryNext": "prova ora con il tuo studente",
+    "fromTopic": "dall’argomento {topic}",
+    "right": "Il tuo studente ha ragione.",
+    "correct": "La sua risposta è corretta.",
+    "notSimplified": "È la stessa quantità, solo non semplificata. Se in classe scrivete le risposte in forma ridotta ai minimi termini, chiedi come potrebbe semplificarla.",
+    "sameAmount": "La sua risposta e la risposta semplificata",
+    "notSure": "non si può sapere da una sola risposta",
+    "askHow": "Chiedi come ci è arrivato.",
+    "possibilities": "{count, plural, one {una possibilità} many {# possibilità} other {# possibilità}}",
+    "possibly": "Forse",
+    "or": "Oppure",
+    "outOfScope": "Questo caso è fuori da ciò che il coach tratta.",
+    "reason": {
+      "problem_unreadable": "Il problema non è stato letto come matematica. Controllalo e riprova.",
+      "answer_unreadable": "La risposta non è stata letta come matematica. Controllala e riprova.",
+      "unsupported": "Questo tipo di matematica non è ancora trattato.",
+      "timeout": "Ci ha messo troppo tempo a svolgerlo. Riprova.",
+      "ai_unavailable": "Il servizio di spiegazione non è disponibile in questo momento. Il controllo matematico sopra resta valido.",
+      "ai_unclear": "Il coach non ha potuto capirlo solo da questa risposta.",
+      "ai_out_of_scope": "Il coach ha trovato questo caso fuori dagli argomenti che tratta.",
+      "ai_unverified_math": "La spiegazione non ha potuto essere controllata dal motore matematico, quindi non viene mostrata. La matematica sopra è controllata.",
+      "math_error": "Il motore matematico non è riuscito a svolgerlo. Controlla i dati inseriti e riprova."
+    },
+    "tryAnother": "Prova un’altra risposta",
+    "resultHeading": "Risultato",
+    "reasonUnavailable": "Il motivo probabile non è disponibile."
+  }
+}

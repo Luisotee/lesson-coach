@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "hi",
+  "title": "ऋणात्मक संख्याएँ",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "संख्या रेखा और विपरीत संख्याओं का उपयोग करके ऋणात्मक संख्याओं का जोड़, घटाव और गुणा करें।",
+  "idea": "ऋणात्मक संख्या शून्य से कम होती है। संख्या रेखा पर, `-3` शून्य से तीन कदम बाएँ है, जबकि `3` तीन कदम दाएँ है। वे विपरीत हैं क्योंकि वे शून्य से समान दूरी पर, अलग-अलग ओर हैं।\n\nधनात्मक संख्या जोड़ने पर हम दाएँ जाते हैं। ऋणात्मक संख्या जोड़ने पर हम बाएँ जाते हैं। किसी संख्या को घटाने पर, उसे जोड़ने की उल्टी दिशा में जाते हैं, इसलिए ऋणात्मक संख्या घटाने पर हम दाएँ जाते हैं। जैसे, `5 - (-3)` बन जाता है `5 + 3`।\n\nजब अलग-अलग चिह्नों वाली संख्याएँ जोड़ी जाती हैं, तो चिह्न उल्टी दिशाओं में खींचते हैं। उत्तर का चिह्न उस संख्या का होता है जो शून्य से अधिक दूर है, और उसका मान दोनों मानों के अंतर के बराबर होता है। इसलिए `-7 + 4` बन जाता है `-(7 - 4)`।",
+  "why_it_works": "घटाव का अर्थ दो संख्याओं के बीच की दूरी हो सकता है। `-3` से `5` तक का अंतर, `-3` से शून्य तक और फिर शून्य से `5` तक के कदमों को शामिल करता है। इसलिए ऋणात्मक संख्या घटाना, उसके विपरीत को जोड़ने जैसा है: `5 - (-3)` बन जाता है `5 + 3`।\n\nगुणा में, एक पैटर्न चिह्न के नियम को समझाता है। `3*(-2)`, `2*(-2)`, `1*(-2)`, और `0*(-2)` में पहला गुणनखंड एक-एक कम होता है, तो उत्तर दो-दो बढ़ता है। पैटर्न को आगे बढ़ाने पर ऋणात्मक को ऋणात्मक से गुणा करने पर धनात्मक उत्तर मिलते हैं।\n\nइसलिए `(-4)*(-6)` बन जाता है `4*6`। ऋणात्मक गुणा ऋणात्मक धनात्मक होता है क्योंकि गुणा का पैटर्न लगातार उसी तरह चलते रहना चाहिए।",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "हल कीजिए:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "व्यंजक में घटाने का चिह्न और ऋण चिह्न है। इन्हें अलग रखें: यह `5` में से `-3` घटाने को कहता है।",
+            "another_way": "`-3` को शून्य से बाईं ओर 3 कदम समझें। व्यंजक `5 - (-3)` `-3` से `5` तक की दूरी पूछता है।",
+            "visual": "संख्या रेखा पर, `-3` को शून्य के बाईं ओर और `5` को शून्य के दाईं ओर चिह्नित करें।"
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "किसी ऋणात्मक संख्या को घटाना, ऋणात्मक संख्या जोड़ने की उलटी दिशा में ले जाता है, इसलिए यह दाईं ओर जाता है। इसलिए `5 - (-3)` `5 + 3` बन जाता है।",
+            "another_way": "ऋण हटाने का प्रभाव लाभ पाने जैसा होता है। इसलिए `-3` घटाना, `3` जोड़ने जैसी ही चाल है।",
+            "visual": "संख्या रेखा पर `5` से शुरू करें, फिर दाईं ओर `3` कदम की चाल दिखाएँ।"
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "फिर से लिखने के बाद, गणना साधारण जोड़ है। `5 + 3` `8` है, इसलिए मूल व्यंजक का मान `8` है।",
+            "another_way": "संख्या रेखा पर, `5` से दाईं ओर `3` कदम चलने पर `8` पर पहुँचते हैं। `-3` से `5` तक की दूरी भी `8` कदम है।",
+            "visual": "`5` से दाईं ओर की चाल संख्या रेखा पर `8` पर समाप्त होती है।"
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "हल कीजिए:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "व्यंजक `-7 + 4` अलग-अलग चिह्नों वाली संख्याओं को जोड़ता है। यह रस्साकशी जैसा है: `-7` शून्य से `4` की तुलना में अधिक दूर है, इसलिए परिणाम ऋणात्मक ही रहेगा।",
+            "another_way": "`-7` से शुरू करें और `4` जोड़ने के लिए दाईं ओर `4` कदम चलें। यह चलना शून्य की ओर जाता है, पर उसे पार नहीं करता।",
+            "visual": "संख्या रेखा पर, `-7` से शुरू करें और दाईं ओर `4` कदम बनाइए।"
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "क्योंकि `7`, `4` से बड़ा है, ऋणात्मक चिह्न बनाए रखें और परिमाणों की तुलना करें। इसलिए `-7 + 4`, `-(7 - 4)` बन जाता है।",
+            "another_way": "`-7` को बाईं ओर खिंचाव और `4` को दाईं ओर खिंचाव मानें। बचा हुआ खिंचाव बाईं ओर है, जिसका परिमाण `7 - 4` है।",
+            "visual": "संख्या रेखा पर, `7` का बायाँ खिंचाव और `4` का दायाँ खिंचाव मिलकर `7 - 4` का बायाँ खिंचाव छोड़ते हैं।"
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "रस्साकशी के बाद बचा परिमाण `3` है, और ऋणात्मक चिह्न दिखाता है कि दिशा शून्य के बाईं ओर है। इसलिए उत्तर `-3` है।",
+            "another_way": "`-7` से, दाईं ओर `4` कदम चलने पर `-3` पर पहुँचते हैं। यह सरलीकृत परिणाम से मेल खाता है।",
+            "visual": "संख्या रेखा पर, तीर `-3` पर समाप्त होता है, जो शून्य से तीन कदम बाईं ओर है।"
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "हल कीजिए:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "दोनों गुणनखंड ऋणात्मक हैं। ऋणात्मक को ऋणात्मक से गुणा करने पर धनात्मक मिलता है, इसलिए गुणनफल को ऋण चिह्नों के बिना फिर से लिखा जा सकता है।",
+            "another_way": "पैटर्न का विचार प्रयोग करें: ऋणात्मक से गुणा करने पर दिशा पलटती है, और ऐसा दो बार करने पर धनात्मक गुणनफल मिलता है।",
+            "visual": "संख्या रेखा पर, `(-4)*(-6)` बराबर ऋणात्मक छलाँगों को ऋणात्मक बार लेने को दिखाता है, जिससे दिशा पलटकर दाईं ओर हो जाती है।"
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "चिह्न तय हो जाने के बाद, केवल परिमाणों को गुणा किया जाता है। पंक्ति `4*6` गुणनखंडों के दूरी वाले भागों को रखती है।",
+            "another_way": "दो ऋणात्मक चिह्नों के गुणनफल को धनात्मक बना देने के बाद, छह के चार समूहों के बारे में सोचिए।",
+            "visual": "संख्या रेखा पर, `4*6` शून्य से दाईं ओर छह की 4 बराबर छलाँगें दिखाता है।"
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "गुणा पूरा हो गया है: `4*6` का मान `24` है। इसलिए `24` मूल व्यंजक का मान है।",
+            "another_way": "मूल व्यंजक धनात्मक गुणनफल बन गया, और वह गुणनफल `24` के बराबर है।",
+            "visual": "संख्या रेखा पर, छलाँगें शून्य के दाईं ओर `24` पर समाप्त होती हैं।"
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "ऋणात्मक संख्या घटाने से उत्तर छोटा हो जाता है।",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "घटाने से आमतौर पर चीजें छोटी होती हैं, और विद्यार्थी दो ऋण चिह्न देखकर ऋण ही रखता है।",
+      "what_to_say": {
+        "probe": "आप संख्या रेखा पर कहाँ से शुरू करते हैं, और `-3` घटाने पर आप किस दिशा में बढ़ते हैं?",
+        "nudge": "`5` और `-3` के बीच अंतर कितना है? `-3` से `5` तक कदम गिनिए।",
+        "tell": "ऋणात्मक संख्या घटाना उसके विपरीत को जोड़ने जैसा है, इसलिए `5 - (-3)` यानी `5 + 3` है, जो `8` है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "8"
+      },
+      "source_quote": "कुछ विद्यार्थी मानते हैं कि ऋणात्मक संख्या घटाने से उत्तर छोटा हो जाता है।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "ऋणात्मक गुणा ऋणात्मक ऋणात्मक होता है।",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "दोनों संख्याएँ ऋणात्मक हैं, इसलिए स्वाभाविक लगता है कि उत्तर भी ऋणात्मक होगा।",
+      "what_to_say": {
+        "probe": "`1*(-3)` और `0*(-3)` क्या हैं? जब पहली संख्या हर बार 1 कम होती है, तो उत्तर में क्या होता है?",
+        "nudge": "क्रम `1*(-3)`, `0*(-3)`, `-1*(-3)` को आगे बढ़ाइए और देखिए उत्तर किस दिशा में जाते हैं।",
+        "tell": "क्रम हर कदम पर 3 बढ़ता है, इसलिए `(-2)*(-3)` का मान `6` है। ऋणात्मक गुणा ऋणात्मक धनात्मक होता है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "20"
+      },
+      "source_quote": "कुछ विद्यार्थी मानते हैं कि ऋणात्मक गुणा ऋणात्मक ऋणात्मक होता है।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "अलग-अलग चिह्न वाली संख्याएँ जोड़ते समय, उनके परिमाण जोड़कर पहला चिह्न रख लें।",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "विद्यार्थी ने सीखा है कि जोड़ने से संख्याओं का परिमाण बढ़ता है, और पहला चिह्न वही है जो पहले दिखता है।",
+      "what_to_say": {
+        "probe": "यदि आप `-5` से शुरू करते हैं और तीन कदम चलते हैं, तो आप किस दिशा में चलते हैं?",
+        "nudge": "`-5` और `3` के बीच रस्साकशी की कल्पना कीजिए। कौन-सा पक्ष जीतता है, और कितना?",
+        "tell": "धनात्मक 3 शून्य की ओर वापस खींचता है, इसलिए `-5 + 3` का मान `-2` है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "-5"
+      },
+      "source_quote": "कुछ विद्यार्थी परिमाण जोड़ते हैं और पहली संख्या का चिह्न रख लेते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "हमेशा छोटी संख्या को बड़ी संख्या में से घटाते हैं।",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "पूर्ण संख्याओं में विद्यार्थियों को बताया गया था कि छोटी संख्या में से बड़ी संख्या नहीं घटा सकते।",
+      "what_to_say": {
+        "probe": "यदि आप `3` से शुरू करके बाईं ओर सात कदम चलते हैं, तो कहाँ पहुँचते हैं?",
+        "nudge": "क्या `3 - 7` वही है जो `7 - 3` है? दोनों को संख्या रेखा पर करके देखिए।",
+        "tell": "तीन से बाईं ओर सात कदम चलने पर `-4` पर पहुँचते हैं, इसलिए `3 - 7` का मान `-4` है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "-7"
+      },
+      "source_quote": "कुछ विद्यार्थी हमेशा छोटी संख्या को बड़ी संख्या में से घटाते हैं।"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "दो ऋणात्मक मिलकर धनात्मक बनाते हैं, जोड़ते समय भी।",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "नियम \"दो ऋणात्मक मिलकर धनात्मक बनाते हैं\" छोटा और याद रखने योग्य है, इसलिए इसे हर दो ऋण चिह्नों पर लगा दिया जाता है।",
+      "what_to_say": {
+        "probe": "यदि आप पर 4 बकाया है और फिर 3 और बकाया हो जाते हैं, तो कुल कितना बकाया है?",
+        "nudge": "संख्या रेखा पर `-4` से शुरू कीजिए और `-3` जोड़िए। आप किस दिशा में बढ़ते हैं?",
+        "tell": "ऋणात्मक संख्या जोड़ने पर बाईं ओर बढ़ते हैं, इसलिए `-4 + (-3)` का मान `-7` है। चिह्न का नियम गुणा और भाग के लिए है।"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "हल कीजिए:",
+        "answer": "-8"
+      },
+      "source_quote": "कुछ विद्यार्थी \"दो ऋणात्मक मिलकर धनात्मक बनाते हैं\" को जोड़ में भी लागू करते हैं।"
+    }
+  ],
+  "questions": [
+    {
+      "question": "ऋणात्मक संख्या घटाने पर हम दाएँ क्यों जाते हैं?",
+      "answer": "घटाना, जोड़ने की उल्टी दिशा में चलना है। ऋणात्मक जोड़ने पर हम बाएँ जाते हैं, इसलिए ऋणात्मक घटाने पर हम दाएँ जाते हैं। जैसे, `5 - (-3)` बन जाता है `5 + 3`।"
+    },
+    {
+      "question": "क्या दो ऋणात्मक हमेशा धनात्मक बनाते हैं?",
+      "answer": "नहीं। यह नियम गुणा और भाग के लिए है। जोड़ में दिशा महत्त्वपूर्ण होती है। दो ऋणात्मक जोड़ने पर संख्या रेखा पर और बाएँ जाते हैं।"
+    },
+    {
+      "question": "`-7 + 4` ऋणात्मक क्यों है?",
+      "answer": "संख्याएँ उल्टी दिशाओं में खींचती हैं। `-7`, `4` की तुलना में शून्य से अधिक दूर है, इसलिए उत्तर ऋणात्मक चिह्न रखता है। `-7 + 4` बन जाता है `-(7 - 4)`।"
+    },
+    {
+      "question": "ऋणात्मक गुणा ऋणात्मक धनात्मक क्यों होता है?",
+      "answer": "गुणा का पैटर्न जारी रहना चाहिए। जब एक गुणनखंड शून्य से नीचे जाता है, तो उत्तर समान मात्रा से बढ़ते रहते हैं, जिससे धनात्मक उत्तर मिलते हैं।"
+    },
+    {
+      "question": "क्या `3 - 7` का उत्तर हो सकता है?",
+      "answer": "हाँ। `3` से शुरू करें और संख्या रेखा पर सात कदम बाएँ जाएँ। जहाँ पहुँचते हैं, वह बिंदु शून्य से कम है।"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "ऋणात्मक संख्याओं को स्थान दें",
+      "activity": "बीच में शून्य रखकर संख्या रेखा बनाएँ। धनात्मक और ऋणात्मक संख्याओं को शून्य से समान कदमों पर रखें। `-3` और `3` जैसे विपरीतों पर ज़ोर दें, जो शून्य से समान दूरी पर अलग-अलग ओर होते हैं।"
+    },
+    {
+      "minutes": 10,
+      "title": "जोड़ को गति के रूप में दिखाएँ",
+      "activity": "संख्या रेखा से दिखाएँ कि धनात्मक जोड़ने पर दाएँ जाते हैं और ऋणात्मक जोड़ने पर बाएँ जाते हैं। अलग-अलग चिह्नों वाला उदाहरण शामिल करें और उसे रस्साकशी की तरह समझाएँ।"
+    },
+    {
+      "minutes": 10,
+      "title": "ऋणात्मक संख्याएँ घटाएँ",
+      "activity": "“घटाना” और “ऋणात्मक” कहकर क्रिया और चिह्न को अलग रखें। दिखाएँ कि घटाना, जोड़ने की उल्टी दिशा में चलना है, इसलिए `5 - (-3)` बन जाता है `5 + 3`।"
+    },
+    {
+      "minutes": 10,
+      "title": "जोड़ में अलग-अलग चिह्न",
+      "activity": "ऐसे उदाहरण दिखाएँ जहाँ चिह्न उल्टी दिशाओं में खींचते हैं। उत्तर उस संख्या का चिह्न लेता है जो शून्य से अधिक दूर है, और मान दोनों मानों का अंतर होता है। `-7 + 4` बन जाता है `-(7 - 4)` का उपयोग करें।"
+    },
+    {
+      "minutes": 10,
+      "title": "पैटर्न से गुणा करें",
+      "activity": "धनात्मक गुणनखंडों से शून्य तक और उससे नीचे जाने वाला पैटर्न दिखाएँ। इससे समझाएँ कि ऋणात्मक गुणा ऋणात्मक धनात्मक क्यों होता है, फिर इसे `(-4)*(-6)` के `4*6` बनने से जोड़ें।"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `-7 - (-4)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "किसी ऋणात्मक संख्या को घटाना उसके विपरीत को जोड़ने के समान है।"
+        },
+        {
+          "rung": "computation",
+          "text": "इसे `-7 + 4` के रूप में लिखें और `-7` से 4 कदम दाईं ओर चलें।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `9 - (-15)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "किसी ऋणात्मक संख्या को घटाना उसके विपरीत को जोड़ने के समान है।"
+        },
+        {
+          "rung": "computation",
+          "text": "इसे `9 + 15` के रूप में लिखें।"
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `15 + (-32)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "जब चिह्न अलग हों, तो संख्याओं के परिमाण घटाएँ और जो संख्या शून्य से अधिक दूर है, उसका चिह्न रखें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` is `17`, और `-32`, `15` की तुलना में शून्य से अधिक दूर है।"
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `-31 + (-19)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "जब दोनों संख्याएँ ऋणात्मक हों, तो उनके परिमाण जोड़ें और ऋणात्मक चिह्न रखें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` is `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `-1*(-14)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "ऋणात्मक को ऋणात्मक से गुणा करने पर धनात्मक मिलता है।"
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` is `14`, और चिह्न समान हैं।"
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `-9*3` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "जब दोनों चिह्न अलग हों, तो गुणनफल ऋणात्मक होता है।"
+        },
+        {
+          "rung": "computation",
+          "text": "पहले चिह्न को अनदेखा करें: `9*3` is `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `-100/(-4)` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "ऋणात्मक को ऋणात्मक से भाग देने पर धनात्मक मिलता है, ठीक गुणा की तरह।"
+        },
+        {
+          "rung": "computation",
+          "text": "पहले चिह्नों को अनदेखा करें: `100/4` is `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "हल कीजिए:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "हमें `5*(-6) + 7*(-2) - 3` का मान चाहिए।"
+        },
+        {
+          "rung": "information",
+          "text": "जोड़ने और घटाने से पहले गुणा करें।"
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` is `-30` और `7*(-2)` is `-14`, इसलिए हमें `-30 - 14 - 3` मिलता है।"
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

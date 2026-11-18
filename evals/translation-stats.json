@@ -1,0 +1,645 @@
+{
+  "fr": {
+    "lang": "fr",
+    "shipped": true,
+    "usd": 9.090584,
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 2
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 2669,
+      "cached_tokens": 0,
+      "completion_tokens": 636,
+      "reasoning_tokens": 0,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {},
+      "judged_items": 9,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.032425
+  },
+  "ar": {
+    "lang": "ar",
+    "shipped": true,
+    "usd": 2.723084,
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 4
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 10582,
+      "cached_tokens": 3584,
+      "completion_tokens": 1904,
+      "reasoning_tokens": 0,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {
+        "outline[3].activity": 1
+      },
+      "judged_items": 29,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.093902
+  },
+  "de": {
+    "lang": "de",
+    "shipped": true,
+    "usd": 1.237291,
+    "stats": {
+      "calls": {
+        "generate": 36,
+        "judge": 66
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 108257,
+      "cached_tokens": 9472,
+      "completion_tokens": 24621,
+      "reasoning_tokens": 459,
+      "retries": 17,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 1,
+        "worked_examples[0].steps[0].explanations.visual": 1,
+        "idea": 1,
+        "misconceptions[1].belief": 1,
+        "questions[0].question": 1,
+        "outline[2].activity": 3,
+        "misconceptions[0].what_to_say.tell": 2,
+        "misconceptions[4].belief": 1,
+        "misconceptions[4].why_it_feels_right": 1,
+        "misconceptions[4].source_quote": 1,
+        "misconceptions[0].why_it_feels_right": 1,
+        "questions[1].question": 1
+      },
+      "judged_items": 371,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.237291
+  },
+  "el": {
+    "lang": "el",
+    "shipped": true,
+    "usd": 1.300551,
+    "stats": {
+      "calls": {
+        "generate": 34,
+        "judge": 58
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 112035,
+      "cached_tokens": 15872,
+      "completion_tokens": 27060,
+      "reasoning_tokens": 172,
+      "retries": 15,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "misconceptions[3].why_it_feels_right": 1,
+        "misconceptions[3].belief": 1,
+        "misconceptions[3].source_quote": 1,
+        "misconceptions[1].why_it_feels_right": 1,
+        "why_it_works": 1,
+        "questions[3].question": 1,
+        "outline[4].activity": 1,
+        "outline[2].activity": 2,
+        "worked_examples[2].steps[1].explanations.another_way": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.300551
+  },
+  "it": {
+    "lang": "it",
+    "shipped": true,
+    "usd": 2.425805,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 57
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 105015,
+      "cached_tokens": 9984,
+      "completion_tokens": 21800,
+      "reasoning_tokens": 647,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[2].explanations.visual": 1,
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "misconceptions[4].what_to_say.tell": 1,
+        "outline[4].activity": 1,
+        "why_it_works": 1,
+        "misconceptions[2].what_to_say.nudge": 1,
+        "outline[2].activity": 2,
+        "misconceptions[4].what_to_say.probe": 2
+      },
+      "judged_items": 366,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.134147
+  },
+  "pt": {
+    "lang": "pt",
+    "shipped": true,
+    "usd": 1.126816,
+    "stats": {
+      "calls": {
+        "generate": 32,
+        "judge": 60
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 109868,
+      "cached_tokens": 17152,
+      "completion_tokens": 21822,
+      "reasoning_tokens": 839,
+      "retries": 13,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 1,
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "outline[4].activity": 1,
+        "misconceptions[3].why_it_feels_right": 1,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "practice[0].hints[1].text": 2,
+        "questions[5].answer": 1,
+        "misconceptions[0].belief": 1,
+        "misconceptions[4].what_to_say.probe": 2,
+        "practice[1].hints[1].text": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.126816
+  },
+  "pt-BR": {
+    "lang": "pt-BR",
+    "shipped": true,
+    "usd": 1.135488,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 59
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 98940,
+      "cached_tokens": 6656,
+      "completion_tokens": 22358,
+      "reasoning_tokens": 1307,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.why": 2,
+        "worked_examples[1].steps[2].explanations.visual": 1,
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "misconceptions[3].belief": 1,
+        "misconceptions[3].source_quote": 3,
+        "questions[1].question": 1,
+        "why_it_works": 2,
+        "misconceptions[4].what_to_say.probe": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.135488
+  },
+  "ru": {
+    "lang": "ru",
+    "shipped": true,
+    "usd": 1.134675,
+    "stats": {
+      "calls": {
+        "generate": 32,
+        "judge": 51
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 94533,
+      "cached_tokens": 2560,
+      "completion_tokens": 22451,
+      "reasoning_tokens": 276,
+      "retries": 13,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "questions[4].question": 1,
+        "misconceptions[3].belief": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "misconceptions[1].why_it_feels_right": 1,
+        "idea": 2,
+        "why_it_works": 1,
+        "outline[1].title": 2,
+        "worked_examples[2].steps[1].explanations.another_way": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.134675
+  },
+  "es": {
+    "lang": "es",
+    "shipped": true,
+    "usd": 1.009966,
+    "stats": {
+      "calls": {
+        "generate": 32,
+        "judge": 50
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 92402,
+      "cached_tokens": 9472,
+      "completion_tokens": 19686,
+      "reasoning_tokens": 46,
+      "retries": 13,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "misconceptions[2].what_to_say.nudge": 2,
+        "why_it_works": 2,
+        "misconceptions[4].what_to_say.probe": 1,
+        "idea": 1
+      },
+      "judged_items": 364,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.009966
+  },
+  "sv": {
+    "lang": "sv",
+    "shipped": true,
+    "usd": 1.095261,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 51
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 96669,
+      "cached_tokens": 8192,
+      "completion_tokens": 21626,
+      "reasoning_tokens": 1002,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.why": 1,
+        "misconceptions[3].why_it_feels_right": 2,
+        "practice[1].hints[1].text": 1,
+        "practice[2].hints[1].text": 1,
+        "misconceptions[2].why_it_feels_right": 1,
+        "misconceptions[3].source_quote": 1,
+        "questions[4].answer": 1,
+        "practice[4].hints[1].text": 1,
+        "practice[5].hints[1].text": 1,
+        "outline[2].activity": 2
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.095261
+  },
+  "pl": {
+    "lang": "pl",
+    "shipped": true,
+    "usd": 1.425903,
+    "stats": {
+      "calls": {
+        "generate": 36,
+        "judge": 70
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 121767,
+      "cached_tokens": 4096,
+      "completion_tokens": 27850,
+      "reasoning_tokens": 550,
+      "retries": 17,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 1,
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "practice[0].hints[1].text": 1,
+        "worked_examples[1].steps[0].explanations.visual": 1,
+        "why_it_works": 2,
+        "questions[0].answer": 3,
+        "outline[5].activity": 1,
+        "misconceptions[1].what_to_say.nudge": 1,
+        "misconceptions[1].what_to_say.tell": 1,
+        "outline[2].activity": 1,
+        "misconceptions[2].what_to_say.nudge": 2,
+        "misconceptions[4].what_to_say.probe": 1,
+        "misconceptions[0].what_to_say.probe": 1,
+        "practice[1].hints[2].text": 1,
+        "practice[2].hints[2].text": 1,
+        "practice[4].hints[2].text": 1,
+        "practice[5].hints[2].text": 1,
+        "practice[6].hints[2].text": 1,
+        "practice[7].hints[2].text": 1
+      },
+      "judged_items": 379,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.425903
+  },
+  "kk": {
+    "lang": "kk",
+    "shipped": true,
+    "usd": 2.614193,
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 4
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 8508,
+      "cached_tokens": 1792,
+      "completion_tokens": 2765,
+      "reasoning_tokens": 1024,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {
+        "misconceptions[2].why_it_feels_right": 1
+      },
+      "judged_items": 31,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.117426
+  },
+  "fa": {
+    "lang": "fa",
+    "shipped": true,
+    "usd": 1.2577,
+    "stats": {
+      "calls": {
+        "generate": 34,
+        "judge": 68
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 116096,
+      "cached_tokens": 16640,
+      "completion_tokens": 25070,
+      "reasoning_tokens": 1079,
+      "retries": 15,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[1].explanations.visual": 2,
+        "practice[0].hints[1].text": 1,
+        "questions[2].answer": 1,
+        "misconceptions[3].why_it_feels_right": 1,
+        "outline[2].activity": 1,
+        "practice[3].hints[1].text": 2,
+        "practice[3].hints[2].text": 3,
+        "why_it_works": 1,
+        "idea": 1,
+        "misconceptions[1].why_it_feels_right": 1,
+        "misconceptions[4].what_to_say.probe": 2,
+        "questions[4].answer": 1
+      },
+      "judged_items": 373,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.2577
+  },
+  "uk": {
+    "lang": "uk",
+    "shipped": false,
+    "usd": 1.218398,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 55
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 104944,
+      "cached_tokens": 13056,
+      "completion_tokens": 25081,
+      "reasoning_tokens": 97,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "why_it_works": 2,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "misconceptions[1].belief": 1,
+        "outline[2].activity": 2,
+        "misconceptions[0].what_to_say.probe": 1,
+        "misconceptions[0].what_to_say.nudge": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "misconceptions[1].what_to_say.tell": 1,
+        "misconceptions[2].what_to_say.tell": 1,
+        "misconceptions[3].what_to_say.nudge": 1,
+        "misconceptions[1].what_to_say.probe": 1
+      },
+      "judged_items": 370,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.218398,
+    "pruned": "its UI strings did not ship"
+  },
+  "tr": {
+    "lang": "tr",
+    "shipped": true,
+    "usd": 1.262734,
+    "stats": {
+      "calls": {
+        "generate": 35,
+        "judge": 65
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 116432,
+      "cached_tokens": 13568,
+      "completion_tokens": 24721,
+      "reasoning_tokens": 195,
+      "retries": 16,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.why": 2,
+        "practice[0].hints[1].text": 2,
+        "worked_examples[2].steps[2].explanations.why": 2,
+        "misconceptions[3].why_it_feels_right": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "practice[1].hints[1].text": 1,
+        "questions[4].question": 1,
+        "why_it_works": 1,
+        "practice[4].hints[1].text": 1,
+        "idea": 1,
+        "misconceptions[4].belief": 1,
+        "misconceptions[4].what_to_say.tell": 1,
+        "questions[4].answer": 1
+      },
+      "judged_items": 372,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.262734
+  },
+  "ur": {
+    "lang": "ur",
+    "shipped": true,
+    "usd": 1.409021,
+    "stats": {
+      "calls": {
+        "generate": 36,
+        "judge": 74
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 126259,
+      "cached_tokens": 14592,
+      "completion_tokens": 28113,
+      "reasoning_tokens": 2649,
+      "retries": 17,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.why": 1,
+        "misconceptions[3].why_it_feels_right": 2,
+        "worked_examples[0].steps[0].explanations.why": 1,
+        "practice[0].hints[1].text": 1,
+        "practice[1].hints[1].text": 1,
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "practice[7].hints[1].text": 1,
+        "questions[4].question": 1,
+        "why_it_works": 1,
+        "practice[6].hints[1].text": 2,
+        "misconceptions[1].belief": 2,
+        "questions[4].answer": 2,
+        "misconceptions[0].why_it_feels_right": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "misconceptions[2].belief": 1,
+        "misconceptions[2].why_it_feels_right": 1,
+        "misconceptions[2].source_quote": 2
+      },
+      "judged_items": 378,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.409021
+  },
+  "hi": {
+    "lang": "hi",
+    "shipped": true,
+    "usd": 1.147166,
+    "stats": {
+      "calls": {
+        "generate": 33,
+        "judge": 55
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 102490,
+      "cached_tokens": 10752,
+      "completion_tokens": 22770,
+      "reasoning_tokens": 442,
+      "retries": 14,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "worked_examples[2].steps[0].explanations.another_way": 1,
+        "misconceptions[2].what_to_say.probe": 3,
+        "questions[5].answer": 1,
+        "practice[0].hints[1].text": 1,
+        "misconceptions[2].belief": 1,
+        "questions[1].question": 1,
+        "misconceptions[4].what_to_say.probe": 1
+      },
+      "judged_items": 366,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.147166
+  },
+  "bn": {
+    "lang": "bn",
+    "shipped": true,
+    "usd": 1.096021,
+    "stats": {
+      "calls": {
+        "generate": 29,
+        "judge": 49
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 100337,
+      "cached_tokens": 15872,
+      "completion_tokens": 22192,
+      "reasoning_tokens": 224,
+      "retries": 10,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[1].explanations.visual": 3,
+        "misconceptions[3].why_it_feels_right": 1,
+        "misconceptions[2].what_to_say.nudge": 1,
+        "why_it_works": 1,
+        "outline[2].activity": 1,
+        "misconceptions[1].why_it_feels_right": 1
+      },
+      "judged_items": 364,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.096021
+  },
+  "zh-Hans": {
+    "lang": "zh-Hans",
+    "shipped": true,
+    "usd": 1.380693,
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 4
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 7658,
+      "cached_tokens": 0,
+      "completion_tokens": 1852,
+      "reasoning_tokens": 0,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {},
+      "judged_items": 24,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.09385
+  },
+  "sw": {
+    "lang": "sw",
+    "shipped": false,
+    "usd": 1.735885,
+    "stats": {
+      "calls": {
+        "generate": 1,
+        "judge": 1
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 2300,
+      "cached_tokens": 0,
+      "completion_tokens": 711,
+      "reasoning_tokens": 0,
+      "retries": 0,
+      "samples": 0,
+      "judge_flags": {},
+      "judged_items": 12,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 0.03283,
+    "pruned": "its UI strings did not ship"
+  }
+}

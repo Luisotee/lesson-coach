@@ -37,10 +37,14 @@ export const ready = i18n
   .init({
     resources: { en: { translation: en } },
     partialBundledLanguages: true,
-    fallbackLng: DEFAULT_LANGUAGE,
+    // Codes such as pt-BR and zh-Hans are languages of their own here, so each code loads its
+    // own file; a regional code (de-AT, zh-CN) falls back to the listed language findLanguage
+    // picks, then English.
+    fallbackLng: (code: string) => [findLanguage(code).code, DEFAULT_LANGUAGE],
+    // No nonExplicitSupportedLngs: it checks only the language part, so zh-Hans would be
+    // judged by "zh", which isn't listed. Regional codes are mapped by findLanguage instead.
     supportedLngs: LANGUAGES.map((l) => l.code),
-    nonExplicitSupportedLngs: true,
-    load: 'languageOnly',
+    load: 'currentOnly',
     interpolation: { escapeValue: false },
     // The choice is a UI preference kept only in this browser; no personal data.
     detection: {
@@ -48,6 +52,7 @@ export const ready = i18n
       lookupQuerystring: 'lng',
       lookupLocalStorage: 'lesson-coach-lang',
       caches: ['localStorage'],
+      convertDetectedLanguage: (code: string) => findLanguage(code).code,
     },
     react: { useSuspense: true },
   })

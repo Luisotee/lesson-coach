@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "pl",
+  "title": "Rozwiązywanie równań liniowych",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Rozwiązuj równania liniowe, wykonując tę samą operację po obu stronach i sprawdzając wynik.",
+  "idea": "Równanie mówi, że dwa wyrażenia mają tę samą wartość. Rozwiązywanie oznacza znalezienie wartości `x`, dla której zdanie jest prawdziwe.\n\nNajważniejszym obrazem jest model wagi. Cokolwiek zrobimy z jedną stroną, musimy zrobić też z drugą. Operację można zapisać na marginesie, na przykład odejmij `6`, aby pokazać, że zmieniają się obie strony.\n\nAby zostawić samo `x`, odwracamy działania w odwrotnej kolejności. Dla `2*x + 6 = 10` odjęcie `6` od obu stron daje `2*x = 4`. Podzielenie obu stron przez `2` daje `x = 2`.\n\nJeśli są nawiasy, traktuj cały nawias jako mnożony. W `5*(x + 3) = 35` podzielenie obu stron przez `5` daje `x + 3 = 7`, a potem odjęcie `3` daje `x = 4`.",
+  "why_it_works": "Każdy krok zachowuje równość obu stron, ponieważ tę samą operację wykonujemy po obu stronach. Równanie zmienia postać, ale rozwiązanie pozostaje takie samo.\n\nDziałania odwracamy w odwrotnej kolejności. W `2*x + 6 = 10` wyrażenie z `x` pomnożono przez `2`, a potem dodano `6`. Dlatego najpierw odejmij `6`, a potem podziel przez `2`.\n\nGdy niewiadome są po obu stronach, nadal działa ten sam pomysł z wagą. W `3*x + 4 = x + 10` odjęcie `x` od obu stron daje `2*x + 4 = 10`. Potem odjęcie `4` daje `2*x = 6`, a podzielenie przez `2` daje `x = 3`.\n\nSprawdzanie działa przez podstawienie. Dla `x = 2` wyrażenie `2*2 + 6` ma wartość `10`, więc wyjściowe równanie jest prawdziwe.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Składnik `+ 6` sprawia, że `x` nie jest sam. Odejmij `6` od obu stron, aby równowaga została zachowana i dodane `6` zostało usunięte.",
+            "another_way": "Pomyśl w odwrotnej kolejności. Ponieważ `6` dodano po `2*x`, najpierw cofnij to działanie przez `-6` po obu stronach.",
+            "visual": "Waga pokazuje `2*x + 6` po jednej stronie i `10` po drugiej, a `6` usunięto z obu stron."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Teraz `2*x = 4`, więc `x` wciąż jest pomnożony przez `2`. Podziel obie strony przez `2`, aby cofnąć mnożenie i zachować równanie w równowadze.",
+            "another_way": "`2*x` oznacza 2 równe grupy po `x`. Podzielenie obu stron na `2` równe części zostawia jedną grupę `x`.",
+            "visual": "Waga pokazuje `2*x` po jednej stronie i `4` po drugiej, a obie strony podzielono na `2` równe części."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "To jest odpowiedź, bo `x` jest sam, a równanie podaje jego wartość wprost: `x = 2`.",
+            "another_way": "Sprawdź przez podstawienie: `2*2 + 6` to `10`, więc początkowe równanie jest prawdziwe.",
+            "visual": "Waga pokazuje jedno `x` po jednej stronie i `2` po drugiej, w równowadze."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Wyrażenie w nawiasie jest pomnożone przez `5`. Podzielenie obu stron przez `5` cofa to mnożenie i zachowuje równowagę równania.",
+            "another_way": "W ten sposób unikamy najpierw rozwijania nawiasu. Ponieważ cała lewa strona to `5` razy `x + 3`, podziel całość obu stron przez `5`.",
+            "visual": "Waga w równowadze pokazuje `5*(x + 3)` po jednej stronie i `35` po drugiej; obie strony są gotowe do podzielenia na `5` równych grup."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Teraz do `x` dodane jest `3`. Odjęcie `3` od obu stron cofa dodawanie i zachowuje równowagę równania.",
+            "another_way": "Pomyśl o usunięciu tego samego `3` z każdej strony wagi. Wtedy niewiadoma zostaje sama po lewej stronie.",
+            "visual": "Waga w równowadze pokazuje `x + 3` po jednej stronie i `7` po drugiej, z `3` usuniętym z obu stron."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Zmienna jest sama, więc ten wiersz podaje rozwiązanie. Wartość, dla której pierwotne równanie jest prawdziwe, to `x = 4`.",
+            "another_way": "Sprawdzenie polegałoby na podstawieniu `4` za `x` w pierwotnym równaniu i potwierdzeniu, że obie strony są równe.",
+            "visual": "Waga w równowadze pokazuje samo `x` po jednej stronie i `4` po drugiej."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Wyraz z `x` po prawej stronie usuwamy najpierw, odejmując `x` od obu stron. To zachowuje równowagę równania i zbiera wyrazy z niewiadomą razem.",
+            "another_way": "Pomyśl, że zabierasz po jednym `x` z każdej strony. Wtedy lewa strona staje się `2*x + 4`, a prawa strona nie ma już wyrazu z `x`.",
+            "visual": "Waga pokazuje `3*x + 4` oraz `x + 10`, z jednym `x` usuniętym z każdej strony."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Stałą `4` usuwamy z lewej strony, odejmując `4` od obu stron. Wtedy wyraz z `x` zostaje sam po lewej stronie.",
+            "another_way": "Ponieważ `4` dodano do `2*x`, cofnij to dodawanie odejmowaniem. Prawa strona zmienia się tak samo, aby zachować równowagę.",
+            "visual": "Waga pokazuje `2*x + 4` oraz `10`, z `4` usuniętym z obu stron."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Liczba `2` mnoży `x`, więc podziel obie strony przez `2`, aby cofnąć mnożenie. Otrzymujemy jedno `x` samo.",
+            "another_way": "`2*x` oznacza dwie równe grupy po `x`. Podział obu stron na `2` równe części pokazuje wartość jednej grupy.",
+            "visual": "Waga pokazuje `2*x` oraz `6`, podzielone na `2` równe części po każdej stronie."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "To jest odpowiedź, ponieważ `x` jest samo i pokazano jego wartość. Równanie mówi, że `x` wynosi `3`.",
+            "another_way": "Można to sprawdzić przez podstawienie w pierwotnym równaniu. Zastąpienie `x` przez `3` sprawia, że obie strony są równe.",
+            "visual": "Waga pokazuje jedno `x` w równowadze z `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Liczba może przejść na drugą stronę znaku równości i zachować swój znak.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "„Przenieś na drugą stronę” to częsty skrót, a uczeń zapomina, że przeniesienie oznacza odejmowanie.",
+      "what_to_say": {
+        "probe": "Co zrobiłeś po obu stronach równania, aby pozbyć się `+ 6`?",
+        "nudge": "Zapisz działanie na marginesie: „| -6”, i wykonaj je po obu stronach.",
+        "tell": "Odejmij 6 od obu stron: `2*x = 4`, więc `x = 2`. Podstawienie to sprawdza: `2*2 + 6` to `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Rozwiąż równanie ze względu na x:",
+        "answer": "5"
+      },
+      "source_quote": "Niektórzy uczniowie przenoszą liczbę na drugą stronę znaku równości, nie zmieniając jej znaku."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Można podzielić przez współczynnik tylko jeden wyraz jednej strony.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Uczeń skupia się na zostawieniu samego `x` i dzieli wyrazy obok niego, zapominając o reszcie strony.",
+      "what_to_say": {
+        "probe": "Gdy dzieliłeś przez dwa, co stało się z `6`?",
+        "nudge": "Podziel każdy wyraz po obu stronach przez dwa i porównaj ze swoim zapisem.",
+        "tell": "Dzielenie strony oznacza dzielenie każdego jej wyrazu: `x + 3 = 5`, więc `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Rozwiąż równanie ze względu na x:",
+        "answer": "3"
+      },
+      "source_quote": "Niektórzy uczniowie dzielą tylko jeden wyraz przez liczbę stojącą przed `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "Aby pozbyć się liczby przed `x`, trzeba ją odjąć.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Odejmowanie to pierwsze działanie odwrotne, którego uczeń się nauczył, a `3*x` wygląda jak `3` obok `x`.",
+      "what_to_say": {
+        "probe": "Co oznacza `3*x`? Jakie działanie łączy `3` i `x`?",
+        "nudge": "Sprawdź swoją odpowiedź: czy `3*9` jest równe `12`?",
+        "tell": "`3*x` oznacza 3 razy `x`, więc podziel obie strony przez 3: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Rozwiąż równanie ze względu na x:",
+        "answer": "7"
+      },
+      "source_quote": "Niektórzy uczniowie odejmują liczbę stojącą przed `x`, zamiast przez nią dzielić."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Działania wykonane na `x` można odwracać w dowolnej kolejności.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Odejmowanie liczby obok `x` to zwykle pierwszy krok, więc uczeń robi to nawet wtedy, gdy ta liczba jest wewnątrz dzielenia.",
+      "what_to_say": {
+        "probe": "W `(x + 6)/2` co dzieje się z `x` najpierw, a co na końcu?",
+        "nudge": "Dzielenie na pół wykonano na końcu. Przez co mnożysz obie strony, aby je odwrócić?",
+        "tell": "Najpierw odwróć dzielenie na pół: `x + 6 = 20`, więc `x = 14`. Sprawdzenie: `(14 + 6)/2` to `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Rozwiąż równanie ze względu na x:",
+        "answer": "11"
+      },
+      "source_quote": "Niektórzy uczniowie odwracają kroki w złej kolejności."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Liczba przed nawiasem mnoży tylko pierwszy wyraz w nawiasie.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` stoi tuż obok `x`, więc uczeń mnoży to, co jest najbliżej.",
+      "what_to_say": {
+        "probe": "Ile razy występuje składnik 3 w `5*(x + 3)`?",
+        "nudge": "Zapisz `5*(x + 3)` jako `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` i policz.",
+        "tell": "Piątka mnoży wszystko w nawiasie: `5*x + 15 = 35`, więc `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Rozwiąż równanie ze względu na x:",
+        "answer": "5"
+      },
+      "source_quote": "Niektórzy uczniowie mnożą liczbę przed nawiasem tylko przez pierwszy wyraz."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Dlaczego robimy to samo po obu stronach?",
+      "answer": "Równanie jest zrównoważone. Wykonanie tej samej operacji na równych wielkościach zachowuje ich równość, więc rozwiązanie się nie zmienia."
+    },
+    {
+      "question": "Dlaczego `+ 6` staje się odejmij `6`?",
+      "answer": "Rozwiązywanie odwraca działania. W `2*x + 6 = 10` odjęcie `6` od obu stron daje `2*x = 4`."
+    },
+    {
+      "question": "Dlaczego dzielimy przez `2`, zamiast odejmować `2`?",
+      "answer": "`2*x` oznacza `2` razy `x`. Mnożenie odwracamy przez dzielenie, więc `2*x = 4` staje się `x = 2`."
+    },
+    {
+      "question": "Co, jeśli `x` jest po obu stronach?",
+      "answer": "Użyj tego samego kroku równowagi. W `3*x + 4 = x + 10` odjęcie `x` od obu stron daje `2*x + 4 = 10`."
+    },
+    {
+      "question": "Jak nawiasy zmieniają sposób pracy?",
+      "answer": "Liczba przed nawiasem mnoży cały nawias. W `5*(x + 3) = 35` podzielenie obu stron przez `5` daje `x + 3 = 7`."
+    },
+    {
+      "question": "Skąd uczniowie mogą wiedzieć, czy odpowiedź jest poprawna?",
+      "answer": "Podstaw odpowiedź do wyjściowego równania. Jeśli obie strony są równe, odpowiedź działa."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Równanie jako waga",
+      "activity": "Pokaż `2*x + 6 = 10` jako dwie równe strony. Podkreśl, że równanie mówi, iż dwa wyrażenia mają tę samą wartość. Wprowadź zapisywanie tej samej operacji na marginesie, na przykład odejmij `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Odwracanie w odwrotnej kolejności",
+      "activity": "Przepracuj `2*x + 6 = 10`. Odjęcie `6` od obu stron daje `2*x = 4`. Podzielenie obu stron przez `2` daje `x = 2`. Sprawdź przez podstawienie."
+    },
+    {
+      "minutes": 8,
+      "title": "Typowe błędne kroki",
+      "activity": "Omów typowe błędy: przenoszenie wyrazu na drugą stronę bez zmiany znaku, dzielenie tylko jednego składnika oraz odejmowanie współczynnika zamiast dzielenia. Skup uwagę na kroku zachowania równowagi."
+    },
+    {
+      "minutes": 8,
+      "title": "Nawiasy",
+      "activity": "Użyj `5*(x + 3) = 35`. Podziel obie strony przez `5`, aby otrzymać `x + 3 = 7`. Następnie odejmij `3`, aby otrzymać `x = 4`. Zauważ, że `5` dotyczy całego nawiasu."
+    },
+    {
+      "minutes": 10,
+      "title": "Niewiadome po obu stronach",
+      "activity": "Przepracuj `3*x + 4 = x + 10`. Odjęcie `x` od obu stron daje `2*x + 4 = 10`. Odjęcie `4` daje `2*x = 6`. Dzielenie przez `2` daje `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Sprawdzanie odpowiedzi",
+      "activity": "Uczniowie podstawiają odpowiedzi do wyjściowego równania. Nieudane sprawdzenie oznacza, że trzeba wrócić do któregoś kroku. Sprawdzenie jest częścią procesu rozwiązywania, a nie dodatkowym zadaniem."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `x`, dla której `8*x = 56` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` oznacza osiem razy `x`, więc odwróć to działanie, dzieląc obie strony przez `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Rozwiąż równanie ze względu na c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `c`, dla której `-5*c = 55` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Podziel obie strony przez `-5`, czyli liczbę stojącą przy `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` jest ujemne, bo znaki są różne."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `x`, dla której `7*x + 8 = -13` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Odwróć działania w odwrotnej kolejności: odejmij `8` od obu stron, a potem podziel przez `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "Po odjęciu `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Sprawdzenie: `7*(-3) + 8` to `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `x`, dla której `3*x + 4 = -8` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Odejmij `4` od obu stron, a potem podziel obie strony przez `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "Po odjęciu `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Sprawdzenie: `3*(-4) + 4` to `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `x`, dla której `5*(x + 3) = 35` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Piątka mnoży cały nawias. Podziel obie strony przez `5` albo wymnóż nawias."
+        },
+        {
+          "rung": "computation",
+          "text": "Podzielenie obu stron przez `5` daje `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Sprawdzenie: `5*(4 + 3)` to `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Rozwiąż równanie ze względu na m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `m`, dla której `2*(m - 4) + 3 = -1` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Najpierw wymnóż nawias, a potem zredukuj liczby."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, więc `2*m - 5 = -1` i `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Sprawdzenie: `2*(2 - 4) + 3` to `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `x`, dla której `7*x + 5 = 6*x + 2` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Przenieś wyrazy z `x` na jedną stronę: odejmij `6*x` od obu stron."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, potem odejmij `5` od obu stron."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Sprawdzenie: obie strony są równe `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Rozwiąż równanie ze względu na x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Szukamy wartości `x`, dla której `12*x + 8 = 6*x + 2` jest prawdziwe."
+        },
+        {
+          "rung": "information",
+          "text": "Odejmij `6*x` od obu stron, a potem odejmij `8` od obu stron."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, więc `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Sprawdzenie: obie strony są równe `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

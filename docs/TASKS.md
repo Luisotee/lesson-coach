@@ -98,7 +98,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
 
 ## Wave 3
 
-- [ ] **T9 Languages** (needs T5 and T8)
+- [x] **T9 Languages** (needs T5 and T8)
   - Extract all UI strings and translate them offline to the PLAN list (Akelius's 13 plus uk, tr, fa, ur, hi, bn, zh-Hans, sw, so, ti, ps, prs).
   - Translate the packs, keeping the math fields identical (verified).
   - Mark languages that are machine-translated and unreviewed. Fill in the font fallbacks per script.

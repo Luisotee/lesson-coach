@@ -1,0 +1,382 @@
+{
+  "app": {
+    "title": "Lektionscoach",
+    "pageTitle": "{page} · Lektionscoach"
+  },
+  "shell": {
+    "skipToContent": "Hoppa till huvudinnehåll",
+    "mainNav": "Huvudmeny",
+    "nothingSaved": "Inget konto. Bara ditt språkval sparas, i den här webbläsaren.",
+    "footerNoScores": "Inga prov. Inga poäng. Inget om dig eller dina elever sparas.",
+    "footerChecked": "Varje svar kontrolleras av ett datoralgebrasystem."
+  },
+  "nav": {
+    "topics": "Ämnen",
+    "mistake": "En elev skrev detta",
+    "practice": "Öva"
+  },
+  "language": {
+    "label": "Språk",
+    "machine": "{name} (maskinöversatt)"
+  },
+  "home": {
+    "eyebrow": "För matematiklärare, årskurs 6–9",
+    "title": "Känn dig säker på matematiken innan du undervisar om den.",
+    "intro": "Välj morgondagens område. Se varför varje steg fungerar, vad elever ofta gör fel och vad du kan säga då.",
+    "topicsHeading": "Välj ett område",
+    "topicsIntro": "Varje område: idén, lösta exempel, vanliga misstag och en lektionsplanering.",
+    "openTopic": "Öppna ämnet",
+    "waysHeading": "Vägar in",
+    "prepareTitle": "Förbered en lektion",
+    "prepareText": "Friska upp idén och se varje steg förklarat på tre sätt.",
+    "mistakeTitle": "Förstå ett misstag",
+    "mistakeText": "Skriv vad en elev skrev. Se den troliga orsaken och vad du kan fråga.",
+    "practiceTitle": "Öva i lugn och ro",
+    "practiceText": "Uppgifter med ledtrådar som du öppnar en i taget. Inga poäng.",
+    "titleHighlight": "innan",
+    "mistakeCta": "En elev skrev detta…",
+    "heroWorked": "löst exempel",
+    "heroWhyTitle": "Varför detta steg fungerar",
+    "heroWhyText": "Ta bort 5 från bara ena sidan och balansen rubbas. Ta bort det från båda, så förblir sidorna lika.",
+    "heroExampleLink": "Se ett löst exempel: lösa 3x + 5 = 20",
+    "noTopics": "Inga områden finns tillgängliga än."
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "Negativa tal",
+      "grade": "Årskurs 6–7"
+    },
+    "fractions": {
+      "title": "Bråk",
+      "grade": "Årskurs 6–7"
+    },
+    "linear-equations": {
+      "title": "Lösa linjära ekvationer",
+      "grade": "Årskurs 7–8"
+    }
+  },
+  "pages": {
+    "practiceTitle": "Öva: {topic}",
+    "practiceProblem": "Uppgift {n} av {total}",
+    "previous": "Föregående uppgift",
+    "next": "Nästa uppgift",
+    "practiceNav": "Uppgifter",
+    "practicePageTitle": "{title}, {problem}"
+  },
+  "notFound": {
+    "title": "Sidan hittades inte",
+    "body": "Det finns ingen sida på den här adressen.",
+    "home": "Gå till startsidan"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} plus {right}",
+      "minus": "{left} minus {right}",
+      "times": "{left} gånger {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "negativ {arg}",
+      "positive": "positiv {arg}",
+      "equals": "{left} är lika med {right}",
+      "continued": "är lika med {expr}",
+      "group": "vänsterparentes, {inner}, högerparentes",
+      "over": "{num} genom {den}",
+      "fraction": "bråket med täljaren {num} och nämnaren {den}, slut på bråk",
+      "fractionSimple": "{num, plural, one {en} other {#}} {den, plural, =2 {{num, plural, one {halv} other {halvor}}} =3 {{num, plural, one {tredjedel} other {tredjedelar}}} =4 {{num, plural, one {fjärdedel} other {fjärdedelar}}} =5 {{num, plural, one {femtedel} other {femtedelar}}} =6 {{num, plural, one {sjättedel} other {sjättedelar}}} =7 {{num, plural, one {sjundedel} other {sjundedelar}}} =8 {{num, plural, one {åttondel} other {åttondelar}}} =9 {{num, plural, one {niondel} other {niondelar}}} =10 {{num, plural, one {tiondel} other {tiondelar}}} other {genom #}}",
+      "power": "{power, select, squared {{base} i kvadrat} cubed {{base} i kubik} other {{base} upphöjt till {exp}}}",
+      "powerGroup": "{base} upphöjt till {exp}, slut på exponent",
+      "lineWithOp": "{line}; {op}",
+      "withNote": "{line}; markerat: {note}"
+    },
+    "op": {
+      "add": "addera {arg} på båda sidor",
+      "sub": "subtrahera {arg} från båda sidor",
+      "mul": "multiplicera båda sidor med {arg}",
+      "div": "dividera båda sidor med {arg}"
+    }
+  },
+  "demo": {
+    "title": "Komponenter för handskriven matematik",
+    "intro": "Varje matematikkomponent, ritad utifrån de klartextsteg som innehållspaketen lagrar. Under var och en finns texten som en skärmläsare läser upp.",
+    "spoken": "Uppläst: {text}",
+    "fractionHeading": "Bråk",
+    "expressionsHeading": "Uttryck",
+    "pensHeading": "Pennor",
+    "pencil": "Blyerts: elevarbete",
+    "ink": "Bläck: genomgångna exempel",
+    "green": "Grön penna: rättningar",
+    "equationHeading": "Ekvation, justerad vid =",
+    "equationLabel": "Lösning av 3x + 5 = 20",
+    "expressionHeading": "Steg i uttryck",
+    "expressionLabel": "Beräkning av −5 − (−3)",
+    "fractionStepsLabel": "Addition av en halv och en tredjedel",
+    "replay": "Skriv det igen",
+    "rtlHeading": "Inuti text från höger till vänster",
+    "rtlNote": "Den omgivande texten går från höger till vänster; matematiken är kvar från vänster till höger.",
+    "fractionStepsHeading": "Steg med bråk",
+    "longHeading": "En längre ekvation",
+    "longLabel": "Lösning av 2(x + 3) − 4(x − 1) = 3x + 10",
+    "inputTitle": "Komponenter för matematikinmatning",
+    "inputIntro": "De tre sätten att mata in matematik: skriv på tangentbordet, skriv för hand eller ta ett foto. Under varje inmatning står exakt vad sidan tar emot. Handskriven och fotograferad matematik läses av servern, och inget skickas vidare förrän du bekräftar det.",
+    "inputExpression": "Ett uttryck",
+    "inputExpressionLabel": "Uppgiften",
+    "inputExpressionHint": "Skriv bråk med ett snedstreck, som 2/5.",
+    "inputLines": "Rader med uträkning",
+    "inputLinesLabel": "Elevens uträkning",
+    "inputReceived": "Vad sidan tar emot",
+    "inputNothing": "Inget än."
+  },
+  "input": {
+    "modes": "Sätt att ange {label}",
+    "mode": {
+      "type": "Skriv",
+      "write": "Handskriv",
+      "photo": "Foto"
+    },
+    "typeInstead": "Skriv det i stället",
+    "type": {
+      "loading": "Läser in mattefältet…",
+      "fallback": "Mattefältet lästes inte in, så detta är ett vanligt textfält. Skriv bråk med snedstreck, som 2/5.",
+      "tooLong": "Detta är för långt för att kontrollera. Korta ner det eller dela upp det på rader.",
+      "lineLabel": "{label}, rad {n}",
+      "addLine": "Lägg till en rad",
+      "removeLine": "Ta bort rad {n}",
+      "emptyBox": "Fyll i den tomma rutan först."
+    },
+    "write": {
+      "introOne": "Skriv det med fingret, en penna eller musen, på en rad.",
+      "introLines": "Skriv lösningen med fingret, en penna eller musen, ett steg per rad.",
+      "board": "Rityta för {label}",
+      "empty": "tom",
+      "strokes": "{count, plural, one {# streck} other {# streck}}",
+      "undo": "Ångra",
+      "redo": "Gör om",
+      "clear": "Rensa",
+      "did": {
+        "undo": "Ångrat.",
+        "redo": "Gjort om.",
+        "clear": "Rensat."
+      },
+      "read": "Läs min handstil",
+      "reading": "Läser din handstil…",
+      "again": "Rita igen"
+    },
+    "photo": {
+      "intro": "Ta ett foto av elevens arbete, eller ladda upp ett. Du kan beskära och vrida det i nästa steg. Det finns kvar i den här webbläsaren tills det läses, och sparas aldrig.",
+      "take": "Ta ett foto",
+      "upload": "Ladda upp ett foto",
+      "cropHelp": "Dra rutan eller dess hörn runt matematiken. Med tangentbordet: piltangenterna flyttar rutan, Shift med piltangenterna ändrar dess storlek.",
+      "cropBox": "Beskärningsområde",
+      "cropState": "Beskärningsområdet är {w}% brett och {h}% högt, {x}% från vänster och {y}% från toppen.",
+      "photoAlt": "Ditt foto",
+      "croppedAlt": "Det beskurna fotot som lästes",
+      "useCrop": "Läs den här delen",
+      "useWhole": "Läs hela fotot",
+      "rotate": "Vrid 90°",
+      "other": "Välj ett annat foto",
+      "reading": "Läser fotot…",
+      "retake": "Ta ett nytt foto",
+      "tryAgain": "Försök igen"
+    },
+    "review": {
+      "heading": "Är det detta som skrevs?",
+      "intro": "Kontrollera varje rad. Redigera allt som lästes fel. Inget kontrolleras förrän du bekräftar.",
+      "toCheck": "{count, plural, one {# rad behöver kontrolleras.} other {# rader behöver kontrolleras.}}",
+      "lines": "Rader som lästes",
+      "lineN": "Rad {n}",
+      "uncertain": "kontrollera den här raden",
+      "edit": "Redigera",
+      "done": "Klar",
+      "editLine": "Redigera rad {n}",
+      "doneLine": "Klar med redigering av rad {n}",
+      "removeLine": "Ta bort rad {n}",
+      "blank": "Tom rad",
+      "unreadable": "Den här raden kan inte ritas som matematik. Den skickas som den är skriven.",
+      "left": "Vänster sida",
+      "right": "Höger sida (efter =)",
+      "op": "Operation (som −5)",
+      "addLine": "Lägg till en rad",
+      "confirm": "Ja, använd de här raderna",
+      "confirmed": "Bekräftat.",
+      "blocked": {
+        "none": "Det finns inga rader att använda. Lägg till en, eller försök igen.",
+        "oneLine": "Behåll bara en rad här: ta bort de andra.",
+        "tooMany": "Det finns fler än {max} rader. Ta bort några innan du bekräftar.",
+        "tooLong": "En rad är för lång för att kontrolleras (högst {chars} tecken per sida). Korta den."
+      }
+    },
+    "error": {
+      "unclear": "Ingen matematik kunde läsas här. Försök igen med tydligare skrivning, eller skriv in den i stället.",
+      "unavailable": "Läsning är inte tillgänglig just nu. Skriv in det i stället, eller försök igen senare.",
+      "too_large": "Den här bilden är för stor för att skickas. Beskär den mindre, eller skriv in det i stället.",
+      "bad_image": "Den här bilden kunde inte läsas. Använd ett PNG-, JPEG- eller WebP-foto, eller skriv in det i stället.",
+      "rate_limited": "För många förfrågningar just nu. Försök igen om {seconds} sekunder, eller skriv in det i stället.",
+      "image": "Bilden kunde inte förberedas. Försök igen, eller skriv in det i stället.",
+      "open": "Det här fotot kunde inte öppnas. Använd ett PNG-, JPEG- eller WebP-foto, eller skriv in det i stället."
+    }
+  },
+  "common": {
+    "grade": "Årskurs {grade}",
+    "grades": "Årskurs {from}–{to}",
+    "loading": "Läser in…",
+    "loadError": "Det gick inte att läsa in.",
+    "retry": "Försök igen",
+    "retryIn": "Försök igen om {seconds} s",
+    "rateLimited": "För många förfrågningar just nu. Vänta en stund.",
+    "rateLimitedFor": "För många förfrågningar just nu. Vänta {seconds} sekunder.",
+    "machineTranslated": "maskinöversatt",
+    "newTab": "(öppnas i en ny flik)"
+  },
+  "topic": {
+    "allTopics": "Alla områden",
+    "printOutline": "Skriv ut lektionsupplägg",
+    "servedInEnglish": "Visas på engelska: ännu inte översatt",
+    "onThisPage": "På den här sidan",
+    "sections": {
+      "idea": "Idén",
+      "refresh": "Repetera först",
+      "example": "Löst exempel",
+      "mistakes": "Vanliga misstag",
+      "questions": "Frågor elever ställer",
+      "outline": "Lektionsupplägg"
+    },
+    "idea": "Idén",
+    "whyItWorks": "Varför det fungerar",
+    "textUnavailable": "Den här förklaringen finns inte än.",
+    "refreshFirst": "Repetera först:",
+    "exampleOf": "Löst exempel {n} av {total}",
+    "previousExample": "Föregående löst exempel",
+    "nextExample": "Nästa löst exempel",
+    "exampleLabel": "Löst exempel {n}",
+    "kind": {
+      "solve": "Lös",
+      "simplify": "Förenkla",
+      "evaluate": "Beräkna"
+    },
+    "checkedBadge": "Varje steg kontrollerat av en matematikmotor",
+    "tapLine": "tryck på en rad för att se varför det fungerar",
+    "check": "kontroll:",
+    "checkHolds": "det stämmer",
+    "explanationStyle": "Förklaringsstil",
+    "modes": {
+      "why": "Varför?",
+      "another": "Ett annat sätt",
+      "visual": "Bild"
+    },
+    "stepStart": "Steg {n} · start",
+    "stepWithOp": "Steg {n} · {op}",
+    "step": "Steg {n}",
+    "explanationUnavailable": "Förklaringen till det här steget finns inte. Själva steget är kontrollerat.",
+    "countersKey": "Gula markörer är +1, mörkblå markörer är −1.",
+    "aiLabel": "skrivet med AI · matematik kontrollerad av en matematikmotor",
+    "checkedLabel": "matematik kontrollerad av en matematikmotor",
+    "previousStep": "Föregående steg",
+    "nextStep": "Nästa steg",
+    "mistakesHeading": "Det elever ofta gör fel",
+    "studentWrites": "eleven skriver",
+    "whyItFeelsRight": "Varför det känns rätt.",
+    "ask": "Fråga:",
+    "questionsHeading": "Frågor elever ställer",
+    "outlineHeading": "Lektionsupplägg",
+    "outlineTotal": "Cirka {minutes} minuter · anpassa fritt",
+    "outlineTime": "{from}–{to} min",
+    "akeliusHeading": "Den matchande Akelius Math-lektionen",
+    "akeliusLesson": "{title} (årskurs {grade})",
+    "tryYourself": "Pröva de här uppgifterna själv först"
+  },
+  "practice": {
+    "noneYet": "Det finns inga övningsuppgifter än.",
+    "hintsHeading": "Ledtrådar när du vill ha dem",
+    "startOver": "Börja om",
+    "hidden": "(inte öppnad)",
+    "rung": {
+      "goal": "Målet",
+      "information": "Det du behöver",
+      "computation": "Beräkningen",
+      "answer": "Svaret"
+    },
+    "showNextHint": "Visa nästa ledtråd",
+    "showAnswer": "Visa svaret",
+    "doneNote": "Jämför med din lösning. Vill du se resonemanget?",
+    "openExample": "Öppna det lösta exemplet.",
+    "allFollow": "Varje rad följer av raden före.",
+    "final": {
+      "correct": "Och sista raden är svaret.",
+      "equivalent_not_simplified": "Sista raden är rätt, men inte förenklad än.",
+      "wrong": "Men sista raden är inte svaret än."
+    },
+    "lineDoesntFollow": "Rad {n} följer inte av raden före.",
+    "badReason": {
+      "unparsable": "Det gick inte att läsa som matematik.",
+      "false_equality": "De två leden är inte lika.",
+      "not_equivalent": "Det är inte lika med raden före.",
+      "unsupported": "Det använder matematik som kontrollen inte omfattar."
+    },
+    "status": {
+      "unclear": "Lösningen kunde inte kontrolleras.",
+      "out_of_scope": "Den här lösningen ligger utanför det som kontrollen omfattar."
+    },
+    "yourLines": "Din lösning",
+    "header": "Uppgift {n} av {total} · bara för dig, inget sparas",
+    "backToTopic": "Tillbaka till {topic}",
+    "workingLabel": "Din lösning",
+    "workingHint": "Skickas bara när du trycker på Kontrollera min lösning. Inget sparas.",
+    "check": "Kontrollera min lösning",
+    "checking": "Kontrollerar…",
+    "needWorking": "Skriv minst en rad först.",
+    "sourceLabel": "Källa:"
+  },
+  "mistake": {
+    "title": "En elev skrev så här…",
+    "intro": "Skriv uppgiften och vad din elev svarade. Coachen hittar den troliga orsaken och föreslår vad du kan fråga.",
+    "topicLegend": "område",
+    "problemLabel": "Uppgiften",
+    "problemHint": "Skriv bråk med snedstreck, som 2/5. De visas så som du skulle skriva dem.",
+    "answerLabel": "Vad din elev svarade",
+    "workingLabel": "Elevens lösning (valfritt)",
+    "privacy": "Skriv inte elevers namn. Inget här sparas.",
+    "explain": "Förklara detta",
+    "explaining": "Tittar på det…",
+    "needProblem": "Lägg till uppgiften först.",
+    "needAnswer": "Lägg till elevens svar.",
+    "likelyReason": "trolig orsak",
+    "looksLikeSlip": "ser ut som ett slarvfel",
+    "slipTitle": "Ett slarvfel, inte ett missförstånd.",
+    "ruleBadge": "kontrollerat: den här regeln ger exakt elevens svar",
+    "aiBadge": "föreslaget av AI · matematiken kontrollerad av en matematikmotor",
+    "whatTheyWrote": "vad eleven skrev",
+    "workedOut": "svaret, uträknat",
+    "barCaption": "Svaret som en stapelmodell.",
+    "whatToSay": "Vad du kan säga",
+    "say": {
+      "ask": "fråga",
+      "nudge": "ge en ledtråd",
+      "tell": "vid behov"
+    },
+    "tryNext": "pröva sedan med din elev",
+    "fromTopic": "från området {topic}",
+    "right": "Din elev har rätt.",
+    "correct": "Elevens svar är rätt.",
+    "notSimplified": "Det är samma värde, bara inte förenklat. Om din klass skriver svar i enklaste form, fråga hur de kan förenkla det.",
+    "sameAmount": "Elevens svar och det förenklade svaret",
+    "notSure": "inte säkert utifrån ett svar",
+    "askHow": "Fråga hur de kom fram till det.",
+    "possibilities": "{count, plural, one {en möjlighet} other {# möjligheter}}",
+    "possibly": "Möjligen",
+    "or": "Eller",
+    "outOfScope": "Det här ligger utanför det coachen täcker.",
+    "reason": {
+      "problem_unreadable": "Uppgiften kunde inte läsas som matematik. Kontrollera den och försök igen.",
+      "answer_unreadable": "Svaret kunde inte läsas som matematik. Kontrollera det och försök igen.",
+      "unsupported": "Den här typen av matematik täcks inte än.",
+      "timeout": "Det tog för lång tid att räkna ut. Försök igen.",
+      "ai_unavailable": "Förklaringstjänsten är inte tillgänglig just nu. Matematikgranskningen ovan gäller fortfarande.",
+      "ai_unclear": "Coachen kunde inte avgöra det utifrån bara det här svaret.",
+      "ai_out_of_scope": "Coachen bedömde att detta ligger utanför de områden den täcker.",
+      "ai_unverified_math": "Förklaringen kunde inte kontrolleras av matematikmotorn, så den visas inte. Matematiken ovan är kontrollerad.",
+      "math_error": "Matematikmotorn kunde inte räkna ut detta. Kontrollera inmatningen och försök igen."
+    },
+    "tryAnother": "Pröva ett annat svar",
+    "resultHeading": "Resultat",
+    "reasonUnavailable": "Den troliga orsaken är inte tillgänglig."
+  }
+}

@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "ru",
+  "title": "Решение линейных уравнений",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Решайте линейные уравнения, выполняя одно и то же действие с обеими частями и проверяя ответ.",
+  "idea": "Уравнение говорит, что два выражения имеют одно и то же значение. Решить уравнение значит найти значение `x`, при котором равенство верно.\n\nГлавный образ — модель весов. Всё, что делают с одной частью, нужно сделать и с другой. Действие можно записать на полях, например вычесть `6`, чтобы показать, что меняются обе части.\n\nЧтобы оставить `x` отдельно, выполняют обратные действия в обратном порядке. Для `2*x + 6 = 10` вычитание `6` из обеих частей даёт `2*x = 4`. Деление обеих частей на `2` даёт `x = 2`.\n\nЕсли есть скобки, рассматривайте всю скобку как умножаемую. В `5*(x + 3) = 35` деление обеих частей на `5` даёт `x + 3 = 7`, затем вычитание `3` даёт `x = 4`.",
+  "why_it_works": "Каждый шаг сохраняет равенство частей, потому что к обеим частям применяют одно и то же действие. Уравнение меняет вид, но решение остаётся тем же.\n\nДействия отменяют в обратном порядке. В `2*x + 6 = 10` выражение с `x` умножили на `2`, а затем прибавили `6`. Поэтому сначала вычтите `6`, затем разделите на `2`.\n\nЕсли переменные есть в обеих частях, работает та же идея равновесия. В `3*x + 4 = x + 10` вычитание `x` из обеих частей даёт `2*x + 4 = 10`. Затем вычитание `4` даёт `2*x = 6`, а деление на `2` даёт `x = 3`.\n\nПроверка выполняется подстановкой. Для `x = 2` выражение `2*2 + 6` равно `10`, значит исходное уравнение верно.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Решите относительно x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Слагаемое `+ 6` не даёт `x` остаться одному. Вычтем `6` из обеих частей, чтобы равновесие сохранилось и добавление `6` было отменено.",
+            "another_way": "Думайте в обратном порядке. Так как `6` прибавили после `2*x`, сначала отмените это действием `-6` в обеих частях.",
+            "visual": "Весы показывают `2*x + 6` на одной чаше и `10` на другой; с обеих чаш убрали `6`."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Теперь `2*x = 4`, значит, `x` всё ещё умножен на `2`. Разделим обе части на `2`, чтобы отменить умножение и сохранить равенство.",
+            "another_way": "`2*x` означает 2 равные группы по `x`. Если разделить обе части на `2` равные части, останется одна группа `x`.",
+            "visual": "Весы показывают `2*x` на одной чаше и `4` на другой; обе стороны разделили на `2` равные части."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Это ответ, потому что `x` остался один, и уравнение прямо показывает его значение: `x = 2`.",
+            "another_way": "Проверим подстановкой: `2*2 + 6` равно `10`, значит, исходное уравнение верно.",
+            "visual": "Весы показывают один `x` на одной чаше и `2` на другой; равновесие сохраняется."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Решите относительно x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Выражение в скобках умножено на `5`. Деление обеих частей на `5` отменяет это умножение и сохраняет равенство верным.",
+            "another_way": "Так можно не раскрывать скобки сначала. Так как вся левая часть равна `5`, умноженным на `x + 3`, разделите обе части целиком на `5`.",
+            "visual": "Уравновешенные весы показывают `5*(x + 3)` на одной чаше и `35` на другой; обе стороны готовы разделить на `5` равных групп."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Теперь к `x` прибавлено `3`. Вычитание `3` из обеих частей отменяет сложение и сохраняет равенство верным.",
+            "another_way": "Представьте, что с каждой чаши весов убирают одно и то же `3`. Тогда неизвестное остается одно слева.",
+            "visual": "Уравновешенные весы показывают `x + 3` на одной чаше и `7` на другой, причем `3` убрали с обеих сторон."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Переменная осталась одна, значит, эта строка дает решение. Значение, при котором исходное уравнение верно, — `x = 4`.",
+            "another_way": "Для проверки можно подставить `4` вместо `x` в исходное уравнение и убедиться, что обе части равны.",
+            "visual": "Уравновешенные весы показывают `x` отдельно на одной чаше и `4` на другой."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Решите относительно x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Сначала член с `x` справа убирают, вычитая `x` из обеих частей. Так равенство сохраняется, а члены с переменной оказываются вместе.",
+            "another_way": "Представьте, что с каждой части забрали по одному `x`. Тогда левая часть станет `2*x + 4`, а в правой части больше не будет члена с `x`.",
+            "visual": "Весы показывают `3*x + 4` и `x + 10`, при этом с каждой стороны убрали по одному `x`."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Постоянное слагаемое `4` убирают слева, вычитая `4` из обеих частей. После этого член с `x` остается один в левой части.",
+            "another_way": "Так как к `2*x` прибавили `4`, отмените это сложение вычитанием. Правая часть меняется так же, чтобы сохранить равенство.",
+            "visual": "Весы показывают `2*x + 4` и `10`, при этом `4` убрали с обеих сторон."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Число `2` умножает `x`, поэтому разделите обе части на `2`, чтобы отменить умножение. Получится один `x`.",
+            "another_way": "`2*x` означает 2 равные группы по `x`. Если разделить обе части на `2` равные части, станет видно значение одной группы.",
+            "visual": "Весы показывают `2*x` и `6`, разделенные на `2` равные части с каждой стороны."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Это ответ, потому что `x` остался один и показано его значение. Уравнение говорит, что `x` равен `3`.",
+            "another_way": "Подстановкой можно проверить это в исходном уравнении. Если заменить `x` на `3`, обе части совпадут.",
+            "visual": "Весы показывают, что один `x` уравновешен с `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Число можно перенести через знак равенства и сохранить его знак.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "«Перенеси в другую сторону» — распространенное сокращение, и ученик забывает, что перенос означает вычитание.",
+      "what_to_say": {
+        "probe": "Что ты сделал с обеими частями, чтобы избавиться от `+ 6`?",
+        "nudge": "Запиши действие на полях: \"| -6\", и выполни его с обеими частями.",
+        "tell": "Вычти 6 из обеих частей: `2*x = 4`, значит, `x = 2`. Подстановка проверяет это: `2*2 + 6` равно `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Решите относительно x:",
+        "answer": "5"
+      },
+      "source_quote": "Некоторые ученики переносят число через знак равенства, не меняя его знак."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Можно разделить на коэффициент только один член в части уравнения.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "Ученик сосредоточен на том, чтобы оставить `x` один, и делит члены рядом с ним, забывая про остальную часть.",
+      "what_to_say": {
+        "probe": "Когда ты делил на два, что произошло с `6`?",
+        "nudge": "Раздели каждый член в обеих частях на два и сравни со своей строкой.",
+        "tell": "Если делим часть уравнения, то делим каждый ее член: `x + 3 = 5`, значит, `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Решите относительно x:",
+        "answer": "3"
+      },
+      "source_quote": "Некоторые ученики делят только один член на число перед `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "Чтобы избавиться от числа перед `x`, нужно его вычесть.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Вычитание — первое обратное действие, которое ученик выучил, а `3*x` выглядит как `3` рядом с `x`.",
+      "what_to_say": {
+        "probe": "Что означает `3*x`? Какое действие связывает `3` и `x`?",
+        "nudge": "Проверь свой ответ: равно ли `3*9` числу `12`?",
+        "tell": "`3*x` означает 3 умножить на `x`, поэтому раздели обе части на 3: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Решите относительно x:",
+        "answer": "7"
+      },
+      "source_quote": "Некоторые ученики вычитают число перед `x` вместо того, чтобы делить на него."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Действия, выполненные с `x`, можно отменять в любом порядке.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Вычесть число рядом с `x` — обычный первый шаг, поэтому ученик делает это, даже когда это число находится внутри деления.",
+      "what_to_say": {
+        "probe": "В `(x + 6)/2` что происходит с `x` сначала, а что в конце?",
+        "nudge": "Деление пополам было сделано последним. На что нужно умножить обе части, чтобы его отменить?",
+        "tell": "Сначала отмени деление пополам: `x + 6 = 20`, значит, `x = 14`. Проверка: `(14 + 6)/2` равно `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Решите относительно x:",
+        "answer": "11"
+      },
+      "source_quote": "Некоторые ученики выполняют обратные действия в неправильном порядке."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "Число перед скобкой умножает только первый член в скобках.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` стоит прямо рядом с `x`, поэтому ученик умножает то, что ближе всего.",
+      "what_to_say": {
+        "probe": "Сколько троек есть в `5*(x + 3)`?",
+        "nudge": "Запиши `5*(x + 3)` как `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` и посчитай.",
+        "tell": "Пятерка умножает все в скобках: `5*x + 15 = 35`, значит, `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Решите относительно x:",
+        "answer": "5"
+      },
+      "source_quote": "Некоторые ученики умножают число перед скобкой только на первый член."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Почему нужно делать одно и то же с обеими частями?",
+      "answer": "Уравнение находится в равновесии. Если выполнить одно и то же действие с равными величинами, они останутся равными, поэтому решение не изменится."
+    },
+    {
+      "question": "Почему `+ 6` становится вычитанием `6`?",
+      "answer": "При решении отменяют действия. В `2*x + 6 = 10` вычитание `6` из обеих частей даёт `2*x = 4`."
+    },
+    {
+      "question": "Почему делим на `2`, а не вычитаем `2`?",
+      "answer": "`2*x` означает `2` умножить на `x`. Умножение отменяют делением, поэтому `2*x = 4` превращается в `x = 2`."
+    },
+    {
+      "question": "Что делать, если `x` есть в обеих частях?",
+      "answer": "Используйте тот же шаг с равновесием. В `3*x + 4 = x + 10` вычитание `x` из обеих частей даёт `2*x + 4 = 10`."
+    },
+    {
+      "question": "Как скобки меняют ход решения?",
+      "answer": "Число перед скобкой умножает всю скобку. В `5*(x + 3) = 35` деление обеих частей на `5` даёт `x + 3 = 7`."
+    },
+    {
+      "question": "Как ученики могут узнать, верен ли ответ?",
+      "answer": "Подставьте ответ в исходное уравнение. Если обе части совпадают, ответ подходит."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Уравнение как равновесие",
+      "activity": "Покажите `2*x + 6 = 10` как две равные части. Подчеркните, что уравнение говорит: два выражения имеют одно и то же значение. Введите запись одного и того же действия на полях, например вычесть `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Отмена действий в обратном порядке",
+      "activity": "Разберите `2*x + 6 = 10`. Вычитание `6` из обеих частей даёт `2*x = 4`. Деление обеих частей на `2` даёт `x = 2`. Проверьте подстановкой."
+    },
+    {
+      "minutes": 8,
+      "title": "Типичные ошибки",
+      "activity": "Обсудите типичные ошибки: переносят в другую часть без изменения действия, делят только один член, вычитают коэффициент вместо деления. Сохраняйте внимание на шаге равновесия."
+    },
+    {
+      "minutes": 8,
+      "title": "Скобки",
+      "activity": "Используйте `5*(x + 3) = 35`. Разделите обе части на `5`, чтобы получить `x + 3 = 7`. Затем вычтите `3`, чтобы получить `x = 4`. Отметьте, что `5` относится ко всей скобке."
+    },
+    {
+      "minutes": 10,
+      "title": "Переменные в обеих частях",
+      "activity": "Разберите `3*x + 4 = x + 10`. Вычитание `x` из обеих частей даёт `2*x + 4 = 10`. Вычитание `4` даёт `2*x = 6`. Деление на `2` даёт `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Проверка ответов",
+      "activity": "Ученики подставляют ответы в исходное уравнение. Если проверка не проходит, нужно вернуться к шагам. Проверка — часть решения, а не дополнительное задание."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Решите относительно x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `x`, при котором равенство `8*x = 56` верно."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` означает 8, умноженное на `x`, поэтому выполним обратное действие: разделим обе части на `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Решите относительно c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `c`, при котором равенство `-5*c = 55` верно."
+        },
+        {
+          "rung": "information",
+          "text": "Разделим обе части на `-5`, число перед `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` — отрицательное число, потому что знаки разные."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Решите относительно x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `x`, при котором равенство `7*x + 8 = -13` верно."
+        },
+        {
+          "rung": "information",
+          "text": "Выполняем обратные действия в обратном порядке: вычитаем `8` из обеих частей, затем делим на `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "После вычитания `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Проверка: `7*(-3) + 8` равно `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Решите относительно x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `x`, при котором равенство `3*x + 4 = -8` верно."
+        },
+        {
+          "rung": "information",
+          "text": "Вычтем `4` из обеих частей, затем разделим обе части на `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "После вычитания `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Проверка: `3*(-4) + 4` равно `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Решите относительно x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `x`, при котором равенство `5*(x + 3) = 35` верно."
+        },
+        {
+          "rung": "information",
+          "text": "5 умножает всю скобку. Разделим обе части на `5` или раскроем скобки."
+        },
+        {
+          "rung": "computation",
+          "text": "Деление обеих частей на `5` дает `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Проверка: `5*(4 + 3)` равно `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Решите относительно m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `m`, при котором равенство `2*(m - 4) + 3 = -1` верно."
+        },
+        {
+          "rung": "information",
+          "text": "Сначала раскроем скобки, затем приведем числовые слагаемые."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, значит `2*m - 5 = -1` и `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Проверка: `2*(2 - 4) + 3` равно `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Решите относительно x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `x`, при котором равенство `7*x + 5 = 6*x + 2` верно."
+        },
+        {
+          "rung": "information",
+          "text": "Соберем слагаемые с `x` в одной части: вычтем `6*x` из обеих частей."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, затем вычтем `5` из обеих частей."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Проверка: обе части равны `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Решите относительно x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `x`, при котором равенство `12*x + 8 = 6*x + 2` верно."
+        },
+        {
+          "rung": "information",
+          "text": "Вычтем `6*x` из обеих частей, затем вычтем `8` из обеих частей."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, значит `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Проверка: обе части равны `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "ar",
+  "title": "الأعداد السالبة",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "استخدم خط الأعداد والأعداد المتقابلة لجمع الأعداد السالبة وطرحها وضربها.",
+  "idea": "العدد السالب أقل من الصفر. على خط الأعداد، يكون `-3` على بعد 3 خطوات يسار الصفر، بينما يكون `3` على بعد 3 خطوات يمينه. وهما عددان متقابلان لأنهما على البعد نفسه من الصفر في جهتين مختلفتين.\n\nإضافة عدد موجب تحرّكنا إلى اليمين. وإضافة عدد سالب تحرّكنا إلى اليسار. وطرح عدد يحرّكنا في الاتجاه المعاكس لإضافته، لذلك فإن طرح عدد سالب يحرّكنا إلى اليمين. مثلًا، تصبح `5 - (-3)` هي `5 + 3`.\n\nعند جمع عددين بإشارتين مختلفتين، تسحب الإشارتان في اتجاهين متعاكسين. يكون الجواب بإشارة العدد الأبعد عن الصفر، ومقداره هو الفرق بين المقدارين. لذلك تصبح `-7 + 4` هي `-(7 - 4)`.",
+  "why_it_works": "يمكن أن يعني الطرح المسافة بين عددين. الفرق من `-3` حتى `5` يشمل الخطوات من `-3` إلى الصفر ثم من الصفر إلى `5`. لذلك فإن طرح عدد سالب يساوي إضافة مقابله: تصبح `5 - (-3)` هي `5 + 3`.\n\nفي الضرب، يفسّر النمط قاعدة الإشارة. عندما ينقص العامل الأول بمقدار واحد في `3*(-2)` و`2*(-2)` و`1*(-2)` و`0*(-2)`، يزيد الناتج بمقدار 2. وبمتابعة النمط نحصل على نواتج موجبة عند ضرب سالب في سالب.\n\nلذلك تصبح `(-4)*(-6)` هي `4*6`. حاصل ضرب سالب في سالب موجب، لأن نمط الضرب يجب أن يستمر باتساق.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "احسب:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "في العبارة إشارة طرح وإشارة سالبة. أبقهما منفصلتين: فهي تطلب `5` ناقص `-3`.",
+            "another_way": "فكّر في `-3` على أنه ثلاث خطوات إلى يسار الصفر. تسأل العبارة `5 - (-3)` عن المسافة من `-3` إلى `5`.",
+            "visual": "على خط الأعداد، ضع علامة عند `-3` يسار الصفر، وعند `5` يمين الصفر."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "طرح عدد سالب يحرّك في الاتجاه المعاكس لإضافة عدد سالب، لذلك تكون الحركة إلى اليمين. لهذا تصبح `5 - (-3)` هي `5 + 3`.",
+            "another_way": "إزالة دين لها الأثر نفسه كالكسب. لذلك فإن طرح `-3` هو الحركة نفسها مثل إضافة `3`.",
+            "visual": "ابدأ من `5` على خط الأعداد، ثم أظهر حركة مقدارها `3` خطوات إلى اليمين."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "بعد إعادة الكتابة، تصبح العملية جمعًا عاديًا. `5 + 3` يساوي `8`، لذا قيمة العبارة الأصلية هي `8`.",
+            "another_way": "على خط الأعداد، التحرك `3` خطوات يمينًا من `5` يصل إلى `8`. والمسافة من `-3` إلى `5` هي أيضًا `8` خطوات.",
+            "visual": "تنتهي الحركة إلى اليمين من `5` عند `8` على خط الأعداد."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "احسب:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "التعبير `-7 + 4` يجمع عددين بإشارتين مختلفتين. إنه مثل شدّ الحبل: `-7` أبعد عن الصفر من `4`، لذلك ستبقى النتيجة سالبة.",
+            "another_way": "ابدأ عند `-7` وأضف `4` بالتحرك 4 خطوات إلى اليمين. الحركة تتجه نحو الصفر لكنها لا تتجاوزه.",
+            "visual": "على خط الأعداد، ابدأ عند `-7` وارسم 4 خطوات إلى اليمين."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "بما أن `7` أكبر من `4`، أبقِ الإشارة السالبة وقارن بين المقدارين. لذلك يصبح `-7 + 4` هو `-(7 - 4)`.",
+            "another_way": "فكّر في `-7` على أنه شدّ إلى اليسار، وفي `4` على أنه شدّ إلى اليمين. الشدّ المتبقي إلى اليسار، ومقداره `7 - 4`.",
+            "visual": "على خط الأعداد، يترك الشدّ إلى اليسار بمقدار `7` والشدّ إلى اليمين بمقدار `4` شدًّا إلى اليسار مقداره `7 - 4`."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "المقدار المتبقي بعد شدّ الحبل هو `3`، وتبيّن الإشارة السالبة أن الاتجاه يسار الصفر. إذن الإجابة هي `-3`.",
+            "another_way": "من `-7`، التحرك 4 خطوات إلى اليمين يوصلك إلى `-3`. وهذا يطابق الناتج المبسّط.",
+            "visual": "على خط الأعداد، ينتهي السهم عند `-3`، أي 3 خطوات يسار الصفر."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "احسب:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "كلا العاملين سالبان. وحاصل ضرب عدد سالب في عدد سالب يكون موجبًا، لذلك يمكن إعادة كتابة حاصل الضرب من دون إشارات السالب.",
+            "another_way": "استعمل فكرة النمط: الضرب في عدد سالب يعكس الاتجاه، وفعل ذلك مرتين يعطي حاصل ضرب موجبًا.",
+            "visual": "على خط الأعداد، يبين `(-4)*(-6)` قفزات سالبة متساوية مأخوذة عددًا سالبًا من المرات، فتنعكس إلى اليمين."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "بعد معالجة الإشارة، نضرب المقادير فقط. يحافظ السطر `4*6` على أجزاء المسافة في العاملين.",
+            "another_way": "فكّر في أربع مجموعات من ستة بعد أن جعل السالبان حاصل الضرب موجبًا.",
+            "visual": "على خط الأعداد، يبين `4*6` أربع قفزات متساوية مقدار كل منها 6 إلى اليمين من الصفر."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اكتملت عملية الضرب: `4*6` يساوي `24`. لذلك فإن `24` هي قيمة العبارة الأصلية.",
+            "another_way": "تحولت العبارة الأصلية إلى حاصل ضرب موجب، وهذا الحاصل يساوي `24`.",
+            "visual": "على خط الأعداد، تنتهي القفزات عند `24` إلى يمين الصفر."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "طرح عدد سالب يجعل الناتج أصغر.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "عادةً يجعل الطرح الأشياء أصغر، ويرى الطالب علامتي طرح فيُبقي علامة الطرح.",
+      "what_to_say": {
+        "probe": "من أين تبدأ على خط الأعداد، وفي أي اتجاه يحركك طرح `-3`؟",
+        "nudge": "ما الفرق بين `5` و `-3`؟ عُدّ الخطوات من `-3` صعودًا إلى `5`.",
+        "tell": "طرح عدد سالب هو نفسه إضافة معكوسه، لذا فإن `5 - (-3)` هو `5 + 3`، ويساوي `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "احسب:",
+        "answer": "8"
+      },
+      "source_quote": "يعتقد بعض الطلاب أن طرح عدد سالب يجعل الناتج أصغر."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "حاصل ضرب عدد سالب في عدد سالب يكون سالبًا.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "العددان كلاهما سالبان، لذلك يبدو طبيعيًا أن يكون الناتج سالبًا أيضًا.",
+      "what_to_say": {
+        "probe": "ما قيمة `1*(-3)`، و `0*(-3)`؟ ماذا يحدث للناتج كلما نقص العدد الأول بمقدار واحد؟",
+        "nudge": "أكمل النمط `1*(-3)`, `0*(-3)`, `-1*(-3)` وانظر في أي اتجاه تسير النواتج.",
+        "tell": "يزداد النمط بمقدار ثلاثة في كل خطوة، لذا فإن `(-2)*(-3)` يساوي `6`. حاصل ضرب عدد سالب في عدد سالب يكون موجبًا."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "احسب:",
+        "answer": "20"
+      },
+      "source_quote": "يعتقد بعض الطلاب أن حاصل ضرب عدد سالب في عدد سالب يكون سالبًا."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "عند جمع أعداد بإشارات مختلفة، نجمع المقادير ونحتفظ بالإشارة الأولى.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "تعلّم الطالب أن الجمع يجعل الأعداد أكبر في المقدار، والإشارة الأولى هي التي يراها أولًا.",
+      "what_to_say": {
+        "probe": "إذا بدأت عند `-5` وتحركت ثلاث خطوات، ففي أي اتجاه تتحرك؟",
+        "nudge": "تخيل شد حبل بين `-5` و `3`. أي جهة تفوز، وبكم؟",
+        "tell": "الثلاثة الموجبة تسحب عائدًا نحو الصفر، لذلك `-5 + 3` يساوي `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "احسب:",
+        "answer": "-5"
+      },
+      "source_quote": "يجمع بعض الطلاب المقادير ويحتفظون بإشارة العدد الأول."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "نطرح دائمًا العدد الأصغر من العدد الأكبر.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "مع الأعداد الكلية، قيل للطلاب إنك لا تستطيع أخذ عدد أكبر من عدد أصغر.",
+      "what_to_say": {
+        "probe": "أين تصل إذا بدأت عند `3` وأخذت سبع خطوات إلى اليسار؟",
+        "nudge": "هل `3 - 7` مثل `7 - 3`؟ جرّب كليهما على خط الأعداد.",
+        "tell": "سبع خطوات إلى اليسار من ثلاثة توصلك إلى `-4`، لذا فإن `3 - 7` يساوي `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "احسب:",
+        "answer": "-7"
+      },
+      "source_quote": "بعض الطلاب يطرحون دائمًا العدد الأصغر من العدد الأكبر."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "السالبان يصنعان موجبًا، حتى عند الجمع.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "قاعدة \"السالبان يصنعان موجبًا\" قصيرة وسهلة التذكر، لذلك تُطبَّق على كل زوج من علامات الطرح.",
+      "what_to_say": {
+        "probe": "إذا كنت مدينًا بـ 4 ثم دِنت بـ 3 أخرى، فكم يكون دينك؟",
+        "nudge": "ابدأ عند `-4` على خط الأعداد وأضف `-3`. في أي اتجاه تتحرك؟",
+        "tell": "إضافة عدد سالب تحركك إلى اليسار، لذلك `-4 + (-3)` يساوي `-7`. قاعدة الإشارات تخص الضرب والقسمة."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "احسب:",
+        "answer": "-8"
+      },
+      "source_quote": "يطبّق بعض الطلاب قاعدة \"السالبان يصنعان موجبًا\" على الجمع."
+    }
+  ],
+  "questions": [
+    {
+      "question": "لماذا يحرّكنا طرح عدد سالب إلى اليمين؟",
+      "answer": "الطرح يحرّكنا في الاتجاه المعاكس للجمع. إضافة عدد سالب تحرّكنا إلى اليسار، لذلك فإن طرح عدد سالب يحرّكنا إلى اليمين. مثلًا، تصبح `5 - (-3)` هي `5 + 3`."
+    },
+    {
+      "question": "هل يعطي عددان سالبان دائمًا عددًا موجبًا؟",
+      "answer": "لا. هذه القاعدة تخص الضرب والقسمة. في الجمع، الاتجاه مهم. جمع عددين سالبين يحرّكنا أبعد إلى اليسار على خط الأعداد."
+    },
+    {
+      "question": "لماذا يكون `-7 + 4` سالبًا؟",
+      "answer": "يسحب العددان في اتجاهين متعاكسين. العدد `-7` أبعد عن الصفر من `4`، لذلك يحتفظ الجواب بالإشارة السالبة. تصبح `-7 + 4` هي `-(7 - 4)`."
+    },
+    {
+      "question": "لماذا يكون حاصل ضرب سالب في سالب موجبًا؟",
+      "answer": "يجب أن يستمر نمط الضرب. عندما ينقص أحد العاملين مارًّا بالصفر، تستمر النواتج في الزيادة بالمقدار نفسه، وهذا يؤدي إلى نواتج موجبة."
+    },
+    {
+      "question": "هل يمكن أن يكون لـ `3 - 7` جواب؟",
+      "answer": "نعم. ابدأ عند `3` وتحرّك سبع خطوات إلى اليسار على خط الأعداد. نقطة الوصول تكون أقل من الصفر."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "تحديد مواقع الأعداد السالبة",
+      "activity": "ارسم خط أعداد يكون الصفر في وسطه. ضع الأعداد الموجبة والسالبة على خطوات متساوية من الصفر. أكّد فكرة الأعداد المتقابلة، مثل `-3` و`3`، وأنهما على البعد نفسه من الصفر في جهتين مختلفتين."
+    },
+    {
+      "minutes": 10,
+      "title": "الجمع كحركة",
+      "activity": "استخدم خط الأعداد لتوضيح أن إضافة عدد موجب تحرّكنا إلى اليمين، وأن إضافة عدد سالب تحرّكنا إلى اليسار. أدرج مثالًا بإشارتين مختلفتين، وصفه كأنه شد حبل."
+    },
+    {
+      "minutes": 10,
+      "title": "طرح الأعداد السالبة",
+      "activity": "افصل بين العملية والإشارة بقول «اطرح» و«سالب». بيّن أن الطرح يحرّكنا عكس اتجاه الجمع، لذلك تصبح `5 - (-3)` هي `5 + 3`."
+    },
+    {
+      "minutes": 10,
+      "title": "إشارات مختلفة في الجمع",
+      "activity": "مثّل أمثلة تسحب فيها الإشارتان في اتجاهين متعاكسين. يأخذ الجواب إشارة العدد الأبعد عن الصفر، ويكون المقدار هو الفرق بين المقدارين. استخدم أن `-7 + 4` تصبح `-(7 - 4)`."
+    },
+    {
+      "minutes": 10,
+      "title": "الضرب باستخدام نمط",
+      "activity": "اعرض النمط من العوامل الموجبة نزولًا حتى الصفر. استخدمه لتفسير لماذا يكون حاصل ضرب سالب في سالب موجبًا، ثم اربط ذلك بتحول `(-4)*(-6)` إلى `4*6`."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "طرح عدد سالب هو نفسه إضافة العدد الموجب المقابل له."
+        },
+        {
+          "rung": "computation",
+          "text": "أعد كتابتها على صورة `-7 + 4` وتحرّك 4 خطوات إلى اليمين من `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "طرح عدد سالب هو نفسه إضافة معكوسه."
+        },
+        {
+          "rung": "computation",
+          "text": "أعد كتابتها على صورة `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "عندما تختلف الإشارتان، نطرح القيمتين المطلقَتين ونحتفظ بإشارة العدد الأبعد عن الصفر."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` يساوي `17`، و`-32` أبعد عن الصفر من `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "عندما يكون العددان سالبين، نجمع القيمتين المطلقَتين ونحتفظ بالإشارة السالبة."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` يساوي `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "حاصل ضرب عدد سالب في عدد سالب يكون موجبًا."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` يساوي `14`، والإشارتان متماثلتان."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "عندما تختلف الإشارتان، يكون حاصل الضرب سالبًا."
+        },
+        {
+          "rung": "computation",
+          "text": "تجاهل الإشارة أولًا: `9*3` يساوي `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "قسمة عدد سالب على عدد سالب تعطي عددًا موجبًا، كما في الضرب."
+        },
+        {
+          "rung": "computation",
+          "text": "تجاهل الإشارتين أولًا: `100/4` يساوي `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "احسب:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "نضرب قبل الجمع والطرح."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` يساوي `-30` و`7*(-2)` يساوي `-14`، إذن نحصل على `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

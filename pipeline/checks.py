@@ -9,8 +9,10 @@ explanation appears in that step. A finding names the pack path it is about.
 from __future__ import annotations
 
 import re
+from collections import Counter
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
+from typing import Any
 
 import sympy
 from app.content.schema import (
@@ -361,3 +363,146 @@ def unavailable_findings(pack: Pack) -> list[Finding]:
             Finding("unavailable", "mismatch", f"question index out of range: {sorted(single)}")
         ]
     return []
+
+
+# Translations: a translated pack is the English pack with only its prose translated.
+
+META = ("lang", "machine_translated", "source_hash", "model")
+
+
+def prose_paths(pack: Pack) -> dict[str, str]:
+    """Every translatable text in a pack, by path. Math, ids, sources and prompts are not here:
+    they are copied (prompts come from `PROMPTS[lang]`)."""
+    texts: dict[str, str] = {"title": pack.title}
+    for name in ("summary", "idea", "why_it_works"):
+        if (text := getattr(pack, name)) is not None:
+            texts[name] = text
+    for i, q in enumerate(pack.questions):
+        texts[f"questions[{i}].question"] = q.question
+        texts[f"questions[{i}].answer"] = q.answer
+    for i, o in enumerate(pack.outline):
+        texts[f"outline[{i}].title"] = o.title
+        texts[f"outline[{i}].activity"] = o.activity
+    for i, example in enumerate(pack.worked_examples):
+        for j, step in enumerate(example.steps):
+            if step.explanations is not None:
+                for name in ("why", "another_way", "visual"):
+                    path = f"worked_examples[{i}].steps[{j}].explanations.{name}"
+                    texts[path] = getattr(step.explanations, name)
+    for i, m in enumerate(pack.misconceptions):
+        for name in ("belief", "why_it_feels_right", "source_quote"):
+            texts[f"misconceptions[{i}].{name}"] = getattr(m, name)
+        for name in ("probe", "nudge", "tell"):
+            texts[f"misconceptions[{i}].what_to_say.{name}"] = getattr(m.what_to_say, name)
+    for i, item in enumerate(pack.practice):
+        for j, hint in enumerate(item.hints):
+            texts[f"practice[{i}].hints[{j}].text"] = hint.text
+    return texts
+
+
+PROMPT_PATH = re.compile(r"(^|\.)prompt$")
+PATH_PART = re.compile(r"([^.\[\]]+)|\[(\d+)\]")
+
+
+def _keys(path: str) -> list[str | int]:
+    return [int(i) if i else name for name, i in PATH_PART.findall(path)]
+
+
+def set_path(data: dict[str, object], path: str, value: object) -> None:
+    """Sets the value at a pack path such as `misconceptions[2].what_to_say.tell` in a dump."""
+    keys = _keys(path)
+    node: Any = data
+    for key in keys[:-1]:
+        node = node[key]
+    node[keys[-1]] = value
+
+
+def skeleton_of(pack: Pack) -> dict[str, object]:
+    """The pack without its prose, prompts and translation metadata: what a translation must
+    leave identical to the English pack."""
+    data = pack.model_dump(mode="json")
+    for path in prose_paths(pack):
+        set_path(data, path, None)
+    for i in range(len(pack.worked_examples)):
+        set_path(data, f"worked_examples[{i}].prompt", None)
+    for i in range(len(pack.misconceptions)):
+        set_path(data, f"misconceptions[{i}].check_question.prompt", None)
+    for i in range(len(pack.practice)):
+        set_path(data, f"practice[{i}].prompt", None)
+    for name in META:
+        data.pop(name, None)
+    return data
+
+
+def text_limit(path: str) -> int:
+    """The schema's length limit for a prose path."""
+    last = path.rsplit(".", 1)[-1]
+    if last in ("idea", "why_it_works"):
+        return 2000
+    if last in ("title", "summary", "question", "visual"):
+        return 200
+    return 600
+
+
+# A span a translation may leave out because its language says the number in a word: "two
+# equal parts" is one dual noun in Arabic. Only whole numbers up to 10, never other math.
+WORDABLE = re.compile(r"^(10|[0-9])$")
+
+
+def item_findings(
+    path: str, english: str, translated: str, limit: int | None = None
+) -> list[Finding]:
+    """A translated text keeps every math span of the English, character for character (it may
+    only leave out a bare whole number up to 10, said as a word), and adds no number and no
+    non-ASCII digit. `limit` defaults to the pack schema's."""
+    found: list[Finding] = []
+    if not translated.strip():
+        return [Finding(path, "empty", "")]
+    cap = limit if limit is not None else text_limit(path)
+    if len(translated) > cap:
+        found.append(Finding(path, "too_long", f"{len(translated)} > {cap}"))
+    ours, theirs = Counter(SPAN.findall(translated)), Counter(SPAN.findall(english))
+    dropped = theirs - ours
+    if ours - theirs or any(not WORDABLE.match(span) for span in dropped):
+        found.append(Finding(path, "spans_changed", "the math spans differ from the English"))
+    if any(c.isdigit() and not c.isascii() for c in translated):
+        found.append(Finding(path, "digits", "use the digits 0-9"))
+    stray = numbers(SPAN.sub("", translated)) - numbers(english)
+    if stray:
+        found.append(Finding(path, "number_not_in_source", f"{sorted(stray)} not in the English"))
+    return found
+
+
+def translation_findings(
+    pack: Pack, english: Pack, expected_hash: str, steps_for: StepsFor
+) -> list[Finding]:
+    """Every deterministic check of a translated pack: the same math and structure as the
+    English pack, every text keeps its math, the language's prompts, and sympy's checks."""
+    found: list[Finding] = []
+    if pack.lang == "en" or not pack.machine_translated:
+        found.append(Finding("lang", "not_a_translation", pack.lang))
+    if pack.source_hash != expected_hash:
+        found.append(Finding("source_hash", "stale", "the English pack changed; translate again"))
+    if skeleton_of(pack) != skeleton_of(english):
+        found.append(Finding("pack", "changed", "math or structure differs from the English pack"))
+    ours, theirs = prose_paths(pack), prose_paths(english)
+    if set(ours) != set(theirs):
+        found.append(Finding("pack", "texts_differ", f"{sorted(set(ours) ^ set(theirs))}"))
+    for path in sorted(set(ours) & set(theirs)):
+        found += item_findings(path, theirs[path], ours[path])
+    for i, (example, expected) in enumerate(
+        zip(pack.worked_examples, EXAMPLES[pack.topic], strict=True)
+    ):
+        found += example_findings(f"worked_examples[{i}]", example, expected, steps_for, pack.lang)
+    for i, m in enumerate(pack.misconceptions):
+        found += misconception_findings(f"misconceptions[{i}]", m)
+        check = m.check_question
+        found += prompt_findings(
+            f"misconceptions[{i}].check_question.prompt", check.prompt, check.problem, pack.lang
+        )
+    for i, item in enumerate(pack.practice):
+        found += practice_findings(f"practice[{i}]", item)
+        found += prompt_findings(f"practice[{i}].prompt", item.prompt, item.problem, pack.lang)
+    if pack.unavailable != english.unavailable:
+        found.append(Finding("unavailable", "mismatch", "must equal the English pack's"))
+    return found

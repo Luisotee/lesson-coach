@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "fa",
+  "title": "عددهای منفی",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "از محور اعداد و قرینه‌ها استفاده کنید تا عددهای منفی را جمع، تفریق و ضرب کنید.",
+  "idea": "عدد منفی از صفر کوچک‌تر است. روی محور اعداد، `-3` سه گام چپِ صفر است، در حالی که `3` سه گام راستِ صفر است. آن‌ها قرینه‌اند، چون در دو طرف صفر به یک فاصله از صفر قرار دارند.\n\nجمع کردن یک عدد مثبت حرکت به راست است. جمع کردن یک عدد منفی حرکت به چپ است. تفریق یک عدد، حرکت در جهت مخالفِ جمع کردن آن است؛ پس تفریق یک عدد منفی حرکت به راست است. برای مثال، `5 - (-3)` به `5 + 3` تبدیل می‌شود.\n\nوقتی عددهایی با علامت‌های متفاوت جمع می‌شوند، علامت‌ها در جهت‌های مخالف می‌کشند. جواب علامت عددی را می‌گیرد که از صفر دورتر است، و اندازه‌اش برابر تفاضل دو اندازه است. پس `-7 + 4` به `-(7 - 4)` تبدیل می‌شود.",
+  "why_it_works": "تفریق می‌تواند به معنی فاصله بین دو عدد باشد. اختلاف از `-3` تا `5` گام‌های از `-3` تا صفر و سپس از صفر تا `5` را در بر می‌گیرد. پس تفریق یک عدد منفی همان جمع کردن قرینه آن است: `5 - (-3)` به `5 + 3` تبدیل می‌شود.\n\nبرای ضرب، یک الگو قانون علامت را توضیح می‌دهد. وقتی عامل اول در `3*(-2)`، `2*(-2)`، `1*(-2)` و `0*(-2)` هر بار 1 تا کم می‌شود، جواب هر بار 2 تا زیاد می‌شود. ادامه دادن الگو برای ضرب یک منفی در یک منفی جواب‌های مثبت می‌دهد.\n\nپس `(-4)*(-6)` به `4*6` تبدیل می‌شود. حاصل‌ضرب یک منفی در یک منفی مثبت است، چون الگوی ضرب باید به طور سازگار ادامه پیدا کند.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "حساب کنید:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "این عبارت یک علامت تفریق و یک علامت منفی دارد. آن‌ها را جدا از هم نگه دارید: می‌گوید `5` منهای `-3`.",
+            "another_way": "`-3` را 3 گام چپِ صفر در نظر بگیرید. عبارت `5 - (-3)` فاصله از `-3` تا `5` را می‌خواهد.",
+            "visual": "روی محور اعداد، `-3` را در چپ صفر و `5` را در راست صفر علامت بزنید."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "کم کردن یک عدد منفی، برخلاف جمع کردن یک عدد منفی حرکت می‌کند؛ پس به راست می‌رود. برای همین `5 - (-3)` به `5 + 3` تبدیل می‌شود.",
+            "another_way": "کم کردن یک بدهی همان اثرِ به دست آوردن را دارد. پس کم کردن `-3` همان حرکتِ افزودن `3` است.",
+            "visual": "از `5` روی محور اعداد شروع کنید، سپس حرکتی به اندازه `3` گام به راست نشان دهید."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "پس از بازنویسی، محاسبه یک جمع معمولی است. `5 + 3` برابر `8` است، پس مقدار عبارت اولیه `8` است.",
+            "another_way": "روی محور اعداد، حرکت `3` گام به راست از `5` به `8` می‌رسد. فاصله از `-3` تا `5` نیز `8` گام است.",
+            "visual": "حرکت به سمت راست از `5` روی محور اعداد در `8` پایان می‌یابد."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "حساب کنید:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عبارت `-7 + 4` عددهایی با علامت‌های متفاوت را جمع می‌کند. این مثل طناب‌کشی است: `-7` از صفر دورتر از `4` است، پس نتیجه منفی می‌ماند.",
+            "another_way": "از `-7` شروع کنید و با حرکت `4` پله به راست، `4` را اضافه کنید. این حرکت به سمت صفر می‌رود، اما از آن نمی‌گذرد.",
+            "visual": "روی محور اعداد، از `-7` شروع کنید و `4` پله به سمت راست رسم کنید."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "چون `7` از `4` بزرگ‌تر است، علامت منفی را نگه دارید و اندازه‌ها را مقایسه کنید. پس `-7 + 4` به `-(7 - 4)` تبدیل می‌شود.",
+            "another_way": "`-7` را کششی به چپ و `4` را کششی به راست در نظر بگیرید. کشش باقی‌مانده به چپ است، با اندازه `7 - 4`.",
+            "visual": "روی محور اعداد، کشش `7` به چپ و کشش `4` به راست، کششی به چپ به اندازه `7 - 4` باقی می‌گذارد."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اندازه‌ای که پس از طناب‌کشی باقی می‌ماند `3` است، و علامت منفی نشان می‌دهد جهت، سمت چپ صفر است. پس پاسخ `-3` است.",
+            "another_way": "از `-7`، با حرکت `4` پله به راست، به `-3` می‌رسیم. این با نتیجه ساده‌شده یکی است.",
+            "visual": "روی محور اعداد، پیکان در `-3` پایان می‌یابد، یعنی 3 پله چپ‌تر از صفر."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "حساب کنید:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "هر دو عامل منفی هستند. حاصل‌ضرب یک عدد منفی در یک عدد منفی مثبت است، پس می‌توان حاصل‌ضرب را بدون علامت‌های منفی بازنویسی کرد.",
+            "another_way": "از ایده الگو استفاده کنید: ضرب در یک عدد منفی جهت را برعکس می‌کند، و انجام این کار دو بار حاصل‌ضرب مثبت می‌دهد.",
+            "visual": "روی محور اعداد، `(-4)*(-6)` پرش‌های منفی برابر را نشان می‌دهد که به تعداد منفی انجام می‌شوند و به سمت راست برمی‌گردند."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "پس از مشخص شدن علامت، فقط اندازه‌ها در هم ضرب می‌شوند. سطر `4*6` بخش‌های مربوط به فاصله در عامل‌ها را نگه می‌دارد.",
+            "another_way": "پس از آن که دو منفی حاصل‌ضرب را مثبت کردند، آن را مانند چهار گروه شش‌تایی در نظر بگیرید.",
+            "visual": "روی محور اعداد، `4*6` چهار پرش برابرِ 6 واحدی به سمت راست از صفر را نشان می‌دهد."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "ضرب کامل شده است: `4*6` برابر `24` است. پس `24` مقدار عبارت اولیه است.",
+            "another_way": "عبارت اولیه به یک حاصل‌ضرب مثبت تبدیل شد، و آن حاصل‌ضرب برابر `24` است.",
+            "visual": "روی محور اعداد، پرش‌ها در `24`، در سمت راست صفر، تمام می‌شوند."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "کم کردن یک عدد منفی، پاسخ را کوچک‌تر می‌کند.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "تفریق معمولاً چیزها را کوچک‌تر می‌کند، و دانش‌آموز دو علامت منها می‌بیند و یک منها نگه می‌دارد.",
+      "what_to_say": {
+        "probe": "روی محور اعداد از کجا شروع می‌کنی، و کم کردن `-3` تو را به کدام سمت می‌برد؟",
+        "nudge": "اختلاف بین `5` و `-3` چقدر است؟ پله‌ها را از `-3` تا `5` بشمار.",
+        "tell": "کم کردن یک عدد منفی همان اضافه کردن قرینه آن است، پس `5 - (-3)` همان `5 + 3` است که می‌شود `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "حساب کنید:",
+        "answer": "8"
+      },
+      "source_quote": "بعضی دانش‌آموزان فکر می‌کنند کم کردن یک عدد منفی، پاسخ را کوچک‌تر می‌کند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "حاصل‌ضرب منفی در منفی، منفی است.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "هر دو عدد منفی‌اند، پس طبیعی به نظر می‌رسد که پاسخ هم منفی باشد.",
+      "what_to_say": {
+        "probe": "`1*(-3)` و `0*(-3)` چند می‌شوند؟ هر بار که عدد اول یکی کم می‌شود، پاسخ چه تغییری می‌کند؟",
+        "nudge": "الگوی `1*(-3)`, `0*(-3)`, `-1*(-3)` را ادامه بده و ببین پاسخ‌ها به کدام سمت می‌روند.",
+        "tell": "الگو در هر گام 3 تا زیاد می‌شود، پس `(-2)*(-3)` برابر `6` است. منفی در منفی مثبت است."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "حساب کنید:",
+        "answer": "20"
+      },
+      "source_quote": "بعضی دانش‌آموزان فکر می‌کنند حاصل‌ضرب منفی در منفی، منفی است."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "وقتی عددهایی با علامت‌های متفاوت را جمع می‌کنیم، اندازه‌ها را جمع کن و علامت اول را نگه دار.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "دانش‌آموز یاد گرفته است که جمع کردن اندازه عددها را بزرگ‌تر می‌کند، و علامت اول همان است که اول می‌بیند.",
+      "what_to_say": {
+        "probe": "اگر از `-5` شروع کنی و سه گام حرکت کنی، به کدام سمت می‌روی؟",
+        "nudge": "یک طناب‌کشی بین `-5` و `3` را تصور کن. کدام طرف برنده می‌شود، و با چه اندازه‌ای؟",
+        "tell": "3 مثبت به سمت صفر برمی‌گرداند، پس `-5 + 3` برابر `-2` است."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "حساب کنید:",
+        "answer": "-5"
+      },
+      "source_quote": "بعضی دانش‌آموزان اندازه‌ها را جمع می‌کنند و علامت عدد اول را نگه می‌دارند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "همیشه عدد کوچک‌تر را از عدد بزرگ‌تر کم می‌کنیم.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "در عددهای صحیح نامنفی، به دانش‌آموزان گفته شده بود نمی‌توان عدد بزرگ‌تر را از عدد کوچک‌تر کم کرد.",
+      "what_to_say": {
+        "probe": "اگر از `3` شروع کنی و هفت گام به چپ بروی، کجا می‌رسی؟",
+        "nudge": "آیا `3 - 7` همان `7 - 3` است؟ هر دو را با محور اعداد امتحان کن.",
+        "tell": "هفت گام به چپ از سه، به `-4` می‌رسد، پس `3 - 7` برابر `-4` است."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "حساب کنید:",
+        "answer": "-7"
+      },
+      "source_quote": "بعضی دانش‌آموزان همیشه عدد کوچک‌تر را از عدد بزرگ‌تر کم می‌کنند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "دو منفی مثبت می‌شود، حتی هنگام جمع.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "قاعده «دو منفی مثبت می‌شود» کوتاه و به‌یادماندنی است، پس به هر جفت علامت منها تعمیم داده می‌شود.",
+      "what_to_say": {
+        "probe": "اگر 4 بدهکار باشی و بعد 3 تای دیگر هم بدهکار شوی، چقدر بدهکار هستی؟",
+        "nudge": "روی محور اعداد از `-4` شروع کن و `-3` را اضافه کن. به کدام سمت حرکت می‌کنی؟",
+        "tell": "جمع کردن یک عدد منفی به چپ حرکت می‌دهد، پس `-4 + (-3)` برابر `-7` است. قانون علامت برای ضرب و تقسیم است."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "حساب کنید:",
+        "answer": "-8"
+      },
+      "source_quote": "بعضی دانش‌آموزان قاعده «دو منفی مثبت می‌شود» را برای جمع هم به کار می‌برند."
+    }
+  ],
+  "questions": [
+    {
+      "question": "چرا تفریق یک عدد منفی حرکت به راست است؟",
+      "answer": "تفریق در جهت مخالفِ جمع کردن حرکت می‌کند. جمع کردن یک منفی حرکت به چپ است، پس تفریق یک منفی حرکت به راست است. برای مثال، `5 - (-3)` به `5 + 3` تبدیل می‌شود."
+    },
+    {
+      "question": "آیا همیشه دو منفی یک مثبت می‌سازند؟",
+      "answer": "نه. این قانون برای ضرب و تقسیم است. در جمع، جهت اهمیت دارد. جمع کردن دو منفی روی محور اعداد ما را بیشتر به چپ می‌برد."
+    },
+    {
+      "question": "چرا `-7 + 4` منفی است؟",
+      "answer": "عددها در جهت‌های مخالف حرکت می‌کنند. `-7` نسبت به `4` از صفر دورتر است، پس جواب علامت منفی را نگه می‌دارد. `-7 + 4` به `-(7 - 4)` تبدیل می‌شود."
+    },
+    {
+      "question": "چرا حاصل‌ضرب یک منفی در یک منفی مثبت است؟",
+      "answer": "الگوی ضرب باید ادامه پیدا کند. وقتی یک عامل از صفر پایین‌تر می‌رود، جواب‌ها به همان مقدار ثابت زیاد می‌شوند و این به جواب‌های مثبت می‌رسد."
+    },
+    {
+      "question": "آیا `3 - 7` جواب دارد؟",
+      "answer": "بله. از `3` شروع کنید و روی محور اعداد هفت گام به چپ بروید. نقطه فرود پایین‌تر از صفر است."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "جای عددهای منفی را مشخص کنید",
+      "activity": "محور اعدادی بکشید که صفر در مرکز آن باشد. عددهای مثبت و منفی را با گام‌های برابر از صفر قرار دهید. بر قرینه‌ها، مانند `-3` و `3`، تأکید کنید که در دو طرف صفر به یک فاصله از صفر هستند."
+    },
+    {
+      "minutes": 10,
+      "title": "جمع را به صورت حرکت ببینید",
+      "activity": "با محور اعداد نشان دهید که جمع کردن یک مثبت حرکت به راست و جمع کردن یک منفی حرکت به چپ است. یک مثال با علامت‌های متفاوت بیاورید و آن را مانند طناب‌کشی توصیف کنید."
+    },
+    {
+      "minutes": 10,
+      "title": "عددهای منفی را تفریق کنید",
+      "activity": "عمل و علامت را با گفتن «تفریق» و «منفی» جدا نگه دارید. نشان دهید تفریق در جهت مخالف جمع حرکت می‌کند، پس `5 - (-3)` به `5 + 3` تبدیل می‌شود."
+    },
+    {
+      "minutes": 10,
+      "title": "علامت‌های متفاوت در جمع",
+      "activity": "مثال‌هایی را مدل کنید که در آن‌ها علامت‌ها در جهت‌های مخالف می‌کشند. جواب علامت عددی را می‌گیرد که از صفر دورتر است، و اندازه برابر تفاضل اندازه‌هاست. از `-7 + 4` به `-(7 - 4)` تبدیل می‌شود استفاده کنید."
+    },
+    {
+      "minutes": 10,
+      "title": "با الگو ضرب کنید",
+      "activity": "الگو را از عامل‌های مثبت تا گذر از صفر نشان دهید. از آن برای توضیح این استفاده کنید که چرا یک منفی ضربدر یک منفی مثبت است، سپس این را به تبدیل شدن `(-4)*(-6)` به `4*6` پیوند دهید."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `-7 - (-4)` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "کم کردن یک عدد منفی همان جمع کردن قرینه آن است."
+        },
+        {
+          "rung": "computation",
+          "text": "آن را به صورت `-7 + 4` بازنویسی کنید و از `-7` چهار گام به راست بروید."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `9 - (-15)` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "کم کردن یک عدد منفی همان جمع کردن قرینه آن است."
+        },
+        {
+          "rung": "computation",
+          "text": "آن را به صورت `9 + 15` بازنویسی کنید."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `15 + (-32)` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "وقتی علامت‌ها متفاوت‌اند، اندازه‌ها را از هم کم کنید و علامت عددی را نگه دارید که از صفر دورتر است."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` برابر `17` است، و `-32` از `15` از صفر دورتر است."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `-31 + (-19)` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "وقتی هر دو عدد منفی‌اند، اندازه‌ها را جمع کنید و علامت منفی را نگه دارید."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` برابر `50` است."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `-1*(-14)` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "حاصل‌ضرب یک عدد منفی در یک عدد منفی، مثبت است."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` برابر `14` است، و علامت‌ها یکسان‌اند."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `-9*3` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "وقتی دو علامت متفاوت‌اند، حاصل‌ضرب منفی است."
+        },
+        {
+          "rung": "computation",
+          "text": "نخست علامت را نادیده بگیرید: `9*3` برابر `27` است."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `-100/(-4)` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "تقسیم یک عدد منفی بر یک عدد منفی، مانند ضرب، نتیجه مثبت می‌دهد."
+        },
+        {
+          "rung": "computation",
+          "text": "نخست علامت‌ها را نادیده بگیرید: `100/4` برابر `25` است."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "حساب کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `5*(-6) + 7*(-2) - 3` را پیدا کنیم."
+        },
+        {
+          "rung": "information",
+          "text": "پیش از جمع و تفریق، ضرب را انجام دهید."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` برابر `-30` و `7*(-2)` برابر `-14` است، پس به `-30 - 14 - 3` می‌رسیم."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

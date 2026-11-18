@@ -1,0 +1,382 @@
+{
+  "app": {
+    "title": "Lesson Coach",
+    "pageTitle": "{page} · Lesson Coach"
+  },
+  "shell": {
+    "skipToContent": "Zum Hauptinhalt springen",
+    "mainNav": "Hauptbereich",
+    "nothingSaved": "Kein Konto. Nur Ihre Sprachauswahl wird in diesem Browser gespeichert.",
+    "footerNoScores": "Keine Tests. Keine Punktzahlen. Nichts über Sie oder Ihre Schülerinnen und Schüler wird gespeichert.",
+    "footerChecked": "Jede Antwort wird von einem Computeralgebrasystem geprüft."
+  },
+  "nav": {
+    "topics": "Themen",
+    "mistake": "Ein Schüler hat dies geschrieben",
+    "practice": "Üben"
+  },
+  "language": {
+    "label": "Sprache",
+    "machine": "{name} (maschinell übersetzt)"
+  },
+  "home": {
+    "eyebrow": "Für Mathematiklehrkräfte, Klassen 6–9",
+    "title": "Fühlen Sie sich sicher mit der Mathematik, bevor Sie sie unterrichten.",
+    "intro": "Wählen Sie das Thema für morgen. Sehen Sie, warum jeder Schritt funktioniert, was Schülerinnen und Schüler häufig falsch machen und was Sie dann sagen können.",
+    "topicsHeading": "Thema wählen",
+    "topicsIntro": "Zu jedem Thema: die Idee, durchgerechnete Beispiele, häufige Fehler und ein Unterrichtsentwurf.",
+    "openTopic": "Thema öffnen",
+    "waysHeading": "Einstiege",
+    "prepareTitle": "Unterricht vorbereiten",
+    "prepareText": "Frischen Sie die Idee auf und sehen Sie jeden Schritt auf drei Arten erklärt.",
+    "mistakeTitle": "Einen Fehler verstehen",
+    "mistakeText": "Geben Sie ein, was ein Schüler oder eine Schülerin geschrieben hat. Sehen Sie den wahrscheinlichen Grund und was Sie fragen können.",
+    "practiceTitle": "Für sich üben",
+    "practiceText": "Aufgaben mit Hinweisen, die Sie einzeln öffnen. Keine Punktzahlen.",
+    "titleHighlight": "bevor",
+    "mistakeCta": "Ein Schüler oder eine Schülerin hat das geschrieben …",
+    "heroWorked": "durchgerechnetes Beispiel",
+    "heroWhyTitle": "Warum dieser Schritt funktioniert",
+    "heroWhyText": "Nimmt man nur von einer Seite 5 weg, kippt die Waage. Nimmt man auf beiden Seiten 5 weg, bleiben die Seiten gleich.",
+    "heroExampleLink": "Sehen Sie ein durchgerechnetes Beispiel: Lösen von 3x + 5 = 20",
+    "noTopics": "Es sind noch keine Themen verfügbar."
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "Negative Zahlen",
+      "grade": "Klasse 6–7"
+    },
+    "fractions": {
+      "title": "Brüche",
+      "grade": "Klasse 6–7"
+    },
+    "linear-equations": {
+      "title": "Lineare Gleichungen lösen",
+      "grade": "Klasse 7–8"
+    }
+  },
+  "pages": {
+    "practiceTitle": "Üben: {topic}",
+    "practiceProblem": "Aufgabe {n} von {total}",
+    "previous": "Vorherige Aufgabe",
+    "next": "Nächste Aufgabe",
+    "practiceNav": "Aufgaben",
+    "practicePageTitle": "{title}, {problem}"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "body": "Unter dieser Adresse gibt es keine Seite.",
+    "home": "Zur Startseite"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} plus {right}",
+      "minus": "{left} minus {right}",
+      "times": "{left} mal {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "minus {arg}",
+      "positive": "plus {arg}",
+      "equals": "{left} gleich {right}",
+      "continued": "gleich {expr}",
+      "group": "Klammer auf, {inner}, Klammer zu",
+      "over": "{num} durch {den}",
+      "fraction": "der Bruch mit Zähler {num} und Nenner {den}, Ende des Bruchs",
+      "fractionSimple": "{num, plural, one {ein} other {#}} {den, plural, =2 {{num, plural, one {Halbes} other {Halbe}}} =3 {{num, plural, one {Drittel} other {Drittel}}} =4 {{num, plural, one {Viertel} other {Viertel}}} =5 {{num, plural, one {Fünftel} other {Fünftel}}} =6 {{num, plural, one {Sechstel} other {Sechstel}}} =7 {{num, plural, one {Siebtel} other {Siebtel}}} =8 {{num, plural, one {Achtel} other {Achtel}}} =9 {{num, plural, one {Neuntel} other {Neuntel}}} =10 {{num, plural, one {Zehntel} other {Zehntel}}} other {durch #}}",
+      "power": "{power, select, squared {{base} zum Quadrat} cubed {{base} hoch drei} other {{base} hoch {exp}}}",
+      "powerGroup": "{base} hoch {exp}, Ende des Exponenten",
+      "lineWithOp": "{line}; {op}",
+      "withNote": "{line}; markiert: {note}"
+    },
+    "op": {
+      "add": "auf beiden Seiten {arg} addieren",
+      "sub": "auf beiden Seiten {arg} subtrahieren",
+      "mul": "beide Seiten mit {arg} multiplizieren",
+      "div": "beide Seiten durch {arg} dividieren"
+    }
+  },
+  "demo": {
+    "title": "Komponenten für handschriftliche Mathematik",
+    "intro": "Jede Mathematik-Komponente, erzeugt aus den Klartext-Schritten, die die Inhaltspakete speichern. Unter jeder steht der Text, den ein Screenreader vorliest.",
+    "spoken": "Gesprochen: {text}",
+    "fractionHeading": "Bruch",
+    "expressionsHeading": "Terme",
+    "pensHeading": "Stifte",
+    "pencil": "Bleistift: Schülerarbeit",
+    "ink": "Tinte: ausgearbeitete Beispiele",
+    "green": "Grüner Stift: Korrekturen",
+    "equationHeading": "Gleichung, am = ausgerichtet",
+    "equationLabel": "Lösen von 3x + 5 = 20",
+    "expressionHeading": "Termschritte",
+    "expressionLabel": "Berechnen von −5 − (−3)",
+    "fractionStepsLabel": "Ein Halb und ein Drittel addieren",
+    "replay": "Noch einmal schreiben",
+    "rtlHeading": "In Text von rechts nach links",
+    "rtlNote": "Der umgebende Text läuft von rechts nach links; die Mathematik bleibt von links nach rechts.",
+    "fractionStepsHeading": "Bruchschritte",
+    "longHeading": "Eine längere Gleichung",
+    "longLabel": "Lösen von 2(x + 3) − 4(x − 1) = 3x + 10",
+    "inputTitle": "Komponenten für mathematische Eingaben",
+    "inputIntro": "Die drei Arten, Mathematik einzugeben: tippen, schreiben oder ein Foto machen. Unter jeder Eingabe steht genau, was die Seite erhält. Geschriebene und fotografierte Mathematik wird vom Server gelesen, und nichts wird weitergegeben, bis Sie es bestätigen.",
+    "inputExpression": "Ein Term",
+    "inputExpressionLabel": "Die Aufgabe",
+    "inputExpressionHint": "Geben Sie Brüche mit einem Schrägstrich ein, zum Beispiel 2/5.",
+    "inputLines": "Rechenschritte",
+    "inputLinesLabel": "Der Lösungsweg des Schülers",
+    "inputReceived": "Was die Seite erhält",
+    "inputNothing": "Noch nichts."
+  },
+  "input": {
+    "modes": "Möglichkeiten zur Eingabe von {label}",
+    "mode": {
+      "type": "Typ",
+      "write": "Schreiben",
+      "photo": "Foto"
+    },
+    "typeInstead": "Stattdessen tippen",
+    "type": {
+      "loading": "Mathefeld wird geladen…",
+      "fallback": "Das Mathefeld wurde nicht geladen. Daher ist dies ein einfaches Textfeld. Gib Brüche mit einem Schrägstrich ein, zum Beispiel 2/5.",
+      "tooLong": "Das ist zu lang zum Prüfen. Kürze es oder teile es in Zeilen auf.",
+      "lineLabel": "{label}, Zeile {n}",
+      "addLine": "Zeile hinzufügen",
+      "removeLine": "Zeile {n} entfernen",
+      "emptyBox": "Fülle zuerst das leere Feld aus."
+    },
+    "write": {
+      "introOne": "Schreibe es mit dem Finger, einem Stift oder der Maus in eine Zeile.",
+      "introLines": "Schreibe den Rechenweg mit dem Finger, einem Stift oder der Maus, einen Schritt pro Zeile.",
+      "board": "Zeichenfläche für {label}",
+      "empty": "leer",
+      "strokes": "{count, plural, one {# Strich} other {# Striche}}",
+      "undo": "Rückgängig",
+      "redo": "Wiederholen",
+      "clear": "Löschen",
+      "did": {
+        "undo": "Rückgängig gemacht.",
+        "redo": "Wiederholt.",
+        "clear": "Gelöscht."
+      },
+      "read": "Meine Schrift lesen",
+      "reading": "Deine Schrift wird gelesen…",
+      "again": "Noch einmal zeichnen"
+    },
+    "photo": {
+      "intro": "Mache ein Foto von der Schülerarbeit oder lade eines hoch. Danach kannst du es zuschneiden und drehen. Es bleibt in diesem Browser, bis es gelesen wurde, und wird nie gespeichert.",
+      "take": "Foto machen",
+      "upload": "Foto hochladen",
+      "cropHelp": "Ziehe den Rahmen oder seine Ecken um die Matheaufgabe. Mit der Tastatur: Pfeiltasten verschieben den Rahmen, Umschalt mit Pfeiltasten ändert seine Größe.",
+      "cropBox": "Zuschnittbereich",
+      "cropState": "Der Zuschnittbereich ist {w}% breit und {h}% hoch, {x}% von links und {y}% von oben.",
+      "photoAlt": "Dein Foto",
+      "croppedAlt": "Das zugeschnittene Foto, das gelesen wurde",
+      "useCrop": "Diesen Teil lesen",
+      "useWhole": "Das ganze Foto lesen",
+      "rotate": "90° drehen",
+      "other": "Anderes Foto wählen",
+      "reading": "Das Foto wird gelesen…",
+      "retake": "Ein anderes Foto machen",
+      "tryAgain": "Erneut versuchen"
+    },
+    "review": {
+      "heading": "Ist das geschrieben worden?",
+      "intro": "Prüfe jede Zeile. Korrigiere alles, was falsch gelesen wurde. Nichts wird geprüft, bevor du bestätigst.",
+      "toCheck": "{count, plural, one {# Zeile muss geprüft werden.} other {# Zeilen müssen geprüft werden.}}",
+      "lines": "Gelesene Zeilen",
+      "lineN": "Zeile {n}",
+      "uncertain": "diese Zeile prüfen",
+      "edit": "Bearbeiten",
+      "done": "Fertig",
+      "editLine": "Zeile {n} bearbeiten",
+      "doneLine": "Zeile {n} fertig bearbeitet",
+      "removeLine": "Zeile {n} entfernen",
+      "blank": "Leere Zeile",
+      "unreadable": "Diese Zeile kann nicht als Mathematik dargestellt werden. Sie wird wie geschrieben gesendet.",
+      "left": "Linke Seite",
+      "right": "Rechte Seite (nach =)",
+      "op": "Rechenoperation (wie −5)",
+      "addLine": "Zeile hinzufügen",
+      "confirm": "Ja, diese Zeilen verwenden",
+      "confirmed": "Bestätigt.",
+      "blocked": {
+        "none": "Es gibt keine Zeilen zum Verwenden. Fügen Sie eine hinzu oder versuchen Sie es erneut.",
+        "oneLine": "Behalten Sie hier nur eine Zeile: Entfernen Sie die anderen.",
+        "tooMany": "Es gibt mehr als {max} Zeilen. Entfernen Sie einige, bevor Sie bestätigen.",
+        "tooLong": "Eine Zeile ist zu lang zum Prüfen (höchstens {chars} Zeichen pro Seite). Kürzen Sie sie."
+      }
+    },
+    "error": {
+      "unclear": "Hier konnte keine Mathematik gelesen werden. Versuchen Sie es mit deutlicherer Schrift erneut oder geben Sie sie stattdessen ein.",
+      "unavailable": "Das Lesen ist gerade nicht verfügbar. Geben Sie es stattdessen ein oder versuchen Sie es später erneut.",
+      "too_large": "Dieses Bild ist zu groß zum Senden. Schneiden Sie es kleiner zu oder geben Sie es stattdessen ein.",
+      "bad_image": "Dieses Bild konnte nicht gelesen werden. Verwenden Sie ein PNG-, JPEG- oder WebP-Foto oder geben Sie es stattdessen ein.",
+      "rate_limited": "Gerade zu viele Anfragen. Versuchen Sie es in {seconds} Sekunden erneut oder geben Sie es stattdessen ein.",
+      "image": "Das Bild konnte nicht vorbereitet werden. Versuchen Sie es erneut oder geben Sie es stattdessen ein.",
+      "open": "Dieses Foto konnte nicht geöffnet werden. Verwenden Sie ein PNG-, JPEG- oder WebP-Foto oder geben Sie es stattdessen ein."
+    }
+  },
+  "common": {
+    "grade": "Klasse {grade}",
+    "grades": "Klasse {from}–{to}",
+    "loading": "Wird geladen…",
+    "loadError": "Dies konnte nicht geladen werden.",
+    "retry": "Erneut versuchen",
+    "retryIn": "In {seconds} s erneut versuchen",
+    "rateLimited": "Gerade zu viele Anfragen. Bitte warten Sie einen Moment.",
+    "rateLimitedFor": "Gerade zu viele Anfragen. Bitte warten Sie {seconds} Sekunden.",
+    "machineTranslated": "maschinell übersetzt",
+    "newTab": "(öffnet in einem neuen Tab)"
+  },
+  "topic": {
+    "allTopics": "Alle Themen",
+    "printOutline": "Unterrichtsentwurf drucken",
+    "servedInEnglish": "Auf Englisch angezeigt: noch nicht übersetzt",
+    "onThisPage": "Auf dieser Seite",
+    "sections": {
+      "idea": "Die Idee",
+      "refresh": "Zuerst auffrischen",
+      "example": "Durchgerechnetes Beispiel",
+      "mistakes": "Häufige Fehler",
+      "questions": "Fragen von Lernenden",
+      "outline": "Unterrichtsentwurf"
+    },
+    "idea": "Die Idee",
+    "whyItWorks": "Warum es funktioniert",
+    "textUnavailable": "Diese Erklärung ist noch nicht verfügbar.",
+    "refreshFirst": "Zuerst auffrischen:",
+    "exampleOf": "Durchgerechnetes Beispiel {n} von {total}",
+    "previousExample": "Vorheriges durchgerechnetes Beispiel",
+    "nextExample": "Nächstes durchgerechnetes Beispiel",
+    "exampleLabel": "Durchgerechnetes Beispiel {n}",
+    "kind": {
+      "solve": "Lösen",
+      "simplify": "Vereinfachen",
+      "evaluate": "Berechnen"
+    },
+    "checkedBadge": "Jeder Schritt von einer Mathe-Engine geprüft",
+    "tapLine": "Tippen Sie auf eine Zeile, um zu sehen, warum sie stimmt",
+    "check": "Prüfung:",
+    "checkHolds": "stimmt",
+    "explanationStyle": "Erklärstil",
+    "modes": {
+      "why": "Warum?",
+      "another": "Ein anderer Weg",
+      "visual": "Bild"
+    },
+    "stepStart": "Schritt {n} · Start",
+    "stepWithOp": "Schritt {n} · {op}",
+    "step": "Schritt {n}",
+    "explanationUnavailable": "Die Erklärung zu diesem Schritt ist nicht verfügbar. Der Schritt selbst ist geprüft.",
+    "countersKey": "Gelbe Plättchen sind +1, dunkelblaue Plättchen sind −1.",
+    "aiLabel": "mit KI geschrieben · mathematisch von einer Mathe-Engine geprüft",
+    "checkedLabel": "mathematisch von einer Mathe-Engine geprüft",
+    "previousStep": "Vorheriger Schritt",
+    "nextStep": "Nächster Schritt",
+    "mistakesHeading": "Was Lernende oft falsch machen",
+    "studentWrites": "der Schüler schreibt",
+    "whyItFeelsRight": "Warum es richtig wirkt.",
+    "ask": "Fragen Sie:",
+    "questionsHeading": "Fragen von Lernenden",
+    "outlineHeading": "Unterrichtsentwurf",
+    "outlineTotal": "Etwa {minutes} Minuten · frei anpassen",
+    "outlineTime": "{from}–{to} min",
+    "akeliusHeading": "Die passende Akelius-Mathe-Lektion",
+    "akeliusLesson": "{title} (Klasse {grade})",
+    "tryYourself": "Probieren Sie diese Aufgaben zuerst selbst"
+  },
+  "practice": {
+    "noneYet": "Es gibt noch keine Übungsaufgaben.",
+    "hintsHeading": "Hinweise, wenn Sie sie möchten",
+    "startOver": "Neu beginnen",
+    "hidden": "(nicht geöffnet)",
+    "rung": {
+      "goal": "Das Ziel",
+      "information": "Was Sie brauchen",
+      "computation": "Die Rechnung",
+      "answer": "Die Antwort"
+    },
+    "showNextHint": "Nächsten Hinweis anzeigen",
+    "showAnswer": "Die Antwort anzeigen",
+    "doneNote": "Vergleichen Sie mit Ihrem Rechenweg. Möchten Sie die Begründung?",
+    "openExample": "Das ausgearbeitete Beispiel öffnen.",
+    "allFollow": "Jede Zeile folgt aus der vorherigen.",
+    "final": {
+      "correct": "Und die letzte Zeile ist die Antwort.",
+      "equivalent_not_simplified": "Die letzte Zeile ist richtig, aber noch nicht vereinfacht.",
+      "wrong": "Aber die letzte Zeile ist noch nicht die Antwort."
+    },
+    "lineDoesntFollow": "Zeile {n} folgt nicht aus der Zeile davor.",
+    "badReason": {
+      "unparsable": "Das konnte nicht als Mathematik gelesen werden.",
+      "false_equality": "Die beiden Seiten sind nicht gleich.",
+      "not_equivalent": "Das ist nicht gleich der Zeile davor.",
+      "unsupported": "Das verwendet Mathematik, die der Prüfer nicht abdeckt."
+    },
+    "status": {
+      "unclear": "Der Rechenweg konnte nicht geprüft werden.",
+      "out_of_scope": "Dieser Rechenweg liegt außerhalb dessen, was der Prüfer abdeckt."
+    },
+    "yourLines": "Ihr Rechenweg",
+    "header": "Aufgabe {n} von {total} · nur für Sie, nichts wird gespeichert",
+    "backToTopic": "Zurück zu {topic}",
+    "workingLabel": "Ihr Rechenweg",
+    "workingHint": "Wird nur gesendet, wenn Sie Meinen Rechenweg prüfen drücken. Nichts wird gespeichert.",
+    "check": "Meinen Rechenweg prüfen",
+    "checking": "Wird geprüft…",
+    "needWorking": "Schreiben oder tippen Sie zuerst mindestens eine Zeile.",
+    "sourceLabel": "Quelle:"
+  },
+  "mistake": {
+    "title": "Ein Schüler schrieb das …",
+    "intro": "Geben Sie die Aufgabe und die Antwort Ihres Schülers ein. Der Coach findet den wahrscheinlichen Grund und schlägt vor, was Sie fragen können.",
+    "topicLegend": "Thema",
+    "problemLabel": "Die Aufgabe",
+    "problemHint": "Geben Sie Brüche mit einem Schrägstrich ein, zum Beispiel 2/5. Sie erscheinen so, wie Sie sie schreiben würden.",
+    "answerLabel": "Was Ihr Schüler geantwortet hat",
+    "workingLabel": "Sein Rechenweg (optional)",
+    "privacy": "Bitte geben Sie keine Namen von Schülern ein. Hier wird nichts gespeichert.",
+    "explain": "Das erklären",
+    "explaining": "Wird angesehen …",
+    "needProblem": "Geben Sie zuerst die Aufgabe ein.",
+    "needAnswer": "Geben Sie die Antwort Ihres Schülers ein.",
+    "likelyReason": "wahrscheinlicher Grund",
+    "looksLikeSlip": "sieht nach einem Flüchtigkeitsfehler aus",
+    "slipTitle": "Ein Flüchtigkeitsfehler, kein Missverständnis.",
+    "ruleBadge": "geprüft: Diese Regel ergibt genau diese Antwort",
+    "aiBadge": "von KI vorgeschlagen · Mathematik von einer Mathematik-Engine geprüft",
+    "whatTheyWrote": "was geschrieben wurde",
+    "workedOut": "die Antwort, ausgerechnet",
+    "barCaption": "Die Antwort als Balkenmodell.",
+    "whatToSay": "Was Sie sagen könnten",
+    "say": {
+      "ask": "fragen",
+      "nudge": "Hinweis geben",
+      "tell": "falls nötig"
+    },
+    "tryNext": "als Nächstes mit Ihrem Schüler versuchen",
+    "fromTopic": "aus dem Thema {topic}",
+    "right": "Ihr Schüler hat recht.",
+    "correct": "Die Antwort ist richtig.",
+    "notSimplified": "Es ist derselbe Wert, nur nicht gekürzt. Wenn Ihre Klasse Antworten in vollständig gekürzter Form schreibt, fragen Sie, wie man kürzen könnte.",
+    "sameAmount": "Die Antwort und die gekürzte Antwort",
+    "notSure": "aus einer Antwort nicht sicher",
+    "askHow": "Fragen Sie, wie die Antwort entstanden ist.",
+    "possibilities": "{count, plural, one {eine Möglichkeit} other {# Möglichkeiten}}",
+    "possibly": "Möglicherweise",
+    "or": "Oder",
+    "outOfScope": "Das liegt außerhalb dessen, was der Coach abdeckt.",
+    "reason": {
+      "problem_unreadable": "Die Aufgabe konnte nicht als Mathematik gelesen werden. Prüfen Sie sie und versuchen Sie es erneut.",
+      "answer_unreadable": "Die Antwort konnte nicht als Mathematik gelesen werden. Prüfen Sie sie und versuchen Sie es erneut.",
+      "unsupported": "Diese Art von Mathematik wird noch nicht abgedeckt.",
+      "timeout": "Die Berechnung hat zu lange gedauert. Bitte versuchen Sie es erneut.",
+      "ai_unavailable": "Der Erklärdienst ist gerade nicht verfügbar. Die mathematische Prüfung oben gilt weiterhin.",
+      "ai_unclear": "Der Coach konnte es aus dieser Antwort allein nicht erkennen.",
+      "ai_out_of_scope": "Der Coach hat festgestellt, dass dies außerhalb der abgedeckten Themen liegt.",
+      "ai_unverified_math": "Die Erklärung konnte von der Mathematik-Engine nicht geprüft werden und wird deshalb nicht angezeigt. Die Mathematik oben ist geprüft.",
+      "math_error": "Die Mathematik-Engine konnte das nicht ausrechnen. Bitte prüfen Sie die Eingabe und versuchen Sie es erneut."
+    },
+    "tryAnother": "Eine andere Antwort versuchen",
+    "resultHeading": "Ergebnis",
+    "reasonUnavailable": "Der wahrscheinliche Grund ist nicht verfügbar."
+  }
+}

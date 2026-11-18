@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "ur",
+  "title": "خطی مساوات حل کرنا",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "دونوں طرف ایک ہی عمل کر کے اور جواب جانچ کر خطی مساوات حل کریں۔",
+  "idea": "مساوات بتاتی ہے کہ دو عبارتوں کی قدر ایک ہی ہے۔ حل کرنے کا مطلب `x` کی وہ قدر معلوم کرنا ہے جو بیان کو درست بنائے۔\n\nتوازن کا ماڈل اصل تصویر ہے۔ ایک طرف جو بھی کیا جائے، دوسری طرف بھی وہی کرنا چاہیے۔ عمل کو حاشیے میں لکھا جا سکتا ہے، جیسے subtract `6`، تاکہ دکھایا جائے کہ دونوں طرف تبدیلی آئی ہے۔\n\n`x` کو اکیلا کرنے کے لیے عملوں کو الٹی ترتیب میں ختم کریں۔ `2*x + 6 = 10` میں دونوں طرف سے `6` منفی کرنے سے `2*x = 4` ملتا ہے۔ دونوں طرف کو `2` سے تقسیم کرنے سے `x = 2` ملتا ہے۔\n\nاگر قوسین ہوں تو پوری قوس کو ضرب دی ہوئی سمجھیں۔ `5*(x + 3) = 35` میں دونوں طرف کو `5` سے تقسیم کرنے سے `x + 3 = 7` ملتا ہے، پھر `3` منفی کرنے سے `x = 4` ملتا ہے۔",
+  "why_it_works": "ہر قدم دونوں طرف کو برابر رکھتا ہے کیونکہ دونوں طرف ایک ہی عمل کیا جاتا ہے۔ مساوات کی شکل بدلتی ہے، لیکن حل وہی رہتا ہے۔\n\nعمل الٹی ترتیب میں ختم کیے جاتے ہیں۔ `2*x + 6 = 10` میں `x` والی عبارت کو `2` سے ضرب دی گئی تھی اور پھر `6` جمع کیا گیا تھا۔ اس لیے پہلے `6` منفی کریں، پھر `2` سے تقسیم کریں۔\n\nدونوں طرف متغیر ہوں تو بھی توازن کا یہی خیال کام کرتا ہے۔ `3*x + 4 = x + 10` میں دونوں طرف سے `x` منفی کرنے سے `2*x + 4 = 10` ملتا ہے۔ پھر `4` منفی کرنے سے `2*x = 6` ملتا ہے، اور `2` سے تقسیم کرنے سے `x = 3` ملتا ہے۔\n\nجانچ بدل کر رکھنے سے ہوتی ہے۔ `x = 2` کے لیے، `2*2 + 6`، `10` ہے، اس لیے اصل مساوات درست ہے۔",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`+ 6`، `x` کو اکیلا نہیں ہونے دیتا۔ دونوں طرف سے `6` منہا کریں تاکہ توازن برابر رہے اور جو `6` جمع کیا گیا تھا وہ ختم ہو جائے۔",
+            "another_way": "الٹی ترتیب سے سوچیں۔ چونکہ `2*x` کے بعد `6` جمع کیا گیا تھا، اس لیے پہلے دونوں طرف `-6` کر کے اسے ختم کریں۔",
+            "visual": "ایک ترازو میں ایک طرف `2*x + 6` اور دوسری طرف `10` دکھائی دیتا ہے، اور دونوں طرف سے `6` ہٹا دیا گیا ہے۔"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اب `2*x = 4` ہے، اس لیے `x` اب بھی `2` سے ضرب میں ہے۔ ضرب ختم کرنے اور مساوات کو متوازن رکھنے کے لیے دونوں طرف کو `2` سے تقسیم کریں۔",
+            "another_way": "`2*x` کا مطلب `x` کے دو برابر گروہ ہیں۔ دونوں طرف کو `2` برابر حصوں میں بانٹنے سے `x` کا ایک گروہ رہ جاتا ہے۔",
+            "visual": "ایک ترازو میں ایک طرف `2*x` اور دوسری طرف `4` دکھائی دیتا ہے، اور دونوں طرف کو `2` برابر حصوں میں بانٹا گیا ہے۔"
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "یہ جواب ہے کیونکہ `x` اکیلا ہے اور مساوات اس کی قیمت براہ راست بتاتی ہے: `x = 2`۔",
+            "another_way": "قیمت رکھ کر جانچیں: `2*2 + 6`، `10` ہے، اس لیے اصل مساوات درست ہے۔",
+            "visual": "ایک ترازو میں ایک طرف ایک `x` اور دوسری طرف `2` دکھائی دیتا ہے، اور توازن برابر ہے۔"
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "قوسین والی عبارت کو `5` سے ضرب دی گئی ہے۔ دونوں طرف `5` سے تقسیم کرنا اس ضرب کو ختم کرتا ہے اور مساوات کو متوازن رکھتا ہے۔",
+            "another_way": "اس طرح پہلے قوسین کھولنے سے بچ جاتے ہیں۔ چونکہ پورا بایاں طرف `x + 3` کا `5` گنا ہے، اس لیے مساوات کے دونوں طرف کو پورا `5` سے تقسیم کریں۔",
+            "visual": "ایک متوازن ترازو ایک طرف `5*(x + 3)` اور دوسری طرف `35` دکھاتا ہے، جو دونوں طرف کو `5` برابر گروہوں میں بانٹنے کے لیے تیار ہے۔"
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اب `x` میں `3` جمع ہے۔ دونوں طرف سے `3` منہا کرنا اس جمع کو ختم کرتا ہے اور مساوات کو متوازن رکھتا ہے۔",
+            "another_way": "سوچیں کہ ترازو کے ہر طرف سے وہی `3` ہٹا رہے ہیں۔ اس سے بائیں طرف نامعلوم اکیلا رہ جاتا ہے۔",
+            "visual": "ایک متوازن ترازو ایک طرف `x + 3` اور دوسری طرف `7` دکھاتا ہے، جبکہ دونوں طرف سے `3` ہٹا دیا گیا ہے۔"
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "متغیر اکیلا ہے، اس لیے یہ سطر حل دیتی ہے۔ وہ قیمت جو اصل مساوات کو درست بناتی ہے `x = 4` ہے۔",
+            "another_way": "جانچ میں اصل مساوات میں `x` کی جگہ `4` رکھا جائے گا اور تصدیق ہوگی کہ دونوں طرف برابر ہیں۔",
+            "visual": "ایک متوازن ترازو ایک طرف اکیلا `x` اور دوسری طرف `4` دکھاتا ہے۔"
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "دائیں طرف کی `x` والی حد کو پہلے دونوں طرف سے `x` منفی کر کے ہٹایا جاتا ہے۔ اس سے مساوات متوازن رہتی ہے اور متغیر والی حدیں ایک ساتھ آ جاتی ہیں۔",
+            "another_way": "سوچیں کہ ہر طرف سے ایک `x` لے لیا گیا۔ پھر بائیں طرف `2*x + 4` بن جاتا ہے، اور دائیں طرف اب `x` والی حد نہیں رہتی۔",
+            "visual": "ایک ترازو `3*x + 4` اور `x + 10` دکھاتا ہے، جس میں ہر طرف سے ایک `x` ہٹا دیا گیا ہے۔"
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "مستقل عدد `4` کو دونوں طرف سے `4` منفی کر کے بائیں طرف سے ہٹایا جاتا ہے۔ اس سے بائیں طرف `x` والی حد اکیلی رہ جاتی ہے۔",
+            "another_way": "چونکہ `2*x` میں `4` جمع کیا گیا تھا، اس جمع کو تفریق سے الٹ دیں۔ توازن برقرار رکھنے کے لیے دائیں طرف بھی اسی طرح بدلتا ہے۔",
+            "visual": "ایک ترازو `2*x + 4` اور `10` دکھاتا ہے، جس میں دونوں طرف سے `4` ہٹا دیا گیا ہے۔"
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "`2`، `x` کو ضرب دے رہا ہے، اس لیے ضرب کو الٹنے کے لیے دونوں طرف کو `2` سے تقسیم کریں۔ اس سے ایک `x` اکیلا ملتا ہے۔",
+            "another_way": "`2*x` کا مطلب `x` کے 2 برابر گروہ ہیں۔ دونوں طرف کو `2` برابر حصوں میں بانٹنے سے ایک گروہ کی قیمت معلوم ہوتی ہے۔",
+            "visual": "ایک ترازو `2*x` اور `6` دکھاتا ہے، جس میں ہر طرف کو `2` برابر حصوں میں بانٹا گیا ہے۔"
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "یہ جواب ہے کیونکہ `x` اکیلا ہے اور اس کی قیمت دکھائی گئی ہے۔ مساوات بتاتی ہے کہ `x`، `3` ہے۔",
+            "another_way": "اصل مساوات میں بدل کر اسے جانچا جا سکتا ہے۔ `x` کی جگہ `3` رکھنے سے دونوں طرف برابر ہو جاتے ہیں۔",
+            "visual": "ایک ترازو دکھاتا ہے کہ ایک `x`، `3` کے ساتھ توازن میں ہے۔"
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "کوئی عدد مساوات کے نشان کے دوسری طرف جا کر اپنی علامت وہی رکھ سکتا ہے۔",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"اسے دوسری طرف لے جائیں\" ایک عام مختصر طریقہ ہے، اور طالب علم بھول جاتا ہے کہ لے جانے کا مطلب منہا کرنا ہے۔",
+      "what_to_say": {
+        "probe": "`+ 6` ختم کرنے کے لیے آپ نے دونوں طرف کیا عمل کیا؟",
+        "nudge": "حاشیے میں عمل لکھیں، \"| -6\"، اور اسے دونوں طرف لاگو کریں۔",
+        "tell": "دونوں طرف سے چھ منہا کریں: `2*x = 4`، اس لیے `x = 2`۔ قیمت رکھ کر جانچیں: `2*2 + 6` برابر ہے `10`۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "x کے لیے حل کریں:",
+        "answer": "5"
+      },
+      "source_quote": "کچھ طلبہ عدد کو اس کی علامت بدلے بغیر مساوات کے نشان کے دوسری طرف لے جاتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "آپ ایک طرف کی صرف ایک حد کو عددی سر سے تقسیم کر سکتے ہیں۔",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "طالب علم `x` کو اکیلا کرنے پر توجہ دیتا ہے اور اس کے ساتھ والی حدوں کو تقسیم کر دیتا ہے، باقی طرف کو بھول جاتا ہے۔",
+      "what_to_say": {
+        "probe": "جب آپ نے دو سے تقسیم کیا، تو `6` کا کیا بنا؟",
+        "nudge": "دونوں طرف ہر حد کو دو سے تقسیم کریں اور اپنی سطر سے موازنہ کریں۔",
+        "tell": "کسی طرف کو تقسیم کرنے کا مطلب ہے کہ اس کی ہر حد تقسیم ہو: `x + 3 = 5`، اس لیے `x = 2`۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "x کے لیے حل کریں:",
+        "answer": "3"
+      },
+      "source_quote": "کچھ طلبہ صرف ایک حد کو `x` کے آگے والے عدد سے تقسیم کرتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "`x` کے آگے والے عدد کو ختم کرنے کے لیے اسے منہا کریں۔",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "منہا کرنا وہ پہلا الٹ عمل ہے جو طالب علم نے سیکھا، اور `3*x` میں `3`، `x` کے ساتھ دکھائی دیتا ہے۔",
+      "what_to_say": {
+        "probe": "`3*x` کا کیا مطلب ہے؟ `3` اور `x` کو کون سا عمل جوڑتا ہے؟",
+        "nudge": "اپنا جواب جانچیں: کیا `3*9` برابر ہے `12`؟",
+        "tell": "`3*x` کا مطلب ہے `x` کا تین گنا، اس لیے دونوں طرف کو 3 سے تقسیم کریں: `x = 4`۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "x کے لیے حل کریں:",
+        "answer": "7"
+      },
+      "source_quote": "کچھ طلبہ `x` کے آگے والے عدد سے تقسیم کرنے کے بجائے وہ عدد منہا کرتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "آپ `x` پر کیے گئے اعمال کو کسی بھی ترتیب میں الٹ سکتے ہیں۔",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "`x` کے ساتھ والے عدد کو منہا کرنا عموماً پہلا قدم ہوتا ہے، اس لیے طالب علم یہ کام تب بھی کرتا ہے جب وہ عدد تقسیم کے اندر ہو۔",
+      "what_to_say": {
+        "probe": "`(x + 6)/2` میں `x` کے ساتھ پہلے کیا ہوتا ہے، اور آخر میں کیا ہوتا ہے؟",
+        "nudge": "آدھا کرنا آخر میں کیا گیا تھا۔ اسے الٹنے کے لیے آپ دونوں طرف کو کس سے ضرب دیتے ہیں؟",
+        "tell": "پہلے آدھا کرنے کو الٹیں: `x + 6 = 20`، اس لیے `x = 14`۔ جانچ: `(14 + 6)/2` برابر ہے `10`۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "x کے لیے حل کریں:",
+        "answer": "11"
+      },
+      "source_quote": "کچھ طلبہ مراحل کو غلط ترتیب میں الٹتے ہیں۔"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "قوس کے باہر والا عدد اندر کی صرف پہلی حد کو ضرب دیتا ہے۔",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` بالکل `x` کے ساتھ ہے، اس لیے طالب علم قریب ترین چیز کو ضرب دیتا ہے۔",
+      "what_to_say": {
+        "probe": "`5*(x + 3)` میں تین کتنی بار ہیں؟",
+        "nudge": "`5*(x + 3)` کو `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` کے طور پر لکھیں اور گنیں۔",
+        "tell": "پانچ قوس کے اندر ہر چیز کو ضرب دیتا ہے: `5*x + 15 = 35`، اس لیے `x = 4`۔"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "x کے لیے حل کریں:",
+        "answer": "5"
+      },
+      "source_quote": "کچھ طلبہ قوس کے باہر والے عدد کو صرف پہلی حد سے ضرب دیتے ہیں۔"
+    }
+  ],
+  "questions": [
+    {
+      "question": "دونوں طرف ایک ہی کام کیوں کرتے ہیں؟",
+      "answer": "مساوات متوازن ہوتی ہے۔ برابر مقداروں پر ایک ہی عمل کرنے سے وہ برابر رہتی ہیں، اس لیے حل نہیں بدلتا۔"
+    },
+    {
+      "question": "`+ 6` منفی `6` کیوں بن جاتا ہے؟",
+      "answer": "حل کرنا عملوں کو ختم کرنا ہے۔ `2*x + 6 = 10` میں دونوں طرف سے `6` منفی کرنے سے `2*x = 4` ملتا ہے۔"
+    },
+    {
+      "question": "`2` منفی کرنے کے بجائے `2` سے تقسیم کیوں کرتے ہیں؟",
+      "answer": "`2*x` کا مطلب `2` ضرب `x` ہے۔ ضرب کو تقسیم سے ختم کیا جاتا ہے، اس لیے `2*x = 4`، `x = 2` بن جاتا ہے۔"
+    },
+    {
+      "question": "اگر دونوں طرف `x` ہو تو کیا کریں؟",
+      "answer": "وہی توازن والا قدم استعمال کریں۔ `3*x + 4 = x + 10` میں دونوں طرف سے `x` منفی کرنے سے `2*x + 4 = 10` ملتا ہے۔"
+    },
+    {
+      "question": "قوسین کام کو کیسے بدلتی ہیں؟",
+      "answer": "باہر والا عدد پوری قوس کو ضرب دیتا ہے۔ `5*(x + 3) = 35` میں دونوں اطراف کو `5` سے تقسیم کرنے سے `x + 3 = 7` ملتا ہے۔"
+    },
+    {
+      "question": "طلبہ کیسے جان سکتے ہیں کہ جواب درست ہے؟",
+      "answer": "جواب کو اصل مساوات میں بدل کر رکھیں۔ اگر دونوں طرف برابر آئیں تو جواب درست ہے۔"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "مساوات بطور توازن",
+      "activity": "`2*x + 6 = 10` کو دو برابر طرفوں کے طور پر دکھائیں۔ زور دیں کہ مساوات بتاتی ہے کہ دو عبارتوں کی قدر ایک ہی ہے۔ حاشیے میں ایک ہی عمل لکھوانا شروع کرائیں، جیسے subtract `6`۔"
+    },
+    {
+      "minutes": 10,
+      "title": "الٹی ترتیب میں ختم کرنا",
+      "activity": "`2*x + 6 = 10` حل کر کے دکھائیں۔ دونوں طرف سے `6` منفی کرنے سے `2*x = 4` ملتا ہے۔ دونوں طرف کو `2` سے تقسیم کرنے سے `x = 2` ملتا ہے۔ بدل کر رکھ کر جانچ کریں۔"
+    },
+    {
+      "minutes": 8,
+      "title": "عام غلط موڑ",
+      "activity": "عام غلطیوں پر بات کریں: طرفیں بدلنا مگر عمل نہ بدلنا، صرف ایک جزو کو تقسیم کرنا، اور عددی سر کو تقسیم کرنے کے بجائے منفی کرنا۔ توجہ توازن کے قدم پر رکھیں۔"
+    },
+    {
+      "minutes": 8,
+      "title": "قوسین",
+      "activity": "`5*(x + 3) = 35` استعمال کریں۔ دونوں طرف کو `5` سے تقسیم کریں تاکہ `x + 3 = 7` ملے۔ پھر `3` منفی کریں تاکہ `x = 4` ملے۔ نوٹ کریں کہ `5` پوری قوس پر لاگو ہوتا ہے۔"
+    },
+    {
+      "minutes": 10,
+      "title": "دونوں طرف متغیرات",
+      "activity": "`3*x + 4 = x + 10` حل کر کے دکھائیں۔ دونوں طرف سے `x` منفی کرنے سے `2*x + 4 = 10` ملتا ہے۔ `4` منفی کرنے سے `2*x = 6` ملتا ہے۔ `2` سے تقسیم کرنے سے `x = 3` ملتا ہے۔"
+    },
+    {
+      "minutes": 6,
+      "title": "جوابات کی جانچ",
+      "activity": "طلبہ جوابات کو اصل مساوات میں بدل کر رکھیں۔ ناکام جانچ کا مطلب ہے کہ کسی قدم کو دوبارہ دیکھنا چاہیے۔ جانچ حل کرنے کے عمل کا حصہ ہے، اضافی کام نہیں۔"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `x` کی وہ قیمت چاہتے ہیں جو `8*x = 56` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` کا مطلب ہے `x` کا 8 گنا، اس لیے اسے ختم کرنے کے لیے دونوں طرف کو `8` سے تقسیم کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "c کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `c` کی وہ قیمت چاہتے ہیں جو `-5*c = 55` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "دونوں طرف کو `-5` سے تقسیم کریں، یہ `c` کے آگے والا عدد ہے۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` منفی ہے کیونکہ علامتیں مختلف ہیں۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `x` کی وہ قیمت چاہتے ہیں جو `7*x + 8 = -13` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "عمل الٹی ترتیب سے ختم کریں: دونوں طرف سے `8` منفی کریں، پھر `7` سے تقسیم کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`8` منفی کرنے کے بعد: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. جانچ: `7*(-3) + 8` برابر ہے `-13` کے۔"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `x` کی وہ قیمت چاہتے ہیں جو `3*x + 4 = -8` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "دونوں طرف سے `4` منفی کریں، پھر دونوں طرف کو `3` سے تقسیم کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`4` منفی کرنے کے بعد: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. جانچ: `3*(-4) + 4` برابر ہے `-8` کے۔"
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `x` کی وہ قیمت چاہتے ہیں جو `5*(x + 3) = 35` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "5 پورے قوس کو ضرب دے رہا ہے۔ دونوں طرف کو `5` سے تقسیم کریں، یا قوس کو کھول دیں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "دونوں طرف کو `5` سے تقسیم کرنے سے `x + 3 = 7` ملتا ہے۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. جانچ: `5*(4 + 3)` برابر ہے `35` کے۔"
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "m کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `m` کی وہ قیمت چاہتے ہیں جو `2*(m - 4) + 3 = -1` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "پہلے قوس کھول کر ضرب دیں، پھر اعداد کو جمع کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`، اس لیے `2*m - 5 = -1` اور `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. جانچ: `2*(2 - 4) + 3` برابر ہے `-1` کے۔"
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `x` کی وہ قیمت چاہتے ہیں جو `7*x + 5 = 6*x + 2` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "`x` والے ارکان کو ایک طرف لائیں: دونوں طرف سے `6*x` منہا کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`، پھر دونوں طرف سے `5` منفی کریں۔"
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. جانچ: دونوں طرف `-16` ہیں۔"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "x کے لیے حل کریں:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "ہم `x` کی وہ قیمت چاہتے ہیں جو `12*x + 8 = 6*x + 2` کو درست بنائے۔"
+        },
+        {
+          "rung": "information",
+          "text": "دونوں طرف سے `6*x` منفی کریں، پھر دونوں طرف سے `8` منفی کریں۔"
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`، اس لیے `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. جانچ: دونوں طرف `-4` ہیں۔"
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

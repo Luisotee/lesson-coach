@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "zh-Hans",
+  "title": "负数",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "用数轴和相反数来加、减、乘负数。",
+  "idea": "负数小于零。在数轴上，`-3` 在零的左边 3 格，而 `3` 在零的右边 3 格。它们是相反数，因为它们在零的两侧，到零的距离相同。\n\n加一个正数向右移动。加一个负数向左移动。减去一个数，与加上这个数的方向相反，所以减去一个负数向右移动。例如，`5 - (-3)` 变成 `5 + 3`。\n\n异号数相加时，符号把数往相反方向拉。结果的符号与离零更远的数相同，大小是两个大小的差。所以 `-7 + 4` 变成 `-(7 - 4)`。",
+  "why_it_works": "减法可以表示两个数之间的距离。从 `-3` 到 `5` 的差，要走完从 `-3` 到 0，再从 0 到 `5` 的步数。所以减去一个负数等于加上它的相反数：`5 - (-3)` 变成 `5 + 3`。\n\n对于乘法，可以用规律解释符号法则。在 `3*(-2)`、`2*(-2)`、`1*(-2)` 和 `0*(-2)` 中，第一个因数每减少 1，积就增加 2。继续这个规律，负数乘负数会得到正数。\n\n所以 `(-4)*(-6)` 变成 `4*6`。负数乘负数得正数，因为乘法规律必须一致地继续下去。",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "计算：",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "这个式子里有减号和负号。要把它们分清：它表示 `5` 减去 `-3`。",
+            "another_way": "把 `-3` 看作在零的左边 3 步。式子 `5 - (-3)` 求的是从 `-3` 到 `5` 的距离。",
+            "visual": "在数轴上，在零的左边标出 `-3`，在零的右边标出 `5`。"
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "减去一个负数，移动方向与加上一个负数相反，所以向右移动。这就是 `5 - (-3)` 变成 `5 + 3` 的原因。",
+            "another_way": "去掉一笔债务，效果和得到一样。所以减去 `-3` 与加上 `3` 是同样的移动。",
+            "visual": "从数轴上的 `5` 开始，然后表示向右移动 `3` 步。"
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "改写以后，计算就是普通加法。`5 + 3` 是 `8`，所以原式的值是 `8`。",
+            "another_way": "在数轴上，从 `5` 向右移动 `3` 步到达 `8`。从 `-3` 到 `5` 的距离也是 `8` 步。",
+            "visual": "从 `5` 向右移动，终点是数轴上的 `8`。"
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "计算：",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "表达式 `-7 + 4` 是异号两数相加。它像一场拔河：`-7` 离零比 `4` 更远，所以结果仍为负数。",
+            "another_way": "从 `-7` 出发，加 `4` 就向右移动 `4` 步。这次移动朝向零，但没有越过零。",
+            "visual": "在数轴上，从 `-7` 出发，向右画 `4` 步。"
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "因为 `7` 大于 `4`，保留负号，再比较大小。所以 `-7 + 4` 变成 `-(7 - 4)`。",
+            "another_way": "把 `-7` 看作向左拉，`4` 看作向右拉。剩下的拉力向左，大小是 `7 - 4`。",
+            "visual": "在数轴上，向左 `7` 的拉力和向右 `4` 的拉力，剩下向左 `7 - 4` 的拉力。"
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "拔河后剩下的大小是 `3`，负号表示方向在零的左边。所以答案是 `-3`。",
+            "another_way": "从 `-7` 出发，向右移动 `4` 步，落在 `-3`。这与化简结果一致。",
+            "visual": "在数轴上，箭头终点是 `-3`，在零的左边 3 步。"
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "计算：",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "两个因数都是负数。负数乘负数得正数，所以这个乘积可以改写成不带负号的形式。",
+            "another_way": "用规律来想：乘以一个负数会改变方向，改变两次方向就得到正的乘积。",
+            "visual": "在数轴上，`(-4)*(-6)` 表示相等的负向跳跃取负的次数，所以反向到右边。"
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "符号处理后，只需把大小相乘。式子 `4*6` 保留了两个因数的距离部分。",
+            "another_way": "可以这样想：两个负号使乘积变为正后，就是四组六。",
+            "visual": "在数轴上，`4*6` 表示从零开始，向右跳四次，每次六个单位。"
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "乘法已经完成：`4*6` 是 `24`。所以 `24` 是原式的值。",
+            "another_way": "原式变成一个正的乘积，而这个乘积等于 `24`。",
+            "visual": "在数轴上，这些跳跃的终点在零右边的 `24` 处。"
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "减去一个负数会使结果变小。",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "减法通常会使数量变小，学生看到两个减号，就保留了负号。",
+      "what_to_say": {
+        "probe": "你在数轴上从哪里开始？减去 `-3` 会让你向哪个方向移动？",
+        "nudge": "`5` 和 `-3` 之间相差多少？从 `-3` 数到 `5`，数一数有几步。",
+        "tell": "减去一个负数等于加上它的相反数，所以 `5 - (-3)` 就是 `5 + 3`，等于 `8`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "计算：",
+        "answer": "8"
+      },
+      "source_quote": "有些学生认为，减去一个负数会使结果变小。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "负数乘负数得负数。",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "两个数都是负数，所以看起来结果也应该是负数。",
+      "what_to_say": {
+        "probe": "`1*(-3)` 是多少，`0*(-3)` 呢？当第一个数每次减小 1 时，结果会怎样变化？",
+        "nudge": "继续观察这个规律：`1*(-3)`，`0*(-3)`，`-1*(-3)`，看看结果往哪个方向变化。",
+        "tell": "这个规律是每一步增加 3，所以 `(-2)*(-3)` 是 `6`。负数乘负数得正数。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "计算：",
+        "answer": "20"
+      },
+      "source_quote": "有些学生认为，负数乘负数得负数。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "异号数相加时，把绝对值相加，并保留第一个数的符号。",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "学生学过加法会使数的大小变大，而第一个符号是他们最先看到的符号。",
+      "what_to_say": {
+        "probe": "如果你从 `-5` 开始，移动三步，你会向哪个方向移动？",
+        "nudge": "把 `-5` 和 `3` 想成在拔河。哪一边赢，赢了多少？",
+        "tell": "正的三把它拉回接近零的方向，所以 `-5 + 3` 是 `-2`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "计算：",
+        "answer": "-5"
+      },
+      "source_quote": "有些学生把绝对值相加，并保留第一个数的符号。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "总是用较大的数减去较小的数。",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "在学习自然数时，学生被告知不能从较小的数中减去较大的数。",
+      "what_to_say": {
+        "probe": "如果你从 `3` 开始，向左走七步，会落在哪里？",
+        "nudge": "`3 - 7` 和 `7 - 3` 一样吗？用数轴分别试一试。",
+        "tell": "从3向左走7步会落在 `-4`，所以 `3 - 7` 是 `-4`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "计算：",
+        "answer": "-7"
+      },
+      "source_quote": "有些学生总是用较大的数减去较小的数。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "两个负号变正号，加法中也是这样。",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "“两个负数得正数”这条规则简短又好记，所以会被用到每一对负号上。",
+      "what_to_say": {
+        "probe": "如果你欠4元，又多欠3元，一共欠多少元？",
+        "nudge": "从数轴上的 `-4` 开始，加上 `-3`。你向哪个方向移动？",
+        "tell": "加上一个负数就是向左移动，所以 `-4 + (-3)` 是 `-7`。符号法则用于乘法和除法。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "计算：",
+        "answer": "-8"
+      },
+      "source_quote": "有些学生把“两个负号变正号”用到加法中。"
+    }
+  ],
+  "questions": [
+    {
+      "question": "为什么减去一个负数会向右移动？",
+      "answer": "减法的移动方向与加法相反。加一个负数向左移动，所以减去一个负数向右移动。例如，`5 - (-3)` 变成 `5 + 3`。"
+    },
+    {
+      "question": "两个负号总是得到正数吗？",
+      "answer": "不是。这个规则用于乘法和除法。在加法中，方向很重要。两个负数相加，会在数轴上向左移动得更远。"
+    },
+    {
+      "question": "为什么 `-7 + 4` 是负数？",
+      "answer": "这两个数向相反方向拉。`-7` 比 `4` 离零更远，所以结果保留负号。`-7 + 4` 变成 `-(7 - 4)`。"
+    },
+    {
+      "question": "为什么负数乘负数得正数？",
+      "answer": "乘法规律必须继续。当一个因数减少并经过零时，积会按相同的量继续增加，因此会得到正数。"
+    },
+    {
+      "question": "`3 - 7` 可以有答案吗？",
+      "answer": "可以。从 `3` 开始，在数轴上向左移动七步。落点在零以下。"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "确定负数的位置",
+      "activity": "画一条数轴，把零放在中间。把正数和负数放在到零等距的位置。强调相反数，如 `-3` 和 `3`，它们在零的两侧，到零的距离相同。"
+    },
+    {
+      "minutes": 10,
+      "title": "把加法看作移动",
+      "activity": "用数轴说明，加一个正数向右移动，加一个负数向左移动。加入一个异号相加的例子，并把它描述成拔河。"
+    },
+    {
+      "minutes": 10,
+      "title": "减去负数",
+      "activity": "通过说“减去”和“负数”，把运算和符号分开。说明减法的移动方向与加法相反，所以 `5 - (-3)` 变成 `5 + 3`。"
+    },
+    {
+      "minutes": 10,
+      "title": "加法中的异号",
+      "activity": "演示符号向相反方向拉的例子。结果取离零更远的数的符号，大小是两个大小的差。使用 `-7 + 4` 变成 `-(7 - 4)`。"
+    },
+    {
+      "minutes": 10,
+      "title": "用规律做乘法",
+      "activity": "展示正因数逐步减少并经过零的规律。用它解释为什么负数乘负数得正数，再联系到 `(-4)*(-6)` 变成 `4*6`。"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `-7 - (-4)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "减去一个负数，等于加上它的相反数。"
+        },
+        {
+          "rung": "computation",
+          "text": "改写成 `-7 + 4`，从 `-7` 向右移动 4 步。"
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`。"
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `9 - (-15)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "减去一个负数，等于加上它的相反数。"
+        },
+        {
+          "rung": "computation",
+          "text": "改写成 `9 + 15`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`。"
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `15 + (-32)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "符号不同时，用较大的绝对值减较小的绝对值，并保留离原点更远的数的符号。"
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` 是 `17`，并且 `-32` 比 `15` 离原点更远。"
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`。"
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `-31 + (-19)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "两个数都是负数时，把绝对值相加，并保留负号。"
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` 是 `50`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`。"
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `-1*(-14)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "负数乘负数得正数。"
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` 是 `14`，并且两个数的符号相同。"
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`。"
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `-9*3` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "两个因数符号不同时，积是负数。"
+        },
+        {
+          "rung": "computation",
+          "text": "先不看符号：`9*3` 是 `27`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`。"
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `-100/(-4)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "负数除以负数得正数，和乘法一样。"
+        },
+        {
+          "rung": "computation",
+          "text": "先不看符号：`100/4` 是 `25`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`。"
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `5*(-6) + 7*(-2) - 3` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "先算乘法，再算加减法。"
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` 是 `-30`，`7*(-2)` 是 `-14`，所以得到 `-30 - 14 - 3`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`。"
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

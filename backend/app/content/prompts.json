@@ -1,0 +1,97 @@
+{
+  "en": {
+    "evaluate": "Work out:",
+    "simplify": "Simplify:",
+    "solve": "Solve for {var}:"
+  },
+  "ar": {
+    "evaluate": "احسب:",
+    "simplify": "بسّط:",
+    "solve": "حلّ لإيجاد {var}:"
+  },
+  "bn": {
+    "evaluate": "হিসাব করো:",
+    "simplify": "সরল করো:",
+    "solve": "{var}-এর মান নির্ণয় করো:"
+  },
+  "de": {
+    "evaluate": "Berechne:",
+    "simplify": "Vereinfache:",
+    "solve": "Löse nach {var} auf:"
+  },
+  "el": {
+    "evaluate": "Υπολογίστε:",
+    "simplify": "Απλοποιήστε:",
+    "solve": "Λύστε ως προς {var}:"
+  },
+  "es": {
+    "evaluate": "Calcula:",
+    "simplify": "Simplifica:",
+    "solve": "Resuelve para {var}:"
+  },
+  "fa": {
+    "evaluate": "حساب کنید:",
+    "simplify": "ساده کنید:",
+    "solve": "برای {var} حل کنید:"
+  },
+  "fr": {
+    "evaluate": "Calcule :",
+    "simplify": "Simplifie :",
+    "solve": "Résous pour {var} :"
+  },
+  "hi": {
+    "evaluate": "हल कीजिए:",
+    "simplify": "सरल कीजिए:",
+    "solve": "{var} के लिए हल कीजिए:"
+  },
+  "it": {
+    "evaluate": "Calcola:",
+    "simplify": "Semplifica:",
+    "solve": "Risolvi rispetto a {var}:"
+  },
+  "kk": {
+    "evaluate": "Есептеңіз:",
+    "simplify": "Ықшамдаңыз:",
+    "solve": "{var} үшін шешіңіз:"
+  },
+  "pl": {
+    "evaluate": "Oblicz:",
+    "simplify": "Uprość:",
+    "solve": "Rozwiąż równanie ze względu na {var}:"
+  },
+  "pt": {
+    "evaluate": "Calcula:",
+    "simplify": "Simplifica:",
+    "solve": "Resolve em ordem a {var}:"
+  },
+  "pt-BR": {
+    "evaluate": "Calcule:",
+    "simplify": "Simplifique:",
+    "solve": "Resolva para {var}:"
+  },
+  "ru": {
+    "evaluate": "Вычислите:",
+    "simplify": "Упростите:",
+    "solve": "Решите относительно {var}:"
+  },
+  "sv": {
+    "evaluate": "Beräkna:",
+    "simplify": "Förenkla:",
+    "solve": "Lös ut {var}:"
+  },
+  "tr": {
+    "evaluate": "Hesaplayın:",
+    "simplify": "Sadeleştirin:",
+    "solve": "{var} için çözün:"
+  },
+  "ur": {
+    "evaluate": "حل کریں:",
+    "simplify": "سادہ کریں:",
+    "solve": "{var} کے لیے حل کریں:"
+  },
+  "zh-Hans": {
+    "evaluate": "计算：",
+    "simplify": "化简：",
+    "solve": "解出 {var}："
+  }
+}

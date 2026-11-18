@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "zh-Hans",
+  "title": "分数",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "分数表示相等的部分；分数运算要看清每份的大小，再数有多少份。",
+  "idea": "分数表示一个整体的相等部分。在 `3/4` 中，下面的数表示整体被平均分成几份。上面的数表示取了其中的几份。\n\n等值分数用不同大小的部分表示同一个量。分子和分母同时乘或除以同一个数，分数的大小不变。\n\n做加法时，必须先让每份的大小相同，才能计数相加。做乘法时，整数乘分数表示数这个分数的重复组。做除法时，问题是一个分数里面有多少个另一个分数。",
+  "why_it_works": "只有同样大小的部分才能相加。对于 `1/2 + 1/3`，二分之一和三分之一的每份大小不同，所以都要改写成六分之几。`1/2 + 1/3` 变成 `3/6 + 2/6`，而 `3/6 + 2/6` 是 `5/6`。\n\n乘法改变份数。在 `3*(2/5)` 中，五分之一仍是五分之一。`3*(2/5)` 变成 `(3*2)/5`，而 `(3*2)/5` 是 `6/5`。\n\n除法问的是除数能放进被除数多少个。`(2/3)/(3/4)` 变成 `(2/3)*(4/3)`。然后 `(2/3)*(4/3)` 变成 `(2*4)/(3*3)`，而 `(2*4)/(3*3)` 是 `8/9`。",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "计算：",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "这两个分数的每一份大小不同，所以不能直接相加。把它们改写成同分母分数。",
+            "another_way": "用六分之一作单位，因为二分之一和三分之一都可以分成六分之一。这样能保持每个分数的值不变，同时让每一份大小相同。",
+            "visual": "条形图把 `1/2 + 1/3` 表示为1个二分之一大小的部分，旁边是1个三分之一大小的部分。"
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "现在两个分数都以六分之一为单位。`1/2` 变成 `3/6`，`1/3` 变成 `2/6`，所以每一份大小相同。",
+            "another_way": "把每个二分之一看作三个六分之一，把每个三分之一看作两个六分之一。这样题目就只是数六分之一。",
+            "visual": "条形图把 `3/6 + 2/6` 表示为同样大小的3个六分之一和2个六分之一。"
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "分母相同时，把分子相加，分母不变。`3/6 + 2/6` 变成 `5/6`，所以这就是答案。",
+            "another_way": "把所有六分之一大小的部分合起来数。三个六分之一加两个六分之一是五个六分之一。",
+            "visual": "条形图显示 `5/6` 涂色，表示一个整体中五个相等的六分之一大小的部分。"
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "计算：",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "这一步从 `3*(2/5)` 开始，表示三组 `2/5`。每一部分的大小仍是五分之一。",
+            "another_way": "把整数看作分子上的乘数。那么 `3*(2/5)` 就是整数乘分数。",
+            "visual": "条形图显示三条相同的条，每条都涂出 `2/5`。"
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "整数乘分子，所以 `3*(2/5)` 变成 `(3*2)/5`。分母仍是 `5`，因为这些份仍是五分之一。",
+            "another_way": "数五分之一：`2` 个五分之一，取 `3` 次，得到 `(3*2)` 个五分之一。",
+            "visual": "条形图显示在三组中数五分之一大小的部分。"
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "算出分子中的乘积，所以 `(3*2)/5` 变成 `6/5`。这就是答案，因为算式已经求值。",
+            "another_way": "三组 `2/5` 合起来是 `6/5`。结果大于一个整体，因为五分之几的个数多于 `5` 个。",
+            "visual": "条形图显示涂出了 `6` 个五分之一大小的部分，组成 `6/5`。"
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "计算：",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "这个式子是在问有多少个 `3/4` 能放进 `2/3`。除以一个分数时，保留 `2/3`，再乘以 `3/4` 的倒数。",
+            "another_way": "可以把这个问题从除法改成相应的乘法。除数 `3/4` 翻转，所以 `(2/3)/(3/4)` 变成 `(2/3)*(4/3)`。",
+            "visual": "条形图表示用大小为 `3/4` 的部分去量一个整体的 `2/3`。"
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "现在计算分数乘法。分子相乘，分母相乘，所以 `(2/3)*(4/3)` 变成 `(2*4)/(3*3)`。",
+            "another_way": "这把部分的个数和部分的大小分开表示。分子计算 `2*4`，分母计算 `3*3`。",
+            "visual": "条形图按一种方式分成三等份，又按另一种方式分成三等份，并数出 `2*4` 个小部分。"
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "分子和分母中的乘积已经写出。这一行可以通过计算这些乘积来化简。",
+            "another_way": "把 `(2*4)/(3*3)` 看作乘法仍然可见的分数。下一步把这些乘积写成一个数。",
+            "visual": "条形图中，整体有 `3*3` 个相等的小部分，其中有 `2*4` 个被涂色。"
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "相乘得到最后的分数，所以 `(2*4)/(3*3)` 变成 `8/9`。这是答案，因为没有更多运算了。",
+            "another_way": "商小于一个整体，这符合含义：`3/4` 大于 `2/3`，所以能放下的小于一个它。",
+            "visual": "一个条形图分成 `9` 个相等的部分，其中 `8` 个部分被涂色，表示 `8/9`。"
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "分数相加时，分子相加，分母也相加。",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "这种想法把分数看成两个独立的整数，而且做法和分数相乘一样。",
+      "what_to_say": {
+        "probe": "你的答案比 `1/2` 大还是小？它应该这样吗？",
+        "nudge": "二分之一和三分之一能直接相加吗？还是要先变成大小相同的份？",
+        "tell": "把它们都分成六等份：`3/6 + 2/6` 是 `5/6`。我们只数有几份；每份的大小不变。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "计算：",
+        "answer": "3/4"
+      },
+      "source_quote": "有些学生把分数相加时，会把分子相加，也把分母相加。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "用分数乘整数时，分子和分母都要乘这个整数。",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "学生从等值分数中学到，对分子和分母做同样的事是可以的。",
+      "what_to_say": {
+        "probe": "`6/15` 比 `2/5` 大、小，还是相等？三份 `2/5` 应该是多少？",
+        "nudge": "把三份五分之二写成加法，再数一数有几个五分之一。",
+        "tell": "三份五分之二是六个五分之一，即 `6/5`。只有份数改变了。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "计算：",
+        "answer": "12/7"
+      },
+      "source_quote": "有些学生会把分子和分母都乘这个整数。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "分数相除时，把第一个分数倒过来。",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "“颠倒相乘”被当成口诀记住了，却没有记住该颠倒哪一个分数。",
+      "what_to_say": {
+        "probe": "三分之二里能放下几个四分之三：多于一个，还是少于一个？",
+        "nudge": "我们是在数哪一个分数有几个？要倒过来的就是这个分数。",
+        "tell": "只有除数要倒过来：`(2/3)*(4/3)` 是 `8/9`，比一个整体略小。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "计算：",
+        "answer": "6/5"
+      },
+      "source_quote": "有些学生做分数除法时会颠倒第一个分数，而不是第二个。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "即使隔着加号，也可以把分子上的数和分母上的数约掉。",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "约去相同的数在乘积中是可行的，学生又看到分子上有 2，分母上也有 2。",
+      "what_to_say": {
+        "probe": "在除以前，这个分数的整个分子是多少？",
+        "nudge": "先算出分子，再相除。得到的答案一样吗？",
+        "tell": "分数线表示用分母去除整个上面的式子：`(2+4)/2` 是 `6/2`，也就是 `3`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "化简：",
+        "answer": "5"
+      },
+      "source_quote": "有些学生会隔着加号约分。"
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "化简分数时，可以只除分子或只除分母。",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "把一个数减半让人觉得是在化简，而学生没有检查这个量是否保持不变。",
+      "what_to_say": {
+        "probe": "`3/8` 和 `6/8` 表示的量相同吗？把它们都画成条形图。",
+        "nudge": "哪个数能同时整除分子和分母？",
+        "tell": "分子和分母要同时除以同一个数：`6/8` 是 `3/4`。"
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "化简：",
+        "answer": "2/3"
+      },
+      "source_quote": "有些学生只改变分数的一部分来化简。"
+    }
+  ],
+  "questions": [
+    {
+      "question": "为什么不能把上面的数相加、下面的数也相加？",
+      "answer": "下面的数表示每份的大小。二分之一和三分之一的每份大小不同，所以要先改写成相同大小的部分，再来数份数。"
+    },
+    {
+      "question": "为什么 `1/2 + 1/3` 会变成 `3/6 + 2/6`？",
+      "answer": "两个分数都改写成六分之几。大小不变，但现在每份大小相同，可以相加。"
+    },
+    {
+      "question": "为什么 `3*(2/5)` 不改变下面的数？",
+      "answer": "五分之一的大小不变。乘以 `3` 表示 3 组 `2/5`，所以只改变五分之一的份数。"
+    },
+    {
+      "question": "分数除法中要把哪个分数倒过来？",
+      "answer": "只把除数倒过来。`(2/3)/(3/4)` 变成 `(2/3)*(4/3)`，因为除法问的是 `2/3` 里面有多少个 `3/4`。"
+    },
+    {
+      "question": "可以跨过加号约分吗？",
+      "answer": "不可以。分数线表示整个分子除以分母。和式中的项不能像单独的因数那样部分约分。"
+    },
+    {
+      "question": "学生怎样检查答案是否合理？",
+      "answer": "先估算。想一想结果应大于还是小于 `1/2`，或大于还是小于 `1`。粗略判断大小能发现很多分数错误。"
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "认识各部分",
+      "activity": "用一个被平均分成几份的简单整体。把下面的数和每份的大小联系起来，把上面的数和份数联系起来。用 `3/4` 作为参考分数。"
+    },
+    {
+      "minutes": 10,
+      "title": "等值分数",
+      "activity": "说明不同的分数可以表示同一个量。使用 `1/2`、`2/4` 和 `3/6`。强调上面的数和下面的数必须一起改变。"
+    },
+    {
+      "minutes": 10,
+      "title": "同分母分数相加",
+      "activity": "从 `1/2 + 1/3` 开始。问为什么二分之一和三分之一不能直接合起来数。改写成六分之几：`1/2 + 1/3` 变成 `3/6 + 2/6`，而 `3/6 + 2/6` 是 `5/6`。"
+    },
+    {
+      "minutes": 8,
+      "title": "分数的乘法",
+      "activity": "把 `3*(2/5)` 看作 3 份两个五分之一。说明 `3*(2/5)` 变成 `(3*2)/5`，而 `(3*2)/5` 是 `6/5`。强调每份的大小仍是五分之一。"
+    },
+    {
+      "minutes": 9,
+      "title": "分数的除法",
+      "activity": "使用问题“能放进多少个？”对于 `(2/3)/(3/4)`，说明 `(2/3)/(3/4)` 变成 `(2/3)*(4/3)`，再变成 `(2*4)/(3*3)`，结果是 `8/9`。"
+    },
+    {
+      "minutes": 5,
+      "title": "估算并发现错误",
+      "activity": "讨论常见错误做法：分子和分母分别相加、只改变其中一部分、把第一个分数倒过来，或跨过加法约分。用估算和条形图来检查。"
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要找到一个等于 `1/2 + 1/7` 的分数。"
+        },
+        {
+          "rung": "information",
+          "text": "分数相加，先把它们化成同分母分数。"
+        },
+        {
+          "rung": "computation",
+          "text": "公分母是 `14`：`7/14 + 2/14`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`。"
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要找到一个等于 `7/12 + 5/18` 的分数。"
+        },
+        {
+          "rung": "information",
+          "text": "用 12 和 18 的最小公倍数，也就是 `36`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` 是 `21/36`，`5/18` 是 `10/36`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`。"
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要找到一个等于 `7/12 - 9/16` 的分数。"
+        },
+        {
+          "rung": "information",
+          "text": "用 12 和 16 的最小公倍数，也就是 `48`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` 是 `28/48`，`9/16` 是 `27/48`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`。"
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "化简：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要找到等于 `120/252` 的最简分数。"
+        },
+        {
+          "rung": "information",
+          "text": "把分子和分母都除以它们的最大公因数。"
+        },
+        {
+          "rung": "computation",
+          "text": "把分子和分母都除以 `12`，即 120 和 252 的最大公因数。"
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`。"
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `(-3/4)*(-4/9)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "两个符号相同，所以积为正。分子相乘，分母相乘。"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` 是 `12/36`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`。"
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `(3/4)/(5/8)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "除以一个分数，等于乘它的倒数。除数的倒数是 `1/(5/8)`，也就是 `8/5`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` 是 `24/20`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`。"
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要求 `(2/3)/(5/6)` 的值。"
+        },
+        {
+          "rung": "information",
+          "text": "除以一个分数，等于乘它的倒数。除数的倒数是 `1/(5/6)`，也就是 `6/5`。"
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` 是 `12/15`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`。"
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "计算：",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "我们要找到一个等于 `-23/24 - 13/24` 的分数。"
+        },
+        {
+          "rung": "information",
+          "text": "分母已经相同，所以分子相减。"
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` 是 `-36`，所以得到 `-36/24`。"
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`。"
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "pl",
+  "title": "Ułamki",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Ułamki nazywają równe części; działania działają dzięki jasnemu określeniu wielkości części i liczeniu części.",
+  "idea": "Ułamek nazywa równe części całości. W `3/4` liczba na dole mówi, na ile równych części podzielono całość. Liczba na górze liczy, ile z tych części wzięto.\n\nUłamki równoważne nazywają tę samą ilość za pomocą części różnej wielkości. Mnożenie lub dzielenie licznika i mianownika przez tę samą liczbę zachowuje tę samą wartość.\n\nPrzy dodawaniu części muszą mieć tę samą wielkość, zanim można je policzyć. Przy mnożeniu liczba całkowita razy ułamek liczy powtarzające się grupy tego ułamka. Przy dzieleniu pytamy, ile razy jeden ułamek mieści się w drugim.",
+  "why_it_works": "Dodawać można tylko części tego samego rodzaju. Dla `1/2 + 1/3` połówki i trzecie części mają różne wielkości, więc oba ułamki zapisujemy jako szóste części. `1/2 + 1/3` staje się `3/6 + 2/6`, a `3/6 + 2/6` to `5/6`.\n\nMnożenie zmienia liczbę części. W `3*(2/5)` piąte części pozostają piątymi częściami. `3*(2/5)` staje się `(3*2)/5`, a `(3*2)/5` to `6/5`.\n\nDzielenie pyta, ile razy dzielnik się mieści. `(2/3)/(3/4)` staje się `(2/3)*(4/3)`. Następnie `(2/3)*(4/3)` staje się `(2*4)/(3*3)`, a `(2*4)/(3*3)` to `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Oblicz:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ułamki mają części różnej wielkości, więc nie można ich dodać bezpośrednio. Zapisz je ze wspólnym mianownikiem.",
+            "another_way": "Użyj szóstych, ponieważ zarówno połowy, jak i trzecie części można podzielić na szóste. To zachowuje wartość każdego ułamka, a części stają się jednakowe.",
+            "visual": "Pasek pokazuje `1/2 + 1/3` jako jedną część wielkości połowy obok jednej części wielkości jednej trzeciej."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Teraz oba ułamki są zapisane w szóstych. `1/2` zamienia się w `3/6`, a `1/3` w `2/6`, więc części mają tę samą wielkość.",
+            "another_way": "Pomyśl o każdej połowie jako o trzech szóstych, a o każdej trzeciej części jako o dwóch szóstych. Wtedy zadanie polega tylko na liczeniu szóstych.",
+            "visual": "Pasek pokazuje `3/6 + 2/6` jako 3 szóste i 2 szóste z części tej samej wielkości."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Gdy mianownik jest taki sam, dodaj liczniki i zostaw mianownik. `3/6 + 2/6` zamienia się w `5/6`, więc to jest odpowiedź.",
+            "another_way": "Policz razem wszystkie części wielkości jednej szóstej. Trzy szóste i dwie szóste dają pięć szóstych.",
+            "visual": "Pasek pokazuje `5/6` zacieniowane jako 5 równych części wielkości jednej szóstej całości."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Oblicz:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Zaczynamy od `3*(2/5)`, co oznacza 3 grupy po `2/5`. Wielkość każdej części nadal to piąte.",
+            "another_way": "Potraktuj liczbę całkowitą jako mnożnik licznika ułamka. Wtedy `3*(2/5)` to liczba całkowita razy ułamek.",
+            "visual": "Model paskowy pokazuje trzy kopie paska, w każdej zamalowane `2/5`."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Liczba całkowita mnoży licznik, więc `3*(2/5)` staje się `(3*2)/5`. Mianownik pozostaje `5`, ponieważ części nadal są piątymi.",
+            "another_way": "Policz piąte: `2` piąte wzięte `3` razy dają `(3*2)` piątych.",
+            "visual": "Model paskowy pokazuje części wielkości jednej piątej liczone w trzech grupach."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Obliczamy iloczyn w liczniku, więc `(3*2)/5` staje się `6/5`. To jest odpowiedź, ponieważ wyrażenie zostało obliczone.",
+            "another_way": "Trzy grupy po `2/5` dają `6/5`. Wynik jest większy niż jedna całość, ponieważ jest więcej niż `5` piątych.",
+            "visual": "Model paskowy pokazuje `6` zamalowanych części wielkości jednej piątej, czyli `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Oblicz:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Wyrażenie pyta, ile razy `3/4` mieści się w `2/3`. Przy dzieleniu przez ułamek zostaw `2/3` i pomnóż przez odwrotność `3/4`.",
+            "another_way": "Pomyśl o zmianie pytania z dzielenia na pasujące mnożenie. Dzielnik `3/4` odwracamy, więc `(2/3)/(3/4)` staje się `(2/3)*(4/3)`.",
+            "visual": "Pasek pokazuje `2/3` całości mierzone kawałkami o wielkości `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Teraz pomnóż ułamki. Pomnóż liczniki przez siebie i mianowniki przez siebie, więc `(2/3)*(4/3)` staje się `(2*4)/(3*3)`.",
+            "another_way": "To pokazuje osobno liczby części i ich wielkości. W liczniku mamy `2*4`, a w mianowniku `3*3`.",
+            "visual": "Pasek jest podzielony na trzecie części w jeden sposób i na trzecie części w drugi sposób, a policzono `2*4` małych części."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Iloczyny w liczniku i mianowniku są zapisane. Ten wiersz jest gotowy do uproszczenia przez obliczenie tych iloczynów.",
+            "another_way": "Potraktuj `(2*4)/(3*3)` jako ułamek, w którym mnożenie jest jeszcze widoczne. Następny krok zapisuje te iloczyny jako pojedyncze liczby.",
+            "visual": "Model paskowy ma w całości `3*3` równych małych części, a `2*4` z nich jest zacieniowanych."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Mnożenie daje końcowy ułamek, więc `(2*4)/(3*3)` staje się `8/9`. To jest odpowiedź, bo nie ma już pokazanej dalszej operacji.",
+            "another_way": "Iloraz jest mniejszy niż jedna całość, co pasuje do sensu: `3/4` jest większe niż `2/3`, więc mieści się mniej niż jeden raz.",
+            "visual": "Pasek podzielony na `9` równych części ma `8` części zacieniowanych, co pokazuje `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Aby dodać ułamki, dodaje się liczniki i dodaje się mianowniki.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Traktuje ułamek jak dwie oddzielne liczby całkowite i działa tak samo jak mnożenie ułamków.",
+      "what_to_say": {
+        "probe": "Czy twoja odpowiedź jest większa czy mniejsza niż `1/2`? Czy taka powinna być?",
+        "nudge": "Czy można dodać połówki i trzecie części bezpośrednio, czy najpierw trzeba mieć części tej samej wielkości?",
+        "tell": "Podziel oba ułamki na szóste części: `3/6 + 2/6` to `5/6`. Liczymy tylko części; ich wielkość się nie zmienia."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Oblicz:",
+        "answer": "3/4"
+      },
+      "source_quote": "Niektórzy uczniowie dodają ułamki, dodając liczniki i dodając mianowniki."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Aby pomnożyć ułamek przez liczbę całkowitą, mnoży się licznik i mianownik.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Uczniowie nauczyli się przy ułamkach równoważnych, że wykonanie tego samego z licznikiem i mianownikiem jest bezpieczne.",
+      "what_to_say": {
+        "probe": "Czy `6/15` to więcej niż `2/5`, mniej, czy tyle samo? Ile powinny dać trzy porcje po `2/5`?",
+        "nudge": "Zapisz trzy porcje po dwie piąte jako dodawanie i policz piąte części.",
+        "tell": "Trzy porcje po dwie piąte to sześć piątych, `6/5`. Zmienia się tylko liczba części."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Oblicz:",
+        "answer": "12/7"
+      },
+      "source_quote": "Niektórzy uczniowie mnożą licznik i mianownik przez liczbę całkowitą."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Przy dzieleniu ułamków odwraca się pierwszy ułamek.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "Hasło „odwróć i pomnóż” zostaje zapamiętane bez informacji, który ułamek odwrócić.",
+      "what_to_say": {
+        "probe": "Ile trzech czwartych mieści się w dwóch trzecich: więcej niż jedna porcja czy mniej?",
+        "nudge": "Którym ułamkiem odliczamy? To właśnie ten ułamek należy odwrócić.",
+        "tell": "Odwracamy tylko dzielnik: `(2/3)*(4/3)` to `8/9`, trochę mniej niż jeden."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Oblicz:",
+        "answer": "6/5"
+      },
+      "source_quote": "Niektórzy uczniowie przy dzieleniu odwracają pierwszy ułamek, a nie drugi."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Można skrócić liczbę w liczniku z liczbą w mianowniku nawet przez znak plus.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Skracanie wspólnych czynników działa w iloczynach, a uczeń widzi 2 w liczniku i 2 w mianowniku.",
+      "what_to_say": {
+        "probe": "Ile wynosi cały licznik ułamka, zanim zaczniesz dzielić?",
+        "nudge": "Najpierw oblicz licznik, potem podziel. Czy otrzymujesz tę samą odpowiedź?",
+        "tell": "Kreska ułamkowa dzieli cały licznik: `(2+4)/2` to `6/2`, czyli `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Uprość:",
+        "answer": "5"
+      },
+      "source_quote": "Niektórzy uczniowie skracają przez znak plus."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Aby skrócić ułamek, można podzielić tylko licznik albo tylko mianownik.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Dzielenie liczby na pół wydaje się upraszczaniem, a uczeń nie sprawdza, czy wartość pozostaje taka sama.",
+      "what_to_say": {
+        "probe": "Czy `3/8` to tyle samo co `6/8`? Narysuj oba ułamki jako paski.",
+        "nudge": "Jaka liczba dzieli zarówno licznik, jak i mianownik?",
+        "tell": "Podziel licznik i mianownik przez tę samą liczbę: `6/8` to `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Uprość:",
+        "answer": "2/3"
+      },
+      "source_quote": "Niektórzy uczniowie upraszczają ułamek, zmieniając tylko jedną jego część."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Dlaczego nie możemy dodać liczb na górze i liczb na dole?",
+      "answer": "Liczba na dole określa wielkość części. Połówki i trzecie części mają różne wielkości, więc przed liczeniem trzeba zapisać części tak, aby miały tę samą wielkość."
+    },
+    {
+      "question": "Dlaczego `1/2 + 1/3` staje się `3/6 + 2/6`?",
+      "answer": "Oba ułamki zapisujemy w szóstych częściach. Ilości pozostają takie same, ale teraz części mają tę samą wielkość i można je dodać."
+    },
+    {
+      "question": "Dlaczego `3*(2/5)` nie zmienia liczby na dole?",
+      "answer": "Piąte części pozostają tej samej wielkości. Mnożenie przez `3` daje trzy grupy po `2/5`, więc zmienia się tylko liczba piątych części."
+    },
+    {
+      "question": "Który ułamek odwracamy przy dzieleniu?",
+      "answer": "Odwracamy tylko dzielnik. `(2/3)/(3/4)` staje się `(2/3)*(4/3)`, bo dzielenie pyta, ile razy `3/4` mieści się w `2/3`."
+    },
+    {
+      "question": "Czy można skracać przez znak plus?",
+      "answer": "Nie. Kreska ułamkowa dzieli cały licznik. Wyrazów w sumie nie można częściowo skracać tak, jakby były osobnymi czynnikami."
+    },
+    {
+      "question": "Jak uczniowie mogą sprawdzić, czy odpowiedź ma sens?",
+      "answer": "Najpierw oszacuj. Zapytaj, czy wynik powinien być większy czy mniejszy niż `1/2`, albo większy czy mniejszy niż `1`. Przybliżone sprawdzenie wielkości pozwala wychwycić wiele błędów w ułamkach."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Nazwij części",
+      "activity": "Użyj prostej całości podzielonej na równe części. Powiąż liczbę na dole z wielkością części, a liczbę na górze z liczbą części. Użyj `3/4` jako ułamka odniesienia."
+    },
+    {
+      "minutes": 10,
+      "title": "Ułamki równoważne",
+      "activity": "Pokaż, że różne ułamki mogą nazywać tę samą ilość. Użyj `1/2`, `2/4` i `3/6`. Podkreśl, że licznik i mianownik muszą zmieniać się razem."
+    },
+    {
+      "minutes": 10,
+      "title": "Dodawaj jednakowe części",
+      "activity": "Zacznij od `1/2 + 1/3`. Zapytaj, dlaczego połówek i trzecich części nie można liczyć razem. Zapisz jako szóste części: `1/2 + 1/3` staje się `3/6 + 2/6`, a `3/6 + 2/6` to `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Pomnóż ułamek",
+      "activity": "Użyj `3*(2/5)` jako trzech porcji po dwie piąte. Pokaż, że `3*(2/5)` staje się `(3*2)/5`, a `(3*2)/5` to `6/5`. Podkreśl, że wielkość części pozostaje piątymi częściami."
+    },
+    {
+      "minutes": 9,
+      "title": "Dziel ułamki",
+      "activity": "Użyj pytania „Ile się mieści?”. Dla `(2/3)/(3/4)` pokaż, że `(2/3)/(3/4)` staje się `(2/3)*(4/3)`, potem `(2*4)/(3*3)`, a wynik to `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Szacuj i wychwytuj błędy",
+      "activity": "Omów częste błędne kroki: dodawanie liczników i mianowników, zmianę tylko jednej części, odwracanie pierwszego ułamka lub skracanie przez znak dodawania. Użyj szacowania i modeli paskowych jako sposobów sprawdzania."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy otrzymać jeden ułamek równy `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "Aby dodać ułamki, najpierw sprowadź je do wspólnego mianownika."
+        },
+        {
+          "rung": "computation",
+          "text": "Wspólny mianownik to `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy otrzymać jeden ułamek równy `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Użyj najmniejszej wspólnej wielokrotności liczb 12 i 18, czyli `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` jest równe `21/36`, a `5/18` jest równe `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy otrzymać jeden ułamek równy `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Użyj najmniejszej wspólnej wielokrotności liczb 12 i 16, czyli `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` jest równe `28/48`, a `9/16` jest równe `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Uprość:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy otrzymać najprostszy ułamek równy `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Podziel licznik i mianownik przez ich największy wspólny dzielnik."
+        },
+        {
+          "rung": "computation",
+          "text": "Podziel licznik i mianownik przez `12`, największy wspólny dzielnik liczb 120 i 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "Oba znaki są takie same, więc iloczyn jest dodatni. Pomnóż liczniki i mianowniki."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` jest równe `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "Aby podzielić przez ułamek, pomnóż przez jego odwrotność. Odwrotność dzielnika to `1/(5/8)`, czyli `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` jest równe `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy obliczyć wartość `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "Aby podzielić przez ułamek, pomnóż przez jego odwrotność. Odwrotność dzielnika to `1/(5/6)`, czyli `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` jest równe `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Oblicz:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Chcemy otrzymać jeden ułamek równy `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "Mianowniki są już takie same, więc odejmij liczniki."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` jest równe `-36`, więc otrzymujemy `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}
