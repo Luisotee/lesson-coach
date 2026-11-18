@@ -4,8 +4,8 @@ Covers content/source (lessons and misconceptions), content/practice and evals/m
 sympy checks every answer, every wrong answer, and every inline claim written as
 "`A` is `B`" or "`A` = `B`" in prose. Other backtick spans are only checked to parse.
 The misconception sentences that state a wrong answer on purpose are skipped.
-Rule reproduction (a rule turns the example problem into the wrong answer) is checked by
-pipeline/verify.py in T5, once T1's rule registry exists.
+Math is parsed by T1's parser (`app.math.parse_text`), so content must be valid user input too.
+Every misconception linked to a rule is reproduced by that rule from T1's registry.
 """
 
 import json
@@ -17,7 +17,6 @@ import pytest
 import sympy
 import yaml
 from pydantic import ValidationError
-from sympy.parsing.sympy_parser import convert_xor, parse_expr, standard_transformations
 
 from app.content.schema import (
     RULE_IDS,
@@ -31,23 +30,24 @@ from app.content.schema import (
     Problem,
     TopicId,
 )
+from app.math import TOPICS, parse_text, rule_reproduces, to_sympy
+from app.math import Problem as MathProblem
 
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "content"
 SPAN = re.compile(r"`([^`]+)`")
 # "`A` is `B`", "`A`, which is `B`" or "`A` = `B`": a claim that A equals B.
 CLAIM = re.compile(r"`([^`=]+)`(?:,? which)? (?:is|=) `([^`]+)`")
-TRANSFORMS = (*standard_transformations, convert_xor)
 
 
 def parse(text: str) -> Any:
-    return parse_expr(text, transformations=TRANSFORMS, evaluate=True)
+    """An expression's sympy value, through T1's parser."""
+    return to_sympy(parse_text(text))
 
 
 def parse_math(text: str) -> None:
-    """Parse an expression, or both sides of an equation."""
-    for side in text.split("="):
-        parse(side)
+    """Parse an expression or an equation with T1's parser."""
+    parse_text(text)
 
 
 def solution(problem: Problem) -> Any:
@@ -197,6 +197,18 @@ def test_claim_check_catches_a_false_hint() -> None:
 
 def test_parser_reads_caret_as_power() -> None:
     assert parse("(-3)^5") == -243
+
+
+def test_topics_match_the_math_core() -> None:
+    assert set(TOPICS) == set(TOPIC_IDS)
+
+
+@pytest.mark.parametrize("topic", TOPIC_IDS)
+def test_rules_reproduce_their_examples(topic: TopicId) -> None:
+    for m in misconceptions(topic).misconceptions:
+        if m.rule_sympy is not None:
+            problem = MathProblem(m.example_problem.kind, m.example_problem.expr)
+            assert rule_reproduces(m.rule_sympy, problem, m.example_wrong_answer), m.id
 
 
 def test_ai_generated_names_real_fields() -> None:

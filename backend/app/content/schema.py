@@ -14,36 +14,13 @@ from typing import Annotated, Literal, Self, get_args
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
+from app.math import RULES
+
 TopicId = Literal["negative-numbers", "fractions", "linear-equations"]
 TOPIC_IDS: tuple[TopicId, ...] = get_args(TopicId)
 
-# Misconception rule ids agreed with T1 (backend/app/math/), keyed by topic.
-RULE_IDS: dict[TopicId, frozenset[str]] = {
-    "negative-numbers": frozenset(
-        {
-            "minus_negative_stays_minus",
-            "neg_times_neg_is_neg",
-            "add_magnitudes_keep_sign",
-            "subtract_smaller_from_larger",
-        }
-    ),
-    "fractions": frozenset(
-        {
-            "add_tops_and_bottoms",
-            "multiply_both_by_whole",
-            "flip_first_when_dividing",
-            "cancel_across_addition",
-        }
-    ),
-    "linear-equations": frozenset(
-        {
-            "sign_not_changed",
-            "divide_one_term",
-            "subtract_instead_of_divide",
-            "wrong_inverse_order",
-        }
-    ),
-}
+# Misconception rule ids, keyed by topic, from T1's rule registry.
+RULE_IDS: dict[TopicId, frozenset[str]] = {t: frozenset(RULES.get(t, {})) for t in TOPIC_IDS}
 
 Id = Annotated[str, StringConstraints(pattern=r"^[a-z0-9][a-z0-9_-]*$", max_length=64)]
 Math = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=120)]
