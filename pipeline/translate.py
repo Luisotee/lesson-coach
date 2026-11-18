@@ -149,12 +149,14 @@ async def review(
 
 
 def cache_file(language: str, context: str, english: dict[str, str]) -> Path:
-    """Where a unit that passed is kept, keyed by everything that makes its translation."""
-    key = hashlib.sha256(
-        json.dumps(
-            [language, translate_prompts_hash(), context, english], ensure_ascii=False
-        ).encode()
-    ).hexdigest()
+    """Where a unit that passed is kept, keyed by everything that makes its translation: the
+    language, the prompts, the context, the English and the offline model (the one offline_llm
+    uses), so a new model translates afresh. The model is not in `translation_hash`, so changing
+    it does not make the committed packs stale."""
+    from app.config import get_settings
+
+    made_by = [language, get_settings().model_offline, translate_prompts_hash(), context, english]
+    key = hashlib.sha256(json.dumps(made_by, ensure_ascii=False).encode()).hexdigest()
     return CACHE / f"{key}.json"
 
 
