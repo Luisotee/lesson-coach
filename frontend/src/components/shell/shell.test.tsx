@@ -7,6 +7,7 @@ import { RouterProvider } from 'react-router/dom'
 import i18n from '@/i18n'
 import { routes } from '@/router'
 import { PACKS, json, mockApi } from '@/test/api'
+import ar from '@/locales/ar.json'
 
 beforeEach(() => {
   mockApi()
@@ -77,9 +78,9 @@ test('navigating moves focus to the new page heading', async () => {
 test('the language picker switches the UI to Arabic, right to left', async () => {
   renderAt('/')
   await userEvent.selectOptions(screen.getByLabelText('Language'), 'ar')
-  expect(await screen.findByRole('link', { name: 'المواضيع' })).toBeInTheDocument()
+  expect(await screen.findByRole('link', { name: ar.nav.topics })).toBeInTheDocument()
   expect(document.documentElement).toHaveAttribute('dir', 'rtl')
-  expect(screen.getByLabelText('اللغة')).toHaveValue('ar')
+  expect(screen.getByLabelText(ar.language.label)).toHaveValue('ar')
 })
 
 test.each([

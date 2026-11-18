@@ -25,7 +25,12 @@ function flat(obj: Messages, prefix = ''): Record<string, string> {
 }
 
 // The AST shapes of intl-messageformat: 1 argument, 2 number, 5 select, 6 plural, 8 tag.
-type El = { type: number; value?: string; options?: Record<string, { value: El[] }>; children?: El[] }
+type El = {
+  type: number
+  value?: string
+  options?: Record<string, { value: El[] }>
+  children?: El[]
+}
 
 function argumentsOf(ast: El[], found = new Set<string>()): Set<string> {
   for (const el of ast) {

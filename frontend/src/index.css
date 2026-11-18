@@ -37,8 +37,8 @@
     'Noto Sans SC Variable', system-ui, sans-serif;
   --font-sans:
     'Inter Variable', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
-    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', 'Noto Sans SC Variable',
-    system-ui, sans-serif;
+    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', 'Noto Sans SC Variable', system-ui,
+    sans-serif;
   --font-hand:
     'Kalam', 'Playpen Sans Variable', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
     'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', 'Noto Sans SC Variable', cursive;

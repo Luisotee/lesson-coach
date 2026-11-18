@@ -52,7 +52,20 @@ export const CANDIDATES: readonly Language[] = [
  * The languages that passed every check (evals/translation-report.md): complete UI strings and
  * all packs. Only these are offered. Every one but English is machine-translated and unreviewed.
  */
-const AVAILABLE = new Set(['en', 'ar'])
+const AVAILABLE = new Set([
+  'en',
+  'ar',
+  'fr',
+  'de',
+  'el',
+  'pt',
+  'pt-BR',
+  'ru',
+  'es',
+  'sv',
+  'pl',
+  'fa',
+])
 
 /** Every language the app offers. A language listed here must have a complete locale file. */
 export const LANGUAGES: readonly Language[] = CANDIDATES.filter((l) => AVAILABLE.has(l.code))

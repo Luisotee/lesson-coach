@@ -16,6 +16,18 @@ test('at least two right-to-left languages are listed', () => {
   expect(RTL.length).toBeGreaterThanOrEqual(2)
 })
 
+test('the language picker fits a 320 px phone in every language', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 })
+  for (const { code } of LANGUAGES) {
+    await page.goto(`/?lng=${code}`)
+    await expect(page.locator('html')).toHaveAttribute('lang', code)
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    )
+    expect(overflow, code).toBeLessThanOrEqual(0)
+  }
+})
+
 for (const lang of RTL) {
   for (const [name, path] of PAGES) {
     test(`${lang} ${name} renders right to left with math left to right`, async ({ page }) => {

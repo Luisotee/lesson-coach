@@ -1,6 +1,7 @@
 import { afterEach, expect, test } from 'vitest'
 import i18n from '@/i18n'
 import { LANGUAGES } from '@/i18n/languages'
+import ar from '@/locales/ar.json'
 import en from '@/locales/en.json'
 
 afterEach(() => i18n.changeLanguage('en'))
@@ -15,7 +16,7 @@ test('changing the language sets lang and dir on <html>', async () => {
   await i18n.changeLanguage('ar')
   expect(document.documentElement).toHaveAttribute('lang', 'ar')
   expect(document.documentElement).toHaveAttribute('dir', 'rtl')
-  expect(i18n.t('nav.topics')).toBe('المواضيع')
+  expect(i18n.t('nav.topics')).toBe(ar.nav.topics)
 
   await i18n.changeLanguage('en')
   expect(document.documentElement).toHaveAttribute('lang', 'en')
