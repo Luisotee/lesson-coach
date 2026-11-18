@@ -5,11 +5,23 @@ from __future__ import annotations
 from math import gcd
 from typing import Literal
 
-from app.math.nodes import Bin, Eq, MathError, Mixed, Neg, Node, Num, Pow, Var, free_vars, to_sympy
+from app.math.nodes import (
+    Bin,
+    Eq,
+    MathError,
+    Mixed,
+    Neg,
+    Node,
+    Num,
+    Pow,
+    UnsupportedProblem,
+    Var,
+    free_vars,
+    to_sympy,
+)
 from app.math.problems import (
     Format,
     Problem,
-    UnsupportedProblem,
     isolated,
     parse_input,
     same_value,
@@ -28,7 +40,7 @@ def _positive_number(node: Node, allow_decimals: bool) -> bool:
     """A non-zero number in simplest form, without a sign."""
     match node:
         case Num():
-            return node.is_integer or allow_decimals
+            return to_sympy(node) != 0 and (node.is_integer or allow_decimals)
         case Bin("/", top, bottom):
             p, q = _int(top), _int(bottom)
             return p is not None and q is not None and p > 0 and q > 1 and gcd(p, q) == 1
@@ -42,8 +54,10 @@ def _unsigned(node: Node) -> tuple[bool, Node]:
     """Pull a leading minus out: `-1/2` is read as `(-1)/2`, which is written as `-(1/2)`."""
     if isinstance(node, Neg):
         return True, node.arg
-    if isinstance(node, Bin) and node.op in "*/" and isinstance(node.left, Neg):
-        return True, Bin(node.op, node.left.arg, node.right)
+    if isinstance(node, Bin) and node.op in "*/":
+        negative, left = _unsigned(node.left)
+        if negative:
+            return True, Bin(node.op, left, node.right)
     return False, node
 
 
@@ -74,8 +88,8 @@ def _power_key(node: Node) -> tuple[str, int] | None:
 
 
 def _term_key(term: Node, allow_decimals: bool) -> tuple[str, int] | Literal[False] | None:
-    """The letter and power of a simple term (`3x`, `x/2`, `1/2 x`, `x^2`), None for a number,
-    or False when the term isn't simple."""
+    """The letter and power of a simple term (`3x`, `x/2`, `3x/2`, `1/2 x`, `x^2`), None for a
+    number, or False when the term isn't simple."""
     if _positive_number(term, allow_decimals):
         return None
     if (key := _power_key(term)) is not None:
@@ -85,7 +99,10 @@ def _term_key(term: Node, allow_decimals: bool) -> tuple[str, int] | Literal[Fal
             _positive_number(coeff, allow_decimals) and to_sympy(coeff) != 1
         ):
             return _power_key(rest) or False
-        case Bin("/", rest, Num() as den) if (_int(den) or 0) > 1:
+        case Bin("/", rest, Num() as den) if (q := _int(den) or 0) > 1:
+            # `x/2`, or `3x/2` with a whole coefficient that shares no factor with 2.
+            if isinstance(rest, Bin) and rest.op == "*" and (c := _int(rest.left)) is not None:
+                return _power_key(rest.right) or False if c > 1 and gcd(c, q) == 1 else False
             return _power_key(rest) or False
         case _:
             return False
@@ -118,9 +135,15 @@ def classify_answer(problem: Problem, answer: str, fmt: Format = "text") -> Verd
     """`correct`, `equivalent_not_simplified` or `wrong`. Raises MathParseError on unreadable input.
 
     For a solve problem, `x = 3`, `3 = x` and `3` are all correct; an equivalent equation that
-    is not solved yet (`2x = 6`, `x = 6/2`) is `equivalent_not_simplified`.
+    is not solved yet (`2x = 6`, `x = 6/2`) is `equivalent_not_simplified`. Problems with no
+    solution or with every value as a solution raise UnsupportedProblem: there is no math
+    syntax for "no solution", so the caller abstains.
     """
     solution = solve(problem)
+    if solution.kind != "value":
+        raise UnsupportedProblem(
+            "answers to equations with no solution or every value as a solution are not graded"
+        )
     node = parse_input(answer.strip().removeprefix("="), fmt)
     allow = problem.allows_decimals
     try:

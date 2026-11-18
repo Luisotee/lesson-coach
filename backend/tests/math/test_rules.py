@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from app.math import ALL_RULES, RULES, TOPICS, Problem, reproducing_rules, rule_reproduces
@@ -49,8 +51,10 @@ EXAMPLES = [
     ("divide_one_term", Problem("solve", "4x + 8 = 20"), "x = 18"),
     ("subtract_instead_of_divide", Problem("solve", "3*x = 12"), "x = 9"),
     ("subtract_instead_of_divide", Problem("solve", "5x + 1 = 21"), "15"),
-    ("wrong_inverse_order", Problem("solve", "2*x + 6 = 10"), "x = -1"),
-    ("wrong_inverse_order", Problem("solve", "x/2 + 3 = 7"), "x = 11"),
+    ("wrong_inverse_order", Problem("solve", "(x + 6)/2 = 10"), "x = 8"),
+    ("wrong_inverse_order", Problem("solve", "(x + 6)/2 = 10"), "x/2 = 4"),
+    ("wrong_inverse_order", Problem("solve", "10 = (2x - 4)/3"), "x = 21"),
+    ("wrong_inverse_order", Problem("solve", "(3 + x)/4 = 5"), "8"),
 ]
 
 
@@ -90,9 +94,17 @@ def test_no_rule_for_right_or_unexplained_answers(problem: Problem, answer: str)
     assert reproducing_rules(problem, answer) == []
 
 
-def test_overlapping_rules_are_both_returned() -> None:
-    ids = reproducing_rules(Problem("solve", "2*x + 6 = 10"), "x = -1")
-    assert set(ids) == {"divide_one_term", "wrong_inverse_order"}
+def test_linear_rules_give_one_diagnosis_each() -> None:
+    assert reproducing_rules(Problem("solve", "2*x + 6 = 10"), "x = -1") == ["divide_one_term"]
+    assert reproducing_rules(Problem("solve", "(x + 6)/2 = 10"), "x = 8") == ["wrong_inverse_order"]
+
+
+def test_long_sum_is_fast() -> None:
+    # Regression: the evaluator re-evaluated children, so this took about 2^n time.
+    start = time.perf_counter()
+    assert reproducing_rules(Problem("evaluate", "+".join(["1"] * 60)), "0") == []
+    assert reproducing_rules(Problem("evaluate", "-".join(["1"] * 60)), "0") == []
+    assert time.perf_counter() - start < 2
 
 
 def test_topic_filter() -> None:

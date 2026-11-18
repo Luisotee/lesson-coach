@@ -76,7 +76,11 @@ class _Converter:
                 self.pos += 1
                 return "".join(out)
             self.pos += 1
-            if ch == "{":
+            if ch == "{" and self.src.startswith(",}", self.pos):
+                # MathLive writes a decimal comma as `0{,}5`.
+                self.pos += 2
+                out.append(".")
+            elif ch == "{":
                 out.append("(" + self.group(closing="}") + ")")
             elif ch == "}":
                 raise MathParseError("unbalanced braces")

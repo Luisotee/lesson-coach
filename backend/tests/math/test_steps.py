@@ -5,6 +5,7 @@ from app.math import (
     MathParseError,
     Problem,
     Step,
+    UnsupportedProblem,
     check_step,
     check_steps,
     first_line_that_doesnt_follow,
@@ -57,6 +58,8 @@ class TestParseOp:
         [
             ("-6", "-", 6),
             ("| −5", "-", 5),
+            ("| –5", "-", 5),
+            ("⋅ 2", "*", 2),
             ("÷ 3", "/", 3),
             ("*(-1)", "*", -1),
             (": 2", "/", 2),
@@ -115,6 +118,12 @@ class TestCheckSteps:
         issues = check_steps(problem, [Step("1/2 + 1/3", "2/5")])
         assert (issues[0].index, issues[0].reason) == (0, "false_equality")
 
+    def test_no_solution_example_passes(self) -> None:
+        problem = Problem("solve", "x + 1 = x + 2")
+        assert check_steps(problem, [Step("x + 1", "x + 2", "-x"), Step("1", "2")]) == []
+        issues = check_steps(problem, [Step("x + 1", "x + 2", "-x"), Step("x", "1")])
+        assert "not_equivalent" in [i.reason for i in issues]
+
     def test_unparsable_step(self) -> None:
         issues = check_steps(EQUATION, [Step("3x + 5", "twenty")])
         assert [(i.index, i.reason) for i in issues] == [(0, "unparsable")]
@@ -155,6 +164,22 @@ class TestFirstLineThatDoesntFollow:
         )
         found = first_line_that_doesnt_follow([Step("5 + 3", "9")], problem)
         assert found == LineFinding(0, "false_equality")
+
+    def test_non_linear_problem_does_not_raise(self) -> None:
+        problem = Problem("solve", "x^2 = 4")
+        assert first_line_that_doesnt_follow([Step("2x^2", "8")], problem) is None
+        found = first_line_that_doesnt_follow([Step("x^2", "8")], problem)
+        assert found == LineFinding(0, "not_equivalent")
+
+    def test_equations_typed_in_one_field(self) -> None:
+        lines = [Step("2x+6=10"), Step("2x=4"), Step("x=2")]
+        assert first_line_that_doesnt_follow(lines) is None
+        lines = [Step("2x+6=10"), Step("2x=16"), Step("x=8")]
+        assert first_line_that_doesnt_follow(lines) == LineFinding(1, "not_equivalent")
+
+    def test_rational_equation_abstains(self) -> None:
+        with pytest.raises(UnsupportedProblem):
+            first_line_that_doesnt_follow([Step("6/x", "2", "*x"), Step("6", "2x")])
 
     def test_unparsable_line(self) -> None:
         lines = [Step("2x + 6", "10"), Step("2x", "4?")]

@@ -41,6 +41,7 @@ from app.math.problems import (
 Topic = str
 TOPICS: tuple[Topic, ...] = ("negative-numbers", "fractions", "linear-equations")
 MAX_MATCHED_NODES = 8
+MAX_ALTERNATIVES = 4
 
 Evaluate = Callable[[Node], sympy.Expr]
 
@@ -61,30 +62,50 @@ class NodeRule:
         if count == 0:
             return []
         results: list[sympy.Expr] = []
-        for alt in range(4):
-            targets: list[int | None] = [*range(min(count, MAX_MATCHED_NODES)), None]
+        targets: list[int | None] = [*range(min(count, MAX_MATCHED_NODES)), None]
+        for alt in range(MAX_ALTERNATIVES):
+            used = False
             for target in targets:
                 try:
-                    results.append(self._evaluate(root, target, alt))
+                    value, applied = self._evaluate(root, target, alt)
                 except (MathError, _NoAlternative):
                     continue
+                used = used or applied
+                results.append(value)
+            if not used:
+                break  # no node has this many alternatives, so later ones won't either
         return results
 
-    def _evaluate(self, root: Node, target: int | None, alt: int) -> sympy.Expr:
-        """Evaluate with the rule at match number `target` (None: at every match)."""
+    def _evaluate(self, root: Node, target: int | None, alt: int) -> tuple[sympy.Expr, bool]:
+        """Evaluate with the rule at match number `target` (None: at every match).
+
+        Each node is evaluated once (cached), so a long sum costs time linear in its length.
+        Returns the value and whether an alternative was applied anywhere.
+        """
         order = {id(node): i for i, node in enumerate(_matching(root, self.matches))}
+        cache: dict[int, sympy.Expr] = {}
+        applied = False
 
         def ev(node: Node) -> sympy.Expr:
-            index = order.get(id(node))
+            nonlocal applied
+            key = id(node)
+            if key in cache:
+                return cache[key]
+            index = order.get(key)
+            value: sympy.Expr | None = None
             if index is not None and (target is None or target == index):
                 options = self.alternatives(node, ev)
                 if alt < len(options):
-                    return checked(options[alt])
-                if target is not None:
+                    value = checked(options[alt])
+                    applied = True
+                elif target is not None:
                     raise _NoAlternative
-            return _default(node, ev)
+            if value is None:
+                value = _default(node, ev)
+            cache[key] = value
+            return value
 
-        return ev(root)
+        return ev(root), applied
 
 
 class _NoAlternative(Exception):

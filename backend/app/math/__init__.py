@@ -6,7 +6,15 @@ size guards, and sympy computes every value.
 
 from app.math.canonical import Verdict, classify_answer, is_canonical
 from app.math.latex import latex_to_text, parse_latex
-from app.math.nodes import MathError, MathParseError, Node, UndefinedValue, render, to_sympy
+from app.math.nodes import (
+    MathError,
+    MathParseError,
+    Node,
+    UndefinedValue,
+    UnsupportedProblem,
+    render,
+    to_sympy,
+)
 from app.math.parse import parse_text
 from app.math.problems import (
     Format,
@@ -14,7 +22,6 @@ from app.math.problems import (
     Problem,
     Solution,
     Step,
-    UnsupportedProblem,
     equivalent,
     format_value,
     parse_input,

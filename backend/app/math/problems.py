@@ -8,16 +8,21 @@ from typing import Any, Literal
 import sympy
 
 from app.math.latex import parse_latex
-from app.math.nodes import Eq, MathError, Node, Var, checked, free_vars, to_sympy
+from app.math.nodes import (
+    Eq,
+    MathError,
+    Node,
+    UnsupportedProblem,
+    Var,
+    checked,
+    free_vars,
+    to_sympy,
+)
 from app.math.parse import parse_text
 
 Kind = Literal["evaluate", "simplify", "solve"]
 Format = Literal["text", "latex"]
 KINDS: tuple[Kind, ...] = ("evaluate", "simplify", "solve")
-
-
-class UnsupportedProblem(MathError):
-    """A problem the core can't solve exactly, such as a non-linear equation."""
 
 
 @dataclass(frozen=True)
@@ -103,17 +108,22 @@ def linear_form(eq: Eq) -> LinearEquation:
     if name is None:
         return LinearEquation(None, sympy.Integer(0), left, sympy.Integer(0), right)
     x = sympy.Symbol(name)
-    coeffs = []
-    for side in (left, right):
-        try:
-            poly = sympy.Poly(side, x)
-        except sympy.PolynomialError as err:
-            raise UnsupportedProblem("only linear equations are supported") from err
-        if poly.degree() > 1:
-            raise UnsupportedProblem("only linear equations are supported")
-        coeffs.append((poly.coeff_monomial(x), poly.coeff_monomial(1)))
-    (a_l, b_l), (a_r, b_r) = coeffs
-    return LinearEquation(name, a_l, b_l, a_r, b_r)
+    try:
+        polys = [sympy.Poly(side, x) for side in (left, right)]
+        difference = sympy.Poly(left - right, x)
+    except sympy.PolynomialError as err:
+        # A letter in a denominator (6/x = 2) makes a rational equation: out of scope.
+        raise UnsupportedProblem(
+            "equations with a letter in a denominator are not supported"
+        ) from err
+    if difference.degree() > 1:
+        raise UnsupportedProblem("only linear equations are supported")
+    if all(poly.degree() <= 1 for poly in polys):
+        (a_l, b_l), (a_r, b_r) = ((p.coeff_monomial(x), p.coeff_monomial(1)) for p in polys)
+        return LinearEquation(name, a_l, b_l, a_r, b_r)
+    # Higher powers cancel (x^2 + x = x^2 + 3): use the collected form A·x = -B.
+    a, b = difference.coeff_monomial(x), difference.coeff_monomial(1)
+    return LinearEquation(name, a, sympy.Integer(0), sympy.Integer(0), -b)
 
 
 def solve(problem: Problem) -> Solution:
@@ -152,7 +162,11 @@ def solution_set(eq: Eq) -> tuple[str | None, str, sympy.Expr | None]:
 
 
 def equivalent(a: Node, b: Node) -> bool:
-    """Same value (expressions) or same solutions (equations). `x = 3` is equivalent to `3`."""
+    """Same value (expressions) or same solutions (equations). `x = 3` is equivalent to `3`.
+
+    Raises UnsupportedProblem for an equation with a letter in a denominator (`6/x = 2`):
+    multiplying by x can add or lose solutions, so the core abstains rather than say "no".
+    """
     try:
         if isinstance(a, Eq) and isinstance(b, Eq):
             return _equations_equivalent(a, b)
@@ -166,6 +180,8 @@ def equivalent(a: Node, b: Node) -> bool:
                 and same_value(to_sympy(iso[1]), to_sympy(expr))
             )
         return same_value(to_sympy(a), to_sympy(b))
+    except UnsupportedProblem:
+        raise
     except MathError:
         return False
 
@@ -178,6 +194,10 @@ def _equations_equivalent(a: Eq, b: Eq) -> bool:
         # Beyond linear: equivalent when lhs - rhs differ by a non-zero constant factor.
         da = to_sympy(a.left) - to_sympy(a.right)
         db = to_sympy(b.left) - to_sympy(b.right)
+        if any(sympy.denom(sympy.together(d)).free_symbols for d in (da, db)):
+            raise UnsupportedProblem(
+                "equations with a letter in a denominator are not supported"
+            ) from None
         if db == 0:
             return bool(da == 0)
         ratio = sympy.cancel(da / db)

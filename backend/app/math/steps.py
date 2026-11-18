@@ -18,26 +18,27 @@ from app.math.nodes import (
     MathError,
     MathParseError,
     Node,
+    UnsupportedProblem,
     Var,
     apply_op,
     free_vars,
     to_sympy,
 )
-from app.math.parse import parse_text
-from app.math.problems import Kind, Problem, Step, equivalent, isolated, same_value, solve
+from app.math.parse import REPLACEMENTS, parse_text
+from app.math.problems import (
+    Kind,
+    Problem,
+    Solution,
+    Step,
+    equivalent,
+    isolated,
+    same_value,
+    solution_set,
+    solve,
+)
 
 MAX_OP_LENGTH = 30
-_OP_SIGNS: dict[str, BinOp] = {
-    "+": "+",
-    "-": "-",
-    "−": "-",
-    "*": "*",
-    "×": "*",
-    "·": "*",
-    "/": "/",
-    "÷": "/",
-    ":": "/",
-}
+_OP_SIGNS: dict[str, BinOp] = {"+": "+", "-": "-", "*": "*", "/": "/"}
 
 
 @dataclass(frozen=True)
@@ -52,6 +53,8 @@ class Line:
 def parse_op(op: str) -> tuple[BinOp, sympy.Expr] | None:
     """`| -6`, `÷ 3`, `*(-1)` into an operation and its exact operand. None for an empty op."""
     text = op.strip().removeprefix("|").strip()
+    for old, new in REPLACEMENTS.items():  # the same Unicode operators the parser reads
+        text = text.replace(old, new)
     if not text:
         return None
     if len(text) > MAX_OP_LENGTH:
@@ -204,13 +207,19 @@ def check_steps(problem: Problem, steps: list[Step]) -> list[StepIssue]:
         previous = node
 
     if lines and (last := lines[-1]) is not None:
-        issues.extend(_final_issues(problem, last.node, len(lines) - 1, solution.value))
+        issues.extend(_final_issues(problem, last.node, len(lines) - 1, solution))
     return issues
 
 
-def _final_issues(
-    problem: Problem, node: Node, index: int, value: sympy.Expr | None
-) -> list[StepIssue]:
+def _final_issues(problem: Problem, node: Node, index: int, solution: Solution) -> list[StepIssue]:
+    value = solution.value
+    if solution.kind != "value":
+        # No solution or every value: the last line must say so, like `0 = 4` or `0 = 0`.
+        try:
+            same = isinstance(node, Eq) and solution_set(node)[1] == solution.kind
+        except MathError:
+            same = False
+        return [] if same else [StepIssue(index, "wrong_answer")]
     if problem.kind == "solve":
         if not isinstance(node, Eq) or (iso := isolated(node)) is None:
             return [StepIssue(index, "not_simplified", "the last line must be `x = value`")]
@@ -242,24 +251,27 @@ def first_line_that_doesnt_follow(
     """The first line that is not equivalent to the line before it, or None if all follow.
 
     With a problem, line 0 is compared with the problem. Copying a line again is fine here:
-    only worked examples must change every line.
+    only worked examples must change every line. Raises UnsupportedProblem when the math is
+    out of scope (a letter in a denominator, too large); the caller abstains.
     """
+    variable: str | None = None
     if problem is not None:
         kind: Kind = problem.kind
-        previous: Node | None = problem.node()
-        variable = solve(problem).variable if kind == "solve" else None
+        problem_node = problem.node()
+        previous: Node | None = problem_node
+        letters = free_vars(problem_node)
+        if kind == "solve" and len(letters) == 1:
+            variable = next(iter(letters))
     else:
-        kind = (
-            "solve"
-            if any(s.left.strip() and s.right.strip() and _has_letter(s) for s in lines)
-            else "evaluate"
-        )
-        previous, variable = None, None
+        kind = "solve" if any(_looks_like_equation(s) for s in lines) else "evaluate"
+        previous = None
     for index, step in enumerate(lines):
         try:
             if variable is None and kind == "solve":
                 variable = _single_var(step, kind)
             line = parse_line(step, kind, variable)
+        except UnsupportedProblem:
+            raise
         except MathError:
             return LineFinding(index, "unparsable")
         if line.false_equality:
@@ -270,8 +282,12 @@ def first_line_that_doesnt_follow(
     return None
 
 
-def _has_letter(step: Step) -> bool:
+def _looks_like_equation(step: Step) -> bool:
+    """`2x + 6 | 10` in two fields, or `2x + 6 = 10` typed into one."""
+    left, right = step.left.strip(), step.right.strip()
     try:
-        return bool(free_vars(parse_text(step.left)) or free_vars(parse_text(step.right)))
+        if left and right:
+            return bool(free_vars(parse_text(left)) or free_vars(parse_text(right)))
+        return isinstance(parse_text(left or right), Eq)
     except MathError:
         return False

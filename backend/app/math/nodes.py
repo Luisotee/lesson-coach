@@ -22,6 +22,10 @@ class MathParseError(MathError):
     """The input is not math we can read, or it breaks a size guard."""
 
 
+class UnsupportedProblem(MathError):
+    """Math the core won't work out: a non-linear equation, too many letters, or too large."""
+
+
 class UndefinedValue(MathError):
     """The expression has no value, for example a division by zero."""
 

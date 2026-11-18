@@ -22,15 +22,33 @@ import re
 from dataclasses import dataclass
 from typing import Literal
 
-from app.math.nodes import Bin, BinOp, Eq, MathParseError, Mixed, Neg, Node, Num, Pow, Var
+from app.math.nodes import (
+    Bin,
+    BinOp,
+    Eq,
+    MathParseError,
+    Mixed,
+    Neg,
+    Node,
+    Num,
+    Pow,
+    UnsupportedProblem,
+    Var,
+    free_vars,
+)
 
 MAX_LENGTH = 200
 MAX_DEPTH = 20
 MAX_DIGITS = 12
 MAX_EXPONENT = 10
+# Grades 6-9 need one or two letters. With at most 2 letters and degree 20, an expanded
+# polynomial has at most 231 terms, which sympy handles in milliseconds.
+MAX_LETTERS = 2
+MAX_DEGREE = 20
+MAX_BITS = 20_000
 MIXED_MARK = "⁤"
 
-_REPLACEMENTS = {
+REPLACEMENTS = {
     "−": "-",
     "–": "-",
     "×": "*",
@@ -57,7 +75,7 @@ class Token:
 def tokenize(text: str) -> list[Token]:
     if len(text) > MAX_LENGTH:
         raise MathParseError(f"input is longer than {MAX_LENGTH} characters")
-    for old, new in _REPLACEMENTS.items():
+    for old, new in REPLACEMENTS.items():
         text = text.replace(old, new)
     if _WORD.search(text):
         raise MathParseError("words are not math: use one letter per unknown")
@@ -164,8 +182,9 @@ class _Parser:
         base = self.atom()
         if self.at_op("^"):
             self.pos += 1
-            if _has_power(base):
-                # (2^10)^10 nested 20 deep would be 2^(10^20): too large to compute.
+            if _is_power(base):
+                # (2^10)^10 nested 20 deep would be 2^(10^20). Other large powers are caught
+                # by check_size.
                 raise MathParseError("a power of a power is not supported")
             return Pow(base, self.exponent())
         return base
@@ -227,16 +246,42 @@ class _Parser:
         return Mixed(int(whole.text), int(num.text), int(den.text))
 
 
-def _has_power(node: Node) -> bool:
+def _is_power(node: Node) -> bool:
+    return isinstance(node, Pow) or (isinstance(node, Neg) and _is_power(node.arg))
+
+
+def _size(node: Node) -> tuple[int, float]:
+    """An upper bound on the expanded degree, and on the bits of the largest number."""
     match node:
-        case Pow():
-            return True
+        case Num(text):
+            return 0, len(text) * 3.33
+        case Mixed(whole, num, den):
+            return 0, (len(str(whole)) + len(str(num)) + 2 * len(str(den))) * 3.33
+        case Var():
+            return 1, 1.0
         case Neg(arg):
-            return _has_power(arg)
-        case Bin(_, left, right):
-            return _has_power(left) or _has_power(right)
-        case _:
-            return False
+            return _size(arg)
+        case Bin(op, left, right):
+            (dl, bl), (dr, br) = _size(left), _size(right)
+            if op in ("+", "-"):
+                return max(dl, dr), max(bl, br) + 1
+            return dl + dr, bl + br
+        case Pow(base, exp):
+            d, b = _size(base)
+            return d * abs(exp), b * abs(exp)
+        case Eq(left, right):
+            (dl, bl), (dr, br) = _size(left), _size(right)
+            return max(dl, dr), max(bl, br)
+
+
+def check_size(node: Node) -> None:
+    """Refuse math whose expansion would be too slow: too many letters, degree or digits."""
+    letters = free_vars(node)
+    if len(letters) > MAX_LETTERS:
+        raise UnsupportedProblem(f"use at most {MAX_LETTERS} different letters")
+    degree, bits = _size(node)
+    if degree > MAX_DEGREE or bits > MAX_BITS:
+        raise UnsupportedProblem("the expression is too large to work out")
 
 
 def parse_text(text: str) -> Node:
@@ -245,8 +290,10 @@ def parse_text(text: str) -> Node:
     if tokens[0].kind == "end":
         raise MathParseError("the input is empty")
     try:
-        return _Parser(tokens).equation()
+        node = _Parser(tokens).equation()
     except MathParseError as err:
         if not str(err):
             raise MathParseError("the input ends too early") from None
         raise
+    check_size(node)
+    return node

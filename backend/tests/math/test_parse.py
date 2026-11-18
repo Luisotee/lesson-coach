@@ -1,7 +1,15 @@
 import pytest
 import sympy
 
-from app.math import MathParseError, UndefinedValue, parse_latex, parse_text, render, to_sympy
+from app.math import (
+    MathParseError,
+    UndefinedValue,
+    UnsupportedProblem,
+    parse_latex,
+    parse_text,
+    render,
+    to_sympy,
+)
 from app.math.latex import latex_to_text
 from app.math.nodes import Bin, Eq, Mixed, Neg, Num, Pow, Var
 from app.math.parse import MAX_DEPTH, MAX_DIGITS, MAX_EXPONENT, MAX_LENGTH
@@ -81,7 +89,23 @@ def test_size_guards() -> None:
     with pytest.raises(MathParseError):
         parse_text("((2^10)^10)^10")
     with pytest.raises(MathParseError):
-        parse_text("(x^2 + 1)^2")
+        parse_text("(-2^2)^2")
+    assert to_sympy(parse_text("(x^2 + 1)^2")) == (sympy.Symbol("x") ** 2 + 1) ** 2
+
+
+def test_expansion_guards() -> None:
+    # Regression: these passed every guard and took tens of seconds to expand.
+    with pytest.raises(UnsupportedProblem):
+        parse_text("(a+b+c+d)^10(e+f+g+h)^10")
+    with pytest.raises(UnsupportedProblem):
+        parse_text("(x+y)^10(x+y)^10(x+y)^10")
+    with pytest.raises(UnsupportedProblem):
+        parse_text("(((9^10*9)^10*9)^10*9)^10")
+    assert free_vars_of("(x + y)^10") == {"x", "y"}
+
+
+def free_vars_of(text: str) -> set[str]:
+    return set(map(str, to_sympy(parse_text(text)).free_symbols))
     assert to_sympy(parse_text(f"2^{MAX_EXPONENT}")) == 2**MAX_EXPONENT
     assert to_sympy(parse_text("2^(-1)")) == sympy.Rational(1, 2)
 
@@ -127,6 +151,9 @@ class TestLatex:
         assert parse_latex(r"2x+6=10") == parse_text("2x + 6 = 10")
         assert parse_latex(r"x^{-2}") == Pow(Var("x"), -2)
         assert parse_latex(r"3\,x") == parse_text("3x")
+
+    def test_decimal_comma(self) -> None:
+        assert parse_latex("0{,}5") == Num("0.5")
 
     @pytest.mark.parametrize(
         "bad", [r"\sqrt{2}", r"\placeholder{}", r"\frac{1}", r"{1", r"1}", "\\", r"\mathrm{x}"]

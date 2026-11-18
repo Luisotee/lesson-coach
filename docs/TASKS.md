@@ -74,6 +74,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - Supporting pieces:
     - an LLM client interface with one config, prompt-cache layout, token logging (no free-text logs);
     - input limits, in-memory rate limiting, and a 5 MB image limit with MIME checks.
+    - sympy work under a wall-clock limit (a process pool or similar). The math core bounds letters (2), degree (20) and digits, but a time limit is the backstop; `MathParseError` and `UnsupportedProblem` map to the abstain path.
   - **Done when:** pytest passes with a mocked LLM, plus one live smoke test per endpoint.
 - [ ] **T7 Math input components** (needs T3; T6 for live wiring)
   - **Type:** MathLive field with a virtual keyboard on touch and LaTeX output.

@@ -32,6 +32,10 @@ class TestSolve:
         assert solve(Problem("solve", "5y + 3 = 2y + 9")).answer_text == "y = 2"
         assert solve(Problem("solve", "x/2 = 3/4")).answer_text == "x = 3/2"
 
+    def test_cancelling_squares_are_linear(self) -> None:
+        assert solve(Problem("solve", "x^2 + x = x^2 + 3")).answer_text == "x = 3"
+        assert solve(Problem("solve", "x(x+2) = x^2 + 6")).answer_text == "x = 3"
+
     def test_no_solution_and_every_value(self) -> None:
         assert solve(Problem("solve", "x + 1 = x + 2")).kind == "none"
         assert solve(Problem("solve", "2(x + 1) = 2x + 2")).kind == "all"
@@ -62,6 +66,9 @@ class TestCanonical:
     @pytest.mark.parametrize(
         "text",
         [
+            "3x/2",
+            "-2x/3",
+            "5x^2/3",
             "3",
             "-3",
             "0",
@@ -83,6 +90,10 @@ class TestCanonical:
     @pytest.mark.parametrize(
         "text",
         [
+            "x + 0",
+            "0x + 5",
+            "6x/4",
+            "1x/2",
             "2/4",
             "-2/4",
             "1/-2",
@@ -152,6 +163,29 @@ class TestClassify:
         assert classify_answer(Problem("evaluate", "-5 - (-3)"), "-2") == "correct"
         assert classify_answer(Problem("evaluate", "0.5 + 0.25"), "0.75") == "correct"
 
+    def test_zero_terms_are_not_simplified(self) -> None:
+        problem = Problem("simplify", "2x + 5 - 2x")
+        assert (
+            classify_answer(Problem("simplify", "x + 3 - 3"), "x + 0")
+            == "equivalent_not_simplified"
+        )
+        assert classify_answer(problem, "0x + 5") == "equivalent_not_simplified"
+        assert classify_answer(problem, "5") == "correct"
+
+    def test_coefficient_over_a_number(self) -> None:
+        problem = Problem("simplify", "x + x/2")
+        assert classify_answer(problem, "3x/2") == "correct"
+        assert classify_answer(problem, "3/2 x") == "correct"
+        assert classify_answer(problem, "6x/4") == "equivalent_not_simplified"
+
+    def test_no_solution_problems_abstain(self) -> None:
+        with pytest.raises(UnsupportedProblem):
+            classify_answer(Problem("solve", "x + 1 = x + 2"), "x = 1")
+
+    def test_too_many_letters_abstain(self) -> None:
+        with pytest.raises(UnsupportedProblem):
+            classify_answer(Problem("simplify", "2/4"), "a + b + c")
+
     def test_unreadable_answer_raises(self) -> None:
         with pytest.raises(MathParseError):
             classify_answer(Problem("simplify", "2/4"), "one half")
@@ -175,6 +209,10 @@ class TestEquivalent:
     def test_non_linear_equations_by_factor(self) -> None:
         assert equivalent(parse_text("x^2 = 4"), parse_text("2x^2 = 8"))
         assert not equivalent(parse_text("x^2 = 4"), parse_text("x = 2"))
+
+    def test_rational_equations_abstain(self) -> None:
+        with pytest.raises(UnsupportedProblem):
+            equivalent(parse_text("6/x = 2"), parse_text("6 = 2x"))
 
     def test_undefined_is_not_equivalent(self) -> None:
         assert not equivalent(parse_text("1/0"), parse_text("1"))

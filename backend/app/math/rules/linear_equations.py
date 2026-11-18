@@ -10,7 +10,7 @@ from collections.abc import Callable
 
 import sympy
 
-from app.math.nodes import Eq, MathError
+from app.math.nodes import Bin, Eq, MathError, free_vars, to_sympy
 from app.math.problems import LinearEquation, Problem, linear_form
 from app.math.rules import Rule
 
@@ -82,15 +82,42 @@ def _subtract_instead_of_divide(lin: LinearEquation) -> list[tuple[sympy.Expr, s
     return [(sympy.Integer(1), (c - b) - a)]
 
 
-def _wrong_inverse_order(lin: LinearEquation) -> list[tuple[sympy.Expr, sympy.Expr]]:
-    parts = _one_side(lin)
-    if parts is None:
+def _wrong_inverse_order(problem: Problem) -> list[sympy.Expr]:
+    """`(x + b)/a = c`: the student takes b away before undoing the division, so
+    x/a = c - b and x = a(c - b). The right order gives x = a·c - b."""
+    if problem.kind != "solve":
         return []
-    a, b, c = parts
-    if a == 1 or b == 0:
-        return []
-    # Undo the multiplication before the addition: x = C/A - B.
-    return [(sympy.Integer(1), c / a - b)]
+    node = problem.node()
+    assert isinstance(node, Eq)
+    results = []
+    for side, other in ((node.left, node.right), (node.right, node.left)):
+        if not (
+            isinstance(side, Bin)
+            and side.op == "/"
+            and isinstance(side.left, Bin)
+            and side.left.op in ("+", "-")
+            and not free_vars(side.right)
+            and not free_vars(other)
+        ):
+            continue
+        top = side.left
+        sign = 1 if top.op == "+" else -1
+        if free_vars(top.left) and not free_vars(top.right):
+            x_term, b = top.left, sign * to_sympy(top.right)
+        elif free_vars(top.right) and not free_vars(top.left) and top.op == "+":
+            x_term, b = top.right, to_sympy(top.left)
+        else:
+            continue
+        try:
+            a, c, k_x = to_sympy(side.right), to_sympy(other), to_sympy(x_term)
+        except MathError:
+            continue
+        (name,) = free_vars(x_term)
+        k = k_x.coeff(sympy.Symbol(name))
+        if b == 0 or a == 0 or k == 0 or sympy.expand(k_x - k * sympy.Symbol(name)) != 0:
+            continue
+        results.append(a * (c - b) / k)
+    return results
 
 
 def _solve(expr: str) -> Problem:
@@ -125,9 +152,9 @@ RULES = [
     Rule(
         "wrong_inverse_order",
         TOPIC,
-        "Operations are undone in the wrong order: 2x + 6 = 10 gives x = 10/2 - 6 = -1.",
-        _solve("2*x + 6 = 10"),
-        "x = -1",
-        _candidates(_wrong_inverse_order),
+        "Operations are undone in the wrong order: (x + 6)/2 = 10 gives x/2 = 4, so x = 8.",
+        _solve("(x + 6)/2 = 10"),
+        "x = 8",
+        _wrong_inverse_order,
     ),
 ]
