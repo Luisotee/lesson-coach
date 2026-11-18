@@ -10,7 +10,7 @@
     "lint": "tsc -b && eslint . && prettier --check .",
     "fmt": "prettier --write . && eslint --fix .",
     "test": "vitest run",
-    "e2e": "playwright test"
+    "e2e": "pnpm build && playwright test"
   },
   "dependencies": {
     "@fontsource-variable/figtree": "^5.3.0",

@@ -41,11 +41,8 @@ export default function App() {
       <p className="text-lg">
         <span className="bg-highlight px-1">{t('app.tagline')}</span>
       </p>
-      <p className="text-sm lowercase">
-        {t('app.apiStatus')}:{' '}
-        <span className={api === 'ok' ? 'font-semibold text-green-text' : 'font-semibold'}>
-          {apiLabel}
-        </span>
+      <p className={api === 'ok' ? 'text-sm text-green-text' : 'text-sm'}>
+        {t('app.apiStatus', { state: apiLabel })}
       </p>
     </main>
   )

@@ -11,5 +11,5 @@ test('renders the translated title and reports the API as connected', async () =
   )
   render(<App />)
   expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Lesson Coach')
-  expect(await screen.findByText('connected')).toBeInTheDocument()
+  expect(await screen.findByText('API status: connected')).toBeInTheDocument()
 })
