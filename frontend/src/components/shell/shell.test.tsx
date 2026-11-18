@@ -1,13 +1,21 @@
 import { act, render, screen, within } from '@testing-library/react'
 import { StrictMode } from 'react'
 import userEvent from '@testing-library/user-event'
-import { afterEach, expect, test } from 'vitest'
+import { afterEach, beforeEach, expect, test, vi } from 'vitest'
 import { createMemoryRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 import i18n from '@/i18n'
 import { routes } from '@/router'
+import { mockApi } from '@/test/api'
 
-afterEach(() => act(() => i18n.changeLanguage('en')))
+beforeEach(() => {
+  mockApi()
+})
+
+afterEach(async () => {
+  vi.unstubAllGlobals()
+  await act(() => i18n.changeLanguage('en'))
+})
 
 function renderAt(path: string) {
   const router = createMemoryRouter(routes, { initialEntries: [path] })
@@ -15,14 +23,22 @@ function renderAt(path: string) {
   return router
 }
 
-test('home links to every topic, the mistake explainer and practice', () => {
+test('home links to every topic from the API, the mistake explainer and practice', async () => {
   renderAt('/')
   expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
     'Feel sure of the math before you teach it.',
   )
-  expect(screen.getByRole('link', { name: /Negative numbers/ })).toHaveAttribute(
+  for (const [name, id] of [
+    [/Negative numbers/, 'negative-numbers'],
+    [/Fractions/, 'fractions'],
+    [/Solving linear equations/, 'linear-equations'],
+  ] as const) {
+    expect(await screen.findByRole('link', { name })).toHaveAttribute('href', `/topics/${id}`)
+  }
+  expect(screen.getByText('Grade 7–8')).toBeInTheDocument()
+  expect(screen.getByRole('link', { name: 'A student wrote this…' })).toHaveAttribute(
     'href',
-    '/topics/negative-numbers',
+    '/mistake',
   )
   expect(screen.getByRole('link', { name: 'Skip to main content' })).toBeInTheDocument()
   expect(document.title).toBe('Lesson Coach')

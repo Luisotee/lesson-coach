@@ -169,6 +169,9 @@ export interface MistakeResult {
   worked_solution: Step[]
   first_bad_line: FirstBadLine | null
   diagnosis: Diagnosis | null
+  /** The student's working as parsed, in the order sent; an unreadable line has its raw
+   * text in `left`, so `first_bad_line.index` lines up. */
+  working?: Step[]
 }
 
 export interface CheckWorkingRequest {
@@ -182,4 +185,6 @@ export interface CheckWorkingResult {
   first_bad_line: FirstBadLine | null
   /** The verdict on the last line, set only when every line follows and a problem was given. */
   final: Verdict | null
+  /** The lines as parsed, in the order sent (requested from T6). */
+  lines?: Step[]
 }
