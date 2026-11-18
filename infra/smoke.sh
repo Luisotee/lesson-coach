@@ -4,12 +4,14 @@
 set -euo pipefail
 source "$(dirname "$0")/config.sh"
 
+[[ -f "$ENV_FILE" ]] || { echo "No $ENV_FILE; run infra/up.sh first." >&2; exit 1; }
 set -a
 # shellcheck disable=SC1090
 source "$ENV_FILE"
 set +a
-: "${AZURE_OPENAI_ENDPOINT:?missing in .env; run infra/up.sh}"
-: "${AZURE_OPENAI_API_KEY:?missing in .env; run infra/up.sh}"
+for v in AZURE_OPENAI_ENDPOINT AZURE_OPENAI_API_KEY AZURE_OPENAI_API_VERSION MODEL_LIVE MODEL_OFFLINE; do
+  [[ -n "${!v:-}" ]] || { echo "$v is missing or empty in $ENV_FILE; run infra/up.sh." >&2; exit 1; }
+done
 
 call() { # deployment request-json -> response content (a JSON string)
   local url="${AZURE_OPENAI_ENDPOINT%/}/openai/deployments/$1/chat/completions?api-version=$AZURE_OPENAI_API_VERSION"
@@ -24,6 +26,11 @@ call() { # deployment request-json -> response content (a JSON string)
     return 1
   fi
   jq -r '"   tokens: \(.usage.prompt_tokens) in, \(.usage.completion_tokens) out", "   model: \(.model)"' "$body" >&2
+  if ! jq -e '.choices[0].finish_reason == "stop" and .choices[0].message.content != null' "$body" >/dev/null; then
+    echo "FAIL $1: finish_reason $(jq -r '.choices[0].finish_reason' "$body"), refusal: $(jq -r '.choices[0].message.refusal // "none"' "$body")" >&2
+    rm -f "$body"
+    return 1
+  fi
   jq -r '.choices[0].message.content' "$body"
   rm -f "$body"
 }
@@ -51,7 +58,7 @@ for dep in "$MODEL_LIVE" "$MODEL_OFFLINE"; do
       response_format: {type: "json_schema", json_schema: $s},
       max_completion_tokens: 2000, reasoning_effort: "low"}' | call "$dep")" || { fail=1; continue; }
   echo "   $out"
-  if [[ "$(jq -r '.x' <<<"$out")" == 5 ]]; then echo "   ok"; else echo "   FAIL: x != 5"; fail=1; fi
+  if jq -e '.x == 5' <<<"$out" >/dev/null; then echo "   ok"; else echo "   FAIL: x != 5"; fail=1; fi
 done
 
 echo "--> $MODEL_LIVE: image input (fixtures/equation.png)"
@@ -63,7 +70,7 @@ if out="$(jq -n --arg img "$img" --argjson s "$lines_schema" '{
     response_format: {type: "json_schema", json_schema: $s},
     max_completion_tokens: 2000, reasoning_effort: "low"}' | call "$MODEL_LIVE")"; then
   echo "   $out"
-  if [[ "$(jq '.lines | length' <<<"$out")" == 2 ]]; then echo "   ok"; else echo "   FAIL: expected 2 lines"; fail=1; fi
+  if jq -e '.lines | length == 2' <<<"$out" >/dev/null; then echo "   ok"; else echo "   FAIL: expected 2 lines"; fail=1; fi
 else
   fail=1
 fi

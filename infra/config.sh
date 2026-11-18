@@ -4,14 +4,18 @@
 RG="rg-akelius-coach"
 LOCATION="switzerlandnorth"
 
-# Globally unique names get a short, stable suffix derived from the subscription id,
-# so re-running the scripts always targets the same resources.
-SUB_ID="$(az account show --query id -o tsv)"
-SUFFIX="$(printf '%s' "$SUB_ID" | sha256sum | cut -c1-6)"
-
-AI_ACCOUNT="ai-akelius-coach-$SUFFIX"
-ACR_NAME="acrakeliuscoach$SUFFIX"
 CAE_NAME="cae-akelius-coach"
+
+# Globally unique names get a short, stable suffix derived from the subscription id,
+# so re-running the scripts always targets the same resources. Needs `az login`;
+# up.sh and down.sh call it, smoke.sh doesn't (it only needs .env).
+azure_names() {
+  local sub_id suffix
+  sub_id="$(az account show --query id -o tsv)"
+  suffix="$(printf '%s' "$sub_id" | sha256sum | cut -c1-6)"
+  AI_ACCOUNT="ai-akelius-coach-$suffix"
+  ACR_NAME="acrakeliuscoach$suffix"
+}
 
 # Live: EU data zone (per-teacher input). gpt-5.4-mini DataZoneStandard has 0 quota on
 # Azure for Students, so live uses gpt-5.5 on DataZoneStandard (see docs/REASONING.md).

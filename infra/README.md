@@ -29,7 +29,7 @@ The app itself is deployed into the environment in T12, with min replicas 0 (sca
 
 ## Why these models
 
-- The plan's live model, `gpt-5.4-mini` on DataZoneStandard, is offered in the region but has **0 quota** on Azure for Students (also 0 in Sweden Central, Germany West Central and France Central). `gpt-5.5` on DataZoneStandard has quota (333k TPM), so live calls stay in the EU data zone. Swapping back is config only: the app reads the deployment name from `MODEL_LIVE`.
+- The plan's live model, `gpt-5.4-mini` on DataZoneStandard, is offered in the region but has **0 quota** on Azure for Students (also 0 in Sweden Central, Germany West Central and France Central). `gpt-5.5` on DataZoneStandard has quota (333k TPM), so live calls stay in the EU data zone. Swapping back is config only: the app will read the deployment name from `MODEL_LIVE` (the LLM client in T6 wires this up).
 - Offline generation uses no personal data, so GlobalStandard is fine. GlobalBatch would be cheaper, but it only works through the Batch API, not interactive calls.
 
 ## Cost notes

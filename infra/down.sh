@@ -3,6 +3,7 @@
 # Then purges the soft-deleted AI Services account so its name and quota free up.
 set -euo pipefail
 source "$(dirname "$0")/config.sh"
+azure_names
 
 if [[ "$(az group exists -n "$RG")" != "true" ]]; then
   echo "$RG does not exist; nothing to delete."
