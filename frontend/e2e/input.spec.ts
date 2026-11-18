@@ -228,3 +228,67 @@ test('MathLive is not in the main bundle', async () => {
   expect(main).not.toContain('ML__') // MathLive's own class prefix
   expect(fs.readdirSync(path.join(dist, 'assets')).some((f) => f.startsWith('mathlive'))).toBe(true)
 })
+
+test('a photo that cannot be opened does not take focus from typing elsewhere', async ({
+  page,
+}) => {
+  const expression = card(page, 'One expression')
+  await expression.getByRole('tab', { name: 'Photo' }).click()
+  await expression.getByTestId('photo-upload').setInputFiles({
+    name: 'bad.png',
+    mimeType: 'image/png',
+    buffer: Buffer.from('not an image'),
+  })
+  await expect(expression.getByRole('alert')).toHaveText(/This photo couldn’t be opened/)
+  const working = card(page, 'Lines of working')
+  await working.getByRole('tab', { name: 'Type' }).click()
+  const field = working.locator('math-field').first()
+  await field.focus()
+  await page.keyboard.type('x+12')
+  await expect(working.getByTestId('received')).toHaveText(
+    '{"mode":"type","lines":[{"latex":"x+12"}]}',
+  )
+  await expect(field).toBeFocused()
+})
+
+test('Add a line moves focus to the new line', async ({ page }) => {
+  const working = card(page, 'Lines of working')
+  await working.getByRole('tab', { name: 'Type' }).click()
+  await working.locator('math-field').first().focus()
+  await page.keyboard.type('2x=4')
+  await working.getByRole('button', { name: 'Add a line' }).click()
+  const second = working.locator('math-field').nth(1)
+  await expect(second).toBeFocused()
+  await page.keyboard.type('x=2')
+  await expect(working.getByTestId('received')).toHaveText(
+    '{"mode":"type","lines":[{"latex":"2x=4"},{"latex":"x=2"}]}',
+  )
+})
+
+test('the board is locked while the drawing is being read', async ({ page }) => {
+  const working = card(page, 'Lines of working')
+  const canvas = working.getByTestId('drawing-canvas')
+  await drawStroke(page, canvas, [30, 40], [90, 60])
+  let release: () => void = () => {}
+  const held = new Promise<void>((r) => (release = r))
+  await page.route('**/api/transcribe', async (route) => {
+    await held
+    await route.fulfill({
+      json: {
+        status: 'ok',
+        reason: null,
+        lines: [{ left: 'x', right: '2', op: '', confidence: 0.9, uncertain: false }],
+      },
+    })
+  })
+  await working.getByRole('button', { name: 'Read my writing' }).click()
+  await expect(working.getByText('Reading your writing…')).toBeVisible()
+  await drawStroke(page, canvas, [120, 40], [160, 90])
+  await expect(canvas).toHaveAttribute('aria-label', /1 stroke$/)
+  await expect(working.getByRole('button', { name: 'Undo' })).toHaveAttribute(
+    'aria-disabled',
+    'true',
+  )
+  release()
+  await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
+})
