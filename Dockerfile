@@ -18,8 +18,13 @@ WORKDIR /app/backend
 COPY backend/pyproject.toml backend/uv.lock backend/.python-version ./
 RUN uv sync --frozen --no-dev
 COPY backend/app ./app
+# The API serves the generated packs from content/generated (held in memory).
+COPY content/ /app/content/
 COPY --from=frontend /app/frontend/dist /app/frontend/dist
 RUN useradd --system --uid 1001 app
 USER app
 EXPOSE 8000
+# On Container Apps the ingress appends the client's IP to X-Forwarded-For, and the rate limit
+# keys on that right-most entry. docker-compose.yml (no proxy) and `make dev` set it false.
+ENV TRUST_PROXY=true
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

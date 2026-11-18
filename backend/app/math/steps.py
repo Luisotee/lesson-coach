@@ -314,10 +314,20 @@ def first_line_that_doesnt_follow(
             follows = previous is None or equivalent(previous, line.node)
         except UnsupportedProblem:
             return LineFinding(index, "unsupported")
-        if not follows:
+        if not follows or (index > 0 and _by_zero(lines[index - 1].op)):
             return LineFinding(index, "not_equivalent")
         previous = line.node
     return None
+
+
+def _by_zero(op: str) -> bool:
+    """A margin op that multiplies or divides both sides by 0: the next line can't follow
+    from it, even when it happens to be equivalent (`2x = 4 | /0` then `x = 2`)."""
+    try:
+        parsed = parse_op(op)
+    except MathError:
+        return False  # an op we can't read is ignored; the lines are still compared
+    return parsed is not None and parsed[0] in ("*", "/") and parsed[1] == 0
 
 
 def _looks_like_equation(step: Step) -> bool:
