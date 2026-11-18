@@ -2,8 +2,16 @@ import { defineConfig, devices } from '@playwright/test'
 
 // Override to run e2e in parallel worktrees: `E2E_PORT=8020 make e2e`. The dev server takes
 // E2E_PORT + 1000 unless E2E_DEV_PORT is set, so ports one apart never collide.
-const port = Number(process.env.E2E_PORT ?? 8010)
-const devPort = Number(process.env.E2E_DEV_PORT ?? port + 1000)
+/** A port from the environment, or the default; anything else stops the run, naming it. */
+function portFrom(name: string, fallback: number): number {
+  const raw = process.env[name] ?? String(fallback)
+  const port = Number(raw)
+  if (!/^\d+$/.test(raw.trim()) || port < 1 || port > 65535)
+    throw new Error(`${name} must be a port number from 1 to 65535, got "${raw}"`)
+  return port
+}
+const port = portFrom('E2E_PORT', 8010)
+const devPort = portFrom('E2E_DEV_PORT', port + 1000)
 const api = `http://127.0.0.1:${port}`
 const dev = `http://127.0.0.1:${devPort}`
 // BASE_URL runs the app specs against a deployed app instead of local servers, e.g.
