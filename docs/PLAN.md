@@ -202,7 +202,15 @@ frontend/ (React + Vite + TS + Tailwind v4 + shadcn/ui + Motion + MathLive + rea
   - the licenses and attribution.
 - **`docs/REASONING.md`:** short. What we built, why, and how the human and AI worked together.
 
-## Questions for Mykola (optional)
+## Questions for Mykola (not sent)
+
+We drafted these and decided not to send them. We built on these assumptions instead:
+- **Planning time:** we report it in full, apart from the build time (`docs/REASONING.md`), rather than ask whether it counts.
+- **Akelius Math content:** we don't reuse it (no licence stated); we link to it.
+- **Students' wrong answers:** we assume Akelius Math doesn't log them for us, so the evals use the public MaE dataset.
+- **Grades and languages:** grades 6–9, three algebra topics, and every language that passes our checks.
+
+The questions were:
 
 - Does planning time count toward the two hours?
 - May we reuse Akelius Math content?

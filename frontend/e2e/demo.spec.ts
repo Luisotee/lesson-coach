@@ -1,14 +1,7 @@
-import AxeBuilder from '@axe-core/playwright'
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test } from '@playwright/test'
+import { expectNoAxeViolations } from './a11y.ts'
 
 // The math components showcase, which only the dev server has (see playwright.config.ts).
-
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
-
-async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
-  expect(results.violations).toEqual([])
-}
 
 test.describe('math demo', () => {
   for (const lng of ['en', 'ar']) {

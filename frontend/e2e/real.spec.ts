@@ -1,15 +1,8 @@
-import AxeBuilder from '@axe-core/playwright'
-import { expect, test, type Page } from '@playwright/test'
+import { expect, test } from '@playwright/test'
+import { expectNoAxeViolations } from './a11y.ts'
 
 // No route mocks: the production build served by FastAPI, with the real packs in
 // content/generated. Only GET requests, so no model is called.
-
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
-
-async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
-  expect(results.violations).toEqual([])
-}
 
 const TOPICS = [
   ['negative-numbers', 'Negative numbers'],

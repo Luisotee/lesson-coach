@@ -43,7 +43,13 @@ make evals    # live evals against Azure, about $2.50 (needs .env)
 make zip      # the delivery zip with .git, from a fresh clone: ../lesson-coach.zip
 ```
 
+`make e2e` serves the app on port 8010 (and the dev server on that port + 1000); set `E2E_PORT` (and optionally `E2E_DEV_PORT`) to run it in parallel checkouts.
+
 Single tests: `cd backend && uv run pytest tests/test_math.py::test_name -q`, or `cd frontend && pnpm vitest run path/to/file.test.ts -t "name"`. E2E against the live app: `cd frontend && BASE_URL=<live-url> pnpm exec playwright test`. Deploying: [`infra/README.md`](infra/README.md).
+
+## Accessibility
+
+The target is WCAG 2.2 AA. [`docs/A11Y.md`](docs/A11Y.md) lists what the e2e tests check (axe in every page state at five layouts, keyboard-only flows, reduced motion, print, the accessibility tree, and in other languages: Arabic, Chinese and Hindi pages, right to left at 320 px, 200% zoom and in print, spoken math in all 19 languages, and a web font for every script) and what hasn't been tested yet: no one has run a real screen reader on it.
 
 ## Layout
 
@@ -93,6 +99,7 @@ docs/        PLAN.md, TASKS.md, REASONING.md, COST.md, A11Y.md
 | **Spend two hours and stop when the time is up** | **Not followed.** We chose to deliver a complete, working product. The real time is reported in full: about 4 h of planning wall clock (about 10 min of Luis's time) and a 6.75 h build by parallel agents | [REASONING: Time](docs/REASONING.md#time) |
 | **Any language, tools, frameworks, models and APIs** | Python, FastAPI and sympy; React and TypeScript; Azure OpenAI `gpt-5.5`; Azure Container Apps | [PLAN: Architecture](docs/PLAN.md#architecture) |
 | **Commit as you work** | Every task was built on its own branch in small commits and merged by PR. The planning before the build is not in git; the history starts with the plan | `git log`; [REASONING: Time](docs/REASONING.md#time) |
+| **Questions: write to the person who sent the assignment** | **Not sent, by choice.** We drafted four questions ([PLAN](docs/PLAN.md#questions-for-mykola-not-sent)) and built on stated assumptions instead: planning time is reported apart from build time; Akelius content is linked, not reused; we assume Akelius Math doesn't share students' wrong answers, so the eval set comes from a public dataset; grades 6–9, three algebra topics, and as many languages as pass our checks | [REASONING: Time](docs/REASONING.md#time), [DATA.md](DATA.md) |
 | **Send the repository as a zip with `.git`** | `make zip` writes it from a fresh clone (history included; no `.env`, dependencies or build output) | [`scripts/zip.sh`](scripts/zip.sh) |
 
 ### What the delivery explains

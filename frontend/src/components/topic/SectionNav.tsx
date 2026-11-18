@@ -42,7 +42,7 @@ export function SectionNav({ sections }: { sections: Section[] }) {
   return (
     <nav
       aria-label={t('topic.onThisPage')}
-      className="-mx-4 overflow-x-auto border-y border-line bg-white/70 px-4 py-2 print:hidden lg:sticky lg:top-24 lg:mx-0 lg:w-56 lg:flex-none lg:self-start lg:overflow-visible lg:rounded-2xl lg:border lg:bg-white lg:p-2"
+      className="-mx-4 overflow-x-auto border-y border-line bg-white/70 px-4 py-2 print:hidden lg:sticky lg:top-[calc(var(--header-h,4.5rem)+0.75rem)] lg:mx-0 lg:w-56 lg:flex-none lg:self-start lg:overflow-visible lg:rounded-2xl lg:border lg:bg-white lg:p-2"
     >
       <span className="hidden px-3 py-2 text-xs font-semibold text-muted-foreground lowercase lg:block">
         {t('topic.onThisPage')}

@@ -12,7 +12,7 @@ export interface MathFieldHandle {
 export type { FieldValue } from '@/components/input/lines'
 
 const box =
-  'block min-h-12 w-full rounded-lg border border-input bg-white px-3 py-2 text-2xl text-navy focus-within:border-link focus-within:ring-4 focus-within:ring-paleblue'
+  'block min-h-12 w-full rounded-lg border border-input bg-white px-3 py-2 text-2xl text-navy focus-within:border-link focus-within:ring-[3px] focus-within:ring-navy'
 
 /**
  * A MathLive field (typing `1/2` gives a stacked fraction; the virtual math keyboard opens on
