@@ -1,7 +1,7 @@
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
-import { useTopics } from '@/api/queries'
+import { useTopicTitle } from '@/api/queries'
 import type { AkeliusLesson, Misconception, Pack } from '@/api/types'
 import { MathExpr, Pen } from '@/components/math'
 import { RichText } from '@/components/RichText'
@@ -44,9 +44,7 @@ export function IdeaCards({ pack }: { pack: Pack }) {
 
 export function RefreshFirst({ ids }: { ids: string[] }) {
   const { t } = useTranslation()
-  const topics = useTopics()
-  const titleOf = (id: string) =>
-    topics.data?.find((x) => x.id === id)?.title ?? t(`topics.${id}.title`)
+  const titleOf = useTopicTitle()
   return (
     <section
       id="refresh"

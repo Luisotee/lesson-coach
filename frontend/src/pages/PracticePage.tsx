@@ -108,6 +108,8 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
               description={t('practice.workingHint')}
               error={error}
               onChange={(v) => {
+                // A verdict describes the working that was checked; once it changes, drop it.
+                if (!check.isIdle) check.reset()
                 setWorking(v)
                 if (v) setError(undefined)
               }}

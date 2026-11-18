@@ -1,4 +1,5 @@
 import { RotateCcw } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ApiError } from '@/api/client'
 import { Button } from '@/components/ui/button'
@@ -25,6 +26,18 @@ export function Loading({ lines = 3 }: { lines?: number }) {
 export function LoadError({ error, onRetry }: { error: unknown; onRetry?: () => void }) {
   const { t } = useTranslation()
   const wait = error instanceof ApiError && error.status === 429 ? error.retryAfter : null
+  // Retry stays off until the rate limit's wait is over; a new error restarts the count.
+  const [counted, setCounted] = useState(error)
+  const [left, setLeft] = useState(wait ?? 0)
+  if (counted !== error) {
+    setCounted(error)
+    setLeft(wait ?? 0)
+  }
+  useEffect(() => {
+    if (left <= 0) return
+    const id = window.setTimeout(() => setLeft((s) => s - 1), 1000)
+    return () => window.clearTimeout(id)
+  }, [left])
   return (
     <div
       role="alert"
@@ -37,9 +50,9 @@ export function LoadError({ error, onRetry }: { error: unknown; onRetry?: () => 
         </p>
       )}
       {onRetry && (
-        <Button variant="outline" className="min-h-11" onClick={onRetry}>
+        <Button variant="outline" className="min-h-11" onClick={onRetry} disabled={left > 0}>
           <RotateCcw aria-hidden="true" />
-          {t('common.retry')}
+          {left > 0 ? t('common.retryIn', { seconds: left }) : t('common.retry')}
         </Button>
       )}
     </div>

@@ -10,7 +10,8 @@ export default defineConfig({
     alias: { '@': path.resolve(import.meta.dirname, './src') },
   },
   server: {
-    proxy: { '/api': 'http://127.0.0.1:8000' },
+    // API_URL lets the e2e run point the dev server at its own API.
+    proxy: { '/api': process.env.API_URL ?? 'http://127.0.0.1:8000' },
   },
   test: {
     environment: 'jsdom',

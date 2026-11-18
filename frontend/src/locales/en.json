@@ -220,6 +220,7 @@
     "loading": "Loading…",
     "loadError": "This couldn’t be loaded.",
     "retry": "Try again",
+    "retryIn": "Try again in {seconds} s",
     "rateLimited": "Too many requests just now. Please wait a moment.",
     "rateLimitedFor": "Too many requests just now. Please wait {seconds} seconds.",
     "machineTranslated": "machine-translated",
@@ -283,6 +284,7 @@
     "tryYourself": "Try these problems yourself first"
   },
   "practice": {
+    "noneYet": "There are no practice problems yet.",
     "hintsHeading": "Hints, when you want them",
     "startOver": "Start over",
     "hidden": "(not opened)",

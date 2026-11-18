@@ -83,7 +83,7 @@ export function Shell() {
                   {t('nav.mistake')}
                 </NavLink>
                 <Link
-                  to="/practice/negative-numbers/1"
+                  to="/practice"
                   className={navClass({ isActive: inPractice })}
                   aria-current={inPractice ? 'true' : undefined}
                 >

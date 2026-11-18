@@ -2,8 +2,8 @@ import { CircleCheck, CircleHelp, TriangleAlert } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import type { CheckWorkingResult } from '@/api/types'
 import { EquationLine, Notebook } from '@/components/math'
+import { toSteps } from '@/math/lines'
 import { isContinued } from '@/math/parse'
-import type { Step } from '@/math/types'
 
 /**
  * What "Check my working" found, privately: every line follows, or which line first doesn't.
@@ -12,11 +12,7 @@ import type { Step } from '@/math/types'
 export function CheckResult({ result }: { result: CheckWorkingResult }) {
   const { t } = useTranslation()
   const bad = result.first_bad_line
-  const lines: Step[] = (result.lines ?? []).map((l) => ({
-    left: l.left,
-    right: l.right ?? '',
-    op: l.op ?? '',
-  }))
+  const lines = toSteps(result.lines)
   return (
     <div
       className="flex flex-col gap-3 rounded-2xl border border-line bg-white p-4"

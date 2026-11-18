@@ -6,7 +6,7 @@ import { createMemoryRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 import i18n from '@/i18n'
 import { routes } from '@/router'
-import { mockApi } from '@/test/api'
+import { PACKS, json, mockApi } from '@/test/api'
 
 beforeEach(() => {
   mockApi()
@@ -53,9 +53,9 @@ test.each([
   ['/practice/fractions/9', 'Page not found'],
   ['/practice/fractions/0', 'Page not found'],
   ['/nowhere', 'Page not found'],
-])('%s shows "%s"', (path, heading) => {
+])('%s shows "%s"', async (path, heading) => {
   renderAt(path)
-  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(heading)
+  await waitFor(() => expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(heading))
 })
 
 test('practice has previous and next only where a problem exists', async () => {
@@ -154,4 +154,28 @@ test('switching topics keeps working when the next pack is cached and had a late
   await act(() => router.navigate('/topics/fractions'))
   expect(await screen.findByRole('heading', { level: 1, name: 'Fractions' })).toBeInTheDocument()
   expect(screen.getByText('Worked example 1 of 3')).toBeInTheDocument()
+})
+
+test('Practice opens the first topic, in API order, that has practice problems', async () => {
+  // The first topic ships without practice; its pack answers last.
+  mockApi({
+    'GET /api/topics/negative-numbers': async () => {
+      await new Promise((r) => setTimeout(r, 50))
+      return json({ ...PACKS['negative-numbers'], practice: [] })
+    },
+  })
+  const router = renderAt('/practice')
+  await waitFor(() => expect(router.state.location.pathname).toBe('/practice/fractions/1'))
+})
+
+test('Practice says so when no topic has practice problems', async () => {
+  const empty = (id: string) => () => json({ ...PACKS[id], practice: [] })
+  mockApi({
+    'GET /api/topics/negative-numbers': empty('negative-numbers'),
+    'GET /api/topics/fractions': empty('fractions'),
+    'GET /api/topics/linear-equations': empty('linear-equations'),
+  })
+  renderAt('/practice')
+  expect(await screen.findByText('There are no practice problems yet.')).toBeInTheDocument()
+  expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Practice')
 })

@@ -57,6 +57,7 @@ describe('HintLadder', () => {
     )
     await userEvent.click(screen.getByRole('button', { name: 'Start over' }))
     expect(within(list).getAllByText('(not opened)')).toHaveLength(4)
+    expect(screen.getByRole('button', { name: 'Show next hint' })).toHaveFocus()
   })
 })
 

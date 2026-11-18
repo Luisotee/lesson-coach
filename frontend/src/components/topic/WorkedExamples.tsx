@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { WorkedExample } from '@/api/types'
 import { CheckLine, EquationLine, MathExpr, Notebook } from '@/components/math'
+import { useContentLang } from '@/components/content-lang'
 import { ExplanationPanel } from '@/components/topic/ExplanationPanel'
 import type { ExplanationMode } from '@/components/topic/modes'
 import { Button } from '@/components/ui/button'
@@ -39,6 +40,7 @@ function lineText(step: { left: string; right: string }): string {
 export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
   const { t } = useTranslation()
   const phone = useMediaQuery(PHONE_QUERY)
+  const contentLang = useContentLang()
   const [exampleState, setExampleIndex] = useState(0)
   const [stepState, setStepIndex] = useState(0)
   const [mode, setMode] = useState<ExplanationMode>('why')
@@ -102,7 +104,11 @@ export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
             </Button>
           </div>
           <h2 id="example-heading" className="text-2xl font-semibold">
-            {example.prompt ?? t(`topic.kind.${example.problem.kind}`)}{' '}
+            {example.prompt ? (
+              <span {...contentLang}>{example.prompt}</span>
+            ) : (
+              t(`topic.kind.${example.problem.kind}`)
+            )}{' '}
             <MathExpr expr={example.problem.expr} className="font-normal" />
           </h2>
         </div>

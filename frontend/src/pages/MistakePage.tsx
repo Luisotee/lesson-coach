@@ -1,7 +1,7 @@
 import { Loader2, ShieldCheck } from 'lucide-react'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useApiLang, useMistake, useTopics } from '@/api/queries'
+import { useApiLang, useMistake, useTopicTitle } from '@/api/queries'
 import type { MistakeRequest } from '@/api/types'
 import {
   MathInput,
@@ -22,7 +22,7 @@ export function MistakePage() {
   const { t } = useTranslation()
   usePageTitle(t('mistake.title'))
   const lang = useApiLang()
-  const topics = useTopics()
+  const titleOf = useTopicTitle()
   const mistake = useMistake()
 
   const [topic, setTopic] = useState<TopicId | undefined>()
@@ -36,23 +36,19 @@ export function MistakePage() {
   const problemRef = useRef<MathInputHandle>(null)
   const answerRef = useRef<MathInputHandle>(null)
   const lastRequest = useRef<MistakeRequest | null>(null)
+  // The topic the shown result was asked with; the chips may have changed since.
+  const [sentTopic, setSentTopic] = useState<TopicId | undefined>()
 
   useEffect(() => {
     if (!focusAnswerNext.current) return
     focusAnswerNext.current = false
-    // The fresh input loads its editor asynchronously: ask a few times until focus lands,
-    // and stop as soon as anything has focus (including the user's own choice).
-    const timers = [0, 100, 300, 700, 1500].map((ms) =>
-      window.setTimeout(() => {
-        if (document.activeElement && document.activeElement !== document.body) return
-        answerRef.current?.focus()
-      }, ms),
-    )
-    return () => timers.forEach((id) => window.clearTimeout(id))
+    // The fresh input may still be loading its editor; MathInput honours the focus once it can.
+    answerRef.current?.focus()
   }, [answerKey])
 
   const send = (body: MistakeRequest) => {
     lastRequest.current = body
+    setSentTopic(body.topic)
     mistake.mutate(body)
   }
 
@@ -74,6 +70,11 @@ export function MistakePage() {
     })
   }
 
+  // A result describes what was sent: once the inputs change, it no longer applies.
+  const clearResult = () => {
+    if (!mistake.isIdle) mistake.reset()
+  }
+
   const tryAnother = () => {
     // Blur first: MathLive drops a focus request while the focused element changes.
     ;(document.activeElement as HTMLElement | null)?.blur()
@@ -82,9 +83,6 @@ export function MistakePage() {
     setAnswerKey((k) => k + 1)
     focusAnswerNext.current = true
   }
-
-  const titleOf = (id: TopicId) =>
-    topics.data?.find((x) => x.id === id)?.title ?? t(`topics.${id}.title`)
 
   return (
     <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-10 sm:px-6">
@@ -132,6 +130,7 @@ export function MistakePage() {
             description={t('mistake.problemHint')}
             error={errors.problem}
             onChange={(v) => {
+              clearResult()
               setProblem(v)
               if (v) setErrors((e) => ({ ...e, problem: undefined }))
             }}
@@ -143,11 +142,19 @@ export function MistakePage() {
             label={t('mistake.answerLabel')}
             error={errors.answer}
             onChange={(v) => {
+              clearResult()
               setAnswer(v)
               if (v) setErrors((e) => ({ ...e, answer: undefined }))
             }}
           />
-          <MathInput shape="lines" label={t('mistake.workingLabel')} onChange={setWorking} />
+          <MathInput
+            shape="lines"
+            label={t('mistake.workingLabel')}
+            onChange={(v) => {
+              clearResult()
+              setWorking(v)
+            }}
+          />
 
           <p className="flex items-start gap-2 text-sm text-muted-foreground">
             <ShieldCheck aria-hidden="true" className="mt-0.5 size-4 flex-none text-green" />
@@ -178,7 +185,7 @@ export function MistakePage() {
             />
           )}
           {mistake.data && (
-            <MistakeResult result={mistake.data} topic={topic} onTryAnother={tryAnother} />
+            <MistakeResult result={mistake.data} topic={sentTopic} onTryAnother={tryAnother} />
           )}
         </section>
       </div>

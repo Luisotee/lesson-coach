@@ -3,13 +3,14 @@ import { motion, useReducedMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
-import { useTopics } from '@/api/queries'
+import { useApiLang, useTopics } from '@/api/queries'
 import type { TopicSummary } from '@/api/types'
 import { useGradeLabel } from '@/components/Grades'
 import { LoadError, Loading } from '@/components/LoadState'
 import { MathExpr } from '@/components/math'
 import { usePageTitle } from '@/components/shell/hooks'
 import { TOPIC_GLYPHS } from '@/content/topics'
+import { findLanguage } from '@/i18n/languages'
 import { cn } from '@/lib/utils'
 
 const ease = [0.2, 0.8, 0.2, 1] as const
@@ -70,7 +71,7 @@ function HeroExample() {
     >
       <span className="sr-only">{t('home.heroExampleLink')}</span>
       <span aria-hidden="true" className="contents">
-        <span className="absolute inset-[24px_0_0_40px] rounded-[28px] border border-line bg-[radial-gradient(120%_120%_at_0%_0%,var(--color-paleblue)_0%,#fff_60%)]" />
+        <span className="absolute start-10 end-0 top-6 bottom-0 rounded-[28px] border border-line bg-[radial-gradient(120%_120%_at_0%_0%,var(--color-paleblue)_0%,#fff_60%)]" />
         <span className="absolute start-0 top-14 w-[min(360px,88%)] rounded-[20px] border border-line bg-white p-[22px] shadow-[0_30px_60px_-30px_rgba(23,43,83,.35)] motion-safe:animate-[floaty_7s_ease-in-out_infinite]">
           <span className="block text-xs font-semibold text-muted-foreground lowercase">
             {t('home.heroWorked')}
@@ -102,6 +103,10 @@ function TopicCard({ topic, index }: { topic: TopicSummary; index: number }) {
   const grade = useGradeLabel(topic.grades)
   const glyph = TOPIC_GLYPHS[topic.id]
   const reduce = useReducedMotion()
+  // Only the topic's own text is marked when it is in another language; "Open topic" is UI.
+  const uiLang = useApiLang()
+  const packLang =
+    topic.lang === uiLang ? {} : { lang: topic.lang, dir: findLanguage(topic.lang).dir }
   return (
     <motion.li
       initial={reduce ? false : { opacity: 0, y: 16 }}
@@ -110,7 +115,6 @@ function TopicCard({ topic, index }: { topic: TopicSummary; index: number }) {
     >
       <Link
         to={`/topics/${topic.id}`}
-        lang={topic.lang}
         className="flex h-full flex-col gap-[18px] rounded-[20px] border border-line bg-white p-6 text-navy no-underline transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(23,43,83,.28)] motion-reduce:hover:translate-y-0"
       >
         {glyph && (
@@ -127,11 +131,11 @@ function TopicCard({ topic, index }: { topic: TopicSummary; index: number }) {
           {grade && (
             <span className="text-[13px] font-semibold text-muted-foreground">{grade}</span>
           )}
-          <span className="font-heading text-[22px] font-semibold tracking-tight">
+          <span className="font-heading text-[22px] font-semibold tracking-tight" {...packLang}>
             {topic.title}
           </span>
           {topic.summary && (
-            <span className="text-[15px] leading-normal text-muted-foreground">
+            <span className="text-[15px] leading-normal text-muted-foreground" {...packLang}>
               {topic.summary}
             </span>
           )}
@@ -180,7 +184,7 @@ export function HomePage() {
       text: t('home.mistakeText'),
     },
     {
-      to: '/practice/negative-numbers/1',
+      to: '/practice',
       icon: CircleHelp,
       tone: 'bg-[#ecfdf5] text-green-text',
       title: t('home.practiceTitle'),

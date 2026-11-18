@@ -174,6 +174,12 @@ test('topic in Arabic: RTL page, math stays left to right, English pack marked',
     .locator('[role="math"]')
     .evaluateAll((els) => els.map((el) => getComputedStyle(el).direction))
   expect(new Set(dirs)).toEqual(new Set(['ltr']))
+  // Only the pack's own text is marked English; the UI's headings stay Arabic.
+  await expect(page.getByRole('heading', { level: 1 })).toHaveAttribute('lang', 'en')
+  const headingLangs = await page
+    .locator('main h2')
+    .evaluateAll((els) => els.map((el) => el.closest('[lang]')?.getAttribute('lang')))
+  expect(new Set(headingLangs)).toEqual(new Set(['ar']))
   await expectNoAxeViolations(page)
 })
 
@@ -225,6 +231,9 @@ test('practice: hints, check my working, and previous/next', async ({ page }) =>
   expect(posted[0].body).toMatchObject({ problem: { kind: 'solve', text: '8*x = 56' } })
   expect((posted[0].body as { lines: unknown[] }).lines).toHaveLength(1)
   await expectNoAxeViolations(page)
+  // The verdict was about that working: changing it drops the verdict.
+  await typeMath(page, 'Your working, line 1', '+1')
+  await expect(page.getByText('Line 2 doesn’t follow from the line before.')).toHaveCount(0)
 
   await page.getByRole('button', { name: 'Show next hint' }).click()
   await expect(page.getByText(/We want the value of/)).toBeVisible()
@@ -280,7 +289,7 @@ test('mistake: validation, try another answer, and a rate limit', async ({ page 
   const posted = await mockApi(page, {
     mistake: () =>
       limited
-        ? { status: 429, body: { detail: 'Too many requests' }, headers: { 'Retry-After': '30' } }
+        ? { status: 429, body: { detail: 'Too many requests' }, headers: { 'Retry-After': '2' } }
         : { body: fixture('mistake/diagnosed.json') },
   })
   await page.goto('/mistake')
@@ -292,12 +301,54 @@ test('mistake: validation, try another answer, and a rate limit', async ({ page 
   await typeMath(page, 'The problem', '2x+6=10')
   await typeMath(page, 'What your student answered', '3')
   await page.getByRole('button', { name: 'Explain this' }).click()
-  await expect(page.getByRole('alert')).toContainText('Please wait 30 seconds.')
+  await expect(page.getByRole('alert')).toContainText('Please wait 2 seconds.')
   limited = false
-  await page.getByRole('button', { name: 'Try again' }).click()
+  // Retry stays off until the wait is over.
+  await expect(page.getByRole('button', { name: /^Try again in \d s$/ })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Try again', exact: true })).toBeEnabled()
+  await page.getByRole('button', { name: 'Try again', exact: true }).click()
   await expect(page.getByText('checked: this rule gives exactly their answer')).toBeVisible()
 
   await page.getByRole('button', { name: 'Try another answer' }).click()
   await expect(page.locator('math-field[aria-label="What your student answered"]')).toBeFocused()
   await expect(page.getByText('checked: this rule gives exactly their answer')).toHaveCount(0)
+})
+
+test('mistake: the result keeps the topic it was asked with and goes when the input changes', async ({
+  page,
+}) => {
+  const posted = await mockApi(page, {
+    mistake: () => ({ body: fixture('mistake/diagnosed.json') }),
+  })
+  await page.goto('/mistake')
+  await page.getByRole('button', { name: 'Fractions' }).click()
+  await typeMath(page, 'The problem', '1/2+1/3')
+  await typeMath(page, 'What your student answered', '2/5')
+  await page.getByRole('button', { name: 'Explain this' }).click()
+  await expect(page.getByText('try next with your student')).toBeVisible()
+  expect(posted[0].body).toMatchObject({ topic: 'fractions' })
+  const link = page.getByRole('link', { name: /from the Fractions topic/ })
+  await expect(link).toHaveAttribute('href', '/topics/fractions#mistakes')
+
+  // Another chip doesn't relabel a result that came from Fractions.
+  await page.getByRole('button', { name: 'Negative numbers' }).click()
+  await expect(link).toHaveAttribute('href', '/topics/fractions#mistakes')
+
+  // Changing what the student wrote drops the result, which described the old answer.
+  await typeMath(page, 'What your student answered', '1')
+  await expect(page.getByText('try next with your student')).toHaveCount(0)
+})
+
+test('mistake: the try-next link reaches the section of a topic not yet loaded', async ({
+  page,
+}) => {
+  await mockApi(page, { mistake: () => ({ body: fixture('mistake/diagnosed.json') }) })
+  await page.goto('/mistake')
+  await page.getByRole('button', { name: 'Fractions' }).click()
+  await typeMath(page, 'The problem', '1/2+1/3')
+  await typeMath(page, 'What your student answered', '2/5')
+  await page.getByRole('button', { name: 'Explain this' }).click()
+  await page.getByRole('link', { name: /from the Fractions topic/ }).click()
+  await expect(page.locator('#mistakes')).toBeFocused()
+  await expect(page.locator('#mistakes')).toBeInViewport()
 })

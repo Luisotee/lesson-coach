@@ -2,18 +2,14 @@ import { ArrowRight, BadgeCheck, CircleCheck, Sparkles } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
-import type { Diagnosis, MistakeResult as Result, WorkingLine } from '@/api/types'
+import type { Diagnosis, MistakeResult as Result } from '@/api/types'
 import { EquationLine, MathExpr, Notebook, StepsNotebook } from '@/components/math'
 import { RichText } from '@/components/RichText'
 import { StepPicture } from '@/components/visual/StepPicture'
 import { pictureFor } from '@/components/visual/picture'
+import { toSteps } from '@/math/lines'
 import { isContinued } from '@/math/parse'
 import type { Step } from '@/math/types'
-
-/** API lines may carry null for an empty field; the renderer wants strings. */
-function clean(lines: WorkingLine[] | Step[] | undefined): Step[] {
-  return (lines ?? []).map((l) => ({ left: l.left ?? '', right: l.right ?? '', op: l.op ?? '' }))
-}
 
 function Card({
   children,
@@ -51,7 +47,7 @@ function Figure({ caption, children }: { caption: string; children: ReactNode })
  */
 function WhatTheyWrote({ result, circle }: { result: Result; circle: boolean }) {
   const { t } = useTranslation()
-  const working = clean(result.working)
+  const working = toSteps(result.working)
   const note = result.diagnosis?.margin_note ?? undefined
   let lines: Step[]
   let marked: number | null
@@ -90,7 +86,7 @@ function WhatTheyWrote({ result, circle }: { result: Result; circle: boolean }) 
 
 function WorkedOut({ result }: { result: Result }) {
   const { t } = useTranslation()
-  const steps = clean(result.worked_solution)
+  const steps = toSteps(result.worked_solution)
   if (!steps.length) return null
   const last = steps[steps.length - 1]
   const bars = pictureFor(last)?.kind === 'bars'

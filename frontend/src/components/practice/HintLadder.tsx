@@ -15,11 +15,16 @@ export function HintLadder({ item, topic }: { item: PracticeItem; topic: string 
   const { t } = useTranslation()
   const [shown, setShown] = useState(0)
   const newest = useRef<HTMLLIElement>(null)
-  const revealed = useRef(false)
+  const next = useRef<HTMLButtonElement>(null)
+  // Where focus goes after the hints change: a hint just opened is read next; after Start over
+  // (whose button disappears) focus goes to Show next hint.
+  const focusAfter = useRef<'newest' | 'next' | null>(null)
 
   useEffect(() => {
-    // Move focus to a hint the teacher just opened, so it is read next.
-    if (revealed.current) newest.current?.focus()
+    const to = focusAfter.current
+    focusAfter.current = null
+    if (to === 'newest') newest.current?.focus()
+    if (to === 'next') next.current?.focus()
   }, [shown])
 
   const total = item.hints.length
@@ -38,7 +43,7 @@ export function HintLadder({ item, topic }: { item: PracticeItem; topic: string 
             variant="ghost"
             className="min-h-11"
             onClick={() => {
-              revealed.current = false
+              focusAfter.current = 'next'
               setShown(0)
             }}
           >
@@ -91,9 +96,10 @@ export function HintLadder({ item, topic }: { item: PracticeItem; topic: string 
       </ol>
       {!done ? (
         <Button
+          ref={next}
           className="min-h-11 self-start"
           onClick={() => {
-            revealed.current = true
+            focusAfter.current = 'newest'
             setShown(shown + 1)
           }}
         >

@@ -1,4 +1,4 @@
-import { QueryClient, useMutation, useQuery } from '@tanstack/react-query'
+import { QueryClient, queryOptions, useMutation, useQueries, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'react-i18next'
 import { ApiError, getJson, postJson } from '@/api/client'
 import type {
@@ -41,9 +41,8 @@ export function useTopics() {
 }
 
 /** The topic pack in the UI language; the API falls back to English and `pack.lang` says so. */
-export function usePack(id: string) {
-  const lang = useApiLang()
-  return useQuery({
+function packQuery(id: string, lang: string) {
+  return queryOptions({
     queryKey: ['pack', id, lang],
     queryFn: ({ signal }) =>
       getJson<Pack>(
@@ -51,6 +50,16 @@ export function usePack(id: string) {
         signal,
       ),
   })
+}
+
+export function usePack(id: string) {
+  return useQuery(packQuery(id, useApiLang()))
+}
+
+/** Every listed topic's pack, in the order /api/topics gives them. */
+export function usePacks(ids: readonly string[]) {
+  const lang = useApiLang()
+  return useQueries({ queries: ids.map((id) => packQuery(id, lang)) })
 }
 
 export function useMistake() {
@@ -68,4 +77,11 @@ export function useCheckWorking() {
 
 export function isNotFound(error: unknown): boolean {
   return error instanceof ApiError && error.status === 404
+}
+
+/** A topic's title in the UI language: from /api/topics, or the built-in name until it loads. */
+export function useTopicTitle(): (id: string) => string {
+  const { t } = useTranslation()
+  const topics = useTopics()
+  return (id) => topics.data?.find((x) => x.id === id)?.title ?? t(`topics.${id}.title`)
 }
