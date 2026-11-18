@@ -340,3 +340,40 @@ test('a failed photo read keeps the photo to try again', async ({ page }) => {
   await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
   expect(calls).toBe(2)
 })
+
+/*
+ * MathLive's on-screen keyboard (touch only) marks its selected layer tab in an accent colour,
+ * which index.css sets. That tab must read at 4.5:1 against the keyboard behind it in both
+ * colour schemes: MathLive draws a dark keyboard when the OS is in dark mode.
+ */
+for (const colorScheme of ['light', 'dark'] as const) {
+  test.describe(`the on-screen keyboard in ${colorScheme} mode`, () => {
+    test.use({ colorScheme })
+
+    test('its selected tab has enough contrast', async ({ page }) => {
+      test.skip(!test.info().project.use.hasTouch, 'the keyboard opens on touch devices')
+      await page.locator('math-field').first().tap()
+      const tab = page.locator('.ML__keyboard .MLK__tooltip.selected').filter({ visible: true })
+      await expect(tab.first()).toBeVisible()
+      const ratio = await tab.first().evaluate((el) => {
+        const rgb = (c: string) => (c.match(/[\d.]+/g) ?? []).map(Number)
+        const lum = (c: string) => {
+          const [r, g, b] = rgb(c).map((v) => v / 255)
+          const f = (v: number) => (v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)
+          return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b)
+        }
+        // The nearest box behind the tab that paints a solid background.
+        let back: Element | null = el
+        while (back && rgb(getComputedStyle(back).backgroundColor)[3] !== undefined)
+          back = back.parentElement
+        if (!back) throw new Error('no solid background behind the tab')
+        const [a, b] = [
+          lum(getComputedStyle(el).color),
+          lum(getComputedStyle(back).backgroundColor),
+        ]
+        return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05)
+      })
+      expect(ratio).toBeGreaterThanOrEqual(4.5)
+    })
+  })
+}
