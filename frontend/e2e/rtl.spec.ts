@@ -347,14 +347,11 @@ test('switching language changes lang, dir and the spoken math, and keeps focus'
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(
       t(lang, 'topics.linear-equations.title'),
     )
-    await expect(math).toHaveAttribute(
-      'aria-label',
-      new RegExp(
-        t(lang, 'math.speech.equals')
-          .replace(/\{\w+\}/g, '')
-          .trim(),
-      ),
-    )
+    // The word for "equals", from translated text: matched as plain text, never as a pattern.
+    const equals = t(lang, 'math.speech.equals')
+      .replace(/\{\w+\}/g, '')
+      .trim()
+    await expect.poll(() => math.getAttribute('aria-label')).toContain(equals)
     await expect(math).toHaveCSS('direction', 'ltr')
   }
 })
