@@ -34,12 +34,15 @@ export function Notebook({
   label,
   pen = 'ink',
   writeOn = false,
+  numbered = false,
   className,
   children,
 }: {
   /** Names the list for screen readers, e.g. "Worked example 1". */
   label: string
   pen?: PenVariant
+  /** Adds a column of step numbers before the lines. */
+  numbered?: boolean
   /** Writes the lines on one after another; off under prefers-reduced-motion. */
   writeOn?: boolean
   className?: string
@@ -62,9 +65,14 @@ export function Notebook({
     >
       <ol
         aria-label={label}
-        className="grid grid-cols-[max-content_max-content_max-content_1fr] items-center gap-x-[0.35em] gap-y-1"
+        className={cn(
+          'grid items-center gap-x-[0.35em] gap-y-1',
+          numbered
+            ? 'grid-cols-[2em_max-content_max-content_max-content_1fr]'
+            : 'grid-cols-[max-content_max-content_max-content_1fr]',
+        )}
       >
-        <NotebookContext value={{ writeOn }}>{children}</NotebookContext>
+        <NotebookContext value={{ writeOn, numbered }}>{children}</NotebookContext>
       </ol>
     </div>
   )

@@ -32,7 +32,14 @@
     "mistakeTitle": "Understand a mistake",
     "mistakeText": "Type what a student wrote. See the likely reason and what to ask.",
     "practiceTitle": "Practise privately",
-    "practiceText": "Problems with hints you open one at a time. No scores."
+    "practiceText": "Problems with hints you open one at a time. No scores.",
+    "titleHighlight": "before",
+    "mistakeCta": "A student wrote this…",
+    "heroWorked": "worked example",
+    "heroWhyTitle": "Why this step works",
+    "heroWhyText": "Take 5 from only one side and the balance tips. Take it from both, and the sides stay equal.",
+    "heroExampleLink": "See a worked example: solving 3x + 5 = 20",
+    "noTopics": "No topics are available yet."
   },
   "topics": {
     "negative-numbers": {
@@ -49,8 +56,6 @@
     }
   },
   "pages": {
-    "inProgress": "This page is still being built. The full lesson, worked examples and mistakes will appear here.",
-    "mistakeTitle": "A student wrote this",
     "practiceTitle": "Practice: {topic}",
     "practiceProblem": "Problem {n} of {total}",
     "previous": "Previous problem",
@@ -79,7 +84,8 @@
       "fractionSimple": "{num, plural, one {one} other {#}} {den, plural, =2 {{num, plural, one {half} other {halves}}} =3 {{num, plural, one {third} other {thirds}}} =4 {{num, plural, one {quarter} other {quarters}}} =5 {{num, plural, one {fifth} other {fifths}}} =6 {{num, plural, one {sixth} other {sixths}}} =7 {{num, plural, one {seventh} other {sevenths}}} =8 {{num, plural, one {eighth} other {eighths}}} =9 {{num, plural, one {ninth} other {ninths}}} =10 {{num, plural, one {tenth} other {tenths}}} other {over #}}",
       "power": "{power, select, squared {{base} squared} cubed {{base} cubed} other {{base} to the power of {exp}}}",
       "powerGroup": "{base} to the power of {exp}, end of exponent",
-      "lineWithOp": "{line}; {op}"
+      "lineWithOp": "{line}; {op}",
+      "withNote": "{line}; marked: {note}"
     },
     "op": {
       "add": "add {arg} to both sides",
@@ -207,5 +213,170 @@
       "image": "The image couldn’t be prepared. Try again, or type it instead.",
       "open": "This photo couldn’t be opened. Use a PNG, JPEG or WebP photo, or type it instead."
     }
+  },
+  "common": {
+    "grade": "Grade {grade}",
+    "grades": "Grade {from}–{to}",
+    "loading": "Loading…",
+    "loadError": "This couldn’t be loaded.",
+    "retry": "Try again",
+    "retryIn": "Try again in {seconds} s",
+    "rateLimited": "Too many requests just now. Please wait a moment.",
+    "rateLimitedFor": "Too many requests just now. Please wait {seconds} seconds.",
+    "machineTranslated": "machine-translated",
+    "newTab": "(opens in a new tab)"
+  },
+  "topic": {
+    "allTopics": "All topics",
+    "printOutline": "Print lesson outline",
+    "servedInEnglish": "Shown in English: not yet translated",
+    "onThisPage": "On this page",
+    "sections": {
+      "idea": "The idea",
+      "refresh": "Refresh first",
+      "example": "Worked example",
+      "mistakes": "Common mistakes",
+      "questions": "Questions students ask",
+      "outline": "Lesson outline"
+    },
+    "idea": "The idea",
+    "whyItWorks": "Why it works",
+    "textUnavailable": "This explanation isn’t available yet.",
+    "refreshFirst": "Refresh first:",
+    "exampleOf": "Worked example {n} of {total}",
+    "previousExample": "Previous worked example",
+    "nextExample": "Next worked example",
+    "exampleLabel": "Worked example {n}",
+    "kind": {
+      "solve": "Solve",
+      "simplify": "Simplify",
+      "evaluate": "Work out"
+    },
+    "checkedBadge": "Every step checked by a math engine",
+    "tapLine": "tap a line to see why it works",
+    "check": "check:",
+    "checkHolds": "it holds",
+    "explanationStyle": "Explanation style",
+    "modes": {
+      "why": "Why?",
+      "another": "Another way",
+      "visual": "Picture"
+    },
+    "stepStart": "Step {n} · start",
+    "stepWithOp": "Step {n} · {op}",
+    "step": "Step {n}",
+    "explanationUnavailable": "The explanation for this step isn’t available. The step itself is checked.",
+    "countersKey": "Yellow counters are +1, navy counters are −1.",
+    "aiLabel": "written with AI · math checked by a math engine",
+    "checkedLabel": "math checked by a math engine",
+    "previousStep": "Previous step",
+    "nextStep": "Next step",
+    "mistakesHeading": "What students often get wrong",
+    "studentWrites": "the student writes",
+    "whyItFeelsRight": "Why it feels right.",
+    "ask": "Ask:",
+    "questionsHeading": "Questions students ask",
+    "outlineHeading": "Lesson outline",
+    "outlineTotal": "About {minutes} minutes · adapt freely",
+    "outlineTime": "{from}–{to} min",
+    "akeliusHeading": "The matching Akelius Math lesson",
+    "akeliusLesson": "{title} (grade {grade})",
+    "tryYourself": "Try these problems yourself first"
+  },
+  "practice": {
+    "noneYet": "There are no practice problems yet.",
+    "hintsHeading": "Hints, when you want them",
+    "startOver": "Start over",
+    "hidden": "(not opened)",
+    "rung": {
+      "goal": "The goal",
+      "information": "What you need",
+      "computation": "The calculation",
+      "answer": "The answer"
+    },
+    "showNextHint": "Show next hint",
+    "showAnswer": "Show the answer",
+    "doneNote": "Compare with your working. Want the reasoning?",
+    "openExample": "Open the worked example.",
+    "allFollow": "Every line follows from the one before.",
+    "final": {
+      "correct": "And the last line is the answer.",
+      "equivalent_not_simplified": "The last line is right, but not simplified yet.",
+      "wrong": "But the last line isn’t the answer yet."
+    },
+    "lineDoesntFollow": "Line {n} doesn’t follow from the line before.",
+    "badReason": {
+      "unparsable": "It couldn’t be read as math.",
+      "false_equality": "Its two sides aren’t equal.",
+      "not_equivalent": "It isn’t equal to the line before.",
+      "unsupported": "It uses math the checker doesn’t cover."
+    },
+    "status": {
+      "unclear": "The working couldn’t be checked.",
+      "out_of_scope": "This working is outside what the checker covers."
+    },
+    "yourLines": "Your working",
+    "header": "Problem {n} of {total} · just for you, nothing is recorded",
+    "backToTopic": "Back to {topic}",
+    "workingLabel": "Your working",
+    "workingHint": "Sent only when you press Check my working. Nothing is stored.",
+    "check": "Check my working",
+    "checking": "Checking…",
+    "needWorking": "Write or type at least one line first.",
+    "sourceLabel": "Source:"
+  },
+  "mistake": {
+    "title": "A student wrote this…",
+    "intro": "Type the problem and what your student answered. The coach finds the likely reason and suggests what to ask.",
+    "topicLegend": "topic",
+    "problemLabel": "The problem",
+    "problemHint": "Type fractions with a slash, like 2/5. They appear the way you’d write them.",
+    "answerLabel": "What your student answered",
+    "workingLabel": "Their working (optional)",
+    "privacy": "Please don’t type students’ names. Nothing here is stored.",
+    "explain": "Explain this",
+    "explaining": "Looking at it…",
+    "needProblem": "Add the problem first.",
+    "needAnswer": "Add your student’s answer.",
+    "likelyReason": "likely reason",
+    "looksLikeSlip": "looks like a slip",
+    "slipTitle": "A slip, not a misunderstanding.",
+    "ruleBadge": "checked: this rule gives exactly their answer",
+    "aiBadge": "suggested by AI · math checked by a math engine",
+    "whatTheyWrote": "what they wrote",
+    "workedOut": "the answer, worked out",
+    "barCaption": "The answer as a bar model.",
+    "whatToSay": "What you could say",
+    "say": {
+      "ask": "ask",
+      "nudge": "nudge",
+      "tell": "if needed"
+    },
+    "tryNext": "try next with your student",
+    "fromTopic": "from the {topic} topic",
+    "right": "Your student is right.",
+    "correct": "Their answer is correct.",
+    "notSimplified": "It’s the same amount, just not simplified. If your class writes answers in simplest form, ask how they could simplify it.",
+    "sameAmount": "Their answer and the simplified answer",
+    "notSure": "not sure from one answer",
+    "askHow": "Ask how they got it.",
+    "possibilities": "{count, plural, one {one possibility} other {# possibilities}}",
+    "possibly": "Possibly",
+    "or": "Or",
+    "outOfScope": "This one is outside what the coach covers.",
+    "reason": {
+      "problem_unreadable": "The problem couldn’t be read as math. Check it and try again.",
+      "answer_unreadable": "The answer couldn’t be read as math. Check it and try again.",
+      "unsupported": "This kind of math isn’t covered yet.",
+      "timeout": "It took too long to work out. Please try again.",
+      "ai_unavailable": "The explanation service isn’t available right now. The math check above still holds.",
+      "ai_unclear": "The coach couldn’t tell from this answer alone.",
+      "ai_out_of_scope": "The coach found this outside the topics it covers.",
+      "ai_unverified_math": "The explanation couldn’t be checked by the math engine, so it isn’t shown. The math above is checked.",
+      "math_error": "The math engine couldn’t work this out. Please check the input and try again."
+    },
+    "tryAnother": "Try another answer",
+    "resultHeading": "Result",
+    "reasonUnavailable": "The likely reason isn’t available."
   }
 }

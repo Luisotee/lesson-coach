@@ -221,7 +221,6 @@ test('in Arabic the page is right to left and the math stays left to right', asy
 
 test('MathLive is not in the main bundle', async () => {
   test.skip(test.info().project.name !== 'chromium', 'one check is enough')
-  test.skip(!!process.env.BASE_URL, 'reads the local build, not the deployed one')
   const dist = path.join(import.meta.dirname, '..', 'dist')
   const html = fs.readFileSync(path.join(dist, 'index.html'), 'utf8')
   const entry = /<script type="module"[^>]*src="\/([^"]+)"/.exec(html)![1]

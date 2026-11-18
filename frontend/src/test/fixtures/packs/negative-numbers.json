@@ -1,0 +1,629 @@
+{
+  "topic": "negative-numbers",
+  "lang": "en",
+  "title": "Negative numbers",
+  "grades": [6, 7],
+  "summary": "Adding, subtracting and multiplying with signs.",
+  "idea": "Negative numbers are below zero, like a debt or a temperature below freezing.",
+  "why_it_works": "Each negative has a matching positive; together they make zero.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "prompt": "Work out:",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "answer": "8",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "Taking away a debt of 3 leaves you 3 better off.",
+            "another_way": "On a number line, subtracting a negative moves right.",
+            "visual": "Five positives; take away three negatives."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "Subtracting −3 is the same as adding 3.",
+            "another_way": "Add zero pairs, then remove the negatives.",
+            "visual": "Five positives and three positives."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "Count them.",
+            "another_way": "Count them on a number line, starting from zero.",
+            "visual": "Eight positives."
+          }
+        }
+      ],
+      "ai_generated": ["steps"]
+    },
+    {
+      "prompt": "Work out:",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "answer": "-2",
+      "steps": [
+        {
+          "left": "-5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "Three positives cancel three of the five negatives.",
+            "another_way": "Start at −5 and move 3 to the right.",
+            "visual": "Five negatives and three positives."
+          }
+        },
+        {
+          "left": "-2",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "Two negatives are left.",
+            "another_way": "Count them on a number line, starting from zero.",
+            "visual": "Two negatives."
+          }
+        }
+      ],
+      "ai_generated": ["steps"]
+    },
+    {
+      "prompt": "Work out:",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "answer": "6",
+      "steps": [
+        {
+          "left": "(-2)*(-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "Removing two debts of 3 makes you 6 better off.",
+            "another_way": "Follow the pattern `2*(-3)`, `1*(-3)`, `0*(-3)`: each step adds 3.",
+            "visual": "Two groups of three negatives, removed."
+          }
+        },
+        {
+          "left": "6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "why": "A negative times a negative is positive.",
+            "another_way": "Count them on a number line, starting from zero.",
+            "visual": "Six positives."
+          }
+        }
+      ],
+      "ai_generated": ["steps"]
+    }
+  ],
+  "misconceptions": [
+    {
+      "id": "minus_negative_stays_minus",
+      "belief": "Subtracting a negative number makes the answer smaller.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Subtraction usually makes things smaller, and the student sees two minus signs and keeps a minus.",
+      "what_to_say": {
+        "probe": "Where do you start on the number line, and which way does subtracting `-3` move you?",
+        "nudge": "What is the difference between `5` and `-3`? Count the steps from `-3` up to `5`.",
+        "tell": "Subtracting a negative is the same as adding its opposite, so `5 - (-3)` is `5 + 3`, which is `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Work out 2 minus negative 6.",
+        "answer": "8"
+      },
+      "source_quote": "Some students believe that subtracting a negative number makes the answer smaller.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "neg_times_neg_is_neg",
+      "belief": "A negative times a negative is negative.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Both numbers are negative, so it seems natural that the answer is negative too.",
+      "what_to_say": {
+        "probe": "What is `1*(-3)`, and `0*(-3)`? What happens to the answer each time the first number goes down by one?",
+        "nudge": "Continue the pattern `1*(-3)`, `0*(-3)`, `-1*(-3)` and see which way the answers go.",
+        "tell": "The pattern goes up by three each step, so `(-2)*(-3)` is `6`. A negative times a negative is positive."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Work out negative 4 times negative 5.",
+        "answer": "20"
+      },
+      "source_quote": "Some students believe that a negative times a negative is negative.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "add_magnitudes_keep_sign",
+      "belief": "When adding numbers with different signs, add the sizes and keep the first sign.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "The student has learned that adding makes numbers bigger in size, and the first sign is the one they see first.",
+      "what_to_say": {
+        "probe": "If you start at `-5` and move three steps, which way do you move?",
+        "nudge": "Picture a tug of war between `-5` and `3`. Which side wins, and by how much?",
+        "tell": "The positive three pulls back towards zero, so `-5 + 3` is `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Work out negative 9 plus 4.",
+        "answer": "-5"
+      },
+      "source_quote": "Some students add the sizes and keep the sign of the first number.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "subtract_smaller_from_larger",
+      "belief": "You always subtract the smaller number from the larger one.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "With whole numbers, students were told you cannot take a bigger number from a smaller one.",
+      "what_to_say": {
+        "probe": "Where do you land if you start at `3` and take seven steps to the left?",
+        "nudge": "Is `3 - 7` the same as `7 - 3`? Try both with a number line.",
+        "tell": "Seven steps left from three lands on `-4`, so `3 - 7` is `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Work out 2 minus 9.",
+        "answer": "-7"
+      },
+      "source_quote": "Some students always subtract the smaller number from the larger one.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "two_negatives_make_positive",
+      "belief": "Two negatives make a positive, also when adding.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "The rule \"two negatives make a positive\" is short and memorable, so it gets applied to every pair of minus signs.",
+      "what_to_say": {
+        "probe": "If you owe 4 and then owe 3 more, how much do you owe?",
+        "nudge": "Start at `-4` on the number line and add `-3`. Which way do you move?",
+        "tell": "Adding a negative moves left, so `-4 + (-3)` is `-7`. The sign rule is for multiplying and dividing."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Work out negative 6 plus negative 2.",
+        "answer": "-8"
+      },
+      "source_quote": "Some students apply \"two negatives make a positive\" to addition.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "question": "Why is minus a minus a plus?",
+      "answer": "Taking away a debt makes you richer."
+    },
+    {
+      "question": "Is −5 bigger than −2?",
+      "answer": "No: −5 is further below zero."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 5,
+      "title": "Warm-up",
+      "activity": "Show one worked problem and ask what was done at each step."
+    },
+    {
+      "minutes": 10,
+      "title": "Model it",
+      "activity": "Work an example aloud, naming every operation."
+    },
+    {
+      "minutes": 20,
+      "title": "Pairs",
+      "activity": "One partner solves, the other explains each step. Swap."
+    },
+    {
+      "minutes": 10,
+      "title": "Check",
+      "activity": "Everyone checks their answer by putting it back in."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Work out negative 7 minus negative 4.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Subtracting a negative number is the same as adding its opposite."
+        },
+        {
+          "rung": "computation",
+          "text": "Rewrite it as `-7 + 4` and move four steps right from `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Work out 9 minus negative 15.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Subtracting a negative number is the same as adding its opposite."
+        },
+        {
+          "rung": "computation",
+          "text": "Rewrite it as `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Work out 15 plus negative 32.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "When the signs differ, subtract the sizes and keep the sign of the number further from zero."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` is `17`, and `-32` is further from zero than `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Work out negative 31 plus negative 19.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "When both numbers are negative, add the sizes and keep the negative sign."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` is `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Multiply negative 1 by negative 14.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "A negative times a negative is positive."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` is `14`, and the signs are the same."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Multiply negative 9 by 3.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "When the two signs are different, the product is negative."
+        },
+        {
+          "rung": "computation",
+          "text": "Ignore the sign first: `9*3` is `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Divide negative 100 by negative 4.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Dividing a negative by a negative gives a positive, just as with multiplying."
+        },
+        {
+          "rung": "computation",
+          "text": "Ignore the signs first: `100/4` is `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    },
+    {
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Simplify 5 times negative 6, plus 7 times negative 2, minus 3.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Multiply before adding and subtracting."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` is `-30` and `7*(-2)` is `-14`, so we get `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": ["prompt", "hints"]
+    }
+  ],
+  "machine_translated": false,
+  "unavailable": []
+}

@@ -18,7 +18,7 @@ infra/down.sh       # delete rg-akelius-coach only, after you type its name; pur
 infra/deploy.sh               # fetch origin/main, build, push, deploy, wait until the new revision is healthy
 infra/deploy.sh <git-ref>     # any commit, branch or tag
 infra/smoke-app.sh            # then smoke-test the live URL
-cd frontend && BASE_URL=https://<live-url> pnpm exec playwright test   # the e2e suite against it
+cd frontend && BASE_URL=https://<live-url> pnpm exec playwright test   # the app e2e specs against it (it is woken first)
 ```
 
 - The image is built from `git archive <ref>`, so it holds exactly the committed tree: never `.env` or local changes. It is tagged with the commit (`lesson-coach:<sha12>`), and a tag already in ACR is reused.

@@ -25,6 +25,8 @@
   --color-pencil: #5b6475;
   --color-ink: #172b53;
   --color-pen-green: #007a5c;
+  /* Marks on student work (circles, notes). The design's #ff8200 is 2.49:1; this is 5.02:1. */
+  --color-mark: #b45309;
 
   /* Script fallbacks are loaded only while their language is active (src/i18n/fonts.ts).
      Inter covers Latin, Cyrillic and Greek; Kalam covers Latin and Devanagari, and math is ASCII. */
@@ -41,6 +43,31 @@
 
   /* Handwriting write-on: the line is revealed left to right. Math is always LTR. */
   --animate-write: write 0.9s steps(14) both;
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(0.5deg);
+    }
+  }
+  @keyframes marker {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
   @keyframes write {
     from {
       clip-path: inset(0 100% 0 0);
