@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "sv",
+  "title": "Negativa tal",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Använd tallinjen och motsatta tal för att addera, subtrahera och multiplicera negativa tal.",
+  "idea": "Ett negativt tal är mindre än noll. På en tallinje ligger `-3` tre steg till vänster om noll, medan `3` ligger tre steg till höger. De är motsatta tal eftersom de ligger på samma avstånd från noll, på olika sidor.\n\nAtt addera ett positivt tal flyttar åt höger. Att addera ett negativt tal flyttar åt vänster. Att subtrahera ett tal flyttar åt motsatt håll mot att addera det, så att subtrahera ett negativt tal flyttar åt höger. Till exempel blir `5 - (-3)` till `5 + 3`.\n\nNär tal med olika tecken adderas drar tecknen åt olika håll. Svaret får tecknet från det tal som ligger längst från noll, och dess storlek är skillnaden mellan de två storlekarna. Alltså blir `-7 + 4` till `-(7 - 4)`.",
+  "why_it_works": "Subtraktion kan betyda avståndet mellan två tal. Skillnaden från `-3` upp till `5` omfattar stegen från `-3` till noll och sedan från noll till `5`. Därför är att subtrahera ett negativt tal samma sak som att addera dess motsatta tal: `5 - (-3)` blir `5 + 3`.\n\nFör multiplikation förklarar ett mönster teckenregeln. När den första faktorn minskar med ett i `3*(-2)`, `2*(-2)`, `1*(-2)` och `0*(-2)`, ökar svaret med två. Fortsätter man mönstret får man positiva svar för ett negativt tal gånger ett negativt tal.\n\nAlltså blir `(-4)*(-6)` till `4*6`. Ett negativt tal gånger ett negativt tal är positivt eftersom multiplikationsmönstret måste fortsätta på ett konsekvent sätt.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Beräkna:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Uttrycket har ett subtraktionstecken och ett negativt tecken. Håll isär dem: det betyder `5` minus `-3`.",
+            "another_way": "Tänk på `-3` som tre steg till vänster om noll. Uttrycket `5 - (-3)` frågar efter avståndet från `-3` till `5`.",
+            "visual": "På en tallinje, markera `-3` till vänster om noll och `5` till höger om noll."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Att subtrahera ett negativt tal rör sig åt motsatt håll mot att addera ett negativt tal, alltså åt höger. Därför blir `5 - (-3)` till `5 + 3`.",
+            "another_way": "Att ta bort en skuld har samma effekt som att få något. Så att subtrahera `-3` är samma rörelse som att addera `3`.",
+            "visual": "Börja vid `5` på tallinjen och visa sedan en rörelse `3` steg åt höger."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Efter omskrivningen är beräkningen en vanlig addition. `5 + 3` är `8`, så värdet av det ursprungliga uttrycket är `8`.",
+            "another_way": "På tallinjen hamnar man på `8` när man går `3` steg åt höger från `5`. Avståndet från `-3` till `5` är också `8` steg.",
+            "visual": "Rörelsen åt höger från `5` slutar vid `8` på tallinjen."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Beräkna:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Uttrycket `-7 + 4` adderar tal med olika tecken. Det är som en dragkamp: `-7` ligger längre från noll än `4`, så resultatet blir negativt.",
+            "another_way": "Börja på `-7` och addera `4` genom att gå `4` steg åt höger. Förflyttningen går mot noll men passerar inte.",
+            "visual": "På en tallinje, börja på `-7` och rita `4` steg åt höger."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Eftersom `7` är större än `4`, behåller vi minustecknet och jämför storlekarna. Då blir `-7 + 4` till `-(7 - 4)`.",
+            "another_way": "Tänk på `-7` som en dragning åt vänster och `4` som en dragning åt höger. Dragningen som blir kvar är åt vänster, med storleken `7 - 4`.",
+            "visual": "På en tallinje lämnar dragningen `7` åt vänster och dragningen `4` åt höger en dragning åt vänster på `7 - 4`."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Storleken som blir kvar efter dragkampen är `3`, och minustecknet visar att riktningen är till vänster om noll. Alltså är svaret `-3`.",
+            "another_way": "Från `-7` hamnar man på `-3` när man går `4` steg åt höger. Det stämmer med det förenklade resultatet.",
+            "visual": "På en tallinje slutar pilen vid `-3`, tre steg till vänster om noll."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Beräkna:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Båda faktorerna är negativa. Ett negativt tal gånger ett negativt tal är positivt, så produkten kan skrivas om utan minustecknen.",
+            "another_way": "Använd mönstertänkande: att multiplicera med ett negativt tal vänder riktningen, och gör man det två gånger blir produkten positiv.",
+            "visual": "På en tallinje visar `(-4)*(-6)` lika stora negativa hopp som tas ett negativt antal gånger, vilket vänder till höger."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "När tecknet är hanterat multipliceras bara storlekarna. Raden `4*6` behåller faktorernas avståndsdelar.",
+            "another_way": "Tänk på fyra grupper med sex efter att de två negativa talen har gjort produkten positiv.",
+            "visual": "På en tallinje visar `4*6` 4 lika stora hopp på 6 åt höger från noll."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Multiplikationen är klar: `4*6` är `24`. Alltså är `24` värdet av det ursprungliga uttrycket.",
+            "another_way": "Det ursprungliga uttrycket blev en positiv produkt, och den produkten är lika med `24`.",
+            "visual": "På en tallinje slutar hoppen vid `24` till höger om noll."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Att subtrahera ett negativt tal gör svaret mindre.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Subtraktion gör oftast saker mindre, och eleven ser två minustecken och behåller ett minus.",
+      "what_to_say": {
+        "probe": "Var börjar du på tallinjen, och åt vilket håll flyttar du när du subtraherar `-3`?",
+        "nudge": "Vad är skillnaden mellan `5` och `-3`? Räkna stegen från `-3` upp till `5`.",
+        "tell": "Att subtrahera ett negativt tal är samma sak som att addera dess motsatta tal, så `5 - (-3)` är `5 + 3`, vilket är `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Beräkna:",
+        "answer": "8"
+      },
+      "source_quote": "Vissa elever tror att svaret blir mindre när man subtraherar ett negativt tal."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Ett negativt tal gånger ett negativt tal blir negativt.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Båda talen är negativa, så det verkar naturligt att svaret också är negativt.",
+      "what_to_say": {
+        "probe": "Vad är `1*(-3)` och `0*(-3)`? Vad händer med svaret varje gång det första talet minskar med ett?",
+        "nudge": "Fortsätt mönstret `1*(-3)`, `0*(-3)`, `-1*(-3)` och se åt vilket håll svaren går.",
+        "tell": "Mönstret ökar med tre i varje steg, så `(-2)*(-3)` är `6`. Ett negativt tal gånger ett negativt tal blir positivt."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Beräkna:",
+        "answer": "20"
+      },
+      "source_quote": "Vissa elever tror att ett negativt tal gånger ett negativt tal blir negativt."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "När man adderar tal med olika tecken ska man addera storlekarna och behålla det första tecknet.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "Eleven har lärt sig att addition gör tal större till storleken, och det första tecknet är det de ser först.",
+      "what_to_say": {
+        "probe": "Om du börjar på `-5` och flyttar tre steg, åt vilket håll flyttar du?",
+        "nudge": "Tänk dig en dragkamp mellan `-5` och `3`. Vilken sida vinner, och med hur mycket?",
+        "tell": "De positiva tre drar tillbaka mot noll, så `-5 + 3` är `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Beräkna:",
+        "answer": "-5"
+      },
+      "source_quote": "Vissa elever adderar storlekarna och behåller tecknet från det första talet."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Man ska alltid subtrahera det mindre talet från det större.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Med hela tal har elever fått höra att man inte kan ta ett större tal från ett mindre.",
+      "what_to_say": {
+        "probe": "Var hamnar du om du börjar på `3` och tar sju steg åt vänster?",
+        "nudge": "Är `3 - 7` samma sak som `7 - 3`? Pröva båda på en tallinje.",
+        "tell": "Sju steg åt vänster från tre hamnar på `-4`, så `3 - 7` är `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Beräkna:",
+        "answer": "-7"
+      },
+      "source_quote": "Vissa elever subtraherar alltid det mindre talet från det större."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "Två negativa blir positivt, också vid addition.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "Regeln ”två negativa blir positivt” är kort och lätt att komma ihåg, så den används på varje par av minustecken.",
+      "what_to_say": {
+        "probe": "Om du är skyldig 4 och sedan blir skyldig 3 till, hur mycket är du skyldig?",
+        "nudge": "Börja på `-4` på tallinjen och addera `-3`. Åt vilket håll flyttar du?",
+        "tell": "Att addera ett negativt tal flyttar åt vänster, så `-4 + (-3)` är `-7`. Teckenregeln gäller multiplikation och division."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Beräkna:",
+        "answer": "-8"
+      },
+      "source_quote": "Vissa elever använder ”två negativa blir positivt” på addition."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Varför flyttar man åt höger när man subtraherar ett negativt tal?",
+      "answer": "Subtraktion flyttar åt motsatt håll jämfört med addition. Att addera ett negativt tal flyttar åt vänster, så att subtrahera ett negativt tal flyttar åt höger. Till exempel blir `5 - (-3)` till `5 + 3`."
+    },
+    {
+      "question": "Blir två negativa alltid ett positivt?",
+      "answer": "Nej. Den regeln gäller för multiplikation och division. Vid addition spelar riktningen roll. Att addera två negativa tal flyttar längre åt vänster på tallinjen."
+    },
+    {
+      "question": "Varför är `-7 + 4` negativt?",
+      "answer": "Talen drar åt motsatta håll. `-7` ligger längre från noll än `4`, så svaret behåller det negativa tecknet. `-7 + 4` blir `-(7 - 4)`."
+    },
+    {
+      "question": "Varför är ett negativt tal gånger ett negativt tal positivt?",
+      "answer": "Multiplikationsmönstret måste fortsätta. När en faktor minskar genom noll fortsätter svaren att öka med samma tal, vilket leder till positiva svar."
+    },
+    {
+      "question": "Kan `3 - 7` ha ett svar?",
+      "answer": "Ja. Börja på `3` och gå sju steg åt vänster på tallinjen. Punkten du hamnar på ligger under noll."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Placera negativa tal",
+      "activity": "Rita en tallinje med noll i mitten. Placera positiva och negativa tal som lika långa steg från noll. Betona motsatta tal, som `-3` och `3`, som samma avstånd från noll på olika sidor."
+    },
+    {
+      "minutes": 10,
+      "title": "Addera som rörelse",
+      "activity": "Använd tallinjen för att visa att addition med ett positivt tal flyttar åt höger och addition med ett negativt tal flyttar åt vänster. Ta med ett exempel med olika tecken och beskriv det som en dragkamp."
+    },
+    {
+      "minutes": 10,
+      "title": "Subtrahera negativa tal",
+      "activity": "Håll räknesättet och tecknet isär genom att säga ”subtrahera” och ”negativt”. Visa att subtraktion flyttar motsatt mot addition, så `5 - (-3)` blir `5 + 3`."
+    },
+    {
+      "minutes": 10,
+      "title": "Olika tecken vid addition",
+      "activity": "Modellera exempel där tecknen drar åt motsatta håll. Svaret får tecknet från det tal som ligger längst från noll, och storleken är skillnaden mellan storlekarna. Använd att `-7 + 4` blir `-(7 - 4)`."
+    },
+    {
+      "minutes": 10,
+      "title": "Multiplicera med ett mönster",
+      "activity": "Visa mönstret från positiva faktorer ner genom noll. Använd det för att förklara varför ett negativt tal gånger ett negativt tal är positivt, och koppla sedan detta till att `(-4)*(-6)` blir `4*6`."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Att subtrahera ett negativt tal är samma sak som att addera dess motsatta tal."
+        },
+        {
+          "rung": "computation",
+          "text": "Skriv om det som `-7 + 4` och gå 4 steg åt höger från `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Att subtrahera ett negativt tal är samma sak som att addera dess motsatta tal."
+        },
+        {
+          "rung": "computation",
+          "text": "Skriv om det som `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "När tecknen är olika subtraherar du storlekarna och behåller tecknet för talet som ligger längst från noll."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` är `17`, och `-32` ligger längre från noll än `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "När båda talen är negativa adderar du talen utan tecken och behåller minustecknet."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` är `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "Ett negativt tal gånger ett negativt tal blir positivt."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` är `14`, och tecknen är lika."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "När de två tecknen är olika blir produkten negativ."
+        },
+        {
+          "rung": "computation",
+          "text": "Bortse först från tecknet: `9*3` är `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Att dividera ett negativt tal med ett negativt tal ger ett positivt tal, precis som vid multiplikation."
+        },
+        {
+          "rung": "computation",
+          "text": "Bortse först från tecknen: `100/4` är `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill veta värdet av `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Multiplicera före addition och subtraktion."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` är `-30` och `7*(-2)` är `-14`, så vi får `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

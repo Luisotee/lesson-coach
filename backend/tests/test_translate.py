@@ -4,6 +4,7 @@ to the English pack. The committed translations are checked here too."""
 from __future__ import annotations
 
 import asyncio
+import json
 import re
 import sys
 from collections.abc import Iterator
@@ -16,7 +17,7 @@ from pydantic import BaseModel
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from pipeline import translate  # noqa: E402
+from pipeline import translate, translate_ui  # noqa: E402
 from pipeline.checks import item_findings, prose_paths, translation_findings  # noqa: E402
 from pipeline.generate import Stats  # noqa: E402
 from pipeline.languages import LANGUAGES  # noqa: E402
@@ -37,8 +38,10 @@ class FakeTranslator:
     """Prefixes every text with `[xx]`, which keeps its math. `mangle` changes the texts whose
     id contains it, every time; `flag` makes the judge flag those ids."""
 
-    def __init__(self, mangle: str = "", flag: str = "") -> None:
-        self.mangle, self.flag = mangle, flag
+    def __init__(
+        self, mangle: str = "", flag: str = "", mangle_with: tuple[str, str] = ("`", "")
+    ) -> None:
+        self.mangle, self.flag, self.mangle_with = mangle, flag, mangle_with
         self.calls: dict[str, int] = {}
         self.asked: list[str] = []
 
@@ -74,7 +77,10 @@ class FakeTranslator:
         ]
         if self.mangle:
             out = [
-                ItemOut(id=i.id, text=i.text.replace("`", "") if self.mangle in i.id else i.text)
+                ItemOut(
+                    id=i.id,
+                    text=i.text.replace(*self.mangle_with) if self.mangle in i.id else i.text,
+                )
                 for i in out
             ]
         return LLMResult(TranslationOut(items=out), usage=Usage(100, 0, 50, 0))  # type: ignore[arg-type]
@@ -82,6 +88,12 @@ class FakeTranslator:
 
 def steps(problem: Problem) -> list[Step]:
     return worked_solution(problem)
+
+
+@pytest.fixture(autouse=True)
+def private_cache(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    """Fake translations must never reach the real cache of checked units."""
+    monkeypatch.setattr(translate, "CACHE", tmp_path / "cache")
 
 
 @pytest.fixture
@@ -142,10 +154,18 @@ def test_only_the_failing_texts_are_asked_for_again(clean_prompts: None) -> None
         ("Add `3` and `4`.", "Ajoutez `3` et `4` puis 7.", "number_not_in_source"),
         ("Step 2 of 3.", "الخطوة ٢ من 3.", "digits"),
         ("Hi.", " ", "empty"),
+        ("Split into `2` parts.", "Teile `x` in Teile.", "spans_changed"),
+        ("So `x + 1` is `5`.", "Donc `x+1` est `5`.", "spans_changed"),
     ],
 )
 def test_item_checks(english: str, translated: str, check: str) -> None:
     assert check in {f.check for f in item_findings("idea", english, translated)}
+
+
+def test_a_bare_small_number_may_be_said_in_words() -> None:
+    assert item_findings("v", "Split `2*x` into `2` equal parts.", "قسّم `2*x` إلى جزأين.") == []
+    found = item_findings("v", "Split `2*x` into `12` parts.", "قسّم `2*x` إلى أجزاء.")
+    assert "spans_changed" in {f.check for f in found}
 
 
 def test_changed_math_in_a_translated_pack_is_found(clean_prompts: None) -> None:
@@ -174,3 +194,34 @@ def test_every_translated_language_has_its_prompts_and_all_packs() -> None:
         topics: list[TopicId] = list(TOPIC_IDS)
         for topic in topics:
             assert (ROOT / "content" / "generated" / lang / f"{topic}.json").exists(), lang
+
+
+def ui(llm: FakeTranslator, lang: str = "de") -> tuple[dict[str, Any], list[dict[str, str]]]:
+    log: list[dict[str, str]] = []
+    data = asyncio.run(translate_ui.translate_ui(lang, llm, Stats(), log, None))
+    return data, log
+
+
+def test_ui_strings_keep_their_keys_and_icu() -> None:
+    data, log = ui(FakeTranslator())
+    english = translate_ui.flatten(json.loads((translate_ui.LOCALES / "en.json").read_text()))
+    flat = translate_ui.flatten(data)
+    assert list(flat) == list(english) and log == []
+    assert all(flat[k] == f"[xx] {english[k]}" for k in english)
+
+
+def test_ui_strings_with_broken_icu_are_left_out() -> None:
+    with pytest.raises(translate.TranslationError, match=r"strokes.*(compile|arguments)"):
+        ui(FakeTranslator(mangle="input.write.strokes", mangle_with=("{count", "{n")))
+
+
+def test_icu_check_wants_the_locales_plural_forms() -> None:
+    check = translate_ui.icu_check("ru", {"k": "{count, plural, one {# line} other {# lines}}"})
+    found = check({"k": "{count, plural, one {# строка} other {# строк}}"})
+    assert "few,many" in found["k"][0]
+    assert (
+        check(
+            {"k": "{count, plural, one {# строка} few {# строки} many {# строк} other {# строки}}"}
+        )
+        == {}
+    )

@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import hashlib
 import json
 import sys
 from collections.abc import Awaitable, Callable
@@ -44,15 +45,18 @@ from pipeline.languages import LANGUAGES, WAVE_1, WAVE_2
 from pipeline.prompts import example_facts
 from pipeline.sources import load_pack, translation_hash, write_pack
 from pipeline.translate_prompts import (
+    TRANSLATE_VERSION,
     TranslationOut,
     judge_messages,
     repair_messages,
     translate_messages,
 )
 
+CACHE = ROOT / "pipeline" / ".cache" / "translate"  # units that passed, so a rerun skips them
 PROMPTS_FILE = ROOT / "backend" / "app" / "content" / "prompts.json"
 STATS_FILE = ROOT / "evals" / "translation-stats.json"
 REPORT_FILE = ROOT / "evals" / "translation-report.md"
+UI_STATS_FILE = ROOT / "evals" / "translation-ui-stats.json"
 AT_ONCE = 3  # languages translated at the same time
 REPAIRS = 3  # times the texts that fail are asked for again
 GUESS_USD = 1.8  # the cost of one language before any has been measured
@@ -71,7 +75,7 @@ class LanguageResult:
     failing: list[str] = field(default_factory=list)
 
 
-ItemCheck = Callable[[str, str], list[str]]  # (path, translated text) -> problems
+ItemCheck = Callable[[dict[str, str]], Failing]  # translated texts by path -> problems
 
 
 def prompt_problems(path: str, text: str) -> list[str]:
@@ -87,16 +91,28 @@ def prompt_problems(path: str, text: str) -> list[str]:
     return problems
 
 
-def item_problems(english: dict[str, str], got: dict[str, str], extra: ItemCheck | None) -> Failing:
+def prompts_check(got: dict[str, str]) -> Failing:
+    return {p: why for p, text in got.items() if (why := prompt_problems(p, text))}
+
+
+def item_problems(
+    english: dict[str, str],
+    got: dict[str, str],
+    extra: ItemCheck | None,
+    limit: Callable[[str, str], int] | None = None,
+) -> Failing:
     failing: Failing = {}
+    present = {p: got[p] for p in english if p in got}
     for path, text in english.items():
         if path not in got:
             failing[path] = ["missing"]
             continue
-        problems = [f"{f.check}: {f.detail}" for f in item_findings(path, text, got[path])]
-        problems += extra(path, got[path]) if extra else []
-        if problems:
-            failing[path] = problems
+        cap = limit(path, text) if limit else None
+        found = item_findings(path, text, got[path], cap)
+        if found:
+            failing[path] = [f"{f.check}: {f.detail}" for f in found]
+    for path, why in (extra(present) if extra and present else {}).items():
+        failing.setdefault(path, []).extend(why)
     return failing
 
 
@@ -106,14 +122,26 @@ async def translate_unit(
     context: str,
     english: dict[str, str],
     extra: ItemCheck | None = None,
+    limit: Callable[[str, str], int] | None = None,
+    log: list[dict[str, str]] | None = None,
 ) -> dict[str, str]:
     """One unit of texts: translated in one call, then every text is checked and judged; the
     texts that fail are asked for again on their own, with their problems, up to REPAIRS
-    times. Raises when any text still fails: a language ships complete or not at all."""
+    times. Raises when any text still fails: a language ships complete or not at all. Each
+    repair is appended to `log` (path, before, after, why)."""
+
+    key = hashlib.sha256(
+        json.dumps([language, TRANSLATE_VERSION, context, english], ensure_ascii=False).encode()
+    ).hexdigest()
+    cached = CACHE / f"{key}.json"
+    if cached.exists():  # checked and judged before; the checks are cheap, so run them again
+        got: dict[str, str] = json.loads(cached.read_text(encoding="utf-8"))
+        if not item_problems(english, got, extra, limit):
+            return got
 
     async def evaluate(paths: list[str]) -> Failing:
         subset = {p: english[p] for p in paths}
-        failing = item_problems(subset, got, extra)
+        failing = item_problems(subset, got, extra, limit)
         pairs = {p: f"EN: {english[p]}\nTR: {got[p]}" for p in paths if p not in failing}
         judged = await runner.judge("", "", pairs, messages=judge_messages(language, pairs))
         if judged is None:
@@ -145,10 +173,25 @@ async def translate_unit(
             "generate", repair_messages(language, context, asked), TranslationOut
         )
         if again is not None:
-            got.update({i.id: i.text.strip() for i in again.items if i.id in asked})
+            for item in again.items:
+                if item.id in asked:
+                    if log is not None:
+                        why = asked[item.id]["problems"]
+                        before = got.get(item.id, "")
+                        log.append(
+                            {
+                                "path": item.id,
+                                "before": before,
+                                "after": item.text.strip(),
+                                "why": why,
+                            }
+                        )
+                    got[item.id] = item.text.strip()
         failing = await evaluate(list(failing))
     if failing:
         raise TranslationError("\n".join(f"{p}: {'; '.join(why)}" for p, why in failing.items()))
+    CACHE.mkdir(parents=True, exist_ok=True)
+    cached.write_text(json.dumps(got, ensure_ascii=False), encoding="utf-8")
     return got
 
 
@@ -212,7 +255,7 @@ async def translate_language(
         "Instructions shown above a math problem, such as `2*x + 6 = 10`. `{var}` is the "
         "letter to solve for. Keep them short and end each the way the English does.",
         english_prompts,
-        prompt_problems,
+        prompts_check,
     )
     englishes = {topic: load_pack(topic, "en") for topic in TOPIC_IDS}
     owners: list[TopicId] = []
@@ -302,39 +345,84 @@ def flag_rate(stats: dict[str, Any]) -> float:
     return sum(stats.get("judge_flags", {}).values()) / judged if judged else 0.0
 
 
+def _load(path: Path) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+    data: dict[str, dict[str, Any]] = json.loads(path.read_text(encoding="utf-8"))
+    return data
+
+
+def _row(lang: str, r: dict[str, Any] | None) -> str:
+    if r is None:
+        return "not run | | | | |"
+    s = r["stats"]
+    calls = s.get("calls", {})
+    return (
+        f"{'yes' if r['shipped'] else 'no'} | {calls.get('generate', 0)} / "
+        f"{calls.get('judge', 0)} | {s.get('retries', 0)} | {flag_rate(s):.1%} | ${r['usd']:.2f}"
+    )
+
+
 def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
-    shipped = [lang for lang, r in results.items() if r["shipped"]]
-    left_out = [lang for lang, r in results.items() if not r["shipped"]]
-    total = sum(r["usd"] for r in results.values())
+    """evals/translation-report.md from the pack and UI stats files: per language, whether it
+    ships, calls, repairs, judge flag rate and cost; then what failed, and every change the
+    UI review pass made."""
+    ui = _load(UI_STATS_FILE)
+    langs = [lang for lang in LANGUAGES if lang in results or lang in ui]
+    ships = [
+        lang
+        for lang in langs
+        if results.get(lang, {}).get("shipped") and ui.get(lang, {}).get("shipped")
+    ]
+    total = sum(r["usd"] for r in results.values()) + sum(r["usd"] for r in ui.values())
     lines = [
         "# Translation report",
         "",
-        f"Written by `pipeline/translate.py` with model `{model}`. Each language's prompts and "
-        "three packs are translated from the English packs; the math is copied and verified "
-        "identical (`pipeline/checks.py: translation_findings`). The judge compares each English "
-        "text with its translation.",
+        f"Written by `pipeline/translate.py` and `pipeline/translate_ui.py` with model `{model}`.",
+        "A language ships only when its prompts, its three packs and all its UI strings pass.",
         "",
-        f"Shipped: {', '.join(shipped) or 'none'}. Left out: {', '.join(left_out) or 'none'}. "
-        f"Total cost: about ${total:.2f}.",
+        "- Packs are translated from the English packs. The math is copied and verified identical "
+        "(`pipeline/checks.py: translation_findings`): every math field, and every backtick span "
+        "inside the prose, character for character.",
+        "- UI strings must compile as ICU for their locale with the same arguments and the "
+        "locale's plural categories (`pipeline/icu_check.mjs`).",
+        "- The judge compares each English text with its translation and reports errors (meaning, "
+        "math terms, grammar). Flagged texts are asked for again with the problems, up to 3 "
+        "times; that is the review pass. Its changes to UI strings are listed below.",
+        "- Judge flag rate: the share of judged texts a judge majority flagged at least once.",
         "",
-        "Judge flag rate: the share of texts a judge majority flagged in any attempt (each "
-        "flagged text was retried or resampled until it passed, or the language was left out).",
+        f"Ships: {', '.join(ships) or 'none'}. Total cost: about ${total:.2f}.",
         "",
-        "| Language | Shipped | Calls (translate / judge) | Retries | Fresh samples | Texts judged "
-        "| Judge flag rate | Cost |",
-        "|---|---|---|---|---|---|---|---|",
+        "| Language | Packs ship | Calls | Repairs | Flag rate | Cost | UI ships | Calls | Repairs "
+        "| Flag rate | Cost |",
+        "|---|---|---|---|---|---|---|---|---|---|---|",
     ]
-    for lang, r in results.items():
-        s = r["stats"]
-        calls = s.get("calls", {})
+    for lang in langs:
         lines.append(
-            f"| {lang} ({LANGUAGES.get(lang, lang)}) | {'yes' if r['shipped'] else 'no'} | "
-            f"{calls.get('generate', 0)} / {calls.get('judge', 0)} | {s.get('retries', 0)} | "
-            f"{s.get('samples', 0)} | {s.get('judged_items', 0)} | {flag_rate(s):.1%} | "
-            f"${r['usd']:.2f} |"
+            f"| {lang} ({LANGUAGES[lang]}) | {_row(lang, results.get(lang))} | "
+            f"{_row(lang, ui.get(lang))} |"
         )
-    for lang in left_out:
-        lines += ["", f"## {lang}: left out", "", *[f"- {f}" for f in results[lang]["failing"]]]
+    for lang in langs:
+        failing = [*results.get(lang, {}).get("failing", []), *ui.get(lang, {}).get("failing", [])]
+        if failing and lang not in ships:
+            lines += ["", f"## {lang}: left out", "", *[f"- {f}" for f in failing]]
+    for lang in langs:
+        changes = ui.get(lang, {}).get("changes", [])
+        if changes:
+            lines += [
+                "",
+                f"## {lang}: UI review changes",
+                "",
+                "| Key | Before | After | Why |",
+                "|---|---|---|---|",
+            ]
+            for c in changes:
+                cells = [c["path"], c["before"], c["after"], c["why"]]
+                lines.append(
+                    "| "
+                    + " | ".join(x.replace("|", "\\|").replace("\n", " ") for x in cells)
+                    + " |"
+                )
     REPORT_FILE.write_text("\n".join(lines) + "\n")
 
 
@@ -349,6 +437,7 @@ async def run(langs: list[str], budget: float, steps_for: StepsFor = worked_step
     todo = list(langs)
     while todo:
         spent = sum(r["usd"] for r in results.values())
+        spent += sum(r["usd"] for r in _load(UI_STATS_FILE).values())
         measured = [r.get("last_usd", r["usd"]) for r in results.values() if r["usd"] > 0]
         per_lang = float(max(measured)) if measured else GUESS_USD
         batch: list[str] = []

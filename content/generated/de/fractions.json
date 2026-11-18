@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "de",
+  "title": "Brüche",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Brüche benennen gleich große Teile; Rechenoperationen funktionieren, indem die Teilgröße klar bleibt und Teile gezählt werden.",
+  "idea": "Ein Bruch benennt gleich große Teile eines Ganzen. In `3/4` sagt die untere Zahl, in wie viele gleich große Teile das Ganze zerlegt ist. Die obere Zahl zählt, wie viele dieser Teile genommen werden.\n\nGleichwertige Brüche benennen dieselbe Menge mit unterschiedlich großen Teilen. Multipliziert man Zähler und Nenner mit derselben Zahl oder dividiert man sie durch dieselbe Zahl, bleibt die Menge gleich.\n\nBeim Addieren müssen die Teile gleich groß sein, bevor sie gezählt werden können. Beim Multiplizieren zählt eine ganze Zahl mal ein Bruch wiederholte Gruppen dieses Bruchs. Beim Dividieren lautet die Frage, wie oft ein Bruch in einen anderen passt.",
+  "why_it_works": "Nur gleichartige Teile können addiert werden. Bei `1/2 + 1/3` sind Hälften und Drittel verschieden groß, daher werden beide als Sechstel geschrieben. Aus `1/2 + 1/3` wird `3/6 + 2/6`, und `3/6 + 2/6` ist `5/6`.\n\nMultiplikation verändert die Anzahl der Teile. Bei `3*(2/5)` bleiben die Fünftel Fünftel. Aus `3*(2/5)` wird `(3*2)/5`, und `(3*2)/5` ist `6/5`.\n\nDivision fragt, wie oft der Divisor hineinpasst. Aus `(2/3)/(3/4)` wird `(2/3)*(4/3)`. Dann wird aus `(2/3)*(4/3)` `(2*4)/(3*3)`, und `(2*4)/(3*3)` ist `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Berechne:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Die Brüche haben verschieden große Teile, daher können sie nicht direkt addiert werden. Schreibe sie mit einem gemeinsamen Nenner um.",
+            "another_way": "Verwende Sechstel, weil sowohl Hälften als auch Drittel in Sechstel unterteilt werden können. So bleibt der Wert jedes Bruchs gleich, während die Teile gleich groß werden.",
+            "visual": "Ein Balken zeigt `1/2 + 1/3` als einen Teil der Größe einer Hälfte neben einem Teil der Größe eines Drittels."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Jetzt sind beide Brüche in Sechsteln angegeben. `1/2` wird zu `3/6`, und `1/3` wird zu `2/6`, also sind die Teile gleich groß.",
+            "another_way": "Stelle dir jede Hälfte als drei Sechstel und jedes Drittel als zwei Sechstel vor. Dann zählt man bei der Aufgabe nur noch Sechstel.",
+            "visual": "Ein Balken zeigt `3/6 + 2/6` als 3 Sechstel und 2 Sechstel gleich großer Teile."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Bei gleichem Nenner addierst du die Zähler und behältst den Nenner bei. Aus `3/6 + 2/6` wird `5/6`, also ist das die Antwort.",
+            "another_way": "Zähle alle Teile von der Größe eines Sechstels zusammen. Drei Sechstel und zwei Sechstel ergeben fünf Sechstel.",
+            "visual": "Ein Balken zeigt `5/6` schraffiert als 5 gleich große sechstelgroße Teile eines Ganzen."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Berechne:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Das beginnt mit `3*(2/5)`. Das bedeutet 3 Gruppen von `2/5`. Die Größe jedes Teils bleibt Fünftel.",
+            "another_way": "Denke dir die ganze Zahl als Faktor für den Zähler des Bruchs. Dann ist `3*(2/5)` eine ganze Zahl mal ein Bruch.",
+            "visual": "Ein Balkenmodell zeigt drei Kopien eines Balkens, in denen jeweils `2/5` schraffiert sind."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Die ganze Zahl multipliziert den Zähler, also wird aus `3*(2/5)` der Ausdruck `(3*2)/5`. Der Nenner bleibt `5`, weil die Teile weiterhin Fünftel sind.",
+            "another_way": "Zähle Fünftel: `2` Fünftel, `3`-mal genommen, ergeben `(3*2)` Fünftel.",
+            "visual": "Ein Balkenmodell zeigt, wie Fünftelstücke in drei Gruppen gezählt werden."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Das Produkt im Zähler wird berechnet, also wird aus `(3*2)/5` der Bruch `6/5`. Das ist die Antwort, weil der Term ausgewertet wurde.",
+            "another_way": "Drei Gruppen von `2/5` ergeben `6/5`. Das Ergebnis ist größer als ein Ganzes, weil es mehr als `5` Fünftel sind.",
+            "visual": "Ein Balkenmodell zeigt `6` schraffierte Fünftelstücke, also `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Berechne:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Der Term fragt, wie oft `3/4` in `2/3` passt. Beim Dividieren durch einen Bruch behält man `2/3` bei und multipliziert mit dem Kehrwert von `3/4`.",
+            "another_way": "Man kann die Frage von einer Division in eine passende Multiplikation umwandeln. Der Divisor `3/4` wird umgedreht, also wird aus `(2/3)/(3/4)` der Term `(2/3)*(4/3)`.",
+            "visual": "Ein Balken zeigt, wie `2/3` eines Ganzen mit Stücken der Größe `3/4` gemessen werden."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Jetzt werden die Brüche multipliziert. Man multipliziert die Zähler miteinander und die Nenner miteinander, also wird aus `(2/3)*(4/3)` der Term `(2*4)/(3*3)`.",
+            "another_way": "Das zeigt die Anzahlen der Teile und die Teilgrößen getrennt. Oben zählt `2*4`, unten zählt `3*3`.",
+            "visual": "Ein Balken wird in die eine Richtung in Drittel und in die andere Richtung in Drittel geteilt, dabei werden `2*4` kleine Teile gezählt."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Die Produkte im Zähler und im Nenner sind ausgeschrieben. Die Zeile ist bereit zum Vereinfachen, indem man diese Produkte berechnet.",
+            "another_way": "Sieh `(2*4)/(3*3)` als Bruch, in dem die Multiplikation noch sichtbar ist. Im nächsten Schritt werden diese Produkte als einzelne Zahlen geschrieben.",
+            "visual": "Ein Balkenmodell hat `3*3` gleich große kleine Teile im Ganzen, und `2*4` davon sind schattiert."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Das Multiplizieren ergibt den endgültigen Bruch, also wird aus `(2*4)/(3*3)` der Bruch `8/9`. Das ist die Antwort, weil keine weitere Rechenoperation gezeigt wird.",
+            "another_way": "Der Quotient ist kleiner als ein Ganzes. Das passt zur Bedeutung: `3/4` ist größer als `2/3`, also passt weniger als eins davon hinein.",
+            "visual": "Ein in `9` gleich große Teile geteilter Balken hat `8` schattierte Teile und zeigt so `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Um Brüche zu addieren, addiert man die Zähler und addiert die Nenner.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Dabei wird der Bruch wie zwei getrennte ganze Zahlen behandelt, und man geht genauso vor wie beim Multiplizieren von Brüchen.",
+      "what_to_say": {
+        "probe": "Ist deine Antwort größer oder kleiner als `1/2`? Sollte sie das sein?",
+        "nudge": "Kannst du Hälften und Drittel direkt addieren, oder brauchst du zuerst Teile gleicher Größe?",
+        "tell": "Teile beide in Sechstel: `3/6 + 2/6` ist `5/6`. Wir zählen nur die Teile; ihre Größe bleibt gleich."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Berechne:",
+        "answer": "3/4"
+      },
+      "source_quote": "Manche Schülerinnen und Schüler addieren Brüche, indem sie die Zähler addieren und die Nenner addieren."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Um einen Bruch mit einer ganzen Zahl zu multiplizieren, multipliziert man Zähler und Nenner mit dieser ganzen Zahl.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Die Schülerinnen und Schüler haben bei gleichwertigen Brüchen gelernt: Oben und unten dasselbe zu tun, ist erlaubt.",
+      "what_to_say": {
+        "probe": "Ist `6/15` mehr als `2/5`, weniger oder gleich viel? Was sollten drei-mal `2/5` sein?",
+        "nudge": "Schreibe drei-mal zwei Fünftel als Addition auf und zähle die Fünftel.",
+        "tell": "Drei-mal zwei Fünftel sind sechs Fünftel, `6/5`. Nur die Anzahl der Teile ändert sich."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Berechne:",
+        "answer": "12/7"
+      },
+      "source_quote": "Manche Schülerinnen und Schüler multiplizieren Zähler und Nenner mit der ganzen Zahl."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Beim Dividieren von Brüchen dreht man den ersten Bruch um.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "„Umdrehen und multiplizieren“ wird als Merksatz behalten, ohne zu wissen, welcher Bruch umgedreht wird.",
+      "what_to_say": {
+        "probe": "Wie oft passen drei Viertel in zwei Drittel: mehr als einmal oder weniger?",
+        "nudge": "Mit welchem Bruch zählen wir? Das ist der Bruch, den man umdreht.",
+        "tell": "Nur der Divisor wird umgedreht: `(2/3)*(4/3)` ist `8/9`, also etwas weniger als eins."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Berechne:",
+        "answer": "6/5"
+      },
+      "source_quote": "Manche Schülerinnen und Schüler drehen beim Dividieren den ersten Bruch um, nicht den zweiten."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Man kann eine Zahl im Zähler mit dem Nenner kürzen, auch über ein Pluszeichen hinweg.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Gemeinsame Faktoren zu kürzen funktioniert bei Produkten, und die Schülerin oder der Schüler sieht oben eine 2 und unten eine 2.",
+      "what_to_say": {
+        "probe": "Was ist der ganze Zähler des Bruchs, bevor du dividierst?",
+        "nudge": "Rechne zuerst den Zähler aus, dann dividiere. Bekommst du dasselbe Ergebnis?",
+        "tell": "Der Bruchstrich teilt den ganzen Zähler: `(2+4)/2` ist `6/2`, also `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Vereinfache:",
+        "answer": "5"
+      },
+      "source_quote": "Manche Schülerinnen und Schüler kürzen über ein Pluszeichen hinweg."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Um einen Bruch zu kürzen, darf man nur den Zähler oder nur den Nenner dividieren.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Eine Zahl zu halbieren fühlt sich wie Vereinfachen an, und es wird nicht geprüft, ob der Wert gleich bleibt.",
+      "what_to_say": {
+        "probe": "Ist `3/8` gleich viel wie `6/8`? Zeichne beide als Streifen.",
+        "nudge": "Welche Zahl teilt sowohl den Zähler als auch den Nenner?",
+        "tell": "Teile den Zähler und den Nenner durch dieselbe Zahl: `6/8` ist `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Vereinfache:",
+        "answer": "2/3"
+      },
+      "source_quote": "Manche Schülerinnen und Schüler vereinfachen, indem sie nur einen Teil des Bruchs verändern."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Warum können wir nicht die oberen Zahlen und die unteren Zahlen addieren?",
+      "answer": "Die untere Zahl benennt die Größe der Teile. Hälften und Drittel sind verschieden groß, daher müssen die Teile vor dem Zählen auf dieselbe Größe gebracht werden."
+    },
+    {
+      "question": "Warum wird aus `1/2 + 1/3` `3/6 + 2/6`?",
+      "answer": "Beide Brüche werden in Sechstel umgeschrieben. Die Mengen bleiben gleich, aber nun sind die Teile gleich groß und können addiert werden."
+    },
+    {
+      "question": "Warum ändert `3*(2/5)` die untere Zahl nicht?",
+      "answer": "Die Fünftel bleiben gleich groß. Multiplizieren mit `3` ergibt 3 Gruppen von `2/5`, also ändert sich nur die Anzahl der Fünftel."
+    },
+    {
+      "question": "Welcher Bruch wird beim Dividieren umgekehrt?",
+      "answer": "Nur der Divisor wird umgekehrt. Aus `(2/3)/(3/4)` wird `(2/3)*(4/3)`, weil Division fragt, wie oft `3/4` in `2/3` passt."
+    },
+    {
+      "question": "Dürfen wir über ein Pluszeichen hinweg kürzen?",
+      "answer": "Nein. Ein Bruchstrich dividiert den ganzen Zähler. Die Glieder einer Summe können nicht teilweise gekürzt werden, als wären sie einzelne Faktoren."
+    },
+    {
+      "question": "Wie können Schülerinnen und Schüler prüfen, ob eine Antwort sinnvoll ist?",
+      "answer": "Zuerst schätzen. Fragen Sie, ob das Ergebnis größer oder kleiner als `1/2` oder größer oder kleiner als `1` sein sollte. Eine grobe Größenprüfung findet viele Bruchfehler."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Die Teile benennen",
+      "activity": "Verwenden Sie ein einfaches Ganzes, das in gleich große Teile zerlegt ist. Verbinden Sie die untere Zahl mit der Größe der Teile und die obere Zahl mit der Anzahl der Teile. Verwenden Sie `3/4` als Bezugsbruch."
+    },
+    {
+      "minutes": 10,
+      "title": "Gleichwertige Brüche",
+      "activity": "Zeigen Sie, dass verschiedene Brüche dieselbe Menge benennen können. Verwenden Sie `1/2`, `2/4` und `3/6`. Betonen Sie, dass sich Zähler und Nenner gemeinsam ändern müssen."
+    },
+    {
+      "minutes": 10,
+      "title": "Gleichartige Teile addieren",
+      "activity": "Beginnen Sie mit `1/2 + 1/3`. Fragen Sie, warum Hälften und Drittel nicht zusammen gezählt werden können. Schreiben Sie in Sechstel um: Aus `1/2 + 1/3` wird `3/6 + 2/6`, und `3/6 + 2/6` ist `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Einen Bruch multiplizieren",
+      "activity": "Verwenden Sie `3*(2/5)` als 3 Gruppen von zwei Fünfteln. Zeigen Sie, dass aus `3*(2/5)` `(3*2)/5` wird und `(3*2)/5` `6/5` ist. Betonen Sie, dass die Teilgröße Fünftel bleibt."
+    },
+    {
+      "minutes": 9,
+      "title": "Brüche dividieren",
+      "activity": "Nutzen Sie die Frage: „Wie oft passt es hinein?“ Zeigen Sie für `(2/3)/(3/4)`, dass aus `(2/3)/(3/4)` `(2/3)*(4/3)` wird, dann `(2*4)/(3*3)`, und das Ergebnis ist `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Schätzen und Fehler finden",
+      "activity": "Besprechen Sie häufige falsche Schritte: Zähler und Nenner addieren, nur einen Teil ändern, den ersten Bruch umkehren oder über eine Addition hinweg kürzen. Verwenden Sie Schätzen und Streifenmodelle als Kontrolle."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen einen Bruch, der gleich `1/2 + 1/7` ist."
+        },
+        {
+          "rung": "information",
+          "text": "Um Brüche zu addieren, bringe sie zuerst auf den gleichen Nenner."
+        },
+        {
+          "rung": "computation",
+          "text": "Der gemeinsame Nenner ist `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen einen Bruch, der gleich `7/12 + 5/18` ist."
+        },
+        {
+          "rung": "information",
+          "text": "Nutze das kleinste gemeinsame Vielfache von 12 und 18, also `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` ist `21/36` und `5/18` ist `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen einen Bruch, der gleich `7/12 - 9/16` ist."
+        },
+        {
+          "rung": "information",
+          "text": "Nutze das kleinste gemeinsame Vielfache von 12 und 16, also `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` ist `28/48` und `9/16` ist `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Vereinfache:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den vollständig gekürzten Bruch, der gleich `120/252` ist."
+        },
+        {
+          "rung": "information",
+          "text": "Teile Zähler und Nenner durch ihren größten gemeinsamen Teiler."
+        },
+        {
+          "rung": "computation",
+          "text": "Teile Zähler und Nenner durch `12`, den größten gemeinsamen Teiler von 120 und 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "Die beiden Vorzeichen sind gleich, also ist das Produkt positiv. Multipliziere die Zähler und die Nenner."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` ist `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "Um durch einen Bruch zu dividieren, multipliziere mit seinem Kehrwert. Der Kehrwert des Divisors ist `1/(5/8)`, also `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` ist `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen den Wert von `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "Um durch einen Bruch zu dividieren, multipliziere mit seinem Kehrwert. Der Kehrwert des Divisors ist `1/(5/6)`, also `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` ist `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Berechne:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Wir suchen einen Bruch, der gleich `-23/24 - 13/24` ist."
+        },
+        {
+          "rung": "information",
+          "text": "Die Nenner sind schon gleich, also subtrahiere die Zähler."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` ist `-36`, also erhalten wir `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

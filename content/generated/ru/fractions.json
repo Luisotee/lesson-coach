@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "ru",
+  "title": "Дроби",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Дроби называют равные части; действия с ними работают, когда размер части понятен и мы считаем части.",
+  "idea": "Дробь обозначает равные части целого. В `3/4` нижнее число показывает, на сколько равных частей разделено целое. Верхнее число считает, сколько таких частей взято.\n\nЭквивалентные дроби обозначают одно и то же количество с помощью частей разного размера. Если умножить или разделить числитель и знаменатель на одно и то же число, количество не изменится.\n\nПри сложении части должны быть одного размера, прежде чем их можно считать. При умножении целого числа на дробь считают повторяющиеся группы этой дроби. При делении вопрос в том, сколько раз одна дробь помещается в другой.",
+  "why_it_works": "Складывать можно только одинаковые части. Для `1/2 + 1/3` половины и трети имеют разный размер, поэтому обе дроби записывают в шестых. `1/2 + 1/3` становится `3/6 + 2/6`, а `3/6 + 2/6` равно `5/6`.\n\nУмножение меняет количество частей. В `3*(2/5)` пятые остаются пятыми. `3*(2/5)` становится `(3*2)/5`, а `(3*2)/5` равно `6/5`.\n\nДеление спрашивает, сколько раз делитель помещается. `(2/3)/(3/4)` становится `(2/3)*(4/3)`. Затем `(2/3)*(4/3)` становится `(2*4)/(3*3)`, а `(2*4)/(3*3)` равно `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Вычислите:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "У дробей части разного размера, поэтому их нельзя сложить сразу. Запишите их с общим знаменателем.",
+            "another_way": "Используйте шестые доли, потому что и половины, и трети можно разделить на шестые. Так значение каждой дроби сохранится, а части станут одинаковыми.",
+            "visual": "Полоска показывает `1/2 + 1/3` как одну часть размером в половину рядом с одной частью размером в треть."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Теперь обе дроби записаны в шестых долях. `1/2` превращается в `3/6`, а `1/3` превращается в `2/6`, значит, части одинакового размера.",
+            "another_way": "Представьте каждую половину как три шестых, а каждую треть как две шестых. Тогда задача — просто посчитать шестые доли.",
+            "visual": "Полоска показывает `3/6 + 2/6` как 3 шестых и 2 шестых из частей одинакового размера."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "При одинаковом знаменателе сложите числители, а знаменатель оставьте. `3/6 + 2/6` превращается в `5/6`, значит, это ответ.",
+            "another_way": "Посчитайте вместе все части размером в одну шестую. Три шестых и две шестых дают пять шестых.",
+            "visual": "Полоска показывает `5/6`, закрашенные как 5 равных частей размером в шестую долю одного целого."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Вычислите:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Начинаем с `3*(2/5)`, то есть с 3 групп по `2/5`. Размер каждой части остаётся пятыми долями.",
+            "another_way": "Думайте о целом числе как о множителе для числителя дроби. Тогда `3*(2/5)` — это целое число, умноженное на дробь.",
+            "visual": "Модель с полосками показывает три копии полоски, в каждой из которых закрашено `2/5`."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Целое число умножает числитель, поэтому `3*(2/5)` превращается в `(3*2)/5`. Знаменатель остаётся `5`, потому что части всё ещё являются пятыми долями.",
+            "another_way": "Считайте пятые доли: `2` пятых, взятые `3` раза, дают `(3*2)` пятых.",
+            "visual": "Модель с полосками показывает, как части размером в одну пятую считают в трех группах."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Произведение в числителе найдено, поэтому `(3*2)/5` превращается в `6/5`. Это ответ, потому что значение выражения найдено.",
+            "another_way": "Три группы по `2/5` составляют `6/5`. Результат больше одного целого, потому что пятых долей больше, чем `5`.",
+            "visual": "Модель с полосками показывает `6` закрашенных частей размером в одну пятую, что составляет `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Вычислите:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Выражение спрашивает, сколько раз `3/4` помещается в `2/3`. При делении на дробь оставляем `2/3` и умножаем на дробь, обратную `3/4`.",
+            "another_way": "Можно заменить вопрос о делении подходящим умножением. Делитель `3/4` переворачиваем, поэтому `(2/3)/(3/4)` становится `(2/3)*(4/3)`.",
+            "visual": "Полоска показывает `2/3` целого, которые измеряют частями размера `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Теперь умножаем дроби. Умножаем числители между собой и знаменатели между собой, поэтому `(2/3)*(4/3)` становится `(2*4)/(3*3)`.",
+            "another_way": "Так отдельно показаны количества частей и их размеры. В числителе стоит `2*4`, а в знаменателе — `3*3`.",
+            "visual": "Полоска разделена на трети одним способом и на трети другим способом, при этом посчитаны `2*4` маленьких частей."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Произведения в числителе и знаменателе записаны явно. Строка готова к упрощению: нужно найти эти произведения.",
+            "another_way": "Смотрите на `(2*4)/(3*3)` как на дробь, где умножение еще видно. В следующем шаге эти произведения записываются одним числом.",
+            "visual": "В модели-полоске целое состоит из `3*3` равных маленьких частей, и `2*4` из них закрашены."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "После умножения получаем итоговую дробь, поэтому `(2*4)/(3*3)` становится `8/9`. Это ответ, потому что больше действий не показано.",
+            "another_way": "Частное меньше одного целого, и это соответствует смыслу: `3/4` больше, чем `2/3`, значит, меньше одной такой дроби помещается.",
+            "visual": "Полоска, разделенная на `9` равных частей, имеет `8` закрашенных частей и показывает `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Чтобы сложить дроби, сложите числители и сложите знаменатели.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Так дробь воспринимается как два отдельных целых числа, и это работает так же, как при умножении дробей.",
+      "what_to_say": {
+        "probe": "Ваш ответ больше или меньше, чем `1/2`? Так и должно быть?",
+        "nudge": "Можно ли сразу складывать половины и трети, или сначала нужны части одинакового размера?",
+        "tell": "Разбейте обе величины на шестые: `3/6 + 2/6` равно `5/6`. Мы считаем только части; их размер не меняется."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Вычислите:",
+        "answer": "3/4"
+      },
+      "source_quote": "Некоторые ученики складывают дроби, складывая числители и складывая знаменатели."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Чтобы умножить дробь на целое число, умножьте и числитель, и знаменатель.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Ученики знают по эквивалентным дробям, что делать одно и то же с числителем и знаменателем безопасно.",
+      "what_to_say": {
+        "probe": "`6/15` больше, меньше или равно `2/5`? Чему должны быть равны три раза по `2/5`?",
+        "nudge": "Запишите три раза по две пятых как сложение и посчитайте пятые.",
+        "tell": "Три раза по две пятых — это шесть пятых, `6/5`. Меняется только количество частей."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Вычислите:",
+        "answer": "12/7"
+      },
+      "source_quote": "Некоторые ученики умножают и числитель, и знаменатель на целое число."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "При делении дробей надо перевернуть первую дробь.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "Правило «переверни и умножь» запоминают как лозунг, не уточняя, какую дробь переворачивать.",
+      "what_to_say": {
+        "probe": "Сколько раз три четверти помещаются в две трети: больше одного или меньше?",
+        "nudge": "Какой дробью мы считаем? Именно ее надо перевернуть.",
+        "tell": "Переворачивают только делитель: `(2/3)*(4/3)` равно `8/9`, немного меньше единицы."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Вычислите:",
+        "answer": "6/5"
+      },
+      "source_quote": "Некоторые ученики при делении переворачивают первую дробь, а не вторую."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Можно сократить число в числителе с числом в знаменателе даже через знак плюс.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Сокращение одинаковых множителей работает в произведениях, а ученик видит 2 сверху и 2 снизу.",
+      "what_to_say": {
+        "probe": "Чему равен весь числитель дроби, прежде чем делить?",
+        "nudge": "Сначала вычислите числитель, потом делите. Получится тот же ответ?",
+        "tell": "Черта дроби делит весь числитель: `(2+4)/2` равно `6/2`, то есть `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Упростите:",
+        "answer": "5"
+      },
+      "source_quote": "Некоторые ученики сокращают через знак плюс."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Чтобы сократить дробь, можно разделить только числитель или только знаменатель.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Деление числа пополам кажется упрощением, и ученик не проверяет, что величина не изменилась.",
+      "what_to_say": {
+        "probe": "`3/8` — это столько же, сколько `6/8`? Изобразите обе дроби полосками.",
+        "nudge": "Какое число делит и числитель, и знаменатель?",
+        "tell": "Разделите числитель и знаменатель на одно и то же число: `6/8` равно `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Упростите:",
+        "answer": "2/3"
+      },
+      "source_quote": "Некоторые ученики упрощают дробь, изменяя только одну ее часть."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Почему нельзя сложить верхние числа и нижние числа?",
+      "answer": "Нижнее число называет размер частей. Половины и трети имеют разный размер, поэтому перед подсчётом части нужно записать в одном размере."
+    },
+    {
+      "question": "Почему `1/2 + 1/3` становится `3/6 + 2/6`?",
+      "answer": "Обе дроби записывают в шестых. Количества остаются теми же, но теперь части одного размера, и их можно сложить."
+    },
+    {
+      "question": "Почему в `3*(2/5)` нижнее число не меняется?",
+      "answer": "Пятые остаются того же размера. Умножение на `3` даёт 3 группы по `2/5`, поэтому меняется только число пятых."
+    },
+    {
+      "question": "Какую дробь переворачивают при делении?",
+      "answer": "Переворачивают только делитель. `(2/3)/(3/4)` становится `(2/3)*(4/3)`, потому что деление спрашивает, сколько `3/4` помещается в `2/3`."
+    },
+    {
+      "question": "Можно ли сокращать через знак плюс?",
+      "answer": "Нет. Черта дроби делит весь числитель. Слагаемые в сумме нельзя частично сокращать так, будто они отдельные множители."
+    },
+    {
+      "question": "Как ученики могут проверить, разумен ли ответ?",
+      "answer": "Сначала оценить. Спросить, должен ли результат быть больше или меньше `1/2`, или больше или меньше `1`. Прикидка величины помогает заметить много ошибок с дробями."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Назвать части",
+      "activity": "Возьмите простое целое, разделённое на равные части. Свяжите нижнее число с размером частей, а верхнее число — с числом частей. Используйте `3/4` как опорную дробь."
+    },
+    {
+      "minutes": 10,
+      "title": "Эквивалентные дроби",
+      "activity": "Покажите, что разные дроби могут называть одно и то же количество. Используйте `1/2`, `2/4` и `3/6`. Подчеркните, что числитель и знаменатель должны изменяться вместе."
+    },
+    {
+      "minutes": 10,
+      "title": "Складывать одинаковые части",
+      "activity": "Начните с `1/2 + 1/3`. Спросите, почему половины и трети нельзя считать вместе. Запишите в шестых: `1/2 + 1/3` становится `3/6 + 2/6`, а `3/6 + 2/6` равно `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Умножить дробь",
+      "activity": "Используйте `3*(2/5)` как 3 раза по две пятых. Покажите, что `3*(2/5)` становится `(3*2)/5`, а `(3*2)/5` равно `6/5`. Подчеркните, что размер части остаётся пятыми."
+    },
+    {
+      "minutes": 9,
+      "title": "Делить дроби",
+      "activity": "Используйте вопрос «Сколько помещается?» Для `(2/3)/(3/4)` покажите, что `(2/3)/(3/4)` становится `(2/3)*(4/3)`, затем `(2*4)/(3*3)`, и результат равен `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Оценить и заметить ошибки",
+      "activity": "Обсудите частые неверные действия: складывать числители и знаменатели, изменять только одну часть, переворачивать первую дробь или сокращать через сложение. Используйте прикидку и модели с полосками для проверки."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужна одна дробь, равная `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "Чтобы сложить дроби, сначала приведите их к общему знаменателю."
+        },
+        {
+          "rung": "computation",
+          "text": "Общий знаменатель — `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужна одна дробь, равная `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Используйте наименьшее общее кратное чисел 12 и 18, то есть `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` — это `21/36`, а `5/18` — это `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужна одна дробь, равная `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Используйте наименьшее общее кратное чисел 12 и 16, то есть `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` — это `28/48`, а `9/16` — это `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Упростите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужна несократимая дробь, равная `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Разделите числитель и знаменатель на их наибольший общий делитель."
+        },
+        {
+          "rung": "computation",
+          "text": "Разделите числитель и знаменатель на `12`, наибольший общий делитель чисел 120 и 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "Знаки одинаковые, значит произведение положительно. Умножьте числители и знаменатели."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` — это `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "Чтобы разделить на дробь, умножьте на обратную ей дробь. Дробь, обратная делителю, — это `1/(5/8)`, то есть `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` — это `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужно найти значение `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "Чтобы разделить на дробь, умножьте на обратную ей дробь. Дробь, обратная делителю, — это `1/(5/6)`, то есть `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` — это `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Вычислите:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Нужна одна дробь, равная `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "Знаменатели уже одинаковые, поэтому вычтите числители."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` — это `-36`, значит получаем `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

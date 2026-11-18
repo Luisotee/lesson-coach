@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "es",
+  "title": "Resolución de ecuaciones lineales",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "Resuelve ecuaciones lineales haciendo la misma operación en ambos lados y comprobando la respuesta.",
+  "idea": "Una ecuación dice que 2 expresiones tienen el mismo valor. Resolver significa encontrar el valor de `x` que hace verdadera la afirmación.\n\nEl modelo de la balanza es la imagen principal. Lo que se haga a un lado debe hacerse al otro lado. La operación puede escribirse en el margen, como restar `6`, para mostrar que ambos lados cambian.\n\nPara dejar `x` sola, deshaz las operaciones en orden inverso. Para `2*x + 6 = 10`, al restar `6` de ambos lados se obtiene `2*x = 4`. Al dividir ambos lados entre `2` se obtiene `x = 2`.\n\nSi hay paréntesis, trata toda la expresión entre paréntesis como multiplicada por el número de afuera. En `5*(x + 3) = 35`, al dividir ambos lados entre `5` se obtiene `x + 3 = 7`, y luego al restar `3` se obtiene `x = 4`.",
+  "why_it_works": "Cada paso mantiene iguales los 2 lados porque se aplica la misma operación a ambos lados. La ecuación cambia de forma, pero la solución sigue siendo la misma.\n\nLas operaciones se deshacen en orden inverso. En `2*x + 6 = 10`, la expresión con `x` fue multiplicada por `2` y luego se sumó `6`. Por eso, resta `6` primero y luego divide entre `2`.\n\nCon variables en ambos lados, se sigue aplicando la misma idea de la balanza. En `3*x + 4 = x + 10`, al restar `x` de ambos lados se obtiene `2*x + 4 = 10`. Luego, al restar `4` se obtiene `2*x = 6`, y al dividir entre `2` se obtiene `x = 3`.\n\nLa comprobación funciona por sustitución. Para `x = 2`, `2*2 + 6` es `10`, así que la ecuación original es verdadera.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "Resuelve para x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "El `+ 6` impide que `x` quede sola. Resta `6` en ambos lados para que la balanza se mantenga equilibrada y se deshaga el `6` sumado.",
+            "another_way": "Piensa en orden inverso. Como `6` se sumó después de `2*x`, deshaz eso primero con `-6` en ambos lados.",
+            "visual": "Una balanza muestra `2*x + 6` en un lado y `10` en el otro, con `6` retirado de ambos lados."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ahora `2*x = 4`, así que `x` todavía está multiplicada por `2`. Divide ambos lados entre `2` para deshacer la multiplicación y mantener la ecuación equilibrada.",
+            "another_way": "`2*x` significa dos grupos iguales de `x`. Al dividir ambos lados en `2` partes iguales, queda un grupo de `x`.",
+            "visual": "Una balanza muestra `2*x` en un lado y `4` en el otro, con ambos lados divididos en `2` partes iguales."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Esta es la respuesta porque `x` está sola y la ecuación dice directamente su valor: `x = 2`.",
+            "another_way": "Comprueba sustituyendo: `2*2 + 6` es `10`, así que la ecuación original es verdadera.",
+            "visual": "Una balanza muestra una `x` en un lado y `2` en el otro, equilibrada."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Resuelve para x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "La expresión entre paréntesis está multiplicada por `5`. Dividir ambos lados entre `5` deshace esa multiplicación y mantiene la ecuación equilibrada.",
+            "another_way": "Así se evita desarrollar primero el paréntesis. Como todo el lado izquierdo es `5` veces `x + 3`, divide ambos lados completos entre `5`.",
+            "visual": "Una balanza equilibrada muestra `5*(x + 3)` en un lado y `35` en el otro, lista para dividir ambos lados en `5` grupos iguales."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ahora se suma `3` a `x`. Restar `3` a ambos lados deshace la suma y mantiene la ecuación equilibrada.",
+            "another_way": "Piensa en quitar el mismo `3` de cada lado de la balanza. Eso deja la incógnita sola en el lado izquierdo.",
+            "visual": "Una balanza equilibrada muestra `x + 3` en un lado y `7` en el otro, con `3` quitado de ambos lados."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "La variable está sola, así que esta línea da la solución. El valor que hace verdadera la ecuación original es `x = 4`.",
+            "another_way": "Una comprobación pondría `4` en lugar de `x` en la ecuación original y confirmaría que los dos lados coinciden.",
+            "visual": "Una balanza equilibrada muestra `x` sola en un lado y `4` en el otro."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "Resuelve para x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "El término `x` de la derecha se elimina primero restando `x` en ambos lados. Esto mantiene equilibrada la ecuación y junta los términos con variable.",
+            "another_way": "Piensa en quitar un `x` de cada lado. Entonces el lado izquierdo queda `2*x + 4`, y el lado derecho ya no tiene un término `x`.",
+            "visual": "Una balanza muestra `3*x + 4` y `x + 10`, con un `x` eliminado de cada lado."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "La constante `4` se elimina de la izquierda restando `4` en ambos lados. Esto deja el término `x` solo en el lado izquierdo.",
+            "another_way": "Como `4` se sumó a `2*x`, deshaz esa suma con una resta. El lado derecho cambia de la misma manera para mantener el equilibrio.",
+            "visual": "Una balanza muestra `2*x + 4` y `10`, con `4` eliminado de ambos lados."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "El `2` está multiplicando a `x`, así que divide ambos lados entre `2` para deshacer la multiplicación. Esto deja un solo `x`.",
+            "another_way": "`2*x` significa 2 grupos iguales de `x`. Al dividir ambos lados en `2` partes iguales se ve el valor de un grupo.",
+            "visual": "Una balanza muestra `2*x` y `6`, divididos en `2` partes iguales en cada lado."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Esta es la respuesta porque `x` está solo y se muestra su valor. La ecuación indica que `x` es `3`.",
+            "another_way": "La sustitución puede comprobarlo en la ecuación original. Reemplazar `x` por `3` hace que ambos lados coincidan.",
+            "visual": "Una balanza muestra un `x` en equilibrio con `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "Un número puede pasar al otro lado del signo igual y conservar su signo.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"Pásalo al otro lado\" es un atajo común, y el estudiante olvida que pasar significa restar.",
+      "what_to_say": {
+        "probe": "¿Qué hiciste en ambos lados para quitar el `+ 6`?",
+        "nudge": "Escribe la operación en el margen, \"| -6\", y aplícala a ambos lados.",
+        "tell": "Resta seis en ambos lados: `2*x = 4`, por lo tanto `x = 2`. Al sustituir, se comprueba: `2*2 + 6` es `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Resuelve para x:",
+        "answer": "5"
+      },
+      "source_quote": "Algunos estudiantes pasan un número al otro lado del signo igual sin cambiar su signo."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "Puedes dividir solo un término de un lado entre el coeficiente.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "El estudiante se concentra en dejar `x` sola y divide los términos cercanos a ella, olvidando el resto del lado.",
+      "what_to_say": {
+        "probe": "Cuando dividiste entre dos, ¿qué pasó con el `6`?",
+        "nudge": "Divide cada término de ambos lados entre dos y compáralo con tu línea.",
+        "tell": "Dividir un lado divide cada término de ese lado: `x + 3 = 5`, por lo tanto `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Resuelve para x:",
+        "answer": "3"
+      },
+      "source_quote": "Algunos estudiantes dividen solo un término entre el número que está delante de `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "Para quitar el número que está delante de `x`, réstalo.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Restar es la primera operación inversa que aprendió el estudiante, y `3*x` parece un `3` junto a `x`.",
+      "what_to_say": {
+        "probe": "¿Qué significa `3*x`? ¿Qué operación une el `3` y la `x`?",
+        "nudge": "Comprueba tu respuesta: ¿`3*9` es igual a `12`?",
+        "tell": "`3*x` significa tres veces `x`, así que divide ambos lados entre tres: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Resuelve para x:",
+        "answer": "7"
+      },
+      "source_quote": "Algunos estudiantes restan el número que está delante de `x` en lugar de dividir entre él."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "Puedes deshacer las operaciones sobre `x` en cualquier orden.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Restar el número junto a `x` suele ser el primer paso, así que el estudiante lo hace incluso cuando ese número está dentro de una división.",
+      "what_to_say": {
+        "probe": "En `(x + 6)/2`, ¿qué le pasa primero a `x` y qué le pasa al final?",
+        "nudge": "La división entre dos se hizo al final. ¿Por qué número multiplicas ambos lados para deshacerla?",
+        "tell": "Deshaz primero la división entre dos: `x + 6 = 20`, por lo tanto `x = 14`. Comprueba: `(14 + 6)/2` es `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Resuelve para x:",
+        "answer": "11"
+      },
+      "source_quote": "Algunos estudiantes deshacen los pasos en el orden incorrecto."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "El número fuera de un paréntesis multiplica solo el primer término de dentro.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "El `5` está justo junto a la `x`, así que el estudiante multiplica lo que está más cerca.",
+      "what_to_say": {
+        "probe": "¿Cuántos 3 hay en `5*(x + 3)`?",
+        "nudge": "Escribe `5*(x + 3)` como `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` y cuenta.",
+        "tell": "El cinco multiplica todo lo que está dentro del paréntesis: `5*x + 15 = 35`, por lo tanto `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Resuelve para x:",
+        "answer": "5"
+      },
+      "source_quote": "Algunos estudiantes multiplican el número fuera de un paréntesis solo por el primer término."
+    }
+  ],
+  "questions": [
+    {
+      "question": "¿Por qué hacemos lo mismo en ambos lados?",
+      "answer": "Una ecuación está equilibrada. Hacer la misma operación a cantidades iguales las mantiene iguales, así que la solución no cambia."
+    },
+    {
+      "question": "¿Por qué `+ 6` se convierte en restar `6`?",
+      "answer": "Resolver deshace operaciones. En `2*x + 6 = 10`, al restar `6` de ambos lados se obtiene `2*x = 4`."
+    },
+    {
+      "question": "¿Por qué dividir entre `2` en lugar de restar `2`?",
+      "answer": "`2*x` significa `2` veces `x`. La multiplicación se deshace con la división, así que `2*x = 4` se convierte en `x = 2`."
+    },
+    {
+      "question": "¿Qué pasa si hay una `x` en ambos lados?",
+      "answer": "Usa el mismo paso de la balanza. En `3*x + 4 = x + 10`, al restar `x` de ambos lados se obtiene `2*x + 4 = 10`."
+    },
+    {
+      "question": "¿Cómo cambian el trabajo los paréntesis?",
+      "answer": "El número de fuera multiplica todo el paréntesis. En `5*(x + 3) = 35`, al dividir ambos lados entre `5` se obtiene `x + 3 = 7`."
+    },
+    {
+      "question": "¿Cómo pueden saber los estudiantes si la respuesta es correcta?",
+      "answer": "Sustituye la respuesta en la ecuación original. Si ambos lados coinciden, la respuesta funciona."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "La ecuación como balanza",
+      "activity": "Muestra `2*x + 6 = 10` como 2 lados iguales. Destaca que una ecuación dice que 2 expresiones tienen el mismo valor. Presenta la escritura de la misma operación en el margen, como restar `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "Deshacer en orden inverso",
+      "activity": "Trabaja con `2*x + 6 = 10`. Al restar `6` de ambos lados se obtiene `2*x = 4`. Al dividir ambos lados entre `2` se obtiene `x = 2`. Comprueba sustituyendo."
+    },
+    {
+      "minutes": 8,
+      "title": "Errores comunes",
+      "activity": "Comenta errores típicos: cambiar de lado sin cambiar la operación, dividir solo un término y restar el coeficiente en vez de dividir. Mantén el foco en el paso de la balanza."
+    },
+    {
+      "minutes": 8,
+      "title": "Paréntesis",
+      "activity": "Usa `5*(x + 3) = 35`. Divide ambos lados entre `5` para obtener `x + 3 = 7`. Luego resta `3` para obtener `x = 4`. Señala que el `5` se aplica a todo el paréntesis."
+    },
+    {
+      "minutes": 10,
+      "title": "Variables en ambos lados",
+      "activity": "Trabaja con `3*x + 4 = x + 10`. Al restar `x` de ambos lados se obtiene `2*x + 4 = 10`. Al restar `4` se obtiene `2*x = 6`. Al dividir entre `2` se obtiene `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "Comprobar respuestas",
+      "activity": "Los estudiantes sustituyen las respuestas en la ecuación original. Una comprobación fallida significa que se debe revisar un paso. La comprobación es parte del proceso de resolución, no una tarea extra."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Resuelve para x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `x` que hace verdadera `8*x = 56`."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` significa 8 veces `x`, así que deshazlo dividiendo ambos lados entre `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Resuelve para c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `c` que hace verdadera `-5*c = 55`."
+        },
+        {
+          "rung": "information",
+          "text": "Divide ambos lados entre `-5`, el número que está delante de `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` es negativo porque los signos son diferentes."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Resuelve para x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `x` que hace verdadera `7*x + 8 = -13`."
+        },
+        {
+          "rung": "information",
+          "text": "Deshaz los pasos en orden inverso: resta `8` de ambos lados y luego divide entre `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "Después de restar `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Comprueba: `7*(-3) + 8` es `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Resuelve para x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `x` que hace verdadera `3*x + 4 = -8`."
+        },
+        {
+          "rung": "information",
+          "text": "Resta `4` de ambos lados y luego divide ambos lados entre `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "Después de restar `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Comprueba: `3*(-4) + 4` es `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Resuelve para x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `x` que hace verdadera `5*(x + 3) = 35`."
+        },
+        {
+          "rung": "information",
+          "text": "El 5 multiplica todo el paréntesis. Divide ambos lados entre `5`, o desarrolla el paréntesis."
+        },
+        {
+          "rung": "computation",
+          "text": "Dividir ambos lados entre `5` da `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Comprueba: `5*(4 + 3)` es `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Resuelve para m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `m` que hace verdadera `2*(m - 4) + 3 = -1`."
+        },
+        {
+          "rung": "information",
+          "text": "Primero desarrolla el paréntesis y luego agrupa los números."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, así que `2*m - 5 = -1` y `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Comprueba: `2*(2 - 4) + 3` es `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Resuelve para x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `x` que hace verdadera `7*x + 5 = 6*x + 2`."
+        },
+        {
+          "rung": "information",
+          "text": "Lleva los términos con `x` a un lado: resta `6*x` de ambos lados."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, luego resta `5` de ambos lados."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Comprueba: ambos lados son `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Resuelve para x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos el valor de `x` que hace verdadera `12*x + 8 = 6*x + 2`."
+        },
+        {
+          "rung": "information",
+          "text": "Resta `6*x` de ambos lados y luego resta `8` de ambos lados."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, así que `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Comprueba: ambos lados son `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

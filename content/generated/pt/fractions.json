@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "pt",
+  "title": "Frações",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "As frações nomeiam partes iguais; as operações funcionam mantendo claro o tamanho das partes e contando partes.",
+  "idea": "Uma fração nomeia partes iguais de um todo. Em `3/4`, o número de baixo diz que o todo está dividido em partes iguais. O número de cima conta quantas dessas partes são tomadas.\n\nFrações equivalentes nomeiam a mesma quantidade com partes de tamanhos diferentes. Multiplicar ou dividir o número de cima e o de baixo pelo mesmo número mantém a quantidade igual.\n\nNa adição, as partes têm de ter o mesmo tamanho antes de poderem ser contadas. Na multiplicação, um número inteiro vezes uma fração conta grupos repetidos dessa fração. Na divisão, a pergunta é quantas vezes uma fração cabe noutra.",
+  "why_it_works": "Só se podem adicionar partes do mesmo tipo. Em `1/2 + 1/3`, meios e terços têm tamanhos diferentes, por isso ambos são reescritos em sextos. `1/2 + 1/3` torna-se `3/6 + 2/6`, e `3/6 + 2/6` é `5/6`.\n\nA multiplicação altera a contagem das partes. Em `3*(2/5)`, os quintos continuam quintos. `3*(2/5)` torna-se `(3*2)/5`, e `(3*2)/5` é `6/5`.\n\nA divisão pergunta quantas vezes o divisor cabe. `(2/3)/(3/4)` torna-se `(2/3)*(4/3)`. Depois `(2/3)*(4/3)` torna-se `(2*4)/(3*3)`, e `(2*4)/(3*3)` é `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Calcula:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "As frações têm partes de tamanhos diferentes, por isso não podem ser adicionadas diretamente. Reescreve-as com um denominador comum.",
+            "another_way": "Usa sextos, porque tanto os meios como os terços podem ser divididos em sextos. Isto mantém o valor de cada fração e faz com que as partes tenham o mesmo tamanho.",
+            "visual": "Uma barra mostra `1/2 + 1/3` como uma parte do tamanho de metade ao lado de uma parte do tamanho de um terço."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Agora as duas frações estão em sextos. `1/2` passa a `3/6`, e `1/3` passa a `2/6`, por isso as partes têm o mesmo tamanho.",
+            "another_way": "Pensa em cada meio como três sextos e em cada terço como dois sextos. Então o problema é apenas contar sextos.",
+            "visual": "Uma barra mostra `3/6 + 2/6` como três sextos e dois sextos de partes com o mesmo tamanho."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Com o mesmo denominador, adiciona os numeradores e mantém o denominador. `3/6 + 2/6` passa a `5/6`, portanto esta é a resposta.",
+            "another_way": "Conta todas as partes do tamanho de um sexto juntas. Três sextos e dois sextos fazem cinco sextos.",
+            "visual": "Uma barra mostra `5/6` sombreado como cinco partes iguais do tamanho de um sexto de um todo."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Calcula:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Isto começa com `3*(2/5)`, que significa 3 grupos de `2/5`. O tamanho de cada parte mantém-se em quintos.",
+            "another_way": "Pensa no número inteiro como um multiplicador do numerador da fração. Então `3*(2/5)` é um número inteiro vezes uma fração.",
+            "visual": "Um modelo de barras mostra três cópias de uma barra com `2/5` sombreado em cada cópia."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "O número inteiro multiplica o numerador, por isso `3*(2/5)` torna-se `(3*2)/5`. O denominador mantém-se `5` porque as partes continuam a ser quintos.",
+            "another_way": "Conta os quintos: `2` quintos, tomados `3` vezes, dão `(3*2)` quintos.",
+            "visual": "Um modelo de barras mostra partes do tamanho de um quinto a serem contadas em três grupos."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Calcula-se o produto no numerador, por isso `(3*2)/5` torna-se `6/5`. Esta é a resposta porque a expressão foi calculada.",
+            "another_way": "Três grupos de `2/5` formam `6/5`. O resultado é maior do que uma unidade porque há mais do que `5` quintos.",
+            "visual": "Um modelo de barras mostra `6` partes de tamanho um quinto sombreadas, formando `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Calcula:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "A expressão pergunta quantos `3/4` cabem em `2/3`. Para dividir por uma fração, mantém `2/3` e multiplica pelo recíproco de `3/4`.",
+            "another_way": "Pensa em mudar a pergunta de divisão para uma multiplicação correspondente. O divisor `3/4` é invertido, por isso `(2/3)/(3/4)` passa a `(2/3)*(4/3)`.",
+            "visual": "Uma barra mostra `2/3` de uma unidade a ser medido com partes de tamanho `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Agora multiplica as frações. Multiplica os numeradores entre si e os denominadores entre si, por isso `(2/3)*(4/3)` passa a `(2*4)/(3*3)`.",
+            "another_way": "Isto mostra separadamente as contagens de partes e os tamanhos das partes. O numerador conta `2*4` e o denominador conta `3*3`.",
+            "visual": "Uma barra é dividida em terços num sentido e em terços noutro sentido, com `2*4` partes pequenas contadas."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Os produtos no numerador e no denominador estão escritos. A linha está pronta para simplificar, calculando esses produtos.",
+            "another_way": "Vê `(2*4)/(3*3)` como uma fração com a multiplicação ainda visível. O passo seguinte escreve esses produtos como números únicos.",
+            "visual": "Um modelo de barra tem `3*3` partes pequenas iguais na unidade e `2*4` delas sombreadas."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "A multiplicação dá a fração final, por isso `(2*4)/(3*3)` passa a `8/9`. Esta é a resposta porque não há mais nenhuma operação indicada.",
+            "another_way": "O quociente é menor do que uma unidade, o que faz sentido: `3/4` é maior do que `2/3`, por isso cabe menos do que um.",
+            "visual": "Uma barra dividida em `9` partes iguais tem `8` partes sombreadas, mostrando `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "Para adicionar frações, adicionam-se os numeradores e adicionam-se os denominadores.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Trata a fração como dois números inteiros separados e funciona da mesma forma que multiplicar frações.",
+      "what_to_say": {
+        "probe": "A tua resposta é maior ou menor do que `1/2`? Deveria ser?",
+        "nudge": "Podes adicionar meios e terços diretamente, ou precisas primeiro de partes do mesmo tamanho?",
+        "tell": "Divide ambas em sextos: `3/6 + 2/6` é `5/6`. Contamos apenas as partes; o tamanho delas mantém-se."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Calcula:",
+        "answer": "3/4"
+      },
+      "source_quote": "Alguns alunos adicionam frações adicionando os numeradores e adicionando os denominadores."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "Para multiplicar uma fração por um número inteiro, multiplica-se o numerador e o denominador.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Os alunos aprenderam, nas frações equivalentes, que fazer o mesmo ao numerador e ao denominador é seguro.",
+      "what_to_say": {
+        "probe": "`6/15` é mais do que `2/5`, menos, ou o mesmo? Quanto devem ser três grupos de `2/5`?",
+        "nudge": "Escreve três grupos de dois quintos como uma adição e conta os quintos.",
+        "tell": "Três grupos de dois quintos são seis quintos, `6/5`. Só muda o número de partes."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Calcula:",
+        "answer": "12/7"
+      },
+      "source_quote": "Alguns alunos multiplicam o numerador e o denominador pelo número inteiro."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "Ao dividir frações, inverte-se a primeira fração.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"Inverter e multiplicar\" é lembrado como um lema, sem se saber que fração se inverte.",
+      "what_to_say": {
+        "probe": "Quantos três quartos cabem em dois terços: mais do que um, ou menos?",
+        "nudge": "Com que fração estamos a contar? É essa que se deve inverter.",
+        "tell": "Só se inverte o divisor: `(2/3)*(4/3)` é `8/9`, um pouco menos do que um."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Calcula:",
+        "answer": "6/5"
+      },
+      "source_quote": "Alguns alunos invertem a primeira fração ao dividir, não a segunda."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Pode-se cancelar um número no numerador com o denominador mesmo através de um sinal de adição.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Cancelar números comuns funciona em produtos, e o aluno vê um 2 no numerador e um 2 no denominador.",
+      "what_to_say": {
+        "probe": "Qual é o numerador da fração ao todo, antes de dividires?",
+        "nudge": "Calcula primeiro o numerador e depois divide. Obténs a mesma resposta?",
+        "tell": "O traço de fração divide todo o numerador: `(2+4)/2` é `6/2`, que é `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Simplifica:",
+        "answer": "5"
+      },
+      "source_quote": "Alguns alunos cancelam através de um sinal de adição."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "Para simplificar uma fração, podes dividir só o numerador ou só o denominador.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Reduzir um número a metade parece simplificar, e o aluno não verifica se a quantidade se mantém.",
+      "what_to_say": {
+        "probe": "`3/8` é a mesma quantidade que `6/8`? Desenha ambas como barras.",
+        "nudge": "Que número divide o numerador e o denominador?",
+        "tell": "Divide o numerador e o denominador pelo mesmo número: `6/8` é `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Simplifica:",
+        "answer": "2/3"
+      },
+      "source_quote": "Alguns alunos simplificam alterando apenas uma parte da fração."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Porque não podemos somar os números de cima e os números de baixo?",
+      "answer": "O número de baixo indica o tamanho das partes. Meios e terços têm tamanhos diferentes, por isso as partes têm de ser reescritas com o mesmo tamanho antes de serem contadas."
+    },
+    {
+      "question": "Porque é que `1/2 + 1/3` se torna `3/6 + 2/6`?",
+      "answer": "As duas frações são reescritas em sextos. As quantidades mantêm-se iguais, mas agora as partes têm o mesmo tamanho e podem ser adicionadas."
+    },
+    {
+      "question": "Porque é que `3*(2/5)` não altera o número de baixo?",
+      "answer": "Os quintos mantêm o mesmo tamanho. Multiplicar por `3` dá três grupos de `2/5`, por isso só muda a contagem dos quintos."
+    },
+    {
+      "question": "Que fração se inverte ao dividir?",
+      "answer": "Só se inverte o divisor. `(2/3)/(3/4)` torna-se `(2/3)*(4/3)`, porque a divisão pergunta quantas vezes `3/4` cabe em `2/3`."
+    },
+    {
+      "question": "Podemos simplificar através de um sinal de mais?",
+      "answer": "Não. Uma barra de fração divide todo o numerador. Os termos de uma soma não podem ser simplificados em parte como se fossem fatores separados."
+    },
+    {
+      "question": "Como podem os alunos verificar se uma resposta faz sentido?",
+      "answer": "Estime primeiro. Pergunte se o resultado deve ser maior ou menor do que `1/2`, ou maior ou menor do que `1`. Uma verificação aproximada da grandeza deteta muitos erros com frações."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Nomear as partes",
+      "activity": "Usar um todo simples dividido em partes iguais. Ligar o número de baixo ao tamanho das partes e o número de cima à contagem das partes. Usar `3/4` como fração de referência."
+    },
+    {
+      "minutes": 10,
+      "title": "Frações equivalentes",
+      "activity": "Mostrar que frações diferentes podem nomear a mesma quantidade. Usar `1/2`, `2/4` e `3/6`. Sublinhar que o numerador e o denominador têm de mudar em conjunto."
+    },
+    {
+      "minutes": 10,
+      "title": "Adicionar partes do mesmo tipo",
+      "activity": "Começar com `1/2 + 1/3`. Perguntar porque é que meios e terços não podem ser contados em conjunto. Reescrever em sextos: `1/2 + 1/3` torna-se `3/6 + 2/6`, e `3/6 + 2/6` é `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Multiplicar uma fração",
+      "activity": "Usar `3*(2/5)` como três grupos de dois quintos. Mostrar que `3*(2/5)` se torna `(3*2)/5`, e `(3*2)/5` é `6/5`. Reforçar que o tamanho das partes continua a ser quintos."
+    },
+    {
+      "minutes": 9,
+      "title": "Dividir frações",
+      "activity": "Usar a pergunta “Quantas cabem?” Para `(2/3)/(3/4)`, mostrar que `(2/3)/(3/4)` se torna `(2/3)*(4/3)`, depois `(2*4)/(3*3)`, e o resultado é `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Estimar e detetar erros",
+      "activity": "Discutir erros comuns: somar numeradores e denominadores, mudar só uma parte, inverter a primeira fração ou simplificar através da adição. Usar estimativas e modelos de barras como verificações."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos uma fração igual a `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "Para somar frações, primeiro reduzimo-las ao mesmo denominador."
+        },
+        {
+          "rung": "computation",
+          "text": "O denominador comum é `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos uma fração igual a `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Usa o mínimo múltiplo comum de 12 e 18, que é `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` é `21/36` e `5/18` é `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos uma fração igual a `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Usa o mínimo múltiplo comum de 12 e 16, que é `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` é `28/48` e `9/16` é `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Simplifica:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos a fração mais simples igual a `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Divide o numerador e o denominador pelo seu máximo divisor comum."
+        },
+        {
+          "rung": "computation",
+          "text": "Divide o numerador e o denominador por `12`, o máximo divisor comum de 120 e 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos o valor de `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "Os dois sinais são iguais, por isso o produto é positivo. Multiplica os numeradores e os denominadores."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` é `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos o valor de `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "Para dividir por uma fração, multiplica pelo seu inverso. O inverso do divisor é `1/(5/8)`, que é `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` é `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos o valor de `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "Para dividir por uma fração, multiplica pelo seu inverso. O inverso do divisor é `1/(5/6)`, que é `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` é `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos uma fração igual a `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "Os denominadores já são iguais, por isso subtrai os numeradores."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` é `-36`, por isso obtemos `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}

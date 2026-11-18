@@ -9,6 +9,7 @@ explanation appears in that step. A finding names the pack path it is about.
 from __future__ import annotations
 
 import re
+from collections import Counter
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from typing import Any
@@ -443,15 +444,26 @@ def text_limit(path: str) -> int:
     return 600
 
 
-def item_findings(path: str, english: str, translated: str) -> list[Finding]:
-    """A translated text keeps every math span of the English, character for character, and
-    adds no number and no non-ASCII digit."""
+# A span a translation may leave out because its language says the number in a word: "two
+# equal parts" is one dual noun in Arabic. Only whole numbers up to 10, never other math.
+WORDABLE = re.compile(r"^(10|[0-9])$")
+
+
+def item_findings(
+    path: str, english: str, translated: str, limit: int | None = None
+) -> list[Finding]:
+    """A translated text keeps every math span of the English, character for character (it may
+    only leave out a bare whole number up to 10, said as a word), and adds no number and no
+    non-ASCII digit. `limit` defaults to the pack schema's."""
     found: list[Finding] = []
     if not translated.strip():
         return [Finding(path, "empty", "")]
-    if len(translated) > text_limit(path):
-        found.append(Finding(path, "too_long", f"{len(translated)} > {text_limit(path)}"))
-    if sorted(SPAN.findall(translated)) != sorted(SPAN.findall(english)):
+    cap = limit if limit is not None else text_limit(path)
+    if len(translated) > cap:
+        found.append(Finding(path, "too_long", f"{len(translated)} > {cap}"))
+    ours, theirs = Counter(SPAN.findall(translated)), Counter(SPAN.findall(english))
+    dropped = theirs - ours
+    if ours - theirs or any(not WORDABLE.match(span) for span in dropped):
         found.append(Finding(path, "spans_changed", "the math spans differ from the English"))
     if any(c.isdigit() and not c.isascii() for c in translated):
         found.append(Finding(path, "digits", "use the digits 0-9"))

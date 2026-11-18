@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "el",
+  "title": "Αρνητικοί αριθμοί",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Χρησιμοποιήστε την αριθμογραμμή και τους αντίθετους αριθμούς για να προσθέτετε, να αφαιρείτε και να πολλαπλασιάζετε αρνητικούς αριθμούς.",
+  "idea": "Ένας αρνητικός αριθμός είναι κάτω από το μηδέν. Στην αριθμογραμμή, το `-3` είναι τρία βήματα αριστερά από το μηδέν, ενώ το `3` είναι τρία βήματα δεξιά. Είναι αντίθετοι αριθμοί, γιατί έχουν την ίδια απόσταση από το μηδέν σε διαφορετικές πλευρές.\n\nΗ πρόσθεση θετικού αριθμού μας μετακινεί δεξιά. Η πρόσθεση αρνητικού αριθμού μας μετακινεί αριστερά. Η αφαίρεση ενός αριθμού μας μετακινεί αντίθετα από την πρόσθεσή του, άρα η αφαίρεση αρνητικού αριθμού μας μετακινεί δεξιά. Για παράδειγμα, το `5 - (-3)` γίνεται `5 + 3`.\n\nΌταν προστίθενται αριθμοί με διαφορετικά πρόσημα, τα πρόσημα τραβούν σε αντίθετες κατευθύνσεις. Το αποτέλεσμα έχει το πρόσημο του αριθμού που είναι πιο μακριά από το μηδέν, και η απόλυτη τιμή του είναι η διαφορά των δύο απολύτων τιμών. Έτσι το `-7 + 4` γίνεται `-(7 - 4)`.",
+  "why_it_works": "Η αφαίρεση μπορεί να σημαίνει απόσταση ανάμεσα σε δύο αριθμούς. Η διαφορά από το `-3` μέχρι το `5` καλύπτει τα βήματα από το `-3` ως το μηδέν και μετά από το μηδέν ως το `5`. Άρα η αφαίρεση αρνητικού είναι ίδια με την πρόσθεση του αντίθετού του: το `5 - (-3)` γίνεται `5 + 3`.\n\nΓια τον πολλαπλασιασμό, ένα μοτίβο εξηγεί τον κανόνα των προσήμων. Καθώς ο πρώτος παράγοντας μειώνεται κατά ένα στα `3*(-2)`, `2*(-2)`, `1*(-2)` και `0*(-2)`, το αποτέλεσμα αυξάνεται κατά δύο. Συνεχίζοντας το μοτίβο, παίρνουμε θετικά αποτελέσματα για αρνητικός επί αρνητικός.\n\nΈτσι το `(-4)*(-6)` γίνεται `4*6`. Αρνητικός επί αρνητικός είναι θετικός, γιατί το μοτίβο του πολλαπλασιασμού πρέπει να συνεχίζεται με συνέπεια.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Υπολογίστε:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η παράσταση έχει ένα σύμβολο αφαίρεσης και ένα αρνητικό πρόσημο. Κράτησέ τα χωριστά: ζητά το `5` μείον `-3`.",
+            "another_way": "Σκέψου το `-3` ως 3 βήματα αριστερά από το μηδέν. Η παράσταση `5 - (-3)` ζητά την απόσταση από το `-3` έως το `5`.",
+            "visual": "Στην αριθμογραμμή, σημείωσε το `-3` αριστερά από το μηδέν και το `5` δεξιά από το μηδέν."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η αφαίρεση ενός αρνητικού σε μετακινεί προς την αντίθετη κατεύθυνση από την πρόσθεση ενός αρνητικού, άρα σε μετακινεί προς τα δεξιά. Γι’ αυτό το `5 - (-3)` γίνεται `5 + 3`.",
+            "another_way": "Το να αφαιρείς ένα χρέος έχει το ίδιο αποτέλεσμα με το να κερδίζεις. Άρα το να αφαιρείς `-3` είναι η ίδια κίνηση με το να προσθέτεις `3`.",
+            "visual": "Ξεκίνα από το `5` στην αριθμογραμμή και έπειτα δείξε μια κίνηση `3` βημάτων προς τα δεξιά."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Μετά τη μετατροπή, ο υπολογισμός είναι μια συνηθισμένη πρόσθεση. Το `5 + 3` είναι `8`, άρα η τιμή της αρχικής παράστασης είναι `8`.",
+            "another_way": "Στην αριθμογραμμή, αν κινηθείς `3` βήματα δεξιά από το `5`, φτάνεις στο `8`. Η απόσταση από το `-3` έως το `5` είναι επίσης `8` βήματα.",
+            "visual": "Η κίνηση προς τα δεξιά από το `5` τελειώνει στο `8` στην αριθμογραμμή."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Υπολογίστε:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Η παράσταση `-7 + 4` προσθέτει αριθμούς με διαφορετικά πρόσημα. Είναι σαν διελκυστίνδα: το `-7` είναι πιο μακριά από το μηδέν από ό,τι το `4`, άρα το αποτέλεσμα θα μείνει αρνητικό.",
+            "another_way": "Ξεκινάμε από το `-7` και προσθέτουμε `4` μετακινούμενοι δεξιά `4` βήματα. Η μετακίνηση πηγαίνει προς το μηδέν, αλλά δεν το περνά.",
+            "visual": "Σε μια αριθμογραμμή, ξεκινάμε από το `-7` και σχεδιάζουμε `4` βήματα προς τα δεξιά."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Αφού το `7` είναι μεγαλύτερο από το `4`, κρατάμε το αρνητικό πρόσημο και συγκρίνουμε τα μεγέθη. Έτσι το `-7 + 4` γίνεται `-(7 - 4)`.",
+            "another_way": "Σκεφτόμαστε το `-7` ως τράβηγμα προς τα αριστερά και το `4` ως τράβηγμα προς τα δεξιά. Το τράβηγμα που μένει είναι προς τα αριστερά, με μέγεθος `7 - 4`.",
+            "visual": "Σε μια αριθμογραμμή, το αριστερό τράβηγμα του `7` και το δεξί τράβηγμα του `4` αφήνουν ένα αριστερό τράβηγμα `7 - 4`."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Το μέγεθος που μένει μετά τη διελκυστίνδα είναι `3`, και το αρνητικό πρόσημο δείχνει ότι η κατεύθυνση είναι αριστερά από το μηδέν. Άρα η απάντηση είναι `-3`.",
+            "another_way": "Από το `-7`, αν μετακινηθούμε δεξιά `4` βήματα, φτάνουμε στο `-3`. Αυτό συμφωνεί με το απλοποιημένο αποτέλεσμα.",
+            "visual": "Σε μια αριθμογραμμή, το βέλος τελειώνει στο `-3`, τρία βήματα αριστερά από το μηδέν."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Υπολογίστε:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Οι παράγοντες είναι και οι δύο αρνητικοί. Αρνητικός επί αρνητικό δίνει θετικό, άρα το γινόμενο μπορεί να γραφτεί χωρίς τα αρνητικά πρόσημα.",
+            "another_way": "Χρησιμοποίησε την ιδέα του μοτίβου: ο πολλαπλασιασμός με αρνητικό αλλάζει τη φορά, και όταν αυτό γίνεται δύο φορές δίνει θετικό γινόμενο.",
+            "visual": "Στην αριθμογραμμή, το `(-4)*(-6)` δείχνει ίσα αρνητικά άλματα που γίνονται αρνητικό αριθμό φορών, άρα αντιστρέφονται προς τα δεξιά."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Αφού τακτοποιηθεί το πρόσημο, πολλαπλασιάζονται μόνο τα μεγέθη. Η γραμμή `4*6` κρατά τα μέρη απόστασης των παραγόντων.",
+            "another_way": "Σκέψου τέσσερις ομάδες των έξι, αφού τα δύο αρνητικά έκαναν το γινόμενο θετικό.",
+            "visual": "Στην αριθμογραμμή, το `4*6` δείχνει 4 ίσα άλματα των 6 προς τα δεξιά από το μηδέν."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Ο πολλαπλασιασμός ολοκληρώθηκε: `4*6` είναι `24`. Άρα το `24` είναι η τιμή της αρχικής παράστασης.",
+            "another_way": "Η αρχική παράσταση έγινε θετικό γινόμενο, και αυτό το γινόμενο ισούται με `24`.",
+            "visual": "Στην αριθμογραμμή, τα άλματα τελειώνουν στο `24` δεξιά από το μηδέν."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Η αφαίρεση ενός αρνητικού αριθμού κάνει το αποτέλεσμα μικρότερο.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Η αφαίρεση συνήθως κάνει τα πράγματα μικρότερα, και ο μαθητής βλέπει δύο σύμβολα μείον και κρατά το μείον.",
+      "what_to_say": {
+        "probe": "Από πού ξεκινάς στην αριθμογραμμή, και προς ποια κατεύθυνση σε μετακινεί η αφαίρεση του `-3`;",
+        "nudge": "Ποια είναι η διαφορά ανάμεσα στο `5` και στο `-3`; Μέτρησε τα βήματα από το `-3` μέχρι το `5`.",
+        "tell": "Η αφαίρεση ενός αρνητικού είναι ίδια με την πρόσθεση του αντιθέτου του, άρα `5 - (-3)` είναι `5 + 3`, δηλαδή `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "8"
+      },
+      "source_quote": "Μερικοί μαθητές πιστεύουν ότι η αφαίρεση ενός αρνητικού αριθμού κάνει το αποτέλεσμα μικρότερο."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Ένας αρνητικός επί έναν αρνητικό δίνει αρνητικό.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Και οι δύο αριθμοί είναι αρνητικοί, οπότε φαίνεται φυσικό να είναι αρνητικό και το αποτέλεσμα.",
+      "what_to_say": {
+        "probe": "Πόσο είναι `1*(-3)` και `0*(-3)`; Τι συμβαίνει στο αποτέλεσμα κάθε φορά που ο πρώτος αριθμός μειώνεται κατά 1;",
+        "nudge": "Συνέχισε το μοτίβο `1*(-3)`, `0*(-3)`, `-1*(-3)` και δες προς ποια κατεύθυνση πηγαίνουν τα αποτελέσματα.",
+        "tell": "Το μοτίβο ανεβαίνει κατά 3 σε κάθε βήμα, άρα `(-2)*(-3)` είναι `6`. Ένας αρνητικός επί έναν αρνητικό είναι θετικός."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "20"
+      },
+      "source_quote": "Μερικοί μαθητές πιστεύουν ότι ένας αρνητικός επί έναν αρνητικό δίνει αρνητικό."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "Όταν προσθέτουμε αριθμούς με διαφορετικά πρόσημα, προσθέτουμε τα μεγέθη και κρατάμε το πρώτο πρόσημο.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "Ο μαθητής έχει μάθει ότι η πρόσθεση μεγαλώνει τους αριθμούς σε μέγεθος, και το πρώτο πρόσημο είναι αυτό που βλέπει πρώτο.",
+      "what_to_say": {
+        "probe": "Αν ξεκινήσεις από το `-5` και κινηθείς τρία βήματα, προς ποια κατεύθυνση κινείσαι;",
+        "nudge": "Φαντάσου μια διελκυστίνδα ανάμεσα στο `-5` και στο `3`. Ποια πλευρά κερδίζει, και με πόση διαφορά;",
+        "tell": "Το θετικό 3 τραβά πίσω προς το μηδέν, άρα `-5 + 3` είναι `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "-5"
+      },
+      "source_quote": "Μερικοί μαθητές προσθέτουν τα μεγέθη και κρατούν το πρόσημο του πρώτου αριθμού."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Πάντα αφαιρούμε τον μικρότερο αριθμό από τον μεγαλύτερο.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Με τους μη αρνητικούς ακέραιους αριθμούς, στους μαθητές είχαν πει ότι δεν μπορείς να αφαιρέσεις μεγαλύτερο αριθμό από μικρότερο.",
+      "what_to_say": {
+        "probe": "Πού καταλήγεις αν ξεκινήσεις από το `3` και κάνεις επτά βήματα προς τα αριστερά;",
+        "nudge": "Είναι το `3 - 7` ίδιο με το `7 - 3`; Δοκίμασε και τα δύο σε μια αριθμογραμμή.",
+        "tell": "7 βήματα αριστερά από το 3 καταλήγουν στο `-4`, άρα `3 - 7` είναι `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "-7"
+      },
+      "source_quote": "Μερικοί μαθητές πάντα αφαιρούν τον μικρότερο αριθμό από τον μεγαλύτερο."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "Δύο αρνητικά κάνουν θετικό, και στην πρόσθεση.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "Ο κανόνας «δύο αρνητικά κάνουν θετικό» είναι σύντομος και εύκολος να τον θυμάσαι, οπότε εφαρμόζεται σε κάθε ζευγάρι συμβόλων μείον.",
+      "what_to_say": {
+        "probe": "Αν χρωστάς 4 και μετά χρωστάς άλλα 3, πόσα χρωστάς συνολικά;",
+        "nudge": "Ξεκίνα από το `-4` στην αριθμογραμμή και πρόσθεσε `-3`. Προς ποια κατεύθυνση κινείσαι;",
+        "tell": "Η πρόσθεση ενός αρνητικού μετακινεί προς τα αριστερά, άρα `-4 + (-3)` είναι `-7`. Ο κανόνας των προσήμων είναι για τον πολλαπλασιασμό και τη διαίρεση."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Υπολογίστε:",
+        "answer": "-8"
+      },
+      "source_quote": "Μερικοί μαθητές εφαρμόζουν το «δύο αρνητικά κάνουν θετικό» στην πρόσθεση."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Γιατί η αφαίρεση αρνητικού μας μετακινεί δεξιά;",
+      "answer": "Η αφαίρεση μας μετακινεί αντίθετα από την πρόσθεση. Η πρόσθεση αρνητικού μας μετακινεί αριστερά, άρα η αφαίρεση αρνητικού μας μετακινεί δεξιά. Για παράδειγμα, το `5 - (-3)` γίνεται `5 + 3`."
+    },
+    {
+      "question": "Δίνουν πάντα δύο αρνητικά θετικό;",
+      "answer": "Όχι. Αυτός ο κανόνας ισχύει για τον πολλαπλασιασμό και τη διαίρεση. Στην πρόσθεση, σημασία έχει η κατεύθυνση. Η πρόσθεση δύο αρνητικών μας μετακινεί πιο αριστερά στην αριθμογραμμή."
+    },
+    {
+      "question": "Γιατί το `-7 + 4` είναι αρνητικό;",
+      "answer": "Οι αριθμοί τραβούν σε αντίθετες κατευθύνσεις. Το `-7` είναι πιο μακριά από το μηδέν από το `4`, άρα το αποτέλεσμα κρατά το αρνητικό πρόσημο. Το `-7 + 4` γίνεται `-(7 - 4)`."
+    },
+    {
+      "question": "Γιατί αρνητικός επί αρνητικός είναι θετικός;",
+      "answer": "Το μοτίβο του πολλαπλασιασμού πρέπει να συνεχίζεται. Καθώς ένας παράγοντας μειώνεται και περνά από το μηδέν, τα αποτελέσματα συνεχίζουν να αυξάνονται κατά το ίδιο ποσό, κάτι που οδηγεί σε θετικά αποτελέσματα."
+    },
+    {
+      "question": "Μπορεί το `3 - 7` να έχει αποτέλεσμα;",
+      "answer": "Ναι. Ξεκινήστε από το `3` και μετακινηθείτε επτά βήματα αριστερά στην αριθμογραμμή. Το σημείο όπου φτάνετε είναι κάτω από το μηδέν."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Τοποθετούμε αρνητικούς αριθμούς",
+      "activity": "Σχεδιάστε μια αριθμογραμμή με το μηδέν στο κέντρο. Τοποθετήστε θετικούς και αρνητικούς αριθμούς σε ίσα βήματα από το μηδέν. Τονίστε τους αντίθετους αριθμούς, όπως το `-3` και το `3`, ως ίδια απόσταση από το μηδέν σε διαφορετικές πλευρές."
+    },
+    {
+      "minutes": 10,
+      "title": "Η πρόσθεση ως μετακίνηση",
+      "activity": "Χρησιμοποιήστε την αριθμογραμμή για να δείξετε ότι η πρόσθεση θετικού μας μετακινεί δεξιά και η πρόσθεση αρνητικού μας μετακινεί αριστερά. Βάλτε ένα παράδειγμα με διαφορετικά πρόσημα και περιγράψτε το σαν διελκυστίνδα."
+    },
+    {
+      "minutes": 10,
+      "title": "Αφαιρούμε αρνητικούς",
+      "activity": "Κρατήστε χωριστά την πράξη και το πρόσημο λέγοντας «αφαιρώ» και «αρνητικός». Δείξτε ότι η αφαίρεση μετακινεί αντίθετα από την πρόσθεση, άρα το `5 - (-3)` γίνεται `5 + 3`."
+    },
+    {
+      "minutes": 10,
+      "title": "Διαφορετικά πρόσημα στην πρόσθεση",
+      "activity": "Δείξτε παραδείγματα όπου τα πρόσημα τραβούν σε αντίθετες κατευθύνσεις. Το αποτέλεσμα παίρνει το πρόσημο του αριθμού που είναι πιο μακριά από το μηδέν, και η απόλυτη τιμή του είναι η διαφορά των απολύτων τιμών. Χρησιμοποιήστε ότι το `-7 + 4` γίνεται `-(7 - 4)`."
+    },
+    {
+      "minutes": 10,
+      "title": "Πολλαπλασιάζουμε με μοτίβο",
+      "activity": "Δείξτε το μοτίβο από θετικούς παράγοντες προς τα κάτω, περνώντας από το μηδέν. Χρησιμοποιήστε το για να εξηγήσετε γιατί αρνητικός επί αρνητικός είναι θετικός, και μετά συνδέστε το με το ότι το `(-4)*(-6)` γίνεται `4*6`."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Η αφαίρεση ενός αρνητικού αριθμού είναι το ίδιο με την πρόσθεση του αντίθετού του."
+        },
+        {
+          "rung": "computation",
+          "text": "Το ξαναγράφουμε ως `-7 + 4` και κινούμαστε 4 βήματα δεξιά από το `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Η αφαίρεση ενός αρνητικού αριθμού είναι το ίδιο με την πρόσθεση του αντίθετού του."
+        },
+        {
+          "rung": "computation",
+          "text": "Το ξαναγράφουμε ως `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "Όταν τα πρόσημα είναι διαφορετικά, αφαιρούμε τις απόλυτες τιμές και κρατάμε το πρόσημο του αριθμού που είναι πιο μακριά από το μηδέν."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` είναι `17`, και το `-32` είναι πιο μακριά από το μηδέν από το `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "Όταν και οι δύο αριθμοί είναι αρνητικοί, προσθέτουμε τις απόλυτες τιμές και κρατάμε το αρνητικό πρόσημο."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` είναι `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "Αρνητικός επί αρνητικός δίνει θετικό."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` είναι `14`, και τα πρόσημα είναι ίδια."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "Όταν τα δύο πρόσημα είναι διαφορετικά, το γινόμενο είναι αρνητικό."
+        },
+        {
+          "rung": "computation",
+          "text": "Αγνοούμε πρώτα το πρόσημο: `9*3` είναι `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Η διαίρεση αρνητικού με αρνητικό δίνει θετικό, όπως και στον πολλαπλασιασμό."
+        },
+        {
+          "rung": "computation",
+          "text": "Αγνοούμε πρώτα τα πρόσημα: `100/4` είναι `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Υπολογίστε:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Θέλουμε την τιμή του `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Κάνουμε τους πολλαπλασιασμούς πριν από τις προσθέσεις και τις αφαιρέσεις."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` είναι `-30` και `7*(-2)` είναι `-14`, άρα παίρνουμε `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

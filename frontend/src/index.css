@@ -29,17 +29,19 @@
   --color-mark: #b45309;
 
   /* Script fallbacks are loaded only while their language is active (src/i18n/fonts.ts).
-     Inter covers Latin, Cyrillic and Greek; Kalam covers Latin and Devanagari, and math is ASCII. */
+     Inter covers Latin, Cyrillic and Greek; Kalam covers Latin and Devanagari, and math is ASCII.
+     Playpen Sans is the handwriting face for Cyrillic and Greek, which Kalam lacks. */
   --font-heading:
     'Figtree Variable', 'Inter Variable', 'Noto Sans Arabic Variable',
     'Noto Sans Devanagari Variable', 'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable',
-    system-ui, sans-serif;
+    'Noto Sans SC Variable', system-ui, sans-serif;
   --font-sans:
     'Inter Variable', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
-    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', system-ui, sans-serif;
+    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', 'Noto Sans SC Variable',
+    system-ui, sans-serif;
   --font-hand:
-    'Kalam', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
-    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', cursive;
+    'Kalam', 'Playpen Sans Variable', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
+    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', 'Noto Sans SC Variable', cursive;
 
   /* Handwriting write-on: the line is revealed left to right. Math is always LTR. */
   --animate-write: write 0.9s steps(14) both;

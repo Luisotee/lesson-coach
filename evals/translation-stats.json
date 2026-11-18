@@ -2,41 +2,435 @@
   "fr": {
     "lang": "fr",
     "shipped": false,
-    "usd": 6.701832,
+    "usd": 7.913442,
     "stats": {
       "calls": {
-        "generate": 41,
-        "judge": 77
+        "generate": 38,
+        "judge": 60
       },
       "failed_calls": 0,
-      "prompt_tokens": 121940,
-      "cached_tokens": 11520,
-      "completion_tokens": 25165,
-      "reasoning_tokens": 866,
-      "retries": 22,
+      "prompt_tokens": 103398,
+      "cached_tokens": 12800,
+      "completion_tokens": 25074,
+      "reasoning_tokens": 2964,
+      "retries": 19,
       "samples": 0,
       "judge_flags": {
-        "worked_examples[1].steps[2].explanations.another_way": 2,
-        "worked_examples[1].steps[0].explanations.another_way": 3,
-        "misconceptions[1].what_to_say.probe": 2,
-        "misconceptions[2].what_to_say.probe": 1,
-        "prompts.solve": 1,
+        "outline[4].activity": 1,
         "practice[1].hints[1].text": 1,
         "practice[2].hints[1].text": 1,
-        "practice[0].hints[1].text": 1,
-        "why_it_works": 2,
-        "outline[4].activity": 1,
-        "misconceptions[4].what_to_say.probe": 1,
-        "outline[2].activity": 3
+        "prompts.solve": 1,
+        "outline[2].activity": 1,
+        "misconceptions[4].what_to_say.probe": 2,
+        "misconceptions[2].what_to_say.nudge": 1,
+        "why_it_works": 1,
+        "misconceptions[2].belief": 1,
+        "misconceptions[2].source_quote": 1,
+        "worked_examples[2].steps[0].explanations.another_way": 1,
+        "worked_examples[2].steps[3].explanations.another_way": 1
       },
-      "judged_items": 372,
+      "judged_items": 368,
       "dropped": []
     },
     "failing": [
-      "fractions: worked_examples[1].steps[2].explanations.another_way: judge: The translation renders “more than one whole” as “supérieur à un entier,” which means greater than an integer/whole number rather than greater than one whole unit. (This changes the intended meaning; it should convey that the result is greater than one whole (e.g., “supérieur à une unité” or “plus grand que 1”).)",
-      "linear-equations: outline[2].activity: judge: \"Keep the focus on the balance step\" is mistranslated as \"Garder l’attention sur l’étape d’équilibre,\" which is not idiomatic/clear French for maintaining focus on the balancing step in equation solving. (The phrase \"garder l’attention\" is unidiomatic here; a native reader may not understand it as intended. It should be something like \"Garder l’accent sur l’étape d’équilibrage\" or \"Mettre l’accent sur...\")",
-      "linear-equations: worked_examples[1].steps[0].explanations.another_way: judge: The phrase \"on divise tout des deux membres par `5`\" is ungrammatical/unnatural French and does not clearly convey dividing the entirety of both sides by 5. (French would require something like \"on divise les deux membres par 5\" or \"on divise chacun des deux membres par 5\"; \"tout des deux membres\" is not grammatical.)"
+      "fractions: worked_examples[2].steps[3].explanations.another_way: spans_changed: the math spans differ from the English; number_not_in_source: ['1'] not in the English"
     ],
-    "last_usd": 1.31
+    "last_usd": 1.21161
+  },
+  "ar": {
+    "lang": "ar",
+    "shipped": false,
+    "usd": 1.320194,
+    "stats": {
+      "calls": {
+        "generate": 38,
+        "judge": 70
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 118012,
+      "cached_tokens": 7168,
+      "completion_tokens": 25413,
+      "reasoning_tokens": 693,
+      "retries": 19,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "worked_examples[0].steps[2].explanations.visual": 2,
+        "worked_examples[2].steps[1].explanations.visual": 2,
+        "misconceptions[4].why_it_feels_right": 1,
+        "misconceptions[2].belief": 1,
+        "misconceptions[2].source_quote": 1,
+        "practice[0].hints[1].text": 1,
+        "practice[1].hints[1].text": 1,
+        "worked_examples[0].steps[1].explanations.another_way": 1,
+        "worked_examples[0].steps[1].explanations.visual": 1,
+        "worked_examples[2].steps[2].explanations.another_way": 2,
+        "worked_examples[2].steps[2].explanations.visual": 2,
+        "why_it_works": 1,
+        "outline[3].activity": 2,
+        "misconceptions[4].what_to_say.probe": 2,
+        "outline[2].activity": 1
+      },
+      "judged_items": 376,
+      "dropped": []
+    },
+    "failing": [
+      "linear-equations: worked_examples[2].steps[2].explanations.another_way: spans_changed: the math spans differ from the English",
+      "linear-equations: worked_examples[2].steps[2].explanations.visual: spans_changed: the math spans differ from the English"
+    ],
+    "last_usd": 1.320194
+  },
+  "de": {
+    "lang": "de",
+    "shipped": true,
+    "usd": 1.237291,
+    "stats": {
+      "calls": {
+        "generate": 36,
+        "judge": 66
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 108257,
+      "cached_tokens": 9472,
+      "completion_tokens": 24621,
+      "reasoning_tokens": 459,
+      "retries": 17,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 1,
+        "worked_examples[0].steps[0].explanations.visual": 1,
+        "idea": 1,
+        "misconceptions[1].belief": 1,
+        "questions[0].question": 1,
+        "outline[2].activity": 3,
+        "misconceptions[0].what_to_say.tell": 2,
+        "misconceptions[4].belief": 1,
+        "misconceptions[4].why_it_feels_right": 1,
+        "misconceptions[4].source_quote": 1,
+        "misconceptions[0].why_it_feels_right": 1,
+        "questions[1].question": 1
+      },
+      "judged_items": 371,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.237291
+  },
+  "el": {
+    "lang": "el",
+    "shipped": true,
+    "usd": 1.300551,
+    "stats": {
+      "calls": {
+        "generate": 34,
+        "judge": 58
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 112035,
+      "cached_tokens": 15872,
+      "completion_tokens": 27060,
+      "reasoning_tokens": 172,
+      "retries": 15,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "misconceptions[3].why_it_feels_right": 1,
+        "misconceptions[3].belief": 1,
+        "misconceptions[3].source_quote": 1,
+        "misconceptions[1].why_it_feels_right": 1,
+        "why_it_works": 1,
+        "questions[3].question": 1,
+        "outline[4].activity": 1,
+        "outline[2].activity": 2,
+        "worked_examples[2].steps[1].explanations.another_way": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.300551
+  },
+  "it": {
+    "lang": "it",
+    "shipped": false,
+    "usd": 1.291658,
+    "stats": {
+      "calls": {
+        "generate": 35,
+        "judge": 73
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 115132,
+      "cached_tokens": 10496,
+      "completion_tokens": 25441,
+      "reasoning_tokens": 1458,
+      "retries": 16,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 3,
+        "worked_examples[0].steps[2].explanations.visual": 2,
+        "worked_examples[1].steps[0].explanations.visual": 1,
+        "outline[3].activity": 1,
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "questions[4].question": 1,
+        "misconceptions[2].what_to_say.nudge": 2,
+        "practice[5].hints[1].text": 1,
+        "outline[2].activity": 4
+      },
+      "judged_items": 371,
+      "dropped": []
+    },
+    "failing": [
+      "linear-equations: outline[2].activity: judge: “Keep the focus on the balance step” is translated as “Mantieni l’attenzione sul passaggio di equilibrio.” (In Italian math teaching, “balance step” here refers to maintaining equation balance by applying the same operation to both sides; “passaggio di equilibrio” is not a standard or clear term and may not be understood as intended.)"
+    ],
+    "last_usd": 1.291658
+  },
+  "pt": {
+    "lang": "pt",
+    "shipped": true,
+    "usd": 1.126816,
+    "stats": {
+      "calls": {
+        "generate": 32,
+        "judge": 60
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 109868,
+      "cached_tokens": 17152,
+      "completion_tokens": 21822,
+      "reasoning_tokens": 839,
+      "retries": 13,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 1,
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "outline[4].activity": 1,
+        "misconceptions[3].why_it_feels_right": 1,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "practice[0].hints[1].text": 2,
+        "questions[5].answer": 1,
+        "misconceptions[0].belief": 1,
+        "misconceptions[4].what_to_say.probe": 2,
+        "practice[1].hints[1].text": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.126816
+  },
+  "pt-BR": {
+    "lang": "pt-BR",
+    "shipped": true,
+    "usd": 1.135488,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 59
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 98940,
+      "cached_tokens": 6656,
+      "completion_tokens": 22358,
+      "reasoning_tokens": 1307,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.why": 2,
+        "worked_examples[1].steps[2].explanations.visual": 1,
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "misconceptions[3].belief": 1,
+        "misconceptions[3].source_quote": 3,
+        "questions[1].question": 1,
+        "why_it_works": 2,
+        "misconceptions[4].what_to_say.probe": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.135488
+  },
+  "ru": {
+    "lang": "ru",
+    "shipped": true,
+    "usd": 1.134675,
+    "stats": {
+      "calls": {
+        "generate": 32,
+        "judge": 51
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 94533,
+      "cached_tokens": 2560,
+      "completion_tokens": 22451,
+      "reasoning_tokens": 276,
+      "retries": 13,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "worked_examples[2].steps[0].explanations.why": 1,
+        "questions[4].question": 1,
+        "misconceptions[3].belief": 1,
+        "misconceptions[0].what_to_say.tell": 1,
+        "misconceptions[1].why_it_feels_right": 1,
+        "idea": 2,
+        "why_it_works": 1,
+        "outline[1].title": 2,
+        "worked_examples[2].steps[1].explanations.another_way": 1
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.134675
+  },
+  "es": {
+    "lang": "es",
+    "shipped": true,
+    "usd": 1.009966,
+    "stats": {
+      "calls": {
+        "generate": 32,
+        "judge": 50
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 92402,
+      "cached_tokens": 9472,
+      "completion_tokens": 19686,
+      "reasoning_tokens": 46,
+      "retries": 13,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "worked_examples[0].steps[1].explanations.why": 1,
+        "misconceptions[2].what_to_say.nudge": 2,
+        "why_it_works": 2,
+        "misconceptions[4].what_to_say.probe": 1,
+        "idea": 1
+      },
+      "judged_items": 364,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.009966
+  },
+  "sv": {
+    "lang": "sv",
+    "shipped": true,
+    "usd": 1.095261,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 51
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 96669,
+      "cached_tokens": 8192,
+      "completion_tokens": 21626,
+      "reasoning_tokens": 1002,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.why": 1,
+        "misconceptions[3].why_it_feels_right": 2,
+        "practice[1].hints[1].text": 1,
+        "practice[2].hints[1].text": 1,
+        "misconceptions[2].why_it_feels_right": 1,
+        "misconceptions[3].source_quote": 1,
+        "questions[4].answer": 1,
+        "practice[4].hints[1].text": 1,
+        "practice[5].hints[1].text": 1,
+        "outline[2].activity": 2
+      },
+      "judged_items": 368,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.095261
+  },
+  "pl": {
+    "lang": "pl",
+    "shipped": true,
+    "usd": 1.425903,
+    "stats": {
+      "calls": {
+        "generate": 36,
+        "judge": 70
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 121767,
+      "cached_tokens": 4096,
+      "completion_tokens": 27850,
+      "reasoning_tokens": 550,
+      "retries": 17,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[0].explanations.visual": 1,
+        "worked_examples[1].steps[0].explanations.another_way": 1,
+        "practice[0].hints[1].text": 1,
+        "worked_examples[1].steps[0].explanations.visual": 1,
+        "why_it_works": 2,
+        "questions[0].answer": 3,
+        "outline[5].activity": 1,
+        "misconceptions[1].what_to_say.nudge": 1,
+        "misconceptions[1].what_to_say.tell": 1,
+        "outline[2].activity": 1,
+        "misconceptions[2].what_to_say.nudge": 2,
+        "misconceptions[4].what_to_say.probe": 1,
+        "misconceptions[0].what_to_say.probe": 1,
+        "practice[1].hints[2].text": 1,
+        "practice[2].hints[2].text": 1,
+        "practice[4].hints[2].text": 1,
+        "practice[5].hints[2].text": 1,
+        "practice[6].hints[2].text": 1,
+        "practice[7].hints[2].text": 1
+      },
+      "judged_items": 379,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.425903
+  },
+  "kk": {
+    "lang": "kk",
+    "shipped": false,
+    "usd": 1.276463,
+    "stats": {
+      "calls": {
+        "generate": 31,
+        "judge": 59
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 102325,
+      "cached_tokens": 2816,
+      "completion_tokens": 25917,
+      "reasoning_tokens": 1408,
+      "retries": 12,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[0].steps[0].explanations.another_way": 1,
+        "worked_examples[0].steps[0].explanations.why": 1,
+        "questions[3].answer": 1,
+        "misconceptions[2].what_to_say.nudge": 2,
+        "questions[4].answer": 1,
+        "worked_examples[1].steps[0].explanations.why": 1,
+        "worked_examples[1].steps[1].explanations.why": 1,
+        "worked_examples[1].steps[1].explanations.another_way": 1,
+        "worked_examples[1].steps[1].explanations.visual": 1,
+        "worked_examples[1].steps[2].explanations.visual": 1,
+        "misconceptions[4].what_to_say.probe": 2,
+        "misconceptions[1].what_to_say.probe": 2,
+        "misconceptions[1].what_to_say.nudge": 2
+      },
+      "judged_items": 371,
+      "dropped": []
+    },
+    "failing": [
+      "linear-equations: misconceptions[1].what_to_say.probe: judge: TR uses “two-ға” instead of the Kazakh Cyrillic “екіге” for “by two”. (The translation leaves the English word “two” in Latin script with a Kazakh suffix, which is not proper Kazakh Cyrillic and is ungrammatical/nonnative in this teaching context.)",
+      "linear-equations: misconceptions[1].what_to_say.nudge: judge: TR uses “two-ға” instead of the Kazakh Cyrillic “екіге” for “by two”. (The translation leaves the English word “two” in Latin script with a Kazakh suffix, which is not proper Kazakh Cyrillic and is ungrammatical/nonnative in this teaching context.)"
+    ],
+    "last_usd": 1.276463
   }
 }

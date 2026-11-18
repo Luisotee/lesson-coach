@@ -3,5 +3,45 @@
     "evaluate": "Work out:",
     "simplify": "Simplify:",
     "solve": "Solve for {var}:"
+  },
+  "de": {
+    "evaluate": "Berechne:",
+    "simplify": "Vereinfache:",
+    "solve": "Löse nach {var} auf:"
+  },
+  "el": {
+    "evaluate": "Υπολογίστε:",
+    "simplify": "Απλοποιήστε:",
+    "solve": "Λύστε ως προς {var}:"
+  },
+  "es": {
+    "evaluate": "Calcula:",
+    "simplify": "Simplifica:",
+    "solve": "Resuelve para {var}:"
+  },
+  "pl": {
+    "evaluate": "Oblicz:",
+    "simplify": "Uprość:",
+    "solve": "Rozwiąż równanie ze względu na {var}:"
+  },
+  "pt": {
+    "evaluate": "Calcula:",
+    "simplify": "Simplifica:",
+    "solve": "Resolve em ordem a {var}:"
+  },
+  "pt-BR": {
+    "evaluate": "Calcule:",
+    "simplify": "Simplifique:",
+    "solve": "Resolva para {var}:"
+  },
+  "ru": {
+    "evaluate": "Вычислите:",
+    "simplify": "Упростите:",
+    "solve": "Решите относительно {var}:"
+  },
+  "sv": {
+    "evaluate": "Beräkna:",
+    "simplify": "Förenkla:",
+    "solve": "Lös ut {var}:"
   }
 }

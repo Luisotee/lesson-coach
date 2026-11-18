@@ -1,0 +1,747 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "negative-numbers",
+  "lang": "es",
+  "title": "Números negativos",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Usar la recta numérica y los opuestos para sumar, restar y multiplicar números negativos.",
+  "idea": "Un número negativo está por debajo de cero. En una recta numérica, `-3` está 3 pasos a la izquierda de cero, mientras que `3` está 3 pasos a la derecha. Son opuestos porque están a la misma distancia de cero en lados distintos.\n\nSumar un número positivo mueve hacia la derecha. Sumar un número negativo mueve hacia la izquierda. Restar un número mueve en el sentido opuesto a sumarlo, por eso restar un número negativo mueve hacia la derecha. Por ejemplo, `5 - (-3)` se convierte en `5 + 3`.\n\nCuando se suman números con signos distintos, los signos tiran en sentidos opuestos. La respuesta tiene el signo del número más alejado de cero, y su tamaño es la diferencia de los dos tamaños. Así, `-7 + 4` se convierte en `-(7 - 4)`.",
+  "why_it_works": "La resta puede significar la distancia entre dos números. La diferencia desde `-3` hasta `5` cubre los pasos de `-3` a cero y luego de cero a `5`. Por eso, restar un negativo es lo mismo que sumar su opuesto: `5 - (-3)` se convierte en `5 + 3`.\n\nPara la multiplicación, un patrón explica la regla de los signos. Cuando el primer factor baja de uno en uno en `3*(-2)`, `2*(-2)`, `1*(-2)` y `0*(-2)`, la respuesta sube de dos en dos. Al continuar el patrón se obtienen respuestas positivas para un negativo por un negativo.\n\nAsí, `(-4)*(-6)` se convierte en `4*6`. Un negativo por un negativo es positivo porque el patrón de la multiplicación debe continuar de manera constante.",
+  "prerequisites": [],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "prompt": "Calcula:",
+      "steps": [
+        {
+          "left": "5 - (-3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "La expresión tiene un signo de resta y un signo negativo. Mantenlos separados: pide `5` menos `-3`.",
+            "another_way": "Piensa en `-3` como 3 pasos a la izquierda del cero. La expresión `5 - (-3)` pide la distancia de `-3` a `5`.",
+            "visual": "En una recta numérica, marca `-3` a la izquierda del cero y `5` a la derecha del cero."
+          }
+        },
+        {
+          "left": "5 + 3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Restar un número negativo te mueve en sentido contrario a sumar un número negativo, así que te mueve hacia la derecha. Por eso `5 - (-3)` se convierte en `5 + 3`.",
+            "another_way": "Quitar una deuda tiene el mismo efecto que ganar. Entonces restar `-3` es el mismo movimiento que sumar `3`.",
+            "visual": "Empieza en `5` en la recta numérica; luego muestra un movimiento de `3` pasos hacia la derecha."
+          }
+        },
+        {
+          "left": "8",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Después de reescribir, el cálculo es una suma común. `5 + 3` es `8`, así que el valor de la expresión original es `8`.",
+            "another_way": "En la recta numérica, al moverse `3` pasos a la derecha desde `5`, se llega a `8`. La distancia de `-3` a `5` también es de `8` pasos.",
+            "visual": "El movimiento hacia la derecha desde `5` termina en `8` en la recta numérica."
+          }
+        }
+      ],
+      "answer": "8"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 + 4"
+      },
+      "prompt": "Calcula:",
+      "steps": [
+        {
+          "left": "-7 + 4",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "La expresión `-7 + 4` suma números con signos distintos. Es como un tira y afloja: `-7` está más lejos de cero que `4`, así que el resultado seguirá siendo negativo.",
+            "another_way": "Empieza en `-7` y suma `4` moviéndote `4` pasos a la derecha. El movimiento va hacia cero, pero no lo pasa.",
+            "visual": "En una recta numérica, empieza en `-7` y dibuja `4` pasos hacia la derecha."
+          }
+        },
+        {
+          "left": "-(7 - 4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Como `7` es mayor que `4`, conserva el signo negativo y compara los tamaños. Entonces `-7 + 4` se convierte en `-(7 - 4)`.",
+            "another_way": "Piensa en `-7` como un tirón hacia la izquierda y en `4` como un tirón hacia la derecha. El tirón que queda va hacia la izquierda, con tamaño `7 - 4`.",
+            "visual": "En una recta numérica, el tirón hacia la izquierda de `7` y el tirón hacia la derecha de `4` dejan un tirón hacia la izquierda de `7 - 4`."
+          }
+        },
+        {
+          "left": "-3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "El tamaño que queda después del tira y afloja es `3`, y el signo negativo muestra que la dirección es a la izquierda de cero. Entonces la respuesta es `-3`.",
+            "another_way": "Desde `-7`, moverse `4` pasos a la derecha lleva a `-3`. Esto coincide con el resultado simplificado.",
+            "visual": "En una recta numérica, la flecha termina en `-3`, tres pasos a la izquierda de cero."
+          }
+        }
+      ],
+      "answer": "-3"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-4)*(-6)"
+      },
+      "prompt": "Calcula:",
+      "steps": [
+        {
+          "left": "(-4)*(-6)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Los dos factores son negativos. Un negativo por un negativo es positivo, así que el producto se puede reescribir sin los signos negativos.",
+            "another_way": "Usa la idea del patrón: multiplicar por un negativo cambia la dirección, y hacerlo dos veces da un producto positivo.",
+            "visual": "En una recta numérica, `(-4)*(-6)` muestra saltos negativos iguales dados un número negativo de veces, invirtiéndose hacia la derecha."
+          }
+        },
+        {
+          "left": "4*6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Después de resolver el signo, solo se multiplican los tamaños. La línea `4*6` conserva las partes de distancia de los factores.",
+            "another_way": "Piensa en cuatro grupos de seis después de que los dos negativos hayan hecho que el producto sea positivo.",
+            "visual": "En una recta numérica, `4*6` muestra 4 saltos iguales de 6 hacia la derecha desde cero."
+          }
+        },
+        {
+          "left": "24",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "La multiplicación está completa: `4*6` es `24`. Entonces `24` es el valor de la expresión original.",
+            "another_way": "La expresión original se convirtió en un producto positivo, y ese producto es igual a `24`.",
+            "visual": "En una recta numérica, los saltos terminan en `24`, a la derecha de cero."
+          }
+        }
+      ],
+      "answer": "24"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "minus_negative_stays_minus",
+      "belief": "Restar un número negativo hace que la respuesta sea menor.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "La resta suele hacer que las cosas sean menores, y el estudiante ve dos signos menos y conserva un menos.",
+      "what_to_say": {
+        "probe": "¿Dónde empiezas en la recta numérica, y hacia qué lado te mueve restar `-3`?",
+        "nudge": "¿Cuál es la diferencia entre `5` y `-3`? Cuenta los pasos desde `-3` hasta `5`.",
+        "tell": "Restar un negativo es lo mismo que sumar su opuesto, así que `5 - (-3)` es `5 + 3`, que es `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Calcula:",
+        "answer": "8"
+      },
+      "source_quote": "Algunos estudiantes creen que restar un número negativo hace que la respuesta sea menor."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "neg_times_neg_is_neg",
+      "belief": "Un negativo por un negativo es negativo.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Ambos números son negativos, así que parece natural que la respuesta también sea negativa.",
+      "what_to_say": {
+        "probe": "¿Cuánto es `1*(-3)`, y `0*(-3)`? ¿Qué le pasa a la respuesta cada vez que el primer número baja en uno?",
+        "nudge": "Continúa el patrón `1*(-3)`, `0*(-3)`, `-1*(-3)` y observa hacia dónde van las respuestas.",
+        "tell": "El patrón sube 3 en cada paso, así que `(-2)*(-3)` es `6`. Un negativo por un negativo es positivo."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Calcula:",
+        "answer": "20"
+      },
+      "source_quote": "Algunos estudiantes creen que un negativo por un negativo es negativo."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_magnitudes_keep_sign",
+      "belief": "Al sumar números con signos diferentes, se suman los tamaños y se conserva el primer signo.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "El estudiante ha aprendido que sumar hace que los números sean más grandes en tamaño, y el primer signo es el que ve primero.",
+      "what_to_say": {
+        "probe": "Si empiezas en `-5` y avanzas tres pasos, ¿hacia qué lado te mueves?",
+        "nudge": "Imagina un tira y afloja entre `-5` y `3`. ¿Qué lado gana, y por cuánto?",
+        "tell": "El tres positivo jala hacia el cero, así que `-5 + 3` es `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Calcula:",
+        "answer": "-5"
+      },
+      "source_quote": "Algunos estudiantes suman los tamaños y conservan el signo del primer número."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_smaller_from_larger",
+      "belief": "Siempre se resta el número menor del mayor.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Con números naturales, a los estudiantes se les dijo que no se puede quitar un número mayor de uno menor.",
+      "what_to_say": {
+        "probe": "¿Dónde llegas si empiezas en `3` y das siete pasos hacia la izquierda?",
+        "nudge": "¿Es `3 - 7` lo mismo que `7 - 3`? Prueba ambos en una recta numérica.",
+        "tell": "Siete pasos a la izquierda desde tres llegan a `-4`, así que `3 - 7` es `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Calcula:",
+        "answer": "-7"
+      },
+      "source_quote": "Algunos estudiantes siempre restan el número menor del mayor."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "two_negatives_make_positive",
+      "belief": "Dos negativos hacen un positivo, también al sumar.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "La regla \"dos negativos hacen un positivo\" es corta y fácil de recordar, así que se aplica a cada par de signos menos.",
+      "what_to_say": {
+        "probe": "Si debes 4 y luego debes 3 más, ¿cuánto debes?",
+        "nudge": "Empieza en `-4` en la recta numérica y suma `-3`. ¿Hacia qué lado te mueves?",
+        "tell": "Sumar un negativo mueve hacia la izquierda, así que `-4 + (-3)` es `-7`. La regla de signos es para multiplicar y dividir."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Calcula:",
+        "answer": "-8"
+      },
+      "source_quote": "Algunos estudiantes aplican \"dos negativos hacen un positivo\" a la suma."
+    }
+  ],
+  "questions": [
+    {
+      "question": "¿Por qué restar un negativo mueve hacia la derecha?",
+      "answer": "Restar mueve en el sentido opuesto a sumar. Sumar un negativo mueve hacia la izquierda, así que restar un negativo mueve hacia la derecha. Por ejemplo, `5 - (-3)` se convierte en `5 + 3`."
+    },
+    {
+      "question": "¿Dos negativos siempre dan un positivo?",
+      "answer": "No. Esa regla es para multiplicar y dividir. En la suma, importa el sentido. Sumar dos negativos mueve más hacia la izquierda en la recta numérica."
+    },
+    {
+      "question": "¿Por qué `-7 + 4` es negativo?",
+      "answer": "Los números tiran en sentidos opuestos. `-7` está más lejos de cero que `4`, así que la respuesta conserva el signo negativo. `-7 + 4` se convierte en `-(7 - 4)`."
+    },
+    {
+      "question": "¿Por qué un negativo por un negativo es positivo?",
+      "answer": "El patrón de la multiplicación debe continuar. Cuando un factor baja pasando por cero, las respuestas siguen aumentando en la misma cantidad, lo que lleva a respuestas positivas."
+    },
+    {
+      "question": "¿Puede `3 - 7` tener una respuesta?",
+      "answer": "Sí. Empieza en `3` y muévete siete pasos a la izquierda en la recta numérica. El punto de llegada está por debajo de cero."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Ubicar negativos",
+      "activity": "Dibuja una recta numérica con el cero en el centro. Coloca números positivos y negativos a pasos iguales desde cero. Destaca los opuestos, como `-3` y `3`, como la misma distancia de cero en lados distintos."
+    },
+    {
+      "minutes": 10,
+      "title": "Sumar como movimiento",
+      "activity": "Usa la recta numérica para mostrar que sumar un positivo mueve hacia la derecha y sumar un negativo mueve hacia la izquierda. Incluye un ejemplo con signos distintos y descríbelo como un tira y afloja."
+    },
+    {
+      "minutes": 10,
+      "title": "Restar negativos",
+      "activity": "Mantén separadas la operación y el signo diciendo “restar” y “negativo”. Muestra que restar mueve en sentido opuesto a sumar, así que `5 - (-3)` se convierte en `5 + 3`."
+    },
+    {
+      "minutes": 10,
+      "title": "Signos distintos en la suma",
+      "activity": "Modela ejemplos en los que los signos tiran en sentidos opuestos. La respuesta toma el signo del número más alejado de cero, y el tamaño es la diferencia de los tamaños. Usa que `-7 + 4` se convierte en `-(7 - 4)`."
+    },
+    {
+      "minutes": 10,
+      "title": "Multiplicar con un patrón",
+      "activity": "Muestra el patrón desde factores positivos bajando hasta pasar por cero. Úsalo para explicar por qué un negativo por un negativo es positivo, y luego relaciónalo con que `(-4)*(-6)` se convierte en `4*6`."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23178",
+      "title": "meet negative numbers",
+      "grade": 6
+    },
+    {
+      "url": "https://akelius.education/math/en/lesson/22130",
+      "title": "expressions with negative numbers",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Restar un número negativo es lo mismo que sumar su opuesto."
+        },
+        {
+          "rung": "computation",
+          "text": "Reescríbelo como `-7 + 4` y avanza 4 pasos a la derecha desde `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Restar un número negativo es lo mismo que sumar su opuesto."
+        },
+        {
+          "rung": "computation",
+          "text": "Reescríbelo como `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "Cuando los signos son distintos, resta los valores absolutos y conserva el signo del número más alejado de cero."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` es `17`, y `-32` está más alejado de cero que `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "Cuando ambos números son negativos, suma los valores absolutos y conserva el signo negativo."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` es `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "Un negativo por un negativo da positivo."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` es `14`, y los signos son iguales."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "Cuando los dos signos son distintos, el producto es negativo."
+        },
+        {
+          "rung": "computation",
+          "text": "Primero ignora el signo: `9*3` es `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Dividir un negativo entre un negativo da un positivo, igual que al multiplicar."
+        },
+        {
+          "rung": "computation",
+          "text": "Primero ignora los signos: `100/4` es `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Calcula:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Queremos hallar el valor de `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Multiplica antes de sumar y restar."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` es `-30` y `7*(-2)` es `-14`, así que obtenemos `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "db751211b0d992c4db1bac1e3b08be62192ca2b42d316de328f0944c6637f4b4",
+  "model": "gpt-5.5-offline"
+}

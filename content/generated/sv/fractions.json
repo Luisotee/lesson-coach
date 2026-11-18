@@ -1,0 +1,768 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "fractions",
+  "lang": "sv",
+  "title": "Bråk",
+  "grades": [
+    6,
+    7
+  ],
+  "summary": "Bråk anger lika stora delar. Räknesätten fungerar genom att delarnas storlek hålls tydlig och delarna räknas.",
+  "idea": "Ett bråk anger lika stora delar av en helhet. I `3/4` säger talet under bråkstrecket att helheten är delad i lika stora delar. Talet över bråkstrecket räknar hur många av delarna som tas.\n\nLikvärdiga bråk anger samma mängd med delar av olika storlek. Om man multiplicerar eller dividerar talet över och talet under bråkstrecket med samma tal är mängden oförändrad.\n\nVid addition måste delarna ha samma storlek innan de kan räknas. Vid multiplikation räknar ett heltal gånger ett bråk upprepade grupper av det bråket. Vid division är frågan hur många av ett bråk som ryms i ett annat.",
+  "why_it_works": "Bara delar av samma sort kan adderas. För `1/2 + 1/3` är halvor och tredjedelar olika stora, så båda skrivs om till sjättedelar. `1/2 + 1/3` blir `3/6 + 2/6`, och `3/6 + 2/6` är `5/6`.\n\nMultiplikation ändrar antalet delar. I `3*(2/5)` fortsätter femtedelarna att vara femtedelar. `3*(2/5)` blir `(3*2)/5`, och `(3*2)/5` är `6/5`.\n\nDivision frågar hur många av divisorn som ryms. `(2/3)/(3/4)` blir `(2/3)*(4/3)`. Sedan blir `(2/3)*(4/3)` `(2*4)/(3*3)`, och `(2*4)/(3*3)` är `8/9`.",
+  "prerequisites": [
+    "negative-numbers"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "prompt": "Beräkna:",
+      "steps": [
+        {
+          "left": "1/2 + 1/3",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Bråken har delar av olika storlek, så de kan inte adderas direkt. Skriv om dem med en gemensam nämnare.",
+            "another_way": "Använd sjättedelar eftersom både halvor och tredjedelar kan delas upp i sjättedelar. Då behåller varje bråk samma värde, samtidigt som delarna blir lika stora.",
+            "visual": "En stapel visar `1/2 + 1/3` som en halvstor del bredvid en tredjedelsstor del."
+          }
+        },
+        {
+          "left": "3/6 + 2/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Nu är båda bråken i sjättedelar. `1/2` blir `3/6`, och `1/3` blir `2/6`, så delarna är lika stora.",
+            "another_way": "Tänk att varje halv är tre sjättedelar och varje tredjedel är två sjättedelar. Då handlar uppgiften bara om att räkna sjättedelar.",
+            "visual": "En stapel visar `3/6 + 2/6` som tre sjättedelar och två sjättedelar av lika stora delar."
+          }
+        },
+        {
+          "left": "5/6",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Med samma nämnare adderar du täljarna och behåller nämnaren. `3/6 + 2/6` blir `5/6`, så det är svaret.",
+            "another_way": "Räkna ihop alla delar i sjättedelsstorlek. Tre sjättedelar och två sjättedelar blir fem sjättedelar.",
+            "visual": "En stapel visar `5/6` skuggat som fem lika stora sjättedelar av en hel."
+          }
+        }
+      ],
+      "answer": "5/6"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "prompt": "Beräkna:",
+      "steps": [
+        {
+          "left": "3*(2/5)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Detta börjar med `3*(2/5)`, vilket betyder 3 grupper med `2/5`. Storleken på varje del är fortfarande femtedelar.",
+            "another_way": "Tänk på heltalet som en faktor till täljaren i bråket. Då är `3*(2/5)` ett heltal gånger ett bråk.",
+            "visual": "En stapelmodell visar tre kopior av en stapel där `2/5` är skuggat i varje kopia."
+          }
+        },
+        {
+          "left": "(3*2)/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Heltalet multipliceras med täljaren, så `3*(2/5)` blir `(3*2)/5`. Nämnaren är fortfarande `5` eftersom delarna fortfarande är femtedelar.",
+            "another_way": "Räkna femtedelar: `2` femtedelar, tagna `3` gånger, ger `(3*2)` femtedelar.",
+            "visual": "En stapelmodell visar bitar av storleken en femtedel som räknas i tre grupper."
+          }
+        },
+        {
+          "left": "6/5",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Produkten i täljaren räknas ut, så `(3*2)/5` blir `6/5`. Detta är svaret eftersom uttrycket har beräknats.",
+            "another_way": "Tre grupper med `2/5` blir `6/5`. Resultatet är mer än en hel eftersom det finns fler än `5` femtedelar.",
+            "visual": "En stapelmodell visar `6` bitar av storleken en femtedel som är skuggade, vilket blir `6/5`."
+          }
+        }
+      ],
+      "answer": "6/5"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "prompt": "Beräkna:",
+      "steps": [
+        {
+          "left": "(2/3)/(3/4)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Uttrycket frågar hur många `3/4` som ryms i `2/3`. Vid division med ett bråk behåller man `2/3` och multiplicerar med det inverterade bråket till `3/4`.",
+            "another_way": "Tänk att du ändrar frågan från division till en motsvarande multiplikation. Divisorn `3/4` vänds upp och ner, så `(2/3)/(3/4)` blir `(2/3)*(4/3)`.",
+            "visual": "En stapel visar `2/3` av en hel som mäts med delar av storleken `3/4`."
+          }
+        },
+        {
+          "left": "(2/3)*(4/3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Multiplicera nu bråken. Multiplicera täljarna med varandra och nämnarna med varandra, så `(2/3)*(4/3)` blir `(2*4)/(3*3)`.",
+            "another_way": "Detta visar antalet delar och delarnas storlek var för sig. Täljaren räknar `2*4`, och nämnaren räknar `3*3`.",
+            "visual": "En stapel delas i tredjedelar åt ena hållet och i tredjedelar åt andra hållet, med `2*4` små delar räknade."
+          }
+        },
+        {
+          "left": "(2*4)/(3*3)",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Produkterna i täljaren och nämnaren är utskrivna. Raden är redo att förenklas genom att beräkna dessa produkter.",
+            "another_way": "Se `(2*4)/(3*3)` som ett bråk där multiplikationen fortfarande syns. I nästa steg skrivs produkterna som enskilda tal.",
+            "visual": "En stapelmodell har `3*3` lika stora små delar i det hela, och `2*4` av dem är skuggade."
+          }
+        },
+        {
+          "left": "8/9",
+          "right": "",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "Multiplikationen ger det slutliga bråket, så `(2*4)/(3*3)` blir `8/9`. Detta är svaret eftersom ingen mer räkneoperation visas.",
+            "another_way": "Kvoten är mindre än en hel, vilket stämmer med betydelsen: `3/4` är större än `2/3`, så mindre än en sådan får plats.",
+            "visual": "En stapel delad i `9` lika stora delar har `8` delar skuggade och visar `8/9`."
+          }
+        }
+      ],
+      "answer": "8/9"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "add_tops_and_bottoms",
+      "belief": "För att addera bråk, addera täljarna och addera nämnarna.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "Det behandlar bråket som två separata heltal, och det fungerar på samma sätt som när man multiplicerar bråk.",
+      "what_to_say": {
+        "probe": "Är ditt svar större eller mindre än `1/2`? Borde det vara det?",
+        "nudge": "Kan du addera halvor och tredjedelar direkt, eller behöver du först delar av samma storlek?",
+        "tell": "Dela båda i sjättedelar: `3/6 + 2/6` är `5/6`. Vi räknar bara delarna; deras storlek är densamma."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Beräkna:",
+        "answer": "3/4"
+      },
+      "source_quote": "Vissa elever adderar bråk genom att addera täljarna och addera nämnarna."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "multiply_both_by_whole",
+      "belief": "För att multiplicera ett bråk med ett heltal, multiplicera både täljaren och nämnaren.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Elever har lärt sig från förlängning och förkortning att det är säkert att göra samma sak med täljaren och nämnaren.",
+      "what_to_say": {
+        "probe": "Är `6/15` mer än `2/5`, mindre, eller lika mycket? Vad borde tre gånger `2/5` vara?",
+        "nudge": "Skriv tre gånger två femtedelar som en addition och räkna femtedelarna.",
+        "tell": "Tre gånger två femtedelar är sex femtedelar, `6/5`. Bara antalet delar ändras."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Beräkna:",
+        "answer": "12/7"
+      },
+      "source_quote": "Vissa elever multiplicerar både täljaren och nämnaren med heltalet."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "flip_first_when_dividing",
+      "belief": "När man dividerar bråk ska man vända på det första bråket.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"Vänd och multiplicera\" blir ihågkommet som en ramsa utan att man minns vilket bråk som ska vändas.",
+      "what_to_say": {
+        "probe": "Hur många tre fjärdedelar ryms i två tredjedelar: mer än en, eller mindre?",
+        "nudge": "Vilket bråk räknar vi med? Det är det som ska vändas.",
+        "tell": "Bara divisorn vänds: `(2/3)*(4/3)` är `8/9`, lite mindre än ett."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Beräkna:",
+        "answer": "6/5"
+      },
+      "source_quote": "Vissa elever vänder på det första bråket när de dividerar, inte det andra."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "cancel_across_addition",
+      "belief": "Man kan förkorta ett tal i täljaren med nämnaren även över ett plustecken.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Att förkorta gemensamma tal fungerar för produkter, och eleven ser en 2 i täljaren och en 2 i nämnaren.",
+      "what_to_say": {
+        "probe": "Vad är hela täljaren i bråket, innan du dividerar?",
+        "nudge": "Räkna ut täljaren först och dividera sedan. Får du samma svar?",
+        "tell": "Bråkstrecket dividerar hela täljaren: `(2+4)/2` är `6/2`, vilket är `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Förenkla:",
+        "answer": "5"
+      },
+      "source_quote": "Vissa elever förkortar över ett plustecken."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "simplify_one_part",
+      "belief": "För att förkorta ett bråk kan man dividera bara täljaren eller bara nämnaren.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Att halvera ett tal känns som att förenkla, och eleven kontrollerar inte att värdet är detsamma.",
+      "what_to_say": {
+        "probe": "Är `3/8` lika mycket som `6/8`? Rita båda som staplar.",
+        "nudge": "Vilket tal delar både täljaren och nämnaren?",
+        "tell": "Dividera täljaren och nämnaren med samma tal: `6/8` är `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Förenkla:",
+        "answer": "2/3"
+      },
+      "source_quote": "Vissa elever förenklar genom att ändra bara en del av bråket."
+    }
+  ],
+  "questions": [
+    {
+      "question": "Varför kan vi inte addera talen över bråkstrecket och talen under bråkstrecket?",
+      "answer": "Talet under bråkstrecket anger delarnas storlek. Halvor och tredjedelar är olika stora, så delarna måste skrivas om till samma storlek innan de räknas."
+    },
+    {
+      "question": "Varför blir `1/2 + 1/3` till `3/6 + 2/6`?",
+      "answer": "Båda bråken skrivs om i sjättedelar. Mängderna är oförändrade, men nu är delarna lika stora och kan adderas."
+    },
+    {
+      "question": "Varför ändrar inte `3*(2/5)` talet under bråkstrecket?",
+      "answer": "Femtedelarna har samma storlek. Att multiplicera med `3` ger tre grupper med `2/5`, så bara antalet femtedelar ändras."
+    },
+    {
+      "question": "Vilket bråk vänder man på vid division?",
+      "answer": "Bara divisorn vänds. `(2/3)/(3/4)` blir `(2/3)*(4/3)` eftersom division frågar hur många `3/4` som ryms i `2/3`."
+    },
+    {
+      "question": "Kan vi förkorta över ett plustecken?",
+      "answer": "Nej. Ett bråkstreck delar hela uttrycket ovanför med nämnaren. Termerna i en summa kan inte delvis förkortas som om de vore separata faktorer."
+    },
+    {
+      "question": "Hur kan elever kontrollera om ett svar är rimligt?",
+      "answer": "Uppskatta först. Fråga om resultatet borde vara större eller mindre än `1/2`, eller större eller mindre än `1`. En grov storlekskontroll fångar många bråkfel."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "Namnge delarna",
+      "activity": "Använd en enkel helhet delad i lika stora delar. Koppla talet under bråkstrecket till delarnas storlek och talet över bråkstrecket till antalet delar. Använd `3/4` som referensbråk."
+    },
+    {
+      "minutes": 10,
+      "title": "Likvärdiga bråk",
+      "activity": "Visa att olika bråk kan ange samma mängd. Använd `1/2`, `2/4` och `3/6`. Betona att talet över och talet under bråkstrecket måste ändras tillsammans."
+    },
+    {
+      "minutes": 10,
+      "title": "Addera delar av samma sort",
+      "activity": "Börja med `1/2 + 1/3`. Fråga varför halvor och tredjedelar inte kan räknas tillsammans. Skriv om till sjättedelar: `1/2 + 1/3` blir `3/6 + 2/6`, och `3/6 + 2/6` är `5/6`."
+    },
+    {
+      "minutes": 8,
+      "title": "Multiplicera ett bråk",
+      "activity": "Använd `3*(2/5)` som tre grupper med två femtedelar. Visa att `3*(2/5)` blir `(3*2)/5`, och `(3*2)/5` är `6/5`. Betona att delarnas storlek förblir femtedelar."
+    },
+    {
+      "minutes": 9,
+      "title": "Dividera bråk",
+      "activity": "Använd frågan ”Hur många ryms?” För `(2/3)/(3/4)`, visa att `(2/3)/(3/4)` blir `(2/3)*(4/3)`, sedan `(2*4)/(3*3)`, och resultatet är `8/9`."
+    },
+    {
+      "minutes": 5,
+      "title": "Uppskatta och hitta fel",
+      "activity": "Diskutera vanliga felsteg: att addera täljare och nämnare, bara ändra en del, vända det första bråket eller förkorta över addition. Använd uppskattning och stapelmodeller som kontroller."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/23883",
+      "title": "add and subtract fractions - two",
+      "grade": 5
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha ett bråk som är lika med `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "För att addera bråk ger vi dem först samma nämnare."
+        },
+        {
+          "rung": "computation",
+          "text": "Den gemensamma nämnaren är `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha ett bråk som är lika med `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Använd minsta gemensamma multipel av 12 och 18, som är `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` är `21/36` och `5/18` är `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha ett bråk som är lika med `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Använd minsta gemensamma multipel av 12 och 16, som är `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` är `28/48` och `9/16` är `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Förenkla:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha det enklaste bråket som är lika med `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Dividera täljaren och nämnaren med deras största gemensamma faktor."
+        },
+        {
+          "rung": "computation",
+          "text": "Dividera täljaren och nämnaren med `12`, den största gemensamma faktorn till 120 och 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet av `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "De två tecknen är lika, så produkten är positiv. Multiplicera täljarna och nämnarna."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` är `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet av `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "När du dividerar med ett bråk multiplicerar du med dess inverterade tal. Det inverterade talet till divisorn är `1/(5/8)`, vilket är `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` är `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha värdet av `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "När du dividerar med ett bråk multiplicerar du med dess inverterade tal. Det inverterade talet till divisorn är `1/(5/6)`, vilket är `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` är `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Beräkna:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "Vi vill ha ett bråk som är lika med `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "Nämnarna är redan lika, så subtrahera täljarna."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` är `-36`, så vi får `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "c0e296857837fd70d496980ce3c298eba723cbe8e4e8323e2574e06ad34d8a2f",
+  "model": "gpt-5.5-offline"
+}
