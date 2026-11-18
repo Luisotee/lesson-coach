@@ -8,7 +8,10 @@ import { DEFAULT_LANGUAGE, LANGUAGES, findLanguage } from '@/i18n/languages'
 import en from '@/locales/en.json'
 
 // Every locale except English is its own chunk, fetched when that language is chosen.
-const locales = import.meta.glob<{ default: Record<string, unknown> }>('../locales/*.json')
+const locales = import.meta.glob<{ default: Record<string, unknown> }>([
+  '../locales/*.json',
+  '!../locales/en.json',
+])
 
 /** Sets `lang` and `dir` on <html> and loads the script's font. Runs on init and every change. */
 export function applyLanguage(code: string): void {

@@ -3,14 +3,14 @@ import type { Script } from '@/i18n/languages'
 /**
  * Font files per writing system, loaded only when a language that uses it becomes active.
  * Inter covers Latin, Cyrillic (including Kazakh) and Greek; Kalam covers Latin and Devanagari,
- * and the math itself is ASCII, so Kalam always draws it.
+ * and the math itself is ASCII, so Kalam always draws it. CJK (zh-Hans) is added with that
+ * language in T9: its font is about 4.6 MB of subsets in the build.
  */
 const loaders: Partial<Record<Script, () => Promise<unknown>>> = {
   arabic: () => import('@fontsource-variable/noto-sans-arabic'),
   devanagari: () => import('@fontsource-variable/noto-sans-devanagari'),
   bengali: () => import('@fontsource-variable/noto-sans-bengali'),
   ethiopic: () => import('@fontsource-variable/noto-sans-ethiopic'),
-  hans: () => import('@fontsource-variable/noto-sans-sc'),
 }
 
 const loaded = new Set<Script>()

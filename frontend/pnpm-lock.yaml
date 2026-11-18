@@ -26,9 +26,6 @@ importers:
       '@fontsource-variable/noto-sans-ethiopic':
         specifier: ^5.3.0
         version: 5.3.0
-      '@fontsource-variable/noto-sans-sc':
-        specifier: ^5.3.1
-        version: 5.3.1
       '@fontsource/kalam':
         specifier: ^5.3.0
         version: 5.3.0
@@ -397,9 +394,6 @@ packages:
 
   '@fontsource-variable/noto-sans-ethiopic@5.3.0':
     resolution: {integrity: sha512-oCupTsf3TpT/e2OpWLffwnzkD7Z5MdDxStc75qHdzHRfEy7C6Jqj8GyU2FB6+FKt/SLfQdaY8F5NVAP8C4Iv/w==}
-
-  '@fontsource-variable/noto-sans-sc@5.3.1':
-    resolution: {integrity: sha512-UB96JJ17HyD5ehEU7Em0hDdh7fvTMB4B4Hzmq5c4QaNwwSLqTrdM2S+coySeBqCkXwh0DxqXT0b0wMrmzorFpQ==}
 
   '@fontsource/kalam@5.3.0':
     resolution: {integrity: sha512-FDkVoDfPDCSN/eO81FOYtUI67eMgpVBJmjBtAqSL0PmEhJyeFY2biC+CR+yEttksgXR9+swpFdYmQTyjwBq80Q==}
@@ -3423,8 +3417,6 @@ snapshots:
   '@fontsource-variable/noto-sans-devanagari@5.3.0': {}
 
   '@fontsource-variable/noto-sans-ethiopic@5.3.0': {}
-
-  '@fontsource-variable/noto-sans-sc@5.3.1': {}
 
   '@fontsource/kalam@5.3.0': {}
 
