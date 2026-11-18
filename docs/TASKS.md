@@ -39,7 +39,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - Seed `evals/mistakes.yaml` from MaE (MIT, pinned commit). Check each row with sympy and reword the numbers.
   - Record the Akelius Math deep link per topic (`https://akelius.education/math/en/lesson/22124` for two-step equations; find the others by searching the site, without scraping its content).
   - **Done when:** the files validate against the T5 schemas (or a draft schema), and attribution is complete.
-- [ ] **T3 Frontend foundation**
+- [x] **T3 Frontend foundation**
   - Akelius tokens as the Tailwind theme (PLAN, "Look and feel"). Fonts: Figtree, Inter, Kalam, and Noto fallbacks per script.
   - App shell and routing (`/`, `/topics/:id`, `/mistake`, `/practice/:topic/:n`), skip links, focus styles, reduced motion.
   - i18n: react-i18next, an English locale, a working language picker, an RTL switch (`dir`), and lazy-loaded locales.

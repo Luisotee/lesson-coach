@@ -1,10 +1,113 @@
 {
   "app": {
     "title": "Lesson Coach",
-    "tagline": "Refresh the math you teach and prepare your next lesson.",
-    "apiStatus": "API status: {{state}}",
-    "apiOk": "connected",
-    "apiDown": "not reachable",
-    "apiChecking": "checking"
+    "pageTitle": "{page} · Lesson Coach"
+  },
+  "shell": {
+    "skipToContent": "Skip to main content",
+    "mainNav": "Main",
+    "nothingSaved": "No account. Only your language choice is kept, in this browser.",
+    "footerNoScores": "No tests. No scores. Nothing about you or your students is saved.",
+    "footerChecked": "Every answer is checked by a computer algebra system."
+  },
+  "nav": {
+    "topics": "Topics",
+    "mistake": "A student wrote this",
+    "practice": "Practice"
+  },
+  "language": {
+    "label": "Language",
+    "machine": "{name} (machine-translated)"
+  },
+  "home": {
+    "eyebrow": "For math teachers, grades 6–9",
+    "title": "Feel sure of the math before you teach it.",
+    "intro": "Pick tomorrow’s topic. See why each step works, what students usually get wrong, and what to say when they do.",
+    "topicsHeading": "Choose a topic",
+    "topicsIntro": "Each topic: the idea, worked examples, common mistakes and a lesson outline.",
+    "openTopic": "Open topic",
+    "waysHeading": "Ways in",
+    "prepareTitle": "Prepare a lesson",
+    "prepareText": "Refresh the idea and see every step explained three ways.",
+    "mistakeTitle": "Understand a mistake",
+    "mistakeText": "Type what a student wrote. See the likely reason and what to ask.",
+    "practiceTitle": "Practise privately",
+    "practiceText": "Problems with hints you open one at a time. No scores."
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "Negative numbers",
+      "grade": "Grade 6–7"
+    },
+    "fractions": {
+      "title": "Fractions",
+      "grade": "Grade 6–7"
+    },
+    "linear-equations": {
+      "title": "Solving linear equations",
+      "grade": "Grade 7–8"
+    }
+  },
+  "pages": {
+    "inProgress": "This page is still being built. The full lesson, worked examples and mistakes will appear here.",
+    "mistakeTitle": "A student wrote this",
+    "practiceTitle": "Practice: {topic}",
+    "practiceProblem": "Problem {n} of {total}",
+    "previous": "Previous problem",
+    "next": "Next problem",
+    "practiceNav": "Problems",
+    "practicePageTitle": "{title}, {problem}"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "There is no page at this address.",
+    "home": "Go to the start page"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} plus {right}",
+      "minus": "{left} minus {right}",
+      "times": "{left} times {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "negative {arg}",
+      "positive": "positive {arg}",
+      "equals": "{left} equals {right}",
+      "continued": "equals {expr}",
+      "group": "open bracket, {inner}, close bracket",
+      "over": "{num} over {den}",
+      "fraction": "the fraction with numerator {num} and denominator {den}, end of fraction",
+      "fractionSimple": "{num, plural, one {one} other {#}} {den, plural, =2 {{num, plural, one {half} other {halves}}} =3 {{num, plural, one {third} other {thirds}}} =4 {{num, plural, one {quarter} other {quarters}}} =5 {{num, plural, one {fifth} other {fifths}}} =6 {{num, plural, one {sixth} other {sixths}}} =7 {{num, plural, one {seventh} other {sevenths}}} =8 {{num, plural, one {eighth} other {eighths}}} =9 {{num, plural, one {ninth} other {ninths}}} =10 {{num, plural, one {tenth} other {tenths}}} other {over #}}",
+      "power": "{power, select, squared {{base} squared} cubed {{base} cubed} other {{base} to the power of {exp}}}",
+      "powerGroup": "{base} to the power of {exp}, end of exponent",
+      "lineWithOp": "{line}; {op}"
+    },
+    "op": {
+      "add": "add {arg} to both sides",
+      "sub": "subtract {arg} from both sides",
+      "mul": "multiply both sides by {arg}",
+      "div": "divide both sides by {arg}"
+    }
+  },
+  "demo": {
+    "title": "Math handwriting components",
+    "intro": "Every math component, drawn from the plain-text steps the content packs store. Under each one is the text a screen reader speaks.",
+    "spoken": "Spoken: {text}",
+    "fractionHeading": "Fraction",
+    "expressionsHeading": "Expressions",
+    "pensHeading": "Pens",
+    "pencil": "Pencil: student work",
+    "ink": "Ink: worked examples",
+    "green": "Green pen: corrections",
+    "equationHeading": "Equation, aligned on =",
+    "equationLabel": "Solving 3x + 5 = 20",
+    "expressionHeading": "Expression steps",
+    "expressionLabel": "Working out −5 − (−3)",
+    "fractionStepsLabel": "Adding one half and one third",
+    "replay": "Write it again",
+    "rtlHeading": "Inside right-to-left text",
+    "rtlNote": "The surrounding text runs right to left; the math stays left to right.",
+    "fractionStepsHeading": "Fraction steps",
+    "longHeading": "A longer equation",
+    "longLabel": "Solving 2(x + 3) − 4(x − 1) = 3x + 10"
   }
 }

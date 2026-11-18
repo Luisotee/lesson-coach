@@ -1,0 +1,113 @@
+{
+  "app": {
+    "title": "مدرب الدروس",
+    "pageTitle": "{page} · مدرب الدروس"
+  },
+  "shell": {
+    "skipToContent": "انتقل إلى المحتوى الرئيسي",
+    "mainNav": "الرئيسية",
+    "nothingSaved": "بلا حساب. لا يُحفظ إلا اختيار اللغة، في هذا المتصفح.",
+    "footerNoScores": "لا اختبارات. لا درجات. لا يُحفظ شيء عنك أو عن طلابك.",
+    "footerChecked": "كل إجابة يتحقق منها نظام جبر حاسوبي."
+  },
+  "nav": {
+    "topics": "المواضيع",
+    "mistake": "كتب طالب هذا",
+    "practice": "تدرّب"
+  },
+  "language": {
+    "label": "اللغة",
+    "machine": "{name} (ترجمة آلية)"
+  },
+  "home": {
+    "eyebrow": "لمعلمي الرياضيات، الصفوف 6–9",
+    "title": "كن واثقًا من الرياضيات قبل أن تدرّسها.",
+    "intro": "اختر موضوع الغد. انظر لماذا تنجح كل خطوة، وما يخطئ فيه الطلاب عادة، وماذا تقول حين يخطئون.",
+    "topicsHeading": "اختر موضوعًا",
+    "topicsIntro": "في كل موضوع: الفكرة، وأمثلة محلولة، وأخطاء شائعة، وخطة درس.",
+    "openTopic": "افتح الموضوع",
+    "waysHeading": "طرق البدء",
+    "prepareTitle": "حضّر درسًا",
+    "prepareText": "راجع الفكرة وشاهد كل خطوة مشروحة بثلاث طرق.",
+    "mistakeTitle": "افهم خطأً",
+    "mistakeText": "اكتب ما كتبه الطالب. شاهد السبب المحتمل وماذا تسأل.",
+    "practiceTitle": "تدرّب بمفردك",
+    "practiceText": "مسائل مع تلميحات تفتحها واحدًا تلو الآخر. بلا درجات."
+  },
+  "topics": {
+    "negative-numbers": {
+      "title": "الأعداد السالبة",
+      "grade": "الصف 6–7"
+    },
+    "fractions": {
+      "title": "الكسور",
+      "grade": "الصف 6–7"
+    },
+    "linear-equations": {
+      "title": "حل المعادلات الخطية",
+      "grade": "الصف 7–8"
+    }
+  },
+  "pages": {
+    "inProgress": "هذه الصفحة قيد الإنشاء. سيظهر هنا الدرس الكامل والأمثلة المحلولة والأخطاء.",
+    "mistakeTitle": "كتب طالب هذا",
+    "practiceTitle": "تدرّب: {topic}",
+    "practiceProblem": "المسألة {n} من {total}",
+    "previous": "المسألة السابقة",
+    "next": "المسألة التالية",
+    "practiceNav": "المسائل",
+    "practicePageTitle": "{title}، {problem}"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "body": "لا توجد صفحة على هذا العنوان.",
+    "home": "اذهب إلى صفحة البداية"
+  },
+  "math": {
+    "speech": {
+      "plus": "{left} زائد {right}",
+      "minus": "{left} ناقص {right}",
+      "times": "{left} ضرب {right}",
+      "juxtaposed": "{left} {right}",
+      "negative": "سالب {arg}",
+      "positive": "موجب {arg}",
+      "equals": "{left} يساوي {right}",
+      "continued": "يساوي {expr}",
+      "group": "قوس، {inner}، أغلق القوس",
+      "over": "{num} على {den}",
+      "fraction": "الكسر الذي بسطه {num} ومقامه {den}، نهاية الكسر",
+      "fractionSimple": "{num} على {den}",
+      "power": "{power, select, squared {{base} تربيع} cubed {{base} تكعيب} other {{base} أس {exp}}}",
+      "powerGroup": "{base} أس {exp}، نهاية الأس",
+      "lineWithOp": "{line}؛ {op}"
+    },
+    "op": {
+      "add": "أضف {arg} إلى الطرفين",
+      "sub": "اطرح {arg} من الطرفين",
+      "mul": "اضرب الطرفين في {arg}",
+      "div": "اقسم الطرفين على {arg}"
+    }
+  },
+  "demo": {
+    "title": "مكونات الرياضيات المكتوبة بخط اليد",
+    "intro": "كل مكونات الرياضيات، مرسومة من الخطوات النصية التي تخزنها حزم المحتوى. تحت كل مكون النص الذي يقرؤه قارئ الشاشة.",
+    "spoken": "المنطوق: {text}",
+    "fractionHeading": "الكسر",
+    "expressionsHeading": "التعابير",
+    "pensHeading": "الأقلام",
+    "pencil": "قلم رصاص: عمل الطالب",
+    "ink": "حبر: الأمثلة المحلولة",
+    "green": "قلم أخضر: التصحيحات",
+    "equationHeading": "معادلة محاذاة على =",
+    "equationLabel": "حل 3x + 5 = 20",
+    "expressionHeading": "خطوات تعبير",
+    "expressionLabel": "حساب −5 − (−3)",
+    "fractionStepsLabel": "جمع نصف وثلث",
+    "replay": "اكتبها مرة أخرى",
+    "rtlHeading": "داخل نص من اليمين إلى اليسار",
+    "rtlNote": "النص المحيط يُقرأ من اليمين إلى اليسار؛ والرياضيات تبقى من اليسار إلى اليمين.",
+    "fractionStepsHeading": "خطوات الكسور",
+    "longHeading": "معادلة أطول",
+    "longLabel": "حل 2(x + 3) − 4(x − 1) = 3x + 10"
+  }
+}

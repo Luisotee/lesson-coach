@@ -10,17 +10,54 @@
 @theme {
   --color-navy: #172b53;
   --color-paleblue: #d0efff;
-  --color-link: #357ca2;
+  --color-link: #357ca2; /* links on white surfaces (4.61:1) */
+  --color-link-ink: #2b6788; /* link text on the ground background, where #357ca2 is only 4.30:1 */
   --color-highlight: #ffe923;
   --color-green: #00a57c; /* icons only */
   --color-green-text: #007a5c; /* text: passes contrast */
   --color-ground: #f6f7f9;
   --color-line: #e2e5e8;
   --color-line-strong: #c4c7ca;
+  --color-grid: #e4edf6; /* squared-paper lines */
 
-  --font-heading: 'Figtree Variable', 'Noto Sans', system-ui, sans-serif;
-  --font-sans: 'Inter Variable', 'Noto Sans', system-ui, sans-serif;
-  --font-hand: 'Kalam', 'Noto Sans', cursive;
+  /* Pens for handwritten math. The design's pencil grey (#9aa3af) is 2.55:1 on white,
+     so pencil uses a darker grey that passes AA (5.96:1). */
+  --color-pencil: #5b6475;
+  --color-ink: #172b53;
+  --color-pen-green: #007a5c;
+
+  /* Script fallbacks are loaded only while their language is active (src/i18n/fonts.ts).
+     Inter covers Latin, Cyrillic and Greek; Kalam covers Latin and Devanagari, and math is ASCII. */
+  --font-heading:
+    'Figtree Variable', 'Inter Variable', 'Noto Sans Arabic Variable',
+    'Noto Sans Devanagari Variable', 'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable',
+    system-ui, sans-serif;
+  --font-sans:
+    'Inter Variable', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
+    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', system-ui, sans-serif;
+  --font-hand:
+    'Kalam', 'Noto Sans Arabic Variable', 'Noto Sans Devanagari Variable',
+    'Noto Sans Bengali Variable', 'Noto Sans Ethiopic Variable', cursive;
+
+  /* Handwriting write-on: the line is revealed left to right. Math is always LTR. */
+  --animate-write: write 0.9s steps(14) both;
+  @keyframes write {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+/* Squared paper for notebooks: 22 px grid. */
+@utility paper {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
 
 /* shadcn/ui semantic variables, mapped onto the Akelius tokens. */
@@ -83,6 +120,11 @@
   h3 {
     @apply font-heading;
   }
+  /* A visible focus ring everywhere (WCAG 2.4.7 / 2.4.11). Navy has 3:1+ against white and ground. */
+  :focus-visible {
+    outline: 3px solid var(--color-navy);
+    outline-offset: 2px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -91,6 +133,7 @@
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
