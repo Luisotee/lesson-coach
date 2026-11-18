@@ -1,0 +1,333 @@
+{
+  "topic": "linear-equations",
+  "items": [
+    {
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "Solve 8x = 56.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `8*x = 56` true."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` means eight times `x`, so undo it by dividing both sides by `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "Solve -5c = 55.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `c` that makes `-5*c = 55` true."
+        },
+        {
+          "rung": "information",
+          "text": "Divide both sides by `-5`, the number in front of `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` is negative because the signs differ."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "Solve 7x + 8 = -13.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `7*x + 8 = -13` true."
+        },
+        {
+          "rung": "information",
+          "text": "Undo the steps in reverse order: subtract `8` from both sides, then divide by `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "After subtracting `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Check: `7*(-3) + 8` is `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "Solve 3x + 4 = -8.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `3*x + 4 = -8` true."
+        },
+        {
+          "rung": "information",
+          "text": "Subtract `4` from both sides, then divide both sides by `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "After subtracting `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. Check: `3*(-4) + 4` is `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "Solve 5(x + 3) = 35.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `5*(x + 3) = 35` true."
+        },
+        {
+          "rung": "information",
+          "text": "The five multiplies the whole bracket. Divide both sides by `5`, or multiply out the bracket."
+        },
+        {
+          "rung": "computation",
+          "text": "Dividing both sides by `5` gives `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. Check: `5*(4 + 3)` is `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "Solve 2(m - 4) + 3 = -1.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `m` that makes `2*(m - 4) + 3 = -1` true."
+        },
+        {
+          "rung": "information",
+          "text": "Multiply out the bracket first, then collect the numbers."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`, so `2*m - 5 = -1` and `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. Check: `2*(2 - 4) + 3` is `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "Solve 7x + 5 = 6x + 2.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `7*x + 5 = 6*x + 2` true."
+        },
+        {
+          "rung": "information",
+          "text": "Get the `x` terms on one side: subtract `6*x` from both sides."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`, then subtract `5` from both sides."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. Check: both sides are `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "Solve 12x + 8 = 6x + 2.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `x` that makes `12*x + 8 = 6*x + 2` true."
+        },
+        {
+          "rung": "information",
+          "text": "Subtract `6*x` from both sides, then subtract `8` from both sides."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`, so `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. Check: both sides are `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    }
+  ]
+}
