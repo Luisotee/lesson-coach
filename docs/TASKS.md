@@ -103,7 +103,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - Translate the packs, keeping the math fields identical (verified).
   - Mark languages that are machine-translated and unreviewed. Fill in the font fallbacks per script.
   - **Done when:** a pytest/vitest completeness test passes (every key in every language, every pack in every language), and RTL pages render correctly in Playwright screenshots.
-- [~] **T10 Evals** (needs T6)
+- [x] **T10 Evals** (needs T6)
   - `evals/run.py` over `mistakes.yaml` and `evals/transcription/`, 3 runs per case.
   - Metrics and the judge with calibration as in PLAN. `evals/results.yaml` with a hash, plus a staleness test.
   - Compare minimal and low `reasoning_effort`.
