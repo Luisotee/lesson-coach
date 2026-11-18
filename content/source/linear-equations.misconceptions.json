@@ -104,22 +104,22 @@
       "rule_sympy": "wrong_inverse_order",
       "example_problem": {
         "kind": "solve",
-        "expr": "2*x + 6 = 10"
+        "expr": "(x + 6)/2 = 10"
       },
-      "example_wrong_answer": "-1",
-      "why_it_feels_right": "Division looks like the main step, so the student does it first and tidies the rest later.",
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Subtracting the number next to `x` is the usual first step, so the student does it even when that number sits inside a division.",
       "what_to_say": {
-        "probe": "What was done to `x` first, and what was done last?",
-        "nudge": "Undo the last operation first. What was added after the doubling?",
-        "tell": "Subtract six first, `2*x = 4`, then divide by two: `x = 2`."
+        "probe": "In `(x + 6)/2`, what happens to `x` first, and what happens last?",
+        "nudge": "The halving was done last. What do you multiply both sides by to undo it?",
+        "tell": "Undo the halving first: `x + 6 = 20`, so `x = 14`. Check: `(14 + 6)/2` is `10`."
       },
       "check_question": {
         "problem": {
           "kind": "solve",
-          "expr": "3*x + 9 = 21"
+          "expr": "(x + 4)/3 = 5"
         },
-        "prompt": "Solve 3x + 9 = 21.",
-        "answer": "4"
+        "prompt": "Solve (x + 4)/3 = 5.",
+        "answer": "11"
       },
       "source_quote": "Some students undo the steps in the wrong order.",
       "ai_generated": [

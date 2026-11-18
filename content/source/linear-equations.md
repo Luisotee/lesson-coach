@@ -35,7 +35,7 @@ Some students divide only one term by the number in front of `x`. From `2*x + 6 
 
 Some students subtract the number in front of `x` instead of dividing by it. They turn `3*x = 12` into `x = 9`. But `3*x` means three times `x`, so we undo it by dividing by three.
 
-Some students undo the steps in the wrong order. They divide first and subtract later, writing `x = 10/2 - 6`, which is `-1`. Undoing in reverse order means the last thing done to `x` is undone first.
+Some students undo the steps in the wrong order. In `(x + 6)/2 = 10` the six was added first and the sum was then halved, but they subtract the six first and write `x/2 = 4`, so `x = 8`. The halving was done last, so it is undone first: `x + 6 = 20`, so `x = 14`.
 
 Some students multiply the number outside a bracket by the first term only. They write `5*(x + 3) = 35` as `5*x + 3 = 35`. The five multiplies everything inside the bracket.
 

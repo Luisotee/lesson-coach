@@ -4,7 +4,7 @@
 
 The source lessons (`content/source/*.md`), the misconceptions (`content/source/*.misconceptions.json`), the practice prompts and the reworded hints are Lesson Coach's own writing, under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-They were drafted with AI (Claude Code) and await human review. Every field written by AI is listed in the item's `ai_generated` array. Every answer and every math expression is checked with sympy by `backend/tests/test_content.py`.
+They were drafted with AI (Claude Code) and await human review. Every field written by AI is listed in the item's `ai_generated` array. `backend/tests/test_content.py` checks every answer and every inline claim such as "`5 - (-3)` is `8`" with sympy, and checks that every other expression parses. The misconception sentences that state a wrong answer on purpose are only parsed.
 
 ## Practice problems: OATutor-Content and OpenStax (CC BY 4.0)
 
@@ -17,7 +17,7 @@ They were drafted with AI (Claude Code) and await human review. Every field writ
   - converted the LaTeX to plain sympy text;
   - wrote our own prompt;
   - condensed and reworded the hints into four rungs (goal, information, computation, answer).
-- **Missing license field:** one source problem (`a623746multistep2`) has an empty `license` field in its JSON. The repository as a whole is CC BY 4.0, which we rely on.
+- **Missing license field:** two source problems (`a623746multistep2` and `a623746multistep8`) have an empty `license` field in their JSON. The repository as a whole is CC BY 4.0, which we rely on.
 
 ## Eval seed: MaE (MIT)
 

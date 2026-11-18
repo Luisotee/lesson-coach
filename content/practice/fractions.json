@@ -56,7 +56,7 @@
         },
         {
           "rung": "information",
-          "text": "Use the least common multiple of `12` and `18`, which is `36`."
+          "text": "Use the least common multiple of 12 and 18, which is `36`."
         },
         {
           "rung": "computation",
@@ -97,7 +97,7 @@
         },
         {
           "rung": "information",
-          "text": "Use the least common multiple of `12` and `16`, which is `48`."
+          "text": "Use the least common multiple of 12 and 16, which is `48`."
         },
         {
           "rung": "computation",
@@ -142,7 +142,7 @@
         },
         {
           "rung": "computation",
-          "text": "The greatest common factor of `120` and `252` is `12`."
+          "text": "Divide the top and the bottom by `12`, the greatest common factor of 120 and 252."
         },
         {
           "rung": "answer",
@@ -220,7 +220,7 @@
         },
         {
           "rung": "information",
-          "text": "To divide by a fraction, multiply by its reciprocal. The reciprocal of `5/8` is `8/5`."
+          "text": "To divide by a fraction, multiply by its reciprocal. The reciprocal of the divisor is `1/(5/8)`, which is `8/5`."
         },
         {
           "rung": "computation",
@@ -261,7 +261,7 @@
         },
         {
           "rung": "information",
-          "text": "To divide by a fraction, multiply by its reciprocal. The reciprocal of `5/6` is `6/5`."
+          "text": "To divide by a fraction, multiply by its reciprocal. The reciprocal of the divisor is `1/(5/6)`, which is `6/5`."
         },
         {
           "rung": "computation",

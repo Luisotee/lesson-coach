@@ -10,12 +10,12 @@ Prose may carry inline math in backticks, and each backtick span must parse.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Self
+from typing import Annotated, Literal, Self, get_args
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 
 TopicId = Literal["negative-numbers", "fractions", "linear-equations"]
-TOPIC_IDS: tuple[TopicId, ...] = ("negative-numbers", "fractions", "linear-equations")
+TOPIC_IDS: tuple[TopicId, ...] = get_args(TopicId)
 
 # Misconception rule ids agreed with T1 (backend/app/math/), keyed by topic.
 RULE_IDS: dict[TopicId, frozenset[str]] = {
@@ -60,6 +60,19 @@ class Model(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
 
+class AiMarked(Model):
+    """A model whose `ai_generated` lists the names of its own fields that AI wrote."""
+
+    ai_generated: list[str] = []
+
+    @model_validator(mode="after")
+    def _ai_fields(self) -> Self:
+        unknown = set(self.ai_generated) - set(type(self).model_fields)
+        if unknown:
+            raise ValueError(f"ai_generated names unknown fields: {sorted(unknown)}")
+        return self
+
+
 class Problem(Model):
     """A math task. `expr` is sympy-parsable; a `solve` problem has exactly one `=`."""
 
@@ -93,11 +106,10 @@ class ExplainedStep(Step):
     explanations: StepExplanations | None = None
 
 
-class WorkedExample(Model):
+class WorkedExample(AiMarked):
     problem: Problem
     steps: list[ExplainedStep] = Field(min_length=2, max_length=12)
     answer: Math
-    ai_generated: list[str] = []
 
 
 class WhatToSay(Model):
@@ -112,7 +124,7 @@ class CheckQuestion(Model):
     answer: Math
 
 
-class Misconception(Model):
+class Misconception(AiMarked):
     id: Id
     belief: Text
     rule_sympy: Id | None = None
@@ -122,7 +134,6 @@ class Misconception(Model):
     what_to_say: WhatToSay
     check_question: CheckQuestion
     source_quote: Text
-    ai_generated: list[str] = []
 
     @model_validator(mode="after")
     def _rule_matches_id(self) -> Self:
@@ -147,11 +158,12 @@ class MisconceptionSet(Model):
         return self
 
 
-HINT_RUNGS = ("goal", "information", "computation", "answer")
+HintRung = Literal["goal", "information", "computation", "answer"]
+HINT_RUNGS: tuple[HintRung, ...] = get_args(HintRung)
 
 
 class Hint(Model):
-    rung: Literal["goal", "information", "computation", "answer"]
+    rung: HintRung
     text: Text
 
 
@@ -165,7 +177,7 @@ class PracticeSource(Model):
     changes: Text
 
 
-class PracticeItem(Model):
+class PracticeItem(AiMarked):
     id: Id
     problem: Problem
     prompt: Short
@@ -173,7 +185,6 @@ class PracticeItem(Model):
     answer: Math
     source: PracticeSource
     license: Literal["CC-BY-4.0"]
-    ai_generated: list[str] = []
 
     @model_validator(mode="after")
     def _rungs(self) -> Self:
@@ -251,6 +262,17 @@ class Expected(Model):
     status: Literal["diagnosed", "slip", "unclear", "out_of_scope"] | None = None
     misconception_id: Id | None = None
 
+    @model_validator(mode="after")
+    def _consistent(self) -> Self:
+        if self.classification != "wrong":
+            if self.status is not None or self.misconception_id is not None:
+                raise ValueError("a correct or equivalent answer has no status or misconception")
+        elif self.status is None:
+            raise ValueError("a wrong answer needs a status")
+        elif (self.status == "diagnosed") != (self.misconception_id is not None):
+            raise ValueError("misconception_id is set exactly when the status is diagnosed")
+        return self
+
 
 class CaseSource(Model):
     dataset: Literal["MaE", "ours"]
@@ -260,6 +282,16 @@ class CaseSource(Model):
     example: int | None = None
     license: Literal["MIT", "CC-BY-4.0"]
     changes: Text
+
+    @model_validator(mode="after")
+    def _attribution(self) -> Self:
+        mae = (self.repo, self.commit, self.misconception, self.example)
+        if self.dataset == "MaE":
+            if None in mae or self.license != "MIT":
+                raise ValueError("an MaE row needs repo, commit, misconception, example and MIT")
+        elif any(v is not None for v in mae) or self.license != "CC-BY-4.0":
+            raise ValueError("our own rows are CC BY 4.0 and carry no MaE fields")
+        return self
 
 
 class MistakeCase(Model):

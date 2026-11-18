@@ -1,6 +1,9 @@
 """Every content file validates against the draft schema, and sympy checks its math.
 
 Covers content/source (lessons and misconceptions), content/practice and evals/mistakes.yaml.
+sympy checks every answer, every wrong answer, and every inline claim written as
+"`A` is `B`" or "`A` = `B`" in prose. Other backtick spans are only checked to parse.
+The misconception sentences that state a wrong answer on purpose are skipped.
 Rule reproduction (a rule turns the example problem into the wrong answer) is checked by
 pipeline/verify.py in T5, once T1's rule registry exists.
 """
@@ -13,14 +16,17 @@ from typing import Any
 import pytest
 import sympy
 import yaml
-from sympy.parsing.sympy_parser import parse_expr
+from pydantic import ValidationError
+from sympy.parsing.sympy_parser import convert_xor, parse_expr, standard_transformations
 
 from app.content.schema import (
     RULE_IDS,
     TOPIC_IDS,
     LessonMeta,
     MisconceptionSet,
+    MistakeCase,
     MistakeEvalSet,
+    PracticeItem,
     PracticeSet,
     Problem,
     TopicId,
@@ -29,10 +35,13 @@ from app.content.schema import (
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "content"
 SPAN = re.compile(r"`([^`]+)`")
+# "`A` is `B`", "`A`, which is `B`" or "`A` = `B`": a claim that A equals B.
+CLAIM = re.compile(r"`([^`=]+)`(?:,? which)? (?:is|=) `([^`]+)`")
+TRANSFORMS = (*standard_transformations, convert_xor)
 
 
 def parse(text: str) -> Any:
-    return parse_expr(text, evaluate=True)
+    return parse_expr(text, transformations=TRANSFORMS, evaluate=True)
 
 
 def parse_math(text: str) -> None:
@@ -70,9 +79,14 @@ def spans(text: str) -> list[str]:
     return SPAN.findall(text)
 
 
-def check_spans(text: str) -> None:
+def check_spans(text: str, claims: bool = True) -> None:
+    """Every span parses; with `claims`, every "`A` is `B`" pair is true."""
     for span in spans(text):
         parse_math(span)
+    if claims:
+        for left, right in CLAIM.findall(text):
+            right = right.split("=")[-1]
+            assert sympy.simplify(parse(left) - parse(right)) == 0, f"false claim: {left} = {right}"
 
 
 def strings(value: Any) -> list[str]:
@@ -106,7 +120,11 @@ def test_lesson(topic: TopicId) -> None:
     meta, body = lesson(topic)
     assert meta.id == topic
     assert topic not in meta.prerequisites
-    check_spans(body)
+    # The misconceptions section states wrong answers on purpose: parse it, don't check claims.
+    before, rest = body.split("## Common misconceptions", 1)
+    wrong, after = rest.split("\n## ", 1)
+    check_spans(before + after)
+    check_spans(wrong, claims=False)
 
 
 @pytest.mark.parametrize("topic", TOPIC_IDS)
@@ -120,8 +138,10 @@ def test_misconceptions(topic: TopicId) -> None:
         assert m.source_quote in body, f"{m.id}: source_quote is not verbatim in the lesson"
         check_wrong(m.example_problem, m.example_wrong_answer)
         check_answer(m.check_question.problem, m.check_question.answer)
-        for text in strings(m.model_dump(exclude={"example_problem", "check_question"})):
+        for text in strings(m.what_to_say.model_dump()):
             check_spans(text)
+        for text in (m.belief, m.why_it_feels_right, m.source_quote):
+            check_spans(text, claims=False)
 
 
 @pytest.mark.parametrize("topic", TOPIC_IDS)
@@ -159,8 +179,6 @@ def test_mistakes() -> None:
                 parse_math(step.right)
         mid = case.expected.misconception_id
         assert mid is None or mid == "other" or mid in ids[case.topic], case.id
-        if case.source.dataset == "MaE":
-            assert case.source.commit and case.source.license == "MIT", case.id
 
 
 def test_attribution() -> None:
@@ -169,3 +187,48 @@ def test_attribution() -> None:
         assert practice(topic).items[0].source.commit in text
     assert "12bee142d49dfb3c874149035cfbad28547a818b" in text
     assert "Permission is hereby granted" in text
+
+
+def test_claim_check_catches_a_false_hint() -> None:
+    with pytest.raises(AssertionError, match="false claim"):
+        check_spans("So `7/12` is `29/48`.")
+    check_spans("So `7/12 - 9/16` = `1/48`.")
+
+
+def test_parser_reads_caret_as_power() -> None:
+    assert parse("(-3)^5") == -243
+
+
+def test_ai_generated_names_real_fields() -> None:
+    item = practice("fractions").items[0].model_dump()
+    with pytest.raises(ValidationError, match="unknown fields"):
+        PracticeItem.model_validate({**item, "ai_generated": ["hintz"]})
+
+
+DIAGNOSED = {"classification": "wrong", "status": "diagnosed", "misconception_id": "x"}
+
+
+@pytest.mark.parametrize(
+    ("expected", "source"),
+    [
+        ({"classification": "correct", "status": "diagnosed"}, {}),
+        ({"classification": "wrong"}, {}),
+        ({"classification": "wrong", "status": "unclear", "misconception_id": "other"}, {}),
+        ({"classification": "wrong", "status": "diagnosed"}, {}),
+        (
+            {"classification": "wrong", "status": "diagnosed", "misconception_id": "x"},
+            {"commit": None},
+        ),
+        (
+            {"classification": "wrong", "status": "diagnosed", "misconception_id": "x"},
+            {"license": "CC-BY-4.0"},
+        ),
+    ],
+)
+def test_case_validators(expected: dict[str, Any], source: dict[str, Any]) -> None:
+    data = yaml.safe_load((ROOT / "evals" / "mistakes.yaml").read_text())
+    case = data["cases"][0]
+    with pytest.raises(ValidationError):
+        MistakeCase.model_validate(
+            {**case, "expected": expected, "source": {**case["source"], **source}}
+        )
