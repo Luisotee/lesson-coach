@@ -36,6 +36,9 @@ export function MathField({
   const field = useRef<MathfieldElement | null>(null)
   const fallback = useRef<HTMLInputElement>(null)
   const [state, setState] = useState<'loading' | 'ready' | 'failed'>('loading')
+  // focus() asked for before the field exists (MathLive is still loading): honoured once it does.
+  const wantFocus = useRef(false)
+  const fieldClass = useRef<typeof MathfieldElement | null>(null)
   // The latest callback, so the field's listener never goes stale.
   const onValueRef = useRef(onValue)
   useEffect(() => {
@@ -58,7 +61,12 @@ export function MathField({
         mf.addEventListener('input', onInput)
         host.current.appendChild(mf)
         field.current = mf
+        fieldClass.current = MF
         setState('ready')
+        if (wantFocus.current) {
+          wantFocus.current = false
+          mf.focus()
+        }
       })
       .catch(() => !cancelled && setState('failed'))
     return () => {
@@ -81,8 +89,25 @@ export function MathField({
     else mf.removeAttribute('aria-invalid')
   }, [label, describedBy, invalid, state])
 
+  // MathLive's strings (keyboard, menu) follow the UI language.
+  useEffect(() => {
+    if (fieldClass.current) fieldClass.current.locale = i18n.language
+  }, [i18n.language, state])
+
+  // The fallback field appears after a failed load: give it a focus asked for meanwhile.
+  useEffect(() => {
+    if (state === 'failed' && wantFocus.current) {
+      wantFocus.current = false
+      fallback.current?.focus()
+    }
+  }, [state])
+
   useImperativeHandle(ref, () => ({
-    focus: () => (field.current ?? fallback.current)?.focus(),
+    focus: () => {
+      const el = field.current ?? fallback.current
+      if (el) el.focus()
+      else wantFocus.current = true
+    },
   }))
 
   if (state === 'failed') {

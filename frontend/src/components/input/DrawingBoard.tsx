@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { strokePath } from '@/components/input/exportDrawing'
+import { cachedStrokePath, strokePath } from '@/components/input/exportDrawing'
 import {
   canRedo,
   canUndo,
@@ -59,12 +59,15 @@ export function DrawingBoard({
   history,
   dispatch,
   rows = 6,
+  locked = false,
 }: {
   label: string
   history: History
   dispatch: Dispatch<HistoryEvent>
   /** Height in grid squares (22 px each). */
   rows?: number
+  /** While the drawing is being read: no new strokes, no undo, redo or clear. */
+  locked?: boolean
 }) {
   const { t } = useTranslation()
   const canvas = useRef<HTMLCanvasElement>(null)
@@ -98,32 +101,42 @@ export function DrawingBoard({
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, size.w, size.h)
     ctx.fillStyle = INK
-    for (const s of strokes) ctx.fill(strokePath(s))
+    // Finished strokes never change, so their outlines are computed once; only the stroke
+    // being drawn is recomputed on each frame.
+    for (const s of strokes) ctx.fill(cachedStrokePath(s))
     if (current.current) ctx.fill(strokePath(current.current.stroke))
   }
   // Repaint whenever the strokes or the size change.
   useEffect(paint)
 
-  const point = (e: PointerEvent<HTMLCanvasElement> | globalThis.PointerEvent): Point => {
-    const box = canvas.current!.getBoundingClientRect()
-    return [e.clientX - box.left, e.clientY - box.top, e.pointerType === 'pen' ? e.pressure : 0.5]
-  }
+  const point = (
+    e: PointerEvent<HTMLCanvasElement> | globalThis.PointerEvent,
+    box: DOMRect,
+  ): Point => [
+    e.clientX - box.left,
+    e.clientY - box.top,
+    e.pointerType === 'pen' ? e.pressure : 0.5,
+  ]
 
   const onPointerDown = (e: PointerEvent<HTMLCanvasElement>) => {
-    if (current.current || (e.pointerType === 'mouse' && e.button !== 0)) return
+    if (locked || current.current || (e.pointerType === 'mouse' && e.button !== 0)) return
     e.preventDefault()
     e.currentTarget.setPointerCapture(e.pointerId)
     current.current = {
       id: e.pointerId,
-      stroke: { points: [point(e)], pressure: e.pointerType === 'pen' },
+      stroke: {
+        points: [point(e, e.currentTarget.getBoundingClientRect())],
+        pressure: e.pointerType === 'pen',
+      },
     }
     paint()
   }
   const onPointerMove = (e: PointerEvent<HTMLCanvasElement>) => {
     const c = current.current
     if (!c || c.id !== e.pointerId) return
+    const box = e.currentTarget.getBoundingClientRect()
     const events = e.nativeEvent.getCoalescedEvents?.() ?? []
-    for (const ev of events.length ? events : [e.nativeEvent]) c.stroke.points.push(point(ev))
+    for (const ev of events.length ? events : [e.nativeEvent]) c.stroke.points.push(point(ev, box))
     cancelAnimationFrame(frame.current)
     frame.current = requestAnimationFrame(paint)
   }
@@ -133,8 +146,15 @@ export function DrawingBoard({
     current.current = null
     dispatch({ type: 'add', stroke: c.stroke })
   }
+  // A cancelled touch (a palm, a system gesture) is not a stroke.
+  const onPointerCancel = (e: PointerEvent<HTMLCanvasElement>) => {
+    if (current.current?.id !== e.pointerId) return
+    current.current = null
+    paint()
+  }
 
   const act = (type: 'undo' | 'redo' | 'clear') => {
+    if (locked) return
     dispatch({ type })
     setAnnouncement(t(`input.write.did.${type}`))
   }
@@ -152,6 +172,7 @@ export function DrawingBoard({
       onKeyDown={(e) => {
         if (!(e.ctrlKey || e.metaKey)) return
         const key = e.key.toLowerCase()
+        if (locked) return
         if (key === 'z' && !e.shiftKey && canUndo(history)) act('undo')
         else if (((key === 'z' && e.shiftKey) || key === 'y') && canRedo(history)) act('redo')
         else return
@@ -169,19 +190,19 @@ export function DrawingBoard({
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
-          onPointerCancel={onPointerUp}
+          onPointerCancel={onPointerCancel}
         />
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <ToolButton off={!canUndo(history)} onClick={() => act('undo')}>
+        <ToolButton off={locked || !canUndo(history)} onClick={() => act('undo')}>
           <Undo2 aria-hidden="true" className="rtl:-scale-x-100" />
           {t('input.write.undo')}
         </ToolButton>
-        <ToolButton off={!canRedo(history)} onClick={() => act('redo')}>
+        <ToolButton off={locked || !canRedo(history)} onClick={() => act('redo')}>
           <Redo2 aria-hidden="true" className="rtl:-scale-x-100" />
           {t('input.write.redo')}
         </ToolButton>
-        <ToolButton off={strokes.length === 0} onClick={() => act('clear')}>
+        <ToolButton off={locked || strokes.length === 0} onClick={() => act('clear')}>
           <Eraser aria-hidden="true" />
           {t('input.write.clear')}
         </ToolButton>

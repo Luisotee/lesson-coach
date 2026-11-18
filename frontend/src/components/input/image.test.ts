@@ -1,5 +1,5 @@
 import { expect, test, vi } from 'vitest'
-import { cropAndDownscale, fitWithin } from '@/components/input/image'
+import { cropAndDownscale, fitWithin, rotateQuarter } from '@/components/input/image'
 
 test('fitWithin scales down to the longest edge and never up', () => {
   expect(fitWithin({ w: 4000, h: 3000 }, 1600)).toEqual({ w: 1600, h: 1200 })
@@ -55,4 +55,19 @@ test('cropAndDownscale gives up rather than send an oversized image', async () =
   await expect(
     cropAndDownscale(image, { x: 0, y: 0, w: 10, h: 10 }, { encode, maxBytes: 100 }),
   ).rejects.toThrow()
+})
+
+test('rotateQuarter scales a large photo down before turning it', async () => {
+  const ctx = { translate: vi.fn(), rotate: vi.fn(), drawImage: vi.fn() }
+  vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(ctx as never)
+  let made: HTMLCanvasElement | undefined
+  vi.stubGlobal(
+    'createImageBitmap',
+    vi.fn(async (c: HTMLCanvasElement) => (made = c)),
+  )
+  const image = { width: 6000, height: 4000 } as unknown as ImageBitmap
+  await rotateQuarter(image)
+  expect([made!.width, made!.height]).toEqual([2133, 3200])
+  expect(ctx.drawImage).toHaveBeenCalledWith(image, 0, 0, 3200, 2133)
+  vi.unstubAllGlobals()
 })

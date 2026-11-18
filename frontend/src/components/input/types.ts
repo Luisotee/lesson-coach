@@ -55,4 +55,4 @@ export interface ReviewLine {
 }
 
 /** API limits (backend/app/api/models.py). */
-export const LIMITS = { text: 200, latex: 400, lines: 20 } as const
+export const LIMITS = { text: 200, latex: 400, op: 30, lines: 20 } as const

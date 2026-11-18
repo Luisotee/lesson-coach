@@ -72,7 +72,21 @@ export function TranscriptionReview({
 
   const filled = rows.filter((r) => !isBlank(r))
   const toCheck = rows.filter((r) => r.uncertain).length
-  const blocked = filled.length === 0 ? 'none' : single && filled.length > 1 ? 'oneLine' : null
+  const tooLong = (r: ReviewLine) =>
+    r.left.trim().length > LIMITS.text ||
+    r.right.trim().length > LIMITS.text ||
+    r.op.trim().length > LIMITS.op
+  // The API's limits (backend/app/api/models.py), checked here so Confirm never sends a 422.
+  const blocked =
+    filled.length === 0
+      ? 'none'
+      : single && filled.length > 1
+        ? 'oneLine'
+        : filled.length > LIMITS.lines
+          ? 'tooMany'
+          : filled.some(tooLong)
+            ? 'tooLong'
+            : null
 
   return (
     <section aria-labelledby={headingId} className="flex flex-col gap-4">
@@ -184,6 +198,7 @@ export function TranscriptionReview({
                         id={`left-${headingId}-${row.id}`}
                         className={field}
                         value={row.left}
+                        maxLength={LIMITS.text}
                         autoComplete="off"
                         spellCheck={false}
                         onChange={(e) => update(row.id, { left: e.target.value })}
@@ -197,6 +212,7 @@ export function TranscriptionReview({
                       <input
                         className={field}
                         value={row.right}
+                        maxLength={LIMITS.text}
                         autoComplete="off"
                         spellCheck={false}
                         onChange={(e) => update(row.id, { right: e.target.value })}
@@ -207,6 +223,7 @@ export function TranscriptionReview({
                       <input
                         className={field}
                         value={row.op}
+                        maxLength={LIMITS.op}
                         autoComplete="off"
                         spellCheck={false}
                         onChange={(e) => update(row.id, { op: e.target.value })}
@@ -244,7 +261,11 @@ export function TranscriptionReview({
         </Button>
       </div>
 
-      {blocked && <p className="text-sm font-semibold">{t(`input.review.blocked.${blocked}`)}</p>}
+      {blocked && (
+        <p className="text-sm font-semibold">
+          {t(`input.review.blocked.${blocked}`, { max: LIMITS.lines, chars: LIMITS.text })}
+        </p>
+      )}
       <div className="flex flex-wrap items-center gap-3">
         <Button
           type="button"

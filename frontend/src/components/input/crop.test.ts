@@ -1,12 +1,5 @@
 import { expect, test } from 'vitest'
-import {
-  clampRect,
-  displayToImage,
-  growRect,
-  initialCrop,
-  moveRect,
-  resizeRect,
-} from '@/components/input/crop'
+import { clampRect, growRect, initialCrop, moveRect, resizeRect } from '@/components/input/crop'
 
 const bounds = { w: 100, h: 50 }
 
@@ -42,21 +35,6 @@ test('clamp keeps a rectangle inside and at least the minimum', () => {
     y: 40,
     w: 100,
     h: 2,
-  })
-})
-
-test('display coordinates map back to whole image pixels inside the image', () => {
-  expect(displayToImage({ x: 10, y: 5, w: 50, h: 20 }, 0.5, { w: 120, h: 60 })).toEqual({
-    x: 20,
-    y: 10,
-    w: 100,
-    h: 40,
-  })
-  expect(displayToImage({ x: 0, y: 0, w: 100, h: 50 }, 0.5, { w: 199, h: 99 })).toEqual({
-    x: 0,
-    y: 0,
-    w: 199,
-    h: 99,
   })
 })
 

@@ -19,7 +19,8 @@ export function toLineIns(lines: ReviewLine[]): LineIn[] {
 export function toExpression(line: ReviewLine): MathIn {
   const left = line.left.trim()
   const right = line.right.trim()
-  return { text: right ? `${left} = ${right}` : left }
+  // One side alone is that side, never "= 5".
+  return { text: left && right ? `${left} = ${right}` : left || right }
 }
 
 /** True when MathLive still shows an empty box (e.g. a fraction with no denominator yet). */

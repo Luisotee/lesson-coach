@@ -18,9 +18,11 @@ export function TypeInstead({ onClick }: { onClick: () => void }) {
 /** The reading and failed states of a transcription, announced to screen readers. */
 export function ReadingStatus({ phase, readingLabel }: { phase: Phase; readingLabel: string }) {
   const alert = useRef<HTMLParagraphElement>(null)
+  const message = phase.kind === 'failed' ? phase.message : null
+  // Focus a new failure once, never again on a re-render of the same one.
   useEffect(() => {
-    if (phase.kind === 'failed') alert.current?.focus()
-  }, [phase])
+    if (message) alert.current?.focus()
+  }, [message])
   return (
     <>
       <p role="status" className="flex items-center gap-2 empty:hidden">

@@ -14,7 +14,7 @@ import type {
   MathInputProps,
   ReviewLine,
 } from '@/components/input/types'
-import { WritePanel, type PanelHandle } from '@/components/input/WritePanel'
+import { WritePanel } from '@/components/input/WritePanel'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { cn } from '@/lib/utils'
 
@@ -37,7 +37,7 @@ export function MathInput(props: MathInputProps) {
   const [mode, setMode] = useState<InputMode>(offered.includes(defaultMode) ? defaultMode : 'type')
   const values = useRef<Record<InputMode, Value>>({ type: null, write: null, photo: null })
   const typeField = useRef<MathFieldHandle>(null)
-  const panels = useRef<Partial<Record<InputMode, PanelHandle | null>>>({})
+  const panels = useRef<Partial<Record<InputMode, HTMLDivElement | null>>>({})
   const triggers = useRef<Partial<Record<InputMode, HTMLButtonElement | null>>>({})
   const focusType = useRef(false)
   const single = props.shape === 'expression'
@@ -75,10 +75,12 @@ export function MathInput(props: MathInputProps) {
   }
 
   useImperativeHandle(ref, () => ({
-    focus: () =>
-      mode === 'type'
-        ? typeField.current?.focus()
-        : (panels.current[mode] ?? triggers.current[mode])?.focus(),
+    focus: () => {
+      if (mode === 'type') return typeField.current?.focus()
+      // The main control of what the panel shows now: Read, the crop box, the review heading…
+      const main = panels.current[mode]?.querySelector<HTMLElement>('[data-main-control]')
+      ;(main ?? triggers.current[mode])?.focus()
+    },
   }))
 
   const fromLines = (m: InputMode) => (lines: ReviewLine[] | null) =>
@@ -123,6 +125,7 @@ export function MathInput(props: MathInputProps) {
             value={m}
             forceMount
             hidden={mode !== m}
+            ref={(el) => void (panels.current[m] = el)}
             tabIndex={m === 'type' ? -1 : 0}
             className="data-[state=inactive]:hidden"
           >
@@ -148,7 +151,6 @@ export function MathInput(props: MathInputProps) {
               ))}
             {m === 'write' && (
               <WritePanel
-                ref={(h) => void (panels.current.write = h)}
                 label={label}
                 single={single}
                 onLines={fromLines('write')}
@@ -157,7 +159,6 @@ export function MathInput(props: MathInputProps) {
             )}
             {m === 'photo' && (
               <PhotoPanel
-                ref={(h) => void (panels.current.photo = h)}
                 single={single}
                 onLines={fromLines('photo')}
                 onTypeInstead={typeInstead}

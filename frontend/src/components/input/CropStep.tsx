@@ -140,6 +140,7 @@ export function CropStep({
             aria-describedby={helpId}
             aria-description={description}
             data-testid="crop-box"
+            data-main-control
             className="absolute cursor-move border-2 border-white shadow-[0_0_0_9999px_rgba(23,43,83,0.55)] outline-none ring-navy focus-visible:ring-4"
             style={{
               left: rect.x * scale,

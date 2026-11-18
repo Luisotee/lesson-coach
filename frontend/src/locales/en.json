@@ -192,7 +192,9 @@
       "confirmed": "Confirmed.",
       "blocked": {
         "none": "There are no lines to use. Add one, or try again.",
-        "oneLine": "Keep only one line here: remove the others."
+        "oneLine": "Keep only one line here: remove the others.",
+        "tooMany": "There are more than {max} lines. Remove some before you confirm.",
+        "tooLong": "A line is too long to check (at most {chars} characters a side). Shorten it."
       }
     },
     "error": {

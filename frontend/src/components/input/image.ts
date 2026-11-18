@@ -16,16 +16,26 @@ export async function loadImage(file: Blob): Promise<ImageBitmap> {
   return createImageBitmap(file, { imageOrientation: 'from-image' })
 }
 
-/** Turns an image a quarter turn clockwise. Returns a new bitmap; the caller closes the old one. */
+/**
+ * Longest edge kept when a photo is turned: twice the upload size, so a crop still has detail,
+ * and well under mobile canvas limits (iOS Safari allows about 16.7 megapixels).
+ */
+export const ROTATE_MAX_EDGE = 2 * MAX_EDGE
+
+/**
+ * Turns an image a quarter turn clockwise, scaling it down first to `ROTATE_MAX_EDGE`.
+ * Returns a new bitmap; the caller closes the old one.
+ */
 export async function rotateQuarter(image: ImageBitmap): Promise<ImageBitmap> {
+  const size = fitWithin({ w: image.width, h: image.height }, ROTATE_MAX_EDGE)
   const canvas = document.createElement('canvas')
-  canvas.width = image.height
-  canvas.height = image.width
+  canvas.width = size.h
+  canvas.height = size.w
   const ctx = canvas.getContext('2d')
   if (!ctx) throw new Error('No canvas')
   ctx.translate(canvas.width, 0)
   ctx.rotate(Math.PI / 2)
-  ctx.drawImage(image, 0, 0)
+  ctx.drawImage(image, 0, 0, size.w, size.h)
   return createImageBitmap(canvas)
 }
 

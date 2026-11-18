@@ -27,6 +27,18 @@ export function strokePath(stroke: Stroke): Path2D {
   return path
 }
 
+const paths = new WeakMap<Stroke, Path2D>()
+
+/** The outline of a finished stroke, computed once. Don't use it for a stroke still being drawn. */
+export function cachedStrokePath(stroke: Stroke): Path2D {
+  let path = paths.get(stroke)
+  if (!path) {
+    path = strokePath(stroke)
+    paths.set(stroke, path)
+  }
+  return path
+}
+
 /** The box around every point, grown by `pad`; null for no strokes. */
 export function strokeBounds(strokes: Stroke[], pad: number): Rect | null {
   let minX = Infinity
@@ -69,6 +81,6 @@ export async function exportDrawing(
   ctx.fillRect(0, 0, out.w, out.h)
   ctx.setTransform(scale, 0, 0, scale, -box.x * scale, -box.y * scale)
   ctx.fillStyle = '#000000'
-  for (const s of strokes) ctx.fill(strokePath(s))
+  for (const s of strokes) ctx.fill(cachedStrokePath(s))
   return encode(canvas, 'image/png', 1)
 }

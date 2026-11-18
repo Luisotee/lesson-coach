@@ -1,8 +1,9 @@
-import { render, screen, within } from '@testing-library/react'
+import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { expect, test, vi } from 'vitest'
+import { afterEach, expect, test, vi } from 'vitest'
 import { MathInput } from '@/components/input/MathInput'
 import { TranscriptionReview } from '@/components/input/TranscriptionReview'
+import type { MathInputHandle } from '@/components/input/types'
 
 // MathLive needs a real browser (e2e covers it); here it "fails to load", which exercises the
 // plain-text fallback the component promises.
@@ -67,6 +68,11 @@ test('typed lines are reported per line; an empty line is skipped', async () => 
   })
   await user.click(screen.getByRole('button', { name: 'Remove line 1' }))
   expect(onChange).toHaveBeenLastCalledWith({ mode: 'type', lines: [{ left: 'x', right: '2' }] })
+})
+
+afterEach(() => {
+  vi.unstubAllGlobals()
+  vi.restoreAllMocks()
 })
 
 const read = [
@@ -190,4 +196,104 @@ test('a confirmed transcription reaches the page as the API shape', async () => 
   })
   vi.unstubAllGlobals()
   vi.restoreAllMocks()
+})
+
+test('the confirm screen blocks lines over the API limits', async () => {
+  const user = userEvent.setup()
+  const onConfirm = vi.fn()
+  const many = Array.from({ length: 21 }, (_, i) => ({
+    left: `x + ${i}`,
+    right: '',
+    op: '',
+    uncertain: false,
+  }))
+  const { unmount } = render(
+    <TranscriptionReview
+      initial={many}
+      single={false}
+      retakeLabel="Draw again"
+      onConfirm={onConfirm}
+      onUnconfirm={() => {}}
+      onRetake={() => {}}
+    />,
+  )
+  expect(screen.getByText(/more than 20 lines/)).toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: 'Yes, use these lines' }))
+  expect(onConfirm).not.toHaveBeenCalled()
+  unmount()
+
+  render(
+    <TranscriptionReview
+      initial={[{ left: 'x'.repeat(201), right: '1', op: '', uncertain: true }]}
+      single={false}
+      retakeLabel="Draw again"
+      onConfirm={onConfirm}
+      onUnconfirm={() => {}}
+      onRetake={() => {}}
+    />,
+  )
+  expect(screen.getByText(/A line is too long to check/)).toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: 'Yes, use these lines' }))
+  expect(onConfirm).not.toHaveBeenCalled()
+  await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
+  expect(screen.getByRole('textbox', { name: 'Left side' })).toHaveAttribute('maxlength', '200')
+  expect(screen.getByRole('textbox', { name: 'Operation (like −5)' })).toHaveAttribute(
+    'maxlength',
+    '30',
+  )
+})
+
+test('focus() goes to the main control of what each panel shows now', async () => {
+  const user = userEvent.setup()
+  const { createRef } = await import('react')
+  const ref = createRef<MathInputHandle>()
+  vi.stubGlobal(
+    'createImageBitmap',
+    vi.fn(async () => ({ width: 800, height: 600, close: vi.fn() })),
+  )
+  vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue({
+    drawImage: () => {},
+    setTransform: () => {},
+    clearRect: () => {},
+    fill: () => {},
+  } as never)
+  render(
+    <MathInput ref={ref} shape="lines" label="Working" defaultMode="photo" onChange={() => {}} />,
+  )
+  act(() => ref.current!.focus())
+  expect(screen.getByRole('button', { name: 'Take a photo' })).toHaveFocus()
+
+  await user.upload(
+    screen.getByTestId('photo-upload'),
+    new File(['x'], 'p.png', { type: 'image/png' }),
+  )
+  const cropBox = await screen.findByTestId('crop-box')
+  act(() => ref.current!.focus())
+  expect(cropBox).toHaveFocus()
+  vi.unstubAllGlobals()
+  vi.restoreAllMocks()
+})
+
+test('a photo that cannot be opened is announced once and does not take focus back', async () => {
+  const user = userEvent.setup()
+  vi.stubGlobal(
+    'createImageBitmap',
+    vi.fn(async () => Promise.reject(new Error('cannot decode'))),
+  )
+  const { rerender } = render(
+    <MathInput shape="expression" label="P" defaultMode="photo" onChange={() => {}} />,
+  )
+  await user.upload(
+    screen.getByTestId('photo-upload'),
+    new File(['x'], 'p.png', { type: 'image/png' }),
+  )
+  const alert = await screen.findByRole('alert')
+  expect(alert).toHaveFocus()
+  const other = document.createElement('input')
+  document.body.appendChild(other)
+  other.focus()
+  rerender(<MathInput shape="expression" label="P" defaultMode="photo" onChange={() => {}} />)
+  expect(other).toHaveFocus()
+  other.remove()
+  vi.unstubAllGlobals()
 })

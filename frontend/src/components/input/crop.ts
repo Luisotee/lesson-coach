@@ -52,15 +52,6 @@ export function growRect(r: Rect, dw: number, dh: number, bounds: Size, min: num
   return resizeRect(r, 'se', dw, dh, bounds, min)
 }
 
-/** Scales a rectangle shown at `scale` (display px per image px) back to image pixels, rounded inward to whole pixels. */
-export function displayToImage(r: Rect, scale: number, image: Size): Rect {
-  const x = Math.max(0, Math.round(r.x / scale))
-  const y = Math.max(0, Math.round(r.y / scale))
-  const w = Math.min(image.w - x, Math.round(r.w / scale))
-  const h = Math.min(image.h - y, Math.round(r.h / scale))
-  return { x, y, w: Math.max(1, w), h: Math.max(1, h) }
-}
-
 /** The starting crop: the whole image less a small margin. */
 export function initialCrop(bounds: Size, margin = 0.05): Rect {
   return {

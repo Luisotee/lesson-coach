@@ -1,5 +1,5 @@
 import { ScanText } from 'lucide-react'
-import { useImperativeHandle, useReducer, useRef, type Ref } from 'react'
+import { useReducer } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DrawingBoard } from '@/components/input/DrawingBoard'
 import { exportDrawing } from '@/components/input/exportDrawing'
@@ -10,32 +10,27 @@ import type { ReviewLine } from '@/components/input/types'
 import { useTranscription } from '@/components/input/useTranscription'
 import { Button } from '@/components/ui/button'
 
-export interface PanelHandle {
-  focus(): void
-}
-
-/** Write on squared paper, have it read, confirm the lines. */
+/**
+ * Write on squared paper, have it read, confirm the lines. The board is locked while it is
+ * being read, so the lines shown for confirmation are always of the drawing that was sent.
+ */
 export function WritePanel({
   label,
   single,
   onLines,
   onTypeInstead,
-  ref,
 }: {
   label: string
   single: boolean
   /** The confirmed lines, or null when nothing is confirmed. */
   onLines: (lines: ReviewLine[] | null) => void
   onTypeInstead: () => void
-  ref?: Ref<PanelHandle>
 }) {
   const { t } = useTranslation()
   const [history, dispatch] = useReducer(historyReducer, emptyHistory)
   const { phase, run, reset } = useTranscription()
-  const readButton = useRef<HTMLButtonElement>(null)
   const strokes = visibleStrokes(history)
-
-  useImperativeHandle(ref, () => ({ focus: () => readButton.current?.focus() }))
+  const reading = phase.kind === 'reading'
 
   if (phase.kind === 'review') {
     return (
@@ -71,15 +66,16 @@ export function WritePanel({
           if (phase.kind === 'failed') reset()
         }}
         rows={single ? 4 : 8}
+        locked={reading}
       />
       <div className="flex flex-wrap items-center gap-2">
         <Button
-          ref={readButton}
+          data-main-control
           type="button"
           className="min-h-11 px-5 aria-disabled:opacity-50"
-          aria-disabled={strokes.length === 0 || phase.kind === 'reading' || undefined}
+          aria-disabled={strokes.length === 0 || reading || undefined}
           onClick={() => {
-            if (strokes.length === 0 || phase.kind === 'reading') return
+            if (strokes.length === 0 || reading) return
             void run(() => exportDrawing(strokes))
           }}
         >

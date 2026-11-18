@@ -13,6 +13,7 @@ test('reviewed lines become steps; blanks are dropped and fields trimmed', () =>
 test('one line becomes one expression without its margin operation', () => {
   expect(toExpression(line('2*x + 6', '10', '-6'))).toEqual({ text: '2*x + 6 = 10' })
   expect(toExpression(line('2/5'))).toEqual({ text: '2/5' })
+  expect(toExpression(line(' ', '5'))).toEqual({ text: '5' })
 })
 
 test('typed values pass through as LaTeX or text, null when empty or too long', () => {
