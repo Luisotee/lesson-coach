@@ -1,0 +1,125 @@
+# Mistake-diagnosis eval cases. Read and validated by backend/tests/test_content.py
+# (model: app.content.schema.MistakeEvalSet). T10 adds our own cases, controls and slips.
+#
+# Rows with dataset MaE are adapted from MaE (Math Misconceptions and Errors),
+# https://github.com/nancyotero-projects/math-misconceptions at commit
+# 12bee142d49dfb3c874149035cfbad28547a818b, Copyright (c) 2024 Nancy Otero, MIT License.
+# The full MIT notice is in content/ATTRIBUTION.md. We changed the numbers in every row,
+# rewrote the problems as plain sympy text and mapped each row to our misconception ids.
+# Every answer is checked with sympy by the test.
+
+cases:
+  # negative-numbers
+  - id: mae18-2
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "4 + (-10)"}
+    student_answer: "6"
+    expected: {classification: wrong, status: diagnosed, misconception_id: subtract_smaller_from_larger}
+    source: &mae
+      dataset: MaE
+      repo: https://github.com/nancyotero-projects/math-misconceptions
+      commit: 12bee142d49dfb3c874149035cfbad28547a818b
+      misconception: MaE18
+      example: 2
+      license: MIT
+      changes: Numbers changed from 5 + -9 = 4; problem written as sympy text.
+  - id: mae18-3
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "8 + (-3)"}
+    student_answer: "-5"
+    expected: {classification: wrong, status: diagnosed, misconception_id: other}
+    source: {<<: *mae, misconception: MaE18, example: 3, changes: Numbers changed from 7 + -2 = -5; problem written as sympy text.}
+  - id: mae19-1
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "-5 + (-9)"}
+    student_answer: "4"
+    expected: {classification: wrong, status: diagnosed, misconception_id: two_negatives_make_positive}
+    source: {<<: *mae, misconception: MaE19, example: 1, changes: Numbers changed from -6 + -8 = 2; problem written as sympy text.}
+  - id: mae19-3
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "-2 + (-6)"}
+    student_answer: "8"
+    expected: {classification: wrong, status: diagnosed, misconception_id: two_negatives_make_positive}
+    source: {<<: *mae, misconception: MaE19, example: 3, changes: Numbers changed from -4 + -3 = 7; problem written as sympy text.}
+  - id: mae32-4
+    topic: negative-numbers
+    problem: {kind: evaluate, expr: "-7 - 4"}
+    student_answer: "11"
+    expected: {classification: wrong, status: diagnosed, misconception_id: two_negatives_make_positive}
+    source: {<<: *mae, misconception: MaE32, example: 4, changes: Numbers changed from -8 - 3 = x with x = 11; asked as an expression.}
+
+  # fractions
+  - id: mae08-1
+    topic: fractions
+    problem: {kind: evaluate, expr: "3/5 + 1/4"}
+    student_answer: "4/9"
+    expected: {classification: wrong, status: diagnosed, misconception_id: add_tops_and_bottoms}
+    source: {<<: *mae, misconception: MaE08, example: 1, changes: Numbers changed from 4/5 + 2/3 = 6/8.}
+  - id: mae08-2
+    topic: fractions
+    problem: {kind: evaluate, expr: "1/3 + 2/5"}
+    student_answer: "3/8"
+    expected: {classification: wrong, status: diagnosed, misconception_id: add_tops_and_bottoms}
+    source: {<<: *mae, misconception: MaE08, example: 2, changes: Numbers changed from 1/4 + 2/3 = 3/7.}
+  - id: mae13-1
+    topic: fractions
+    problem: {kind: evaluate, expr: "4*(3/5)"}
+    student_answer: "12/20"
+    expected: {classification: wrong, status: diagnosed, misconception_id: multiply_both_by_whole}
+    source: {<<: *mae, misconception: MaE13, example: 1, changes: Numbers changed from 2/3 * 3 = 6/9; whole number written first.}
+  - id: mae13-3
+    topic: fractions
+    problem: {kind: evaluate, expr: "3*(2/7)"}
+    student_answer: "6/21"
+    expected: {classification: wrong, status: diagnosed, misconception_id: multiply_both_by_whole}
+    source: {<<: *mae, misconception: MaE13, example: 3, changes: Numbers changed from 4/5 * 2 = 8/10; whole number written first.}
+  - id: mae15-1
+    topic: fractions
+    problem: {kind: evaluate, expr: "(3/4)/(2/5)"}
+    student_answer: "8/15"
+    expected: {classification: wrong, status: diagnosed, misconception_id: flip_first_when_dividing}
+    source: {<<: *mae, misconception: MaE15, example: 1, changes: Numbers changed from 2/3 ÷ 3/8 = 9/16.}
+  - id: mae15-2
+    topic: fractions
+    problem: {kind: evaluate, expr: "(3/7)/(1/2)"}
+    student_answer: "7/6"
+    expected: {classification: wrong, status: diagnosed, misconception_id: flip_first_when_dividing}
+    source: {<<: *mae, misconception: MaE15, example: 2, changes: Numbers changed from 2/5 ÷ 1/3 = 5/6.}
+  - id: mae07-2
+    topic: fractions
+    problem: {kind: simplify, expr: "10/12"}
+    student_answer: "5/12"
+    expected: {classification: wrong, status: diagnosed, misconception_id: simplify_one_part}
+    source: {<<: *mae, misconception: MaE07, example: 2, changes: Numbers changed from 6/8 = 3/8.}
+
+  # linear-equations
+  - id: mae33-3
+    topic: linear-equations
+    problem: {kind: solve, expr: "15*x - 120 = 180"}
+    student_answer: "4"
+    student_working:
+      - {left: "15*x", right: "180 - 120", op: "/15"}
+      - {left: "x", right: "4"}
+    expected: {classification: wrong, status: diagnosed, misconception_id: sign_not_changed}
+    source: {<<: *mae, misconception: MaE33, example: 3, changes: Numbers changed from 16n - 215 = 265 with 16n = 265 - 215; variable renamed to x.}
+  - id: mae33-1
+    topic: linear-equations
+    problem: {kind: solve, expr: "12*n + 150 = 330"}
+    student_answer: "-15"
+    student_working:
+      - {left: "12*n", right: "150 - 330", op: "/12"}
+      - {left: "n", right: "-15"}
+    expected: {classification: wrong, status: diagnosed, misconception_id: other}
+    source: {<<: *mae, misconception: MaE33, example: 1, changes: Numbers changed from 13n + 196 = 391 with 13n = 196 - 391.}
+  - id: mae52-1
+    topic: linear-equations
+    problem: {kind: solve, expr: "9 - n/3 = 13"}
+    student_answer: "12"
+    expected: {classification: wrong, status: diagnosed, misconception_id: other}
+    source: {<<: *mae, misconception: MaE52, example: 1, changes: Numbers changed from 7 - n/2 = 18 with n = 22.}
+  - id: mae52-3
+    topic: linear-equations
+    problem: {kind: solve, expr: "k - 5 = 6*k"}
+    student_answer: "5"
+    expected: {classification: wrong, status: unclear, misconception_id: other}
+    source: {<<: *mae, misconception: MaE52, example: 3, changes: Numbers changed from m - 3 = 4m with m = 3; variable renamed to k.}
