@@ -34,7 +34,11 @@ test('cropAndDownscale lowers quality, then size, until under the limit', async 
     return new Blob([new Uint8Array(calls.length < 4 ? 2000 : 10)])
   })
   const image = { width: 2000, height: 2000 } as unknown as HTMLCanvasElement
-  const blob = await cropAndDownscale(image, { x: 0, y: 0, w: 2000, h: 2000 }, { encode, maxBytes: 100 })
+  const blob = await cropAndDownscale(
+    image,
+    { x: 0, y: 0, w: 2000, h: 2000 },
+    { encode, maxBytes: 100 },
+  )
   expect(blob.size).toBe(10)
   expect(calls).toEqual([
     [1600, 85],
@@ -48,5 +52,7 @@ test('cropAndDownscale gives up rather than send an oversized image', async () =
   fakeCanvas()
   const encode = async () => new Blob([new Uint8Array(500)])
   const image = { width: 10, height: 10 } as unknown as HTMLCanvasElement
-  await expect(cropAndDownscale(image, { x: 0, y: 0, w: 10, h: 10 }, { encode, maxBytes: 100 })).rejects.toThrow()
+  await expect(
+    cropAndDownscale(image, { x: 0, y: 0, w: 10, h: 10 }, { encode, maxBytes: 100 }),
+  ).rejects.toThrow()
 })

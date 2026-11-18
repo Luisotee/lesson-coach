@@ -8,7 +8,11 @@ import { cn } from '@/lib/utils'
  */
 function Tabs({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
-    <TabsPrimitive.Root data-slot="tabs" className={cn('flex flex-col gap-3', className)} {...props} />
+    <TabsPrimitive.Root
+      data-slot="tabs"
+      className={cn('flex flex-col gap-3', className)}
+      {...props}
+    />
   )
 }
 
@@ -45,7 +49,10 @@ function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPr
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn('rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50', className)}
+      className={cn(
+        'rounded-xl outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50',
+        className,
+      )}
       {...props}
     />
   )

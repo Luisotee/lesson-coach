@@ -51,7 +51,10 @@ export const EXPORT_MAX_EDGE = 1600
  * The drawing as a PNG for transcription: only the ink, black on white, cropped to the
  * strokes, without the squared paper (grid lines can be misread as minus signs).
  */
-export async function exportDrawing(strokes: Stroke[], encode: Encoder = canvasEncoder): Promise<Blob> {
+export async function exportDrawing(
+  strokes: Stroke[],
+  encode: Encoder = canvasEncoder,
+): Promise<Blob> {
   const box = strokeBounds(strokes, 24)
   if (!box) throw new Error('Nothing drawn')
   // Draw at 2x for a thin pen, but never past the size limit.

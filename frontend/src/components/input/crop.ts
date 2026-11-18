@@ -28,7 +28,14 @@ export function moveRect(r: Rect, dx: number, dy: number, bounds: Size): Rect {
 }
 
 /** Drags one corner; the opposite corner stays put. */
-export function resizeRect(r: Rect, handle: Handle, dx: number, dy: number, bounds: Size, min: number): Rect {
+export function resizeRect(
+  r: Rect,
+  handle: Handle,
+  dx: number,
+  dy: number,
+  bounds: Size,
+  min: number,
+): Rect {
   let left = r.x
   let top = r.y
   let right = r.x + r.w

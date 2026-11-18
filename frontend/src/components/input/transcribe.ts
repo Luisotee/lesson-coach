@@ -29,7 +29,10 @@ function isApiLine(v: unknown): v is ApiLine {
  * Sends one image to `/api/transcribe`. The image is never kept or logged here, and the
  * returned lines are only shown back to the teacher for confirmation.
  */
-export async function transcribe(image: Blob, { signal }: { signal?: AbortSignal } = {}): Promise<TranscribeResult> {
+export async function transcribe(
+  image: Blob,
+  { signal }: { signal?: AbortSignal } = {},
+): Promise<TranscribeResult> {
   const body = new FormData()
   const name = image.type === 'image/png' ? 'drawing.png' : 'photo.jpg'
   body.append('image', image, name)
@@ -41,7 +44,7 @@ export async function transcribe(image: Blob, { signal }: { signal?: AbortSignal
     return { ok: false, error: 'unavailable' }
   }
   if (res.status === 413) return { ok: false, error: 'too_large' }
-  if (res.status === 422) return { ok: false, error: 'bad_image' }
+  if (res.status === 415 || res.status === 422) return { ok: false, error: 'bad_image' }
   if (res.status === 429) {
     const after = Number(res.headers.get('Retry-After'))
     return { ok: false, error: 'rate_limited', ...(after > 0 && { retryAfter: after }) }

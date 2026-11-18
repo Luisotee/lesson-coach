@@ -4,7 +4,9 @@ import { transcribe } from '@/components/input/transcribe'
 const png = new Blob(['x'], { type: 'image/png' })
 
 function respond(status: number, body?: unknown, headers: Record<string, string> = {}) {
-  const fetchMock = vi.fn(async () => new Response(body === undefined ? null : JSON.stringify(body), { status, headers }))
+  const fetchMock = vi.fn(
+    async () => new Response(body === undefined ? null : JSON.stringify(body), { status, headers }),
+  )
   vi.stubGlobal('fetch', fetchMock)
   return fetchMock
 }
@@ -47,6 +49,8 @@ test('unclear, or ok with no lines, is unclear', async () => {
 test('HTTP errors map to honest errors', async () => {
   respond(413)
   expect(await transcribe(png)).toEqual({ ok: false, error: 'too_large' })
+  respond(415)
+  expect(await transcribe(png)).toEqual({ ok: false, error: 'bad_image' })
   respond(422, { detail: [] })
   expect(await transcribe(png)).toEqual({ ok: false, error: 'bad_image' })
   respond(429, { detail: 'slow down' }, { 'Retry-After': '30' })
@@ -56,8 +60,14 @@ test('HTTP errors map to honest errors', async () => {
 })
 
 test('a network failure is unavailable; an abort is rethrown', async () => {
-  vi.stubGlobal('fetch', vi.fn(async () => Promise.reject(new TypeError('Failed to fetch'))))
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async () => Promise.reject(new TypeError('Failed to fetch'))),
+  )
   expect(await transcribe(png)).toEqual({ ok: false, error: 'unavailable' })
-  vi.stubGlobal('fetch', vi.fn(async () => Promise.reject(new DOMException('aborted', 'AbortError'))))
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(async () => Promise.reject(new DOMException('aborted', 'AbortError'))),
+  )
   await expect(transcribe(png)).rejects.toThrow('aborted')
 })
