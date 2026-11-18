@@ -11,7 +11,7 @@ from __future__ import annotations
 import json
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 
 OUTPUT_ONLY = "Output content only. Do not address the user."
 
@@ -35,7 +35,10 @@ Decide what most likely happened and reply with:
 - follow_up_id: one id from the follow-up list that would check the student's understanding
   next, or null.
 
-Write math as plain text (1/2, 2*x, x = 3). Be kind and specific; never judge the student or
+Use only the math you were given: the problem, the student's answer and working, the
+verified answer and the worked solution. Never compute, simplify or invent a new number or
+expression; refer to steps in words instead. Write math as plain text (1/2, 2*x, x = 3).
+Be kind and specific; never judge the student or
 the teacher, and give no scores or praise. Write every text field in the requested language.
 {OUTPUT_ONLY}"""
 
@@ -53,30 +56,85 @@ class Model(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
+# The models accept any length, and `clip` trims after parsing: a reply just over a cap is
+# shortened at a word boundary, not thrown away. The caps are not in the JSON schema: Azure
+# strict mode accepts maxLength/maxItems but enforces them by cutting text mid-word and
+# merging array items (checked against gpt-5.5-live).
+MAX_EXPLANATION = 900
+MAX_SAY = 400
+MAX_TELL = 600
+MAX_MARGIN_NOTE = 60
+MAX_SIDE = 200
+MAX_OP = 30
+MAX_LINES = 30
+
+
+def clip(text: str, limit: int) -> str:
+    """`text` trimmed to `limit` characters, at the last sentence end or word boundary."""
+    text = text.strip()
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    for end in (". ", "! ", "? "):
+        at = cut.rfind(end)
+        if at >= limit // 2:
+            return cut[: at + 1]
+    at = cut.rfind(" ")
+    return (cut[:at] if at >= limit // 2 else cut).rstrip(" ,;:") + "…"
+
+
 class WhatToSayOut(Model):
-    probe: str = Field(max_length=400)
-    nudge: str = Field(max_length=400)
-    tell: str = Field(max_length=600)
+    probe: str
+    nudge: str
+    tell: str
 
 
 class MistakeOut(Model):
     status: Literal["diagnosed", "slip", "unclear", "out_of_scope"]
     misconception_ids: list[str]
-    explanation: str = Field(max_length=900)
+    explanation: str
     margin_note: str | None
     what_to_say: WhatToSayOut
     follow_up_id: str | None
 
+    def clipped(self) -> MistakeOut:
+        note = clip(self.margin_note, MAX_MARGIN_NOTE) if self.margin_note else None
+        return MistakeOut(
+            status=self.status,
+            misconception_ids=self.misconception_ids[:2],
+            explanation=clip(self.explanation, MAX_EXPLANATION),
+            margin_note=note or None,
+            what_to_say=WhatToSayOut(
+                probe=clip(self.what_to_say.probe, MAX_SAY),
+                nudge=clip(self.what_to_say.nudge, MAX_SAY),
+                tell=clip(self.what_to_say.tell, MAX_TELL),
+            ),
+            follow_up_id=self.follow_up_id,
+        )
+
 
 class LineOut(Model):
-    left: str = Field(max_length=200)
-    right: str = Field(max_length=200)
-    op: str = Field(max_length=30)
-    confidence: float = Field(ge=0, le=1)
+    left: str
+    right: str
+    op: str
+    confidence: float
 
 
 class TranscribeOut(Model):
-    lines: list[LineOut] = Field(max_length=30)
+    lines: list[LineOut]
+
+    def clipped(self) -> TranscribeOut:
+        return TranscribeOut(
+            lines=[
+                LineOut(
+                    left=line.left.strip()[:MAX_SIDE],
+                    right=line.right.strip()[:MAX_SIDE],
+                    op=line.op.strip()[:MAX_OP],
+                    confidence=min(1.0, max(0.0, line.confidence)),
+                )
+                for line in self.lines[:MAX_LINES]
+            ]
+        )
 
 
 def _string() -> dict[str, Any]:

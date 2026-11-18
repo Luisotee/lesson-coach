@@ -1,7 +1,5 @@
 from typing import Any
 
-from starlette.requests import Request
-
 from app.api.limits import RateLimiter, client_ip
 from tests.api.conftest import MakeClient
 
@@ -27,13 +25,12 @@ def test_window_slides() -> None:
     assert limiter.check("b", "ip", 1) is None
 
 
-def _request(headers: dict[str, str]) -> Request:
-    scope: dict[str, Any] = {
+def _request(headers: dict[str, str]) -> dict[str, Any]:
+    return {
         "type": "http",
         "headers": [(k.encode(), v.encode()) for k, v in headers.items()],
         "client": ("10.0.0.1", 1234),
     }
-    return Request(scope)
 
 
 def test_client_ip_trusts_only_the_ingress_hop() -> None:

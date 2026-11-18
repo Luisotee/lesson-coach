@@ -11,6 +11,7 @@ from typing import Literal
 
 from app.math.canonical import Verdict, classify_answer
 from app.math.nodes import Bin, Eq, MathError, MathParseError, Neg, Node, UnsupportedProblem, render
+from app.math.parse import parse_text
 from app.math.problems import Format, Kind, Problem, Step, parse_input, solve
 from app.math.rules import ALL_RULES, reproducing_rules
 from app.math.steps import first_line_that_doesnt_follow
@@ -44,6 +45,16 @@ class BadLine:
     reason: str
 
 
+@dataclass(frozen=True)
+class WorkingLine:
+    """A line as the student sent it, normalised (`2*x = 4`). When it can't be read, `left`
+    is the raw text and `right`/`op` are None, so indexes still line up."""
+
+    left: str
+    right: str | None
+    op: str | None
+
+
 @dataclass
 class MistakeFindings:
     """Everything sympy knows about a student's answer (PLAN mistake pipeline, steps 1-4)."""
@@ -58,11 +69,13 @@ class MistakeFindings:
     first_bad_line: BadLine | None = None
     rule_ids: list[str] = field(default_factory=list)
     topic: str | None = None
+    working: list[WorkingLine] = field(default_factory=list)
 
 
 @dataclass
 class WorkingFindings:
     error: MathErrorKind | None = None
+    lines: list[WorkingLine] = field(default_factory=list)
     first_bad_line: BadLine | None = None
     final: Verdict | None = None
 
@@ -88,6 +101,27 @@ def read_line(line: LineText) -> Step:
     if isinstance(node, Eq):
         return Step(render(node.left), render(node.right), line.op)
     return Step(render(node), "", line.op)
+
+
+def echo_line(line: LineText) -> WorkingLine:
+    """The line normalised for display, or as sent when it can't be read."""
+    if line.math is not None:
+        raw = line.math.value
+    else:
+        raw = f"{line.left} = {line.right}" if line.right.strip() else line.left
+    try:
+        if line.math is not None:
+            node = parse_input(line.math.value, line.math.fmt)
+            if isinstance(node, Eq):
+                left, right = render(node.left), render(node.right)
+            else:
+                left, right = render(node), ""
+        else:
+            left = render(parse_text(line.left))
+            right = render(parse_text(line.right)) if line.right.strip() else ""
+    except MathError:
+        return WorkingLine(raw.strip(), None, None)
+    return WorkingLine(left, right, line.op.strip())
 
 
 def guess_topic(problem: Problem) -> str:
@@ -124,7 +158,7 @@ def analyse_mistake(
 ) -> MistakeFindings:
     """Solve the problem, classify the answer, find the first line that doesn't follow, and
     try the misconception rules, in that order."""
-    out = MistakeFindings()
+    out = MistakeFindings(working=[echo_line(w) for w in working])
     try:
         problem = read_problem(problem_in, kind)
         solution = solve(problem)
@@ -169,11 +203,12 @@ def check_working(
     problem_in: MathText | None, kind: Kind | None, lines: list[LineText]
 ) -> WorkingFindings:
     """Which line first doesn't follow (sympy only), and the last line's verdict."""
-    out = WorkingFindings()
+    out = WorkingFindings(lines=[echo_line(line) for line in lines])
     problem = None
     if problem_in is not None:
         try:
             problem = read_problem(problem_in, kind)
+            _check_defined(problem)
         except UnsupportedProblem:
             out.error = "unsupported"
             return out
@@ -194,6 +229,15 @@ def check_working(
     elif problem is not None and steps:
         out.final = _final_verdict(problem, steps[-1])
     return out
+
+
+def _check_defined(problem: Problem) -> None:
+    """Raise like /api/mistake does for a problem with no value (`1/0`). A problem sympy
+    can't solve (x^2 = 4) is still checked line by line."""
+    try:
+        solve(problem)
+    except UnsupportedProblem:
+        return
 
 
 def _final_verdict(problem: Problem, last: Step) -> Verdict | None:

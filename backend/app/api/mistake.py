@@ -11,10 +11,9 @@ from __future__ import annotations
 
 from typing import Any
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Request
 
-from app.api.convert import bad_line, line_text, math_text, steps_out
-from app.api.limits import rate_limit
+from app.api.convert import bad_line, line_text, math_text, steps_out, working_out
 from app.api.models import (
     Diagnosis,
     MisconceptionOut,
@@ -27,9 +26,10 @@ from app.api.models import (
 from app.content.schema import Misconception, Pack
 from app.content.store import PackStore
 from app.llm.client import LLM
+from app.llm.guard import new_numbers
 from app.llm.prompts import MistakeOut, mistake_messages, mistake_schema
 from app.math.pipeline import MistakeFindings, analyse_mistake
-from app.mathpool import MathPool, MathTimeout
+from app.mathpool import MathFailure, MathPool, MathTimeout
 
 router = APIRouter(prefix="/api", tags=["mistake"])
 
@@ -39,7 +39,8 @@ PRACTICE_PREFIX = "practice:"
 
 
 @router.post(
-    "/mistake", response_model=MistakeResult, dependencies=[Depends(rate_limit("mistake"))]
+    "/mistake",
+    response_model=MistakeResult,
 )
 async def post_mistake(body: MistakeRequest, request: Request) -> MistakeResult:
     pool: MathPool = request.app.state.pool
@@ -54,6 +55,8 @@ async def post_mistake(body: MistakeRequest, request: Request) -> MistakeResult:
         )
     except MathTimeout:
         return MistakeResult(status="out_of_scope", reason="timeout")
+    except MathFailure:
+        return MistakeResult(status="unclear", reason="math_error")
     result = _math_result(found)
     if found.error == "unsupported":
         return result.model_copy(update={"status": "out_of_scope", "reason": "unsupported"})
@@ -88,6 +91,7 @@ def _math_result(found: MistakeFindings) -> MistakeResult:
         correct_answer=found.correct_answer,
         verdict=found.verdict,
         worked_solution=steps_out(found.worked),
+        working=working_out(found.working),
         first_bad_line=bad_line(found.first_bad_line),
     )
 
@@ -181,9 +185,14 @@ async def _ai_result(
         schema=mistake_schema(list(cards), list(follow_ups)),
         output=MistakeOut,
     )
-    out = reply.value
-    if out is None:
+    if reply.value is None:
         return result.model_copy(update={"status": "unclear", "reason": "ai_unavailable"})
+    out = reply.value.clipped()
+    try_next = follow_ups.get(out.follow_up_id) if out.follow_up_id else None
+    texts = [out.explanation, out.margin_note or "", *out.what_to_say.model_dump().values()]
+    if new_numbers(texts, _given_math(found, try_next)):
+        # The AI wrote math sympy didn't give it: show nothing rather than unverified math.
+        return result.model_copy(update={"status": "unclear", "reason": "ai_unverified_math"})
     ids = [i for i in dict.fromkeys(out.misconception_ids) if i in cards or i == "other"]
     misconceptions = [
         _card_out(cards[i]) if i in cards else MisconceptionOut(id="other")
@@ -194,17 +203,27 @@ async def _ai_result(
         status = "unclear"  # a diagnosis must name a misconception
     if status != "diagnosed":
         misconceptions = []
-    margin_note = out.margin_note.strip()[:60] if out.margin_note else None
+    reason = {"unclear": "ai_unclear", "out_of_scope": "ai_out_of_scope"}.get(status)
     diagnosis = Diagnosis(
         source="ai",
         rule_checked=False,
         misconceptions=misconceptions,
         explanation=out.explanation,
-        margin_note=margin_note or None,
+        margin_note=out.margin_note,
         what_to_say=WhatToSayOut(**out.what_to_say.model_dump()),
-        try_next=follow_ups.get(out.follow_up_id) if out.follow_up_id else None,
+        try_next=try_next,
         lang=lang,
         cards_lang=pack.lang if pack is not None else None,
         machine_translated=pack.machine_translated if pack is not None else False,
     )
-    return result.model_copy(update={"status": status, "diagnosis": diagnosis})
+    return result.model_copy(update={"status": status, "reason": reason, "diagnosis": diagnosis})
+
+
+def _given_math(found: MistakeFindings, try_next: TryNextOut | None) -> list[str]:
+    """Every piece of math the AI was given, which its text may quote."""
+    given = [found.expr or "", found.student_answer or "", found.correct_answer or ""]
+    given += [f"{s.left} {s.right} {s.op}" for s in found.worked]
+    given += [f"{w.left} {w.right or ''} {w.op or ''}" for w in found.working]
+    if try_next is not None:
+        given.append(try_next.problem.expr)
+    return given

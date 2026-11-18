@@ -9,7 +9,7 @@ from fastapi import APIRouter, FastAPI, HTTPException
 from fastapi.responses import FileResponse
 
 from app.api import check_working, mistake, topics, transcribe
-from app.api.limits import BodySizeLimit, RateLimiter
+from app.api.limits import ApiGuard, RateLimiter, keep_uploads_in_memory
 from app.config import Settings, get_settings
 from app.content.store import PackStore
 from app.llm.azure import AzureLLM
@@ -45,11 +45,12 @@ def create_app(settings: Settings | None = None, llm: LLM | None = None) -> Fast
     app.state.settings = settings
     app.state.store = PackStore.load(settings.content_dir)
     app.state.pool = pool  # without the lifespan (plain TestClient) it runs inline
-    app.state.limiter = RateLimiter()
+    limiter = RateLimiter()
     if llm is None:
         llm = AzureLLM(settings) if settings.llm_configured else NullLLM()
     app.state.llm = llm
-    app.add_middleware(BodySizeLimit)
+    app.add_middleware(ApiGuard, settings=settings, limiter=limiter)
+    keep_uploads_in_memory()
     _log_numbers_only()
 
     for module in (topics, mistake, transcribe, check_working):

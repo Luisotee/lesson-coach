@@ -40,7 +40,10 @@ def test_mistake_ai_path(client: TestClient) -> None:
     result = client.post("/api/mistake", json=body).json()
     print(result)
     assert result["correct_answer"] == "5/6"
-    assert result["reason"] != "ai_unavailable" and result["diagnosis"]["source"] == "ai"
+    # The AI answered; its text is shown unless it held math sympy didn't give it.
+    assert result["reason"] != "ai_unavailable"
+    if result["reason"] != "ai_unverified_math":
+        assert result["diagnosis"]["source"] == "ai"
 
 
 def test_transcribe(client: TestClient) -> None:
@@ -54,9 +57,5 @@ def test_check_working(client: TestClient) -> None:
     body = {"problem": {"text": "3x + 5 = 20"}, "lines": [{"text": "3x = 15"}, {"text": "x = 5"}]}
     result = client.post("/api/check-working", json=body).json()
     print(result)
-    assert result == {
-        "status": "all_follow",
-        "reason": None,
-        "first_bad_line": None,
-        "final": "correct",
-    }
+    assert (result["status"], result["final"]) == ("all_follow", "correct")
+    assert [line["left"] for line in result["lines"]] == ["3*x", "x"]

@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from app.api.models import BadLineOut, LineIn, MathIn, StepOut
-from app.math.pipeline import BadLine, LineText, MathText
+from app.api.models import BadLineOut, LineIn, MathIn, StepOut, WorkingLineOut
+from app.math.pipeline import BadLine, LineText, MathText, WorkingLine
 from app.math.problems import Step
 
 
@@ -31,3 +31,7 @@ def bad_line(found: BadLine | None) -> BadLineOut | None:
 
 def steps_out(steps: list[Step]) -> list[StepOut]:
     return [StepOut(left=s.left, right=s.right, op=s.op) for s in steps]
+
+
+def working_out(lines: list[WorkingLine]) -> list[WorkingLineOut]:
+    return [WorkingLineOut(left=w.left, right=w.right, op=w.op) for w in lines]

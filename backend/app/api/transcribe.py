@@ -10,9 +10,8 @@ from __future__ import annotations
 import base64
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, File, HTTPException, Request, UploadFile
+from fastapi import APIRouter, File, HTTPException, Request, UploadFile
 
-from app.api.limits import rate_limit
 from app.api.models import TranscribedLine, TranscribeResult
 from app.llm.client import LLM
 from app.llm.prompts import TRANSCRIBE_SCHEMA, TranscribeOut, transcribe_messages
@@ -50,7 +49,6 @@ def _readable(text: str) -> bool:
 @router.post(
     "/transcribe",
     response_model=TranscribeResult,
-    dependencies=[Depends(rate_limit("transcribe"))],
 )
 async def post_transcribe(
     request: Request, image: Annotated[UploadFile, File()]
@@ -73,6 +71,7 @@ async def post_transcribe(
     )
     if reply.value is None:
         return TranscribeResult(status="unclear", reason="ai_unavailable")
+    transcript = reply.value.clipped()
     lines = [
         TranscribedLine(
             left=line.left.strip(),
@@ -82,7 +81,7 @@ async def post_transcribe(
             uncertain=line.confidence < UNCERTAIN_BELOW
             or not (_readable(line.left) and _readable(line.right)),
         )
-        for line in reply.value.lines
+        for line in transcript.lines
         if line.left.strip() or line.right.strip()
     ]
     if not lines:

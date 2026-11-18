@@ -94,6 +94,16 @@ class StepOut(Model):
     op: str = ""
 
 
+class WorkingLineOut(Model):
+    """A line the student sent, normalised (`2*x = 4` as left `2*x`, right `4`), in the order
+    sent, so `first_bad_line.index` points into this list. A line that can't be read comes
+    back as sent in `left`, with `right` and `op` null."""
+
+    left: str
+    right: str | None
+    op: str | None
+
+
 class BadLineOut(Model):
     """The first line (0-based, in the order sent) that doesn't follow from the one before."""
 
@@ -149,7 +159,15 @@ class Diagnosis(Model):
 
 MistakeStatus = Literal["correct", "not_simplified", "diagnosed", "slip", "unclear", "out_of_scope"]
 AbstainReason = Literal[
-    "problem_unreadable", "answer_unreadable", "unsupported", "timeout", "ai_unavailable"
+    "problem_unreadable",  # the problem can't be read
+    "answer_unreadable",  # the student's answer can't be read
+    "unsupported",  # math outside what the coach handles (non-linear, too large...)
+    "timeout",  # the math took longer than the limit
+    "math_error",  # the math engine failed unexpectedly
+    "ai_unavailable",  # no AI reply (no credentials, network, invalid reply)
+    "ai_unclear",  # the AI found one answer not enough to tell
+    "ai_out_of_scope",  # the AI found the input isn't a grade 6-9 problem and answer
+    "ai_unverified_math",  # the AI's text had math sympy didn't give it, so it isn't shown
 ]
 
 
@@ -165,6 +183,7 @@ class MistakeResult(Model):
     correct_answer: str | None = None
     verdict: Verdict | None = None
     worked_solution: list[StepOut] = []
+    working: list[WorkingLineOut] = []
     first_bad_line: BadLineOut | None = None
     diagnosis: Diagnosis | None = None
 
@@ -205,5 +224,6 @@ class CheckWorkingResult(Model):
 
     status: Literal["all_follow", "line_doesnt_follow", "unclear", "out_of_scope"]
     reason: AbstainReason | None = None
+    lines: list[WorkingLineOut] = []
     first_bad_line: BadLineOut | None = None
     final: Verdict | None = None

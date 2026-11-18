@@ -24,4 +24,7 @@ COPY --from=frontend /app/frontend/dist /app/frontend/dist
 RUN useradd --system --uid 1001 app
 USER app
 EXPOSE 8000
+# Only the Container Apps ingress reaches the container, so its X-Forwarded-For is trusted
+# for the per-client rate limit. `make dev` keeps the default (false).
+ENV TRUST_PROXY=true
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

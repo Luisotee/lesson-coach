@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Request
 
-from app.api.convert import bad_line, line_text, math_text
-from app.api.limits import rate_limit
+from app.api.convert import bad_line, line_text, math_text, working_out
 from app.api.models import CheckWorkingRequest, CheckWorkingResult
 from app.math.pipeline import check_working
-from app.mathpool import MathPool, MathTimeout
+from app.mathpool import MathFailure, MathPool, MathTimeout
 
 router = APIRouter(prefix="/api", tags=["check-working"])
 
@@ -16,7 +15,6 @@ router = APIRouter(prefix="/api", tags=["check-working"])
 @router.post(
     "/check-working",
     response_model=CheckWorkingResult,
-    dependencies=[Depends(rate_limit("check_working"))],
 )
 async def post_check_working(body: CheckWorkingRequest, request: Request) -> CheckWorkingResult:
     pool: MathPool = request.app.state.pool
@@ -28,12 +26,15 @@ async def post_check_working(body: CheckWorkingRequest, request: Request) -> Che
         )
     except MathTimeout:
         return CheckWorkingResult(status="out_of_scope", reason="timeout")
+    except MathFailure:
+        return CheckWorkingResult(status="unclear", reason="math_error")
+    lines = working_out(found.lines)
     if found.error == "unsupported":
-        return CheckWorkingResult(status="out_of_scope", reason="unsupported")
+        return CheckWorkingResult(status="out_of_scope", reason="unsupported", lines=lines)
     if found.error is not None:
-        return CheckWorkingResult(status="unclear", reason=found.error)
+        return CheckWorkingResult(status="unclear", reason=found.error, lines=lines)
     if found.first_bad_line is not None:
         return CheckWorkingResult(
-            status="line_doesnt_follow", first_bad_line=bad_line(found.first_bad_line)
+            status="line_doesnt_follow", lines=lines, first_bad_line=bad_line(found.first_bad_line)
         )
-    return CheckWorkingResult(status="all_follow", final=found.final)
+    return CheckWorkingResult(status="all_follow", lines=lines, final=found.final)

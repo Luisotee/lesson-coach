@@ -8,18 +8,25 @@ pebble kills a worker that runs over its timeout and starts a fresh one.
 from __future__ import annotations
 
 import asyncio
+import logging
 import multiprocessing
 from collections.abc import Callable
 from concurrent.futures import TimeoutError as FutureTimeout
 from typing import Any, TypeVar
 
-from pebble import ProcessPool
+from pebble import ProcessExpired, ProcessPool
 
 T = TypeVar("T")
+log = logging.getLogger("app.mathpool")
 
 
 class MathTimeout(Exception):
     """The math took longer than the limit; the request abstains."""
+
+
+class MathFailure(Exception):
+    """The math engine failed unexpectedly (a bug, or a worker that died); the request
+    abstains instead of answering 500."""
 
 
 def _warm_up() -> None:
@@ -49,11 +56,15 @@ class MathPool:
             self._pool = None
 
     async def run(self, fn: Callable[..., T], *args: Any) -> T:
-        if self._pool is None:
-            return fn(*args)
-        future = self._pool.schedule(fn, args=args, timeout=self.timeout_s)
         try:
+            if self._pool is None:
+                return fn(*args)
+            future = self._pool.schedule(fn, args=args, timeout=self.timeout_s)
             result: T = await asyncio.wrap_future(future)
         except FutureTimeout as err:
             raise MathTimeout from err
+        except (ProcessExpired, Exception) as err:
+            # Logged by type only: the input may be a teacher's free text.
+            log.error('{"event": "math_failure", "error": "%s"}', type(err).__name__)
+            raise MathFailure from err
         return result
