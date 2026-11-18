@@ -12,8 +12,9 @@ import { fixture, mockApi } from './api.ts'
  * What is wrong with the focused element, or null. Runs in the page.
  *
  * The indicator must be an outline or a ring (a box-shadow with no blur) at least 2 px wide,
- * in a colour with 3:1 contrast against white (WCAG 1.4.11), and it must go away when focus
- * moves on: the element focused before this one is checked again, unfocused.
+ * in a colour with 3:1 contrast against white and against the element's own fill, unless an
+ * offset separates them (WCAG 1.4.11), and it must go away when focus moves on: the element
+ * focused before this one is checked again, unfocused.
  */
 async function focusProblem(): Promise<string | null> {
   // Let the focus style's transition finish (0.01 ms under reduced motion, but only on the
@@ -31,33 +32,56 @@ async function focusProblem(): Promise<string | null> {
     `${e.tagName.toLowerCase()} "${(e.getAttribute('aria-label') ?? e.textContent ?? '').trim().slice(0, 40)}"`
   const name = label(el)
 
-  /** Contrast of a colour (alpha-blended over white) against white. */
-  const contrast = (color: string) => {
+  /** A colour's relative luminance, alpha-blended over white. */
+  const luminance = (color: string) => {
     const [r, g, b, a = 1] = (color.match(/[\d.]+/g) ?? []).map(Number)
     const lum = [r, g, b]
       .map((c) => (a * c + (1 - a) * 255) / 255)
       .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
-    const l = 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2]
-    return 1.05 / (l + 0.05)
+    return 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2]
   }
-  /** The element's focus indicator as text, or '' if it shows none that is strong enough. */
+  const contrast = (a: string, b = 'rgb(255, 255, 255)') => {
+    const [x, y] = [luminance(a), luminance(b)].sort((m, n) => n - m)
+    return (x + 0.05) / (y + 0.05)
+  }
+  const alpha = (color: string) => Number((color.match(/[\d.]+/g) ?? [])[3] ?? 1)
+  /**
+   * The element's focus indicator as text, or '' if it shows none that is strong enough. It
+   * must contrast 3:1 with the page around it (white) and with what it touches inside: the
+   * element's own background, unless an offset or a gap ring sits in between.
+   */
   const indicator = (e: Element) => {
     const s = getComputedStyle(e)
+    const fill = alpha(s.backgroundColor) > 0 ? s.backgroundColor : 'rgb(255, 255, 255)'
     const strong: string[] = []
+    const inside = parseFloat(s.outlineOffset) > 0 ? 'rgb(255, 255, 255)' : fill
     if (
       s.outlineStyle !== 'none' &&
       parseFloat(s.outlineWidth) >= 2 &&
-      contrast(s.outlineColor) >= 3
+      contrast(s.outlineColor) >= 3 &&
+      contrast(s.outlineColor, inside) >= 3
     )
       strong.push(`outline ${s.outlineWidth} ${s.outlineColor}`)
-    // Computed box-shadows read "rgb(…) Xpx Ypx BLURpx SPREADpx", comma separated.
-    for (const shadow of s.boxShadow.split(/,(?![^(]*\))/)) {
-      const color = shadow.match(/rgba?\([^)]*\)/)?.[0]
-      const [x, y, blur, spread] = (
-        shadow.replace(/rgba?\([^)]*\)/, '').match(/-?[\d.]+px/g) ?? []
-      ).map(parseFloat)
-      if (color && !shadow.includes('inset') && x === 0 && y === 0 && blur === 0 && spread >= 2)
-        if (contrast(color) >= 3) strong.push(`ring ${spread}px ${color}`)
+    // Computed box-shadows read "rgb(…) Xpx Ypx BLURpx SPREADpx", comma separated. A ring is
+    // one with no offset or blur; a ring offset (Tailwind's ring-offset) is a smaller ring
+    // under it, in the gap colour.
+    const rings = s.boxShadow
+      .split(/,(?![^(]*\))/)
+      .flatMap((shadow) => {
+        const color = shadow.match(/rgba?\([^)]*\)/)?.[0]
+        const [x, y, blur, spread] = (
+          shadow.replace(/rgba?\([^)]*\)/, '').match(/-?[\d.]+px/g) ?? []
+        ).map(parseFloat)
+        const solid = color && alpha(color) > 0 && !shadow.includes('inset')
+        return solid && x === 0 && y === 0 && blur === 0 && spread > 0 ? [{ color, spread }] : []
+      })
+      .sort((a, b) => b.spread - a.spread)
+    if (rings.length) {
+      const [outer, gap] = rings
+      const width = outer.spread - (gap?.spread ?? 0)
+      const touches = gap?.color ?? fill
+      if (width >= 2 && contrast(outer.color) >= 3 && contrast(outer.color, touches) >= 3)
+        strong.push(`ring ${width}px ${outer.color}`)
     }
     return strong.join(', ')
   }
@@ -66,7 +90,8 @@ async function focusProblem(): Promise<string | null> {
     e.tagName === 'MATH-FIELD' ? e.closest<HTMLElement>('[class*="focus-within:ring"]') : e
   const ring = ringOf(el)
   const shown = ring ? indicator(ring) : ''
-  if (!shown) return `${name}: no focus indicator of 2 px or more at 3:1`
+  if (!shown)
+    return `${name}: no focus indicator of 2 px or more at 3:1 against the page and its own fill`
 
   // The previous stop, now unfocused, must have lost its indicator.
   const w = window as unknown as { lastFocus?: { el: HTMLElement; shown: string } }
