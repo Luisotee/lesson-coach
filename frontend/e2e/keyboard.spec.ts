@@ -18,13 +18,15 @@ import { fixture, mockApi } from './api.ts'
  */
 async function focusProblem(): Promise<string | null> {
   // Let the focus style's transition finish (0.01 ms under reduced motion, but only on the
-  // next frame), so the ring is read as it shows.
-  await Promise.all(
+  // next frame), so the ring is read as it shows. Only running, finite animations are waited
+  // for, and never more than 500 ms: a paused one would otherwise hang the test.
+  const settled = Promise.all(
     document
       .getAnimations()
-      .filter((a) => a.effect?.getTiming().iterations !== Infinity)
+      .filter((a) => a.playState === 'running' && a.effect?.getTiming().iterations !== Infinity)
       .map((a) => a.finished.catch(() => {})),
   )
+  await Promise.race([settled, new Promise((r) => setTimeout(r, 500))])
   await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
   const el = document.activeElement as HTMLElement | null
   if (!el || el === document.body) return 'nothing focused'
