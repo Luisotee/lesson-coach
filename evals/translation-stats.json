@@ -420,7 +420,7 @@
   },
   "uk": {
     "lang": "uk",
-    "shipped": true,
+    "shipped": false,
     "usd": 1.218398,
     "stats": {
       "calls": {
@@ -452,7 +452,8 @@
       "dropped": []
     },
     "failing": [],
-    "last_usd": 1.218398
+    "last_usd": 1.218398,
+    "pruned": "its UI strings did not ship"
   },
   "tr": {
     "lang": "tr",
@@ -619,7 +620,7 @@
   },
   "sw": {
     "lang": "sw",
-    "shipped": true,
+    "shipped": false,
     "usd": 1.735885,
     "stats": {
       "calls": {
@@ -638,6 +639,7 @@
       "dropped": []
     },
     "failing": [],
-    "last_usd": 0.03283
+    "last_usd": 0.03283,
+    "pruned": "its UI strings did not ship"
   }
 }

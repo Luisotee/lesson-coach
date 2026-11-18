@@ -2,6 +2,7 @@
 
     uv run --project backend python pipeline/translate.py --lang fr de
     uv run --project backend python pipeline/translate.py --wave 1 --budget 50
+    uv run --project backend python pipeline/translate.py --prune
 
 A translated pack is the English pack with only its prose translated: every math field, id,
 source and count is copied, and the problem prompts come from `PROMPTS[lang]`
@@ -15,10 +16,10 @@ that are in every translated pack's `source_hash`), so a rerun redoes only what 
 
 A language's packs are written only complete: its prompts and all three packs pass every check,
 or nothing of it is written and the report says why. A language is offered only when its UI
-strings ship too (translate_ui.py); packs whose UI strings fail are removed from
-content/generated and prompts.json, so the API never serves a language the app does not offer
-(tests tie the two together). Per-language numbers go to evals/translation-stats.json,
-rendered as evals/translation-report.md.
+strings ship too (translate_ui.py); after translate_ui.py, `--prune` removes from
+content/generated and prompts.json the packs whose UI strings failed, so the API never serves a
+language the app does not offer (tests tie the two together). Per-language numbers go to
+evals/translation-stats.json, rendered as evals/translation-report.md.
 """
 
 from __future__ import annotations
@@ -49,7 +50,13 @@ from pipeline.core import LLM, StepsFor, offline_llm, worked_steps
 from pipeline.generate import CONCURRENCY, Failing, Runner, Stats
 from pipeline.languages import LANGUAGES, WAVE_1, WAVE_2
 from pipeline.prompts import example_facts
-from pipeline.sources import load_pack, translate_prompts_hash, translation_hash, write_pack
+from pipeline.sources import (
+    load_pack,
+    pack_path,
+    translate_prompts_hash,
+    translation_hash,
+    write_pack,
+)
 from pipeline.translate_prompts import (
     TranslationOut,
     judge_messages,
@@ -358,6 +365,36 @@ def save_prompts(lang: str, prompts: dict[str, str]) -> None:
     PROMPTS_FILE.write_text(json.dumps(ordered, indent=2, ensure_ascii=False) + "\n")
 
 
+def prune() -> list[str]:
+    """Removes the packs and prompts of every language whose packs shipped but whose UI strings
+    did not (translate_ui.py), and marks its packs not shipped, so the API serves only
+    languages the app offers and `translate_ui.py --packs` skips it. Returns those languages."""
+    results, ui = load_stats(), _load(UI_STATS_FILE)
+    gone = [
+        lang
+        for lang, r in results.items()
+        if r["shipped"] and lang in ui and not ui[lang]["shipped"]
+    ]
+    data = json.loads(PROMPTS_FILE.read_text(encoding="utf-8"))
+    for lang in gone:
+        data.pop(lang, None)
+        PROMPTS.pop(lang, None)
+        for topic in TOPIC_IDS:
+            pack_path(topic, lang).unlink(missing_ok=True)
+        folder = pack_path(TOPIC_IDS[0], lang).parent
+        if folder.exists() and not any(folder.iterdir()):
+            folder.rmdir()
+        results[lang] |= {"shipped": False, "pruned": "its UI strings did not ship"}
+    if gone:
+        PROMPTS_FILE.write_text(
+            json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+        STATS_FILE.write_text(
+            json.dumps(results, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+        )
+    return gone
+
+
 def load_stats() -> dict[str, dict[str, Any]]:
     if not STATS_FILE.exists():
         return {}
@@ -436,10 +473,10 @@ def write_report(results: dict[str, dict[str, Any]], model: str) -> None:
         failing = [*results.get(lang, {}).get("failing", []), *ui.get(lang, {}).get("failing", [])]
         if failing and lang not in ships:
             lines += ["", f"## {lang}: left out", ""]
-            if results.get(lang, {}).get("shipped"):
+            if results.get(lang, {}).get("pruned"):
                 lines += [
-                    "Its packs passed, but they are not served: a language's packs are kept "
-                    "only when its UI strings ship too.",
+                    "Its packs passed, but they were removed (`translate.py --prune`): a "
+                    "language's packs are kept only when its UI strings ship too.",
                     "",
                 ]
             lines += [f"- {f}" for f in failing]
@@ -548,7 +585,19 @@ def main() -> None:
     parser.add_argument(
         "--per-lang-usd", type=float, help="the cost to assume per language (a cached retry)"
     )
+    parser.add_argument(
+        "--prune",
+        action="store_true",
+        help="remove the packs and prompts of languages whose UI strings did not ship",
+    )
     args = parser.parse_args()
+    if args.prune:
+        gone = prune()
+        print(f"pruned: {', '.join(gone) or 'none'}")
+        from app.config import get_settings
+
+        write_report(load_stats(), get_settings().model_offline)
+        return
     langs = list(args.lang)
     if args.wave:
         langs += list(WAVE_1 if args.wave == 1 else WAVE_2)

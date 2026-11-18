@@ -27,24 +27,24 @@ Cost, calls, repairs and flag rate add up every recorded run of a language. A re
 | sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 3 / 7 | 2 | 13.0% | $0.68 |
 | pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 2 / 4 | 1 | 4.8% | $0.74 |
 | kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 30 / 58 | 12 | 3.9% | $0.95 |
-| uk (Ukrainian) | yes | 31 / 55 | 12 | 3.8% | $1.22 | no | 17 / 51 | 12 | 12.7% | $2.25 |
+| uk (Ukrainian) | no | 31 / 55 | 12 | 3.8% | $1.22 | no | 17 / 51 | 12 | 12.7% | $2.25 |
 | tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 23 / 33 | 7 | 1.3% | $0.48 |
 | fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 28 / 45 | 10 | 2.2% | $0.60 |
 | ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 28 / 52 | 12 | 5.3% | $0.72 |
 | hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 27 / 47 | 9 | 2.8% | $0.60 |
 | bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 26 / 40 | 8 | 1.9% | $0.56 |
 | zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 28 / 45 | 12 | 2.5% | $0.54 |
-| sw (Swahili) | yes | 1 / 1 | 0 | 0.0% | $1.74 | no | 41 / 91 | 21 | 5.5% | $1.46 |
+| sw (Swahili) | no | 1 / 1 | 0 | 0.0% | $1.74 | no | 41 / 91 | 21 | 5.5% | $1.46 |
 
 ## uk: left out
 
-Its packs passed, but they are not served: a language's packs are kept only when its UI strings ship too.
+Its packs passed, but they were removed (`translate.py --prune`): a language's packs are kept only when its UI strings ship too.
 
 - math: math.speech.fractionSimple: judge: TR uses forms like “# треті/четверті/п’яті” for numerators 2–4 in fractions such as 2/3, 3/4, etc. (Ukrainian fractional expressions require genitive plural forms after numerals (e.g., “дві третіх”, “три четвертих”), not nominative plural feminine forms like “дві треті/три четверті” in this mathematical speech context.); judge: TR uses genitive singular forms in the ICU 'other' category, e.g. “# третьої”, “# четвертої”. (For fractional denominators, the needed form is plural genitive (e.g., “1.5 третіх” or generally “# третіх”), not singular genitive feminine “третьої/четвертої”; this produces incorrect Ukrainian for decimal or other-number plural categories.)
 
 ## sw: left out
 
-Its packs passed, but they are not served: a language's packs are kept only when its UI strings ship too.
+Its packs passed, but they were removed (`translate.py --prune`): a language's packs are kept only when its UI strings ship too.
 
 - math: math.speech.fractionSimple: with den = 0 it reads "7 kwa 7", which does not say 0; use # there; with den = 21 it reads "7 kwa 7", which does not say 21; use # there; with den = 101 it reads "7 kwa 7", which does not say 101; use # there
 

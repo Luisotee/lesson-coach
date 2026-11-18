@@ -301,3 +301,26 @@ def test_a_language_that_crashes_is_still_recorded(
     saved = json.loads(stats_file.read_text())
     assert saved["fr"]["shipped"] is False and "RuntimeError" in saved["fr"]["failing"][0]
     assert saved["de"]["shipped"] is True and (tmp_path / "de.json").exists()
+
+
+def test_prune_removes_the_packs_of_a_language_whose_ui_failed(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    packs, ui = tmp_path / "packs.json", tmp_path / "ui.json"
+    packs.write_text(json.dumps({"xx": {"shipped": True}, "de": {"shipped": True}}))
+    ui.write_text(json.dumps({"xx": {"shipped": False}, "de": {"shipped": True}}))
+    prompts = tmp_path / "prompts.json"
+    prompts.write_text(json.dumps({"en": {}, "de": {}, "xx": {}}))
+    for lang in ("xx", "de"):
+        (tmp_path / lang).mkdir()
+        for topic in TOPIC_IDS:
+            (tmp_path / lang / f"{topic}.json").write_text("{}")
+    monkeypatch.setattr(translate, "STATS_FILE", packs)
+    monkeypatch.setattr(translate, "UI_STATS_FILE", ui)
+    monkeypatch.setattr(translate, "PROMPTS_FILE", prompts)
+    monkeypatch.setattr(translate, "pack_path", lambda t, lang: tmp_path / lang / f"{t}.json")
+    assert translate.prune() == ["xx"]
+    assert not (tmp_path / "xx").exists() and (tmp_path / "de").exists()
+    assert set(json.loads(prompts.read_text())) == {"en", "de"}
+    assert json.loads(packs.read_text())["xx"]["shipped"] is False
+    assert translate.prune() == []
