@@ -66,12 +66,12 @@ The brief asks for two hours. We chose to deliver a complete, working product in
 | Phase | Wall clock (2026-11-18, UTC−3) | Luis, active | Claude, active |
 |---|---|---|---|
 | Understanding, research, plan, peer review, design | 01:50–05:48 (4 h; peer agents researched for 2 h of it) | ~10 min, 25 prompts | ~76 min |
-| Build, T0–T13 (agent-mesh run `m956c`) | 05:47–12:32+ (6.75 h, of which 2.5 h idle: no agent ran from 08:03 to 10:32) | 0 prompts | ~14.75 h summed over parallel agents: workers ~8.4 h, reviewers ~3.4 h, lead ~3 h. Some agent was working during ~4.3 h of wall clock |
+| Build, T0–T13 (agent-mesh run `m956c`) | 05:47–12:32+ (6.75 h, of which 2.5 h idle: no agent ran from 08:03 to 10:32) | a few short messages, no task or code input | ~14.75 h summed over parallel agents: workers ~8.4 h, reviewers ~3.4 h, lead ~3 h. Some agent was working during ~4.3 h of wall clock |
 
 **How we measured.**
 - **Wall clock:** the first and last timestamps of the planning session and of the mesh log.
 - **Claude's active time:** each Claude Code transcript's timestamps, counting the gap between two consecutive events only when it is 5 minutes or less, so waiting and idle time are left out. Agents running at the same time are summed.
-- **Luis's time:** the 25 prompts in the planning transcript, and his own estimate of about 10 minutes. The build transcripts hold no prompts from him: every task, review and merge was sent by the lead agent, and his only input was the run itself.
+- **Luis's time:** the 25 prompts in the planning transcript, and his own estimate of about 10 minutes. During the build he sent the lead a handful of short messages (asking whether it was finished; deciding not to send the questions for Mykola), with no task or code input. Every task, review and merge was sent by the lead agent.
 - **The git history starts with the plan**, at 05:39, after the planning. Per-task commit times are not a good measure, because rebases rewrite them; the mesh log has each task's send and done times.
 - **Not measured:** time Luis spent reading or testing the app outside these sessions.
 
