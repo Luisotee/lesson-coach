@@ -32,9 +32,20 @@ async function focusProblem(): Promise<string | null> {
     `${e.tagName.toLowerCase()} "${(e.getAttribute('aria-label') ?? e.textContent ?? '').trim().slice(0, 40)}"`
   const name = label(el)
 
+  // Any CSS colour (rgb, oklab, color-mix…) is read back as 8-bit RGBA by painting it on a
+  // 1×1 canvas, so the contrast maths never guesses at a colour space.
+  const ctx = document.createElement('canvas').getContext('2d', { willReadFrequently: true })!
+  const rgba = (color: string): [number, number, number, number] => {
+    ctx.clearRect(0, 0, 1, 1)
+    ctx.fillStyle = '#000'
+    ctx.fillStyle = color
+    ctx.fillRect(0, 0, 1, 1)
+    const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data
+    return [r, g, b, a / 255]
+  }
   /** A colour's relative luminance, alpha-blended over white. */
   const luminance = (color: string) => {
-    const [r, g, b, a = 1] = (color.match(/[\d.]+/g) ?? []).map(Number)
+    const [r, g, b, a] = rgba(color)
     const lum = [r, g, b]
       .map((c) => (a * c + (1 - a) * 255) / 255)
       .map((c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
@@ -44,7 +55,9 @@ async function focusProblem(): Promise<string | null> {
     const [x, y] = [luminance(a), luminance(b)].sort((m, n) => n - m)
     return (x + 0.05) / (y + 0.05)
   }
-  const alpha = (color: string) => Number((color.match(/[\d.]+/g) ?? [])[3] ?? 1)
+  const alpha = (color: string) => rgba(color)[3]
+  /** The colour function in a computed value, whatever its colour space. */
+  const COLOR = /(?:rgba?|hsla?|hwb|lab|lch|oklab|oklch|color)\([^)]*\)/
   /**
    * The element's focus indicator as text, or '' if it shows none that is strong enough. It
    * must contrast 3:1 with the page around it (white) and with what it touches inside: the
@@ -68,10 +81,10 @@ async function focusProblem(): Promise<string | null> {
     const rings = s.boxShadow
       .split(/,(?![^(]*\))/)
       .flatMap((shadow) => {
-        const color = shadow.match(/rgba?\([^)]*\)/)?.[0]
-        const [x, y, blur, spread] = (
-          shadow.replace(/rgba?\([^)]*\)/, '').match(/-?[\d.]+px/g) ?? []
-        ).map(parseFloat)
+        const color = shadow.match(COLOR)?.[0]
+        const [x, y, blur, spread] = (shadow.replace(COLOR, '').match(/-?[\d.]+px/g) ?? []).map(
+          parseFloat,
+        )
         const solid = color && alpha(color) > 0 && !shadow.includes('inset')
         return solid && x === 0 && y === 0 && blur === 0 && spread > 0 ? [{ color, spread }] : []
       })
