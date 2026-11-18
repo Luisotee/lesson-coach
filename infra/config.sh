@@ -1,4 +1,4 @@
-# Shared settings for up.sh, smoke.sh and down.sh. Sourced, not run.
+# Shared settings for every infra script (up, smoke, deploy, smoke-app, down). Sourced, not run.
 # Every name here lives in RG; the scripts never touch any other resource group.
 
 RG="rg-akelius-coach"
@@ -10,7 +10,7 @@ IMAGE_REPO="lesson-coach"
 
 # Globally unique names get a short, stable suffix derived from the subscription id,
 # so re-running the scripts always targets the same resources. Needs `az login`;
-# up.sh and down.sh call it, smoke.sh doesn't (it only needs .env).
+# up.sh, deploy.sh and down.sh call it; smoke.sh (only .env) and smoke-app.sh don't.
 azure_names() {
   local sub_id suffix
   sub_id="$(az account show --query id -o tsv)"

@@ -9,6 +9,8 @@ const remote = process.env.BASE_URL
 // `pnpm e2e` builds first, so the tested dist is always current.
 export default defineConfig({
   testDir: './e2e',
+  // Wakes a scaled-to-zero deployed app; a no-op without BASE_URL.
+  globalSetup: './e2e/global-setup.ts',
   reporter: process.env.CI ? 'line' : 'list',
   use: {
     baseURL: remote ?? `http://127.0.0.1:${port}`,

@@ -19,11 +19,17 @@ body="$(mktemp)"
 trap 'rm -f "$body"' EXIT
 
 # req METHOD PATH [JSON]: prints "HTTP <code> <seconds>s" and leaves the body in $body.
+# Only GETs are retried (cold start, flaky TLS): a retried POST /api/mistake would be
+# another paid model call and use up the rate limit.
 req() {
-  local args=(-sS --retry 3 --retry-all-errors --max-time 90 -o "$body" -w '%{http_code} %{time_total}\n' -X "$1")
-  [[ $# -ge 3 ]] && args+=(-H 'Content-Type: application/json' --data "$3")
+  local args=(-sS --max-time 90 -o "$body" -w '%{http_code} %{time_total}\n' -X "$1")
+  if [[ $# -ge 3 ]]; then
+    args+=(-H 'Content-Type: application/json' --data "$3")
+  else
+    args+=(--retry 3 --retry-all-errors)
+  fi
   read -r code secs < <(curl "${args[@]}" "$BASE$2")
-  printf '   HTTP %s in %.2fs\n' "$code" "$secs"
+  LC_ALL=C printf '   HTTP %s in %.2fs\n' "$code" "$secs"
 }
 check() { # description jq-filter
   if [[ "$code" == 200 ]] && jq -e "$2" "$body" >/dev/null 2>&1; then
@@ -53,8 +59,9 @@ check 'all lines follow' '.status == "all_follow"'
 echo "--> POST /api/mistake (reaches the AI)"
 req POST /api/mistake '{"problem":{"text":"3*x + 5 = 20"},"answer":{"text":"x = 7"},"lang":"en"}'
 echo "   status: $(jq -r '"\(.status) \(.reason // "")"' "$body" 2>/dev/null), source: $(jq -r '.diagnosis.source // "none"' "$body" 2>/dev/null)"
-check 'an AI reply or a clean abstain (not ai_unavailable)' \
-  '(.status | IN("diagnosed","slip","unclear","out_of_scope")) and .reason != "ai_unavailable"'
+# Must come from the model: a rule match or a sympy-side abstain would not prove the AI works.
+check 'an AI diagnosis or an AI abstain (not ai_unavailable)' \
+  '.diagnosis.source == "ai" or (.reason | IN("ai_unclear","ai_out_of_scope","ai_unverified_math"))'
 
 echo "--> GET /mistake (SPA route)"
 req GET /mistake

@@ -70,7 +70,11 @@ if ! az acr show -g "$RG" -n "$ACR_NAME" -o none 2>/dev/null; then
 fi
 
 log "Container Apps environment $CAE_NAME (consumption)"
-if mode="$(az containerapp env show -g "$RG" -n "$CAE_NAME" --query properties.environmentMode -o tsv 2>/dev/null)"; then
+# Existence via `az resource list`, so an auth or network error stops the script (set -e)
+# instead of looking like "not found" and creating a second environment.
+if [[ -n "$(az resource list -g "$RG" --resource-type Microsoft.App/managedEnvironments \
+  --query "[?name=='$CAE_NAME'].name" -o tsv)" ]]; then
+  mode="$(az containerapp env show -g "$RG" -n "$CAE_NAME" --query properties.environmentMode -o tsv)"
   # Newer CLIs default to the Express mode, which can't pull from ACR with the app's
   # managed identity. deploy.sh needs WorkloadProfiles (with the Consumption profile).
   if [[ "$mode" != "WorkloadProfiles" ]]; then
