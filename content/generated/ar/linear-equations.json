@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "ar",
+  "title": "حل المعادلات الخطية",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "حل المعادلات الخطية بإجراء العملية نفسها على الطرفين والتحقق من الإجابة.",
+  "idea": "تقول المعادلة إن تعبيرين لهما القيمة نفسها. والحل يعني إيجاد قيمة `x` التي تجعل العبارة صحيحة.\n\nنموذج الميزان هو الصورة الأساسية. كل ما يُجرى على طرف يجب أن يُجرى على الطرف الآخر. ويمكن كتابة العملية في الهامش، مثل اطرح `6`، لبيان أن الطرفين يتغيران.\n\nلعزل `x`، نعكس العمليات بالترتيب العكسي. في `2*x + 6 = 10`، طرح `6` من الطرفين يعطي `2*x = 4`. وقسمة الطرفين على `2` تعطي `x = 2`.\n\nإذا وجدت أقواس، فتعامل مع القوس كله على أنه مضروب. في `5*(x + 3) = 35`، قسمة الطرفين على `5` تعطي `x + 3 = 7`، ثم طرح `3` يعطي `x = 4`.",
+  "why_it_works": "تحافظ كل خطوة على تساوي الطرفين لأن العملية نفسها تُطبَّق على الطرفين. يتغير شكل المعادلة، لكن الحل يبقى كما هو.\n\nتُعكس العمليات بالترتيب العكسي. في `2*x + 6 = 10`، كان التعبير الذي يحتوي على `x` مضروبًا في `2` ثم أضيف إليه `6`. لذلك اطرح `6` أولًا، ثم اقسم على `2`.\n\nعند وجود متغيرات في الطرفين، تبقى فكرة الميزان نفسها صالحة. في `3*x + 4 = x + 10`، طرح `x` من الطرفين يعطي `2*x + 4 = 10`. ثم طرح `4` يعطي `2*x = 6`، والقسمة على `2` تعطي `x = 3`.\n\nيتم التحقق بالتعويض. من أجل `x = 2`، تكون `2*2 + 6` هي `10`، لذلك تكون المعادلة الأصلية صحيحة.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "إن `+ 6` يمنع `x` من أن يكون وحده. اطرح `6` من الطرفين ليبقى الميزان متوازنًا ويُلغى العدد `6` المضاف.",
+            "another_way": "فكّر بالترتيب العكسي. بما أن `6` أُضيف بعد `2*x`، فألغِ ذلك أولًا باستخدام `-6` في الطرفين.",
+            "visual": "يُظهر الميزان `2*x + 6` في طرف و`10` في الطرف الآخر، مع إزالة `6` من الطرفين."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "الآن `2*x = 4`، لذا ما زال `x` مضروبًا في `2`. اقسم الطرفين على `2` لإلغاء الضرب وإبقاء المعادلة متوازنة.",
+            "another_way": "يعني `2*x` مجموعتين متساويتين من `x`. تقسيم الطرفين إلى جزأين متساويين يترك مجموعة واحدة من `x`.",
+            "visual": "يُظهر الميزان `2*x` في طرف و`4` في الطرف الآخر، مع تقسيم الطرفين إلى جزأين متساويين."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "هذه هي الإجابة لأن `x` أصبح وحده، والمعادلة تذكر قيمته مباشرة: `x = 2`.",
+            "another_way": "تحقق بالتعويض: `2*2 + 6` يساوي `10`، لذا فالمعادلة الأصلية صحيحة.",
+            "visual": "يُظهر الميزان `x` واحدًا في طرف و`2` في الطرف الآخر، وهو متوازن."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "المقدار داخل القوس مضروب في `5`. قسمة الطرفين على `5` تلغي هذا الضرب وتحافظ على توازن المعادلة.",
+            "another_way": "بهذا نتجنب فك القوس أولًا. بما أن الطرف الأيسر كله هو `5` في `x + 3`، نقسم الطرفين كلهما على `5`.",
+            "visual": "يمثل ميزان متوازن `5*(x + 3)` في جهة و`35` في الجهة الأخرى، استعدادًا لتقسيم كل جهة إلى `5` مجموعات متساوية."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "الآن أضيف `3` إلى `x`. طرح `3` من الطرفين يلغي الجمع ويحافظ على توازن المعادلة.",
+            "another_way": "تخيل إزالة نفس `3` من كل جهة في الميزان. عندئذ يبقى المجهول وحده في الطرف الأيسر.",
+            "visual": "يمثل ميزان متوازن `x + 3` في جهة و`7` في الجهة الأخرى، مع إزالة `3` من الجهتين."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "أصبح المتغير وحده، لذلك يعطي هذا السطر الحل. القيمة التي تجعل المعادلة الأصلية صحيحة هي `x = 4`.",
+            "another_way": "للتحقق، نضع `4` بدلًا من `x` في المعادلة الأصلية ونتأكد أن الطرفين متساويان.",
+            "visual": "يمثل ميزان متوازن `x` وحده في جهة و`4` في الجهة الأخرى."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "يُزال الحد `x` من الطرف الأيمن أولًا بطرح `x` من الطرفين. هذا يحافظ على توازن المعادلة ويجمع حدود المتغير معًا.",
+            "another_way": "فكّر في أخذ `x` واحد من كل طرف. عندئذ يصبح الطرف الأيسر `2*x + 4`، ولا يبقى في الطرف الأيمن حد `x`.",
+            "visual": "يوضح ميزان توازن `3*x + 4` و`x + 10`، مع إزالة `x` واحد من كل طرف."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "يُزال الثابت `4` من الطرف الأيسر بطرح `4` من الطرفين. هذا يترك حد `x` وحده في الطرف الأيسر.",
+            "another_way": "بما أن `4` أُضيف إلى `2*x`، فأبطل تلك الإضافة بالطرح. يتغير الطرف الأيمن بالطريقة نفسها للحفاظ على التوازن.",
+            "visual": "يوضح ميزان توازن `2*x + 4` و`10`، مع إزالة `4` من الطرفين."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "العدد `2` يضرب `x`، لذا نقسم الطرفين على `2` لإبطال الضرب. هذا يعطينا `x` واحدًا وحده.",
+            "another_way": "تعني `2*x` مجموعتين متساويتين من `x`. تقسيم الطرفين إلى جزأين متساويين يبيّن قيمة مجموعة واحدة.",
+            "visual": "يوضح ميزان توازن `2*x` و`6`، مقسومين إلى جزأين متساويين في كل طرف."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "هذه هي الإجابة لأن `x` أصبح وحده وقيمته ظاهرة. تنص المعادلة على أن `x` يساوي `3`.",
+            "another_way": "يمكن التحقق بالتعويض في المعادلة الأصلية. استبدال `x` بـ`3` يجعل الطرفين متساويين.",
+            "visual": "يوضح ميزان توازن `x` واحدًا يتوازن مع `3`."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "يمكن أن ينتقل عدد عبر علامة المساواة ويحتفظ بإشارته.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"انقله إلى الطرف الآخر\" اختصار شائع، وينسى الطالب أن النقل يعني الطرح.",
+      "what_to_say": {
+        "probe": "ماذا فعلت بالطرفين للتخلص من `+ 6`؟",
+        "nudge": "اكتب العملية في الهامش، \"| -6\"، وطبّقها على الطرفين.",
+        "tell": "اطرح ستة من الطرفين: `2*x = 4`، إذن `x = 2`. التعويض يتحقق من ذلك: `2*2 + 6` يساوي `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "حلّ لإيجاد x:",
+        "answer": "5"
+      },
+      "source_quote": "بعض الطلاب ينقلون عددًا عبر علامة المساواة دون تغيير إشارته."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "يمكنك قسمة حد واحد فقط من طرف على المعامل.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "يركز الطالب على جعل `x` وحدها، فيقسم الحدود القريبة منها وينسى بقية الطرف.",
+      "what_to_say": {
+        "probe": "عندما قسمت على اثنين، ماذا حدث لـ `6`؟",
+        "nudge": "اقسم كل حد في الطرفين على اثنين، وقارن ذلك بسطر الحل لديك.",
+        "tell": "قسمة طرف تعني قسمة كل حد فيه: `x + 3 = 5`، إذن `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "حلّ لإيجاد x:",
+        "answer": "3"
+      },
+      "source_quote": "بعض الطلاب يقسمون حدًا واحدًا فقط على العدد الموجود أمام `x`."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "للتخلص من العدد الموجود أمام `x`، اطرحه.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "الطرح هو أول عملية عكسية تعلمها الطالب، و `3*x` تبدو مثل `3` بجانب `x`.",
+      "what_to_say": {
+        "probe": "ماذا تعني `3*x`؟ ما العملية التي تربط `3` و`x`؟",
+        "nudge": "تحقق من إجابتك: هل `3*9` يساوي `12`؟",
+        "tell": "تعني `3*x` ثلاثة أمثال `x`، لذا اقسم الطرفين على ثلاثة: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "حلّ لإيجاد x:",
+        "answer": "7"
+      },
+      "source_quote": "بعض الطلاب يطرحون العدد الموجود أمام `x` بدلًا من القسمة عليه."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "يمكنك عكس العمليات على `x` بأي ترتيب.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "طرح العدد القريب من `x` هو الخطوة الأولى المعتادة، لذلك يفعلها الطالب حتى عندما يكون ذلك العدد داخل قسمة.",
+      "what_to_say": {
+        "probe": "في `(x + 6)/2`، ماذا يحدث لـ `x` أولًا، وماذا يحدث أخيرًا؟",
+        "nudge": "أخذ النصف تم أخيرًا. بماذا تضرب الطرفين لعكسه؟",
+        "tell": "اعكس أخذ النصف أولًا: `x + 6 = 20`، إذن `x = 14`. تحقق: `(14 + 6)/2` يساوي `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "حلّ لإيجاد x:",
+        "answer": "11"
+      },
+      "source_quote": "بعض الطلاب يعكسون الخطوات بترتيب خاطئ."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "العدد خارج القوس يضرب الحد الأول داخله فقط.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "يقع `5` مباشرة بجانب `x`، لذلك يضرب الطالب ما هو أقرب.",
+      "what_to_say": {
+        "probe": "كم عدد الثلاثات في `5*(x + 3)`؟",
+        "nudge": "اكتب `5*(x + 3)` على صورة `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` ثم عُدّ.",
+        "tell": "الخمسة تضرب كل ما داخل القوس: `5*x + 15 = 35`، إذن `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "حلّ لإيجاد x:",
+        "answer": "5"
+      },
+      "source_quote": "بعض الطلاب يضربون العدد خارج القوس في الحد الأول فقط."
+    }
+  ],
+  "questions": [
+    {
+      "question": "لماذا نفعل الشيء نفسه في الطرفين؟",
+      "answer": "المعادلة متوازنة. إجراء العملية نفسها على كميتين متساويتين يبقيهما متساويتين، لذلك لا يتغير الحل."
+    },
+    {
+      "question": "لماذا تصبح `+ 6` طرح `6`؟",
+      "answer": "الحل يعكس العمليات. في `2*x + 6 = 10`، طرح `6` من الطرفين يعطي `2*x = 4`."
+    },
+    {
+      "question": "لماذا نقسم على `2` بدلًا من طرح `2`؟",
+      "answer": "`2*x` تعني `2` في `x`. والضرب يُعكس بالقسمة، لذلك تصبح `2*x = 4` هي `x = 2`."
+    },
+    {
+      "question": "ماذا لو كان هناك `x` في الطرفين؟",
+      "answer": "استخدم خطوة الميزان نفسها. في `3*x + 4 = x + 10`، طرح `x` من الطرفين يعطي `2*x + 4 = 10`."
+    },
+    {
+      "question": "كيف تغيّر الأقواس طريقة العمل؟",
+      "answer": "العدد خارج القوس يضرب القوس كله. في `5*(x + 3) = 35`، قسمة الطرفين على `5` تعطي `x + 3 = 7`."
+    },
+    {
+      "question": "كيف يعرف الطلاب أن الإجابة صحيحة؟",
+      "answer": "عوّض بالإجابة في المعادلة الأصلية. إذا تطابق الطرفان، فالإجابة صحيحة."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "المعادلة كميزان",
+      "activity": "اعرض `2*x + 6 = 10` على أنه طرفان متساويان. أكّد أن المعادلة تقول إن تعبيرين لهما القيمة نفسها. قدّم كتابة العملية نفسها في الهامش، مثل اطرح `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "العكس بالترتيب العكسي",
+      "activity": "اعمل على `2*x + 6 = 10`. طرح `6` من الطرفين يعطي `2*x = 4`. قسمة الطرفين على `2` تعطي `x = 2`. تحقق بالتعويض."
+    },
+    {
+      "minutes": 8,
+      "title": "أخطاء شائعة",
+      "activity": "ناقش الأخطاء المعتادة: تغيير طرف دون تغيير العملية، وقسمة حد واحد فقط، وطرح المعامل بدلًا من القسمة. أبقِ التركيز على خطوة الميزان."
+    },
+    {
+      "minutes": 8,
+      "title": "الأقواس",
+      "activity": "استخدم `5*(x + 3) = 35`. اقسم الطرفين على `5` للحصول على `x + 3 = 7`. ثم اطرح `3` للحصول على `x = 4`. نبّه إلى أن `5` ينطبق على القوس كله."
+    },
+    {
+      "minutes": 10,
+      "title": "متغيرات في الطرفين",
+      "activity": "اعمل على `3*x + 4 = x + 10`. طرح `x` من الطرفين يعطي `2*x + 4 = 10`. طرح `4` يعطي `2*x = 6`. القسمة على `2` تعطي `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "التحقق من الإجابات",
+      "activity": "يعوّض الطلاب بالإجابات في المعادلة الأصلية. فشل التحقق يعني أن خطوة ما تحتاج إلى مراجعة. التحقق جزء من عملية الحل، وليس مهمة إضافية."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `x` التي تجعل `8*x = 56` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` تعني 8 مضروبًا في `x`، لذا نعكس ذلك بقسمة الطرفين على `8`."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "حلّ لإيجاد c:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `c` التي تجعل `-5*c = 55` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "اقسم الطرفين على `-5`، وهو العدد أمام `c`."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` سالب لأن الإشارتين مختلفتان."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `x` التي تجعل `7*x + 8 = -13` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "اعكس الخطوات بالترتيب العكسي: اطرح `8` من الطرفين، ثم اقسم على `7`."
+        },
+        {
+          "rung": "computation",
+          "text": "بعد طرح `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. تحقق: `7*(-3) + 8` يساوي `-13`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `x` التي تجعل `3*x + 4 = -8` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "اطرح `4` من الطرفين، ثم اقسم الطرفين على `3`."
+        },
+        {
+          "rung": "computation",
+          "text": "بعد طرح `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. تحقق: `3*(-4) + 4` يساوي `-8`."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `x` التي تجعل `5*(x + 3) = 35` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "العدد 5 يضرب القوس كله. اقسم الطرفين على `5`، أو فكّ القوس بالتوزيع."
+        },
+        {
+          "rung": "computation",
+          "text": "قسمة الطرفين على `5` تعطي `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. تحقق: `5*(4 + 3)` يساوي `35`."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "حلّ لإيجاد m:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `m` التي تجعل `2*(m - 4) + 3 = -1` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "فكّ القوس بالتوزيع أولًا، ثم اجمع الحدود العددية."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`، إذن `2*m - 5 = -1` و `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. تحقق: `2*(2 - 4) + 3` يساوي `-1`."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `x` التي تجعل `7*x + 5 = 6*x + 2` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "اجعل حدود `x` في طرف واحد: اطرح `6*x` من الطرفين."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`، ثم اطرح `5` من الطرفين."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. تحقق: الطرفان كلاهما `-16`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "حلّ لإيجاد x:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "نريد قيمة `x` التي تجعل `12*x + 8 = 6*x + 2` صحيحة."
+        },
+        {
+          "rung": "information",
+          "text": "اطرح `6*x` من الطرفين، ثم اطرح `8` من الطرفين."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`، إذن `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. تحقق: الطرفان كلاهما `-4`."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

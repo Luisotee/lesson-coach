@@ -123,7 +123,10 @@ The strings are ICU MessageFormat:
         text += """
 - `math.speech.*` and `math.op.*` are spoken aloud by screen readers to describe math: write
   the words a teacher of this language says aloud (plus, minus, times, over, equals, squared,
-  one half, two thirds...), in the order the language says them."""
+  one half, two thirds...), in the order the language says them.
+- `math.speech.fractionSimple` may be restructured, keeping its arguments and `=N` branches, so
+  that every count reads naturally: if the language says "one half" as one word, its `one`
+  branch is that word alone."""
     return text
 
 

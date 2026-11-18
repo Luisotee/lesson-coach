@@ -1,84 +1,51 @@
 {
   "fr": {
     "lang": "fr",
-    "shipped": false,
-    "usd": 7.913442,
+    "shipped": true,
+    "usd": 9.090584,
     "stats": {
       "calls": {
-        "generate": 38,
-        "judge": 60
+        "generate": 2,
+        "judge": 2
       },
       "failed_calls": 0,
-      "prompt_tokens": 103398,
-      "cached_tokens": 12800,
-      "completion_tokens": 25074,
-      "reasoning_tokens": 2964,
-      "retries": 19,
+      "prompt_tokens": 2669,
+      "cached_tokens": 0,
+      "completion_tokens": 636,
+      "reasoning_tokens": 0,
+      "retries": 1,
       "samples": 0,
-      "judge_flags": {
-        "outline[4].activity": 1,
-        "practice[1].hints[1].text": 1,
-        "practice[2].hints[1].text": 1,
-        "prompts.solve": 1,
-        "outline[2].activity": 1,
-        "misconceptions[4].what_to_say.probe": 2,
-        "misconceptions[2].what_to_say.nudge": 1,
-        "why_it_works": 1,
-        "misconceptions[2].belief": 1,
-        "misconceptions[2].source_quote": 1,
-        "worked_examples[2].steps[0].explanations.another_way": 1,
-        "worked_examples[2].steps[3].explanations.another_way": 1
-      },
-      "judged_items": 368,
+      "judge_flags": {},
+      "judged_items": 9,
       "dropped": []
     },
-    "failing": [
-      "fractions: worked_examples[2].steps[3].explanations.another_way: spans_changed: the math spans differ from the English; number_not_in_source: ['1'] not in the English"
-    ],
-    "last_usd": 1.21161
+    "failing": [],
+    "last_usd": 0.032425
   },
   "ar": {
     "lang": "ar",
-    "shipped": false,
-    "usd": 1.320194,
+    "shipped": true,
+    "usd": 2.723084,
     "stats": {
       "calls": {
-        "generate": 38,
-        "judge": 70
+        "generate": 2,
+        "judge": 4
       },
       "failed_calls": 0,
-      "prompt_tokens": 118012,
-      "cached_tokens": 7168,
-      "completion_tokens": 25413,
-      "reasoning_tokens": 693,
-      "retries": 19,
+      "prompt_tokens": 10582,
+      "cached_tokens": 3584,
+      "completion_tokens": 1904,
+      "reasoning_tokens": 0,
+      "retries": 1,
       "samples": 0,
       "judge_flags": {
-        "worked_examples[0].steps[1].explanations.why": 1,
-        "worked_examples[0].steps[2].explanations.visual": 2,
-        "worked_examples[2].steps[1].explanations.visual": 2,
-        "misconceptions[4].why_it_feels_right": 1,
-        "misconceptions[2].belief": 1,
-        "misconceptions[2].source_quote": 1,
-        "practice[0].hints[1].text": 1,
-        "practice[1].hints[1].text": 1,
-        "worked_examples[0].steps[1].explanations.another_way": 1,
-        "worked_examples[0].steps[1].explanations.visual": 1,
-        "worked_examples[2].steps[2].explanations.another_way": 2,
-        "worked_examples[2].steps[2].explanations.visual": 2,
-        "why_it_works": 1,
-        "outline[3].activity": 2,
-        "misconceptions[4].what_to_say.probe": 2,
-        "outline[2].activity": 1
+        "outline[3].activity": 1
       },
-      "judged_items": 376,
+      "judged_items": 29,
       "dropped": []
     },
-    "failing": [
-      "linear-equations: worked_examples[2].steps[2].explanations.another_way: spans_changed: the math spans differ from the English",
-      "linear-equations: worked_examples[2].steps[2].explanations.visual: spans_changed: the math spans differ from the English"
-    ],
-    "last_usd": 1.320194
+    "failing": [],
+    "last_usd": 0.093902
   },
   "de": {
     "lang": "de",
@@ -432,5 +399,41 @@
       "linear-equations: misconceptions[1].what_to_say.nudge: judge: TR uses “two-ға” instead of the Kazakh Cyrillic “екіге” for “by two”. (The translation leaves the English word “two” in Latin script with a Kazakh suffix, which is not proper Kazakh Cyrillic and is ungrammatical/nonnative in this teaching context.)"
     ],
     "last_usd": 1.276463
+  },
+  "fa": {
+    "lang": "fa",
+    "shipped": true,
+    "usd": 1.2577,
+    "stats": {
+      "calls": {
+        "generate": 34,
+        "judge": 68
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 116096,
+      "cached_tokens": 16640,
+      "completion_tokens": 25070,
+      "reasoning_tokens": 1079,
+      "retries": 15,
+      "samples": 0,
+      "judge_flags": {
+        "worked_examples[2].steps[1].explanations.visual": 2,
+        "practice[0].hints[1].text": 1,
+        "questions[2].answer": 1,
+        "misconceptions[3].why_it_feels_right": 1,
+        "outline[2].activity": 1,
+        "practice[3].hints[1].text": 2,
+        "practice[3].hints[2].text": 3,
+        "why_it_works": 1,
+        "idea": 1,
+        "misconceptions[1].why_it_feels_right": 1,
+        "misconceptions[4].what_to_say.probe": 2,
+        "questions[4].answer": 1
+      },
+      "judged_items": 373,
+      "dropped": []
+    },
+    "failing": [],
+    "last_usd": 1.2577
   }
 }

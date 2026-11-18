@@ -1,0 +1,770 @@
+{
+  "ai_generated": [
+    "summary",
+    "idea",
+    "why_it_works",
+    "questions",
+    "outline"
+  ],
+  "topic": "linear-equations",
+  "lang": "fa",
+  "title": "حل معادله‌های خطی",
+  "grades": [
+    7,
+    8,
+    9
+  ],
+  "summary": "معادله‌های خطی را با انجام یک عمل یکسان روی دو طرف حل کنید و پاسخ را بررسی کنید.",
+  "idea": "معادله می‌گوید دو عبارت مقدار یکسانی دارند. حل کردن یعنی پیدا کردن مقدار `x` که گزاره را درست می‌کند.\n\nمدل ترازو تصویر اصلی است. هر کاری که روی یک طرف انجام می‌شود، باید روی طرف دیگر هم انجام شود. عمل را می‌توان در حاشیه نوشت، مانند کم کردن `6`، تا نشان دهد هر دو طرف تغییر می‌کنند.\n\nبرای تنها کردن `x`، عمل‌ها را به ترتیب برعکس خنثی کنید. برای `2*x + 6 = 10`، کم کردن `6` از دو طرف می‌دهد `2*x = 4`. تقسیم دو طرف بر `2` می‌دهد `x = 2`.\n\nاگر پرانتز وجود دارد، کل پرانتز را ضرب‌شده در نظر بگیرید. در `5*(x + 3) = 35`، تقسیم دو طرف بر `5` می‌دهد `x + 3 = 7`، سپس کم کردن `3` می‌دهد `x = 4`.",
+  "why_it_works": "هر مرحله دو طرف را برابر نگه می‌دارد، چون عمل یکسانی روی دو طرف انجام می‌شود. شکل معادله عوض می‌شود، اما جواب همان می‌ماند.\n\nعمل‌ها به ترتیب برعکس خنثی می‌شوند. در `2*x + 6 = 10`، عبارت دارای `x` در `2` ضرب شده و سپس `6` به آن اضافه شده است. پس اول `6` را کم کنید، سپس بر `2` تقسیم کنید.\n\nوقتی متغیر در دو طرف باشد، همان ایده ترازو باز هم به کار می‌آید. در `3*x + 4 = x + 10`، کم کردن `x` از دو طرف می‌دهد `2*x + 4 = 10`. سپس کم کردن `4` می‌دهد `2*x = 6`، و تقسیم بر `2` می‌دهد `x = 3`.\n\nبررسی با جای‌گذاری انجام می‌شود. برای `x = 2`، `2*2 + 6` برابر `10` است، پس معادله اصلی درست است.",
+  "prerequisites": [
+    "negative-numbers",
+    "fractions"
+  ],
+  "worked_examples": [
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "prompt": "برای x حل کنید:",
+      "steps": [
+        {
+          "left": "2*x + 6",
+          "right": "10",
+          "op": "-6",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عبارت `+ 6` نمی‌گذارد `x` تنها بماند. از دو طرف `6` کم کنید تا تراز برقرار بماند و `6` اضافه‌شده خنثی شود.",
+            "another_way": "به ترتیب وارون فکر کنید. چون `6` بعد از `2*x` اضافه شده بود، اول آن را با `-6` در دو طرف خنثی کنید.",
+            "visual": "یک ترازو در یک طرف `2*x + 6` و در طرف دیگر `10` را نشان می‌دهد، در حالی که `6` از دو طرف برداشته شده است."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "4",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اکنون `2*x = 4`، پس `x` هنوز در `2` ضرب شده است. دو طرف را بر `2` تقسیم کنید تا ضرب خنثی شود و معادله متعادل بماند.",
+            "another_way": "`2*x` یعنی دو دسته برابر از `x`. تقسیم دو طرف به `2` قسمت برابر، یک دسته از `x` باقی می‌گذارد.",
+            "visual": "یک ترازو در یک طرف `2*x` و در طرف دیگر `4` را نشان می‌دهد، در حالی که هر دو طرف به `2` قسمت برابر تقسیم شده‌اند."
+          }
+        },
+        {
+          "left": "x",
+          "right": "2",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "این پاسخ است، چون `x` تنهاست و معادله مقدار آن را مستقیم می‌گوید: `x = 2`.",
+            "another_way": "با جایگذاری بررسی کنید: `2*2 + 6` برابر `10` است، پس معادله اصلی درست است.",
+            "visual": "یک ترازو یک `x` را در یک طرف و `2` را در طرف دیگر، در حالت تعادل، نشان می‌دهد."
+          }
+        }
+      ],
+      "answer": "x = 2"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "برای x حل کنید:",
+      "steps": [
+        {
+          "left": "5*(x + 3)",
+          "right": "35",
+          "op": "/5",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عبارت داخل پرانتز در `5` ضرب شده است. تقسیم هر دو طرف بر `5` این ضرب را خنثی می‌کند و تساوی را متعادل نگه می‌دارد.",
+            "another_way": "با این کار لازم نیست ابتدا پرانتز را باز کنیم. چون کل طرف چپ `5` برابر `x + 3` است، کل دو طرف را بر `5` تقسیم می‌کنیم.",
+            "visual": "یک ترازو در حالت تعادل، `5*(x + 3)` را در یک کفه و `35` را در کفه دیگر نشان می‌دهد؛ آماده‌ایم هر دو طرف را به `5` گروه مساوی تقسیم کنیم."
+          }
+        },
+        {
+          "left": "x + 3",
+          "right": "7",
+          "op": "-3",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "اکنون `3` به `x` اضافه شده است. کم کردن `3` از هر دو طرف، این جمع را خنثی می‌کند و تساوی را متعادل نگه می‌دارد.",
+            "another_way": "فکر کنید همان `3` را از هر دو کفه ترازو برمی‌داریم. در نتیجه مجهول در طرف چپ تنها می‌ماند.",
+            "visual": "یک ترازو در حالت تعادل، `x + 3` را در یک کفه و `7` را در کفه دیگر نشان می‌دهد، در حالی که `3` از هر دو طرف برداشته شده است."
+          }
+        },
+        {
+          "left": "x",
+          "right": "4",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "متغیر تنها شده است، پس این خط جواب را می‌دهد. مقداری که معادله اصلی را درست می‌کند `x = 4` است.",
+            "another_way": "برای بررسی، `4` را در معادله اصلی به جای `x` می‌گذاریم و تأیید می‌کنیم که دو طرف برابرند.",
+            "visual": "یک ترازو در حالت تعادل، `x` را به‌تنهایی در یک کفه و `4` را در کفه دیگر نشان می‌دهد."
+          }
+        }
+      ],
+      "answer": "x = 4"
+    },
+    {
+      "ai_generated": [],
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = x + 10"
+      },
+      "prompt": "برای x حل کنید:",
+      "steps": [
+        {
+          "left": "3*x + 4",
+          "right": "x + 10",
+          "op": "-x",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "جملهٔ `x` در طرف راست ابتدا با کم کردن `x` از دو طرف حذف می‌شود. این کار تساوی را متعادل نگه می‌دارد و جمله‌های متغیر را کنار هم می‌آورد.",
+            "another_way": "فکر کنید از هر طرف یک `x` برمی‌داریم. آن‌گاه طرف چپ `2*x + 4` می‌شود و طرف راست دیگر جملهٔ `x` ندارد.",
+            "visual": "یک ترازو `3*x + 4` و `x + 10` را نشان می‌دهد، در حالی که از هر طرف یک `x` برداشته شده است."
+          }
+        },
+        {
+          "left": "2*x + 4",
+          "right": "10",
+          "op": "-4",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عدد ثابت `4` با کم کردن `4` از دو طرف، از طرف چپ حذف می‌شود. این کار جملهٔ `x` را در طرف چپ تنها می‌گذارد.",
+            "another_way": "چون `4` به `2*x` اضافه شده بود، این جمع را با تفریق برعکس می‌کنیم. طرف راست هم به همان شکل تغییر می‌کند تا تعادل حفظ شود.",
+            "visual": "یک ترازو `2*x + 4` و `10` را نشان می‌دهد، در حالی که `4` از دو طرف برداشته شده است."
+          }
+        },
+        {
+          "left": "2*x",
+          "right": "6",
+          "op": "/2",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "عدد `2` در `x` ضرب شده است، پس دو طرف را بر `2` تقسیم می‌کنیم تا ضرب برعکس شود. به این ترتیب یک `x` تنها به دست می‌آید.",
+            "another_way": "`2*x` یعنی دو گروه مساوی از `x`. تقسیم دو طرف به `2` قسمت مساوی، مقدار یک گروه را نشان می‌دهد.",
+            "visual": "یک ترازو `2*x` و `6` را نشان می‌دهد که هر طرف به `2` قسمت مساوی تقسیم شده است."
+          }
+        },
+        {
+          "left": "x",
+          "right": "3",
+          "op": "",
+          "explanations": {
+            "ai_generated": [
+              "why",
+              "another_way",
+              "visual"
+            ],
+            "why": "این پاسخ است، چون `x` تنهاست و مقدار آن نشان داده شده است. معادله می‌گوید `x` برابر `3` است.",
+            "another_way": "با جایگذاری می‌توان آن را در معادلهٔ اصلی بررسی کرد. اگر `x` را با `3` جایگزین کنیم، دو طرف برابر می‌شوند.",
+            "visual": "یک ترازو نشان می‌دهد که یک `x` با `3` در تعادل است."
+          }
+        }
+      ],
+      "answer": "x = 3"
+    }
+  ],
+  "misconceptions": [
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "sign_not_changed",
+      "belief": "یک عدد می‌تواند از علامت مساوی رد شود و علامت خود را نگه دارد.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "«ببرش آن طرف» یک میان‌بر رایج است، و دانش‌آموز فراموش می‌کند که جابه‌جا کردن یعنی کم کردن.",
+      "what_to_say": {
+        "probe": "برای حذف `+ 6` با دو طرف چه کار کردی؟",
+        "nudge": "عملیات را در حاشیه بنویس، «| -6»، و آن را برای هر دو طرف انجام بده.",
+        "tell": "از دو طرف 6 کم کن: `2*x = 4`، پس `x = 2`. با جای‌گذاری بررسی می‌شود: `2*2 + 6` برابر `10` است."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "برای x حل کنید:",
+        "answer": "5"
+      },
+      "source_quote": "بعضی دانش‌آموزان یک عدد را از علامت مساوی رد می‌کنند، بدون این‌که علامتش را عوض کنند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "divide_one_term",
+      "belief": "می‌توانی فقط یک جمله از یک طرف را بر ضریب تقسیم کنی.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "دانش‌آموز روی تنها کردن `x` تمرکز می‌کند و جمله‌های کنار آن را تقسیم می‌کند، اما بقیه آن طرف را فراموش می‌کند.",
+      "what_to_say": {
+        "probe": "وقتی بر دو تقسیم کردی، برای `6` چه اتفاقی افتاد؟",
+        "nudge": "هر جمله در هر دو طرف را بر دو تقسیم کن و با خط خودت مقایسه کن.",
+        "tell": "تقسیم یک طرف یعنی هر جمله آن طرف تقسیم می‌شود: `x + 3 = 5`، پس `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "برای x حل کنید:",
+        "answer": "3"
+      },
+      "source_quote": "بعضی دانش‌آموزان فقط یک جمله را بر عدد جلوی `x` تقسیم می‌کنند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "subtract_instead_of_divide",
+      "belief": "برای حذف عدد جلوی `x`، باید آن را کم کرد.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "کم کردن اولین عمل معکوسی است که دانش‌آموز یاد گرفته، و `3*x` شبیه `3` کنار `x` به نظر می‌رسد.",
+      "what_to_say": {
+        "probe": "`3*x` یعنی چه؟ چه عملی `3` و `x` را به هم وصل می‌کند؟",
+        "nudge": "پاسخت را بررسی کن: آیا `3*9` برابر `12` است؟",
+        "tell": "`3*x` یعنی 3 برابر `x`، پس دو طرف را بر 3 تقسیم کن: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "برای x حل کنید:",
+        "answer": "7"
+      },
+      "source_quote": "بعضی دانش‌آموزان عدد جلوی `x` را کم می‌کنند، به جای این‌که بر آن تقسیم کنند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "wrong_inverse_order",
+      "belief": "می‌توانی عمل‌های روی `x` را به هر ترتیبی معکوس کنی.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "کم کردن عدد کنار `x` معمولاً قدم اول است، پس دانش‌آموز همین کار را می‌کند، حتی وقتی آن عدد داخل یک تقسیم باشد.",
+      "what_to_say": {
+        "probe": "در `(x + 6)/2`، اول چه اتفاقی برای `x` می‌افتد، و آخر چه اتفاقی می‌افتد؟",
+        "nudge": "نصف کردن در آخر انجام شده است. برای معکوس کردنش دو طرف را در چه عددی ضرب می‌کنی؟",
+        "tell": "اول نصف کردن را معکوس کن: `x + 6 = 20`، پس `x = 14`. بررسی: `(14 + 6)/2` برابر `10` است."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "برای x حل کنید:",
+        "answer": "11"
+      },
+      "source_quote": "بعضی دانش‌آموزان مراحل را با ترتیب نادرست معکوس می‌کنند."
+    },
+    {
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ],
+      "id": "distribute_first_term_only",
+      "belief": "عدد بیرون پرانتز فقط جمله اول داخل را ضرب می‌کند.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "`5` درست کنار `x` نشسته است، پس دانش‌آموز چیزی را ضرب می‌کند که نزدیک‌تر است.",
+      "what_to_say": {
+        "probe": "در `5*(x + 3)` چند تا 3 وجود دارد؟",
+        "nudge": "`5*(x + 3)` را به صورت `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` بنویس و بشمار.",
+        "tell": "5 در همه چیز داخل پرانتز ضرب می‌شود: `5*x + 15 = 35`، پس `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "برای x حل کنید:",
+        "answer": "5"
+      },
+      "source_quote": "بعضی دانش‌آموزان عدد بیرون پرانتز را فقط در جمله اول ضرب می‌کنند."
+    }
+  ],
+  "questions": [
+    {
+      "question": "چرا یک کار یکسان را روی دو طرف انجام می‌دهیم؟",
+      "answer": "معادله متعادل است. انجام یک عمل یکسان روی مقدارهای برابر، آن‌ها را برابر نگه می‌دارد؛ پس جواب تغییر نمی‌کند."
+    },
+    {
+      "question": "چرا `+ 6` به کم کردن `6` تبدیل می‌شود؟",
+      "answer": "حل کردن یعنی خنثی کردن عمل‌ها. در `2*x + 6 = 10`، کم کردن `6` از دو طرف می‌دهد `2*x = 4`."
+    },
+    {
+      "question": "چرا به جای کم کردن `2`، بر `2` تقسیم می‌کنیم؟",
+      "answer": "`2*x` یعنی `2` برابر `x`. ضرب با تقسیم خنثی می‌شود، پس `2*x = 4` به `x = 2` تبدیل می‌شود."
+    },
+    {
+      "question": "اگر در دو طرف `x` داشته باشیم چه می‌شود؟",
+      "answer": "از همان گام تعادل استفاده کنید. در `3*x + 4 = x + 10`، کم کردن `x` از دو طرف می‌دهد `2*x + 4 = 10`."
+    },
+    {
+      "question": "پرانتزها کار را چگونه تغییر می‌دهند؟",
+      "answer": "عدد بیرون، کل پرانتز را ضرب می‌کند. در `5*(x + 3) = 35`، تقسیم دو طرف بر `5` می‌دهد `x + 3 = 7`."
+    },
+    {
+      "question": "دانش‌آموزان از کجا بدانند پاسخ درست است؟",
+      "answer": "پاسخ را در معادله اصلی جای‌گذاری کنید. اگر دو طرف برابر شدند، پاسخ درست است."
+    }
+  ],
+  "outline": [
+    {
+      "minutes": 8,
+      "title": "معادله به‌صورت ترازو",
+      "activity": "`2*x + 6 = 10` را به‌صورت دو طرف برابر نشان دهید. تأکید کنید که معادله می‌گوید دو عبارت مقدار یکسانی دارند. نوشتن همان عمل در حاشیه را معرفی کنید، مانند کم کردن `6`."
+    },
+    {
+      "minutes": 10,
+      "title": "خنثی کردن به ترتیب برعکس",
+      "activity": "`2*x + 6 = 10` را گام‌به‌گام حل کنید. کم کردن `6` از دو طرف می‌دهد `2*x = 4`. تقسیم دو طرف بر `2` می‌دهد `x = 2`. با جای‌گذاری بررسی کنید."
+    },
+    {
+      "minutes": 8,
+      "title": "اشتباه‌های رایج",
+      "activity": "خطاهای معمول را بررسی کنید: بردن یک جمله به طرف دیگر بدون تغییر عمل، تقسیم کردن فقط یک جمله، و کم کردن ضریب به جای تقسیم کردن. تمرکز را روی گام حفظ تعادل نگه دارید."
+    },
+    {
+      "minutes": 8,
+      "title": "پرانتزها",
+      "activity": "از `5*(x + 3) = 35` استفاده کنید. دو طرف را بر `5` تقسیم کنید تا `x + 3 = 7` به دست آید. سپس `3` را کم کنید تا `x = 4` به دست آید. یادآوری کنید که `5` به کل پرانتز مربوط است."
+    },
+    {
+      "minutes": 10,
+      "title": "متغیرها در دو طرف",
+      "activity": "`3*x + 4 = x + 10` را گام‌به‌گام حل کنید. کم کردن `x` از دو طرف می‌دهد `2*x + 4 = 10`. کم کردن `4` می‌دهد `2*x = 6`. تقسیم بر `2` می‌دهد `x = 3`."
+    },
+    {
+      "minutes": 6,
+      "title": "بررسی پاسخ‌ها",
+      "activity": "دانش‌آموزان پاسخ‌ها را در معادله اصلی جای‌گذاری می‌کنند. بررسی ناموفق یعنی باید یک گام دوباره مرور شود. بررسی بخشی از فرایند حل است، نه یک کار اضافه."
+    }
+  ],
+  "akelius_lessons": [
+    {
+      "url": "https://akelius.education/math/en/lesson/22124",
+      "title": "two-step equations",
+      "grade": 8
+    }
+  ],
+  "practice": [
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-1",
+      "problem": {
+        "kind": "solve",
+        "expr": "8*x = 56"
+      },
+      "prompt": "برای x حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `x` را پیدا کنیم که `8*x = 56` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "`8*x` یعنی 8 برابر `x`؛ پس با تقسیم دو طرف بر `8` آن را برعکس می‌کنیم."
+        },
+        {
+          "rung": "computation",
+          "text": "`8*x/8 = 56/8`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 7`."
+        }
+      ],
+      "answer": "7",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16a/a870b02DivMul16a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-2",
+      "problem": {
+        "kind": "solve",
+        "expr": "-5*c = 55"
+      },
+      "prompt": "برای c حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `c` را پیدا کنیم که `-5*c = 55` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "دو طرف را بر `-5`، عدد جلوی `c`، تقسیم کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "`55/(-5)` منفی است، چون علامت‌ها متفاوت‌اند."
+        },
+        {
+          "rung": "answer",
+          "text": "`c = -11`."
+        }
+      ],
+      "answer": "-11",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a870b02DivMul16/steps/a870b02DivMul16b/a870b02DivMul16b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a870b02DivMul16",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-3",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 8 = -13"
+      },
+      "prompt": "برای x حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `x` را پیدا کنیم که `7*x + 8 = -13` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "گام‌ها را به ترتیب وارونه انجام دهید: از دو طرف `8` کم کنید، سپس بر `7` تقسیم کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "پس از کم کردن `8`: `7*x = -21`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. بررسی: `7*(-3) + 8` برابر `-13` است."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon1/steps/a9c142dVarCon1a/a9c142dVarCon1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-4",
+      "problem": {
+        "kind": "solve",
+        "expr": "3*x + 4 = -8"
+      },
+      "prompt": "برای x حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `x` را پیدا کنیم که `3*x + 4 = -8` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "از دو طرف `4` کم کنید، سپس دو طرف را بر `3` تقسیم کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "پس از کم کردن `4`: `3*x = -12`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -4`. بررسی: `3*(-4) + 4` برابر `-8` است."
+        }
+      ],
+      "answer": "-4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon2/steps/a9c142dVarCon2a/a9c142dVarCon2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-5",
+      "problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "prompt": "برای x حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `x` را پیدا کنیم که `5*(x + 3) = 35` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "عدد 5 در کل پرانتز ضرب می‌شود. دو طرف را بر `5` تقسیم کنید، یا پرانتز را باز کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "تقسیم دو طرف بر `5` می‌دهد `x + 3 = 7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = 4`. بررسی: `5*(4 + 3)` برابر `35` است."
+        }
+      ],
+      "answer": "4",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep2/steps/a623746multistep2a/a623746multistep2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-6",
+      "problem": {
+        "kind": "solve",
+        "expr": "2*(m - 4) + 3 = -1"
+      },
+      "prompt": "برای m حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `m` را پیدا کنیم که `2*(m - 4) + 3 = -1` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "ابتدا پرانتز را باز کنید، سپس عددها را جمع کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "`2*m - 8 + 3 = -1`، پس `2*m - 5 = -1` و `2*m = 4`."
+        },
+        {
+          "rung": "answer",
+          "text": "`m = 2`. بررسی: `2*(2 - 4) + 3` برابر `-1` است."
+        }
+      ],
+      "answer": "2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a623746multistep8/steps/a623746multistep8a/a623746multistep8a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a623746multistep8",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-7",
+      "problem": {
+        "kind": "solve",
+        "expr": "7*x + 5 = 6*x + 2"
+      },
+      "prompt": "برای x حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `x` را پیدا کنیم که `7*x + 5 = 6*x + 2` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "جمله‌های دارای `x` را در یک طرف بیاورید: از دو طرف `6*x` کم کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "`x + 5 = 2`، سپس از دو طرف `5` کم کنید."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -3`. بررسی: هر دو طرف برابر `-16` هستند."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon18/steps/a9c142dVarCon18a/a9c142dVarCon18a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon18",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    },
+    {
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ],
+      "id": "le-8",
+      "problem": {
+        "kind": "solve",
+        "expr": "12*x + 8 = 6*x + 2"
+      },
+      "prompt": "برای x حل کنید:",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "می‌خواهیم مقدار `x` را پیدا کنیم که `12*x + 8 = 6*x + 2` را درست کند."
+        },
+        {
+          "rung": "information",
+          "text": "از دو طرف `6*x` کم کنید، سپس از دو طرف `8` کم کنید."
+        },
+        {
+          "rung": "computation",
+          "text": "`6*x + 8 = 2`، پس `6*x = -6`."
+        },
+        {
+          "rung": "answer",
+          "text": "`x = -1`. بررسی: هر دو طرف برابر `-4` هستند."
+        }
+      ],
+      "answer": "-1",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9c142dVarCon19/steps/a9c142dVarCon19a/a9c142dVarCon19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9c142dVarCon19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "machine_translated": true,
+  "unavailable": [],
+  "source_hash": "8e261d721b0d193943aea27f8a0f238fb59a785117853bb21c452b4d96f236dd",
+  "model": "gpt-5.5-offline"
+}

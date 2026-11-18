@@ -1,0 +1,907 @@
+{
+  "de": {
+    "lang": "de",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 25,
+        "judge": 47
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 55578,
+      "cached_tokens": 1280,
+      "completion_tokens": 9919,
+      "reasoning_tokens": 283,
+      "retries": 9,
+      "samples": 0,
+      "judge_flags": {
+        "shell.mainNav": 2,
+        "demo.title": 1,
+        "demo.inputTitle": 1,
+        "math.speech.fractionSimple": 1,
+        "practice.badReason.not_equivalent": 1,
+        "input.mode.type": 2,
+        "home.title": 1,
+        "mistake.say.nudge": 1
+      },
+      "judged_items": 316,
+      "dropped": []
+    },
+    "last_usd": 0.5697,
+    "changes": [
+      {
+        "path": "shell.mainNav",
+        "before": "Hauptbereich",
+        "after": "Hauptnavigation",
+        "why": "judge: TR translates 'Main' as 'Hauptbereich'. ('Main' in navigation should be 'Hauptnavigation' or similar; 'Hauptbereich' means main content area/section, changing the UI meaning.)"
+      },
+      {
+        "path": "practice.badReason.not_equivalent",
+        "before": "Das ist nicht gleich zur Zeile davor.",
+        "after": "Das ist nicht gleich der Zeile davor.",
+        "why": "judge: TR says “not equal to the line before,” while EN says “isn’t equal to the line before.” (German requires dative here: it should be “nicht gleich der Zeile davor” or “nicht identisch mit der Zeile davor”; “nicht gleich zur Zeile” is ungrammatical/non-native.)"
+      },
+      {
+        "path": "demo.title",
+        "before": "Mathematische Handschrift-Komponenten",
+        "after": "Komponenten für handschriftliche Mathematik",
+        "why": "judge: Math handwriting components (\"Handwriting\" is translated as \"Handschrift\", which means handwriting as a person's script, not handwritten/handwriting input or rendering components; the German phrase is not understandable as intended.)"
+      },
+      {
+        "path": "demo.inputTitle",
+        "before": "Mathematische Eingabe-Komponenten",
+        "after": "Komponenten für mathematische Eingaben",
+        "why": "judge: Math input components (\"Eingabe-Komponenten\" is awkward/incorrect German compounding here; a native reader would expect \"Eingabekomponenten\" or \"Komponenten für mathematische Eingaben\".)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Die 3 Wege, Mathematik einzugeben: tippen, schreiben oder ein Foto machen. Unter jeder Eingabe steht genau, was die Seite erhält. Geschriebene und fotografierte Mathematik wird vom Server gelesen, und nichts wird weitergegeben, bis Sie es bestätigen.",
+        "after": "Die drei Arten, Mathematik einzugeben: tippen, schreiben oder ein Foto machen. Unter jeder Eingabe steht genau, was die Seite erhält. Geschriebene und fotografierte Mathematik wird vom Server gelesen, und nichts wird weitergegeben, bis Sie es bestätigen.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "shell.mainNav",
+        "before": "Hauptnavigation",
+        "after": "Hauptbereich",
+        "why": "judge: TR translates 'Main' as 'Hauptnavigation'. (The translation adds 'navigation'; 'Main' alone means 'Haupt...' or 'Hauptseite/Main', not 'main navigation'.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{num, plural, one {ein} other {#}} {den, plural, =2 {{num, plural, one {Halb} other {Halbe}}} =3 {{num, plural, one {Drittel} other {Drittel}}} =4 {{num, plural, one {Viertel} other {Viertel}}} =5 {{num, plural, one {Fünftel} other {Fünftel}}} =6 {{num, plural, one {Sechstel} other {Sechstel}}} =7 {{num, plural, one {Siebtel} other {Siebtel}}} =8 {{num, plural, one {Achtel} other {Achtel}}} =9 {{num, plural, one {Neuntel} other {Neuntel}}} =10 {{num, plural, one {Zehntel} other {Zehntel}}} other {durch #}}",
+        "after": "{num, plural, one {ein} other {#}} {den, plural, =2 {{num, plural, one {Halbes} other {Halbe}}} =3 {{num, plural, one {Drittel} other {Drittel}}} =4 {{num, plural, one {Viertel} other {Viertel}}} =5 {{num, plural, one {Fünftel} other {Fünftel}}} =6 {{num, plural, one {Sechstel} other {Sechstel}}} =7 {{num, plural, one {Siebtel} other {Siebtel}}} =8 {{num, plural, one {Achtel} other {Achtel}}} =9 {{num, plural, one {Neuntel} other {Neuntel}}} =10 {{num, plural, one {Zehntel} other {Zehntel}}} other {durch #}}",
+        "why": "judge: TR renders singular simple fractions such as 'one half' as 'ein Halb'. (In German the standalone fraction is normally 'ein Halb' only in limited nominal contexts; for reading a fraction like 1/2 it should be 'ein Halb(e)s' or more commonly 'ein halb'/'ein Zweitel' depending convention. As given, combinations like 'ein Halb' are not the intended natural mathematical reading.)"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} zum Quadrat} cubed {{base} hoch 3} other {{base} hoch {exp}}}",
+        "after": "{power, select, squared {{base} zum Quadrat} cubed {{base} hoch drei} other {{base} hoch {exp}}}",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Tippen",
+        "after": "Eingeben",
+        "why": "judge: TR translates 'Type' as 'Tippen', which in German primarily means tapping/typing action and is unsuitable as a mode label for entering typed text compared with 'Eingeben' or 'Tippen' only if informal UI action is intended. (The English noun/label 'Type' as an input mode is better rendered as 'Eingeben' or 'Tippen' can be ambiguous as 'tap'; as a standalone mode label it may not be understood as intended.)"
+      },
+      {
+        "path": "home.title",
+        "before": "Seien Sie sich der Mathematik sicher, bevor Sie sie unterrichten.",
+        "after": "Fühlen Sie sich sicher mit der Mathematik, bevor Sie sie unterrichten.",
+        "why": "judge: “Feel sure of the math” was translated as “Seien Sie sich der Mathematik sicher,” which is unidiomatic/unclear in German for being confident about the mathematics. (A native reader would likely not understand this as intended; idiomatic German would be e.g. “Seien Sie sich in der Mathematik sicher” or “Fühlen Sie sich sicher mit der Mathematik.”)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "Frischen Sie die Idee auf und sehen Sie jeden Schritt auf 3 Arten erklärt.",
+        "after": "Frischen Sie die Idee auf und sehen Sie jeden Schritt auf drei Arten erklärt.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "mistake.say.nudge",
+        "before": "anstupsen",
+        "after": "Hinweis geben",
+        "why": "judge: TR: anstupsen (In this teaching context, 'nudge' means to give a hint or prompt; German 'anstupsen' is a literal physical/social nudge and is not understandable as the intended teacher action here.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Eingeben",
+        "after": "Typ",
+        "why": "judge: TR translates 'Type' as the verb 'Eingeben' rather than the noun/category 'Typ' or 'Art'. (The German changes the meaning from a label meaning 'type/kind' to an action meaning 'enter/input'.)"
+      }
+    ],
+    "usd": 0.5697
+  },
+  "el": {
+    "lang": "el",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 27,
+        "judge": 57
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 67062,
+      "cached_tokens": 5376,
+      "completion_tokens": 14641,
+      "reasoning_tokens": 768,
+      "retries": 11,
+      "samples": 0,
+      "judge_flags": {
+        "topics.negative-numbers.grade": 1,
+        "topics.fractions.grade": 1,
+        "topics.linear-equations.grade": 1,
+        "home.waysHeading": 1,
+        "practice.badReason.not_equivalent": 1,
+        "math.speech.fractionSimple": 1,
+        "math.speech.group": 1,
+        "topic.countersKey": 2,
+        "mistake.workingLabel": 2,
+        "input.mode.type": 2,
+        "demo.ink": 1
+      },
+      "judged_items": 320,
+      "dropped": []
+    },
+    "last_usd": 0.750348,
+    "changes": [
+      {
+        "path": "topics.negative-numbers.grade",
+        "before": "Τάξη 6–7",
+        "after": "Τάξεις 6–7",
+        "why": "judge: Grade 6–7 was translated as Τάξη 6–7. (In Greek educational context, 'Grade 6–7' should be 'Τάξεις 6–7' or more naturally grade levels; singular 'Τάξη 6–7' is ungrammatical for a range of two grades.)"
+      },
+      {
+        "path": "topics.fractions.grade",
+        "before": "Τάξη 6–7",
+        "after": "Τάξεις 6–7",
+        "why": "judge: Grade 6–7 was translated as Τάξη 6–7. (In Greek, a range covering grades 6 and 7 requires plural 'Τάξεις 6–7'; singular 'Τάξη 6–7' is ungrammatical.)"
+      },
+      {
+        "path": "topics.linear-equations.grade",
+        "before": "Τάξη 7–8",
+        "after": "Τάξεις 7–8",
+        "why": "judge: Grade 7–8 was translated as Τάξη 7–8. (In Greek, a range covering grades 7 and 8 requires plural 'Τάξεις 7–8'; singular 'Τάξη 7–8' is ungrammatical.)"
+      },
+      {
+        "path": "home.waysHeading",
+        "before": "Τρόποι εισόδου",
+        "after": "Τρόποι για να ξεκινήσετε",
+        "why": "judge: \"Ways in\" is translated as \"Τρόποι εισόδου\". (In this educational context, \"Ways in\" means entry points/ways to get started, while \"Τρόποι εισόδου\" suggests methods of physical/system entry or login and is not understandable as intended.)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "Φρεσκάρετε την ιδέα και δείτε κάθε βήμα να εξηγείται με 3 τρόπους.",
+        "after": "Φρεσκάρετε την ιδέα και δείτε κάθε βήμα να εξηγείται με τρεις τρόπους.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "home.heroWhyText",
+        "before": "Αφαιρέστε 5 μόνο από τη μία πλευρά και η ισορροπία χαλάει. Αφαιρέστε το και από τις 2, και οι πλευρές μένουν ίσες.",
+        "after": "Αφαιρέστε 5 μόνο από τη μία πλευρά και η ισορροπία γέρνει. Αφαιρέστε το και από τις δύο, και οι πλευρές μένουν ίσες.",
+        "why": "number_not_in_source: ['2'] not in the English"
+      },
+      {
+        "path": "practice.badReason.not_equivalent",
+        "before": "Δεν είναι ίση με την προηγούμενη γραμμή.",
+        "after": "Δεν είναι ίσο με την προηγούμενη γραμμή.",
+        "why": "judge: TR: Δεν είναι ίση με την προηγούμενη γραμμή. (The Greek uses the feminine adjective 'ίση', agreeing with an implied line, but the subject in context is the mathematical statement/expression; it should be neuter ('ίσο') or rephrased. As written it can mean the line itself is not equal to the previous line, which is not the intended math relation.)"
+      },
+      {
+        "path": "practice.needWorking",
+        "before": "Γράψε ή πληκτρολόγησε πρώτα τουλάχιστον 1 γραμμή.",
+        "after": "Γράψε ή πληκτρολόγησε πρώτα τουλάχιστον μία γραμμή.",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "topic.countersKey",
+        "before": "Οι κίτρινοι μετρητές είναι +1, οι σκούροι μπλε μετρητές είναι −1.",
+        "after": "Οι κίτρινοι μετρητές είναι +1, οι ναυτικοί μπλε μετρητές είναι −1.",
+        "why": "judge: The translation renders “navy counters” as “dark blue counters,” dropping the specific navy-color meaning. (“Σκούροι μπλε” means dark blue, which is understandable but not the specific color term “navy”; if color coding matters, this changes the label.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Πληκτρολόγηση",
+        "after": "Κείμενο",
+        "why": "judge: \"Πληκτρολόγηση\" means typing rather than the mode label \"Type\" as a noun/category; in this UI it changes the label from the type/input mode name to an action/process. (The translation uses 'Typing' instead of 'Type', while parallel mode labels are nouns like Write/Photo; Greek users would expect a mode label such as 'Πληκτρολόγηση' only if EN were 'Typing'.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{num, plural, one {ένα} other {#}} {den, plural, =2 {{num, plural, one {δεύτερο} other {δεύτερα}}} =3 {{num, plural, one {τρίτο} other {τρίτα}}} =4 {{num, plural, one {τέταρτο} other {τέταρτα}}} =5 {{num, plural, one {πέμπτο} other {πέμπτα}}} =6 {{num, plural, one {έκτο} other {έκτα}}} =7 {{num, plural, one {έβδομο} other {έβδομα}}} =8 {{num, plural, one {όγδοο} other {όγδοα}}} =9 {{num, plural, one {ένατο} other {ένατα}}} =10 {{num, plural, one {δέκατο} other {δέκατα}}} other {προς #}}",
+        "after": "{num, plural, one {ένα} other {#}} {den, plural, =2 {{num, plural, one {μισό} other {μισά}}} =3 {{num, plural, one {τρίτο} other {τρίτα}}} =4 {{num, plural, one {τέταρτο} other {τέταρτα}}} =5 {{num, plural, one {πέμπτο} other {πέμπτα}}} =6 {{num, plural, one {έκτο} other {έκτα}}} =7 {{num, plural, one {έβδομο} other {έβδομα}}} =8 {{num, plural, one {όγδοο} other {όγδοα}}} =9 {{num, plural, one {ένατο} other {ένατα}}} =10 {{num, plural, one {δέκατο} other {δέκατα}}} other {προς #}}",
+        "why": "judge: For denominator 2, the translation uses 'δεύτερο/δεύτερα' for half/halves. (Greek fractions with denominator 2 are read as 'μισό/μισά' or 'ήμισυ', not 'δεύτερο/δεύτερα'; 'one second' would mean a time unit/ordinal, not one half.)"
+      },
+      {
+        "path": "math.speech.group",
+        "before": "άνοιγμα παρένθεσης, {inner}, κλείσιμο παρένθεσης",
+        "after": "άνοιγμα αγκύλης, {inner}, κλείσιμο αγκύλης",
+        "why": "judge: TR uses parentheses instead of brackets. (English says open/close bracket, while Greek says opening/closing parenthesis, changing the grouping symbol.)"
+      },
+      {
+        "path": "mistake.workingLabel",
+        "before": "Η εργασία του (προαιρετικά)",
+        "after": "Η λύση του (προαιρετικά)",
+        "why": "judge: The translation renders “Their working (optional)” as “Η εργασία του (προαιρετικά)”. (In this math-education context, “working” means the student's solution steps/workings, not “homework/work” as “εργασία” suggests; it changes the intended meaning.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Κείμενο",
+        "after": "Τύπος",
+        "why": "judge: The translation renders 'Type' as 'Κείμενο' ('Text'), which changes the meaning. (In Greek UI/educational context, 'Type' should be 'Τύπος' or similar; 'Κείμενο' means 'Text'.)"
+      },
+      {
+        "path": "demo.ink",
+        "before": "Μελάνι: λυμένες παραδείγματα",
+        "after": "Μελάνι: λυμένα παραδείγματα",
+        "why": "judge: TR: Μελάνι: λυμένες παραδείγματα (Grammatical gender agreement is wrong; it should be 'λυμένα παραδείγματα' or similar.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Οι 3 τρόποι εισαγωγής μαθηματικών: πληκτρολογήστε τα, γράψτε τα ή βγάλτε φωτογραφία. Κάτω από κάθε εισαγωγή φαίνεται ακριβώς τι λαμβάνει η σελίδα. Τα γραμμένα και φωτογραφημένα μαθηματικά διαβάζονται από τον διακομιστή και τίποτα δεν προωθείται μέχρι να το επιβεβαιώσετε.",
+        "after": "Οι τρεις τρόποι εισαγωγής μαθηματικών: πληκτρολογήστε τα, γράψτε τα ή βγάλτε φωτογραφία. Κάτω από κάθε εισαγωγή φαίνεται ακριβώς τι λαμβάνει η σελίδα. Τα γραμμένα και φωτογραφημένα μαθηματικά διαβάζονται από τον διακομιστή και τίποτα δεν προωθείται μέχρι να το επιβεβαιώσετε.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "topic.countersKey",
+        "before": "Οι κίτρινοι μετρητές είναι +1, οι ναυτικοί μπλε μετρητές είναι −1.",
+        "after": "Οι κίτρινοι μετρητές είναι +1, οι σκούροι μπλε μετρητές είναι −1.",
+        "why": "judge: \"navy counters\" translated as \"ναυτικοί μπλε μετρητές\" (The Greek phrase is ungrammatical/unnatural and reads as 'naval blue counters' rather than the color 'navy blue'. A native reader may not understand the intended color term.)"
+      },
+      {
+        "path": "mistake.workingLabel",
+        "before": "Η λύση του (προαιρετικά)",
+        "after": "Η εργασία τους (προαιρετικά)",
+        "why": "judge: The translation renders “Their” as “του” (“his/its”), changing the pronoun from gender-neutral/plural to singular masculine/neuter. (It changes the reference of the label; it should convey “their working” rather than “his/its solution.”)"
+      }
+    ],
+    "usd": 0.750348
+  },
+  "pt": {
+    "lang": "pt",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 26,
+        "judge": 44
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 54824,
+      "cached_tokens": 2560,
+      "completion_tokens": 10586,
+      "reasoning_tokens": 1166,
+      "retries": 10,
+      "samples": 0,
+      "judge_flags": {
+        "input.review.unreadable": 1,
+        "practice.noneYet": 1,
+        "math.op.sub": 1,
+        "input.mode.type": 2,
+        "topic.whyItWorks": 2,
+        "topic.tapLine": 2,
+        "topic.whyItFeelsRight": 2,
+        "mistake.sameAmount": 1
+      },
+      "judged_items": 318,
+      "dropped": []
+    },
+    "last_usd": 0.58018,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "Reveja a ideia e veja cada passo explicado de 3 formas.",
+        "after": "Reveja a ideia e veja cada passo explicado de três formas.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "As 3 formas de introduzir matemática: escrever no teclado, escrever à mão ou tirar uma fotografia. Por baixo de cada entrada está exatamente o que a página recebe. A matemática escrita à mão e fotografada é lida pelo servidor, e nada é enviado até a confirmar.",
+        "after": "As três formas de introduzir matemática: escrever no teclado, escrever à mão ou tirar uma fotografia. Por baixo de cada entrada está exatamente o que a página recebe. A matemática escrita à mão e fotografada é lida pelo servidor, e nada é enviado até a confirmar.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "practice.noneYet",
+        "before": "Ainda não há problemas de prática.",
+        "after": "Ainda não há exercícios de treino.",
+        "why": "judge: TR: Ainda não há problemas de prática. (In European Portuguese educational context, 'practice problems' should be 'exercícios/problemas de treino' or similar; 'problemas de prática' is not idiomatic and may not be understood as intended.)"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "Esta linha não pode ser desenhada como matemática. Será enviada como está escrita.",
+        "after": "Esta linha não pode ser interpretada como matemática. Será enviada tal como está escrita.",
+        "why": "judge: Translation says the line cannot be 'drawn as mathematics' instead of cannot be interpreted/read/rendered as math, which is not the intended meaning in this context. (“Desenhada como matemática” is unnatural and changes the meaning; the English means the line cannot be processed/interpreted as mathematical notation.)"
+      },
+      {
+        "path": "math.op.sub",
+        "before": "subtrair {arg} a ambos os membros",
+        "after": "subtrair {arg} de ambos os membros",
+        "why": "judge: TR: subtrair {arg} a ambos os membros (In European Portuguese, 'subtrair X a Y' means subtract X from Y, but with plural object 'ambos os membros' the idiomatic construction is acceptable; however as written it can be read as subtracting both sides from {arg}. It should be 'subtrair {arg} de ambos os membros' to unambiguously mean 'subtract {arg} from both sides'.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Digitar",
+        "after": "Escrita",
+        "why": "judge: \"Type\" is translated as \"Digitar\". (Here \"Type\" is a mode label/noun meaning typing/text entry, but \"Digitar\" is the verb 'to type', unlike the parallel mode labels.)"
+      },
+      {
+        "path": "topic.whyItWorks",
+        "before": "Porque funciona",
+        "after": "Por que funciona",
+        "why": "judge: TR: Porque funciona (In European Portuguese, the interrogative 'Why it works' should be 'Por que funciona' or 'Porque é que funciona'; 'Porque funciona' reads as 'because it works'.)"
+      },
+      {
+        "path": "topic.tapLine",
+        "before": "toque numa linha para ver porque funciona",
+        "after": "toque numa linha para ver por que funciona",
+        "why": "judge: TR: toque numa linha para ver porque funciona (Here 'why it works' is interrogative; 'porque' means 'because'. It should use 'por que'/'porque é que' in European Portuguese.)"
+      },
+      {
+        "path": "topic.whyItFeelsRight",
+        "before": "Porque parece certo.",
+        "after": "Por que parece certo.",
+        "why": "judge: TR: Porque parece certo. (The English asks 'Why it feels right'; the translation uses 'Porque', which reads as 'Because it feels right' rather than the intended interrogative 'Por que/Porque é que parece certo'.)"
+      },
+      {
+        "path": "mistake.sameAmount",
+        "before": "A resposta dele e a resposta simplificada",
+        "after": "A resposta do aluno e a resposta simplificada",
+        "why": "judge: “Their answer” is translated as “A resposta dele,” which is singular masculine and changes the gender-neutral/plural reference to the student. (The English uses gender-neutral 'their' referring to the student; Portuguese should not force masculine 'dele' here, especially since elsewhere it uses 'o seu aluno' or neutral phrasing.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Escrita",
+        "after": "Tipo",
+        "why": "judge: TR translates “Type” as “Escrita” (“writing”) instead of “Tipo”. (The translation changes the meaning; “Escrita” is not the correct Portuguese term for “Type” here.)"
+      },
+      {
+        "path": "topic.whyItWorks",
+        "before": "Por que funciona",
+        "after": "Porque funciona",
+        "why": "judge: TR uses 'Por que' as an interrogative split form in a heading meaning 'Why it works', whereas European Portuguese requires 'Porque funciona' or 'Por que razão funciona'. (The translation is grammatically incorrect/unnatural in European Portuguese for this intended meaning.)"
+      },
+      {
+        "path": "topic.tapLine",
+        "before": "toque numa linha para ver por que funciona",
+        "after": "toque numa linha para ver porque funciona",
+        "why": "judge: TR uses 'por que funciona' for 'why it works', which is not correct European Portuguese in this context; it should be 'porque funciona' or 'por que razão funciona'. (The phrasing is grammatically incorrect/unnatural and may be read as an incomplete interrogative construction.)"
+      },
+      {
+        "path": "topic.whyItFeelsRight",
+        "before": "Por que parece certo.",
+        "after": "Porque parece certo.",
+        "why": "judge: TR uses 'Por que parece certo' for 'Why it feels right', but European Portuguese would require 'Porque parece certo' or 'Por que razão parece certo'. (The translation uses the wrong form of 'why/because' for a nominal heading and is ungrammatical/unnatural in European Portuguese.)"
+      }
+    ],
+    "usd": 0.58018
+  },
+  "pt-BR": {
+    "lang": "pt-BR",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 23,
+        "judge": 39
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 50614,
+      "cached_tokens": 1280,
+      "completion_tokens": 8853,
+      "reasoning_tokens": 392,
+      "retries": 7,
+      "samples": 0,
+      "judge_flags": {
+        "home.eyebrow": 1,
+        "input.review.unreadable": 1,
+        "math.speech.negative": 1,
+        "math.speech.positive": 1,
+        "input.mode.type": 2
+      },
+      "judged_items": 312,
+      "dropped": []
+    },
+    "last_usd": 0.5129,
+    "changes": [
+      {
+        "path": "demo.inputIntro",
+        "before": "As 3 formas de inserir matemática: digitar, escrever à mão ou tirar uma foto. Abaixo de cada entrada está exatamente o que a página recebe. A matemática escrita à mão e fotografada é lida pelo servidor, e nada é enviado até você confirmar.",
+        "after": "As três formas de inserir matemática: digitar, escrever à mão ou tirar uma foto. Abaixo de cada entrada está exatamente o que a página recebe. A matemática escrita à mão e fotografada é lida pelo servidor, e nada é enviado até você confirmar.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "home.eyebrow",
+        "before": "Para professores de matemática, anos 6–9",
+        "after": "Para professores de matemática, do 6º ao 9º ano",
+        "why": "judge: Translation uses 'anos 6–9' for 'grades 6–9'. (In Brazilian Portuguese, school grades are normally expressed as '6º ao 9º ano' or 'anos finais'; 'anos 6–9' is not idiomatic and may not be understood as intended.)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "Retome a ideia e veja cada passo explicado de 3 formas.",
+        "after": "Retome a ideia e veja cada passo explicado de três formas.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "practice.needWorking",
+        "before": "Primeiro, escreva ou digite pelo menos 1 linha.",
+        "after": "Primeiro, escreva ou digite pelo menos uma linha.",
+        "why": "number_not_in_source: ['1'] not in the English"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "Esta linha não pode ser desenhada como matemática. Ela será enviada como escrita.",
+        "after": "Esta linha não pode ser desenhada como matemática. Ela será enviada como foi escrita.",
+        "why": "judge: “as written” is translated as “como escrita,” which is ungrammatical/unclear in Brazilian Portuguese and does not clearly mean it will be sent exactly as entered. (The phrase should be something like “como foi escrita” or “do jeito que está escrita”; “como escrita” is not natural/clear.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Digitar",
+        "after": "Digitação",
+        "why": "judge: TR translates the mode label 'Type' as the verb 'Digitar' rather than the noun/label 'Digitação' or similar. (In the context 'Ways to enter', the English labels are mode names. 'Digitar' means 'to type' or an imperative verb, changing the part of speech and potentially the UI meaning.)"
+      },
+      {
+        "path": "math.speech.negative",
+        "before": "{arg} negativo",
+        "after": "menos {arg}",
+        "why": "judge: TR says '{arg} negativo' for 'negative {arg}'. (In Brazilian Portuguese, '{arg} negativo' means '{arg} is negative' or a negative version after the term, not the unary expression 'negative {arg}' as read in math; it can change the intended expression, e.g. 'negative x' should be 'menos x' or 'negativo {arg}'.)"
+      },
+      {
+        "path": "math.speech.positive",
+        "before": "{arg} positivo",
+        "after": "mais {arg}",
+        "why": "judge: TR says '{arg} positivo' for 'positive {arg}'. ('{arg} positivo' describes the argument as positive rather than reading the unary plus expression 'positive {arg}'; the meaning can change.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Digitação",
+        "after": "Tipo",
+        "why": "judge: The translation renders “Type” as “Digitação,” which means typing/inputting text rather than “Tipo” as a category or mode label. (It changes the meaning of the UI label.)"
+      }
+    ],
+    "usd": 0.5129
+  },
+  "ru": {
+    "lang": "ru",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 4
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 5071,
+      "cached_tokens": 0,
+      "completion_tokens": 968,
+      "reasoning_tokens": 66,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {
+        "input.review.unreadable": 1
+      },
+      "judged_items": 22,
+      "dropped": []
+    },
+    "last_usd": 0.054395,
+    "changes": [
+      {
+        "path": "input.review.unreadable",
+        "before": "Эту строку нельзя отобразить как математическую запись. Она будет отправлена как написана.",
+        "after": "Эту строку нельзя отобразить как математическую запись. Она будет отправлена как написано.",
+        "why": "judge: The translation renders 'It will be sent as written' as 'Она будет отправлена как написана.' (Russian is ungrammatical/unnatural here; it should be 'как написано' or 'в том виде, как написана'.)"
+      }
+    ],
+    "usd": 0.61578
+  },
+  "es": {
+    "lang": "es",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 23,
+        "judge": 37
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 47069,
+      "cached_tokens": 2560,
+      "completion_tokens": 8388,
+      "reasoning_tokens": 150,
+      "retries": 7,
+      "samples": 0,
+      "judge_flags": {
+        "input.review.unreadable": 1,
+        "mistake.explain": 1,
+        "input.mode.type": 2,
+        "math.speech.negative": 1,
+        "math.speech.positive": 1
+      },
+      "judged_items": 312,
+      "dropped": []
+    },
+    "last_usd": 0.475465,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "Repasa la idea y ve cada paso explicado de 3 formas.",
+        "after": "Repasa la idea y ve cada paso explicado de tres formas.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "Esta línea no se puede dibujar como matemáticas. Se enviará tal como está escrita.",
+        "after": "Esta línea no se puede representar en notación matemática. Se enviará tal como está escrita.",
+        "why": "judge: TR translates “drawn as math” as “dibujar como matemáticas.” (In Spanish this reads as literally drawing like mathematics and does not convey that the line cannot be rendered/displayed as mathematical notation.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Las 3 formas de ingresar matemáticas: escribir con teclado, escribir a mano o tomar una foto. Debajo de cada entrada está exactamente lo que recibe la página. Las matemáticas escritas a mano y fotografiadas las lee el servidor, y no se envía nada hasta que lo confirmes.",
+        "after": "Las tres formas de ingresar matemáticas: escribir con teclado, escribir a mano o tomar una foto. Debajo de cada entrada está exactamente lo que recibe la página. Las matemáticas escritas a mano y fotografiadas las lee el servidor, y no se envía nada hasta que lo confirmes.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "mistake.explain",
+        "before": "Explicar esto",
+        "after": "Explica esto",
+        "why": "judge: TR uses an infinitive rather than an imperative/button label matching 'Explain this'. (“Explicar esto” means “To explain this,” not the command/button text “Explain this” as in “Explain this [for me].”)"
+      },
+      {
+        "path": "mistake.possibilities",
+        "before": "{count, plural, one {una posibilidad} other {# posibilidades}}",
+        "after": "{count, plural, one {una posibilidad} many {# posibilidades} other {# posibilidades}}",
+        "why": "{count, plural} needs many for es"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Escribir con teclado",
+        "after": "Escribir",
+        "why": "judge: The translation renders “Type” as “Escribir con teclado,” adding “with keyboard” rather than simply “Type.” (The Spanish changes the label by adding the specific input method 'with keyboard'; this is acceptable only if intended by context, but it is not the same meaning as the source label 'Type'.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Escribir",
+        "after": "Tipo",
+        "why": "judge: The Spanish translation correctly renders 'Type' as a label for input mode. ('Escribir' means 'to write' or an imperative 'write', not the noun 'Type' as a category/label. A correct translation would be 'Tipo'.)"
+      },
+      {
+        "path": "math.speech.negative",
+        "before": "{arg} negativo",
+        "after": "negativo {arg}",
+        "why": "judge: TR: {arg} negativo (This reads as '{arg} negative' (e.g., '5 negativo') rather than 'negative {arg}' ('menos {arg}' or 'negativo {arg}'), and can be unnatural/misleading for signed expressions.)"
+      },
+      {
+        "path": "math.speech.positive",
+        "before": "{arg} positivo",
+        "after": "positivo {arg}",
+        "why": "judge: TR: {arg} positivo (This reads as '{arg} positive' rather than 'positive {arg}' ('positivo {arg}' or 'más {arg}'), changing the intended spoken order for a signed expression.)"
+      }
+    ],
+    "usd": 0.475465
+  },
+  "sv": {
+    "lang": "sv",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 3,
+        "judge": 7
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 9101,
+      "cached_tokens": 0,
+      "completion_tokens": 1762,
+      "reasoning_tokens": 105,
+      "retries": 2,
+      "samples": 0,
+      "judge_flags": {
+        "math.op.add": 2,
+        "math.speech.fractionSimple": 1
+      },
+      "judged_items": 23,
+      "dropped": []
+    },
+    "last_usd": 0.098365,
+    "changes": [
+      {
+        "path": "math.op.add",
+        "before": "addera {arg} på båda sidor",
+        "after": "addera {arg} till båda sidor",
+        "why": "judge: TR says “addera {arg} på båda sidor” for “add {arg} to both sides”. (Swedish requires “addera {arg} till båda sidor” or similar; “på båda sidor” means on both sides and does not correctly express adding to both sides.)"
+      },
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{num, plural, one {en} other {#}} {den, plural, =2 {{num, plural, one {halv} other {halva}}} =3 {{num, plural, one {tredjedel} other {tredjedelar}}} =4 {{num, plural, one {fjärdedel} other {fjärdedelar}}} =5 {{num, plural, one {femtedel} other {femtedelar}}} =6 {{num, plural, one {sjättedel} other {sjättedelar}}} =7 {{num, plural, one {sjundedel} other {sjundedelar}}} =8 {{num, plural, one {åttondel} other {åttondelar}}} =9 {{num, plural, one {niondel} other {niondelar}}} =10 {{num, plural, one {tiondel} other {tiondelar}}} other {genom #}}",
+        "after": "{num, plural, one {en} other {#}} {den, plural, =2 {{num, plural, one {halv} other {halvor}}} =3 {{num, plural, one {tredjedel} other {tredjedelar}}} =4 {{num, plural, one {fjärdedel} other {fjärdedelar}}} =5 {{num, plural, one {femtedel} other {femtedelar}}} =6 {{num, plural, one {sjättedel} other {sjättedelar}}} =7 {{num, plural, one {sjundedel} other {sjundedelar}}} =8 {{num, plural, one {åttondel} other {åttondelar}}} =9 {{num, plural, one {niondel} other {niondelar}}} =10 {{num, plural, one {tiondel} other {tiondelar}}} other {genom #}}",
+        "why": "judge: The translation renders English simple fractions using Swedish fraction words. (For denominator 2 with numerator greater than one, the Swedish plural should be 'halvor', not 'halva' (e.g. 'tre halvor').)"
+      },
+      {
+        "path": "math.op.add",
+        "before": "addera {arg} till båda sidor",
+        "after": "addera {arg} på båda sidor",
+        "why": "judge: The Swedish phrase uses 'till' instead of the idiomatic/prepositional construction for adding to both sides ('addera ... till' is not acceptable here). (In Swedish math language this should be 'addera {arg} på båda sidor' or 'lägg till {arg} på båda sidor'; 'till båda sidor' is unnatural and can be misunderstood.)"
+      }
+    ],
+    "usd": 0.67925
+  },
+  "pl": {
+    "lang": "pl",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 4
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 6242,
+      "cached_tokens": 1280,
+      "completion_tokens": 1108,
+      "reasoning_tokens": 32,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {
+        "math.speech.plus": 1
+      },
+      "judged_items": 21,
+      "dropped": []
+    },
+    "last_usd": 0.05869,
+    "changes": [
+      {
+        "path": "math.speech.plus",
+        "before": "{left} plus {right}",
+        "after": "{left} plus {right}",
+        "why": "judge: TR: {left} plus {right} (Uses the English/Latin word 'plus' instead of the Polish term 'dodać' or 'plus' as a spoken operator? In Polish math speech 'plus' is acceptable, so this is not an error.)"
+      }
+    ],
+    "usd": 0.74268
+  },
+  "ar": {
+    "lang": "ar",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 2,
+        "judge": 2
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 4506,
+      "cached_tokens": 0,
+      "completion_tokens": 2304,
+      "reasoning_tokens": 649,
+      "retries": 1,
+      "samples": 0,
+      "judge_flags": {},
+      "judged_items": 20,
+      "dropped": []
+    },
+    "last_usd": 0.09165,
+    "changes": [
+      {
+        "path": "math.speech.fractionSimple",
+        "before": "{num, plural, zero {0 {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} one {{den, plural, =2 {نصف} =3 {ثلث} =4 {ربع} =5 {خمس} =6 {سدس} =7 {سبع} =8 {ثمن} =9 {تسع} =10 {عشر} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} two {2 {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} few {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} many {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} other {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}}}",
+        "after": "{num, plural, zero {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} one {{den, plural, =2 {نصف} =3 {ثلث} =4 {ربع} =5 {خمس} =6 {سدس} =7 {سبع} =8 {ثمن} =9 {تسع} =10 {عشر} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} two {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} few {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} many {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}} other {# {den, plural, =2 {أنصاف} =3 {أثلاث} =4 {أرباع} =5 {أخماس} =6 {أسداس} =7 {أسباع} =8 {أثمان} =9 {أتساع} =10 {أعشار} zero {على #} one {على #} two {على #} few {على #} many {على #} other {على #}}}}",
+        "why": "number_not_in_source: ['0'] not in the English"
+      }
+    ],
+    "usd": 0.786115
+  },
+  "fa": {
+    "lang": "fa",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 26,
+        "judge": 43
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 53117,
+      "cached_tokens": 2560,
+      "completion_tokens": 9908,
+      "reasoning_tokens": 402,
+      "retries": 10,
+      "samples": 0,
+      "judge_flags": {
+        "demo.intro": 1,
+        "topic.outlineTotal": 1,
+        "input.review.op": 1,
+        "mistake.right": 1,
+        "input.mode.type": 2,
+        "home.prepareText": 1
+      },
+      "judged_items": 313,
+      "dropped": []
+    },
+    "last_usd": 0.551305,
+    "changes": [
+      {
+        "path": "home.prepareText",
+        "before": "ایده را مرور کنید و توضیح هر گام را به 3 روش ببینید.",
+        "after": "ایده را مرور کنید و توضیح هر گام را به چند روش ببینید.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "math.speech.power",
+        "before": "{power, select, squared {{base} به توان 2} cubed {{base} به توان 3} other {{base} به توان {exp}}}",
+        "after": "{power, select, squared {{base} به توان دو} cubed {{base} به توان سه} other {{base} به توان {exp}}}",
+        "why": "number_not_in_source: ['2', '3'] not in the English"
+      },
+      {
+        "path": "topic.outlineTotal",
+        "before": "حدود {minutes} دقیقه · آزادانه سازگار کنید",
+        "after": "حدود {minutes} دقیقه · آزادانه تغییر دهید",
+        "why": "judge: EN: About {minutes} minutes · adapt freely / TR: حدود {minutes} دقیقه · آزادانه سازگار کنید (The Persian verb phrase 'سازگار کنید' is incomplete/unnatural without an object; it does not clearly convey 'adapt [the lesson] freely'.)"
+      },
+      {
+        "path": "demo.intro",
+        "before": "هر جزء ریاضی، از گام‌های متن ساده‌ای کشیده شده است که بسته‌های محتوا ذخیره می‌کنند. زیر هرکدام متنی است که صفحه‌خوان می‌خواند.",
+        "after": "همهٔ اجزای ریاضی، از گام‌های متن ساده‌ای ساخته می‌شوند که بسته‌های محتوا ذخیره می‌کنند. زیر هرکدام، متنی است که صفحه‌خوان می‌خواند.",
+        "why": "judge: هر جزء ریاضی، از گام‌های متن ساده‌ای کشیده شده است که بسته‌های محتوا ذخیره می‌کنند. زیر هرکدام متنی است که صفحه‌خوان می‌خواند. (The English is a fragment meaning the components are drawn/generated from the plain-text steps; the Persian wording 'هر جزء ریاضی، ... کشیده شده است' is ungrammatical/awkward and does not clearly convey 'drawn from' as generated from stored plain-text steps.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "3 راه برای وارد کردن ریاضی: تایپ کنید، بنویسید، یا عکس بگیرید. زیر هر ورودی دقیقاً همان چیزی است که صفحه دریافت می‌کند. ریاضیِ نوشته‌شده و عکس‌گرفته‌شده را سرور می‌خواند، و تا وقتی شما تأیید نکنید، چیزی فرستاده نمی‌شود.",
+        "after": "سه راه برای وارد کردن عبارت‌های ریاضی: تایپ کردن، نوشتن، یا عکس گرفتن. زیر هر ورودی دقیقاً همان چیزی است که صفحه دریافت می‌کند. ریاضیِ نوشته‌شده و عکس‌گرفته‌شده را سرور می‌خواند، و تا وقتی شما تأیید نکنید، چیزی فرستاده نمی‌شود.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.review.op",
+        "before": "عملیات (مانند −5)",
+        "after": "عمل (مانند −5)",
+        "why": "judge: TR uses «عملیات» for 'Operation (like −5)'. (In this context 'operation (like −5)' refers to an arithmetic operation/sign to apply, not 'operations' as a broad term; «عملیات» is unnatural/misleading in Persian for an item like −5, likely should be «عمل» or «عملگر». A native reader may not understand the intended math role.)"
+      },
+      {
+        "path": "mistake.right",
+        "before": "دانش‌آموز شما درست می‌گوید.",
+        "after": "پاسخ دانش‌آموز شما درست است.",
+        "why": "judge: TR says “the student says correctly/is right” rather than “the student's answer is right”; this can imply verbal assertion rather than correctness of the answer. (The Persian phrase «درست می‌گوید» means “is right” in the sense of saying/thinking correctly, and is not a natural equivalent for a math answer being correct.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "تایپ",
+        "after": "تایپ کردن",
+        "why": "judge: TR uses «تایپ» meaning typing, not the mode label “Type” as a verb/option contrasted with Write/Photo. (Persian «تایپ» is a noun/borrowed term; as a mode label it can be understood, but compared to other verbal labels it does not faithfully render the imperative/option “Type” as “type/enter by keyboard” (e.g. «تایپ کردن»).)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "ایده را مرور کنید و توضیح هر گام را به چند روش ببینید.",
+        "after": "ایده را مرور کنید و توضیح هر گام را به 3 روش ببینید.",
+        "why": "judge: The translation renders “three ways” as “several ways,” losing the exact number three. (It changes a specific quantity in the source text.)"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "ایده را مرور کنید و توضیح هر گام را به 3 روش ببینید.",
+        "after": "ایده را مرور کنید و توضیح هر گام را به سه روش ببینید.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "تایپ کردن",
+        "after": "نوع",
+        "why": "judge: The translation renders 'Type' as 'typing' rather than the noun 'type/kind'. (In Persian, 'تایپ کردن' means to type on a keyboard, not 'type' as a category; the correct meaning would be 'نوع'.)"
+      }
+    ],
+    "usd": 0.551305
+  },
+  "fr": {
+    "lang": "fr",
+    "shipped": true,
+    "failing": [],
+    "stats": {
+      "calls": {
+        "generate": 26,
+        "judge": 46
+      },
+      "failed_calls": 0,
+      "prompt_tokens": 55620,
+      "cached_tokens": 2560,
+      "completion_tokens": 9779,
+      "reasoning_tokens": 236,
+      "retries": 10,
+      "samples": 0,
+      "judge_flags": {
+        "home.intro": 1,
+        "demo.fractionStepsLabel": 1,
+        "common.grade": 1,
+        "math.op.sub": 1,
+        "input.review.unreadable": 1,
+        "input.error.unclear": 1,
+        "topic.mistakesHeading": 1,
+        "input.mode.type": 2,
+        "mistake.whatTheyWrote": 1
+      },
+      "judged_items": 316,
+      "dropped": []
+    },
+    "last_usd": 0.55995,
+    "changes": [
+      {
+        "path": "practice.badReason.false_equality",
+        "before": "Ses 2 membres ne sont pas égaux.",
+        "after": "Ses deux membres ne sont pas égaux.",
+        "why": "number_not_in_source: ['2'] not in the English"
+      },
+      {
+        "path": "common.grade",
+        "before": "Classe de {grade}",
+        "after": "Niveau {grade}",
+        "why": "judge: TR: Classe de {grade} (In French, 'Classe de {grade}' means a class for/of that grade, while the English label is the grade level itself. The standard UI label would be 'Niveau {grade}' or simply '{grade}e année' depending on locale.)"
+      },
+      {
+        "path": "demo.fractionStepsLabel",
+        "before": "Addition de un demi et un tiers",
+        "after": "Addition d’un demi et d’un tiers",
+        "why": "judge: TR: Addition de un demi et un tiers (Ungrammatical French; it should be 'd’un demi' (or similar), not 'de un demi'.)"
+      },
+      {
+        "path": "demo.inputIntro",
+        "before": "Les 3 façons de saisir des mathématiques : les taper, les écrire ou prendre une photo. Sous chaque saisie se trouve exactement ce que la page reçoit. Les mathématiques écrites et photographiées sont lues par le serveur, et rien n’est transmis avant votre confirmation.",
+        "after": "Les trois façons de saisir des mathématiques : les taper, les écrire ou prendre une photo. Sous chaque saisie se trouve exactement ce que la page reçoit. Les mathématiques écrites et photographiées sont lues par le serveur, et rien n’est transmis avant votre confirmation.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "home.intro",
+        "before": "Choisissez le sujet de demain. Voyez pourquoi chaque étape fonctionne, ce que les élèves se trompent souvent, et quoi dire quand cela arrive.",
+        "after": "Choisissez le sujet de demain. Voyez pourquoi chaque étape fonctionne, ce sur quoi les élèves se trompent souvent, et quoi dire quand cela arrive.",
+        "why": "judge: French translation of 'what students usually get wrong' ('ce que les élèves se trompent souvent' is ungrammatical; it should convey what students often get wrong, e.g. 'ce sur quoi les élèves se trompent souvent'.)"
+      },
+      {
+        "path": "home.eyebrow",
+        "before": "Pour les professeurs de mathématiques, classes de 6e à 3e",
+        "after": "Pour les professeurs de mathématiques, niveaux 6–9",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "home.prepareText",
+        "before": "Revoyez l’idée et voyez chaque étape expliquée de 3 façons.",
+        "after": "Revoyez l’idée et voyez chaque étape expliquée de trois façons.",
+        "why": "number_not_in_source: ['3'] not in the English"
+      },
+      {
+        "path": "math.op.sub",
+        "before": "soustraire {arg} aux deux membres",
+        "after": "soustraire {arg} des deux membres",
+        "why": "judge: TR translates 'subtract {arg} from both sides' as 'soustraire {arg} aux deux membres'. (In French, 'soustraire X à Y' means subtract X from Y, so this is correct meaning, but the construction with plural 'aux deux membres' is awkward? Actually it is understandable and standard enough; no real error.)"
+      },
+      {
+        "path": "topic.mistakesHeading",
+        "before": "Ce que les élèves se trompent souvent",
+        "after": "Ce sur quoi les élèves se trompent souvent",
+        "why": "judge: TR: Ce que les élèves se trompent souvent (Ungrammatical French; 'se tromper' cannot take 'ce que' this way. It should convey what students often get wrong, e.g. 'Ce sur quoi les élèves se trompent souvent'.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Taper",
+        "after": "Saisie",
+        "why": "judge: TR: Taper (English 'Type' is a noun label for the input mode, while French 'Taper' is a verb ('to type'), not the equivalent label ('Saisie'/'Clavier' etc.).)"
+      },
+      {
+        "path": "input.review.unreadable",
+        "before": "Cette ligne ne peut pas être représentée comme un calcul. Elle sera envoyée comme elle est écrite.",
+        "after": "Cette ligne ne peut pas être représentée comme des mathématiques. Elle sera envoyée comme elle est écrite.",
+        "why": "judge: “math” is translated as “un calcul” (The English says the line cannot be drawn as math in general, but the French narrows this to a calculation, which may exclude equations or other mathematical writing.)"
+      },
+      {
+        "path": "input.error.unclear",
+        "before": "Aucun calcul n’a pu être lu ici. Réessayez avec une écriture plus lisible, ou saisissez-le au clavier.",
+        "after": "Aucune écriture mathématique n’a pu être lue ici. Réessayez avec une écriture plus lisible, ou saisissez-la au clavier.",
+        "why": "judge: “No math could be read here” is translated as “Aucun calcul n’a pu être lu ici” (The French narrows “math” to “calculation,” losing the broader meaning of mathematical content.)"
+      },
+      {
+        "path": "mistake.whatTheyWrote",
+        "before": "ce qu’il a écrit",
+        "after": "ce que l’élève a écrit",
+        "why": "judge: TR: ce qu’il a écrit (The English 'they' refers to the student without specifying gender, but the French uses masculine singular 'il', adding gender not present in the source.)"
+      },
+      {
+        "path": "input.mode.type",
+        "before": "Saisie",
+        "after": "Type",
+        "why": "judge: TR translates “Type” as “Saisie” (“input/entry”), which changes the meaning; it should refer to a type/category. (“Saisie” does not mean “type” in French.)"
+      }
+    ],
+    "usd": 0.55995
+  }
+}
