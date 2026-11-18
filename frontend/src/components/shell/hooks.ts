@@ -99,21 +99,27 @@ export function useRouteFocus(): void {
 }
 
 /**
- * Keeps `--header-h` on <html> at the sticky header's height, so `scroll-padding-top` stops
- * anything scrolled into view (a focused element, a #section) below the header instead of
- * under it (WCAG 2.4.11). The header's height changes as it wraps: at 200% zoom it is taller.
+ * Keeps `--header-h` on <html> at the height the header covers while scrolling, so
+ * `scroll-padding-top` stops anything scrolled into view (a focused element, a #section) below
+ * it instead of under it (WCAG 2.4.11). That is its height while it is sticky (it grows as it
+ * wraps), and 0 when it scrolls away with the page (on narrow or short windows, see index.css).
  */
 export function useHeaderHeight(header: RefObject<HTMLElement | null>): void {
   useEffect(() => {
     const el = header.current
     if (!el || typeof ResizeObserver === 'undefined') return
     const root = document.documentElement
-    const observer = new ResizeObserver(() =>
-      root.style.setProperty('--header-h', `${el.offsetHeight}px`),
-    )
+    const update = () => {
+      const sticky = getComputedStyle(el).position === 'sticky'
+      root.style.setProperty('--header-h', `${sticky ? el.offsetHeight : 0}px`)
+    }
+    // The header can stop being sticky without changing size (a window made shorter).
+    const observer = new ResizeObserver(update)
     observer.observe(el)
+    window.addEventListener('resize', update)
     return () => {
       observer.disconnect()
+      window.removeEventListener('resize', update)
       root.style.removeProperty('--header-h')
     }
   }, [header])

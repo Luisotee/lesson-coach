@@ -324,3 +324,45 @@ test('mistake: every abstain reason is shown and fits', async ({ page }) => {
   await explainSettled(page)
   await expectNoAxeViolations(page)
 })
+
+/*
+ * The header must not eat the screen while the teacher scrolls. On a phone, at 320 px, at 200%
+ * zoom or in landscape it scrolls away with the page, so what stays on screen is at most 72 px
+ * (nothing, in practice); where there is room it stays sticky but under a sixth of the height.
+ * scroll-padding follows what it covers, so focus is never hidden under it.
+ */
+async function headerCoversLittle(page: Page, path: string) {
+  await mockApi(page)
+  await page.goto(path)
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  await page.mouse.wheel(0, 800)
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(100)
+  const { width, height } = page.viewportSize()!
+  const roomy = width >= 768 && height >= 600
+  const box = (await page.locator('header').first().boundingBox())!
+  const covered = Math.max(0, box.y + box.height)
+  expect(covered, `${width}×${height}`).toBeLessThanOrEqual(roomy ? height / 6 : 72)
+  // The scroll padding is what the header covers while it sticks, and nothing when it doesn't.
+  const padding = await page.evaluate(() =>
+    parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop),
+  )
+  expect(padding).toBeCloseTo((roomy ? box.height : 0) + 12, 0)
+}
+
+for (const [name, path] of [
+  ['mistake', '/mistake'],
+  ['topic', '/topics/linear-equations'],
+] as const) {
+  test(`${name}: the header covers little of the screen once scrolled`, async ({ page }) => {
+    await headerCoversLittle(page, path)
+  })
+}
+
+test.describe('a phone in landscape', () => {
+  test.use({ viewport: { width: 844, height: 390 } })
+  test('the header scrolls away', async ({ page }) => {
+    // Its own viewport replaces the project's, so once is enough.
+    test.skip(test.info().project.name !== 'a11y-desktop')
+    await headerCoversLittle(page, '/mistake')
+  })
+})
