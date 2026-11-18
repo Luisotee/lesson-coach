@@ -370,9 +370,14 @@
       "answer_unreadable": "The answer couldn’t be read as math. Check it and try again.",
       "unsupported": "This kind of math isn’t covered yet.",
       "timeout": "It took too long to work out. Please try again.",
-      "ai_unavailable": "The explanation service isn’t available right now. The math check above still holds."
+      "ai_unavailable": "The explanation service isn’t available right now. The math check above still holds.",
+      "ai_unclear": "The coach couldn’t tell from this answer alone.",
+      "ai_out_of_scope": "The coach found this outside the topics it covers.",
+      "ai_unverified_math": "The explanation couldn’t be checked by the math engine, so it isn’t shown. The math above is checked.",
+      "math_error": "The math engine couldn’t work this out. Please check the input and try again."
     },
     "tryAnother": "Try another answer",
-    "resultHeading": "Result"
+    "resultHeading": "Result",
+    "reasonUnavailable": "The likely reason isn’t available."
   }
 }

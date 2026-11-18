@@ -133,7 +133,23 @@ export type MistakeStatus =
   'correct' | 'not_simplified' | 'diagnosed' | 'slip' | 'unclear' | 'out_of_scope'
 
 export type AbstainReason =
-  'problem_unreadable' | 'answer_unreadable' | 'unsupported' | 'timeout' | 'ai_unavailable'
+  | 'problem_unreadable'
+  | 'answer_unreadable'
+  | 'unsupported'
+  | 'timeout'
+  | 'ai_unavailable'
+  | 'ai_unclear'
+  | 'ai_out_of_scope'
+  | 'ai_unverified_math'
+  | 'math_error'
+
+/** A line of the student's working as the API parsed it; an unreadable line keeps its raw
+ * text in `left` with null `right` and `op`. */
+export interface WorkingLine {
+  left: string
+  right: string | null
+  op: string | null
+}
 
 export type Verdict = 'correct' | 'equivalent_not_simplified' | 'wrong'
 
@@ -171,7 +187,7 @@ export interface MistakeResult {
   diagnosis: Diagnosis | null
   /** The student's working as parsed, in the order sent; an unreadable line has its raw
    * text in `left`, so `first_bad_line.index` lines up. */
-  working?: Step[]
+  working?: WorkingLine[]
 }
 
 export interface CheckWorkingRequest {
@@ -186,5 +202,5 @@ export interface CheckWorkingResult {
   /** The verdict on the last line, set only when every line follows and a problem was given. */
   final: Verdict | null
   /** The lines as parsed, in the order sent (requested from T6). */
-  lines?: Step[]
+  lines?: WorkingLine[]
 }

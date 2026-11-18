@@ -156,7 +156,15 @@ export function WorkedExamples({ examples }: { examples: WorkedExample[] }) {
                 </div>
               </DrawerDescription>
             </DrawerHeader>
-            <div className="overflow-y-auto">{panel}</div>
+            <div className="overflow-y-auto">
+              <ExplanationPanel
+                step={step}
+                heading={heading}
+                mode={mode}
+                onModeChange={setMode}
+                showHeading={false}
+              />
+            </div>
             <DrawerFooter className="flex-row justify-between">
               <Button
                 variant="outline"

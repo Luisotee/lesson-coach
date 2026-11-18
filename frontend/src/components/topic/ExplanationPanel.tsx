@@ -13,12 +13,15 @@ export function ExplanationPanel({
   heading,
   mode,
   onModeChange,
+  showHeading = true,
 }: {
   step: ExplainedStep
   /** "Step 2 · subtract 5 from both sides" */
   heading: string
   mode: ExplanationMode
   onModeChange: (mode: ExplanationMode) => void
+  /** Off where a surrounding title already names the step (the phone sheet). */
+  showHeading?: boolean
 }) {
   const { t } = useTranslation()
   const e = step.explanations
@@ -40,7 +43,7 @@ export function ExplanationPanel({
       </TabsList>
       {MODES.map((m) => (
         <TabsContent key={m} value={m} className="min-h-[200px] px-6 pt-1 pb-6">
-          <p className="mb-2 text-sm font-semibold text-link-ink">{heading}</p>
+          {showHeading && <p className="mb-2 text-sm font-semibold text-link-ink">{heading}</p>}
           {!e ? (
             <p className="text-muted-foreground">{t('topic.explanationUnavailable')}</p>
           ) : m === 'visual' ? (

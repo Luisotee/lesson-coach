@@ -140,10 +140,11 @@ export function EquationLine({
       )}
       {annotate?.circle && <Circle />}
       {onSelect ? (
+        // Named by its spoken text (not aria-label), so the visible handwriting, which is
+        // hidden from screen readers, doesn't have to match a label.
         <button
           type="button"
           aria-pressed={selected}
-          aria-label={label}
           data-math="line"
           onClick={onSelect}
           className={cn(
@@ -152,6 +153,7 @@ export function EquationLine({
           )}
           style={rowStyle}
         >
+          <span className="sr-only">{label}</span>
           {cells}
         </button>
       ) : (

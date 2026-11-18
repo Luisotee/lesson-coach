@@ -38,7 +38,31 @@ export function useRouteFocus(): void {
     // An unknown #target falls back to the page heading, so focus never stays on a stale link.
     const target = (hash && hashTarget(hash)) || document.querySelector<HTMLElement>('main h1')
     if (!target) return
-    if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1')
-    target.focus({ preventScroll: true })
+    const focus = (el: HTMLElement) => {
+      if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1')
+      el.focus({ preventScroll: true })
+    }
+    focus(target)
+    if (hash) return
+    // A page that loads its content replaces its loading heading: follow it to the new <h1>,
+    // unless the user has already moved focus elsewhere.
+    let current = target
+    const main = document.querySelector('main')
+    if (!main) return
+    const observer = new MutationObserver(() => {
+      if (current.isConnected) return
+      if (document.activeElement && document.activeElement !== document.body) return
+      const h1 = document.querySelector<HTMLElement>('main h1')
+      if (h1) {
+        current = h1
+        focus(h1)
+      }
+    })
+    observer.observe(main, { childList: true, subtree: true })
+    const stop = window.setTimeout(() => observer.disconnect(), 10_000)
+    return () => {
+      observer.disconnect()
+      window.clearTimeout(stop)
+    }
   }, [key, hash])
 }

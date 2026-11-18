@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright'
 import { expect, test, type Page } from '@playwright/test'
+import { mockApi } from './api.ts'
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']
 
@@ -7,6 +8,10 @@ async function expectNoAxeViolations(page: Page) {
   const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze()
   expect(results.violations).toEqual([])
 }
+
+test.beforeEach(async ({ page }) => {
+  await mockApi(page)
+})
 
 const ROUTES = [
   ['/', 'Feel sure of the math before you teach it.'],
@@ -63,9 +68,15 @@ test('the Topics link moves to the topic list', async ({ page }) => {
 test('Back returns to where the page was scrolled', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 500 })
   await page.goto('/')
+  const link = page.getByRole('link', { name: /Fractions/ })
+  await link.waitFor()
   await page.evaluate(() => window.scrollTo(0, 400))
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(400)
-  await page.getByRole('link', { name: /Fractions/ }).click()
+  // Clicking may scroll the link into view first; Back must return to where we were then.
+  await link.scrollIntoViewIfNeeded()
+  const before = await page.evaluate(() => window.scrollY)
+  expect(before).toBeGreaterThan(100)
+  await link.click()
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Fractions')
   await expect(page.getByRole('heading', { level: 1 })).toBeFocused()
   await page.goBack()
@@ -75,7 +86,7 @@ test('Back returns to where the page was scrolled', async ({ page }) => {
   // Within a few pixels: late layout (fonts) can shift the restored position slightly.
   // The bug this guards against restores to 0.
   await expect
-    .poll(async () => Math.abs((await page.evaluate(() => window.scrollY)) - 400))
+    .poll(async () => Math.abs((await page.evaluate(() => window.scrollY)) - before))
     .toBeLessThanOrEqual(10)
 })
 

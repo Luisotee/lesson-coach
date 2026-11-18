@@ -1,5 +1,5 @@
 import { ArrowRight, BookOpen, CircleHelp, PenLine } from 'lucide-react'
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
@@ -23,10 +23,12 @@ function FadeUp({
   className?: string
   children: ReactNode
 }) {
+  // Under reduced motion everything is simply there: no fade, no slide.
+  const reduce = useReducedMotion()
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 16 }}
+      initial={reduce ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay, ease }}
     >
@@ -65,29 +67,31 @@ function HeroExample() {
     <Link
       to="/topics/linear-equations#example"
       className="group relative block h-[380px] min-w-0 flex-[1_1_400px] text-navy no-underline"
-      aria-label={t('home.heroExampleLink')}
     >
-      <span className="absolute inset-[24px_0_0_40px] rounded-[28px] border border-line bg-[radial-gradient(120%_120%_at_0%_0%,var(--color-paleblue)_0%,#fff_60%)]" />
-      <span className="absolute start-0 top-14 w-[min(360px,88%)] rounded-[20px] border border-line bg-white p-[22px] shadow-[0_30px_60px_-30px_rgba(23,43,83,.35)] motion-safe:animate-[floaty_7s_ease-in-out_infinite]">
-        <span className="block text-xs font-semibold text-muted-foreground lowercase">
-          {t('home.heroWorked')}
-        </span>
-        <span className="mt-3.5 flex flex-col gap-2.5 text-2xl" dir="ltr">
-          <MathExpr expr="3*x + 5 = 20" className="text-pencil" />
-          <span className="-mx-3 flex items-center justify-between gap-3 rounded-xl bg-paleblue/60 px-3 py-2.5">
-            <MathExpr expr="3*x = 15" />
-            <span className="rounded-full border border-paleblue bg-white px-2.5 py-1 font-sans text-[13px] font-semibold">
-              {t('topic.modes.why')}
-            </span>
+      <span className="sr-only">{t('home.heroExampleLink')}</span>
+      <span aria-hidden="true" className="contents">
+        <span className="absolute inset-[24px_0_0_40px] rounded-[28px] border border-line bg-[radial-gradient(120%_120%_at_0%_0%,var(--color-paleblue)_0%,#fff_60%)]" />
+        <span className="absolute start-0 top-14 w-[min(360px,88%)] rounded-[20px] border border-line bg-white p-[22px] shadow-[0_30px_60px_-30px_rgba(23,43,83,.35)] motion-safe:animate-[floaty_7s_ease-in-out_infinite]">
+          <span className="block text-xs font-semibold text-muted-foreground lowercase">
+            {t('home.heroWorked')}
           </span>
-          <MathExpr expr="x = 5" className="text-pencil" />
+          <span className="mt-3.5 flex flex-col gap-2.5 text-2xl" dir="ltr">
+            <MathExpr expr="3*x + 5 = 20" className="text-pencil" />
+            <span className="-mx-3 flex items-center justify-between gap-3 rounded-xl bg-paleblue/60 px-3 py-2.5">
+              <MathExpr expr="3*x = 15" />
+              <span className="rounded-full border border-paleblue bg-white px-2.5 py-1 font-sans text-[13px] font-semibold">
+                {t('topic.modes.why')}
+              </span>
+            </span>
+            <MathExpr expr="x = 5" className="text-pencil" />
+          </span>
         </span>
-      </span>
-      <span className="absolute end-0 bottom-[18px] w-[min(300px,80%)] rounded-[18px] bg-navy px-5 py-[18px] text-ground shadow-[0_24px_50px_-24px_rgba(23,43,83,.6)]">
-        <span className="block text-[13px] font-semibold text-highlight">
-          {t('home.heroWhyTitle')}
+        <span className="absolute end-0 bottom-[18px] w-[min(300px,80%)] rounded-[18px] bg-navy px-5 py-[18px] text-ground shadow-[0_24px_50px_-24px_rgba(23,43,83,.6)]">
+          <span className="block text-[13px] font-semibold text-highlight">
+            {t('home.heroWhyTitle')}
+          </span>
+          <span className="mt-2 block text-[15px] leading-normal">{t('home.heroWhyText')}</span>
         </span>
-        <span className="mt-2 block text-[15px] leading-normal">{t('home.heroWhyText')}</span>
       </span>
     </Link>
   )
@@ -97,9 +101,10 @@ function TopicCard({ topic, index }: { topic: TopicSummary; index: number }) {
   const { t } = useTranslation()
   const grade = useGradeLabel(topic.grades)
   const glyph = TOPIC_GLYPHS[topic.id]
+  const reduce = useReducedMotion()
   return (
     <motion.li
-      initial={{ opacity: 0, y: 16 }}
+      initial={reduce ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.05 + index * 0.07, ease }}
     >

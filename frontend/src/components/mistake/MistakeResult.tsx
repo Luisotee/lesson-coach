@@ -2,7 +2,7 @@ import { ArrowRight, BadgeCheck, CircleCheck, Sparkles } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
-import type { Diagnosis, MistakeResult as Result } from '@/api/types'
+import type { Diagnosis, MistakeResult as Result, WorkingLine } from '@/api/types'
 import { EquationLine, MathExpr, Notebook, StepsNotebook } from '@/components/math'
 import { RichText } from '@/components/RichText'
 import { StepPicture } from '@/components/visual/StepPicture'
@@ -11,7 +11,7 @@ import { isContinued } from '@/math/parse'
 import type { Step } from '@/math/types'
 
 /** API lines may carry null for an empty field; the renderer wants strings. */
-function clean(lines: Step[] | undefined): Step[] {
+function clean(lines: WorkingLine[] | Step[] | undefined): Step[] {
   return (lines ?? []).map((l) => ({ left: l.left ?? '', right: l.right ?? '', op: l.op ?? '' }))
 }
 
@@ -19,7 +19,11 @@ function Card({
   children,
   className = '',
   ...rest
-}: { children: ReactNode; className?: string; 'data-status'?: string }) {
+}: {
+  children: ReactNode
+  className?: string
+  'data-status'?: string
+}) {
   return (
     <div
       {...rest}
@@ -178,6 +182,16 @@ function SourceBadge({ d }: { d: Diagnosis }) {
   )
 }
 
+/** Why the coach abstained or held something back, when it says. */
+function Reason({ result }: { result: Result }) {
+  const { t } = useTranslation()
+  return result.reason ? (
+    <p className="text-[15px]" data-reason={result.reason}>
+      {t(`mistake.reason.${result.reason}`)}
+    </p>
+  ) : null
+}
+
 /** The first named misconception with a card, if any. */
 function namedCards(d: Diagnosis | null) {
   return (d?.misconceptions ?? []).filter((m) => m.id !== 'other' && m.belief)
@@ -225,6 +239,7 @@ export function MistakeResult({
           {result.status === 'not_simplified' ? t('mistake.notSimplified') : t('mistake.correct')}
         </p>
         {d && <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />}
+        <Reason result={result} />
         {tryAnother}
       </Card>
     )
@@ -250,7 +265,7 @@ export function MistakeResult({
             ) : d ? (
               <RichText text={d.explanation} />
             ) : (
-              t('mistake.slipTitle')
+              t(result.status === 'slip' ? 'mistake.slipTitle' : 'mistake.reasonUnavailable')
             )}
           </h2>
           <div className="flex flex-wrap gap-4">
@@ -265,6 +280,7 @@ export function MistakeResult({
           {main && d && (
             <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />
           )}
+          <Reason result={result} />
         </Card>
         {d && <WhatToSay d={d} />}
         {d && <TryNext d={d} topic={topic} />}
@@ -281,7 +297,7 @@ export function MistakeResult({
             {t('mistake.notSure')}
           </span>
           <h2 className="text-2xl font-semibold">{t('mistake.askHow')}</h2>
-          {result.reason && <p className="text-[15px]">{t(`mistake.reason.${result.reason}`)}</p>}
+          <Reason result={result} />
           {d && <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />}
           {cards.length > 0 && (
             <div
@@ -312,7 +328,7 @@ export function MistakeResult({
     <div className="flex flex-col gap-4" data-status={result.status}>
       <Card>
         <h2 className="text-2xl font-semibold">{t('mistake.outOfScope')}</h2>
-        {result.reason && <p className="text-[15px]">{t(`mistake.reason.${result.reason}`)}</p>}
+        <Reason result={result} />
         {d && <RichText as="p" text={d.explanation} className="text-[15px] leading-relaxed" />}
       </Card>
       {d && <WhatToSay d={d} />}

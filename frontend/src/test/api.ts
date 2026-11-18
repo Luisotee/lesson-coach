@@ -16,7 +16,10 @@ export const TOPICS: TopicSummary[] = topicsFixture as TopicSummary[]
 type Handler = (url: URL, init?: RequestInit) => Response | Promise<Response>
 
 export const json = (body: unknown, status = 200, headers: Record<string, string> = {}) =>
-  new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json', ...headers } })
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json', ...headers },
+  })
 
 /**
  * Stubs `fetch` with the fixture API. `routes` override or add handlers by "METHOD /path".

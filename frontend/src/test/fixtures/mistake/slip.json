@@ -1,0 +1,65 @@
+{
+  "status": "slip",
+  "reason": null,
+  "problem": {
+    "kind": "solve",
+    "expr": "2*x + 6 = 10"
+  },
+  "student_answer": "3",
+  "correct_answer": "2",
+  "verdict": "wrong",
+  "worked_solution": [
+    {
+      "left": "2*x + 6",
+      "right": "10",
+      "op": "-6"
+    },
+    {
+      "left": "2*x",
+      "right": "4",
+      "op": "/2"
+    },
+    {
+      "left": "x",
+      "right": "2",
+      "op": ""
+    }
+  ],
+  "first_bad_line": {
+    "index": 1,
+    "reason": "not_equivalent"
+  },
+  "diagnosis": {
+    "source": "ai",
+    "rule_checked": false,
+    "misconceptions": [],
+    "explanation": "The method is right; 10 − 6 was worked out as 6.",
+    "margin_note": "10 − 6 is 4",
+    "what_to_say": {
+      "probe": "Can you check the second line?",
+      "nudge": "What is 10 take away 6?",
+      "tell": "10 − 6 is 4, so 2x = 4 and x = 2."
+    },
+    "try_next": null,
+    "lang": "en",
+    "cards_lang": null,
+    "machine_translated": false
+  },
+  "working": [
+    {
+      "left": "2*x + 6",
+      "right": "10",
+      "op": "-6"
+    },
+    {
+      "left": "2*x",
+      "right": "6",
+      "op": ""
+    },
+    {
+      "left": "x",
+      "right": "3",
+      "op": ""
+    }
+  ]
+}

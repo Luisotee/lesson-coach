@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import type { CheckWorkingResult } from '@/api/types'
 import { EquationLine, Notebook } from '@/components/math'
 import { isContinued } from '@/math/parse'
+import type { Step } from '@/math/types'
 
 /**
  * What "Check my working" found, privately: every line follows, or which line first doesn't.
@@ -11,7 +12,11 @@ import { isContinued } from '@/math/parse'
 export function CheckResult({ result }: { result: CheckWorkingResult }) {
   const { t } = useTranslation()
   const bad = result.first_bad_line
-  const lines = result.lines ?? []
+  const lines: Step[] = (result.lines ?? []).map((l) => ({
+    left: l.left,
+    right: l.right ?? '',
+    op: l.op ?? '',
+  }))
   return (
     <div
       className="flex flex-col gap-3 rounded-2xl border border-line bg-white p-4"
