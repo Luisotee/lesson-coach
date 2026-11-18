@@ -18,10 +18,43 @@ function drawOp(parsed: ParseResult<MarginOp>, src: string): ReactNode {
   return parsed.ok ? renderOp(parsed.value) : src
 }
 
+/** A hand-drawn ring around a line, in the marking colour (5:1 on white). */
+function Circle() {
+  return (
+    <svg
+      aria-hidden="true"
+      data-mark="circle"
+      className="pointer-events-none absolute -inset-x-2 -inset-y-1 h-[calc(100%+0.5rem)] w-[calc(100%+1rem)] text-mark"
+      viewBox="0 0 100 40"
+      preserveAspectRatio="none"
+      fill="none"
+    >
+      <path
+        d="M6 22 C 6 6, 94 2, 96 18 C 98 34, 10 40, 4 24 C 3 16, 20 8, 40 7"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+        pathLength={1}
+        className="[stroke-dasharray:1] motion-safe:animate-[draw_0.6s_ease-out_both]"
+      />
+    </svg>
+  )
+}
+
+export interface LineAnnotation {
+  /** Rings the whole line, e.g. the first line that doesn't follow. */
+  circle?: boolean
+  /** A short note in the margin, in the marking colour. Spoken after the line. */
+  note?: string
+}
+
 /**
  * One handwritten line in a Notebook: `left = right` aligned on `=`, with the operation for
  * this line in the green margin (`| −5`). With no `right`, the line is an expression; a
  * `continued` expression starts with `=`. Must be a child of Notebook.
+ *
+ * With `onSelect` the line is a toggle button (`aria-pressed`), still on the shared grid.
  */
 export function EquationLine({
   left,
@@ -29,48 +62,103 @@ export function EquationLine({
   op = '',
   index = 0,
   continued = false,
+  onSelect,
+  selected = false,
+  annotate,
   className,
 }: {
   left: string
   right?: string
   op?: string
-  /** Position in the notebook; sets the write-on delay. */
+  /** Position in the notebook; sets the write-on delay and the step number. */
   index?: number
   continued?: boolean
+  onSelect?: () => void
+  selected?: boolean
+  annotate?: LineAnnotation
   className?: string
 }) {
   const { t } = useTranslation()
-  const { writeOn } = useContext(NotebookContext)
+  const { writeOn, numbered } = useContext(NotebookContext)
   const line = parseLine({ left, right, op })
-  const label = speakParsedLine(line, continued, t)
+  const spoken = speakParsedLine(line, continued, t)
+  const label = annotate?.note
+    ? t('math.speech.withNote', { line: spoken, note: annotate.note })
+    : spoken
+
+  const cells = (
+    <>
+      {numbered && (
+        <span
+          aria-hidden="true"
+          className={cn(
+            'flex size-6 items-center justify-center justify-self-center rounded-full border-[1.5px] font-sans text-[11px] font-bold',
+            selected ? 'border-navy bg-navy text-white' : 'border-pencil bg-[#eef1f4] text-pencil',
+          )}
+        >
+          {index + 1}
+        </span>
+      )}
+      <span aria-hidden="true" className="relative justify-self-end">
+        {line.right ? draw(line.left, left) : null}
+      </span>
+      <span aria-hidden="true" className="relative justify-self-center">
+        {line.right || continued ? '=' : null}
+      </span>
+      <span aria-hidden="true" className="relative justify-self-start">
+        {line.right ? draw(line.right, right) : draw(line.left, left)}
+      </span>
+      <span aria-hidden="true" className="relative ps-[0.6em] text-[0.75em] font-bold">
+        {line.op ? <span className="text-pen-green">{drawOp(line.op, op)}</span> : null}
+        {annotate?.note ? (
+          <span className="ms-2 font-normal text-mark" data-mark="note">
+            ← {annotate.note}
+          </span>
+        ) : null}
+      </span>
+    </>
+  )
+
+  const rowClass = cn(
+    'relative col-span-full grid grid-cols-subgrid items-center whitespace-nowrap',
+    writeOn && 'motion-safe:animate-write',
+  )
+  const rowStyle = writeOn ? { animationDelay: `${index * WRITE_ON_STAGGER}s` } : undefined
 
   return (
     <li
-      className={cn('col-span-full grid min-h-[2.2em] grid-cols-subgrid items-center', className)}
+      className={cn(
+        'relative col-span-full grid min-h-[2.2em] grid-cols-subgrid items-center',
+        className,
+      )}
     >
-      <span
-        role="math"
-        aria-label={label}
-        data-math="line"
-        className={cn(
-          'col-span-full grid grid-cols-subgrid items-center whitespace-nowrap',
-          writeOn && 'motion-safe:animate-write',
-        )}
-        style={writeOn ? { animationDelay: `${index * WRITE_ON_STAGGER}s` } : undefined}
-      >
-        <span aria-hidden="true" className="justify-self-end">
-          {line.right ? draw(line.left, left) : null}
+      {selected && (
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-1 start-8 end-2 origin-left rounded-[6px_14px_8px_12px] bg-highlight/55 motion-safe:animate-[marker_0.45s_ease-out_both]"
+        />
+      )}
+      {annotate?.circle && <Circle />}
+      {onSelect ? (
+        <button
+          type="button"
+          aria-pressed={selected}
+          aria-label={label}
+          data-math="line"
+          onClick={onSelect}
+          className={cn(
+            rowClass,
+            'min-h-11 cursor-pointer rounded-lg text-start transition-colors hover:bg-paleblue/40',
+          )}
+          style={rowStyle}
+        >
+          {cells}
+        </button>
+      ) : (
+        <span role="math" aria-label={label} data-math="line" className={rowClass} style={rowStyle}>
+          {cells}
         </span>
-        <span aria-hidden="true" className="justify-self-center">
-          {line.right || continued ? '=' : null}
-        </span>
-        <span aria-hidden="true" className="justify-self-start">
-          {line.right ? draw(line.right, right) : draw(line.left, left)}
-        </span>
-        <span aria-hidden="true" className="ps-[0.6em] text-[0.75em] font-bold text-pen-green">
-          {line.op ? drawOp(line.op, op) : null}
-        </span>
-      </span>
+      )}
     </li>
   )
 }

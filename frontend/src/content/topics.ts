@@ -15,3 +15,10 @@ export function problemNumber(raw: string | undefined): number | null {
   const n = Number(raw)
   return n >= 1 && n <= PRACTICE_COUNT ? n : null
 }
+
+/** A sample of each topic's math for its card: presentation only, drawn by hand. */
+export const TOPIC_GLYPHS: Record<TopicId, { expr: string; tone: string }> = {
+  'negative-numbers': { expr: '-3 + 5', tone: 'bg-[#eef1f4] text-navy' },
+  fractions: { expr: '1/2 + 1/3', tone: 'bg-[#fffbeb] text-[#92400e]' },
+  'linear-equations': { expr: '3*x + 5 = 20', tone: 'bg-paleblue/60 text-navy' },
+}

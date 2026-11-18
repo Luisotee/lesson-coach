@@ -1,8 +1,10 @@
 import { ShieldCheck } from 'lucide-react'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { MotionConfig } from 'motion/react'
-import type { MouseEvent } from 'react'
+import { useState, type MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet, ScrollRestoration, useMatch } from 'react-router'
+import { createQueryClient } from '@/api/queries'
 import { LanguagePicker } from '@/components/shell/LanguagePicker'
 import { useRouteFocus } from '@/components/shell/hooks'
 import { isTopicId, problemNumber } from '@/content/topics'
@@ -45,66 +47,70 @@ export function Shell() {
   const inPractice =
     isTopicId(practiceMatch?.params.topic) && problemNumber(practiceMatch?.params.n) !== null
   useRouteFocus()
+  // One cache for the app's lifetime: packs are static, so revisits are instant.
+  const [queryClient] = useState(createQueryClient)
   return (
-    <MotionConfig reducedMotion="user">
-      <a
-        href="#main"
-        onClick={focusMain}
-        className="sr-only z-50 rounded-lg bg-navy px-4 py-3 font-semibold text-white focus:not-sr-only focus:fixed focus:start-3 focus:top-3"
-      >
-        {t('shell.skipToContent')}
-      </a>
-      <div className="flex min-h-svh flex-col">
-        <header className="sticky top-0 z-10 border-b border-line bg-ground/85 backdrop-blur-md print:hidden">
-          <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
-            <Link
-              to="/"
-              className="flex min-h-11 items-center gap-2.5 rounded-lg text-navy no-underline"
-            >
-              <Mark />
-              <span className="font-heading text-lg font-bold tracking-tight">
-                {t('app.title')}
-              </span>
-            </Link>
-            <nav aria-label={t('shell.mainNav')} className="flex flex-wrap items-center gap-1">
+    <QueryClientProvider client={queryClient}>
+      <MotionConfig reducedMotion="user">
+        <a
+          href="#main"
+          onClick={focusMain}
+          className="sr-only z-50 rounded-lg bg-navy px-4 py-3 font-semibold text-white focus:not-sr-only focus:fixed focus:start-3 focus:top-3"
+        >
+          {t('shell.skipToContent')}
+        </a>
+        <div className="flex min-h-svh flex-col">
+          <header className="sticky top-0 z-10 border-b border-line bg-ground/85 backdrop-blur-md print:hidden">
+            <div className="mx-auto flex max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6">
               <Link
-                to={{ pathname: '/', hash: '#topics' }}
-                className={navClass({ isActive: inTopics })}
-                aria-current={inTopics ? 'true' : undefined}
+                to="/"
+                className="flex min-h-11 items-center gap-2.5 rounded-lg text-navy no-underline"
               >
-                {t('nav.topics')}
+                <Mark />
+                <span className="font-heading text-lg font-bold tracking-tight">
+                  {t('app.title')}
+                </span>
               </Link>
-              <NavLink to="/mistake" className={navClass}>
-                {t('nav.mistake')}
-              </NavLink>
-              <Link
-                to="/practice/negative-numbers/1"
-                className={navClass({ isActive: inPractice })}
-                aria-current={inPractice ? 'true' : undefined}
-              >
-                {t('nav.practice')}
-              </Link>
-            </nav>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-[13px] text-muted-foreground">
-                <ShieldCheck aria-hidden="true" className="size-3.5 text-green" />
-                {t('shell.nothingSaved')}
-              </span>
-              <LanguagePicker />
+              <nav aria-label={t('shell.mainNav')} className="flex flex-wrap items-center gap-1">
+                <Link
+                  to={{ pathname: '/', hash: '#topics' }}
+                  className={navClass({ isActive: inTopics })}
+                  aria-current={inTopics ? 'true' : undefined}
+                >
+                  {t('nav.topics')}
+                </Link>
+                <NavLink to="/mistake" className={navClass}>
+                  {t('nav.mistake')}
+                </NavLink>
+                <Link
+                  to="/practice/negative-numbers/1"
+                  className={navClass({ isActive: inPractice })}
+                  aria-current={inPractice ? 'true' : undefined}
+                >
+                  {t('nav.practice')}
+                </Link>
+              </nav>
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-[13px] text-muted-foreground">
+                  <ShieldCheck aria-hidden="true" className="size-3.5 text-green" />
+                  {t('shell.nothingSaved')}
+                </span>
+                <LanguagePicker />
+              </div>
             </div>
-          </div>
-        </header>
-        <main id="main" tabIndex={-1} className="flex-1 outline-none">
-          <Outlet />
-        </main>
-        <footer className="border-t border-line bg-white print:hidden">
-          <div className="mx-auto flex max-w-[1200px] flex-wrap justify-between gap-3 px-4 py-7 text-sm text-muted-foreground sm:px-6">
-            <span>{t('shell.footerNoScores')}</span>
-            <span>{t('shell.footerChecked')}</span>
-          </div>
-        </footer>
-      </div>
-      <ScrollRestoration />
-    </MotionConfig>
+          </header>
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">
+            <Outlet />
+          </main>
+          <footer className="border-t border-line bg-white print:hidden">
+            <div className="mx-auto flex max-w-[1200px] flex-wrap justify-between gap-3 px-4 py-7 text-sm text-muted-foreground sm:px-6">
+              <span>{t('shell.footerNoScores')}</span>
+              <span>{t('shell.footerChecked')}</span>
+            </div>
+          </footer>
+        </div>
+        <ScrollRestoration />
+      </MotionConfig>
+    </QueryClientProvider>
   )
 }
