@@ -72,7 +72,11 @@ test('Back returns to where the page was scrolled', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     'Feel sure of the math before you teach it.',
   )
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(400)
+  // Within a few pixels: late layout (fonts) can shift the restored position slightly.
+  // The bug this guards against restores to 0.
+  await expect
+    .poll(async () => Math.abs((await page.evaluate(() => window.scrollY)) - 400))
+    .toBeLessThanOrEqual(10)
 })
 
 test('the language picker switches to Arabic, right to left, and remembers it', async ({
