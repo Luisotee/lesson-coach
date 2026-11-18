@@ -18,6 +18,7 @@ test('one line becomes one expression without its margin operation', () => {
 test('typed values pass through as LaTeX or text, null when empty or too long', () => {
   expect(latexValue('\\frac{1}{2}')).toEqual({ latex: '\\frac{1}{2}' })
   expect(latexValue('  ')).toBeNull()
+  expect(latexValue('\\frac{1}{\\placeholder{}}')).toBeNull()
   expect(latexValue('x'.repeat(401))).toBeNull()
   expect(textValue('1/2')).toEqual({ text: '1/2' })
   expect(textValue('x'.repeat(201))).toBeNull()

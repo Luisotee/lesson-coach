@@ -2,7 +2,7 @@ import { Plus, X } from 'lucide-react'
 import { useId, useImperativeHandle, useRef, useState, type Ref } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MathField, type FieldValue, type MathFieldHandle } from '@/components/input/MathField'
-import { latexValue, textValue } from '@/components/input/lines'
+import { hasEmptyBox, latexValue, textValue } from '@/components/input/lines'
 import { LIMITS, type LineIn, type MathIn } from '@/components/input/types'
 import { Button } from '@/components/ui/button'
 
@@ -11,6 +11,14 @@ const toMath = (v: FieldValue): MathIn | null =>
 
 const tooLong = (v: FieldValue | undefined) =>
   !!v && ('latex' in v ? v.latex.trim().length > LIMITS.latex : v.text.trim().length > LIMITS.text)
+
+/** Why a typed value can't be used yet, as a message key; null when it can. */
+const problem = (v: FieldValue | undefined) =>
+  tooLong(v)
+    ? 'input.type.tooLong'
+    : v && 'latex' in v && hasEmptyBox(v.latex)
+      ? 'input.type.emptyBox'
+      : null
 
 /** One typed expression. Reports `{latex}` (or `{text}` from the fallback), or null. */
 export function TypeExpression({
@@ -29,22 +37,22 @@ export function TypeExpression({
   const { t } = useTranslation()
   const errorId = useId()
   const [value, setValue] = useState<FieldValue>()
-  const long = tooLong(value)
+  const issue = problem(value)
   return (
     <div className="flex flex-col gap-2">
       <MathField
         ref={ref}
         label={label}
-        describedBy={[describedBy, long && errorId].filter(Boolean).join(' ') || undefined}
-        invalid={invalid || long}
+        describedBy={[describedBy, issue && errorId].filter(Boolean).join(' ') || undefined}
+        invalid={invalid || !!issue}
         onValue={(v) => {
           setValue(v)
           onChange(toMath(v))
         }}
       />
-      {long && (
+      {issue && (
         <p id={errorId} className="text-sm font-semibold text-destructive">
-          {t('input.type.tooLong')}
+          {t(issue)}
         </p>
       )}
     </div>
@@ -88,12 +96,12 @@ export function TypeLines({
 
   const report = (next: Row[]) => {
     setRows(next)
-    if (next.some((r) => tooLong(r.value))) return onChange(null)
+    if (next.some((r) => problem(r.value))) return onChange(null)
     const lines = next.map((r) => r.value && toMath(r.value)).filter((m): m is MathIn => !!m)
     onChange(lines.length ? lines.map(toLine) : null)
   }
 
-  const long = rows.some((r) => tooLong(r.value))
+  const issue = rows.map((r) => problem(r.value)).find(Boolean) ?? null
   return (
     <div className="flex flex-col gap-2">
       <ol className="flex flex-col gap-2">
@@ -111,8 +119,8 @@ export function TypeLines({
                   } else fields.current.delete(row.id)
                 }}
                 label={t('input.type.lineLabel', { label, n: i + 1 })}
-                describedBy={[describedBy, long && errorId].filter(Boolean).join(' ') || undefined}
-                invalid={invalid || tooLong(row.value)}
+                describedBy={[describedBy, issue && errorId].filter(Boolean).join(' ') || undefined}
+                invalid={invalid || !!problem(row.value)}
                 onValue={(v) => report(rows.map((r) => (r.id === row.id ? { ...r, value: v } : r)))}
               />
             </div>
@@ -134,9 +142,9 @@ export function TypeLines({
           </li>
         ))}
       </ol>
-      {long && (
+      {issue && (
         <p id={errorId} className="text-sm font-semibold text-destructive">
-          {t('input.type.tooLong')}
+          {t(issue)}
         </p>
       )}
       {rows.length < LIMITS.lines && (

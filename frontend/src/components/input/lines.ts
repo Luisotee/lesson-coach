@@ -22,10 +22,13 @@ export function toExpression(line: ReviewLine): MathIn {
   return { text: right ? `${left} = ${right}` : left }
 }
 
-/** A typed LaTeX value, or null when empty or over the API's limit. */
+/** True when MathLive still shows an empty box (e.g. a fraction with no denominator yet). */
+export const hasEmptyBox = (latex: string) => latex.includes('\\placeholder')
+
+/** A typed LaTeX value, or null when empty, unfinished or over the API's limit. */
 export function latexValue(latex: string): MathIn | null {
   const v = latex.trim()
-  if (!v || v.length > LIMITS.latex) return null
+  if (!v || v.length > LIMITS.latex || hasEmptyBox(v)) return null
   return { latex: v }
 }
 

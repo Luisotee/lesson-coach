@@ -13,10 +13,10 @@ import { Button } from '@/components/ui/button'
 
 const HANDLES: Handle[] = ['nw', 'ne', 'sw', 'se']
 const handlePos: Record<Handle, string> = {
-  nw: 'left-0 top-0 -translate-x-1/2 -translate-y-1/2 cursor-nwse-resize',
-  ne: 'right-0 top-0 translate-x-1/2 -translate-y-1/2 cursor-nesw-resize',
-  sw: 'left-0 bottom-0 -translate-x-1/2 translate-y-1/2 cursor-nesw-resize',
-  se: 'right-0 bottom-0 translate-x-1/2 translate-y-1/2 cursor-nwse-resize',
+  nw: 'left-0 top-0 items-start justify-start cursor-nwse-resize',
+  ne: 'right-0 top-0 items-start justify-end cursor-nesw-resize',
+  sw: 'left-0 bottom-0 items-end justify-start cursor-nesw-resize',
+  se: 'right-0 bottom-0 items-end justify-end cursor-nwse-resize',
 }
 
 /**
@@ -122,7 +122,7 @@ export function CropStep({
       </p>
       <div ref={frame} dir="ltr" className="w-full">
         <div
-          className="relative mx-auto w-fit touch-none select-none"
+          className="relative mx-auto w-fit touch-none overflow-hidden rounded-lg select-none"
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
@@ -155,10 +155,10 @@ export function CropStep({
                 key={h}
                 aria-hidden="true"
                 data-handle={h}
-                className={`absolute size-11 ${handlePos[h]} flex items-center justify-center`}
+                className={`absolute flex size-11 ${handlePos[h]}`}
                 onPointerDown={(e) => startDrag(h, e)}
               >
-                <span className="size-4 rounded-full border-2 border-navy bg-white" />
+                <span className="m-[-2px] size-5 rounded-full border-2 border-navy bg-white" />
               </span>
             ))}
           </div>

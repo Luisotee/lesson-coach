@@ -133,7 +133,8 @@
       "tooLong": "This is too long to check. Shorten it, or split it into lines.",
       "lineLabel": "{label}, line {n}",
       "addLine": "Add a line",
-      "removeLine": "Remove line {n}"
+      "removeLine": "Remove line {n}",
+      "emptyBox": "Fill in the empty box first."
     },
     "write": {
       "introOne": "Write it with your finger, a pen or the mouse, on one line.",

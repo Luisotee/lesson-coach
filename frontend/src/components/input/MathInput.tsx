@@ -67,6 +67,9 @@ export function MathInput(props: MathInputProps) {
   }, [mode])
 
   const typeInstead = () => {
+    // The button is about to be hidden. MathLive gives up a focus() when the focused element
+    // changes while it settles, so let go of the button first.
+    if (document.activeElement instanceof HTMLElement) document.activeElement.blur()
     focusType.current = true
     select('type')
   }
@@ -119,6 +122,7 @@ export function MathInput(props: MathInputProps) {
             key={m}
             value={m}
             forceMount
+            hidden={mode !== m}
             tabIndex={m === 'type' ? -1 : 0}
             className="data-[state=inactive]:hidden"
           >
