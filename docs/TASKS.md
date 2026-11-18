@@ -112,7 +112,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - Playwright covers every page and state: axe-core, keyboard-only flows, RTL, print, reduced motion, 200% zoom, 320 px.
   - Document a manual screen-reader pass.
   - **Done when:** zero axe violations, and the e2e suite runs green through `make e2e`.
-- [ ] **T12 Deploy** (needs T6 and T8)
+- [x] **T12 Deploy** (needs T6 and T8)
   - Build and push the image, deploy to Container Apps with secrets, and smoke-test the live URL with the Playwright flow.
   - **Done when:** the live URL works and the scale-to-zero setting is verified.
 
