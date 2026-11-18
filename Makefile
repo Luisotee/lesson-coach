@@ -1,5 +1,5 @@
 # Lesson Coach. Run `make install` once after cloning, then any target below.
-.PHONY: install dev test lint fmt build e2e evals
+.PHONY: install dev test lint fmt build e2e evals zip
 SHELL := /bin/bash
 
 BACKEND := cd backend &&
@@ -44,3 +44,7 @@ evals:
 	uv run --project backend python evals/run.py run
 	uv run --project backend python evals/run.py judge
 	uv run --project backend python evals/run.py summarize
+
+# The delivery zip with .git: a fresh clone of the committed branch, written to ../lesson-coach.zip.
+zip:
+	scripts/zip.sh

@@ -118,7 +118,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
 
 ## Wave 4: wrap-up
 
-- [ ] **T13 Docs and delivery** (needs all)
+- [x] **T13 Docs and delivery** (needs all)
   - `README.md`, `DATA.md` (including photos), the cost per teacher per month with measured token numbers, and a final `docs/REASONING.md`.
   - Honest time spent, from the commit log and session notes.
   - Make the zip with `.git`.
