@@ -13,9 +13,9 @@
     6,
     7
   ],
-  "summary": "Fractions name equal parts; operations work by matching, counting, or comparing those parts.",
-  "idea": "A fraction names equal parts of a whole. In `3/4`, the bottom number tells how many equal parts the whole is cut into. The top number tells how many of those parts are taken.\n\nEquivalent fractions name the same amount with different-size parts. `1/2`, `2/4`, and `3/6` are the same amount. Multiplying or dividing the top and bottom by the same number keeps the amount the same.\n\nFor operations, keep the meaning of the parts visible. Adding needs same-size parts. Multiplying by a fraction means taking that fraction of something. Dividing asks how many of one amount fit into another.",
-  "why_it_works": "Fractions can be added only when the parts are the same size. For `1/2 + 1/3`, both fractions are rewritten in sixths. `1/2 + 1/3` becomes `3/6 + 2/6`, and `3/6 + 2/6` is `5/6`.\n\nMultiplying a whole number by a fraction changes the count of parts, not the size of the parts. `3*(2/5)` becomes `(3*2)/5`, and `(3*2)/5` is `6/5`.\n\nDividing asks how many divisors fit. For `(2/3)/(3/4)`, turn over the divisor and multiply. `(2/3)/(3/4)` becomes `(2/3)*(4/3)`, `(2/3)*(4/3)` becomes `(2*4)/(3*3)`, and `(2*4)/(3*3)` is `8/9`.",
+  "summary": "Fractions name equal parts; operations work by keeping the part size clear and counting parts.",
+  "idea": "A fraction names equal parts of a whole. In `3/4`, the bottom number says the whole is cut into equal parts. The top number counts how many of those parts are taken.\n\nEquivalent fractions name the same amount with different-sized parts. Multiplying or dividing the top and bottom by the same number keeps the amount the same.\n\nFor addition, the parts must be the same size before they can be counted. For multiplication, a whole number times a fraction counts repeated groups of that fraction. For division, the question is how many of one fraction fit into another.",
+  "why_it_works": "Only like parts can be added. For `1/2 + 1/3`, halves and thirds are different sizes, so both are rewritten as sixths. `1/2 + 1/3` becomes `3/6 + 2/6`, and `3/6 + 2/6` is `5/6`.\n\nMultiplication changes the count of parts. In `3*(2/5)`, the fifths stay fifths. `3*(2/5)` becomes `(3*2)/5`, and `(3*2)/5` is `6/5`.\n\nDivision asks how many of the divisor fit. `(2/3)/(3/4)` becomes `(2/3)*(4/3)`. Then `(2/3)*(4/3)` becomes `(2*4)/(3*3)`, and `(2*4)/(3*3)` is `8/9`.",
   "prerequisites": [
     "negative-numbers"
   ],
@@ -38,9 +38,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The fractions have different-sized parts, so they cannot be counted together yet. Rewrite them as equivalent fractions with sixths.",
-            "another_way": "Use a common denominator. `1/2` becomes `3/6`, and `1/3` becomes `2/6`.",
-            "visual": "A bar shows `1/2` shaded in halves and `1/3` shaded in thirds, with parts not yet the same size."
+            "why": "The fractions have different-sized parts, so they cannot be added directly. Rewrite them with a common denominator.",
+            "another_way": "Use sixths because both halves and thirds can be cut into sixths. This keeps each fraction's value the same while making the parts match.",
+            "visual": "A bar shows `1/2 + 1/3` as one half-sized part next to one third-sized part."
           }
         },
         {
@@ -53,9 +53,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Now both fractions use sixths, so the parts are the same size. Add by counting sixths.",
-            "another_way": "Keep the denominator because the unit is still sixths. Add the top numbers in `3/6 + 2/6`.",
-            "visual": "A bar cut into sixths shows `3/6` shaded, then `2/6` more shaded."
+            "why": "Now both fractions are in sixths. `1/2` becomes `3/6`, and `1/3` becomes `2/6`, so the parts are the same size.",
+            "another_way": "Think of each half as three sixths and each third as two sixths. Then the problem is just counting sixths.",
+            "visual": "A bar shows `3/6 + 2/6` as three sixths and two sixths of the same-sized pieces."
           }
         },
         {
@@ -68,9 +68,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The total is five sixths, so `3/6 + 2/6` is `5/6`. This is the answer.",
-            "another_way": "Count all the shaded sixths in the bar. There are five sixth-size parts.",
-            "visual": "A bar cut into six equal parts has five parts shaded, showing `5/6`."
+            "why": "With the same denominator, add the numerators and keep the denominator. `3/6 + 2/6` becomes `5/6`, so this is the answer.",
+            "another_way": "Count all the sixth-size pieces together. Three sixths and two sixths make five sixths.",
+            "visual": "A bar shows `5/6` shaded as five equal sixth-size pieces of one whole."
           }
         }
       ],
@@ -94,9 +94,9 @@
               "another_way",
               "visual"
             ],
-            "why": "A whole number times a fraction means taking that many lots of the fraction. Here, `3*(2/5)` shows three lots of `2/5`.",
-            "another_way": "Think of the multiplication as repeated groups of the same fraction.",
-            "visual": "A bar split into fifths shows three groups, with two fifths shaded in each group."
+            "why": "This starts with `3*(2/5)`, which means three groups of `2/5`. The size of each part stays fifths.",
+            "another_way": "Think of the whole number as a multiplier for the top of the fraction. Then `3*(2/5)` is a whole number times a fraction.",
+            "visual": "A bar model shows three copies of a bar with `2/5` shaded in each copy."
           }
         },
         {
@@ -109,9 +109,9 @@
               "another_way",
               "visual"
             ],
-            "why": "Only the count of fifths changes. So `3*(2/5)` becomes `(3*2)/5`.",
-            "another_way": "Keep the fifths as the size of the parts, and multiply how many of those parts are taken.",
-            "visual": "The bar still uses fifth-size pieces, and the shaded count is shown as `3*2` fifths."
+            "why": "The whole number multiplies the top number, so `3*(2/5)` becomes `(3*2)/5`. The denominator stays `5` because the parts are still fifths.",
+            "another_way": "Count fifths: `2` fifths, taken `3` times, gives `(3*2)` fifths.",
+            "visual": "A bar model shows fifth-size pieces being counted across three groups."
           }
         },
         {
@@ -124,9 +124,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The multiplication in the top is carried out, so `(3*2)/5` becomes `6/5`. This is the answer because the expression is fully simplified from the given steps.",
-            "another_way": "Count the shaded fifths: three groups of two fifths make `6/5`.",
-            "visual": "One whole bar and one more fifth are shaded, for a total of `6/5`."
+            "why": "The product in the numerator is found, so `(3*2)/5` becomes `6/5`. This is the answer because the expression has been evaluated.",
+            "another_way": "Three groups of `2/5` make `6/5`. The result is more than one whole because there are more than `5` fifths.",
+            "visual": "A bar model shows `6` fifth-size pieces shaded, making `6/5`."
           }
         }
       ],
@@ -150,9 +150,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The expression `(2/3)/(3/4)` asks how many `3/4` parts fit into `2/3`. To divide by a fraction, change to multiplying by its reciprocal.",
-            "another_way": "Think of division by `3/4` as measuring `2/3` in groups of size `3/4`. The reciprocal will be used in the next step.",
-            "visual": "A bar shows `2/3` of a whole, with `3/4` of a whole marked as the size being counted."
+            "why": "The expression asks how many `3/4` fit into `2/3`. For division by a fraction, keep `2/3` and multiply by the reciprocal of `3/4`.",
+            "another_way": "Think of changing the question from division to a matching multiplication. The divisor `3/4` is turned over, so `(2/3)/(3/4)` becomes `(2/3)*(4/3)`.",
+            "visual": "A bar shows `2/3` of a whole being measured with pieces of size `3/4`."
           }
         },
         {
@@ -165,9 +165,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The divisor has been flipped, so `(2/3)/(3/4)` becomes `(2/3)*(4/3)`. Now it is a multiplication of fractions.",
-            "another_way": "Keep the first fraction and turn over the second fraction. Only the fraction being divided by changes.",
-            "visual": "A bar model still shows `2/3` being measured by copies of `3/4`; the written work uses `4/3` for calculation."
+            "why": "Now multiply the fractions. Multiply the tops together and the bottoms together, so `(2/3)*(4/3)` becomes `(2*4)/(3*3)`.",
+            "another_way": "This shows the part counts and part sizes separately. The top counts `2*4`, and the bottom counts `3*3`.",
+            "visual": "A bar is split into thirds one way and thirds another way, with `2*4` small parts counted."
           }
         },
         {
@@ -180,9 +180,9 @@
               "another_way",
               "visual"
             ],
-            "why": "To multiply fractions, multiply the tops and multiply the bottoms. So `(2/3)*(4/3)` becomes `(2*4)/(3*3)`.",
-            "another_way": "This writes the product before carrying out the multiplication. The numerator factors and denominator factors are kept separate.",
-            "visual": "A bar is split into `3*3` equal small parts, with `2*4` of those parts counted."
+            "why": "The products in the numerator and denominator are written out. The line is ready to simplify by evaluating those products.",
+            "another_way": "See `(2*4)/(3*3)` as a fraction with multiplication still visible. The next step writes those products as single numbers.",
+            "visual": "A bar model has `3*3` equal small parts in the whole and `2*4` of them shaded."
           }
         },
         {
@@ -195,9 +195,9 @@
               "another_way",
               "visual"
             ],
-            "why": "The products in `(2*4)/(3*3)` give `8/9`. This is the final value of the original division.",
-            "another_way": "The answer `8/9` fits the comparison: the amount `2/3` is smaller than the part size `3/4`, so the quotient is less than a full copy.",
-            "visual": "A bar model shows `8` of `9` equal parts shaded, representing `8/9`."
+            "why": "Multiplying gives the final fraction, so `(2*4)/(3*3)` becomes `8/9`. This is the answer because no more operation is shown.",
+            "another_way": "The quotient is less than one whole, which fits the meaning: `3/4` is larger than `2/3`, so less than one of it fits.",
+            "visual": "A bar split into `9` equal parts has `8` parts shaded, showing `8/9`."
           }
         }
       ],
@@ -369,59 +369,59 @@
   "questions": [
     {
       "question": "Why can’t we add the top numbers and the bottom numbers?",
-      "answer": "The bottom numbers name the size of the parts. Halves and thirds are different kinds of parts, so they must be rewritten as same-size parts before adding."
+      "answer": "The bottom number names the size of the parts. Halves and thirds are different sizes, so the parts must be rewritten to the same size before counting."
     },
     {
       "question": "Why does `1/2 + 1/3` become `3/6 + 2/6`?",
-      "answer": "Sixths can show both halves and thirds. `1/2` is `3/6`, and `1/3` is `2/6`, so the parts match before adding."
+      "answer": "Both fractions are rewritten in sixths. The amounts stay the same, but now the parts are the same size and can be added."
     },
     {
-      "question": "What does the bottom number do?",
-      "answer": "It names the size of the equal parts. In `3/4`, the whole is cut into four equal parts."
+      "question": "Why doesn’t `3*(2/5)` change the bottom number?",
+      "answer": "The fifths stay the same size. Multiplying by `3` gives three groups of `2/5`, so only the count of fifths changes."
     },
     {
-      "question": "When multiplying `3*(2/5)`, why does only the top change?",
-      "answer": "There are three groups of two fifths. The number of fifths changes, but the size of each part is still fifths."
+      "question": "Which fraction is flipped when dividing?",
+      "answer": "Only the divisor is flipped. `(2/3)/(3/4)` becomes `(2/3)*(4/3)` because division asks how many `3/4` fit into `2/3`."
     },
     {
-      "question": "Why do we flip the second fraction in division?",
-      "answer": "Division asks how many divisors fit. The divisor is the amount being counted, so the divisor is turned over before multiplying."
+      "question": "Can we cancel across a plus sign?",
+      "answer": "No. A fraction bar divides the whole top. The terms in a sum cannot be partly canceled as if they were separate factors."
     },
     {
-      "question": "How can students check a fraction answer?",
-      "answer": "Estimate first. Ask whether the answer should be more or less than `1/2`, or more or less than one. A quick bar model can also show if the result makes sense."
+      "question": "How can students check if an answer makes sense?",
+      "answer": "Estimate first. Ask whether the result should be more or less than `1/2`, or more or less than `1`. A rough size check catches many fraction errors."
     }
   ],
   "outline": [
     {
       "minutes": 8,
       "title": "Name the parts",
-      "activity": "Use a simple whole split into equal parts. Connect the bottom number to the size of the parts and the top number to the count of parts. Read `3/4` as three of four equal parts."
+      "activity": "Use a simple whole cut into equal parts. Connect the bottom number to the size of the parts and the top number to the count of parts. Use `3/4` as the reference fraction."
     },
     {
-      "minutes": 8,
+      "minutes": 10,
       "title": "Equivalent fractions",
-      "activity": "Show that `1/2`, `2/4`, and `3/6` name the same amount. Emphasize that multiplying or dividing the top and bottom by the same number keeps the value."
+      "activity": "Show that different fractions can name the same amount. Use `1/2`, `2/4`, and `3/6`. Emphasize that the top and bottom must change together."
     },
     {
       "minutes": 10,
-      "title": "Add with common parts",
-      "activity": "Work through `1/2 + 1/3`. Rewrite it as `3/6 + 2/6`, then combine the counts so `3/6 + 2/6` is `5/6`. Contrast with adding tops and bottoms."
+      "title": "Add like parts",
+      "activity": "Start with `1/2 + 1/3`. Ask why halves and thirds cannot be counted together. Rewrite as sixths: `1/2 + 1/3` becomes `3/6 + 2/6`, and `3/6 + 2/6` is `5/6`."
     },
     {
       "minutes": 8,
-      "title": "Multiply as groups of parts",
-      "activity": "Use `3*(2/5)`. Treat it as three lots of two fifths. Show `3*(2/5)` becomes `(3*2)/5`, and `(3*2)/5` is `6/5`."
+      "title": "Multiply a fraction",
+      "activity": "Use `3*(2/5)` as three lots of two fifths. Show that `3*(2/5)` becomes `(3*2)/5`, and `(3*2)/5` is `6/5`. Stress that the part size stays fifths."
     },
     {
-      "minutes": 10,
-      "title": "Divide as how many fit",
-      "activity": "Use `(2/3)/(3/4)`. Ask how many three-quarters fit into two thirds. Show `(2/3)/(3/4)` becomes `(2/3)*(4/3)`, then `(2*4)/(3*3)`, then `8/9`."
+      "minutes": 9,
+      "title": "Divide fractions",
+      "activity": "Use the question “How many fit?” For `(2/3)/(3/4)`, show that `(2/3)/(3/4)` becomes `(2/3)*(4/3)`, then `(2*4)/(3*3)`, and the result is `8/9`."
     },
     {
-      "minutes": 6,
-      "title": "Estimate and draw",
-      "activity": "Before calculating, ask whether an answer should be more or less than `1/2` or one. Use a bar model for any fraction calculation that feels uncertain."
+      "minutes": 5,
+      "title": "Estimate and catch errors",
+      "activity": "Discuss common wrong moves: adding tops and bottoms, changing only one part, flipping the first fraction, or canceling across addition. Use estimation and bar models as checks."
     }
   ],
   "akelius_lessons": [
@@ -763,6 +763,6 @@
   ],
   "machine_translated": false,
   "unavailable": [],
-  "source_hash": "c4aa71de7b9f2788d797521f3f82e9a22ec4f801eb073ea1c27085170d65b536",
+  "source_hash": "b37f7944fcf15aff9cba988d816ddcd3017cb2d6bbf3aebcd325a747ab73718e",
   "model": "gpt-5.5-offline"
 }
