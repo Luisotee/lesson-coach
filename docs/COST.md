@@ -1,17 +1,18 @@
 # Cost per teacher per month
 
-**About $0.07 of AI per teacher per month with `gpt-5.5`, and about $0.01 with `gpt-5.4-mini`.** Hosting adds about $0.16–0.19 per teacher at 50–500 teachers, and under $0.02 at 20,000 or more. Content is generated once, so it costs nothing per teacher.
+**About $0.11 of AI per teacher per month with `gpt-5.5`, and about $0.02 with `gpt-5.4-mini`.** Hosting adds about $0.16–0.19 per teacher at 50–500 teachers, and under $0.02 at 20,000 or more. Content is generated once, so it costs nothing per teacher.
 
 ## What costs money, per request
 
-Only two requests call a model live. Everything else (topic pages, practice, hints, checking typed working) is static JSON or sympy, with no model call.
+Only two requests call a model live: `/api/mistake` (one call per wrong answer: a diagnosis, or, when a rule already explains the answer, a shorter call that words what to say for this problem) and `/api/transcribe`. Everything else (topic pages, practice, hints, checking typed working) is static JSON or sympy, with no model call.
 
 | Live call | Tokens per call, measured (prompt / cached / output / reasoning) | `gpt-5.5` Data Zone | `gpt-5.4-mini` Data Zone |
 |---|---|---|---|
-| Mistake diagnosis (`/api/mistake`, only when no rule explains the answer) | 1516 / 1202 / 177 / 0 | **$0.0082** | $0.0012 |
+| Mistake diagnosis (`/api/mistake`, when no rule explains the answer) | 1512 / 1047 / 174 / 0 | **$0.0089** | $0.0013 |
+| What to say for a rule match (`/api/mistake`, when a rule explains the answer) | 680 / 0 / 117 / 0 | **$0.0076** | $0.0011 |
 | Reading a photo or drawing (`/api/transcribe`) | 482 / 0 / 39 / 0 | **$0.0039** | $0.0006 |
 
-- **Tokens:** the means over 33 calls each in the final eval run (`reasoning_effort: none`, the default), from [`evals/results.yaml`](../evals/results.yaml). About 80% of the mistake prompt is cached, because its fixed instructions and topic context come first.
+- **Tokens:** the means over 33, 39 and 33 calls in the latest eval run (`reasoning_effort: none`, the default), from [`evals/results.yaml`](../evals/results.yaml). About 70% of the diagnosis prompt was cached (60–80% across runs), because its fixed instructions and topic context come first. The rule-match prompt (680 tokens) is under Azure's 1024-token caching minimum, so none of it is cached.
 - **Prices**, USD per 1M tokens, Azure retail prices API ([prices.azure.com](https://prices.azure.com/api/retail/prices)), EU Data Zone meters, read 2026-11-18:
 
   | Model | Input | Cached input | Output |
@@ -24,16 +25,16 @@ Only two requests call a model live. Everything else (topic pages, practice, hin
 
 ## Per teacher per month
 
-**The formula:** `(N × s × mistake call + M × image call) × (1 + retry rate)`, plus hosting ÷ teachers.
+**The formula:** `(N × (s × diagnosis call + r × rule-match call) + M × image call) × (1 + retry rate)`, plus hosting ÷ teachers.
 
 **The usage assumption**, stated plainly because nothing is measured yet: a teacher checks **N = 10** student answers a month and sends **M = 10** images (photos of student work, or drawn working in practice).
-- **s**, the share of mistake checks that reach the model, is **37%** in the eval set (33 of 90 runs). The rest are settled by sympy alone: right answers, answers that are right but not simplified, and wrong answers a misconception rule reproduces. Real teachers' mix is unknown, so the worst case (every check reaches the model) is shown too.
-- **The retry rate** is 3% (1 retry in 33 calls).
+- **s**, the share of mistake checks that get a diagnosis call, is **37%** in the eval set (33 of 90 runs), and **r**, the share a misconception rule explains (one shorter call words what to say), is **43%** (39 of 90). The other 20% are settled by sympy alone: right answers, answers that are right but not simplified, and problems out of scope. Real teachers' mix is unknown, so the worst case (every check gets a diagnosis call) is shown too.
+- **The retry rate** is 1.4% (4 retries in 288 live calls).
 
 | | `gpt-5.5` | `gpt-5.4-mini` |
 |---|---|---|
-| AI, typical (s = 37%) | **$0.072** | $0.011 |
-| AI, worst case (s = 100%) | $0.125 | $0.019 |
+| AI, typical (s = 37%, r = 43%) | **$0.106** | $0.016 |
+| AI, worst case (s = 100%) | $0.130 | $0.019 |
 
 ## Hosting
 
@@ -46,27 +47,27 @@ Prices for Switzerland North, from the Azure retail prices API, read 2026-11-18:
 
 | Teachers | Replica awake | Hosting a month | Hosting per teacher | **Total per teacher** (`gpt-5.5`) | Total (`gpt-5.4-mini`) |
 |---|---|---|---|---|---|
-| 50 | ~90 h (40 h billed) | $9.38 | $0.19 | **$0.26** | $0.20 |
-| 500 | always on (730 h) | $78.50 | $0.16 | **$0.23** | $0.17 |
-| 20,000 | ~4 replicas, always on | ~$320 | $0.016 | **$0.09** | $0.03 |
-| 50,000 | ~10 replicas, always on | ~$790 | $0.016 | **$0.09** | $0.03 |
+| 50 | ~90 h (40 h billed) | $9.38 | $0.19 | **$0.30** | $0.21 |
+| 500 | always on (730 h) | $78.50 | $0.16 | **$0.27** | $0.18 |
+| 20,000 | ~4 replicas, always on | ~$320 | $0.016 | **$0.12** | $0.03 |
+| 50,000 | ~10 replicas, always on | ~$790 | $0.016 | **$0.12** | $0.03 |
 
-The 20,000 and 50,000 rows are rough: the replica count is a guess, not a load test. They also need a change first: today the app runs **at most one replica**, because the rate limit is held in memory. More replicas need a shared rate limit (for example Redis, or limits at a front door). At that scale, AI is most of the cost: about $1,400 a month for 20,000 teachers with `gpt-5.5`.
+The 20,000 and 50,000 rows are rough: the replica count is a guess, not a load test. They also need a change first: today the app runs **at most one replica**, because the rate limit is held in memory. More replicas need a shared rate limit (for example Redis, or limits at a front door). At that scale, AI is most of the cost: about $2,100 a month for 20,000 teachers with `gpt-5.5`.
 
 ## One-off costs (offline)
 
 | Item | Cost | Source |
 |---|---|---|
 | English packs: generation and verification (3 topics; 18 generation and 22 judge calls) | $1.06 | [`evals/verify-report.md`](../evals/verify-report.md) |
-| Translation into 17 more languages (packs and UI strings, with judge and repairs) | $52.60 | [`evals/translation-report.md`](../evals/translation-report.md) |
-| Evals (210 live calls and 144 judge calls) | $2.17 | [`evals/README.md`](../evals/README.md) |
+| Translation into 17 more languages (packs and UI strings, with judge and repairs) | $52.83 | [`evals/translation-report.md`](../evals/translation-report.md) |
+| Evals, latest run (288 live calls and 143 judge calls) | $2.85 | [`evals/README.md`](../evals/README.md) |
 
-That's about $56 in all, spent once. Spread over 20,000 teachers it is $0.003 per teacher. A new language costs about $1.20 for packs and $0.55 for UI strings, once the pipeline has settled (the first French run cost $5.39 before the judge was fixed). A new topic costs about $0.35 in English.
+That's about $57 in all, spent once. Spread over 20,000 teachers it is $0.003 per teacher. A new language costs about $1.20 for packs and $0.55 for UI strings, once the pipeline has settled (the first French run cost $5.39 before the judge was fixed). A new topic costs about $0.35 in English.
 
 ## How to lower it
 
 1. **Switch the live model to `gpt-5.4-mini`** once there is Data Zone quota: AI cost falls about 7× (config only, `MODEL_LIVE`; re-run the evals first).
-2. **Add misconception rules.** Every wrong answer a rule reproduces is answered with no model call, and with more certainty. Rules already settle 39 of the 72 wrong-answer runs in the evals.
+2. **Add misconception rules.** Every wrong answer a rule reproduces needs no diagnosis, only the shorter call that words what to say (about 15% cheaper), and the diagnosis is certain. Rules already explain 39 of the 72 wrong-answer runs in the evals. Without that call the moves would be about the card's example problem, not the student's (the fallback, which costs nothing).
 3. **Keep prompts cache-friendly:** fixed instructions and topic context first, the teacher's input last. About 80% of mistake prompt tokens are already cached at a tenth of the price.
 4. **Run offline work through the Batch API** (GlobalBatch, half price) once the pipeline no longer needs interactive retries.
 5. **Hosting:** keep scale to zero. The $5 registry could move to a free registry. At scale, move the rate limit to a shared store so that replicas can scale with load.

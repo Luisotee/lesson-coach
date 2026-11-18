@@ -57,8 +57,8 @@ Three grade 6–9 algebra topics: **negative numbers**, **fractions** (equivalen
      1. sympy solves the problem.
      2. sympy classifies the student's answer as `correct`, `equivalent_not_simplified` or `wrong`.
      3. If working was given, sympy finds the **first line that doesn't follow** from the one before.
-     4. Deterministic misconception rules are tried: a rule that reproduces the student's answer gives a high-confidence diagnosis with no LLM call.
-     5. Only then is there one LLM call. It returns structured output: `status` (`diagnosed | slip | unclear | out_of_scope`), up to 2 `misconception_id`s from the topic pack plus `other`, `explanation`, `what_to_say {probe, nudge, tell}` and `follow_up_example_id`, chosen from verified pack items.
+     4. Deterministic misconception rules are tried: a rule that reproduces the student's answer gives a high-confidence diagnosis with no LLM diagnosis. One short LLM call (structured output, numbers guard) words the card's `what_to_say` for this problem; if it fails, abstains or brings a number sympy didn't give it, the card's own moves are shown, marked as written for the card's example problem.
+     5. Otherwise there is one LLM call. It returns structured output: `status` (`diagnosed | slip | unclear | out_of_scope`), up to 2 `misconception_id`s from the topic pack plus `other`, `explanation`, `what_to_say {probe, nudge, tell}` and `follow_up_example_id`, chosen from verified pack items.
    - **Result screen** follows the design:
      - **what they wrote:** pencil on paper, the wrong part circled, a margin note;
      - **the answer, worked out:** green pen, plus a bar model where it helps;
