@@ -14,7 +14,6 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-import sympy
 import yaml
 from pydantic import ValidationError
 
@@ -30,7 +29,17 @@ from app.content.schema import (
     Problem,
     TopicId,
 )
-from app.math import TOPICS, parse_text, reproducing_rules, rule_reproduces, to_sympy
+from app.math import (
+    TOPICS,
+    classify_answer,
+    equivalent,
+    format_value,
+    parse_text,
+    reproducing_rules,
+    rule_reproduces,
+    solve,
+    to_sympy,
+)
 from app.math import Problem as MathProblem
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -50,29 +59,20 @@ def parse_math(text: str) -> None:
     parse_text(text)
 
 
-def solution(problem: Problem) -> Any:
-    """sympy's answer: the value of an expression, or the single solution of an equation."""
-    if problem.kind == "solve":
-        left, right = problem.expr.split("=")
-        eq = sympy.Eq(parse(left), parse(right))
-        symbols = sorted(eq.free_symbols, key=str)
-        assert len(symbols) == 1, f"{problem.expr}: one unknown expected"
-        roots = sympy.solve(eq, symbols[0])
-        assert len(roots) == 1, f"{problem.expr}: one solution expected"
-        return roots[0]
-    value = sympy.nsimplify(parse(problem.expr))
-    assert value.is_Rational, f"{problem.expr}: rational value expected"
-    return value
+def math_problem(problem: Problem) -> MathProblem:
+    return MathProblem(problem.kind, problem.expr)
 
 
 def check_answer(problem: Problem, answer: str) -> None:
-    """The answer equals sympy's and is written in canonical form (lowest terms)."""
-    expected = solution(problem)
-    assert answer == str(expected), f"{problem.expr}: answer {answer}, sympy says {expected}"
+    """T1 grades the answer correct, and it is written as T1 writes the value."""
+    mp = math_problem(problem)
+    expected = format_value(solve(mp).value)
+    assert classify_answer(mp, answer) == "correct", f"{problem.expr}: {answer}"
+    assert answer == expected, f"{problem.expr}: answer {answer}, T1 writes {expected}"
 
 
 def check_wrong(problem: Problem, wrong: str) -> None:
-    assert sympy.simplify(parse(wrong) - solution(problem)) != 0, f"{problem.expr}: {wrong}"
+    assert classify_answer(math_problem(problem), wrong) == "wrong", f"{problem.expr}: {wrong}"
 
 
 def spans(text: str) -> list[str]:
@@ -86,7 +86,7 @@ def check_spans(text: str, claims: bool = True) -> None:
     if claims:
         for left, right in CLAIM.findall(text):
             right = right.split("=")[-1]
-            assert sympy.simplify(parse(left) - parse(right)) == 0, f"false claim: {left} = {right}"
+            assert equivalent(parse_text(left), parse_text(right)), f"false claim: {left} = {right}"
 
 
 def strings(value: Any) -> list[str]:
@@ -163,16 +163,8 @@ def test_mistakes() -> None:
     cases = MistakeEvalSet.model_validate(data).cases
     ids = {t: {m.id for m in misconceptions(t).misconceptions} for t in TOPIC_IDS}
     for case in cases:
-        expected = solution(case.problem)
-        given = parse(case.student_answer)
-        same = sympy.simplify(given - expected) == 0
-        match case.expected.classification:
-            case "correct":
-                assert case.student_answer == str(expected), case.id
-            case "equivalent_not_simplified":
-                assert same and case.student_answer != str(expected), case.id
-            case "wrong":
-                assert not same, case.id
+        verdict = classify_answer(math_problem(case.problem), case.student_answer)
+        assert verdict == case.expected.classification, f"{case.id}: T1 says {verdict}"
         for step in case.student_working:
             parse_math(step.left)
             if step.right:
@@ -253,3 +245,10 @@ def test_case_validators_reject(expected: dict[str, Any], source: dict[str, Any]
 def test_case_validators_accept_a_diagnosed_row() -> None:
     data = yaml.safe_load((ROOT / "evals" / "mistakes.yaml").read_text())
     MistakeCase.model_validate({**data["cases"][0], "expected": DIAGNOSED})
+
+
+def test_prompt_cannot_carry_stray_numbers() -> None:
+    item = practice("linear-equations").items[0].model_dump()
+    with pytest.raises(ValidationError, match="prompt numbers"):
+        PracticeItem.model_validate({**item, "prompt": "Solve 8x = 57."})
+    PracticeItem.model_validate({**item, "prompt": "Solve 8x = 56."})

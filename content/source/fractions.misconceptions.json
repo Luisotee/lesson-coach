@@ -22,7 +22,7 @@
           "kind": "evaluate",
           "expr": "1/4 + 1/2"
         },
-        "prompt": "Add one quarter and one half.",
+        "prompt": "Work out:",
         "answer": "3/4"
       },
       "source_quote": "Some students add fractions by adding the tops and adding the bottoms.",
@@ -54,7 +54,7 @@
           "kind": "evaluate",
           "expr": "4*(3/7)"
         },
-        "prompt": "Work out 4 times three sevenths.",
+        "prompt": "Work out:",
         "answer": "12/7"
       },
       "source_quote": "Some students multiply both the top and the bottom by the whole number.",
@@ -86,7 +86,7 @@
           "kind": "evaluate",
           "expr": "(3/5)/(1/2)"
         },
-        "prompt": "Divide three fifths by one half.",
+        "prompt": "Work out:",
         "answer": "6/5"
       },
       "source_quote": "Some students flip the first fraction when dividing, not the second.",
@@ -118,7 +118,7 @@
           "kind": "simplify",
           "expr": "(6+9)/3"
         },
-        "prompt": "Simplify (6 + 9) over 3.",
+        "prompt": "Simplify:",
         "answer": "5"
       },
       "source_quote": "Some students cancel across a plus sign.",
@@ -150,7 +150,7 @@
           "kind": "simplify",
           "expr": "10/15"
         },
-        "prompt": "Simplify ten fifteenths.",
+        "prompt": "Simplify:",
         "answer": "2/3"
       },
       "source_quote": "Some students simplify by changing only one part of the fraction.",

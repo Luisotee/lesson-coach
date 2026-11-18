@@ -22,7 +22,7 @@
           "kind": "solve",
           "expr": "3*x + 5 = 20"
         },
-        "prompt": "Solve 3x + 5 = 20.",
+        "prompt": "Solve for x:",
         "answer": "5"
       },
       "source_quote": "Some students move a number across the equals sign without changing its sign.",
@@ -54,7 +54,7 @@
           "kind": "solve",
           "expr": "4*x + 8 = 20"
         },
-        "prompt": "Solve 4x + 8 = 20.",
+        "prompt": "Solve for x:",
         "answer": "3"
       },
       "source_quote": "Some students divide only one term by the number in front of `x`.",
@@ -86,7 +86,7 @@
           "kind": "solve",
           "expr": "5*x = 35"
         },
-        "prompt": "Solve 5x = 35.",
+        "prompt": "Solve for x:",
         "answer": "7"
       },
       "source_quote": "Some students subtract the number in front of `x` instead of dividing by it.",
@@ -118,7 +118,7 @@
           "kind": "solve",
           "expr": "(x + 4)/3 = 5"
         },
-        "prompt": "Solve (x + 4)/3 = 5.",
+        "prompt": "Solve for x:",
         "answer": "11"
       },
       "source_quote": "Some students undo the steps in the wrong order.",
@@ -150,7 +150,7 @@
           "kind": "solve",
           "expr": "3*(x + 4) = 27"
         },
-        "prompt": "Solve 3(x + 4) = 27.",
+        "prompt": "Solve for x:",
         "answer": "5"
       },
       "source_quote": "Some students multiply the number outside a bracket by the first term only.",

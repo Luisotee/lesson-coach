@@ -7,7 +7,7 @@
         "kind": "evaluate",
         "expr": "-7 - (-4)"
       },
-      "prompt": "Work out negative 7 minus negative 4.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -48,7 +48,7 @@
         "kind": "evaluate",
         "expr": "9 - (-15)"
       },
-      "prompt": "Work out 9 minus negative 15.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -89,7 +89,7 @@
         "kind": "evaluate",
         "expr": "15 + (-32)"
       },
-      "prompt": "Work out 15 plus negative 32.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -130,7 +130,7 @@
         "kind": "evaluate",
         "expr": "-31 + (-19)"
       },
-      "prompt": "Work out negative 31 plus negative 19.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -171,7 +171,7 @@
         "kind": "evaluate",
         "expr": "-1*(-14)"
       },
-      "prompt": "Multiply negative 1 by negative 14.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -212,7 +212,7 @@
         "kind": "evaluate",
         "expr": "-9*3"
       },
-      "prompt": "Multiply negative 9 by 3.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -253,7 +253,7 @@
         "kind": "evaluate",
         "expr": "-100/(-4)"
       },
-      "prompt": "Divide negative 100 by negative 4.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
@@ -294,7 +294,7 @@
         "kind": "evaluate",
         "expr": "5*(-6) + 7*(-2) - 3"
       },
-      "prompt": "Simplify 5 times negative 6, plus 7 times negative 2, minus 3.",
+      "prompt": "Work out:",
       "hints": [
         {
           "rung": "goal",
