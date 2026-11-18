@@ -39,7 +39,7 @@ build:
 e2e:
 	$(FRONTEND) pnpm e2e
 
-# Live evals against Azure (needs .env, about $3.25): see evals/README.md.
+# Live evals against Azure (needs .env, about $3.50): see evals/README.md.
 evals:
 	uv run --project backend python evals/run.py run
 	uv run --project backend python evals/run.py judge
