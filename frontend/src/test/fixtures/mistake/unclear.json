@@ -37,6 +37,7 @@
       "nudge": "What size are the pieces in your answer?",
       "tell": "We need pieces of the same size before adding."
     },
+    "say_example": null,
     "try_next": null,
     "lang": "en",
     "cards_lang": null,

@@ -140,9 +140,12 @@ class Diagnosis(Model):
     """Why the student probably wrote this, and what the teacher could say.
 
     `source` is "rule" when a sympy rule reproduces the answer exactly (`rule_checked`);
-    then the text comes from the pack's card and no AI was used. `lang` is the language of
-    `explanation`, `margin_note` and `what_to_say`; `cards_lang` that of `misconceptions`
-    and `try_next` (the pack served, which falls back to English).
+    then the misconception comes from the pack's card, and `what_to_say` is the card's moves
+    rephrased by one AI call for this problem (numbers checked like any AI text). When that
+    call is unavailable, abstains or fails the check, `what_to_say` is the card's own moves,
+    written for the card's example problem, and `say_example` names that problem. `lang` is
+    the language of `explanation`, `margin_note` and `what_to_say`; `cards_lang` that of
+    `misconceptions` and `try_next` (the pack served, which falls back to English).
     """
 
     source: Literal["rule", "ai"]
@@ -151,6 +154,7 @@ class Diagnosis(Model):
     explanation: str
     margin_note: str | None
     what_to_say: WhatToSayOut
+    say_example: PackProblem | None = None
     try_next: TryNextOut | None
     lang: str
     cards_lang: str | None

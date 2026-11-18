@@ -347,6 +347,7 @@
     "workedOut": "la risposta, svolta",
     "barCaption": "La risposta come modello a barre.",
     "whatToSay": "Che cosa potresti dire",
+    "sayExample": "Scritto per un problema di esempio, non per quello del tuo studente:",
     "say": {
       "ask": "chiedi",
       "nudge": "dai un suggerimento",

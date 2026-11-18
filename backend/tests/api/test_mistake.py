@@ -1,3 +1,5 @@
+import json
+from pathlib import Path
 from typing import Any
 
 import pytest
@@ -206,3 +208,98 @@ def test_timeout_abstains(make_client: MakeClient, monkeypatch: pytest.MonkeyPat
 def test_bad_requests_are_422(make_client: MakeClient, body: dict[str, Any]) -> None:
     client, _ = make_client()
     assert client.post("/api/mistake", json=body).status_code == 422
+
+
+# The bug from the live app: `sign_not_changed` matched, and the card's moves, written for its
+# example `2*x + 6 = 10`, were shown as if about this problem.
+LINEAR = {
+    "problem": {"text": "3x+5=20"},
+    "answer": {"text": "25/3"},
+    "working": [{"text": "3x=25"}],
+    "topic": "linear-equations",
+}
+CARD_MOVES = {
+    "probe": "What did you do to both sides to get rid of the `+ 6`?",
+    "nudge": 'Write the operation in the margin, "| -6", and apply it to both sides.',
+    "tell": "Subtract six from both sides: `2*x = 4`, so `x = 2`. Substituting checks it: "
+    "`2*2 + 6` is `10`.",
+}
+
+
+def say_reply(**overrides: Any) -> dict[str, Any]:
+    reply: dict[str, Any] = {
+        "abstain": False,
+        "probe": "What did you do to both sides to get rid of the + 5?",
+        "nudge": "Look at what happened to the 5 in your first line.",
+        "tell": "Subtract 5 from both sides: 3*x = 15, so x = 5.",
+    }
+    reply.update(overrides)
+    return reply
+
+
+def linear_client(make_client: MakeClient, llm: FakeLLM) -> Any:
+    client, _ = make_client(llm, content_dir=Path(__file__).parents[3] / "content" / "generated")
+    return client
+
+
+def test_rule_moves_are_written_for_this_problem(make_client: MakeClient) -> None:
+    llm = FakeLLM(say_reply())
+    result = post(linear_client(make_client, llm), **LINEAR)
+    diagnosis = result["diagnosis"]
+    assert (result["status"], diagnosis["source"]) == ("diagnosed", "rule")
+    assert [m["id"] for m in diagnosis["misconceptions"]] == ["sign_not_changed"]
+    say = " ".join(diagnosis["what_to_say"].values())
+    assert "5" in say and "6" not in say
+    assert diagnosis["say_example"] is None and diagnosis["lang"] == "en"
+    # One phrasing call, given sympy's findings and the card's moves as the example.
+    assert len(llm.calls) == 1 and llm.calls[0]["task"] == "mistake"
+    prompt = json.dumps(llm.calls[0]["messages"])
+    assert "3*x + 5 = 20" in prompt and "Subtract six" in prompt
+
+
+@pytest.mark.parametrize(
+    "llm",
+    [
+        FakeLLM(error="deadline"),
+        FakeLLM(say_reply(abstain=True, probe="", nudge="", tell="")),
+        FakeLLM(say_reply(tell="Subtract 6 from both sides.")),  # the example's number
+        FakeLLM(say_reply(tell="So x = 7.")),  # a number sympy never gave
+        FakeLLM(say_reply(nudge=" ")),
+    ],
+    ids=["unavailable", "abstains", "example_number", "new_number", "empty"],
+)
+def test_rule_moves_fall_back_to_the_card_framed_by_its_example(
+    make_client: MakeClient, llm: FakeLLM
+) -> None:
+    diagnosis = post(linear_client(make_client, llm), **LINEAR)["diagnosis"]
+    assert diagnosis["source"] == "rule"
+    assert diagnosis["what_to_say"] == CARD_MOVES
+    assert diagnosis["say_example"] == {"kind": "solve", "expr": "2*x + 6 = 10"}
+    assert diagnosis["lang"] == "en"
+
+
+def test_rule_moves_for_the_cards_own_example_need_no_ai(make_client: MakeClient) -> None:
+    llm = FakeLLM(say_reply())
+    body = {**LINEAR, "problem": {"text": "2x+6=10"}, "answer": {"text": "8"}, "working": []}
+    diagnosis = post(linear_client(make_client, llm), **body)["diagnosis"]
+    assert diagnosis["what_to_say"] == CARD_MOVES and diagnosis["say_example"] is None
+    assert llm.calls == []
+
+
+def test_try_next_is_never_the_problem_just_typed(make_client: MakeClient) -> None:
+    diagnosis = post(linear_client(make_client, FakeLLM(say_reply())), **LINEAR)["diagnosis"]
+    # The card's check question is 3*x + 5 = 20 itself, so the next card's is offered.
+    assert diagnosis["try_next"]["problem"] == {"kind": "solve", "expr": "4*x + 8 = 20"}
+    # The rule path's explanation is the card's belief and why it feels right, which the
+    # result already shows from the card, so the frontend doesn't repeat it (MistakeResult).
+    card = diagnosis["misconceptions"][0]
+    assert diagnosis["explanation"] == f"{card['belief']} {card['why_it_feels_right']}"
+
+
+def test_ai_follow_ups_leave_out_the_problem_just_typed(make_client: MakeClient) -> None:
+    llm = FakeLLM(error="unavailable")
+    body = {**LINEAR, "answer": {"text": "7"}, "working": []}  # no rule gives 7
+    result = post(linear_client(make_client, llm), **body)
+    assert result["reason"] == "ai_unavailable"
+    ids = llm.calls[0]["schema"]["properties"]["follow_up_id"]["anyOf"][0]["enum"]
+    assert "check:sign_not_changed" not in ids and "check:divide_one_term" in ids

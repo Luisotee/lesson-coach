@@ -94,6 +94,7 @@ class RecordingLLM:
         self.calls.append(
             {
                 "task": task,
+                "schema": schema_name,
                 "latency_ms": round((time.perf_counter() - start) * 1000),
                 "attempts": result.attempts,
                 "error": result.error,
@@ -424,11 +425,23 @@ def _calls_summary(calls: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def _fallback(record: dict[str, Any]) -> str | None:
+    """Why a rule match showed the card's own moves, or None when they were rewritten."""
+    if record["result"]["diagnosis"]["say_example"] is None:
+        return None
+    call = record["calls"][-1]
+    if call["reply"] is None:
+        return f"error:{call['error']}"
+    return "abstained" if call["reply"]["abstain"] else "unverified_math"
+
+
 def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
     scored = [(r, metrics.score_mistake(r["result"], r["expected"])) for r in records]
     controls = [s for r, s in scored if r["expected"]["classification"] != "wrong"]
     named = [(r, s) for r, s in scored if s["id_ok"] is not None]
-    ai_path = [r for r in records if r["calls"]]
+    ai_path = [r for r in records if r["calls"] and r["source"] != "rule"]
+    # A rule match makes one call too: it rewrites the card's moves for this problem.
+    rule_moves = [r for r in records if r["calls"] and r["source"] == "rule"]
     outcomes: dict[str, list[str]] = defaultdict(list)
     for r, s in scored:
         outcomes[r["case"]].append(s["outcome"])
@@ -471,11 +484,25 @@ def summarize_mistakes(records: list[dict[str, Any]]) -> dict[str, Any]:
                 r["reason"] == "ai_unverified_math" for r in ai_path
             ),
         },
+        "rule_path_moves": {
+            "runs": len(rule_moves),
+            "written_for_the_problem": metrics.rate(
+                r["result"]["diagnosis"]["say_example"] is None for r in rule_moves
+            ),
+            # The card's own moves were shown, framed by its example problem, because the call
+            # failed, abstained or wrote a number sympy didn't give it.
+            "fell_back": metrics.counts(_fallback(r) for r in rule_moves if _fallback(r)),
+        },
         "request_latency_ms": {
             "no_ai": _latency([r["latency_ms"] for r in records if not r["calls"]]),
             "ai": _latency([r["latency_ms"] for r in ai_path]),
+            "rule_moves": _latency([r["latency_ms"] for r in rule_moves]),
         },
         "llm": _calls_summary([c for r in records for c in r["calls"]]),
+        "llm_by_call": {
+            name: _calls_summary([c for r in records for c in r["calls"] if c["schema"] == name])
+            for name in ("mistake_diagnosis", "rule_what_to_say")
+        },
         "per_case": {case: sorted(set(v)) for case, v in outcomes.items()},
     }
 

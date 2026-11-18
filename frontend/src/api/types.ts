@@ -167,6 +167,8 @@ export interface Diagnosis {
   explanation: string
   margin_note: string | null
   what_to_say: WhatToSay
+  /** Set when `what_to_say` is the card's own moves, written for this example problem. */
+  say_example: Problem | null
   try_next: { problem: Problem; prompt: string } | null
   /** Language of `explanation`, `margin_note` and `what_to_say`. */
   lang: string

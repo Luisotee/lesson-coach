@@ -347,6 +347,7 @@
     "workedOut": "odpowiedź z rozwiązaniem",
     "barCaption": "Odpowiedź jako model paskowy.",
     "whatToSay": "Co możesz powiedzieć",
+    "sayExample": "Napisane dla zadania przykładowego, nie dla zadania Twojego ucznia:",
     "say": {
       "ask": "zapytaj",
       "nudge": "naprowadź",

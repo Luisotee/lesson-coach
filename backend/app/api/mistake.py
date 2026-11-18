@@ -3,8 +3,10 @@
 The order is fixed (PLAN, mistake pipeline): sympy solves the problem, classifies the answer,
 finds the first line of working that doesn't follow and tries the misconception rules, all in
 one worker process under a time limit. A right answer needs no AI. A rule that reproduces a
-wrong answer gives the pack's card, with no AI. Only a wrong answer that no rule explains gets
-one LLM call, and it is always given sympy's verified answer.
+wrong answer gives the pack's card, and one LLM call rewrites the card's moves (what to say)
+for this problem; the card's own moves are about its example problem, so they are shown only
+as such when the call fails. A wrong answer that no rule explains gets one LLM call to
+diagnose it. Every call is given sympy's verified answer, and its numbers are checked.
 """
 
 from __future__ import annotations
@@ -24,11 +26,20 @@ from app.api.models import (
     WhatToSayOut,
 )
 from app.content.schema import Misconception, Pack
+from app.content.schema import Problem as PackProblem
 from app.content.store import PackStore
 from app.llm.client import LLM
 from app.llm.guard import new_numbers
-from app.llm.prompts import MistakeOut, mistake_messages, mistake_schema
-from app.math.pipeline import MistakeFindings, analyse_mistake
+from app.llm.prompts import (
+    RULE_SAY_SCHEMA,
+    MistakeOut,
+    RuleSayOut,
+    mistake_messages,
+    mistake_schema,
+    rule_say_messages,
+)
+from app.math.nodes import MathError
+from app.math.pipeline import MathText, MistakeFindings, analyse_mistake, read_problem
 from app.mathpool import MathFailure, MathPool, MathTimeout
 
 router = APIRouter(prefix="/api", tags=["mistake"])
@@ -70,11 +81,10 @@ async def post_mistake(body: MistakeRequest, request: Request) -> MistakeResult:
     store: PackStore = request.app.state.store
     pack = store.get(found.topic, body.lang) if found.topic else None
     cards = _rule_cards(pack, found.rule_ids)
-    if pack is not None and cards:
-        return result.model_copy(
-            update={"status": "diagnosed", "diagnosis": _rule_diagnosis(pack, cards)}
-        )
     llm: LLM = request.app.state.llm
+    if pack is not None and cards:
+        diagnosis = await _rule_diagnosis(llm, pack, cards, found, body.lang)
+        return result.model_copy(update={"status": "diagnosed", "diagnosis": diagnosis})
     return await _ai_result(llm, result, found, pack, body.lang)
 
 
@@ -109,25 +119,96 @@ def _card_out(card: Misconception) -> MisconceptionOut:
     )
 
 
-def _rule_diagnosis(pack: Pack, cards: list[Misconception]) -> Diagnosis:
+def _same_problem(problem: PackProblem, found: MistakeFindings) -> bool:
+    """Whether a pack problem is the one the teacher typed, once both are normalised."""
+    if problem.kind != found.kind:
+        return False
+    try:
+        return read_problem(MathText(problem.expr, "text"), problem.kind).expr == found.expr
+    except MathError:
+        return False
+
+
+async def _rule_diagnosis(
+    llm: LLM, pack: Pack, cards: list[Misconception], found: MistakeFindings, lang: str
+) -> Diagnosis:
     first = cards[0]
+    same = _same_problem(first.example_problem, found)  # the card's moves fit as they are
+    phrased = None if same else await _rule_say(llm, first, found, lang)
+    if phrased is not None:
+        say, say_lang, say_example = phrased, lang, None
+    else:
+        say, say_lang = WhatToSayOut(**first.what_to_say.model_dump()), pack.lang
+        say_example = None if same else first.example_problem
     return Diagnosis(
         source="rule",
         rule_checked=True,
         misconceptions=[_card_out(c) for c in cards],
+        # The belief and why it feels right, which the result shows from the card itself.
         explanation=f"{first.belief} {first.why_it_feels_right}",
         margin_note=None,
-        what_to_say=WhatToSayOut(**first.what_to_say.model_dump()),
-        try_next=TryNextOut(
-            problem=first.check_question.problem, prompt=first.check_question.prompt
-        ),
-        lang=pack.lang,
+        what_to_say=say,
+        say_example=say_example,
+        try_next=_try_next(pack, first, found),
+        lang=say_lang,
         cards_lang=pack.lang,
         machine_translated=pack.machine_translated,
     )
 
 
-def _follow_ups(pack: Pack | None) -> dict[str, TryNextOut]:
+async def _rule_say(
+    llm: LLM, card: Misconception, found: MistakeFindings, lang: str
+) -> WhatToSayOut | None:
+    """The card's moves rewritten for the teacher's problem, or None when the call is
+    unavailable, abstains or writes a number sympy didn't give it."""
+    messages = rule_say_messages(
+        misconception={
+            "belief": card.belief,
+            "why_it_feels_right": card.why_it_feels_right,
+            "example_problem": card.example_problem.expr,
+            "example_wrong_answer": card.example_wrong_answer,
+            "example_moves": card.what_to_say.model_dump(),
+        },
+        request=_request(found),
+        lang=lang,
+    )
+    reply = await llm.structured(
+        task="mistake",
+        messages=messages,
+        schema_name="rule_what_to_say",
+        schema=RULE_SAY_SCHEMA,
+        output=RuleSayOut,
+    )
+    if reply.value is None or reply.value.abstain:
+        return None
+    say = reply.value.clipped()
+    texts = list(say.model_dump().values())
+    if not all(t.strip() for t in texts):
+        return None
+    line_count = max(len(found.working), len(found.worked))
+    # Only the teacher's math is allowed: the example's numbers would be about another problem.
+    if new_numbers(texts, _given_math(found, None), lang=lang, line_count=line_count):
+        return None
+    return WhatToSayOut(**say.model_dump())
+
+
+def _try_next(pack: Pack, card: Misconception, found: MistakeFindings) -> TryNextOut | None:
+    """The card's check question, or, when that is the problem the teacher just typed, another
+    card's, then a practice problem; None when every one is the same problem."""
+    options = [card.check_question] + [
+        m.check_question for m in pack.misconceptions if m.id != card.id
+    ]
+    for option in options:
+        if not _same_problem(option.problem, found):
+            return TryNextOut(problem=option.problem, prompt=option.prompt)
+    for item in pack.practice:
+        if not _same_problem(item.problem, found):
+            return TryNextOut(problem=item.problem, prompt=item.prompt)
+    return None
+
+
+def _follow_ups(pack: Pack | None, found: MistakeFindings) -> dict[str, TryNextOut]:
+    """The follow-ups the AI may pick from, without the problem the teacher just typed."""
     if pack is None:
         return {}
     options = {
@@ -142,15 +223,12 @@ def _follow_ups(pack: Pack | None) -> dict[str, TryNextOut]:
             for p in pack.practice
         }
     )
-    return options
+    return {k: v for k, v in options.items() if not _same_problem(v.problem, found)}
 
 
-async def _ai_result(
-    llm: LLM, result: MistakeResult, found: MistakeFindings, pack: Pack | None, lang: str
-) -> MistakeResult:
-    cards = {m.id: m for m in pack.misconceptions} if pack is not None else {}
-    follow_ups = _follow_ups(pack)
-    request: dict[str, Any] = {
+def _request(found: MistakeFindings) -> dict[str, Any]:
+    """sympy's findings, as both prompts get them."""
+    return {
         "problem": {"kind": found.kind, "expr": found.expr},
         "student_answer": found.student_answer,
         "student_working": [vars(w) for w in found.working],
@@ -162,6 +240,14 @@ async def _ai_result(
         ),
         "rules_that_reproduce_the_answer": found.rule_ids,
     }
+
+
+async def _ai_result(
+    llm: LLM, result: MistakeResult, found: MistakeFindings, pack: Pack | None, lang: str
+) -> MistakeResult:
+    cards = {m.id: m for m in pack.misconceptions} if pack is not None else {}
+    follow_ups = _follow_ups(pack, found)
+    request = _request(found)
     messages = mistake_messages(
         topic=found.topic,
         misconceptions=[

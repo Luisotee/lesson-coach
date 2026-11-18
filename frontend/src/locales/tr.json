@@ -347,6 +347,7 @@
     "workedOut": "çözülmüş yanıt",
     "barCaption": "Yanıtın çubuk modeli.",
     "whatToSay": "Ne söyleyebilirsiniz",
+    "sayExample": "Öğrencinizin değil, bir örnek problem için yazılmıştır:",
     "say": {
       "ask": "sor",
       "nudge": "ipucu ver",

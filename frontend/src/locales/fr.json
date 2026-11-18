@@ -347,6 +347,7 @@
     "workedOut": "la réponse, détaillée",
     "barCaption": "La réponse sous forme de schéma en barres.",
     "whatToSay": "Ce que vous pourriez dire",
+    "sayExample": "Rédigé pour un exemple, pas pour celui de votre élève :",
     "say": {
       "ask": "demander",
       "nudge": "guider",

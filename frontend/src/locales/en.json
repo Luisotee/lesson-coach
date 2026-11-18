@@ -347,6 +347,7 @@
     "workedOut": "the answer, worked out",
     "barCaption": "The answer as a bar model.",
     "whatToSay": "What you could say",
+    "sayExample": "Written for an example problem, not your student’s:",
     "say": {
       "ask": "ask",
       "nudge": "nudge",

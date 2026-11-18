@@ -347,6 +347,7 @@
     "workedOut": "die Antwort, ausgerechnet",
     "barCaption": "Die Antwort als Balkenmodell.",
     "whatToSay": "Was Sie sagen könnten",
+    "sayExample": "Für eine Beispielaufgabe geschrieben, nicht für die deines Schülers oder deiner Schülerin:",
     "say": {
       "ask": "fragen",
       "nudge": "Hinweis geben",

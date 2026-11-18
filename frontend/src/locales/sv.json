@@ -347,6 +347,7 @@
     "workedOut": "svaret, uträknat",
     "barCaption": "Svaret som en stapelmodell.",
     "whatToSay": "Vad du kan säga",
+    "sayExample": "Skrivet för ett exempelproblem, inte din elevs:",
     "say": {
       "ask": "fråga",
       "nudge": "ge en ledtråd",
