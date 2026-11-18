@@ -4,8 +4,6 @@ import i18n from '@/i18n'
 import { CANDIDATES, LANGUAGES, findLanguage } from '@/i18n/languages'
 import en from '@/locales/en.json'
 import { speakLine, speakText } from '@/math/speech'
-import packStats from '../../../evals/translation-stats.json'
-import uiStats from '../../../evals/translation-ui-stats.json'
 
 /**
  * Every listed language's locale file is a faithful ICU twin of en.json: each message compiles
@@ -49,10 +47,20 @@ const intlLocale = (code: string) => (code === 'prs' ? 'fa-AF' : code)
 
 afterEach(() => i18n.changeLanguage('en'))
 
+// The stats files live in evals/, outside frontend/: loaded through Vite at test time only, so
+// `tsc -b` in the Docker build (which copies just frontend/) never has to resolve them.
+type Run = Record<string, { shipped: boolean }>
+const stats = import.meta.glob<Run>('../../../evals/translation*-stats.json', {
+  eager: true,
+  import: 'default',
+})
+
 test('the listed languages are exactly those whose packs and UI strings both shipped', () => {
-  type Run = Record<string, { shipped: boolean }>
-  const shipped = (stats: Run) => Object.keys(stats).filter((code) => stats[code].shipped)
-  const both = shipped(packStats as Run).filter((code) => shipped(uiStats as Run).includes(code))
+  const packStats = stats['../../../evals/translation-stats.json']
+  const uiStats = stats['../../../evals/translation-ui-stats.json']
+  expect(packStats && uiStats).toBeTruthy()
+  const shipped = (run: Run) => Object.keys(run).filter((code) => run[code].shipped)
+  const both = shipped(packStats).filter((code) => shipped(uiStats).includes(code))
   expect(LANGUAGES.map((l) => l.code).sort()).toEqual(['en', ...both].sort())
 })
 
