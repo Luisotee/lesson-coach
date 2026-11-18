@@ -5,6 +5,8 @@ RG="rg-akelius-coach"
 LOCATION="switzerlandnorth"
 
 CAE_NAME="cae-akelius-coach"
+APP_NAME="ca-lesson-coach"
+IMAGE_REPO="lesson-coach"
 
 # Globally unique names get a short, stable suffix derived from the subscription id,
 # so re-running the scripts always targets the same resources. Needs `az login`;
