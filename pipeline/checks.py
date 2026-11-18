@@ -15,6 +15,7 @@ from dataclasses import dataclass
 import sympy
 from app.content.schema import (
     NUMBER,
+    PROMPTS,
     ExplainedStep,
     Misconception,
     Pack,
@@ -35,7 +36,7 @@ from app.math import (
     solve,
     to_sympy,
 )
-from app.math.nodes import Eq, free_vars
+from app.math.nodes import Eq, Node, free_vars, render
 
 from pipeline.core import StepsFor
 from pipeline.examples import EXAMPLES, prompt_for
@@ -46,8 +47,6 @@ SPAN = re.compile(r"`([^`]+)`")
 # claim that A equals B.
 CLAIM = re.compile(r"`([^`=]+)`(?:,? which)? (?:is|=|equals|becomes) `([^`]+)`")
 MISCONCEPTIONS = re.compile(r"^## Common misconceptions\n(.*?)(?=^## |\Z)", re.M | re.S)
-
-Solution = dict[sympy.Symbol, sympy.Expr]  # the unknown's value in one worked problem
 
 
 @dataclass(frozen=True)
@@ -68,36 +67,62 @@ def numbers(*texts: str) -> set[str]:
     return {n for text in texts for n in NUMBER.findall(text)}
 
 
-def solutions(*problems: ContentProblem) -> list[Solution]:
+@dataclass(frozen=True)
+class Known:
+    """A worked problem's solution: the unknown's value, and the problem as written."""
+
+    expr: str
+    values: dict[sympy.Symbol, sympy.Expr]
+
+
+def solutions(*problems: ContentProblem) -> list[Known]:
     """The unknown's value in each problem that has one."""
-    found: list[Solution] = []
+    found: list[Known] = []
     for problem in problems:
         try:
             s = solve(math_problem(problem))
         except MathError:
             continue
         if s.kind == "value" and s.variable is not None and s.value is not None:
-            found.append({sympy.Symbol(s.variable): s.value})
+            found.append(Known(problem.expr, {sympy.Symbol(s.variable): s.value}))
     return found
 
 
-def _same_value(a: str, b: str, known: Sequence[Solution] = ()) -> bool:
-    """A and B are equal. With the unknown in them, at one of the `known` solutions; with no
-    solution known, a claim about the unknown can't be checked and passes."""
+def _parse(text: str) -> Node | None:
     try:
-        left, right = parse_text(a), parse_text(b)
-        if (
-            isinstance(left, Eq)
-            or isinstance(right, Eq)
-            or not (free_vars(left) | free_vars(right))
-        ):
-            return equivalent(left, right)
-        if not known:
+        return parse_text(text)
+    except MathError:
+        return None
+
+
+def _has_unknown(node: Node) -> bool:
+    return not isinstance(node, Eq) and bool(free_vars(node))
+
+
+def _same_value(a: str, b: str, at: Sequence[Known] = ()) -> bool:
+    """A equals B: always (an identity, or two numbers with the same value), or, when the
+    unknown is in them, at the solution of one of the problems `at` the claim is about."""
+    left, right = _parse(a), _parse(b)
+    if left is None or right is None:
+        return False
+    try:
+        if equivalent(left, right):
             return True
+        if not (_has_unknown(left) or _has_unknown(right)):
+            return False
         difference = to_sympy(left) - to_sympy(right)
-        return any(sympy.simplify(difference.subs(s)) == 0 for s in known)
+        return any(sympy.simplify(difference.subs(k.values)) == 0 for k in at)
     except MathError:
         return False
+
+
+def _about(text: str, known: Sequence[Known]) -> list[Known]:
+    """The worked problems a paragraph is about: those it writes out, or the only one known."""
+    spans = {render(n) for span in SPAN.findall(text) if (n := _parse(span)) is not None}
+    named = [k for k in known if (n := _parse(k.expr)) is not None and render(n) in spans]
+    if named:
+        return named
+    return list(known) if len(known) == 1 else []
 
 
 def prose(
@@ -106,11 +131,14 @@ def prose(
     *,
     allowed: set[str] | None = None,
     wrong: Iterable[str] = (),
-    known: Sequence[Solution] = (),
+    known: Sequence[Known] = (),
 ) -> list[Finding]:
-    """Every backtick span parses; every claim is true (with the unknown, at one of the `known`
-    solutions) unless its right side is one of the `wrong` answers the text states on purpose;
-    with `allowed`, every number is in it."""
+    """Every backtick span parses; every claim is true unless it states one of the `wrong`
+    answers on purpose; with `allowed`, every number is in it.
+
+    A claim holds if it is an identity. A claim with the unknown that is not an identity
+    (`x` is `2`) must hold at the solution of the worked problem it is about: the one its
+    paragraph writes out, or the only one in `known`. Otherwise it fails."""
     found: list[Finding] = []
     for span in SPAN.findall(text):
         try:
@@ -118,12 +146,16 @@ def prose(
         except MathError as err:
             found.append(Finding(path, "unparsable", f"`{span}`: {err}"))
     wrong = list(wrong)
-    for left, right in CLAIM.findall(text):
-        right = right.split("=")[-1].strip()
-        if any(_same_value(right, w) for w in wrong):
-            continue
-        if not _same_value(left, right, known):
-            found.append(Finding(path, "false_claim", f"`{left}` is not `{right}`"))
+    for paragraph in re.split(r"\n\s*\n", text):
+        at = _about(paragraph, known)
+        for left, right in CLAIM.findall(paragraph):
+            right = right.split("=")[-1].strip()
+            node = _parse(right)
+            stated = node is not None and not free_vars(node)
+            if stated and any(_same_value(right, w) for w in wrong):
+                continue
+            if not _same_value(left, right, at):
+                found.append(Finding(path, "false_claim", f"`{left}` is not `{right}`"))
     if allowed is not None:
         stray = numbers(text) - allowed
         if stray:
@@ -141,7 +173,7 @@ def step_numbers(example: WorkedExample, index: int) -> set[str]:
 
 
 def explanation_findings(
-    path: str, ex: StepExplanations, allowed: set[str], known: Sequence[Solution] = ()
+    path: str, ex: StepExplanations, allowed: set[str], known: Sequence[Known] = ()
 ) -> list[Finding]:
     found: list[Finding] = []
     for name in ("why", "another_way", "visual"):
@@ -150,14 +182,17 @@ def explanation_findings(
 
 
 def example_findings(
-    path: str, example: WorkedExample, expected: ContentProblem, steps_for: StepsFor
+    path: str,
+    example: WorkedExample,
+    expected: ContentProblem,
+    steps_for: StepsFor,
+    lang: str = "en",
 ) -> list[Finding]:
     """The steps and answer are sympy's, unchanged; the explanations hold up."""
     found: list[Finding] = []
     if example.problem != expected:
         found.append(Finding(path, "wrong_problem", f"expected {expected.expr}"))
-    if example.prompt != prompt_for(example.problem):
-        found.append(Finding(f"{path}.prompt", "wrong_prompt", example.prompt))
+    found += prompt_findings(f"{path}.prompt", example.prompt, example.problem, lang)
     problem = math_problem(example.problem)
     try:
         want = [(s.left, s.right, s.op) for s in steps_for(problem)]
@@ -181,6 +216,16 @@ def example_findings(
                 f"{path}.steps[{i}].explanations", step.explanations, allowed, known
             )
     return found
+
+
+def prompt_findings(path: str, prompt: str, problem: ContentProblem, lang: str) -> list[Finding]:
+    """The prompt is the pack language's instruction for the problem (the schema accepts any
+    language's)."""
+    if lang not in PROMPTS:
+        return [Finding(path, "wrong_prompt", f"no prompts for language {lang}")]
+    if prompt != prompt_for(problem, lang):
+        return [Finding(path, "wrong_prompt", f"{prompt!r} is not the {lang} prompt")]
+    return []
 
 
 def _step(step: ExplainedStep) -> Step:
@@ -261,11 +306,16 @@ def pack_findings(pack: Pack, sources: Sources, steps_for: StepsFor) -> list[Fin
     for i, (example, expected) in enumerate(
         zip(pack.worked_examples, EXAMPLES[pack.topic], strict=True)
     ):
-        found += example_findings(f"worked_examples[{i}]", example, expected, steps_for)
+        found += example_findings(f"worked_examples[{i}]", example, expected, steps_for, pack.lang)
     for i, m in enumerate(pack.misconceptions):
         found += misconception_findings(f"misconceptions[{i}]", m)
+        check = m.check_question
+        found += prompt_findings(
+            f"misconceptions[{i}].check_question.prompt", check.prompt, check.problem, pack.lang
+        )
     for i, item in enumerate(pack.practice):
         found += practice_findings(f"practice[{i}]", item)
+        found += prompt_findings(f"practice[{i}].prompt", item.prompt, item.problem, pack.lang)
     found += lesson_findings(sources)
     known = solutions(*EXAMPLES[pack.topic])
     for name in ("summary", "idea", "why_it_works"):

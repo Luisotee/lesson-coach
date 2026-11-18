@@ -250,7 +250,8 @@ def _signed_product_steps(node: Node) -> list[Step] | None:
     middle = f"{abs(a)}{node.op}{abs(b)}"
     if value < 0:
         middle = f"-({middle})"
-    return [Step(render(node)), Step(middle), Step(str(value))]
+    # line 0 as the problem is written: a negative factor keeps its brackets, `(-4)*(-6)`
+    return [Step(f"{_signed(a)}{node.op}{_signed(b)}"), Step(middle), Step(str(value))]
 
 
 def _whole_times_fraction_steps(node: Node) -> list[Step] | None:

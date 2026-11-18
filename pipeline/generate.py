@@ -18,7 +18,7 @@ import asyncio
 import json
 import sys
 from collections import Counter
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -40,11 +40,13 @@ from pydantic import BaseModel
 
 from pipeline.checks import (
     Finding,
+    Known,
     dropped_paths,
     explanation_findings,
     math_problem,
     pack_findings,
     prose,
+    solutions,
     step_numbers,
 )
 from pipeline.core import LLM, StepsFor, Task, offline_llm, worked_steps
@@ -56,8 +58,10 @@ from pipeline.prompts import (
     example_facts,
     judge_messages,
     pack_messages,
+    prose_texts,
     retry_message,
     steps_messages,
+    steps_texts,
     strict_schema,
 )
 from pipeline.sources import Sources, load, write_pack
@@ -259,20 +263,21 @@ def _group(findings: list[Finding], depth: int = 1) -> Failing:
     return out
 
 
-def check_prose(c: PackProseOut) -> Failing:
+def check_prose(c: PackProseOut, known: Sequence[Known]) -> Failing:
+    """The checks pack_findings runs on the pack text, with the same worked solutions."""
     found: list[Finding] = []
     for name in ("summary", "idea", "why_it_works"):
         text = getattr(c, name)
-        found += _length(name, text, LIMITS[name]) + prose(name, text)
+        found += _length(name, text, LIMITS[name]) + prose(name, text, known=known)
     for i, q in enumerate(c.questions):
         found += _length(f"questions[{i}].question", q.question, LIMITS["title"])
         found += _length(f"questions[{i}].answer", q.answer, LIMITS["text"])
-        found += prose(f"questions[{i}].question", q.question)
-        found += prose(f"questions[{i}].answer", q.answer)
+        found += prose(f"questions[{i}].question", q.question, known=known)
+        found += prose(f"questions[{i}].answer", q.answer, known=known)
     for i, o in enumerate(c.outline):
         found += _length(f"outline[{i}].title", o.title, LIMITS["title"])
         found += _length(f"outline[{i}].activity", o.activity, LIMITS["text"])
-        found += prose(f"outline[{i}].activity", o.activity)
+        found += prose(f"outline[{i}].activity", o.activity, known=known)
         if not 1 <= o.minutes <= 60:
             found.append(Finding(f"outline[{i}]", "minutes", str(o.minutes)))
     if not 4 <= len(c.questions) <= 6:
@@ -282,16 +287,9 @@ def check_prose(c: PackProseOut) -> Failing:
     return _group(found)
 
 
-def prose_texts(c: PackProseOut) -> dict[str, str]:
-    texts = {"summary": c.summary, "idea": c.idea, "why_it_works": c.why_it_works}
-    for i, q in enumerate(c.questions):
-        texts[f"questions[{i}]"] = f"Q: {q.question}\nA: {q.answer}"
-    for i, o in enumerate(c.outline):
-        texts[f"outline[{i}]"] = f"{o.title} ({o.minutes} min): {o.activity}"
-    return texts
-
-
 def check_steps_out(c: StepsOut, example: WorkedExample) -> Failing:
+    """The checks example_findings runs on the explanations, with the example's solution."""
+    known = solutions(example.problem)
     if len(c.steps) != len(example.steps):
         return {"*": [f"{len(c.steps)} explanations for {len(example.steps)} lines"]}
     found: list[Finding] = []
@@ -301,15 +299,8 @@ def check_steps_out(c: StepsOut, example: WorkedExample) -> Failing:
         found += _length(f"{path}.another_way", s.another_way, LIMITS["text"])
         found += _length(f"{path}.visual", s.visual, LIMITS["summary"])
         ex = StepExplanations.model_construct(why=s.why, another_way=s.another_way, visual=s.visual)
-        found += explanation_findings(path, ex, step_numbers(example, i))
+        found += explanation_findings(path, ex, step_numbers(example, i), known)
     return _group(found)
-
-
-def steps_texts(c: StepsOut) -> dict[str, str]:
-    return {
-        f"steps[{i}]": f"why: {s.why}\nanother way: {s.another_way}\npicture: {s.visual}"
-        for i, s in enumerate(c.steps)
-    }
 
 
 def skeleton(topic: TopicId, steps_for: StepsFor) -> list[WorkedExample]:
@@ -344,7 +335,7 @@ async def build_pack(
 
     async def explain(example: WorkedExample) -> tuple[StepsOut | None, Failing]:
         async def verdict(c: StepsOut, failing: Failing) -> Failing | None:
-            texts = {k: v for k, v in steps_texts(c).items() if not skipped(k, failing)}
+            texts = {k: v for k, v in steps_texts(c.steps).items() if not skipped(k, failing)}
             return await runner.judge(lesson, example_facts(example), texts)
 
         return await runner.unit(
@@ -355,7 +346,10 @@ async def build_pack(
         )
 
     prose_job = runner.unit(
-        pack_messages(lesson, examples), PackProseOut, check_prose, pack_verdict
+        pack_messages(lesson, examples),
+        PackProseOut,
+        lambda c: check_prose(c, solutions(*EXAMPLES[topic])),
+        pack_verdict,
     )
     (prose_out, prose_failing), explained = await asyncio.gather(
         prose_job, asyncio.gather(*(explain(e) for e in examples))

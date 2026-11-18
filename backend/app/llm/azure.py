@@ -12,7 +12,7 @@ import json
 import logging
 import random
 import time
-from typing import Any
+from typing import Any, get_args
 
 import openai
 from openai import AsyncAzureOpenAI
@@ -30,6 +30,7 @@ TRANSIENT = (
 )
 BACKOFF_BASE_S = 0.5
 BACKOFF_MAX_S = 8.0
+OFFLINE_TASKS = ("generate", "judge")
 sleep = asyncio.sleep  # tests replace it
 
 
@@ -44,43 +45,19 @@ class AzureLLM:
         )
 
     def _task_settings(self, task: Task) -> tuple[str, str, int, float, float]:
-        """Deployment, reasoning effort, token limit, deadline and per-attempt timeout."""
+        """Deployment, reasoning effort, token limit, deadline and per-attempt timeout. Each
+        task has its `<task>_*` settings; `generate` and `judge` run offline."""
+        if task not in get_args(Task):
+            raise ValueError(f"unknown LLM task: {task}")
         s = self.settings
-        live, offline = s.model_live, s.model_offline
-        attempt, offline_attempt = s.llm_attempt_timeout_s, s.offline_attempt_timeout_s
-        match task:
-            case "mistake":
-                return (
-                    live,
-                    s.mistake_reasoning_effort,
-                    s.mistake_max_completion_tokens,
-                    s.mistake_deadline_s,
-                    attempt,
-                )
-            case "transcribe":
-                return (
-                    live,
-                    s.transcribe_reasoning_effort,
-                    s.transcribe_max_completion_tokens,
-                    s.transcribe_deadline_s,
-                    attempt,
-                )
-            case "generate":
-                return (
-                    offline,
-                    s.generate_reasoning_effort,
-                    s.generate_max_completion_tokens,
-                    s.offline_deadline_s,
-                    offline_attempt,
-                )
-            case "judge":
-                return (
-                    offline,
-                    s.judge_reasoning_effort,
-                    s.judge_max_completion_tokens,
-                    s.offline_deadline_s,
-                    offline_attempt,
-                )
+        offline = task in OFFLINE_TASKS
+        return (
+            s.model_offline if offline else s.model_live,
+            getattr(s, f"{task}_reasoning_effort"),
+            getattr(s, f"{task}_max_completion_tokens"),
+            s.offline_deadline_s if offline else getattr(s, f"{task}_deadline_s"),
+            s.offline_attempt_timeout_s if offline else s.llm_attempt_timeout_s,
+        )
 
     async def structured[T: BaseModel](
         self,

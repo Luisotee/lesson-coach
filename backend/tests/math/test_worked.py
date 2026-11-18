@@ -82,11 +82,11 @@ def test_zero_and_opposites_are_shown_as_written(expr: str, value: str) -> None:
 
 def test_signed_product_steps() -> None:
     assert lines("evaluate", "(-4)*(-6)") == [
-        ("-4*(-6)", "", ""),
+        ("(-4)*(-6)", "", ""),
         ("4*6", "", ""),
         ("24", "", ""),
     ]
-    assert lines("evaluate", "-9*3") == [("-9*3", "", ""), ("-(9*3)", "", ""), ("-27", "", "")]
+    assert lines("evaluate", "-9*3") == [("(-9)*3", "", ""), ("-(9*3)", "", ""), ("-27", "", "")]
     assert lines("evaluate", "-100/(-4)")[1:] == [("100/4", "", ""), ("25", "", "")]
 
 

@@ -9,9 +9,10 @@ pack schema and the checks.
 from __future__ import annotations
 
 import json
-from typing import Any, Literal
+from collections.abc import Sequence
+from typing import Any, Literal, Protocol
 
-from app.content.schema import WorkedExample
+from app.content.schema import StepExplanations, WorkedExample
 from pydantic import BaseModel, ConfigDict
 
 OUTPUT_ONLY = "Output content only. Do not address the user."
@@ -202,4 +203,49 @@ def retry_message(findings: list[str]) -> dict[str, Any]:
         "role": "user",
         "content": "The math engine and the checker found these problems in your answer:\n"
         f"{listed}\nWrite the whole answer again with these fixed. Change nothing else.",
+    }
+
+
+class _Question(Protocol):
+    question: str
+    answer: str
+
+
+class _Part(Protocol):
+    minutes: int
+    title: str
+    activity: str
+
+
+class _Prose(Protocol):
+    """The pack text, as generated (PackProseOut) or as shipped (Pack, with dropped fields)."""
+
+    @property
+    def summary(self) -> str | None: ...
+    @property
+    def idea(self) -> str | None: ...
+    @property
+    def why_it_works(self) -> str | None: ...
+    @property
+    def questions(self) -> Sequence[_Question]: ...
+    @property
+    def outline(self) -> Sequence[_Part]: ...
+
+
+def prose_texts(c: _Prose) -> dict[str, str]:
+    """The pack text the judge reads, by field; generate.py and verify.py both use this."""
+    texts = {k: v for k in ("summary", "idea", "why_it_works") if (v := getattr(c, k))}
+    for i, q in enumerate(c.questions):
+        texts[f"questions[{i}]"] = f"Q: {q.question}\nA: {q.answer}"
+    for i, o in enumerate(c.outline):
+        texts[f"outline[{i}]"] = f"{o.title} ({o.minutes} min): {o.activity}"
+    return texts
+
+
+def steps_texts(steps: Sequence[StepOut | StepExplanations | None]) -> dict[str, str]:
+    """A worked example's explanations the judge reads, by step; dropped steps are left out."""
+    return {
+        f"steps[{i}]": f"why: {s.why}\nanother way: {s.another_way}\npicture: {s.visual}"
+        for i, s in enumerate(steps)
+        if s is not None
     }

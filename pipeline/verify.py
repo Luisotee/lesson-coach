@@ -28,14 +28,27 @@ from pydantic import ValidationError
 from pipeline import ROOT
 from pipeline.checks import Finding, pack_findings
 from pipeline.core import LLM, StepsFor, offline_llm, worked_steps
-from pipeline.prompts import example_facts
+from pipeline.prompts import example_facts, prose_texts, steps_texts
 from pipeline.sources import load, pack_path
 
 # USD per million tokens. Defaults: Microsoft's published GPT-5.5 rate (Foundry announcement,
 # azure.microsoft.com/en-us/blog/openais-gpt-5-5-in-microsoft-foundry-...). Override with
 # PRICE_INPUT, PRICE_CACHED and PRICE_OUTPUT.
-DEFAULT_PRICES = {"input": "5.00", "cached": "0.50", "output": "30.00"}
-PRICES = {k: os.environ.get(f"PRICE_{k.upper()}", v) for k, v in DEFAULT_PRICES.items()}
+DEFAULT_PRICES = {"input": 5.00, "cached": 0.50, "output": 30.00}
+
+
+def prices() -> dict[str, float]:
+    """The default prices, each overridden by its PRICE_* variable when that is a number."""
+    found = dict(DEFAULT_PRICES)
+    for key in found:
+        raw = os.environ.get(f"PRICE_{key.upper()}")
+        if raw is None:
+            continue
+        try:
+            found[key] = float(raw)
+        except ValueError:
+            print(f"warning: PRICE_{key.upper()}={raw!r} is not a number; using {found[key]}")
+    return found
 
 
 NO_VERDICT = {"*": ["the judge gave no verdict"]}
@@ -80,20 +93,10 @@ async def judge_topic(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str
     lesson = load(topic).lesson
     runner = Runner(llm, Stats())
     facts = "\n\n".join(example_facts(e) for e in pack.worked_examples)
-    texts = {k: v for k in ("summary", "idea", "why_it_works") if (v := getattr(pack, k))}
-    for i, q in enumerate(pack.questions):
-        texts[f"questions[{i}]"] = f"Q: {q.question}\nA: {q.answer}"
-    for i, o in enumerate(pack.outline):
-        texts[f"outline[{i}]"] = f"{o.title} ({o.minutes} min): {o.activity}"
-    jobs = [runner.judge(lesson, facts, texts)]
+    jobs = [runner.judge(lesson, facts, prose_texts(pack))]
     for example in pack.worked_examples:
-        step_texts = {
-            f"steps[{j}]": f"why: {s.explanations.why}\nanother way: "
-            f"{s.explanations.another_way}\npicture: {s.explanations.visual}"
-            for j, s in enumerate(example.steps)
-            if s.explanations is not None
-        }
-        jobs.append(runner.judge(lesson, example_facts(example), step_texts))
+        texts = steps_texts([s.explanations for s in example.steps])
+        jobs.append(runner.judge(lesson, example_facts(example), texts))
     flagged: dict[str, list[str]] = {}
     for i, found in enumerate(await asyncio.gather(*jobs)):
         prefix = "" if i == 0 else f"worked_examples[{i - 1}]."
@@ -103,9 +106,7 @@ async def judge_topic(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str
 
 
 def cost_line(stats: object) -> str:
-    if None in PRICES.values():
-        return "- Cost: not computed (set PRICE_INPUT, PRICE_CACHED and PRICE_OUTPUT, USD/1M)"
-    price = {k: float(v or 0) for k, v in PRICES.items()}
+    price = prices()
     cached = getattr(stats, "cached_tokens", 0)
     fresh = getattr(stats, "prompt_tokens", 0) - cached
     out = getattr(stats, "completion_tokens", 0)
@@ -123,8 +124,9 @@ def write_report(
     stats: object | None = None,
     model: str = "",
     judged: dict[TopicId, dict[str, list[str]]] | None = None,
+    results: list[TopicResult] | None = None,
 ) -> list[TopicResult]:
-    results = [verify_topic(t, lang) for t in TOPIC_IDS]
+    results = results if results is not None else [verify_topic(t, lang) for t in TOPIC_IDS]
     lines = [
         "# Pack verification report",
         "",
@@ -181,13 +183,9 @@ def write_report(
     return results
 
 
-def judgeable(lang: str) -> list[TopicId]:
+def judgeable(results: list[TopicResult]) -> list[TopicId]:
     """The topics whose pack exists and loads; the others already fail verify."""
-    return [
-        r.topic
-        for r in (verify_topic(t, lang) for t in TOPIC_IDS)
-        if not any(f.check in UNREADABLE for f in r.findings)
-    ]
+    return [r.topic for r in results if not any(f.check in UNREADABLE for f in r.findings)]
 
 
 def main() -> None:
@@ -196,11 +194,11 @@ def main() -> None:
     parser.add_argument("--judge", action="store_true", help="also run the LLM judge")
     parser.add_argument("--report", help="write a markdown report to this path")
     args = parser.parse_args()
+    results = [verify_topic(t, args.lang) for t in TOPIC_IDS]
     judged: dict[TopicId, dict[str, list[str]]] | None = None
     if args.judge:
         llm, _ = offline_llm()
-
-        topics = judgeable(args.lang)
+        topics = judgeable(results)
 
         async def run() -> dict[TopicId, dict[str, list[str]]]:
             found = await asyncio.gather(*(judge_topic(t, args.lang, llm) for t in topics))
@@ -208,9 +206,7 @@ def main() -> None:
 
         judged = asyncio.run(run())
     if args.report:
-        results = write_report(Path(args.report), args.lang, judged=judged)
-    else:
-        results = [verify_topic(t, args.lang) for t in TOPIC_IDS]
+        write_report(Path(args.report), args.lang, judged=judged, results=results)
     failed = False
     for r in results:
         flags = (judged or {}).get(r.topic, {})

@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import asyncio
 import sys
-from dataclasses import dataclass, field, replace
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +17,7 @@ sys.path.insert(0, str(ROOT))
 
 from pipeline import generate  # noqa: E402
 from pipeline.checks import lesson_findings, pack_findings, prose, solutions  # noqa: E402
+from pipeline.examples import EXAMPLES  # noqa: E402
 from pipeline.generate import Stats  # noqa: E402
 from pipeline.prompts import (  # noqa: E402
     ClaimOut,
@@ -29,17 +30,25 @@ from pipeline.prompts import (  # noqa: E402
     strict_schema,
 )
 from pipeline.sources import load, pack_path  # noqa: E402
-from pipeline.verify import JUDGE_NOTE, judgeable, verify_topic, write_report  # noqa: E402
+from pipeline.verify import (  # noqa: E402
+    DEFAULT_PRICES,
+    JUDGE_NOTE,
+    judgeable,
+    prices,
+    verify_topic,
+    write_report,
+)
 
 from app.content.schema import TOPIC_IDS, Pack, PracticeItem, TopicId  # noqa: E402
 from app.content.schema import Problem as ContentProblem  # noqa: E402
+from app.llm.client import LLMResult, Task, Usage  # noqa: E402
 from app.math import Kind, Problem, Step, check_steps  # noqa: E402
 
 # sympy's steps for the worked examples, written out so these tests don't need the generator.
 STEPS: dict[str, list[tuple[str, str, str]]] = {
     "5 - (-3)": [("5 - (-3)", "", ""), ("5 + 3", "", ""), ("8", "", "")],
     "-7 + 4": [("-7 + 4", "", ""), ("-(7 - 4)", "", ""), ("-3", "", "")],
-    "(-4)*(-6)": [("-4*(-6)", "", ""), ("4*6", "", ""), ("24", "", "")],
+    "(-4)*(-6)": [("(-4)*(-6)", "", ""), ("4*6", "", ""), ("24", "", "")],
     "1/2 + 1/3": [("1/2 + 1/3", "", ""), ("3/6 + 2/6", "", ""), ("5/6", "", "")],
     "3*(2/5)": [("3*(2/5)", "", ""), ("(3*2)/5", "", ""), ("6/5", "", "")],
     "(2/3)/(3/4)": [("(2/3)/(3/4)", "", ""), ("(2/3)*(4/3)", "", ""), ("8/9", "", "")],
@@ -79,19 +88,7 @@ GOOD_PROSE = PackProseOut(
 )
 
 
-@dataclass
-class FakeUsage:
-    prompt_tokens: int = 100
-    cached_tokens: int = 50
-    completion_tokens: int = 20
-    reasoning_tokens: int = 5
-
-
-@dataclass
-class FakeResult:
-    value: Any
-    error: str | None = None
-    usage: FakeUsage = field(default_factory=FakeUsage)
+USAGE = Usage(prompt_tokens=100, cached_tokens=50, completion_tokens=20, reasoning_tokens=5)
 
 
 class FakeLLM:
@@ -118,19 +115,22 @@ class FakeLLM:
         self.calls[name] = n + 1
         return items[min(n, len(items) - 1)]
 
-    async def structured(
+    async def structured[T: BaseModel](
         self,
         *,
-        task: str,
+        task: Task,
         messages: list[dict[str, Any]],
         schema_name: str,
         schema: dict[str, Any],
-        output: type[BaseModel],
-    ) -> FakeResult:
+        output: type[T],
+    ) -> LLMResult[T]:
+        return LLMResult(self._reply(messages, output), usage=USAGE)  # type: ignore[arg-type]
+
+    def _reply(self, messages: list[dict[str, Any]], output: type[BaseModel]) -> BaseModel | None:
         if output is JudgeOut:
             if self.judge_down:
                 self.calls["judge"] = self.calls.get("judge", 0) + 1
-                return FakeResult(None, "unavailable")
+                return None
             text = messages[-1]["content"]
             flags = self._next("judge", self.flags)
             claims = [
@@ -138,14 +138,14 @@ class FakeLLM:
                 for f in flags
                 if f'"{f}"' in text
             ]
-            return FakeResult(JudgeOut(claims=claims))
+            return JudgeOut(claims=claims)
         self.sent += [str(m["content"]) for m in messages]
         if output is PackProseOut:
-            return FakeResult(self._next("prose", self.prose))
+            return self._next("prose", self.prose)
         ask = next(m["content"] for m in messages if "for all " in str(m["content"]))
         lines = int(ask.split("for all ")[1].split()[0])
         step = self._next("steps", self.steps)
-        return FakeResult(step if isinstance(step, StepsOut) else StepsOut(steps=[step] * lines))
+        return step if isinstance(step, StepsOut) else StepsOut(steps=[step] * lines)
 
 
 def build(topic: TopicId, llm: FakeLLM) -> tuple[Pack, Stats]:
@@ -299,6 +299,7 @@ def broken(pack: Pack, path: str, value: Any) -> Pack:
         ("title", "Another title", "changed"),
         ("unavailable", ["idea"], "mismatch"),
         ("unavailable", ["questions[9]"], "mismatch"),
+        ("lang", "de", "wrong_prompt"),
     ],
 )
 def test_verify_rejects_a_broken_pack(good: Pack, path: str, value: Any, check: str) -> None:
@@ -319,7 +320,34 @@ def test_claims_about_the_unknown_use_the_solution() -> None:
     assert prose("t", "So `x` is `2`, and `2*x` equals `4`.", known=known) == []
     assert prose("t", "So `x` is `3`.", known=known)
     assert prose("t", "Then `2*x + 6` becomes `9`.", known=known)
-    assert prose("t", "So `x` is `3`.") == []  # no solution known: can't be checked
+    assert prose("t", "So `x` is `3`.")  # no solution known: only an identity passes
+    assert prose("t", "And `2*(x + 3)` is `2*x + 6`.") == []
+    assert prose("lesson", "Note `x + 3` is `x + 4`.")
+
+
+def test_a_stated_wrong_answer_skips_only_numeric_claims() -> None:
+    known = solutions(ContentProblem(kind="solve", expr="2*x + 6 = 10"))
+    assert prose("t", "So `2*(x + 3)` is `2*x + 3`.", wrong=["5"], known=known)
+
+
+def test_a_claim_is_checked_at_the_example_it_names() -> None:
+    known = solutions(*EXAMPLES["linear-equations"])
+    assert prose("t", "For `2*x + 6 = 10`, `x` is `2`.", known=known) == []
+    assert prose("t", "For `2*x + 6 = 10`, `x` is `3`.", known=known)
+    assert prose("t", "So `x` is `3`.", known=known)  # names no example: can't be tied
+
+
+def test_generation_checks_claims_as_verify_does() -> None:
+    pack, _ = build(
+        "linear-equations",
+        FakeLLM(
+            steps=[StepOut(why="So `x` is `9`.", another_way="Picture it.", visual="A scale.")]
+        ),
+    )
+    assert all(s.explanations is None for e in pack.worked_examples for s in e.steps)
+    sample = GOOD_PROSE.model_copy(update={"idea": "For `2*x + 6 = 10`, `x` is `3`."})
+    pack, _ = build("linear-equations", FakeLLM(prose=[sample]))
+    assert pack.idea is None and "idea" in pack.unavailable
 
 
 def test_wrong_answers_are_skipped_only_in_the_misconception_section() -> None:
@@ -346,7 +374,14 @@ def test_lessons_hold_every_claim(topic: TopicId) -> None:
 
 
 def test_topics_without_a_readable_pack_are_not_judged() -> None:
-    assert judgeable("xx") == []
+    results = [verify_topic(t, "xx") for t in TOPIC_IDS]
+    assert judgeable(results) == []
+
+
+def test_a_bad_price_falls_back_to_the_default(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("PRICE_INPUT", "five")
+    monkeypatch.setenv("PRICE_OUTPUT", "12")
+    assert prices() == {**DEFAULT_PRICES, "output": 12.0}
 
 
 def test_the_report_keeps_one_judge_note(tmp_path: Path) -> None:
