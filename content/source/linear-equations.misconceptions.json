@@ -1,0 +1,166 @@
+{
+  "topic": "linear-equations",
+  "license": "CC-BY-4.0",
+  "misconceptions": [
+    {
+      "id": "sign_not_changed",
+      "belief": "A number can move across the equals sign and keep its sign.",
+      "rule_sympy": "sign_not_changed",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "\"Move it to the other side\" is a common shortcut, and the student forgets that moving means subtracting.",
+      "what_to_say": {
+        "probe": "What did you do to both sides to get rid of the `+ 6`?",
+        "nudge": "Write the operation in the margin, \"| -6\", and apply it to both sides.",
+        "tell": "Subtract six from both sides: `2*x = 4`, so `x = 2`. Substituting checks it: `2*2 + 6` is `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*x + 5 = 20"
+        },
+        "prompt": "Solve 3x + 5 = 20.",
+        "answer": "5"
+      },
+      "source_quote": "Some students move a number across the equals sign without changing its sign.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "divide_one_term",
+      "belief": "You can divide just one term of a side by the coefficient.",
+      "rule_sympy": "divide_one_term",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "2*x + 6 = 10"
+      },
+      "example_wrong_answer": "-1",
+      "why_it_feels_right": "The student focuses on getting `x` alone and divides the terms next to it, forgetting the rest of the side.",
+      "what_to_say": {
+        "probe": "When you divided by two, what happened to the `6`?",
+        "nudge": "Divide every term on both sides by two and compare with your line.",
+        "tell": "Dividing a side divides every term on it: `x + 3 = 5`, so `x = 2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "4*x + 8 = 20"
+        },
+        "prompt": "Solve 4x + 8 = 20.",
+        "answer": "3"
+      },
+      "source_quote": "Some students divide only one term by the number in front of `x`.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "subtract_instead_of_divide",
+      "belief": "To get rid of the number in front of `x`, subtract it.",
+      "rule_sympy": "subtract_instead_of_divide",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "3*x = 12"
+      },
+      "example_wrong_answer": "9",
+      "why_it_feels_right": "Subtracting is the first undo the student learned, and `3*x` looks like `3` next to `x`.",
+      "what_to_say": {
+        "probe": "What does `3*x` mean? What operation joins the `3` and the `x`?",
+        "nudge": "Check your answer: is `3*9` equal to `12`?",
+        "tell": "`3*x` means three times `x`, so divide both sides by three: `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "5*x = 35"
+        },
+        "prompt": "Solve 5x = 35.",
+        "answer": "7"
+      },
+      "source_quote": "Some students subtract the number in front of `x` instead of dividing by it.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "wrong_inverse_order",
+      "belief": "You can undo the operations on `x` in any order.",
+      "rule_sympy": "wrong_inverse_order",
+      "example_problem": {
+        "kind": "solve",
+        "expr": "(x + 6)/2 = 10"
+      },
+      "example_wrong_answer": "8",
+      "why_it_feels_right": "Subtracting the number next to `x` is the usual first step, so the student does it even when that number sits inside a division.",
+      "what_to_say": {
+        "probe": "In `(x + 6)/2`, what happens to `x` first, and what happens last?",
+        "nudge": "The halving was done last. What do you multiply both sides by to undo it?",
+        "tell": "Undo the halving first: `x + 6 = 20`, so `x = 14`. Check: `(14 + 6)/2` is `10`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "(x + 4)/3 = 5"
+        },
+        "prompt": "Solve (x + 4)/3 = 5.",
+        "answer": "11"
+      },
+      "source_quote": "Some students undo the steps in the wrong order.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "distribute_first_term_only",
+      "belief": "The number outside a bracket multiplies only the first term inside.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "solve",
+        "expr": "5*(x + 3) = 35"
+      },
+      "example_wrong_answer": "32/5",
+      "why_it_feels_right": "The `5` sits right next to the `x`, so the student multiplies what is closest.",
+      "what_to_say": {
+        "probe": "How many threes are there in `5*(x + 3)`?",
+        "nudge": "Write `5*(x + 3)` as `(x + 3) + (x + 3) + (x + 3) + (x + 3) + (x + 3)` and count.",
+        "tell": "The five multiplies everything in the bracket: `5*x + 15 = 35`, so `x = 4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "solve",
+          "expr": "3*(x + 4) = 27"
+        },
+        "prompt": "Solve 3(x + 4) = 27.",
+        "answer": "5"
+      },
+      "source_quote": "Some students multiply the number outside a bracket by the first term only.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    }
+  ]
+}

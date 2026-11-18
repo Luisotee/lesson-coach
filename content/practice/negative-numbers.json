@@ -1,0 +1,333 @@
+{
+  "topic": "negative-numbers",
+  "items": [
+    {
+      "id": "nn-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-7 - (-4)"
+      },
+      "prompt": "Work out negative 7 minus negative 4.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-7 - (-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Subtracting a negative number is the same as adding its opposite."
+        },
+        {
+          "rung": "computation",
+          "text": "Rewrite it as `-7 + 4` and move four steps right from `-7`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-7 - (-4)` = `-3`."
+        }
+      ],
+      "answer": "-3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21d/ae45a45int21d.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "9 - (-15)"
+      },
+      "prompt": "Work out 9 minus negative 15.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `9 - (-15)`."
+        },
+        {
+          "rung": "information",
+          "text": "Subtracting a negative number is the same as adding its opposite."
+        },
+        {
+          "rung": "computation",
+          "text": "Rewrite it as `9 + 15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`9 - (-15)` = `24`."
+        }
+      ],
+      "answer": "24",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ae45a45int21/steps/ae45a45int21c/ae45a45int21c.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ae45a45int21",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "15 + (-32)"
+      },
+      "prompt": "Work out 15 plus negative 32.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `15 + (-32)`."
+        },
+        {
+          "rung": "information",
+          "text": "When the signs differ, subtract the sizes and keep the sign of the number further from zero."
+        },
+        {
+          "rung": "computation",
+          "text": "`32 - 15` is `17`, and `-32` is further from zero than `15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`15 + (-32)` = `-17`."
+        }
+      ],
+      "answer": "-17",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14b/a9ae528add14b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-4",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-31 + (-19)"
+      },
+      "prompt": "Work out negative 31 plus negative 19.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-31 + (-19)`."
+        },
+        {
+          "rung": "information",
+          "text": "When both numbers are negative, add the sizes and keep the negative sign."
+        },
+        {
+          "rung": "computation",
+          "text": "`31 + 19` is `50`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-31 + (-19)` = `-50`."
+        }
+      ],
+      "answer": "-50",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a9ae528add14/steps/a9ae528add14a/a9ae528add14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a9ae528add14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-1*(-14)"
+      },
+      "prompt": "Multiply negative 1 by negative 14.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-1*(-14)`."
+        },
+        {
+          "rung": "information",
+          "text": "A negative times a negative is positive."
+        },
+        {
+          "rung": "computation",
+          "text": "`1*14` is `14`, and the signs are the same."
+        },
+        {
+          "rung": "answer",
+          "text": "`-1*(-14)` = `14`."
+        }
+      ],
+      "answer": "14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply17/steps/aafc2dcMultiply17a/aafc2dcMultiply17a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply17",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-9*3"
+      },
+      "prompt": "Multiply negative 9 by 3.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-9*3`."
+        },
+        {
+          "rung": "information",
+          "text": "When the two signs are different, the product is negative."
+        },
+        {
+          "rung": "computation",
+          "text": "Ignore the sign first: `9*3` is `27`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-9*3` = `-27`."
+        }
+      ],
+      "answer": "-27",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply1/steps/aafc2dcMultiply1a/aafc2dcMultiply1a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply1",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-100/(-4)"
+      },
+      "prompt": "Divide negative 100 by negative 4.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `-100/(-4)`."
+        },
+        {
+          "rung": "information",
+          "text": "Dividing a negative by a negative gives a positive, just as with multiplying."
+        },
+        {
+          "rung": "computation",
+          "text": "Ignore the signs first: `100/4` is `25`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-100/(-4)` = `25`."
+        }
+      ],
+      "answer": "25",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply3/steps/aafc2dcMultiply3b/aafc2dcMultiply3b.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply3",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "nn-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "5*(-6) + 7*(-2) - 3"
+      },
+      "prompt": "Simplify 5 times negative 6, plus 7 times negative 2, minus 3.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `5*(-6) + 7*(-2) - 3`."
+        },
+        {
+          "rung": "information",
+          "text": "Multiply before adding and subtracting."
+        },
+        {
+          "rung": "computation",
+          "text": "`5*(-6)` is `-30` and `7*(-2)` is `-14`, so we get `-30 - 14 - 3`."
+        },
+        {
+          "rung": "answer",
+          "text": "`5*(-6) + 7*(-2) - 3` = `-47`."
+        }
+      ],
+      "answer": "-47",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/aafc2dcMultiply19/steps/aafc2dcMultiply19a/aafc2dcMultiply19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/aafc2dcMultiply19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    }
+  ]
+}

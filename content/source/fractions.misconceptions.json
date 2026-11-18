@@ -1,0 +1,166 @@
+{
+  "topic": "fractions",
+  "license": "CC-BY-4.0",
+  "misconceptions": [
+    {
+      "id": "add_tops_and_bottoms",
+      "belief": "To add fractions, add the tops and add the bottoms.",
+      "rule_sympy": "add_tops_and_bottoms",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/3"
+      },
+      "example_wrong_answer": "2/5",
+      "why_it_feels_right": "It treats the fraction like two separate whole numbers, and it works the same way as multiplying fractions.",
+      "what_to_say": {
+        "probe": "Is your answer bigger or smaller than `1/2`? Should it be?",
+        "nudge": "Can you add halves and thirds directly, or do you first need parts of the same size?",
+        "tell": "Cut both into sixths: `3/6 + 2/6` is `5/6`. We only count the parts; their size stays the same."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "1/4 + 1/2"
+        },
+        "prompt": "Add one quarter and one half.",
+        "answer": "3/4"
+      },
+      "source_quote": "Some students add fractions by adding the tops and adding the bottoms.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "multiply_both_by_whole",
+      "belief": "To multiply a fraction by a whole number, multiply both the top and the bottom.",
+      "rule_sympy": "multiply_both_by_whole",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3*(2/5)"
+      },
+      "example_wrong_answer": "6/15",
+      "why_it_feels_right": "Students learned that doing the same to the top and the bottom is safe, from equivalent fractions.",
+      "what_to_say": {
+        "probe": "Is `6/15` more than `2/5`, less, or the same? What should three lots of `2/5` be?",
+        "nudge": "Write three lots of two fifths as an addition and count the fifths.",
+        "tell": "Three lots of two fifths is six fifths, `6/5`. Only the number of parts changes."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "4*(3/7)"
+        },
+        "prompt": "Work out 4 times three sevenths.",
+        "answer": "12/7"
+      },
+      "source_quote": "Some students multiply both the top and the bottom by the whole number.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "flip_first_when_dividing",
+      "belief": "When dividing fractions, turn over the first fraction.",
+      "rule_sympy": "flip_first_when_dividing",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(3/4)"
+      },
+      "example_wrong_answer": "9/8",
+      "why_it_feels_right": "\"Flip and multiply\" is remembered as a slogan without which fraction is flipped.",
+      "what_to_say": {
+        "probe": "How many three quarters fit into two thirds: more than one, or less?",
+        "nudge": "Which fraction are we counting with? That is the one to turn over.",
+        "tell": "Only the divisor is turned over: `(2/3)*(4/3)` is `8/9`, a little less than one."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(3/5)/(1/2)"
+        },
+        "prompt": "Divide three fifths by one half.",
+        "answer": "6/5"
+      },
+      "source_quote": "Some students flip the first fraction when dividing, not the second.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "cancel_across_addition",
+      "belief": "You can cancel a number on the top with the bottom even across a plus sign.",
+      "rule_sympy": "cancel_across_addition",
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "(2+4)/2"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "Cancelling common numbers works for products, and the student sees a 2 on the top and a 2 on the bottom.",
+      "what_to_say": {
+        "probe": "What is the top of the fraction altogether, before you divide?",
+        "nudge": "Work out the top first, then divide. Do you get the same answer?",
+        "tell": "The fraction bar divides the whole top: `(2+4)/2` is `6/2`, which is `3`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "(6+9)/3"
+        },
+        "prompt": "Simplify (6 + 9) over 3.",
+        "answer": "5"
+      },
+      "source_quote": "Some students cancel across a plus sign.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "simplify_one_part",
+      "belief": "To simplify a fraction, you may divide just the top or just the bottom.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "simplify",
+        "expr": "6/8"
+      },
+      "example_wrong_answer": "3/8",
+      "why_it_feels_right": "Halving a number feels like simplifying, and the student does not check that the amount stays the same.",
+      "what_to_say": {
+        "probe": "Is `3/8` the same amount as `6/8`? Draw both as bars.",
+        "nudge": "What number divides both the top and the bottom?",
+        "tell": "Divide the top and the bottom by the same number: `6/8` is `3/4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "simplify",
+          "expr": "10/15"
+        },
+        "prompt": "Simplify ten fifteenths.",
+        "answer": "2/3"
+      },
+      "source_quote": "Some students simplify by changing only one part of the fraction.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    }
+  ]
+}

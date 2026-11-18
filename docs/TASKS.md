@@ -32,7 +32,7 @@ Status: `[ ]` todo · `[~]` in progress · `[x]` done.
   - `first_line_that_doesnt_follow(lines)`.
   - A registry of misconception rules per topic (for example `add_tops_and_bottoms`, `sign_not_changed`, `divide_one_term`) that reproduce wrong answers.
   - **Done when:** pytest covers each function, including the guards (an identical step is rejected; `2/4` for "simplify 2/4" is not simplified; `x=3` equals `3`; `-2/4` equals `-1/2`).
-- [ ] **T2 Content**
+- [x] **T2 Content**
   - Write 3 English source lessons in `content/source/` (negative numbers, fractions, linear equations), short and teacher-level, CC BY 4.0.
   - Import 8 practice problems per topic from OATutor-Content (CC BY 4.0) into `content/practice/`, with attribution per item.
   - Define 4–6 misconceptions per topic that link to T1 rules.

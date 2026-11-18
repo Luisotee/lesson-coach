@@ -1,0 +1,333 @@
+{
+  "topic": "fractions",
+  "items": [
+    {
+      "id": "fr-1",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "1/2 + 1/7"
+      },
+      "prompt": "Add one half and one seventh.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want one fraction equal to `1/2 + 1/7`."
+        },
+        {
+          "rung": "information",
+          "text": "To add fractions, first give them the same denominator."
+        },
+        {
+          "rung": "computation",
+          "text": "The common denominator is `14`: `7/14 + 2/14`."
+        },
+        {
+          "rung": "answer",
+          "text": "`1/2 + 1/7` = `9/14`."
+        }
+      ],
+      "answer": "9/14",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand20/steps/ac9c764addand20a/ac9c764addand20a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand20",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-2",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 + 5/18"
+      },
+      "prompt": "Add seven twelfths and five eighteenths.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want one fraction equal to `7/12 + 5/18`."
+        },
+        {
+          "rung": "information",
+          "text": "Use the least common multiple of 12 and 18, which is `36`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` is `21/36` and `5/18` is `10/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 + 5/18` = `31/36`."
+        }
+      ],
+      "answer": "31/36",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand5/steps/ac9c764addand5a/ac9c764addand5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand5",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-3",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "7/12 - 9/16"
+      },
+      "prompt": "Subtract nine sixteenths from seven twelfths.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want one fraction equal to `7/12 - 9/16`."
+        },
+        {
+          "rung": "information",
+          "text": "Use the least common multiple of 12 and 16, which is `48`."
+        },
+        {
+          "rung": "computation",
+          "text": "`7/12` is `28/48` and `9/16` is `27/48`."
+        },
+        {
+          "rung": "answer",
+          "text": "`7/12 - 9/16` = `1/48`."
+        }
+      ],
+      "answer": "1/48",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand19/steps/ac9c764addand19a/ac9c764addand19a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand19",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-4",
+      "problem": {
+        "kind": "simplify",
+        "expr": "120/252"
+      },
+      "prompt": "Write 120 over 252 in lowest terms.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the simplest fraction equal to `120/252`."
+        },
+        {
+          "rung": "information",
+          "text": "Divide the top and the bottom by their greatest common factor."
+        },
+        {
+          "rung": "computation",
+          "text": "Divide the top and the bottom by `12`, the greatest common factor of 120 and 252."
+        },
+        {
+          "rung": "answer",
+          "text": "`120/252` = `10/21`."
+        }
+      ],
+      "answer": "10/21",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions2/steps/a23c2f8fractions2a/a23c2f8fractions2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions2",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-5",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(-3/4)*(-4/9)"
+      },
+      "prompt": "Multiply negative three quarters by negative four ninths.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `(-3/4)*(-4/9)`."
+        },
+        {
+          "rung": "information",
+          "text": "The two signs are the same, so the product is positive. Multiply the tops and the bottoms."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3*4)/(4*9)` is `12/36`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(-3/4)*(-4/9)` = `1/3`."
+        }
+      ],
+      "answer": "1/3",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/a23c2f8fractions5/steps/a23c2f8fractions5a/a23c2f8fractions5a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/a23c2f8fractions5",
+        "oer": "OpenStax: Intermediate Algebra (https://openstax.org/details/books/intermediate-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-6",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(3/4)/(5/8)"
+      },
+      "prompt": "Divide three quarters by five eighths.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `(3/4)/(5/8)`."
+        },
+        {
+          "rung": "information",
+          "text": "To divide by a fraction, multiply by its reciprocal. The reciprocal of the divisor is `1/(5/8)`, which is `8/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(3/4)*(8/5)` is `24/20`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(3/4)/(5/8)` = `6/5`."
+        }
+      ],
+      "answer": "6/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize13/steps/ab3c11fVisualize13a/ab3c11fVisualize13a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize13",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-7",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "(2/3)/(5/6)"
+      },
+      "prompt": "Divide two thirds by five sixths.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want the value of `(2/3)/(5/6)`."
+        },
+        {
+          "rung": "information",
+          "text": "To divide by a fraction, multiply by its reciprocal. The reciprocal of the divisor is `1/(5/6)`, which is `6/5`."
+        },
+        {
+          "rung": "computation",
+          "text": "`(2/3)*(6/5)` is `12/15`."
+        },
+        {
+          "rung": "answer",
+          "text": "`(2/3)/(5/6)` = `4/5`."
+        }
+      ],
+      "answer": "4/5",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ab3c11fVisualize14/steps/ab3c11fVisualize14a/ab3c11fVisualize14a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ab3c11fVisualize14",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    },
+    {
+      "id": "fr-8",
+      "problem": {
+        "kind": "evaluate",
+        "expr": "-23/24 - 13/24"
+      },
+      "prompt": "Subtract thirteen twenty-fourths from negative twenty-three twenty-fourths.",
+      "hints": [
+        {
+          "rung": "goal",
+          "text": "We want one fraction equal to `-23/24 - 13/24`."
+        },
+        {
+          "rung": "information",
+          "text": "The denominators are already the same, so subtract the tops."
+        },
+        {
+          "rung": "computation",
+          "text": "`-23 - 13` is `-36`, so we get `-36/24`."
+        },
+        {
+          "rung": "answer",
+          "text": "`-23/24 - 13/24` = `-3/2`."
+        }
+      ],
+      "answer": "-3/2",
+      "source": {
+        "repo": "https://github.com/CAHLR/OATutor-Content",
+        "commit": "08ef4819889e70835e86926f84037e79141652f3",
+        "path": "content-pool/ac9c764addand2/steps/ac9c764addand2a/ac9c764addand2a.json",
+        "url": "https://github.com/CAHLR/OATutor-Content/tree/08ef4819889e70835e86926f84037e79141652f3/content-pool/ac9c764addand2",
+        "oer": "OpenStax: Elementary Algebra (https://openstax.org/details/books/elementary-algebra-2e), problems CC BY 4.0; hints by OATutor (https://OATutor.io), CC BY 4.0",
+        "license": "CC-BY-4.0",
+        "changes": "Took one step of the problem; converted the LaTeX to plain sympy text; wrote our own prompt; condensed and reworded the OATutor hints into the four rungs goal, information, computation and answer."
+      },
+      "license": "CC-BY-4.0",
+      "ai_generated": [
+        "prompt",
+        "hints"
+      ]
+    }
+  ]
+}

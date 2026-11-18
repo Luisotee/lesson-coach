@@ -1,0 +1,166 @@
+{
+  "topic": "negative-numbers",
+  "license": "CC-BY-4.0",
+  "misconceptions": [
+    {
+      "id": "minus_negative_stays_minus",
+      "belief": "Subtracting a negative number makes the answer smaller.",
+      "rule_sympy": "minus_negative_stays_minus",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "5 - (-3)"
+      },
+      "example_wrong_answer": "2",
+      "why_it_feels_right": "Subtraction usually makes things smaller, and the student sees two minus signs and keeps a minus.",
+      "what_to_say": {
+        "probe": "Where do you start on the number line, and which way does subtracting `-3` move you?",
+        "nudge": "What is the difference between `5` and `-3`? Count the steps from `-3` up to `5`.",
+        "tell": "Subtracting a negative is the same as adding its opposite, so `5 - (-3)` is `5 + 3`, which is `8`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - (-6)"
+        },
+        "prompt": "Work out 2 minus negative 6.",
+        "answer": "8"
+      },
+      "source_quote": "Some students believe that subtracting a negative number makes the answer smaller.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "neg_times_neg_is_neg",
+      "belief": "A negative times a negative is negative.",
+      "rule_sympy": "neg_times_neg_is_neg",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "(-2)*(-3)"
+      },
+      "example_wrong_answer": "-6",
+      "why_it_feels_right": "Both numbers are negative, so it seems natural that the answer is negative too.",
+      "what_to_say": {
+        "probe": "What is `1*(-3)`, and `0*(-3)`? What happens to the answer each time the first number goes down by one?",
+        "nudge": "Continue the pattern `1*(-3)`, `0*(-3)`, `-1*(-3)` and see which way the answers go.",
+        "tell": "The pattern goes up by three each step, so `(-2)*(-3)` is `6`. A negative times a negative is positive."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "(-4)*(-5)"
+        },
+        "prompt": "Work out negative 4 times negative 5.",
+        "answer": "20"
+      },
+      "source_quote": "Some students believe that a negative times a negative is negative.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "add_magnitudes_keep_sign",
+      "belief": "When adding numbers with different signs, add the sizes and keep the first sign.",
+      "rule_sympy": "add_magnitudes_keep_sign",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-5 + 3"
+      },
+      "example_wrong_answer": "-8",
+      "why_it_feels_right": "The student has learned that adding makes numbers bigger in size, and the first sign is the one they see first.",
+      "what_to_say": {
+        "probe": "If you start at `-5` and move three steps, which way do you move?",
+        "nudge": "Picture a tug of war between `-5` and `3`. Which side wins, and by how much?",
+        "tell": "The positive three pulls back towards zero, so `-5 + 3` is `-2`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-9 + 4"
+        },
+        "prompt": "Work out negative 9 plus 4.",
+        "answer": "-5"
+      },
+      "source_quote": "Some students add the sizes and keep the sign of the first number.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "subtract_smaller_from_larger",
+      "belief": "You always subtract the smaller number from the larger one.",
+      "rule_sympy": "subtract_smaller_from_larger",
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "3 - 7"
+      },
+      "example_wrong_answer": "4",
+      "why_it_feels_right": "With whole numbers, students were told you cannot take a bigger number from a smaller one.",
+      "what_to_say": {
+        "probe": "Where do you land if you start at `3` and take seven steps to the left?",
+        "nudge": "Is `3 - 7` the same as `7 - 3`? Try both with a number line.",
+        "tell": "Seven steps left from three lands on `-4`, so `3 - 7` is `-4`."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "2 - 9"
+        },
+        "prompt": "Work out 2 minus 9.",
+        "answer": "-7"
+      },
+      "source_quote": "Some students always subtract the smaller number from the larger one.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    },
+    {
+      "id": "two_negatives_make_positive",
+      "belief": "Two negatives make a positive, also when adding.",
+      "rule_sympy": null,
+      "example_problem": {
+        "kind": "evaluate",
+        "expr": "-4 + (-3)"
+      },
+      "example_wrong_answer": "7",
+      "why_it_feels_right": "The rule \"two negatives make a positive\" is short and memorable, so it gets applied to every pair of minus signs.",
+      "what_to_say": {
+        "probe": "If you owe 4 and then owe 3 more, how much do you owe?",
+        "nudge": "Start at `-4` on the number line and add `-3`. Which way do you move?",
+        "tell": "Adding a negative moves left, so `-4 + (-3)` is `-7`. The sign rule is for multiplying and dividing."
+      },
+      "check_question": {
+        "problem": {
+          "kind": "evaluate",
+          "expr": "-6 + (-2)"
+        },
+        "prompt": "Work out negative 6 plus negative 2.",
+        "answer": "-8"
+      },
+      "source_quote": "Some students apply \"two negatives make a positive\" to addition.",
+      "ai_generated": [
+        "belief",
+        "why_it_feels_right",
+        "what_to_say",
+        "check_question",
+        "source_quote"
+      ]
+    }
+  ]
+}
