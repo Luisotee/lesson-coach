@@ -10,7 +10,9 @@ Prose may carry inline math in backticks, and each backtick span must parse.
 
 from __future__ import annotations
 
+import json
 import re
+from pathlib import Path
 from typing import Annotated, Literal, Self, get_args
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
@@ -36,12 +38,12 @@ Sha = Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{40}$")]
 
 NUMBER = re.compile(r"\d+(?:\.\d+)?")
 
-# The prompts a problem may carry, by language: instructions only, because the page shows the
-# problem's math beside them. `{var}` is the letter to solve for. A translation (T9) adds its
-# language here; the prompt text never carries math, so it can't go stale or be mistranslated.
-PROMPTS: dict[str, dict[str, str]] = {
-    "en": {"evaluate": "Work out:", "simplify": "Simplify:", "solve": "Solve for {var}:"},
-}
+# The prompts a problem may carry, by language (`prompts.json`): instructions only, because the
+# page shows the problem's math beside them. `{var}` is the letter to solve for. The pipeline's
+# translate.py adds each language it ships; a prompt never carries math, so it can't go stale.
+PROMPTS: dict[str, dict[str, str]] = json.loads(
+    (Path(__file__).with_name("prompts.json")).read_text(encoding="utf-8")
+)
 
 
 def prompt_for(kind: str, expr: str, lang: str = "en") -> str:

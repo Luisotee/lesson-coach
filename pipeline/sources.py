@@ -75,3 +75,15 @@ def write_pack(pack: Pack) -> Path:
     data = pack.model_dump(mode="json")
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
     return path
+
+
+def translation_hash(topic: TopicId) -> str:
+    """A translated pack's `source_hash`: the English pack and the translation prompts, so a
+    translation is stale when either changes."""
+    from pipeline.translate_prompts import TRANSLATE_VERSION
+
+    digest = hashlib.sha256(f"translate-{TRANSLATE_VERSION}".encode())
+    for path in (pack_path(topic, "en"), ROOT / "pipeline" / "translate_prompts.py"):
+        digest.update(path.name.encode())
+        digest.update(path.read_bytes())
+    return digest.hexdigest()

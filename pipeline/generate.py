@@ -86,6 +86,7 @@ class Stats:
     retries: int = 0
     samples: int = 0
     judge_flags: Counter[str] = field(default_factory=Counter)
+    judged_items: int = 0  # texts sent to the judge (the first judge of each, not the votes)
     dropped: list[str] = field(default_factory=list)
 
 
@@ -114,10 +115,17 @@ def skipped(key: str, failing: Failing) -> bool:
 
 
 class Runner:
-    def __init__(self, llm: LLM, stats: Stats, concurrency: int = CONCURRENCY) -> None:
+    def __init__(
+        self,
+        llm: LLM,
+        stats: Stats,
+        concurrency: int = CONCURRENCY,
+        slots: asyncio.Semaphore | None = None,
+    ) -> None:
+        """`slots` shares one limit on calls in flight between runners (one per language)."""
         self.llm = llm
         self.stats = stats
-        self.slots = asyncio.Semaphore(concurrency)
+        self.slots = slots or asyncio.Semaphore(concurrency)
 
     async def call[T: BaseModel](
         self, task: Task, messages: list[dict[str, object]], out: type[T]
@@ -141,15 +149,24 @@ class Runner:
         value: T | None = result.value
         return value
 
-    async def judge(self, lesson: str, facts: str, texts: dict[str, str]) -> Failing | None:
+    async def judge(
+        self,
+        lesson: str,
+        facts: str,
+        texts: dict[str, str],
+        messages: list[dict[str, object]] | None = None,
+    ) -> Failing | None:
         """Fields with an unsupported claim, by majority when the first judge flags any. None
-        when the judge gives no verdict, even after retrying: then nothing may ship."""
+        when the judge gives no verdict, even after retrying: then nothing may ship. `messages`
+        replaces the default judge prompt (translate.py judges translations with its own)."""
         if not texts:
             return {}
+        self.stats.judged_items += len(texts)
+        asked = messages if messages is not None else judge_messages(lesson, facts, texts)
 
         async def once() -> Failing | None:
             for _ in range(JUDGE_ATTEMPTS):
-                out = await self.call("judge", judge_messages(lesson, facts, texts), JudgeOut)
+                out = await self.call("judge", asked, JudgeOut)
                 if out is not None:
                     break
             else:

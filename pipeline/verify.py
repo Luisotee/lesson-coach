@@ -26,10 +26,10 @@ from app.content.schema import TOPIC_IDS, Pack, TopicId
 from pydantic import ValidationError
 
 from pipeline import ROOT
-from pipeline.checks import Finding, pack_findings
+from pipeline.checks import Finding, pack_findings, prose_paths, translation_findings
 from pipeline.core import LLM, StepsFor, offline_llm, worked_steps
 from pipeline.prompts import example_facts, prose_texts, steps_texts
-from pipeline.sources import load, pack_path
+from pipeline.sources import load, load_pack, pack_path, translation_hash
 
 # USD per million tokens. Defaults: Microsoft's published GPT-5.5 rate (Foundry announcement,
 # azure.microsoft.com/en-us/blog/openais-gpt-5-5-in-microsoft-foundry-...). Override with
@@ -77,7 +77,12 @@ def verify_topic(topic: TopicId, lang: str, steps_for: StepsFor = worked_steps) 
     except ValidationError as err:
         result.findings.append(Finding(str(path), "schema", str(err)))
         return result
-    result.findings = pack_findings(pack, load(topic), steps_for)
+    if lang == "en":
+        result.findings = pack_findings(pack, load(topic), steps_for)
+    else:
+        english = load_pack(topic, "en")
+        expected = translation_hash(topic)
+        result.findings = translation_findings(pack, english, expected, steps_for)
     result.unavailable = pack.unavailable
     for example in pack.worked_examples:
         result.steps += len(example.steps)
@@ -85,10 +90,34 @@ def verify_topic(topic: TopicId, lang: str, steps_for: StepsFor = worked_steps) 
     return result
 
 
+async def judge_translation(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str]]:
+    """The translation judge over every text of a translated pack, unit by unit, as
+    translate.py runs it."""
+    from pipeline.generate import Runner, Stats
+    from pipeline.languages import LANGUAGES
+    from pipeline.translate import units
+    from pipeline.translate_prompts import judge_messages
+
+    pack, english = load_pack(topic, lang), load_pack(topic, "en")
+    runner = Runner(llm, Stats())
+    ours = prose_paths(pack)
+    jobs = []
+    for _, group in units(english):
+        pairs = {p: f"EN: {text}\nTR: {ours[p]}" for p, text in group.items() if p in ours}
+        messages = judge_messages(LANGUAGES[lang], pairs)
+        jobs.append(runner.judge("", "", pairs, messages=messages))
+    flagged: dict[str, list[str]] = {}
+    for found in await asyncio.gather(*jobs):
+        flagged.update(found if found is not None else NO_VERDICT)
+    return flagged
+
+
 async def judge_topic(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str]]:
     """The LLM judge over the pack's prose, as generate.py runs it."""
     from pipeline.generate import Runner, Stats
 
+    if lang != "en":
+        return await judge_translation(topic, lang, llm)
     pack = Pack.model_validate_json(pack_path(topic, lang).read_text())
     lesson = load(topic).lesson
     runner = Runner(llm, Stats())
@@ -105,12 +134,17 @@ async def judge_topic(topic: TopicId, lang: str, llm: LLM) -> dict[str, list[str
     return flagged
 
 
-def cost_line(stats: object) -> str:
+def cost_usd(stats: object) -> float:
     price = prices()
     cached = getattr(stats, "cached_tokens", 0)
     fresh = getattr(stats, "prompt_tokens", 0) - cached
     out = getattr(stats, "completion_tokens", 0)
-    usd = (fresh * price["input"] + cached * price["cached"] + out * price["output"]) / 1e6
+    return (fresh * price["input"] + cached * price["cached"] + out * price["output"]) / 1e6
+
+
+def cost_line(stats: object) -> str:
+    price = prices()
+    usd = cost_usd(stats)
     return (
         f"- Cost: about ${usd:.2f} at ${price['input']} input, ${price['cached']} cached and "
         f"${price['output']} output per million tokens (reasoning tokens bill as output)"
@@ -190,34 +224,51 @@ def judgeable(results: list[TopicResult]) -> list[TopicId]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=(__doc__ or "").split("\n")[0])
-    parser.add_argument("--lang", default="en")
+    parser.add_argument("--lang", default="en", help="a language code, or `all`")
     parser.add_argument("--judge", action="store_true", help="also run the LLM judge")
     parser.add_argument("--report", help="write a markdown report to this path")
     args = parser.parse_args()
-    results = [verify_topic(t, args.lang) for t in TOPIC_IDS]
+    langs = pack_langs() if args.lang == "all" else [args.lang]
+    if args.report and len(langs) > 1:
+        parser.error("--report takes one language")
+    failed = False
+    for lang in langs:
+        failed |= verify_lang(lang, args.judge, args.report)
+    sys.exit(1 if failed else 0)
+
+
+def pack_langs() -> list[str]:
+    """English, then every language with a directory of packs."""
+    found = sorted(p.name for p in (ROOT / "content" / "generated").iterdir() if p.is_dir())
+    return ["en", *[lang for lang in found if lang != "en"]]
+
+
+def verify_lang(lang: str, judge: bool, report: str | None) -> bool:
+    """Checks one language's packs and prints the result; True when anything failed."""
+    results = [verify_topic(t, lang) for t in TOPIC_IDS]
     judged: dict[TopicId, dict[str, list[str]]] | None = None
-    if args.judge:
+    if judge:
         llm, _ = offline_llm()
         topics = judgeable(results)
 
         async def run() -> dict[TopicId, dict[str, list[str]]]:
-            found = await asyncio.gather(*(judge_topic(t, args.lang, llm) for t in topics))
+            found = await asyncio.gather(*(judge_topic(t, lang, llm) for t in topics))
             return dict(zip(topics, found, strict=True))
 
         judged = asyncio.run(run())
-    if args.report:
-        write_report(Path(args.report), args.lang, judged=judged, results=results)
+    if report:
+        write_report(Path(report), lang, judged=judged, results=results)
     failed = False
     for r in results:
         flags = (judged or {}).get(r.topic, {})
         status = "ok" if not r.findings and not flags else "FAILED"
         failed |= status != "ok"
-        print(f"{r.topic}: {status} ({len(r.findings)} findings, {len(flags)} judge flags)")
+        print(f"{lang} {r.topic}: {status} ({len(r.findings)} findings, {len(flags)} judge flags)")
         for f in r.findings:
             print(f"  {f}")
         for key, why in flags.items():
             print(f"  judge {key}: {'; '.join(why)}")
-    sys.exit(1 if failed else 0)
+    return failed
 
 
 if __name__ == "__main__":
