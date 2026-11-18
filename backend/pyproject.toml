@@ -5,6 +5,7 @@ description = "Lesson Coach API: sympy math core, packs and live diagnosis."
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "fastapi>=0.115",
+    "pyyaml>=6.0.3",
     "sympy>=1.13",
     "uvicorn[standard]>=0.32",
 ]
@@ -15,6 +16,7 @@ dev = [
     "mypy>=1.13",
     "pytest>=8.3",
     "ruff>=0.8",
+    "types-pyyaml>=6.0.12.20261113",
 ]
 
 [tool.uv]
