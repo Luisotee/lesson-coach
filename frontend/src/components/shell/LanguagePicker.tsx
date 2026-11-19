@@ -45,8 +45,9 @@ export function LanguagePicker() {
           onValueChange={(code) => void i18n.changeLanguage(code)}
         >
           {LANGUAGES.map((l) => (
-            <DropdownMenuRadioItem key={l.code} value={l.code} lang={l.code} dir={l.dir}>
-              {l.nativeName}
+            // Rows line up with the menu's direction; dir="auto" keeps each name's own order.
+            <DropdownMenuRadioItem key={l.code} value={l.code} lang={l.code}>
+              <span dir="auto">{l.nativeName}</span>
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>
