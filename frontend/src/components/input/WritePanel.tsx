@@ -17,11 +17,13 @@ import { Button } from '@/components/ui/button'
 export function WritePanel({
   label,
   single,
+  confirmLabel,
   onLines,
   onTypeInstead,
 }: {
   label: string
   single: boolean
+  confirmLabel?: string
   /** The confirmed lines, or null when nothing is confirmed. */
   onLines: (lines: ReviewLine[] | null) => void
   onTypeInstead: () => void
@@ -34,22 +36,21 @@ export function WritePanel({
 
   if (phase.kind === 'review') {
     return (
-      <div className="flex flex-col gap-3">
-        <TranscriptionReview
-          initial={phase.lines}
-          single={single}
-          retakeLabel={t('input.write.again')}
-          onConfirm={onLines}
-          onUnconfirm={() => onLines(null)}
-          onRetake={() => {
-            onLines(null)
-            reset()
-          }}
-        />
-        <div>
-          <TypeInstead onClick={onTypeInstead} />
-        </div>
-      </div>
+      <TranscriptionReview
+        initial={phase.lines}
+        single={single}
+        label={label}
+        source="write"
+        confirmLabel={confirmLabel}
+        retakeLabel={t('input.write.again')}
+        onConfirm={onLines}
+        onUnconfirm={() => onLines(null)}
+        onRetake={() => {
+          onLines(null)
+          reset()
+        }}
+        onTypeInstead={onTypeInstead}
+      />
     )
   }
 

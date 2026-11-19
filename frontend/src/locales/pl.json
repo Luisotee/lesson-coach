@@ -178,8 +178,8 @@
       "tryAgain": "Spróbuj ponownie"
     },
     "review": {
-      "heading": "Czy to właśnie zostało napisane?",
-      "intro": "Sprawdź każdy wiersz. Popraw wszystko, co zostało źle odczytane. Nic nie będzie sprawdzane, dopóki nie potwierdzisz.",
+      "heading": "Sprawdź, co zostało odczytane",
+      "intro": "Popraw wszystko, co zostało błędnie odczytane. Nic nie jest sprawdzane, dopóki tego nie użyjesz.",
       "toCheck": "{count, plural, one {# wiersz wymaga sprawdzenia.} few {# wiersze wymagają sprawdzenia.} many {# wierszy wymaga sprawdzenia.} other {# wiersza wymaga sprawdzenia.}}",
       "lines": "Odczytane wiersze",
       "lineN": "Wiersz {n}",
@@ -195,8 +195,9 @@
       "right": "Prawa strona (po =)",
       "op": "Zapis działania (np. −5)",
       "addLine": "Dodaj wiersz",
-      "confirm": "Tak, użyj tych wierszy",
-      "confirmed": "Potwierdzono.",
+      "useOne": "Użyj tego",
+      "useLines": "Użyj tych wierszy",
+      "notRight": "Nie zgadza się?",
       "blocked": {
         "none": "Nie ma wierszy do użycia. Dodaj jeden albo spróbuj ponownie.",
         "oneLine": "Zostaw tu tylko jeden wiersz: usuń pozostałe.",
@@ -212,6 +213,12 @@
       "rate_limited": "Teraz jest za dużo żądań. Spróbuj ponownie za {seconds} sekund albo wpisz zapis ręcznie.",
       "image": "Nie udało się przygotować obrazu. Spróbuj ponownie albo wpisz zapis ręcznie.",
       "open": "Nie udało się otworzyć tego zdjęcia. Użyj zdjęcia PNG, JPEG lub WebP albo wpisz zapis ręcznie."
+    },
+    "set": {
+      "fromWrite": "Potwierdzono na podstawie Twojego wpisu",
+      "fromPhoto": "Potwierdzono na podstawie zdjęcia",
+      "change": "Zmień",
+      "changeLabel": "Zmień {label}"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Zadanie {n} z {total} · tylko dla Ciebie, nic nie jest zapisywane",
     "backToTopic": "Wróć do tematu {topic}",
     "workingLabel": "Twoje rozwiązanie",
+    "useWorking": "Użyj tego rozwiązania",
     "workingHint": "Wysyłane tylko wtedy, gdy naciśniesz Sprawdź moje rozwiązanie. Nic nie jest przechowywane.",
     "check": "Sprawdź moje rozwiązanie",
     "checking": "Sprawdzanie…",
@@ -333,6 +341,9 @@
     "problemHint": "Ułamki wpisuj z ukośnikiem, np. 2/5. Pojawią się tak, jak je zapisujesz.",
     "answerLabel": "Odpowiedź ucznia",
     "workingLabel": "Tok rozumowania ucznia (opcjonalnie)",
+    "useProblem": "Użyj tego zadania",
+    "useAnswer": "Użyj tej odpowiedzi",
+    "useWorking": "Użyj tego rozwiązania",
     "privacy": "Nie wpisuj imion ani nazwisk uczniów. Nic z tego nie jest przechowywane.",
     "explain": "Wyjaśnij to",
     "explaining": "Analizuję…",

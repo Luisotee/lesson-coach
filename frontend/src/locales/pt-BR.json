@@ -178,8 +178,8 @@
       "tryAgain": "Tentar de novo"
     },
     "review": {
-      "heading": "Foi isto que foi escrito?",
-      "intro": "Confira cada linha. Edite o que foi lido errado. Nada será verificado até você confirmar.",
+      "heading": "Confira o que foi lido",
+      "intro": "Corrija qualquer coisa que tenha sido lida errado. Nada é verificado até você usar isso.",
       "toCheck": "{count, plural, one {# linha precisa ser conferida.} many {# linhas precisam ser conferidas.} other {# linhas precisam ser conferidas.}}",
       "lines": "Linhas que foram lidas",
       "lineN": "Linha {n}",
@@ -195,8 +195,9 @@
       "right": "Lado direito (depois de =)",
       "op": "Operação (como −5)",
       "addLine": "Adicionar uma linha",
-      "confirm": "Sim, usar estas linhas",
-      "confirmed": "Confirmado.",
+      "useOne": "Usar isto",
+      "useLines": "Usar estas linhas",
+      "notRight": "Não está certo?",
       "blocked": {
         "none": "Não há linhas para usar. Adicione uma ou tente de novo.",
         "oneLine": "Mantenha apenas uma linha aqui: remova as outras.",
@@ -212,6 +213,12 @@
       "rate_limited": "Muitas solicitações agora. Tente de novo em {seconds} segundos ou digite.",
       "image": "Não foi possível preparar a imagem. Tente de novo ou digite.",
       "open": "Não foi possível abrir esta foto. Use uma foto PNG, JPEG ou WebP, ou digite."
+    },
+    "set": {
+      "fromWrite": "Confirmado a partir da sua escrita",
+      "fromPhoto": "Confirmado a partir da foto",
+      "change": "Alterar",
+      "changeLabel": "Alterar {label}"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Problema {n} de {total} · só para você, nada é registrado",
     "backToTopic": "Voltar para {topic}",
     "workingLabel": "Sua resolução",
+    "useWorking": "Use esta resolução",
     "workingHint": "Enviado somente quando você pressiona Verificar minha resolução. Nada é armazenado.",
     "check": "Verificar minha resolução",
     "checking": "Verificando…",
@@ -333,6 +341,9 @@
     "problemHint": "Digite frações com uma barra, como 2/5. Elas aparecem como você as escreveria.",
     "answerLabel": "O que seu estudante respondeu",
     "workingLabel": "A resolução dele (opcional)",
+    "useProblem": "Usar este problema",
+    "useAnswer": "Usar esta resposta",
+    "useWorking": "Usar esta resolução",
     "privacy": "Por favor, não digite nomes de estudantes. Nada aqui é armazenado.",
     "explain": "Explicar isto",
     "explaining": "Analisando…",

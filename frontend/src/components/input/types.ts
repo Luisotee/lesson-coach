@@ -29,6 +29,11 @@ interface MathInputBase {
   label: string
   /** Hint under the label, e.g. "Type fractions with a slash, like 2/5." */
   description?: string
+  /**
+   * The button that uses what was read from a drawing or photo, worded for the field, e.g.
+   * "Use this problem". Default "Use this" (expression) or "Use these lines" (lines).
+   */
+  confirmLabel?: string
   /** A validation message from the page; shown and linked with aria-describedby. */
   error?: string
   /** Modes offered, in order. Default ['type', 'write', 'photo']. 'type' is always included. */

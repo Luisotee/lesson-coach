@@ -6,10 +6,16 @@ import type { Phase } from '@/components/input/useTranscription'
 import { Button } from '@/components/ui/button'
 
 /** "Type it instead": always offered next to the drawing board and the camera. */
-export function TypeInstead({ onClick }: { onClick: () => void }) {
+export function TypeInstead({
+  onClick,
+  variant = 'outline',
+}: {
+  onClick: () => void
+  variant?: 'outline' | 'ghost'
+}) {
   const { t } = useTranslation()
   return (
-    <Button type="button" variant="outline" className="min-h-11" onClick={onClick}>
+    <Button type="button" variant={variant} className="min-h-11" onClick={onClick}>
       <Keyboard aria-hidden="true" />
       {t('input.typeInstead')}
     </Button>

@@ -178,8 +178,8 @@
       "tryAgain": "Réessayer"
     },
     "review": {
-      "heading": "Est-ce bien ce qui a été écrit ?",
-      "intro": "Vérifie chaque ligne. Corrige ce qui a été mal lu. Rien n’est vérifié tant que tu ne confirmes pas.",
+      "heading": "Vérifiez ce qui a été lu",
+      "intro": "Corrigez ce qui a été mal lu. Rien n’est vérifié avant que vous l’utilisiez.",
       "toCheck": "{count, plural, one {# ligne doit être vérifiée.} many {# lignes doivent être vérifiées.} other {# lignes doivent être vérifiées.}}",
       "lines": "Lignes qui ont été lues",
       "lineN": "Ligne {n}",
@@ -195,8 +195,9 @@
       "right": "Membre de droite (après =)",
       "op": "Opération (comme −5)",
       "addLine": "Ajouter une ligne",
-      "confirm": "Oui, utiliser ces lignes",
-      "confirmed": "Confirmé.",
+      "useOne": "Utiliser ceci",
+      "useLines": "Utiliser ces lignes",
+      "notRight": "Ce n’est pas correct ?",
       "blocked": {
         "none": "Il n’y a aucune ligne à utiliser. Ajoutez-en une, ou réessayez.",
         "oneLine": "Gardez une seule ligne ici : supprimez les autres.",
@@ -212,6 +213,12 @@
       "rate_limited": "Trop de demandes à l’instant. Réessayez dans {seconds} secondes, ou saisissez au clavier.",
       "image": "L’image n’a pas pu être préparée. Réessayez, ou saisissez au clavier.",
       "open": "Cette photo n’a pas pu être ouverte. Utilisez une photo PNG, JPEG ou WebP, ou saisissez au clavier."
+    },
+    "set": {
+      "fromWrite": "Confirmé à partir de votre texte",
+      "fromPhoto": "Confirmé à partir de la photo",
+      "change": "Modifier",
+      "changeLabel": "Modifier {label}"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Problème {n} sur {total} · juste pour vous, rien n’est enregistré",
     "backToTopic": "Retour à {topic}",
     "workingLabel": "Votre démarche",
+    "useWorking": "Utiliser cette démarche",
     "workingHint": "Envoyé seulement quand vous appuyez sur Vérifier ma démarche. Rien n’est stocké.",
     "check": "Vérifier ma démarche",
     "checking": "Vérification…",
@@ -333,6 +341,9 @@
     "problemHint": "Saisissez les fractions avec une barre oblique, comme 2/5. Elles apparaissent comme vous les écririez.",
     "answerLabel": "Ce que votre élève a répondu",
     "workingLabel": "Son raisonnement (facultatif)",
+    "useProblem": "Utiliser ce problème",
+    "useAnswer": "Utiliser cette réponse",
+    "useWorking": "Utiliser ce raisonnement",
     "privacy": "Merci de ne pas saisir les noms des élèves. Rien ici n’est enregistré.",
     "explain": "Expliquer ceci",
     "explaining": "Analyse en cours…",

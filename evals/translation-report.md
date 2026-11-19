@@ -8,32 +8,32 @@ A language ships only when its prompts, its three packs and all its UI strings p
 - The judge compares each English text with its translation and reports errors (meaning, math terms, grammar). Flagged texts are asked for again with the problems, up to 3 times; that is the review pass. Its changes to UI strings are listed below.
 - Judge flag rate: judge-majority flags per text judged. Every judging counts, including each re-judge after a repair, so a text flagged in two rounds counts twice; it is not the share of distinct texts flagged.
 
-Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $53.11.
+Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $53.98.
 Not run: so, ti, ps, prs.
 
 Cost, calls, repairs and flag rate add up every recorded run of a language. A rerun reuses the units that already passed, so it adds little.
 
 | Language | Packs ship | Calls | Repairs | Flag rate | Cost | UI ships | Calls | Repairs | Flag rate | Cost |
 |---|---|---|---|---|---|---|---|---|---|---|
-| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 12 / 31 | 6 | 27.8% | $1.15 |
-| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 31 / 51 | 10 | 3.1% | $0.65 |
-| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 28 / 50 | 9 | 3.1% | $0.59 |
-| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 32 / 66 | 13 | 4.9% | $0.81 |
-| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 26 / 36 | 7 | 1.6% | $0.50 |
-| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 31 / 49 | 10 | 3.7% | $0.64 |
-| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 29 / 51 | 8 | 2.2% | $0.63 |
-| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 10 / 23 | 5 | 19.4% | $1.01 |
-| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 26 / 40 | 7 | 1.9% | $0.49 |
-| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 6 / 10 | 2 | 11.5% | $0.70 |
-| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 5 / 7 | 1 | 4.2% | $0.77 |
-| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 33 / 61 | 12 | 3.8% | $0.97 |
+| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 16 / 39 | 6 | 19.6% | $1.21 |
+| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 38 / 64 | 13 | 3.8% | $0.73 |
+| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 32 / 54 | 9 | 3.0% | $0.61 |
+| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 37 / 73 | 14 | 5.0% | $0.86 |
+| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 30 / 40 | 7 | 1.5% | $0.53 |
+| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 35 / 53 | 10 | 3.6% | $0.67 |
+| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 36 / 66 | 11 | 3.0% | $0.72 |
+| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 16 / 35 | 7 | 16.7% | $1.08 |
+| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 31 / 49 | 8 | 2.1% | $0.55 |
+| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 10 / 14 | 2 | 7.3% | $0.73 |
+| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 9 / 13 | 1 | 2.6% | $0.80 |
+| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 37 / 67 | 12 | 3.7% | $1.01 |
 | uk (Ukrainian) | no | 31 / 55 | 12 | 3.8% | $1.22 | no | 17 / 51 | 12 | 12.7% | $2.25 |
-| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 27 / 39 | 8 | 1.6% | $0.52 |
-| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 31 / 48 | 10 | 2.2% | $0.62 |
-| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 32 / 58 | 13 | 5.5% | $0.76 |
-| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 30 / 50 | 9 | 2.8% | $0.62 |
-| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 30 / 46 | 9 | 2.2% | $0.60 |
-| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 31 / 48 | 12 | 2.5% | $0.56 |
+| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 32 / 46 | 9 | 1.8% | $0.56 |
+| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 35 / 52 | 10 | 2.1% | $0.65 |
+| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 37 / 65 | 14 | 5.5% | $0.80 |
+| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 34 / 56 | 9 | 2.7% | $0.65 |
+| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 36 / 56 | 11 | 2.7% | $0.67 |
+| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 36 / 55 | 13 | 2.7% | $0.60 |
 | sw (Swahili) | no | 1 / 1 | 0 | 0.0% | $1.74 | no | 41 / 91 | 21 | 5.5% | $1.46 |
 
 ## uk: left out
@@ -77,6 +77,9 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | input.error.unclear | Aucun calcul n’a pu être lu ici. Réessayez avec une écriture plus lisible, ou saisissez-le au clavier. | Aucune écriture mathématique n’a pu être lue ici. Réessayez avec une écriture plus lisible, ou saisissez-la au clavier. | judge: “No math could be read here” is translated as “Aucun calcul n’a pu être lu ici” (The French narrows “math” to “calculation,” losing the broader meaning of mathematical content.) |
 | mistake.whatTheyWrote | ce qu’il a écrit | ce que l’élève a écrit | judge: TR: ce qu’il a écrit (The English 'they' refers to the student without specifying gender, but the French uses masculine singular 'il', adding gender not present in the source.) |
 | input.mode.type | Saisie | Type | judge: TR translates “Type” as “Saisie” (“input/entry”), which changes the meaning; it should refer to a type/category. (“Saisie” does not mean “type” in French.) |
+| input.set.fromWrite | Définir à partir de votre saisie | Définir à partir de votre écrit | judge: “writing” is translated as “saisie,” which means typed input/data entry rather than handwriting/writing, changing the source meaning. (The English refers to the user's writing, while the French suggests entered/typed input rather than what was written.) |
+| input.set.fromWrite | Définir à partir de votre écrit | Ensemble tiré de votre écrit | judge: TR translates 'Set' as the verb 'Définir' rather than the noun 'ensemble', changing the meaning of the UI label/math term. (In this context 'Set from your writing' means an 'ensemble' derived from the user's writing, not the action 'define from your writing'.) |
+| input.set.fromWrite | Ensemble tiré de votre écrit | Définir à partir de votre texte | judge: The French translation accurately conveys “Set from your writing.” (“Écrit” as a noun is unnatural here and likely means a written work/document rather than the act or sample of writing; the intended UI/math meaning would be “à partir de votre écriture/réponse écrite,” so the translation is not understandable as intended.) |
 
 ## de: UI review changes
 
@@ -120,6 +123,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | mistake.workingLabel | Η λύση του (προαιρετικά) | Η εργασία τους (προαιρετικά) | judge: The translation renders “Their” as “του” (“his/its”), changing the pronoun from gender-neutral/plural to singular masculine/neuter. (It changes the reference of the label; it should convey “their working” rather than “his/its solution.”) |
 | mistake.sayExample | Γραμμένο για ένα παράδειγμα άσκησης, όχι για το παράδειγμα του μαθητή σας: | Γραμμένο για ένα παράδειγμα άσκησης, όχι για την άσκηση του μαθητή σας: | judge: The Greek says “not for your student's example,” whereas the English means “not for your student's [problem/work].” (It changes the reference of “your student’s” to an example rather than the student’s problem/work.) |
 | mistake.sayWorded | διατυπώθηκε από AI για αυτό το πρόβλημα · οι αριθμοί ελέγχθηκαν από τη μηχανή μαθηματικών | διατυπώθηκε από τεχνητή νοημοσύνη για αυτό το πρόβλημα · οι αριθμοί ελέγχθηκαν από τη μαθηματική μηχανή | judge: The Greek translation uses 'AI' in Latin letters without an article, making the phrase unidiomatic/grammatically incomplete for 'by AI'. (In Greek this should be something like 'διατυπώθηκε από τεχνητή νοημοσύνη' or 'από την ΤΝ'. 'από AI' is not natural Greek and may not be understood as intended.) |
+| practice.useWorking | Χρήση αυτής της εργασίας | Χρησιμοποιήστε αυτή τη λύση | judge: Χρήση αυτής της εργασίας (The Greek means “Use of this work/assignment” and does not convey the intended math sense of “working” as the shown calculations/solution steps; it also changes the imperative into a noun phrase.) |
 
 ## it: UI review changes
 
@@ -167,6 +171,9 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | math.speech.positive | {arg} positivo | mais {arg} | judge: TR says '{arg} positivo' for 'positive {arg}'. ('{arg} positivo' describes the argument as positive rather than reading the unary plus expression 'positive {arg}'; the meaning can change.) |
 | input.mode.type | Digitação | Tipo | judge: The translation renders “Type” as “Digitação,” which means typing/inputting text rather than “Tipo” as a category or mode label. (It changes the meaning of the UI label.) |
 | mistake.possibilities | {count, plural, =1 {uma possibilidade} one {# possibilidade} many {# possibilidades} other {# possibilidades}} | {count, plural, =1 {uma possibilidade} one {# possibilidades} many {# possibilidades} other {# possibilidades}} | judge: The translation uses the Portuguese plural category `one` with singular `# possibilidade`, which in Brazilian Portuguese plural rules can apply to 0, producing “0 possibilidade” instead of “0 possibilidades.” (This can change the intended pluralization for count = 0; it should ensure counts other than exactly 1 use the plural form.) |
+| input.review.intro | Corrija o que foi lido errado. Nada é verificado até você usar. | Corrija o que foi lido errado. Nada é verificado até você usar isso. | judge: The translation omits the object in 'até você usar', making 'until you use it' incomplete/unnatural in Portuguese. (Brazilian Portuguese requires an object here, e.g. 'até você usar isso/usar o item'; as written it is ungrammatical/unclear.) |
+| input.review.intro | Corrija o que foi lido errado. Nada é verificado até você usar isso. | Corrija qualquer coisa que tenha sido lida errado. Nada é verificado até você usar. | judge: The translation changes the meaning of 'anything that was misread' and 'use it.' ('Corrija o que foi lido errado' is acceptable, but 'até você usar isso' is unnatural and ambiguous in Portuguese; 'it' refers to the checked item/context, not a demonstrative 'isso', and native readers may not understand the intended meaning.) |
+| input.review.intro | Corrija qualquer coisa que tenha sido lida errado. Nada é verificado até você usar. | Corrija qualquer coisa que tenha sido lida errado. Nada é verificado até você usar isso. | judge: Corrija qualquer coisa que tenha sido lida errado. Nada é verificado até você usar. (The second sentence is incomplete in Portuguese: 'até você usar' omits the object for 'use it' and would not be understood as intended; it should be like 'até você usá-lo/usar isso'.) |
 
 ## ru: UI review changes
 
@@ -177,6 +184,8 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | math.speech.fractionSimple | {num, plural, =1 {одна} =2 {две} one {#} few {#} many {#} other {#}} {den, plural, =2 {{num, plural, =1 {вторая} =2 {вторых} one {вторая} few {вторых} many {вторых} other {вторых}}} =3 {{num, plural, =1 {третья} =2 {третьих} one {третья} few {третьих} many {третьих} other {третьих}}} =4 {{num, plural, =1 {четверть} =2 {четверти} one {четверть} few {четверти} many {четвертей} other {четверти}}} =5 {{num, plural, =1 {пятая} =2 {пятых} one {пятая} few {пятых} many {пятых} other {пятых}}} =6 {{num, plural, =1 {шестая} =2 {шестых} one {шестая} few {шестых} many {шестых} other {шестых}}} =7 {{num, plural, =1 {седьмая} =2 {седьмых} one {седьмая} few {седьмых} many {седьмых} other {седьмых}}} =8 {{num, plural, =1 {восьмая} =2 {восьмых} one {восьмая} few {восьмых} many {восьмых} other {восьмых}}} =9 {{num, plural, =1 {девятая} =2 {девятых} one {девятая} few {девятых} many {девятых} other {девятых}}} =10 {{num, plural, =1 {десятая} =2 {десятых} one {десятая} few {десятых} many {десятых} other {десятых}}} one {делить на #} few {делить на #} many {делить на #} other {делить на #}} | {num, plural, =1 {одна} =2 {две} one {#} few {#} many {#} other {#}} {den, plural, =2 {{num, plural, =1 {вторая} =2 {вторых} one {вторая} few {вторых} many {вторых} other {вторых}}} =3 {{num, plural, =1 {третья} =2 {третьих} one {третья} few {третьих} many {третьих} other {третьих}}} =4 {{num, plural, =1 {четверть} =2 {четверти} one {четверть} few {четверти} many {четвертей} other {четверти}}} =5 {{num, plural, =1 {пятая} =2 {пятых} one {пятая} few {пятых} many {пятых} other {пятых}}} =6 {{num, plural, =1 {шестая} =2 {шестых} one {шестая} few {шестых} many {шестых} other {шестых}}} =7 {{num, plural, =1 {седьмая} =2 {седьмых} one {седьмая} few {седьмых} many {седьмых} other {седьмых}}} =8 {{num, plural, =1 {восьмая} =2 {восьмых} one {восьмая} few {восьмых} many {восьмых} other {восьмых}}} =9 {{num, plural, =1 {девятая} =2 {девятых} one {девятая} few {девятых} many {девятых} other {девятых}}} =10 {{num, plural, =1 {десятая} =2 {десятых} one {десятая} few {десятых} many {десятых} other {десятых}}} one {на #} few {на #} many {на #} other {на #}} | judge: The generic denominator case is translated as “делить на #”. (For a fraction read aloud, English “over #” means “# in the denominator”; Russian should be like “#-ых/…”, “на #”, or “дробная черта #”, not the imperative/infinitive phrase “делить на #” ('divide by #').) |
 | math.speech.fractionSimple | {num, plural, =1 {одна} =2 {две} one {#} few {#} many {#} other {#}} {den, plural, =2 {{num, plural, =1 {вторая} =2 {вторых} one {вторая} few {вторых} many {вторых} other {вторых}}} =3 {{num, plural, =1 {третья} =2 {третьих} one {третья} few {третьих} many {третьих} other {третьих}}} =4 {{num, plural, =1 {четверть} =2 {четверти} one {четверть} few {четверти} many {четвертей} other {четверти}}} =5 {{num, plural, =1 {пятая} =2 {пятых} one {пятая} few {пятых} many {пятых} other {пятых}}} =6 {{num, plural, =1 {шестая} =2 {шестых} one {шестая} few {шестых} many {шестых} other {шестых}}} =7 {{num, plural, =1 {седьмая} =2 {седьмых} one {седьмая} few {седьмых} many {седьмых} other {седьмых}}} =8 {{num, plural, =1 {восьмая} =2 {восьмых} one {восьмая} few {восьмых} many {восьмых} other {восьмых}}} =9 {{num, plural, =1 {девятая} =2 {девятых} one {девятая} few {девятых} many {девятых} other {девятых}}} =10 {{num, plural, =1 {десятая} =2 {десятых} one {десятая} few {десятых} many {десятых} other {десятых}}} one {на #} few {на #} many {на #} other {на #}} | {num, plural, =1 {одна} =2 {две} one {#} few {#} many {#} other {#}} {den, plural, =2 {{num, plural, =1 {вторая} =2 {вторых} one {вторая} few {вторых} many {вторых} other {вторых}}} =3 {{num, plural, =1 {третья} =2 {третьих} one {третья} few {третьих} many {третьих} other {третьих}}} =4 {{num, plural, =1 {четверть} =2 {четверти} one {четверть} few {четверти} many {четвертей} other {четверти}}} =5 {{num, plural, =1 {пятая} =2 {пятых} one {пятая} few {пятых} many {пятых} other {пятых}}} =6 {{num, plural, =1 {шестая} =2 {шестых} one {шестая} few {шестых} many {шестых} other {шестых}}} =7 {{num, plural, =1 {седьмая} =2 {седьмых} one {седьмая} few {седьмых} many {седьмых} other {седьмых}}} =8 {{num, plural, =1 {восьмая} =2 {восьмых} one {восьмая} few {восьмых} many {восьмых} other {восьмых}}} =9 {{num, plural, =1 {девятая} =2 {девятых} one {девятая} few {девятых} many {девятых} other {девятых}}} =10 {{num, plural, =1 {десятая} =2 {десятых} one {десятая} few {десятых} many {десятых} other {десятых}}} one {делить на #} few {делить на #} many {делить на #} other {делить на #}} | judge: TR renders the fallback denominator form as “на #”, which means “on #” rather than the intended fraction reading “over #” (e.g. “#-ных” or “делённое на #” depending context). (For denominators outside 2–10, the translation changes the meaning of English 'over #' and would produce an incorrect/unnatural Russian fraction reading.) |
 | mistake.sayExample | Написано для примера задачи, а не для задачи вашего ученика: | Написано для задачи-примера, а не для задачи вашего ученика: | judge: Написано для примера задачи, а не для задачи вашего ученика: (The phrase «для примера задачи» is ungrammatical/unnatural and means more like “for an example of a problem,” not “for an example/sample problem.”) |
+| input.review.intro | Исправьте всё, что было прочитано неверно. Ничего не проверяется, пока вы это не используете. | Исправьте всё, что было распознано неверно. Проверка начнётся только после того, как вы воспользуетесь результатом. | judge: TR: «Исправьте всё, что было прочитано неверно. Ничего не проверяется, пока вы это не используете.» (The pronoun 'это' most naturally refers to using the misread text or 'everything', while EN means nothing is checked until you use the reading/result; this is confusing/ambiguous in Russian.) |
+| input.review.intro | Исправьте всё, что было распознано неверно. Проверка начнётся только после того, как вы воспользуетесь результатом. | Исправьте всё, что было распознано неверно. До использования ничего не проверяется. | judge: TR says checking will start only after you use the result, whereas EN means nothing is checked/verified until you use it. (The translation changes the sense from 'no checking has been done yet until use' to 'the checking process will begin after use' and adds 'result'.) |
 
 ## es: UI review changes
 
@@ -191,6 +200,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | input.mode.type | Escribir | Tipo | judge: The Spanish translation correctly renders 'Type' as a label for input mode. ('Escribir' means 'to write' or an imperative 'write', not the noun 'Type' as a category/label. A correct translation would be 'Tipo'.) |
 | math.speech.negative | {arg} negativo | negativo {arg} | judge: TR: {arg} negativo (This reads as '{arg} negative' (e.g., '5 negativo') rather than 'negative {arg}' ('menos {arg}' or 'negativo {arg}'), and can be unnatural/misleading for signed expressions.) |
 | math.speech.positive | {arg} positivo | positivo {arg} | judge: TR: {arg} positivo (This reads as '{arg} positive' rather than 'positive {arg}' ('positivo {arg}' or 'más {arg}'), changing the intended spoken order for a signed expression.) |
+| input.review.intro | Corrige cualquier cosa que se haya leído mal. Nada se revisa hasta que lo uses. | Corrige cualquier cosa que se haya leído mal. Nada se verifica hasta que lo uses. | judge: “checked” is translated as “revisa,” which means reviewed rather than checked/verified in the intended sense. (The sentence says nothing is verified/checked until used; “se revisa” can imply review rather than validation, changing the intended meaning.) |
 
 ## sv: UI review changes
 
@@ -258,6 +268,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | input.mode.type | Yaz | Klavye ile yaz | judge: TR 'Yaz' translates as 'Write' rather than 'Type'. In this UI it confuses typing with handwriting/writing mode. (English 'Type' should be rendered as keyboard/text entry, e.g. 'Yazarak gir' or 'Klavye ile yaz', not just 'Yaz'.) |
 | mistake.right | Öğrenciniz haklı. | Öğrencinizin yanıtı doğru. | judge: TR says “Öğrenciniz haklı,” which means the student is justified/right in opinion, not necessarily that the mathematical answer is correct. (Changes the intended meaning from correctness of the student's answer to being 'right/justified' in a broader sense.) |
 | mistake.sayWorded | bu problem için AI tarafından söze döküldü · sayılar matematik motoru tarafından kontrol edildi | bu problem için yapay zekâ tarafından söze döküldü · sayılar matematik motoru tarafından kontrol edildi | judge: The Turkish uses 'AI' instead of the standard Turkish abbreviation/name for artificial intelligence. (In Turkish teaching material, 'yapay zekâ' or 'YZ' would be expected; leaving the English abbreviation 'AI' is not an accurate Turkish rendering.) |
+| input.set.changeLabel | {label} değiştir | {label} öğesini değiştirin | judge: TR: {label} değiştir (The Turkish is ungrammatical/unnatural for the command 'Change {label}'; it should be like '{label} değiştirin' or '{labeli} değiştir', depending on the placeholder.) |
 
 ## fa: UI review changes
 
@@ -299,6 +310,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | shell.mainNav | مرکزی | مرکزی صفحہ | judge: TR translates 'Main' as 'مرکزی' rather than the intended navigation label 'Main/Home' (e.g., 'مرکزی صفحہ'), making it incomplete/unclear as a menu item. (The translation drops the noun implied by the navigation label and may not be understood as the main/home page link.) |
 | shell.mainNav | مرکزی صفحہ | مرکزی | judge: TR: مرکزی صفحہ (The translation means “main page,” adding “page” to the label “Main.”) |
 | mistake.sayExample | ایک مثالی سوال کے لیے لکھا گیا ہے، آپ کے طالب علم کے لیے نہیں: | ایک مثالی سوال کے لیے لکھا گیا ہے، آپ کے طالب علم کے سوال کے لیے نہیں: | judge: The Urdu says it was written for an example question, 'not for your student,' instead of 'not your student’s' (e.g., not your student’s problem/work). (It drops the possessive meaning after 'student’s' and changes the intended contrast.) |
+| practice.useWorking | یہ حل استعمال کریں | یہ طریقۂ حل استعمال کریں | judge: TR translates 'Use this working' as 'Use this solution'. ('Working' refers to the working/steps or calculation method, not the final solution; 'حل' can mean solution and drops the sense of working steps.) |
 
 ## hi: UI review changes
 
@@ -330,6 +342,8 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | mistake.workingLabel | তার কাজ (ঐচ্ছিক) | তার সমাধানের ধাপগুলি (ঐচ্ছিক) | judge: TR translates “Their working (optional)” as “তার কাজ (ঐচ্ছিক)”. (In math education context, “working” means the student's solution steps/workings, not generic “work”; Bengali “তার কাজ” is likely to be understood as 'his/her work' rather than calculation steps.) |
 | demo.ink | কালি: ধাপে ধাপে করা উদাহরণ | Ink: ধাপে ধাপে করা উদাহরণ | judge: Translation of 'Ink: worked examples' (“Ink” is left as/translated to “কালি” (literal ink), which changes the intended product/feature label meaning; the phrase no longer means 'Ink: worked examples'.) |
 | mistake.sayExample | একটি উদাহরণ সমস্যার জন্য লেখা, আপনার শিক্ষার্থীরটির জন্য নয়: | একটি উদাহরণ সমস্যার জন্য লেখা, আপনার শিক্ষার্থীর সমস্যার জন্য নয়: | judge: Translation is correct (The phrase “আপনার শিক্ষার্থীরটির” is ungrammatical/unnatural Bengali; it does not clearly convey “your student’s [problem/work].”) |
+| mistake.useWorking | এই সমাধানের কাজটি ব্যবহার করুন | এই ধাপগুলো ব্যবহার করুন | judge: The translation renders 'working' as 'সমাধানের কাজটি', which is unnatural/unclear in Bengali for mathematical working or solution steps. (In math teaching context, 'working' means the calculation/solution steps; 'সমাধানের কাজটি' is not the standard or clear term and may be misunderstood.) |
+| practice.useWorking | এই কাজটি ব্যবহার করুন | এই কার্যপ্রণালীটি ব্যবহার করুন | judge: The Bengali translates 'working' as 'work/task' rather than mathematical working/steps or solution work. (In this teaching/math context, 'working' means the shown calculation steps or solution process, not 'this work/task' (কাজটি). The translation changes the intended meaning.) |
 
 ## zh-Hans: UI review changes
 
@@ -350,6 +364,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | input.mode.type | 输入 | 键入 | judge: TR translates “Type” as “输入,” which means “input/enter” rather than the intended mode label “type/typing.” (The translation changes the label meaning; a clearer teacher-facing UI term would be “键入” or “打字” depending on context.) |
 | input.review.op | 操作（如 −5） | 运算（如 −5） | judge: 操作（如 −5） (“Operation” as a math term should be translated as “运算” in Simplified Chinese; “操作” means an action/manipulation and is not the standard math term.) |
 | input.mode.type | 键入 | 类型 | judge: The translation renders “Type” as “键入” (to type/enter text) instead of the noun “类型/种类.” (It changes the meaning from a category/type label to an action of typing.) |
+| input.review.intro | 修正任何识别错误的内容。使用之前不会检查。 | 修正任何识别错误的内容。在你使用这些内容之前，系统不会检查它们。 | judge: TR: 修正任何识别错误的内容。使用之前不会检查。 (The second sentence omits 'it' and can be read as nothing will be checked before use in general, rather than 'Nothing is checked until you use it' (the selected content).) |
 
 ## sw: UI review changes
 

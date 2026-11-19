@@ -178,8 +178,8 @@
       "tryAgain": "Tentar novamente"
     },
     "review": {
-      "heading": "Foi isto que foi escrito?",
-      "intro": "Verifique cada linha. Edite tudo o que tenha sido lido de forma incorreta. Nada é verificado até confirmar.",
+      "heading": "Verificar o que foi lido",
+      "intro": "Corrija tudo o que foi lido incorretamente. Nada é verificado até ser usado.",
       "toCheck": "{count, plural, one {# linha precisa de verificação.} many {# linhas precisam de verificação.} other {# linhas precisam de verificação.}}",
       "lines": "Linhas que foram lidas",
       "lineN": "Linha {n}",
@@ -195,8 +195,9 @@
       "right": "Membro direito (depois de =)",
       "op": "Operação (como −5)",
       "addLine": "Adicionar uma linha",
-      "confirm": "Sim, usar estas linhas",
-      "confirmed": "Confirmado.",
+      "useOne": "Usar isto",
+      "useLines": "Usar estas linhas",
+      "notRight": "Não está certo?",
       "blocked": {
         "none": "Não há linhas para usar. Adicione uma ou tente de novo.",
         "oneLine": "Mantenha apenas uma linha aqui: remova as outras.",
@@ -212,6 +213,12 @@
       "rate_limited": "Demasiados pedidos neste momento. Tente de novo daqui a {seconds} segundos ou escreva no teclado.",
       "image": "Não foi possível preparar a imagem. Tente de novo ou escreva no teclado.",
       "open": "Não foi possível abrir esta fotografia. Use uma fotografia PNG, JPEG ou WebP, ou escreva no teclado."
+    },
+    "set": {
+      "fromWrite": "Confirmado a partir da sua escrita",
+      "fromPhoto": "Confirmado a partir da fotografia",
+      "change": "Alterar",
+      "changeLabel": "Alterar {label}"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Problema {n} de {total} · só para ti, nada é registado",
     "backToTopic": "Voltar a {topic}",
     "workingLabel": "A tua resolução",
+    "useWorking": "Usar esta resolução",
     "workingHint": "Enviado apenas quando carregas em Verificar a minha resolução. Nada é guardado.",
     "check": "Verificar a minha resolução",
     "checking": "A verificar…",
@@ -333,6 +341,9 @@
     "problemHint": "Escreva frações com uma barra, como 2/5. Aparecem como as escreveria.",
     "answerLabel": "O que o seu aluno respondeu",
     "workingLabel": "A sua resolução (opcional)",
+    "useProblem": "Usar este problema",
+    "useAnswer": "Usar esta resposta",
+    "useWorking": "Usar esta resolução",
     "privacy": "Por favor, não escreva nomes de alunos. Nada aqui fica guardado.",
     "explain": "Explicar isto",
     "explaining": "A analisar…",

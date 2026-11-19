@@ -178,8 +178,8 @@
       "tryAgain": "Erneut versuchen"
     },
     "review": {
-      "heading": "Ist das geschrieben worden?",
-      "intro": "Prüfe jede Zeile. Korrigiere alles, was falsch gelesen wurde. Nichts wird geprüft, bevor du bestätigst.",
+      "heading": "Prüfen, was gelesen wurde",
+      "intro": "Korrigieren Sie alles, was falsch erkannt wurde. Nichts wird geprüft, bis Sie es verwenden.",
       "toCheck": "{count, plural, one {# Zeile muss geprüft werden.} other {# Zeilen müssen geprüft werden.}}",
       "lines": "Gelesene Zeilen",
       "lineN": "Zeile {n}",
@@ -195,8 +195,9 @@
       "right": "Rechte Seite (nach =)",
       "op": "Rechenoperation (wie −5)",
       "addLine": "Zeile hinzufügen",
-      "confirm": "Ja, diese Zeilen verwenden",
-      "confirmed": "Bestätigt.",
+      "useOne": "Dies verwenden",
+      "useLines": "Diese Zeilen verwenden",
+      "notRight": "Nicht richtig?",
       "blocked": {
         "none": "Es gibt keine Zeilen zum Verwenden. Fügen Sie eine hinzu oder versuchen Sie es erneut.",
         "oneLine": "Behalten Sie hier nur eine Zeile: Entfernen Sie die anderen.",
@@ -212,6 +213,12 @@
       "rate_limited": "Gerade zu viele Anfragen. Versuchen Sie es in {seconds} Sekunden erneut oder geben Sie es stattdessen ein.",
       "image": "Das Bild konnte nicht vorbereitet werden. Versuchen Sie es erneut oder geben Sie es stattdessen ein.",
       "open": "Dieses Foto konnte nicht geöffnet werden. Verwenden Sie ein PNG-, JPEG- oder WebP-Foto oder geben Sie es stattdessen ein."
+    },
+    "set": {
+      "fromWrite": "Aus Ihrer Eingabe bestätigt",
+      "fromPhoto": "Aus dem Foto bestätigt",
+      "change": "Ändern",
+      "changeLabel": "{label} ändern"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Aufgabe {n} von {total} · nur für Sie, nichts wird gespeichert",
     "backToTopic": "Zurück zu {topic}",
     "workingLabel": "Ihr Rechenweg",
+    "useWorking": "Diesen Rechenweg verwenden",
     "workingHint": "Wird nur gesendet, wenn Sie Meinen Rechenweg prüfen drücken. Nichts wird gespeichert.",
     "check": "Meinen Rechenweg prüfen",
     "checking": "Wird geprüft…",
@@ -333,6 +341,9 @@
     "problemHint": "Geben Sie Brüche mit einem Schrägstrich ein, zum Beispiel 2/5. Sie erscheinen so, wie Sie sie schreiben würden.",
     "answerLabel": "Was Ihr Schüler geantwortet hat",
     "workingLabel": "Sein Rechenweg (optional)",
+    "useProblem": "Diese Aufgabe verwenden",
+    "useAnswer": "Diese Antwort verwenden",
+    "useWorking": "Diesen Lösungsweg verwenden",
     "privacy": "Bitte geben Sie keine Namen von Schülern ein. Hier wird nichts gespeichert.",
     "explain": "Das erklären",
     "explaining": "Wird angesehen …",

@@ -178,8 +178,8 @@
       "tryAgain": "Tekrar dene"
     },
     "review": {
-      "heading": "Yazılan bu mu?",
-      "intro": "Her satırı kontrol edin. Yanlış okunmuş olanları düzenleyin. Siz onaylayana kadar hiçbir şey kontrol edilmez.",
+      "heading": "Okunanları kontrol edin",
+      "intro": "Yanlış okunan yerleri düzeltin. Siz kullanana kadar hiçbir şey kontrol edilmez.",
       "toCheck": "{count, plural, one {# satırın kontrol edilmesi gerekiyor.} other {# satırın kontrol edilmesi gerekiyor.}}",
       "lines": "Okunan satırlar",
       "lineN": "Satır {n}",
@@ -195,8 +195,9 @@
       "right": "Sağ taraf (= sonrasında)",
       "op": "İşlem (−5 gibi)",
       "addLine": "Satır ekle",
-      "confirm": "Evet, bu satırları kullan",
-      "confirmed": "Onaylandı.",
+      "useOne": "Bunu kullan",
+      "useLines": "Bu satırları kullan",
+      "notRight": "Doğru değil mi?",
       "blocked": {
         "none": "Kullanılacak satır yok. Bir satır ekleyin veya tekrar deneyin.",
         "oneLine": "Burada yalnızca bir satır bırakın: diğerlerini kaldırın.",
@@ -212,6 +213,12 @@
       "rate_limited": "Şu anda çok fazla istek var. {seconds} saniye sonra tekrar deneyin veya bunun yerine yazın.",
       "image": "Görsel hazırlanamadı. Tekrar deneyin veya bunun yerine yazın.",
       "open": "Bu fotoğraf açılamadı. PNG, JPEG veya WebP fotoğraf kullanın ya da bunun yerine yazın."
+    },
+    "set": {
+      "fromWrite": "Yazınızdan doğrulandı",
+      "fromPhoto": "Fotoğraftan doğrulandı",
+      "change": "Değiştir",
+      "changeLabel": "{label} öğesini değiştirin"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Soru {n} / {total} · yalnızca sizin için, hiçbir şey kaydedilmez",
     "backToTopic": "{topic} konusuna dön",
     "workingLabel": "Çözümünüz",
+    "useWorking": "Bu çözümü kullan",
     "workingHint": "Yalnızca Çözümümü denetle’ye bastığınızda gönderilir. Hiçbir şey saklanmaz.",
     "check": "Çözümümü denetle",
     "checking": "Denetleniyor…",
@@ -333,6 +341,9 @@
     "problemHint": "Kesirleri 2/5 gibi eğik çizgiyle yazın. Yazdığınız biçimde görünürler.",
     "answerLabel": "Öğrencinizin verdiği yanıt",
     "workingLabel": "Çözüm yolu (isteğe bağlı)",
+    "useProblem": "Bu soruyu kullan",
+    "useAnswer": "Bu cevabı kullan",
+    "useWorking": "Bu çözümü kullan",
     "privacy": "Lütfen öğrenci adlarını yazmayın. Burada hiçbir şey saklanmaz.",
     "explain": "Bunu açıkla",
     "explaining": "İnceleniyor…",

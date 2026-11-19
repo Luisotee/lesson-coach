@@ -130,6 +130,7 @@ export function MistakePage() {
             ref={problemRef}
             shape="expression"
             label={t('mistake.problemLabel')}
+            confirmLabel={t('mistake.useProblem')}
             description={t('mistake.problemHint')}
             error={errors.problem}
             onChange={(v) => {
@@ -143,6 +144,7 @@ export function MistakePage() {
             ref={answerRef}
             shape="expression"
             label={t('mistake.answerLabel')}
+            confirmLabel={t('mistake.useAnswer')}
             error={errors.answer}
             onChange={(v) => {
               clearResult()
@@ -153,6 +155,7 @@ export function MistakePage() {
           <MathInput
             shape="lines"
             label={t('mistake.workingLabel')}
+            confirmLabel={t('mistake.useWorking')}
             onChange={(v) => {
               clearResult()
               setWorking(v)

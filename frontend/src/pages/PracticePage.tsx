@@ -105,6 +105,7 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
               shape="lines"
               defaultMode="write"
               label={t('practice.workingLabel')}
+              confirmLabel={t('practice.useWorking')}
               description={t('practice.workingHint')}
               error={error}
               onChange={(v) => {

@@ -20,11 +20,15 @@ const ACCEPT = 'image/png,image/jpeg,image/webp'
  * when the panel leaves the page. Each view marks its main control with `data-main-control` for `MathInput.focus()`.
  */
 export function PhotoPanel({
+  label,
   single,
+  confirmLabel,
   onLines,
   onTypeInstead,
 }: {
+  label: string
   single: boolean
+  confirmLabel?: string
   onLines: (lines: ReviewLine[] | null) => void
   onTypeInstead: () => void
 }) {
@@ -116,20 +120,19 @@ export function PhotoPanel({
 
   if (phase.kind === 'review') {
     return (
-      <div className="flex flex-col gap-3">
-        <TranscriptionReview
-          initial={phase.lines}
-          single={single}
-          image={preview ? { url: preview, alt: t('input.photo.croppedAlt') } : undefined}
-          retakeLabel={t('input.photo.retake')}
-          onConfirm={onLines}
-          onUnconfirm={() => onLines(null)}
-          onRetake={startOver}
-        />
-        <div>
-          <TypeInstead onClick={onTypeInstead} />
-        </div>
-      </div>
+      <TranscriptionReview
+        initial={phase.lines}
+        single={single}
+        label={label}
+        source="photo"
+        confirmLabel={confirmLabel}
+        image={preview ? { url: preview, alt: t('input.photo.croppedAlt') } : undefined}
+        retakeLabel={t('input.photo.retake')}
+        onConfirm={onLines}
+        onUnconfirm={() => onLines(null)}
+        onRetake={startOver}
+        onTypeInstead={onTypeInstead}
+      />
     )
   }
 

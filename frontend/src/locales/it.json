@@ -178,8 +178,8 @@
       "tryAgain": "Riprova"
     },
     "review": {
-      "heading": "È questo che è stato scritto?",
-      "intro": "Controlla ogni riga. Modifica tutto ciò che è stato letto male. Nulla viene controllato finché non confermi.",
+      "heading": "Controlla ciò che è stato letto",
+      "intro": "Correggi ciò che è stato letto male. Nulla viene controllato finché non lo usi.",
       "toCheck": "{count, plural, one {# riga da controllare.} many {# righe da controllare.} other {# righe da controllare.}}",
       "lines": "Righe che sono state lette",
       "lineN": "Riga {n}",
@@ -195,8 +195,9 @@
       "right": "Membro destro (dopo =)",
       "op": "Operazione (come −5)",
       "addLine": "Aggiungi una riga",
-      "confirm": "Sì, usa queste righe",
-      "confirmed": "Confermato.",
+      "useOne": "Usa questo",
+      "useLines": "Usa queste righe",
+      "notRight": "Non va bene?",
       "blocked": {
         "none": "Non ci sono righe da usare. Aggiungine una o riprova.",
         "oneLine": "Tieni qui una sola riga: rimuovi le altre.",
@@ -212,6 +213,12 @@
       "rate_limited": "Troppe richieste proprio ora. Riprova tra {seconds} secondi oppure digitala.",
       "image": "Non è stato possibile preparare l’immagine. Riprova oppure digitala.",
       "open": "Non è stato possibile aprire questa foto. Usa una foto PNG, JPEG o WebP, oppure digitala."
+    },
+    "set": {
+      "fromWrite": "Confermato dal tuo scritto",
+      "fromPhoto": "Confermato dalla foto",
+      "change": "Cambia",
+      "changeLabel": "Cambia {label}"
     }
   },
   "common": {
@@ -319,6 +326,7 @@
     "header": "Problema {n} di {total} · solo per te, non viene registrato nulla",
     "backToTopic": "Torna a {topic}",
     "workingLabel": "Il tuo svolgimento",
+    "useWorking": "Usa questo procedimento",
     "workingHint": "Viene inviato solo quando premi Controlla il mio svolgimento. Non viene salvato nulla.",
     "check": "Controlla il mio svolgimento",
     "checking": "Controllo in corso…",
@@ -333,6 +341,9 @@
     "problemHint": "Scrivi le frazioni con una barra, come 2/5. Appariranno come le scriveresti tu.",
     "answerLabel": "Che cosa ha risposto il tuo studente",
     "workingLabel": "Il suo procedimento (facoltativo)",
+    "useProblem": "Usa questo problema",
+    "useAnswer": "Usa questa risposta",
+    "useWorking": "Usa questo svolgimento",
     "privacy": "Per favore, non scrivere i nomi degli studenti. Qui non viene salvato nulla.",
     "explain": "Spiega questo",
     "explaining": "Lo sto esaminando…",
