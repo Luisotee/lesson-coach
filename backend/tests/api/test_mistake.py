@@ -369,3 +369,39 @@ def test_ai_text_with_math_in_backticks_is_shown(make_client: MakeClient) -> Non
     diagnosis = result["diagnosis"]
     assert diagnosis["what_to_say"]["tell"] == "Use sixths: `3/6 + 2/6` is `5/6`."
     assert diagnosis["margin_note"] == "added the bottoms too"  # drawn as plain text
+
+
+@pytest.mark.parametrize(
+    "problem",
+    [
+        {"text": "1/2+1/2=?"},
+        {"text": "1/2 + 1/2 ="},
+        {"text": "1/2+1/2 = ___"},
+        {"text": "1/2+1/2 = …"},
+        {"latex": "\\frac{1}{2}+\\frac{1}{2}=?"},
+        {"latex": "\\frac12+\\frac12=\\placeholder{}"},
+        {"latex": "\\frac{1}{2}+\\frac{1}{2}=\\_\\_"},
+    ],
+)
+def test_a_blank_for_the_answer_is_dropped_from_the_problem(
+    make_client: MakeClient, problem: dict[str, str]
+) -> None:
+    # Teachers write exercises as `1/2 + 1/2 = ?`, and the student wrote the whole line.
+    client, _ = make_client()
+    result = post(client, problem=problem, answer={"text": "1/2+1/2=2/4"}, topic="fractions")
+    assert result["problem"] == {"kind": "evaluate", "expr": "1/2 + 1/2"}
+    assert (result["verdict"], result["correct_answer"]) == ("wrong", "1")
+    assert result["status"] != "unclear"
+
+
+def test_an_equation_keeps_its_right_side(make_client: MakeClient) -> None:
+    client, _ = make_client()
+    result = post(client, problem={"text": "2x+6=10"}, answer={"text": "2"})
+    assert result["problem"]["kind"] == "solve"
+    assert result["status"] == "correct"
+
+
+def test_a_lone_blank_is_still_unreadable(make_client: MakeClient) -> None:
+    client, _ = make_client()
+    result = post(client, problem={"text": "= ?"}, answer={"text": "1"})
+    assert (result["status"], result["reason"]) == ("unclear", "problem_unreadable")

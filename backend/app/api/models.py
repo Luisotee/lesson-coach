@@ -7,6 +7,7 @@ text or LaTeX from MathLive. `GET /api/topics/{id}` returns the `Pack` model its
 
 from __future__ import annotations
 
+import re
 from typing import Annotated, Literal, Self
 
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
@@ -41,11 +42,35 @@ class MathIn(Model):
         return self
 
 
+# A blank for the answer at the end of a problem, as teachers write exercises: `1/2 + 1/2 = ?`,
+# `= ___`, `= …` or a bare `=`, in text or in MathLive's LaTeX (`\placeholder{}`, `\_`).
+_ASKED = re.compile(
+    r"\s*=\s*(?:\?|…|\.{3}|\\[lc]?dots|□|\\square|\\Box|\\placeholder\{\s*\}"
+    r"|\\text\{\s*\?\s*\}|(?:\\?_)+|\\[:,;]|\\quad|~)*\s*$"
+)
+
+
+def without_blank(value: str) -> str:
+    """The problem without a trailing blank for the answer (`1/2 + 1/2 = ?` -> `1/2 + 1/2`).
+    An equation such as `2x + 6 = 10` has none, and a lone `= ?` is kept (and unreadable)."""
+    stripped = _ASKED.sub("", value)
+    return stripped if stripped.strip() else value
+
+
 class ProblemIn(MathIn):
     """A problem as typed. Without `kind`, an equation is solved and anything else is
-    evaluated. Pack problems are sent as `{kind, text: expr}`."""
+    evaluated. Pack problems are sent as `{kind, text: expr}`. A trailing `= ?` (or `=`,
+    `= ___`) only asks for the value, so it is dropped."""
 
     kind: Kind | None = None
+
+    @model_validator(mode="after")
+    def _drop_blank(self) -> Self:
+        if self.text is not None:
+            self.text = without_blank(self.text)
+        if self.latex is not None:
+            self.latex = without_blank(self.latex)
+        return self
 
 
 class LineIn(Model):
