@@ -20,6 +20,7 @@ import { LANGUAGES, findLanguage } from '@/i18n/languages'
 export function LanguagePicker() {
   const { t, i18n } = useTranslation()
   const noteId = useId()
+  const privacyId = useId()
   const current = findLanguage(i18n.resolvedLanguage ?? i18n.language)
   return (
     // Not modal: a modal menu hides the rest of the page with aria-hidden, which axe flags while
@@ -33,7 +34,11 @@ export function LanguagePicker() {
         <span lang={current.code}>{current.nativeName}</span>
         <ChevronDown aria-hidden="true" className="size-4 text-muted-foreground" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" aria-describedby={noteId} className="w-[min(20rem,90vw)]">
+      <DropdownMenuContent
+        align="end"
+        aria-describedby={`${noteId} ${privacyId}`}
+        className="w-[min(20rem,90vw)]"
+      >
         <div
           id={noteId}
           className="px-3 pt-1.5 pb-2 text-[13px] leading-snug text-muted-foreground"
@@ -52,7 +57,10 @@ export function LanguagePicker() {
           ))}
         </DropdownMenuRadioGroup>
         <DropdownMenuSeparator />
-        <div className="flex gap-2 px-3 pt-1 pb-1.5 text-[13px] leading-snug text-muted-foreground">
+        <div
+          id={privacyId}
+          className="flex gap-2 px-3 pt-1 pb-1.5 text-[13px] leading-snug text-muted-foreground"
+        >
           <ShieldCheck aria-hidden="true" className="mt-0.5 size-3.5 flex-none text-green" />
           {t('shell.nothingSaved')}
         </div>

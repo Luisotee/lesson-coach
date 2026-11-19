@@ -94,7 +94,7 @@ test('the language menu switches the UI to Arabic, right to left', async () => {
   renderAt('/')
   await userEvent.click(screen.getByRole('button', { name: 'Language: English' }))
   const menu = screen.getByRole('menu')
-  expect(menu).toHaveAccessibleDescription(en.language.note)
+  expect(menu).toHaveAccessibleDescription(`${en.language.note} ${en.shell.nothingSaved}`)
   expect(within(menu).getAllByRole('menuitemradio')).toHaveLength(LANGUAGES.length)
   expect(within(menu).getByRole('menuitemradio', { name: 'English' })).toBeChecked()
   await userEvent.click(within(menu).getByRole('menuitemradio', { name: 'العربية' }))

@@ -124,8 +124,11 @@ test('the language menu: native names, one machine-translation note, and the pri
   await expect(items).toHaveCount(LANGUAGES.length)
   await expect(items).toHaveText(LANGUAGES.map((l) => l.nativeName))
   await expect(menu.getByRole('menuitemradio', { name: 'English' })).toBeChecked()
-  // One note, read as the menu's description, instead of a suffix on every row.
-  await expect(menu).toHaveAccessibleDescription(t('en', 'language.note'))
+  // One note, read with the privacy line as the menu's description, instead of a suffix on
+  // every row.
+  await expect(menu).toHaveAccessibleDescription(
+    `${t('en', 'language.note')} ${t('en', 'shell.nothingSaved')}`,
+  )
   await expect(menu).toContainText(t('en', 'shell.nothingSaved'))
   await expect(menu).not.toContainText('machine-translated)')
   await expectNoAxeViolations(page)
