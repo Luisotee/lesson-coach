@@ -1,51 +1,13 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import { expect, test, type Locator, type Page, type Request } from '@playwright/test'
-import { expectNoAxeViolations } from './a11y.ts'
+import { expect, test, type Page } from '@playwright/test'
+import { expectNoAxeViolations, t } from './a11y.ts'
+import { drawStroke, mockTranscribe } from './draw.ts'
 
 const FIXTURE = path.join(import.meta.dirname, 'fixtures', 'working.jpg')
 
 const card = (page: Page, heading: string) =>
   page.locator('section', { has: page.getByRole('heading', { level: 2, name: heading }) })
-
-/** Answers /api/transcribe with the given lines, and keeps each request for inspection. */
-async function mockTranscribe(page: Page, lines: object[], status = 200) {
-  const requests: Request[] = []
-  await page.route('**/api/transcribe', async (route) => {
-    requests.push(route.request())
-    if (status !== 200) return route.fulfill({ status, body: '' })
-    await route.fulfill({ json: { status: 'ok', reason: null, lines } })
-  })
-  return requests
-}
-
-/** Draws a short stroke with touch on a touch device, else with the mouse. */
-async function drawStroke(
-  page: Page,
-  canvas: Locator,
-  from: [number, number],
-  to: [number, number],
-) {
-  await canvas.scrollIntoViewIfNeeded()
-  const box = (await canvas.boundingBox())!
-  const pts = Array.from({ length: 8 }, (_, i) => ({
-    x: box.x + from[0] + ((to[0] - from[0]) * i) / 7,
-    y: box.y + from[1] + ((to[1] - from[1]) * i) / 7,
-  }))
-  if (test.info().project.use.hasTouch) {
-    const cdp = await page.context().newCDPSession(page)
-    await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [pts[0]] })
-    for (const p of pts.slice(1))
-      await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [p] })
-    await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] })
-    await cdp.detach()
-  } else {
-    await page.mouse.move(pts[0].x, pts[0].y)
-    await page.mouse.down()
-    for (const p of pts.slice(1)) await page.mouse.move(p.x, p.y)
-    await page.mouse.up()
-  }
-}
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/demo/input')
@@ -121,7 +83,7 @@ test('draw, undo, redo, clear, then read and confirm the working', async ({ page
     { left: '2*x', right: '4', op: '', confidence: 0.5, uncertain: true },
   ])
   await working.getByRole('button', { name: 'Read my writing' }).click()
-  await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeFocused()
+  await expect(working.getByRole('heading', { name: 'Check what was read' })).toBeFocused()
   expect(requests).toHaveLength(1)
   expect(requests[0].headers()['content-type']).toMatch(/^multipart\/form-data/)
   expect(requests[0].postDataBuffer()!.includes(Buffer.from('Content-Type: image/png'))).toBe(true)
@@ -132,10 +94,25 @@ test('draw, undo, redo, clear, then read and confirm the working', async ({ page
   await working.getByRole('button', { name: 'Edit line 2' }).click()
   await working.getByRole('textbox', { name: 'Right side (after =)' }).fill('5')
   await working.getByRole('button', { name: 'Done editing line 2' }).click()
-  await working.getByRole('button', { name: 'Yes, use these lines' }).click()
-  await expect(working.getByTestId('received')).toHaveText(
-    '{"mode":"write","lines":[{"left":"2*x + 6","right":"10","op":"-6"},{"left":"2*x","right":"5"}]}',
-  )
+  await expectNoAxeViolations(page)
+  await working.getByRole('button', { name: 'Use these lines' }).click()
+  const received =
+    '{"mode":"write","lines":[{"left":"2*x + 6","right":"10","op":"-6"},{"left":"2*x","right":"5"}]}'
+  await expect(working.getByTestId('received')).toHaveText(received)
+
+  // Set: the math is the field's value, in ink, focused, with Change.
+  const set = working.getByRole('group', { name: 'Confirmed from your handwriting' })
+  await expect(set).toBeFocused()
+  await expect(set.locator('[data-pen="ink"]')).toBeVisible()
+  await expect(working.getByRole('heading', { name: 'Check what was read' })).toHaveCount(0)
+  await expectNoAxeViolations(page)
+
+  // Change takes the value back until the lines are used again.
+  await set.getByRole('button', { name: /^Change / }).click()
+  await expect(working.getByRole('heading', { name: 'Check what was read' })).toBeFocused()
+  await expect(working.getByTestId('received')).toHaveText('Nothing yet.')
+  await working.getByRole('button', { name: 'Use these lines' }).click()
+  await expect(working.getByTestId('received')).toHaveText(received)
 })
 
 test('a photo is cropped, turned, stripped of EXIF and read', async ({ page }) => {
@@ -172,7 +149,7 @@ test('a photo is cropped, turned, stripped of EXIF and read', async ({ page }) =
     { left: '2*x + 6', right: '10', op: '', confidence: 0.9, uncertain: false },
   ])
   await working.getByRole('button', { name: 'Read this part' }).click()
-  await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
+  await expect(working.getByRole('heading', { name: 'Check what was read' })).toBeVisible()
   const body = requests[0].postDataBuffer()!
   expect(body.includes(Buffer.from('Content-Type: image/jpeg'))).toBe(true)
   expect(body.includes(Buffer.from('Exif'))).toBe(false)
@@ -180,10 +157,11 @@ test('a photo is cropped, turned, stripped of EXIF and read', async ({ page }) =
   expect(body.length).toBeLessThan(5 * 1024 * 1024)
   await expect(working.getByRole('img', { name: 'The cropped photo that was read' })).toBeVisible()
   await expectNoAxeViolations(page)
-  await working.getByRole('button', { name: 'Yes, use these lines' }).click()
+  await working.getByRole('button', { name: 'Use these lines' }).click()
   await expect(working.getByTestId('received')).toHaveText(
     '{"mode":"photo","lines":[{"left":"2*x + 6","right":"10"}]}',
   )
+  await expect(working.getByRole('group', { name: 'Confirmed from the photo' })).toBeFocused()
 })
 
 test('when reading fails, the error is honest and typing is one step away', async ({ page }) => {
@@ -284,7 +262,7 @@ test('the board is locked while the drawing is being read', async ({ page }) => 
     'true',
   )
   release()
-  await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
+  await expect(working.getByRole('heading', { name: 'Check what was read' })).toBeVisible()
 })
 
 test('one fast stroke is drawn on the screen at once', async ({ page }) => {
@@ -337,7 +315,7 @@ test('a failed photo read keeps the photo to try again', async ({ page }) => {
   await expect(working.getByTestId('crop-box')).toBeVisible()
   await expectNoAxeViolations(page)
   await working.getByRole('button', { name: 'Try again' }).click()
-  await expect(working.getByRole('heading', { name: 'Is this what was written?' })).toBeVisible()
+  await expect(working.getByRole('heading', { name: 'Check what was read' })).toBeVisible()
   expect(calls).toBe(2)
 })
 
@@ -377,3 +355,26 @@ for (const colorScheme of ['light', 'dark'] as const) {
     })
   })
 }
+
+test('in Arabic the confirmed math stays left to right', async ({ page }) => {
+  await page.getByLabel('Language').selectOption('ar')
+  await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
+  const working = page.locator('section', {
+    has: page.getByRole('heading', { level: 2, name: t('ar', 'demo.inputLines') }),
+  })
+  await working.getByRole('tab', { name: t('ar', 'input.mode.write') }).click()
+  await drawStroke(page, working.getByTestId('drawing-canvas'), [30, 30], [90, 50])
+  await mockTranscribe(page, [
+    { left: '2*x + 6', right: '10', op: '-6', confidence: 0.95, uncertain: false },
+  ])
+  await working.getByRole('button', { name: t('ar', 'input.write.read') }).click()
+  await expect(
+    working.getByRole('heading', { name: t('ar', 'input.review.heading') }),
+  ).toBeVisible()
+  await expectNoAxeViolations(page)
+  await working.getByRole('button', { name: t('ar', 'input.review.useLines') }).click()
+  const set = working.getByRole('group', { name: t('ar', 'input.set.fromWrite') })
+  await expect(set).toBeFocused()
+  await expect(set.locator('[data-pen]')).toHaveAttribute('dir', 'ltr')
+  await expectNoAxeViolations(page)
+})

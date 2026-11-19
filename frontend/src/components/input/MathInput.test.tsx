@@ -80,67 +80,159 @@ const read = [
   { left: '2/5', right: '', op: '', uncertain: true },
 ]
 
-test('the confirm screen marks uncertain lines in text and needs one line for an expression', async () => {
+const review = (props: Partial<Parameters<typeof TranscriptionReview>[0]> = {}) => (
+  <TranscriptionReview
+    initial={read}
+    single={false}
+    label="The problem"
+    source="write"
+    retakeLabel="Draw again"
+    onConfirm={() => {}}
+    onUnconfirm={() => {}}
+    onRetake={() => {}}
+    onTypeInstead={() => {}}
+    {...props}
+  />
+)
+
+test('the check step marks uncertain lines in text and needs one line for an expression', async () => {
   const user = userEvent.setup()
   const onConfirm = vi.fn()
-  render(
-    <TranscriptionReview
-      initial={read}
-      single
-      retakeLabel="Draw again"
-      onConfirm={onConfirm}
-      onUnconfirm={() => {}}
-      onRetake={() => {}}
-    />,
-  )
+  render(review({ single: true, confirmLabel: 'Use this problem', onConfirm }))
+  expect(screen.getByRole('heading', { name: 'Check what was read' })).toBeInTheDocument()
   expect(screen.getByText('1 line needs a check.')).toBeInTheDocument()
   const list = screen.getByRole('list', { name: 'Lines that were read' })
   const lines = [...list.children]
   expect(lines.map((li) => li.hasAttribute('data-uncertain'))).toEqual([false, true])
   expect(within(lines[1] as HTMLElement).getByText('check this line')).toBeInTheDocument()
 
-  const confirm = screen.getByRole('button', { name: 'Yes, use these lines' })
+  const confirm = screen.getByRole('button', { name: 'Use this problem' })
   expect(confirm).toHaveAttribute('aria-disabled', 'true')
-  expect(screen.getByText(/Keep only one line here/)).toBeInTheDocument()
+  expect(confirm).toHaveAccessibleDescription(/Keep only one line here/)
   await user.click(confirm)
   expect(onConfirm).not.toHaveBeenCalled()
 
   await user.click(screen.getByRole('button', { name: 'Remove line 1' }))
+  // One line left: an expression offers no Remove and no Add.
+  expect(screen.queryByRole('button', { name: /Remove line/ })).not.toBeInTheDocument()
+  expect(screen.queryByRole('button', { name: 'Add a line' })).not.toBeInTheDocument()
   await user.click(confirm)
   expect(onConfirm).toHaveBeenCalledWith([
     expect.objectContaining({ left: '2/5', right: '', op: '' }),
   ])
-  expect(screen.getByText('Confirmed.')).toBeInTheDocument()
 })
 
-test('editing a line after confirming takes the confirmation back', async () => {
+test('the button falls back to a wording by shape', () => {
+  const { unmount } = render(review({ single: true, initial: [read[1]] }))
+  expect(screen.getByRole('button', { name: 'Use this' })).toBeInTheDocument()
+  unmount()
+  render(review())
+  expect(screen.getByRole('button', { name: 'Use these lines' })).toBeInTheDocument()
+  expect(screen.getByText('Not right?')).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Draw again' })).toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Type it instead' })).toBeInTheDocument()
+})
+
+test('confirmed lines become the set value; Change takes the value back', async () => {
   const user = userEvent.setup()
   const onConfirm = vi.fn()
   const onUnconfirm = vi.fn()
   render(
-    <TranscriptionReview
-      initial={[{ left: '2*x + 6', right: '10', op: '-6', uncertain: true }]}
-      single={false}
-      retakeLabel="Draw again"
-      onConfirm={onConfirm}
-      onUnconfirm={onUnconfirm}
-      onRetake={() => {}}
-    />,
+    review({
+      initial: [{ left: '2*x + 6', right: '10', op: '-6', uncertain: true }],
+      source: 'photo',
+      onConfirm,
+      onUnconfirm,
+    }),
   )
-  await user.click(screen.getByRole('button', { name: 'Yes, use these lines' }))
+  await user.click(screen.getByRole('button', { name: 'Use these lines' }))
   expect(onConfirm).toHaveBeenCalledTimes(1)
+  const set = screen.getByRole('group', { name: 'The problem Confirmed from the photo' })
+  expect(set).toHaveFocus()
+  expect(
+    within(set).getByRole('list', { name: 'The problem' }).closest('[data-pen]'),
+  ).toHaveAttribute('data-pen', 'ink')
+  expect(screen.queryByRole('heading', { name: 'Check what was read' })).not.toBeInTheDocument()
+  expect(screen.queryByRole('button', { name: 'Use these lines' })).not.toBeInTheDocument()
+
+  await user.click(screen.getByRole('button', { name: 'Change The problem' }))
+  expect(onUnconfirm).toHaveBeenCalledTimes(1)
+  expect(screen.getByRole('heading', { name: 'Check what was read' })).toHaveFocus()
   await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
   const left = screen.getByRole('textbox', { name: 'Left side' })
   expect(left).toHaveFocus()
   await user.clear(left)
   await user.type(left, '2*x + 4')
-  expect(onUnconfirm).toHaveBeenCalledTimes(1)
   await user.click(screen.getByRole('button', { name: 'Done editing line 1' }))
   expect(screen.queryByText('check this line')).not.toBeInTheDocument()
-  await user.click(screen.getByRole('button', { name: 'Yes, use these lines' }))
+  expect(onConfirm).toHaveBeenCalledTimes(1)
+  await user.click(screen.getByRole('button', { name: 'Use these lines' }))
   expect(onConfirm).toHaveBeenLastCalledWith([
     expect.objectContaining({ left: '2*x + 4', right: '10', op: '-6' }),
   ])
+})
+
+test('the set working numbers its lines and writes = before a continued expression', async () => {
+  const user = userEvent.setup()
+  render(
+    review({
+      initial: [
+        { left: '1/2 + 1/4', right: '', op: '', uncertain: false },
+        { left: '3/4', right: '', op: '', uncertain: false },
+        { left: 'x', right: '2', op: '', uncertain: false },
+      ],
+    }),
+  )
+  await user.click(screen.getByRole('button', { name: 'Use these lines' }))
+  const set = screen.getByRole('group', { name: 'The problem Confirmed from your handwriting' })
+  const lines = within(within(set).getByRole('list')).getAllByRole('listitem')
+  // The step circle, and the cell between the sides that holds "=".
+  const circle = (li: HTMLElement) => li.querySelector('.rounded-full')?.textContent
+  const equals = (li: HTMLElement) => li.querySelectorAll('.justify-self-center')[1]?.textContent
+  expect(lines.map(circle)).toEqual(['1', '2', '3'])
+  expect(lines.map(equals)).toEqual(['', '=', '='])
+  expect(within(set).getByRole('button', { name: 'Type it instead' })).toBeInTheDocument()
+})
+
+test('an expression with nothing left to use offers Add, as its message says', async () => {
+  const user = userEvent.setup()
+  render(review({ single: true, initial: [{ left: '2/5', right: '', op: '', uncertain: false }] }))
+  expect(screen.queryByRole('button', { name: 'Add a line' })).not.toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
+  await user.clear(screen.getByRole('textbox', { name: 'Left side' }))
+  expect(screen.getByRole('button', { name: 'Use this' })).toHaveAccessibleDescription(
+    /Add one, or try again/,
+  )
+  expect(screen.getByRole('button', { name: 'Add a line' })).toBeInTheDocument()
+})
+
+test('Enter that commits an IME composition does not end the edit', async () => {
+  const user = userEvent.setup()
+  render(review())
+  await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
+  const left = screen.getByRole('textbox', { name: 'Left side' })
+  const { fireEvent } = await import('@testing-library/react')
+  fireEvent.keyDown(left, { key: 'Enter', isComposing: true, keyCode: 229 })
+  expect(left).toBeInTheDocument()
+  fireEvent.keyDown(left, { key: 'Enter' })
+  expect(screen.queryByRole('textbox', { name: 'Left side' })).not.toBeInTheDocument()
+})
+
+test('Enter in an edit field ends the edit and does not submit the page form', async () => {
+  const user = userEvent.setup()
+  const onSubmit = vi.fn((e: Event) => e.preventDefault())
+  render(
+    <form onSubmit={(e) => onSubmit(e.nativeEvent)}>
+      {review()}
+      <button>Send</button>
+    </form>,
+  )
+  await user.click(screen.getByRole('button', { name: 'Edit line 2' }))
+  await user.type(screen.getByRole('textbox', { name: 'Right side (after =)' }), '1{Enter}')
+  expect(onSubmit).not.toHaveBeenCalled()
+  expect(screen.queryByRole('textbox', { name: 'Left side' })).not.toBeInTheDocument()
+  expect(screen.getByRole('button', { name: 'Edit line 2' })).toHaveFocus()
+  expect(screen.queryByText('check this line')).not.toBeInTheDocument()
 })
 
 test('a confirmed transcription reaches the page as the API shape', async () => {
@@ -193,16 +285,25 @@ test('a confirmed transcription reaches the page as the API shape', async () => 
   expect(screen.getByRole('img', { name: /1 stroke/ })).toBeInTheDocument()
 
   await user.click(screen.getByRole('button', { name: 'Read my writing' }))
-  const heading = await screen.findByRole('heading', { name: 'Is this what was written?' })
-  screen.getByRole('button', { name: 'Yes, use these lines' }).focus()
-  // focus() on the confirm screen goes to its heading, not the tab.
-  act(() => ref.current!.focus())
+  const heading = await screen.findByRole('heading', { name: 'Check what was read' })
   expect(heading).toHaveFocus()
-  await user.click(await screen.findByRole('button', { name: 'Yes, use these lines' }))
+  // Read but not used: the page can tell, and focus() goes to the Use button, not the tab.
+  expect(ref.current!.isUnconfirmed()).toBe(true)
+  act(() => ref.current!.focus())
+  expect(screen.getByRole('button', { name: 'Use these lines' })).toHaveFocus()
+  await user.click(await screen.findByRole('button', { name: 'Use these lines' }))
   expect(onChange).toHaveBeenLastCalledWith({
     mode: 'write',
     lines: [{ left: '2*x + 6', right: '10', op: '-6' }],
   })
+  // focus() on the set value goes to it; Change empties the field until it is used again.
+  const set = screen.getByRole('group', { name: 'Working Confirmed from your handwriting' })
+  expect(ref.current!.isUnconfirmed()).toBe(false)
+  heading.ownerDocument.body.focus()
+  act(() => ref.current!.focus())
+  expect(set).toHaveFocus()
+  await user.click(screen.getByRole('button', { name: 'Change Working' }))
+  expect(onChange).toHaveBeenLastCalledWith(null)
   vi.unstubAllGlobals()
   vi.restoreAllMocks()
 })
@@ -216,33 +317,20 @@ test('the confirm screen blocks lines over the API limits', async () => {
     op: '',
     uncertain: false,
   }))
-  const { unmount } = render(
-    <TranscriptionReview
-      initial={many}
-      single={false}
-      retakeLabel="Draw again"
-      onConfirm={onConfirm}
-      onUnconfirm={() => {}}
-      onRetake={() => {}}
-    />,
-  )
+  const { unmount } = render(review({ initial: many, onConfirm }))
   expect(screen.getByText(/more than 20 lines/)).toBeInTheDocument()
-  await user.click(screen.getByRole('button', { name: 'Yes, use these lines' }))
+  await user.click(screen.getByRole('button', { name: 'Use these lines' }))
   expect(onConfirm).not.toHaveBeenCalled()
   unmount()
 
   render(
-    <TranscriptionReview
-      initial={[{ left: 'x'.repeat(201), right: '1', op: '', uncertain: true }]}
-      single={false}
-      retakeLabel="Draw again"
-      onConfirm={onConfirm}
-      onUnconfirm={() => {}}
-      onRetake={() => {}}
-    />,
+    review({
+      initial: [{ left: 'x'.repeat(201), right: '1', op: '', uncertain: true }],
+      onConfirm,
+    }),
   )
   expect(screen.getByText(/A line is too long to check/)).toBeInTheDocument()
-  await user.click(screen.getByRole('button', { name: 'Yes, use these lines' }))
+  await user.click(screen.getByRole('button', { name: 'Use these lines' }))
   expect(onConfirm).not.toHaveBeenCalled()
   await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
   expect(screen.getByRole('textbox', { name: 'Left side' })).toHaveAttribute('maxlength', '200')

@@ -76,7 +76,7 @@ export default defineConfig({
           {
             name: 'mobile',
             use: { ...devices['Pixel 7'], baseURL: dev },
-            testMatch: /input\.spec/,
+            testMatch: /(input|confirm)\.spec/,
           },
         ]),
   ],

@@ -30,7 +30,16 @@ type Value = ConfirmedExpression | ConfirmedLines | null
  * Each mode keeps its draft when the teacher switches; the value is always the active mode's.
  */
 export function MathInput(props: MathInputProps) {
-  const { label, description, error, modes = ALL, defaultMode = 'type', className, ref } = props
+  const {
+    label,
+    description,
+    error,
+    confirmLabel,
+    modes = ALL,
+    defaultMode = 'type',
+    className,
+    ref,
+  } = props
   const { t } = useTranslation()
   const id = useId()
   const offered = modes.includes('type') ? modes : (['type', ...modes] as InputMode[])
@@ -77,10 +86,12 @@ export function MathInput(props: MathInputProps) {
   useImperativeHandle(ref, () => ({
     focus: () => {
       if (mode === 'type') return typeField.current?.focus()
-      // The main control of what the panel shows now: Read, the crop box, the review heading…
+      // The main control of what the panel shows now: Read, the crop box, the Use button, the set math…
       const main = panels.current[mode]?.querySelector<HTMLElement>('[data-main-control]')
       ;(main ?? triggers.current[mode])?.focus()
     },
+    isUnconfirmed: () =>
+      mode !== 'type' && !!panels.current[mode]?.querySelector('[data-unconfirmed]'),
   }))
 
   const fromLines = (m: InputMode) => (lines: ReviewLine[] | null) =>
@@ -153,13 +164,16 @@ export function MathInput(props: MathInputProps) {
               <WritePanel
                 label={label}
                 single={single}
+                confirmLabel={confirmLabel}
                 onLines={fromLines('write')}
                 onTypeInstead={typeInstead}
               />
             )}
             {m === 'photo' && (
               <PhotoPanel
+                label={label}
                 single={single}
+                confirmLabel={confirmLabel}
                 onLines={fromLines('photo')}
                 onTypeInstead={typeInstead}
               />

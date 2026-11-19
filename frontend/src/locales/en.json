@@ -133,6 +133,7 @@
       "photo": "Photo"
     },
     "typeInstead": "Type it instead",
+    "useFirst": "Check what was read, then press “{action}”.",
     "type": {
       "loading": "Loading the math field…",
       "fallback": "The math field didn’t load, so this is a plain text field. Type fractions with a slash, like 2/5.",
@@ -178,8 +179,8 @@
       "tryAgain": "Try again"
     },
     "review": {
-      "heading": "Is this what was written?",
-      "intro": "Check each line. Edit anything that was misread. Nothing is checked until you confirm.",
+      "heading": "Check what was read",
+      "intro": "Fix anything that was misread. Nothing is checked until you use it.",
       "toCheck": "{count, plural, one {# line needs a check.} other {# lines need a check.}}",
       "lines": "Lines that were read",
       "lineN": "Line {n}",
@@ -195,8 +196,9 @@
       "right": "Right side (after =)",
       "op": "Operation (like −5)",
       "addLine": "Add a line",
-      "confirm": "Yes, use these lines",
-      "confirmed": "Confirmed.",
+      "useOne": "Use this",
+      "useLines": "Use these lines",
+      "notRight": "Not right?",
       "blocked": {
         "none": "There are no lines to use. Add one, or try again.",
         "oneLine": "Keep only one line here: remove the others.",
@@ -212,6 +214,12 @@
       "rate_limited": "Too many requests just now. Try again in {seconds} seconds, or type it instead.",
       "image": "The image couldn’t be prepared. Try again, or type it instead.",
       "open": "This photo couldn’t be opened. Use a PNG, JPEG or WebP photo, or type it instead."
+    },
+    "set": {
+      "fromWrite": "Confirmed from your handwriting",
+      "fromPhoto": "Confirmed from the photo",
+      "change": "Change",
+      "changeLabel": "Change {label}"
     }
   },
   "common": {
@@ -319,6 +327,7 @@
     "header": "Problem {n} of {total} · just for you, nothing is recorded",
     "backToTopic": "Back to {topic}",
     "workingLabel": "Your working",
+    "useWorking": "Use this working",
     "workingHint": "Sent only when you press Check my working. Nothing is stored.",
     "check": "Check my working",
     "checking": "Checking…",
@@ -333,6 +342,9 @@
     "problemHint": "Type fractions with a slash, like 2/5. They appear the way you’d write them.",
     "answerLabel": "What your student answered",
     "workingLabel": "Their working (optional)",
+    "useProblem": "Use this problem",
+    "useAnswer": "Use this answer",
+    "useWorking": "Use this working",
     "privacy": "Please don’t type students’ names. Nothing here is stored.",
     "explain": "Explain this",
     "explaining": "Looking at it…",

@@ -133,6 +133,7 @@
       "photo": "Foto"
     },
     "typeInstead": "Escríbelo con teclado",
+    "useFirst": "Revise lo que se leyó y luego pulse “{action}”.",
     "type": {
       "loading": "Cargando el campo matemático…",
       "fallback": "El campo matemático no se cargó, así que este es un campo de texto simple. Escribe las fracciones con una barra, como 2/5.",
@@ -178,8 +179,8 @@
       "tryAgain": "Intentar de nuevo"
     },
     "review": {
-      "heading": "¿Esto es lo que se escribió?",
-      "intro": "Revisa cada línea. Edita todo lo que se haya leído mal. No se revisa nada hasta que confirmes.",
+      "heading": "Revisa lo leído",
+      "intro": "Corrige cualquier cosa que se haya leído mal. Nada se verifica hasta que lo uses.",
       "toCheck": "{count, plural, one {# línea necesita revisión.} many {# líneas necesitan revisión.} other {# líneas necesitan revisión.}}",
       "lines": "Líneas que se leyeron",
       "lineN": "Línea {n}",
@@ -195,8 +196,9 @@
       "right": "Lado derecho (después de =)",
       "op": "Operación (como −5)",
       "addLine": "Agregar una línea",
-      "confirm": "Sí, usar estas líneas",
-      "confirmed": "Confirmado.",
+      "useOne": "Usa esto",
+      "useLines": "Usa estas líneas",
+      "notRight": "¿No está bien?",
       "blocked": {
         "none": "No hay líneas para usar. Agrega una o inténtalo de nuevo.",
         "oneLine": "Deja solo una línea aquí: quita las demás.",
@@ -212,6 +214,12 @@
       "rate_limited": "Hay demasiadas solicitudes en este momento. Inténtalo de nuevo en {seconds} segundos, o escríbelo con el teclado.",
       "image": "No se pudo preparar la imagen. Inténtalo de nuevo, o escríbelo con el teclado.",
       "open": "No se pudo abrir esta foto. Usa una foto PNG, JPEG o WebP, o escríbelo con el teclado."
+    },
+    "set": {
+      "fromWrite": "Confirmado a partir de su escritura a mano",
+      "fromPhoto": "Confirmado a partir de la foto",
+      "change": "Cambiar",
+      "changeLabel": "Cambiar {label}"
     }
   },
   "common": {
@@ -319,6 +327,7 @@
     "header": "Problema {n} de {total} · solo para ti, no se registra nada",
     "backToTopic": "Volver a {topic}",
     "workingLabel": "Tu trabajo",
+    "useWorking": "Usar este procedimiento",
     "workingHint": "Se envía solo cuando presionas Revisar mi trabajo. No se almacena nada.",
     "check": "Revisar mi trabajo",
     "checking": "Revisando…",
@@ -333,6 +342,9 @@
     "problemHint": "Escribe las fracciones con una barra, como 2/5. Aparecen como las escribirías.",
     "answerLabel": "Lo que respondió tu estudiante",
     "workingLabel": "Su procedimiento (opcional)",
+    "useProblem": "Usar este problema",
+    "useAnswer": "Usar esta respuesta",
+    "useWorking": "Usar este procedimiento",
     "privacy": "Por favor, no escribas nombres de estudiantes. Nada de esto se guarda.",
     "explain": "Explica esto",
     "explaining": "Revisándolo…",

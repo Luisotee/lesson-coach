@@ -133,6 +133,7 @@
       "photo": "照片"
     },
     "typeInstead": "改为键入",
+    "useFirst": "先检查读取的内容，然后按“{action}”。",
     "type": {
       "loading": "正在加载数学输入框…",
       "fallback": "数学输入框未加载，所以这是普通文本框。用斜杠输入分数，如 2/5。",
@@ -178,8 +179,8 @@
       "tryAgain": "重试"
     },
     "review": {
-      "heading": "这是所写内容吗？",
-      "intro": "检查每一行。修改任何识别有误的内容。确认之前不会检查。",
+      "heading": "检查读取的内容",
+      "intro": "修正任何识别错误的内容。在你使用这些内容之前，系统不会检查它们。",
       "toCheck": "{count, plural, other {# 行需要检查。}}",
       "lines": "识别出的行",
       "lineN": "第 {n} 行",
@@ -195,8 +196,9 @@
       "right": "右边（= 之后）",
       "op": "运算（如 −5）",
       "addLine": "添加一行",
-      "confirm": "是的，使用这些行",
-      "confirmed": "已确认。",
+      "useOne": "使用此项",
+      "useLines": "使用这些行",
+      "notRight": "不正确？",
       "blocked": {
         "none": "没有可用的行。添加一行，或重试。",
         "oneLine": "这里只保留一行：请删除其他行。",
@@ -212,6 +214,12 @@
       "rate_limited": "刚才请求过多。请在 {seconds} 秒后重试，或改为输入。",
       "image": "无法准备这张图片。请重试，或改为输入。",
       "open": "无法打开这张照片。请使用 PNG、JPEG 或 WebP 照片，或改为输入。"
+    },
+    "set": {
+      "fromWrite": "已根据你的手写内容确认",
+      "fromPhoto": "已根据照片确认",
+      "change": "更改",
+      "changeLabel": "更改 {label}"
     }
   },
   "common": {
@@ -319,6 +327,7 @@
     "header": "第 {n} 题，共 {total} 题 · 只给你使用，不会记录",
     "backToTopic": "返回 {topic}",
     "workingLabel": "你的过程",
+    "useWorking": "使用这个解法",
     "workingHint": "只有按下“检查我的过程”时才会发送。不会存储任何内容。",
     "check": "检查我的过程",
     "checking": "正在检查…",
@@ -333,6 +342,9 @@
     "problemHint": "用斜杠输入分数，如 2/5。它们会按你书写的样子显示。",
     "answerLabel": "学生的答案",
     "workingLabel": "他们的过程（可选）",
+    "useProblem": "使用这道题",
+    "useAnswer": "使用这个答案",
+    "useWorking": "使用这份解答过程",
     "privacy": "请不要输入学生姓名。这里不会存储任何内容。",
     "explain": "解释这个",
     "explaining": "正在查看……",

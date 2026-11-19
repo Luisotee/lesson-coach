@@ -133,6 +133,7 @@
       "photo": "Foto"
     },
     "typeInstead": "Skriv det i stället",
+    "useFirst": "Kontrollera vad som lästes in och tryck sedan på ”{action}”.",
     "type": {
       "loading": "Läser in mattefältet…",
       "fallback": "Mattefältet lästes inte in, så detta är ett vanligt textfält. Skriv bråk med snedstreck, som 2/5.",
@@ -178,8 +179,8 @@
       "tryAgain": "Försök igen"
     },
     "review": {
-      "heading": "Är det detta som skrevs?",
-      "intro": "Kontrollera varje rad. Redigera allt som lästes fel. Inget kontrolleras förrän du bekräftar.",
+      "heading": "Kontrollera vad som lästes",
+      "intro": "Rätta till sådant som lästes fel. Inget kontrolleras förrän du använder det.",
       "toCheck": "{count, plural, one {# rad behöver kontrolleras.} other {# rader behöver kontrolleras.}}",
       "lines": "Rader som lästes",
       "lineN": "Rad {n}",
@@ -195,8 +196,9 @@
       "right": "Höger sida (efter =)",
       "op": "Operation (som −5)",
       "addLine": "Lägg till en rad",
-      "confirm": "Ja, använd de här raderna",
-      "confirmed": "Bekräftat.",
+      "useOne": "Använd detta",
+      "useLines": "Använd dessa rader",
+      "notRight": "Stämmer det inte?",
       "blocked": {
         "none": "Det finns inga rader att använda. Lägg till en, eller försök igen.",
         "oneLine": "Behåll bara en rad här: ta bort de andra.",
@@ -212,6 +214,12 @@
       "rate_limited": "För många förfrågningar just nu. Försök igen om {seconds} sekunder, eller skriv in det i stället.",
       "image": "Bilden kunde inte förberedas. Försök igen, eller skriv in det i stället.",
       "open": "Det här fotot kunde inte öppnas. Använd ett PNG-, JPEG- eller WebP-foto, eller skriv in det i stället."
+    },
+    "set": {
+      "fromWrite": "Bekräftat från din handstil",
+      "fromPhoto": "Bekräftat från fotot",
+      "change": "Ändra",
+      "changeLabel": "Ändra {label}"
     }
   },
   "common": {
@@ -319,6 +327,7 @@
     "header": "Uppgift {n} av {total} · bara för dig, inget sparas",
     "backToTopic": "Tillbaka till {topic}",
     "workingLabel": "Din lösning",
+    "useWorking": "Använd den här uträkningen",
     "workingHint": "Skickas bara när du trycker på Kontrollera min lösning. Inget sparas.",
     "check": "Kontrollera min lösning",
     "checking": "Kontrollerar…",
@@ -333,6 +342,9 @@
     "problemHint": "Skriv bråk med snedstreck, som 2/5. De visas så som du skulle skriva dem.",
     "answerLabel": "Vad din elev svarade",
     "workingLabel": "Elevens lösning (valfritt)",
+    "useProblem": "Använd den här uppgiften",
+    "useAnswer": "Använd det här svaret",
+    "useWorking": "Använd den här lösningen",
     "privacy": "Skriv inte elevers namn. Inget här sparas.",
     "explain": "Förklara detta",
     "explaining": "Tittar på det…",
