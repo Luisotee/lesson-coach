@@ -25,7 +25,6 @@
     "topicsHeading": "Välj ett område",
     "topicsIntro": "Varje område: idén, lösta exempel, vanliga misstag och en lektionsplanering.",
     "openTopic": "Öppna ämnet",
-    "waysHeading": "Vägar in",
     "prepareTitle": "Förbered en lektion",
     "prepareText": "Friska upp idén och se varje steg förklarat på tre sätt.",
     "mistakeTitle": "Förstå ett misstag",
@@ -37,7 +36,6 @@
     "heroWorked": "löst exempel",
     "heroWhyTitle": "Varför detta steg fungerar",
     "heroWhyText": "Ta bort 5 från bara ena sidan och balansen rubbas. Ta bort det från båda, så förblir sidorna lika.",
-    "heroExampleLink": "Se ett löst exempel: lösa 3x + 5 = 20",
     "noTopics": "Inga områden finns tillgängliga än."
   },
   "topics": {

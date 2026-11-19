@@ -25,7 +25,6 @@
     "topicsHeading": "Scegli un argomento",
     "topicsIntro": "Per ogni argomento: l’idea, esempi svolti, errori comuni e una traccia di lezione.",
     "openTopic": "Apri argomento",
-    "waysHeading": "Modi per iniziare",
     "prepareTitle": "Prepara una lezione",
     "prepareText": "Ripassa l’idea e vedi ogni passaggio spiegato in tre modi.",
     "mistakeTitle": "Capire un errore",
@@ -37,7 +36,6 @@
     "heroWorked": "esempio svolto",
     "heroWhyTitle": "Perché questo passaggio funziona",
     "heroWhyText": "Togli 5 da un solo membro e l’equilibrio si rompe. Toglilo da entrambi, e i membri restano uguali.",
-    "heroExampleLink": "Vedi un esempio svolto: risolvere 3x + 5 = 20",
     "noTopics": "Non ci sono ancora argomenti disponibili."
   },
   "topics": {

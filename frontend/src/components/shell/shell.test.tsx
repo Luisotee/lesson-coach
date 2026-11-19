@@ -39,10 +39,23 @@ test('home links to every topic from the API, the mistake explainer and practice
     expect(await screen.findByRole('link', { name })).toHaveAttribute('href', `/topics/${id}`)
   }
   expect(screen.getByText('Grade 7–8')).toBeInTheDocument()
-  expect(screen.getByRole('link', { name: 'A student wrote this…' })).toHaveAttribute(
-    'href',
-    '/mistake',
-  )
+  // The three features, each said plainly with one way in.
+  const features = screen.getByRole('region', { name: 'What you can do' })
+  for (const [title, link, href] of [
+    ['Prepare a lesson', 'Choose a topic', '/#topics'],
+    ['A student wrote this', 'Explain a student’s answer', '/mistake'],
+    ['Practice', 'Start practising', '/practice'],
+  ]) {
+    const card = screen.getByRole('heading', { level: 3, name: title }).closest('li')!
+    expect(within(card).getAllByRole('link')).toHaveLength(1)
+    expect(within(card).getByRole('link', { name: link })).toHaveAttribute('href', href)
+    expect(features).toContainElement(card)
+  }
+  // One entry per destination in the page body (the header is the site's navigation).
+  const hrefs = within(screen.getByRole('main'))
+    .getAllByRole('link')
+    .map((a) => a.getAttribute('href'))
+  expect(hrefs.length).toBe(new Set(hrefs).size)
   expect(screen.getByRole('link', { name: 'Skip to main content' })).toBeInTheDocument()
   expect(document.title).toBe('Lesson Coach')
 })

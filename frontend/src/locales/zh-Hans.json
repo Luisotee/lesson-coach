@@ -25,7 +25,6 @@
     "topicsHeading": "选择主题",
     "topicsIntro": "每个主题包括：核心概念、例题讲解、常见错误和一份教学提纲。",
     "openTopic": "打开主题",
-    "waysHeading": "进入方式",
     "prepareTitle": "备一节课",
     "prepareText": "回顾这个概念，并看每一步用三种方式解释。",
     "mistakeTitle": "理解一个错误",
@@ -37,7 +36,6 @@
     "heroWorked": "例题讲解",
     "heroWhyTitle": "为什么这一步成立",
     "heroWhyText": "只从一边减去 5，天平就会倾斜。两边都减去 5，两边就仍然相等。",
-    "heroExampleLink": "查看例题讲解：解 3x + 5 = 20",
     "noTopics": "目前还没有可用的主题。"
   },
   "topics": {

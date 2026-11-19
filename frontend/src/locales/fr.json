@@ -25,7 +25,6 @@
     "topicsHeading": "Choisir un sujet",
     "topicsIntro": "Chaque sujet : l’idée, des exemples corrigés, des erreurs fréquentes et un déroulé de leçon.",
     "openTopic": "Ouvrir le sujet",
-    "waysHeading": "Façons d’entrer",
     "prepareTitle": "Préparer une leçon",
     "prepareText": "Revoyez l’idée et voyez chaque étape expliquée de trois façons.",
     "mistakeTitle": "Comprendre une erreur",
@@ -37,7 +36,6 @@
     "heroWorked": "exemple corrigé",
     "heroWhyTitle": "Pourquoi cette étape fonctionne",
     "heroWhyText": "Enlever 5 d’un seul côté, et l’équilibre bascule. L’enlever des deux côtés, et les membres restent égaux.",
-    "heroExampleLink": "Voir un exemple corrigé : résoudre 3x + 5 = 20",
     "noTopics": "Aucun sujet n’est encore disponible."
   },
   "topics": {

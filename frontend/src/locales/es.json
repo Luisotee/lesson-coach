@@ -25,7 +25,6 @@
     "topicsHeading": "Elige un tema",
     "topicsIntro": "Cada tema: la idea, ejemplos resueltos, errores comunes y un esquema de clase.",
     "openTopic": "Abrir tema",
-    "waysHeading": "Formas de entrar",
     "prepareTitle": "Preparar una clase",
     "prepareText": "Repasa la idea y ve cada paso explicado de tres formas.",
     "mistakeTitle": "Entender un error",
@@ -37,7 +36,6 @@
     "heroWorked": "ejemplo resuelto",
     "heroWhyTitle": "Por qué funciona este paso",
     "heroWhyText": "Quita 5 de un solo lado y la balanza se inclina. Quítalo de ambos, y los lados siguen siendo iguales.",
-    "heroExampleLink": "Ver un ejemplo resuelto: resolver 3x + 5 = 20",
     "noTopics": "Aún no hay temas disponibles."
   },
   "topics": {

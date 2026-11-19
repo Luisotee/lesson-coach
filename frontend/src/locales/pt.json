@@ -25,7 +25,6 @@
     "topicsHeading": "Escolha um tema",
     "topicsIntro": "Em cada tema: a ideia, exemplos resolvidos, erros comuns e um plano de aula.",
     "openTopic": "Abrir tema",
-    "waysHeading": "Formas de começar",
     "prepareTitle": "Preparar uma aula",
     "prepareText": "Reveja a ideia e veja cada passo explicado de três formas.",
     "mistakeTitle": "Compreender um erro",
@@ -37,7 +36,6 @@
     "heroWorked": "exemplo resolvido",
     "heroWhyTitle": "Por que razão este passo funciona",
     "heroWhyText": "Retire 5 de apenas um lado e a balança desequilibra-se. Retire-o de ambos os lados, e os lados continuam iguais.",
-    "heroExampleLink": "Veja um exemplo resolvido: resolver 3x + 5 = 20",
     "noTopics": "Ainda não há temas disponíveis."
   },
   "topics": {

@@ -25,7 +25,6 @@
     "topicsHeading": "Thema wählen",
     "topicsIntro": "Zu jedem Thema: die Idee, durchgerechnete Beispiele, häufige Fehler und ein Unterrichtsentwurf.",
     "openTopic": "Thema öffnen",
-    "waysHeading": "Einstiege",
     "prepareTitle": "Unterricht vorbereiten",
     "prepareText": "Frischen Sie die Idee auf und sehen Sie jeden Schritt auf drei Arten erklärt.",
     "mistakeTitle": "Einen Fehler verstehen",
@@ -37,7 +36,6 @@
     "heroWorked": "durchgerechnetes Beispiel",
     "heroWhyTitle": "Warum dieser Schritt funktioniert",
     "heroWhyText": "Nimmt man nur von einer Seite 5 weg, kippt die Waage. Nimmt man auf beiden Seiten 5 weg, bleiben die Seiten gleich.",
-    "heroExampleLink": "Sehen Sie ein durchgerechnetes Beispiel: Lösen von 3x + 5 = 20",
     "noTopics": "Es sind noch keine Themen verfügbar."
   },
   "topics": {

@@ -25,7 +25,6 @@
     "topicsHeading": "Escolha um tema",
     "topicsIntro": "Cada tema: a ideia, exemplos resolvidos, erros comuns e um roteiro de aula.",
     "openTopic": "Abrir tema",
-    "waysHeading": "Formas de começar",
     "prepareTitle": "Preparar uma aula",
     "prepareText": "Retome a ideia e veja cada passo explicado de três formas.",
     "mistakeTitle": "Entender um erro",
@@ -37,7 +36,6 @@
     "heroWorked": "exemplo resolvido",
     "heroWhyTitle": "Por que este passo funciona",
     "heroWhyText": "Tire 5 de apenas um lado e a balança pende. Tire dos dois, e os lados continuam iguais.",
-    "heroExampleLink": "Veja um exemplo resolvido: resolver 3x + 5 = 20",
     "noTopics": "Ainda não há temas disponíveis."
   },
   "topics": {

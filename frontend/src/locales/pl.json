@@ -25,7 +25,6 @@
     "topicsHeading": "Wybierz temat",
     "topicsIntro": "Każdy temat: idea, rozwiązane przykłady, typowe błędy i zarys lekcji.",
     "openTopic": "Otwórz temat",
-    "waysHeading": "Sposoby rozpoczęcia",
     "prepareTitle": "Przygotuj lekcję",
     "prepareText": "Odśwież ideę i zobacz każdy krok wyjaśniony na trzy sposoby.",
     "mistakeTitle": "Zrozum błąd",
@@ -37,7 +36,6 @@
     "heroWorked": "przykład rozwiązany",
     "heroWhyTitle": "Dlaczego ten krok działa",
     "heroWhyText": "Odejmij 5 tylko od jednej strony, a równowaga się zachwieje. Odejmij od obu, a strony pozostaną równe.",
-    "heroExampleLink": "Zobacz przykład rozwiązany: rozwiązywanie 3x + 5 = 20",
     "noTopics": "Nie ma jeszcze dostępnych tematów."
   },
   "topics": {

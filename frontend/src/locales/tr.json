@@ -25,7 +25,6 @@
     "topicsHeading": "Bir konu seçin",
     "topicsIntro": "Her konuda: fikir, çözümlü örnekler, sık yapılan hatalar ve bir ders planı.",
     "openTopic": "Konuyu aç",
-    "waysHeading": "Başlama yolları",
     "prepareTitle": "Bir ders hazırlayın",
     "prepareText": "Fikri tazeleyin ve her adımı üç farklı açıklamayla görün.",
     "mistakeTitle": "Bir hatayı anlayın",
@@ -37,7 +36,6 @@
     "heroWorked": "çözümlü örnek",
     "heroWhyTitle": "Bu adım neden işe yarar?",
     "heroWhyText": "5’i yalnızca bir taraftan çıkarırsanız denge bozulur. İki taraftan da çıkarırsanız taraflar eşit kalır.",
-    "heroExampleLink": "Çözümlü bir örnek görün: 3x + 5 = 20 denklemini çözme",
     "noTopics": "Henüz kullanılabilir konu yok."
   },
   "topics": {
