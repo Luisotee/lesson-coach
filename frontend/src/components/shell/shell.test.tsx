@@ -8,6 +8,8 @@ import i18n from '@/i18n'
 import { routes } from '@/router'
 import { PACKS, json, mockApi } from '@/test/api'
 import ar from '@/locales/ar.json'
+import en from '@/locales/en.json'
+import { LANGUAGES } from '@/i18n/languages'
 
 beforeEach(() => {
   mockApi()
@@ -75,12 +77,20 @@ test('navigating moves focus to the new page heading', async () => {
   expect(screen.getByRole('heading', { level: 1 })).toHaveFocus()
 })
 
-test('the language picker switches the UI to Arabic, right to left', async () => {
+test('the language menu switches the UI to Arabic, right to left', async () => {
   renderAt('/')
-  await userEvent.selectOptions(screen.getByLabelText('Language'), 'ar')
+  await userEvent.click(screen.getByRole('button', { name: 'Language: English' }))
+  const menu = screen.getByRole('menu')
+  expect(menu).toHaveAccessibleDescription(en.language.note)
+  expect(within(menu).getAllByRole('menuitemradio')).toHaveLength(LANGUAGES.length)
+  expect(within(menu).getByRole('menuitemradio', { name: 'English' })).toBeChecked()
+  await userEvent.click(within(menu).getByRole('menuitemradio', { name: 'العربية' }))
   expect(await screen.findByRole('link', { name: ar.nav.topics })).toBeInTheDocument()
   expect(document.documentElement).toHaveAttribute('dir', 'rtl')
-  expect(screen.getByLabelText(ar.language.label)).toHaveValue('ar')
+  expect(screen.queryByRole('menu')).toBeNull()
+  expect(
+    screen.getByRole('button', { name: ar.language.button.replace('{name}', 'العربية') }),
+  ).toBeInTheDocument()
 })
 
 test.each([

@@ -8,7 +8,8 @@
     "mainNav": "Main",
     "nothingSaved": "No account. Only your language choice is kept, in this browser.",
     "footerNoScores": "No tests. No scores. Nothing about you or your students is saved.",
-    "footerChecked": "Every answer is checked by a computer algebra system."
+    "footerChecked": "Every answer is checked by a computer algebra system.",
+    "machineNote": "This page is machine-translated from English and not yet reviewed."
   },
   "nav": {
     "topics": "Topics",
@@ -17,7 +18,8 @@
   },
   "language": {
     "label": "Language",
-    "machine": "{name} (machine-translated)"
+    "button": "Language: {name}",
+    "note": "English is the original. Every other language is machine-translated and not yet reviewed."
   },
   "home": {
     "eyebrow": "For math teachers, grades 6–9",

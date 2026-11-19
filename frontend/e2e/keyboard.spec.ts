@@ -1,5 +1,5 @@
 import { expect, test, type Locator, type Page } from '@playwright/test'
-import { expectNoAxeViolations, explainSettled } from './a11y.ts'
+import { expectNoAxeViolations, explainSettled, languageButton } from './a11y.ts'
 import { fixture, mockApi } from './api.ts'
 
 /*
@@ -252,22 +252,40 @@ test('mistake: choose a topic, type the problem and answer, explain, try another
   await expectNoAxeViolations(page)
 })
 
-test('the language picker by keyboard: to Arabic and back', async ({ page }) => {
+test('the language menu by keyboard: to Arabic and back', async ({ page }) => {
   await page.goto('/')
-  // Its label follows the language, so find it by place.
-  const picker = page.locator('header select')
-  await tabTo(page, picker)
+  const button = languageButton(page)
+  await tabTo(page, button)
   const html = page.locator('html')
-  // Arabic is listed right after English. Each press waits for its language to load, so a
-  // slow locale chunk can't make the test press past it.
+  // Enter opens the menu on its first row, English; Arabic is next. Choosing closes the menu
+  // and gives focus back to the button.
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('menuitemradio', { name: 'English' })).toBeFocused()
   await page.keyboard.press('ArrowDown')
+  await expect(page.getByRole('menuitemradio', { name: 'العربية' })).toBeFocused()
+  await page.keyboard.press('Enter')
   await expect(html).toHaveAttribute('lang', 'ar')
   await expect(html).toHaveAttribute('dir', 'rtl')
-  await expect(picker).toBeFocused()
-  await page.keyboard.press('ArrowUp')
+  await expect(page.getByRole('menu')).toBeHidden()
+  await expect(button).toBeFocused()
+  // Escape closes without choosing. Typing jumps to the language whose name starts so (Radix
+  // moves focus on the next tick, so each key waits for it); Home goes back to English.
+  await page.keyboard.press('Enter')
+  await expect(page.getByRole('menu')).toHaveAttribute('dir', 'rtl')
+  await page.keyboard.press('Escape')
+  await expect(page.getByRole('menu')).toBeHidden()
+  await expect(button).toBeFocused()
+  await expect(html).toHaveAttribute('lang', 'ar')
+  await page.keyboard.press('Space')
+  await expect(page.getByRole('menuitemradio', { name: 'English' })).toBeFocused()
+  await page.keyboard.type('S')
+  await expect(page.getByRole('menuitemradio', { name: 'Svenska' })).toBeFocused()
+  await page.keyboard.press('Home')
+  await expect(page.getByRole('menuitemradio', { name: 'English' })).toBeFocused()
+  await page.keyboard.press('Enter')
   await expect(html).toHaveAttribute('lang', 'en')
   await expect(html).toHaveAttribute('dir', 'ltr')
-  await expect(picker).toBeFocused()
+  await expect(button).toBeFocused()
 })
 
 test.describe('on a phone', () => {
