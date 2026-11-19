@@ -101,7 +101,7 @@ test('draw, undo, redo, clear, then read and confirm the working', async ({ page
   await expect(working.getByTestId('received')).toHaveText(received)
 
   // Set: the math is the field's value, in ink, focused, with Change.
-  const set = working.getByRole('group', { name: 'Confirmed from your writing' })
+  const set = working.getByRole('group', { name: 'Confirmed from your handwriting' })
   await expect(set).toBeFocused()
   await expect(set.locator('[data-pen="ink"]')).toBeVisible()
   await expect(working.getByRole('heading', { name: 'Check what was read' })).toHaveCount(0)

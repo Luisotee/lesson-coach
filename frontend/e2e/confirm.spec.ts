@@ -11,7 +11,7 @@ import { drawStroke, mockTranscribe } from './draw.ts'
 test('mistake: a written problem is checked, used, and sent as confirmed', async ({ page }) => {
   const posted = await mockApi(page)
   await page.goto('/mistake')
-  const problem = page.getByRole('group', { name: 'The problem' })
+  const problem = page.getByRole('group', { name: 'The problem', exact: true })
   await problem.getByRole('tab', { name: 'Write' }).click()
   await drawStroke(page, problem.getByTestId('drawing-canvas'), [30, 30], [90, 50])
   await mockTranscribe(page, [
@@ -32,12 +32,23 @@ test('mistake: a written problem is checked, used, and sent as confirmed', async
   expect(posted).toHaveLength(0)
   await expectNoAxeViolations(page)
 
+  // Explain before the lines are used: the page asks for that, at the Use button.
+  await page.getByRole('button', { name: 'Explain this' }).click()
+  await expect(
+    problem.getByText('Check what was read, then press “Use this problem”.'),
+  ).toBeVisible()
+  await expect(use).toBeFocused()
+  expect(posted).toHaveLength(0)
+
   await use.click()
-  await expect(problem.getByRole('group', { name: 'Confirmed from your writing' })).toBeFocused()
+  await expect(
+    problem.getByRole('group', { name: 'Confirmed from your handwriting' }),
+  ).toBeFocused()
+  await expect(problem.getByText('Check what was read')).toHaveCount(0)
   await expectNoAxeViolations(page)
 
   // The working field words its button for itself.
-  const working = page.getByRole('group', { name: 'Their working (optional)' })
+  const working = page.getByRole('group', { name: 'Their working (optional)', exact: true })
   await working.getByRole('tab', { name: 'Write' }).click()
   await drawStroke(page, working.getByTestId('drawing-canvas'), [30, 30], [90, 50])
   await working.getByRole('button', { name: 'Read my writing' }).click()
@@ -53,19 +64,25 @@ test('mistake: a written problem is checked, used, and sent as confirmed', async
 test('practice: written working is used, then checked', async ({ page }) => {
   const posted = await mockApi(page)
   await page.goto('/practice/linear-equations/1')
-  const working = page.getByRole('group', { name: 'Your working' })
+  const working = page.getByRole('group', { name: 'Your working', exact: true })
   await drawStroke(page, working.getByTestId('drawing-canvas'), [30, 30], [90, 50])
   await mockTranscribe(page, [
     { left: '8*x', right: '56', op: '', confidence: 0.95, uncertain: false },
   ])
   await working.getByRole('button', { name: 'Read my writing' }).click()
+  // Read but not used: the page says to use it, and takes focus there.
   await page.getByRole('button', { name: 'Check my working' }).click()
-  await expect(page.getByText('Write or type at least one line first.')).toBeVisible()
+  const useFirst = 'Check what was read, then press “Use this working”.'
+  await expect(page.getByText(useFirst)).toBeVisible()
+  const use = working.getByRole('button', { name: 'Use this working' })
+  await expect(use).toBeFocused()
   expect(posted).toHaveLength(0)
 
-  await working.getByRole('button', { name: 'Use this working' }).click()
-  await expect(working.getByRole('group', { name: 'Confirmed from your writing' })).toBeFocused()
-  await expect(page.getByText('Write or type at least one line first.')).toHaveCount(0)
+  await use.click()
+  await expect(
+    working.getByRole('group', { name: 'Confirmed from your handwriting' }),
+  ).toBeFocused()
+  await expect(page.getByText(useFirst)).toHaveCount(0)
   await expectNoAxeViolations(page)
   await page.getByRole('button', { name: 'Check my working' }).click()
   await expect.poll(() => posted.length).toBe(1)

@@ -133,6 +133,7 @@
       "photo": "Foto"
     },
     "typeInstead": "Stattdessen tippen",
+    "useFirst": "Prüfen Sie, was gelesen wurde, und drücken Sie dann „{action}“.",
     "type": {
       "loading": "Mathefeld wird geladen…",
       "fallback": "Das Mathefeld wurde nicht geladen. Daher ist dies ein einfaches Textfeld. Gib Brüche mit einem Schrägstrich ein, zum Beispiel 2/5.",
@@ -215,7 +216,7 @@
       "open": "Dieses Foto konnte nicht geöffnet werden. Verwenden Sie ein PNG-, JPEG- oder WebP-Foto oder geben Sie es stattdessen ein."
     },
     "set": {
-      "fromWrite": "Aus Ihrer Eingabe bestätigt",
+      "fromWrite": "Aus Ihrer Handschrift bestätigt",
       "fromPhoto": "Aus dem Foto bestätigt",
       "change": "Ändern",
       "changeLabel": "{label} ändern"

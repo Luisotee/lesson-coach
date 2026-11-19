@@ -147,7 +147,7 @@ test('confirmed lines become the set value; Change takes the value back', async 
   )
   await user.click(screen.getByRole('button', { name: 'Use these lines' }))
   expect(onConfirm).toHaveBeenCalledTimes(1)
-  const set = screen.getByRole('group', { name: 'Confirmed from the photo' })
+  const set = screen.getByRole('group', { name: 'The problem Confirmed from the photo' })
   expect(set).toHaveFocus()
   expect(
     within(set).getByRole('list', { name: 'The problem' }).closest('[data-pen]'),
@@ -170,6 +170,52 @@ test('confirmed lines become the set value; Change takes the value back', async 
   expect(onConfirm).toHaveBeenLastCalledWith([
     expect.objectContaining({ left: '2*x + 4', right: '10', op: '-6' }),
   ])
+})
+
+test('the set working numbers its lines and writes = before a continued expression', async () => {
+  const user = userEvent.setup()
+  render(
+    review({
+      initial: [
+        { left: '1/2 + 1/4', right: '', op: '', uncertain: false },
+        { left: '3/4', right: '', op: '', uncertain: false },
+        { left: 'x', right: '2', op: '', uncertain: false },
+      ],
+    }),
+  )
+  await user.click(screen.getByRole('button', { name: 'Use these lines' }))
+  const set = screen.getByRole('group', { name: 'The problem Confirmed from your handwriting' })
+  const lines = within(within(set).getByRole('list')).getAllByRole('listitem')
+  // The step circle, and the cell between the sides that holds "=".
+  const circle = (li: HTMLElement) => li.querySelector('.rounded-full')?.textContent
+  const equals = (li: HTMLElement) => li.querySelectorAll('.justify-self-center')[1]?.textContent
+  expect(lines.map(circle)).toEqual(['1', '2', '3'])
+  expect(lines.map(equals)).toEqual(['', '=', '='])
+  expect(within(set).getByRole('button', { name: 'Type it instead' })).toBeInTheDocument()
+})
+
+test('an expression with nothing left to use offers Add, as its message says', async () => {
+  const user = userEvent.setup()
+  render(review({ single: true, initial: [{ left: '2/5', right: '', op: '', uncertain: false }] }))
+  expect(screen.queryByRole('button', { name: 'Add a line' })).not.toBeInTheDocument()
+  await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
+  await user.clear(screen.getByRole('textbox', { name: 'Left side' }))
+  expect(screen.getByRole('button', { name: 'Use this' })).toHaveAccessibleDescription(
+    /Add one, or try again/,
+  )
+  expect(screen.getByRole('button', { name: 'Add a line' })).toBeInTheDocument()
+})
+
+test('Enter that commits an IME composition does not end the edit', async () => {
+  const user = userEvent.setup()
+  render(review())
+  await user.click(screen.getByRole('button', { name: 'Edit line 1' }))
+  const left = screen.getByRole('textbox', { name: 'Left side' })
+  const { fireEvent } = await import('@testing-library/react')
+  fireEvent.keyDown(left, { key: 'Enter', isComposing: true, keyCode: 229 })
+  expect(left).toBeInTheDocument()
+  fireEvent.keyDown(left, { key: 'Enter' })
+  expect(screen.queryByRole('textbox', { name: 'Left side' })).not.toBeInTheDocument()
 })
 
 test('Enter in an edit field ends the edit and does not submit the page form', async () => {
@@ -240,17 +286,19 @@ test('a confirmed transcription reaches the page as the API shape', async () => 
 
   await user.click(screen.getByRole('button', { name: 'Read my writing' }))
   const heading = await screen.findByRole('heading', { name: 'Check what was read' })
-  screen.getByRole('button', { name: 'Use these lines' }).focus()
-  // focus() on the confirm screen goes to its heading, not the tab.
-  act(() => ref.current!.focus())
   expect(heading).toHaveFocus()
+  // Read but not used: the page can tell, and focus() goes to the Use button, not the tab.
+  expect(ref.current!.isUnconfirmed()).toBe(true)
+  act(() => ref.current!.focus())
+  expect(screen.getByRole('button', { name: 'Use these lines' })).toHaveFocus()
   await user.click(await screen.findByRole('button', { name: 'Use these lines' }))
   expect(onChange).toHaveBeenLastCalledWith({
     mode: 'write',
     lines: [{ left: '2*x + 6', right: '10', op: '-6' }],
   })
   // focus() on the set value goes to it; Change empties the field until it is used again.
-  const set = screen.getByRole('group', { name: 'Confirmed from your writing' })
+  const set = screen.getByRole('group', { name: 'Working Confirmed from your handwriting' })
+  expect(ref.current!.isUnconfirmed()).toBe(false)
   heading.ownerDocument.body.focus()
   act(() => ref.current!.focus())
   expect(set).toHaveFocus()

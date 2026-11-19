@@ -86,10 +86,12 @@ export function MathInput(props: MathInputProps) {
   useImperativeHandle(ref, () => ({
     focus: () => {
       if (mode === 'type') return typeField.current?.focus()
-      // The main control of what the panel shows now: Read, the crop box, the review heading, the set math…
+      // The main control of what the panel shows now: Read, the crop box, the Use button, the set math…
       const main = panels.current[mode]?.querySelector<HTMLElement>('[data-main-control]')
       ;(main ?? triggers.current[mode])?.focus()
     },
+    isUnconfirmed: () =>
+      mode !== 'type' && !!panels.current[mode]?.querySelector('[data-unconfirmed]'),
   }))
 
   const fromLines = (m: InputMode) => (lines: ReviewLine[] | null) =>

@@ -133,6 +133,7 @@
       "photo": "Photo"
     },
     "typeInstead": "Type it instead",
+    "useFirst": "Check what was read, then press “{action}”.",
     "type": {
       "loading": "Loading the math field…",
       "fallback": "The math field didn’t load, so this is a plain text field. Type fractions with a slash, like 2/5.",
@@ -215,7 +216,7 @@
       "open": "This photo couldn’t be opened. Use a PNG, JPEG or WebP photo, or type it instead."
     },
     "set": {
-      "fromWrite": "Confirmed from your writing",
+      "fromWrite": "Confirmed from your handwriting",
       "fromPhoto": "Confirmed from the photo",
       "change": "Change",
       "changeLabel": "Change {label}"

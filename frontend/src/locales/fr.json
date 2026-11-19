@@ -133,6 +133,7 @@
       "photo": "Photo"
     },
     "typeInstead": "Le taper à la place",
+    "useFirst": "Vérifiez ce qui a été lu, puis appuyez sur « {action} ».",
     "type": {
       "loading": "Chargement du champ mathématique…",
       "fallback": "Le champ mathématique ne s’est pas chargé. C’est donc un champ de texte simple. Tape les fractions avec une barre oblique, comme 2/5.",
@@ -215,7 +216,7 @@
       "open": "Cette photo n’a pas pu être ouverte. Utilisez une photo PNG, JPEG ou WebP, ou saisissez au clavier."
     },
     "set": {
-      "fromWrite": "Confirmé à partir de votre texte",
+      "fromWrite": "Confirmé à partir de votre écriture manuscrite",
       "fromPhoto": "Confirmé à partir de la photo",
       "change": "Modifier",
       "changeLabel": "Modifier {label}"

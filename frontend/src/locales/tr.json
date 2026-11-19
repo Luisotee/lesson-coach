@@ -133,6 +133,7 @@
       "photo": "Fotoğraf"
     },
     "typeInstead": "Bunun yerine yazarak gir",
+    "useFirst": "Okunanı kontrol edin, sonra “{action}” düğmesine basın.",
     "type": {
       "loading": "Matematik alanı yükleniyor…",
       "fallback": "Matematik alanı yüklenmedi, bu yüzden bu düz metin alanıdır. Kesirleri 2/5 gibi eğik çizgiyle yazın.",
@@ -215,7 +216,7 @@
       "open": "Bu fotoğraf açılamadı. PNG, JPEG veya WebP fotoğraf kullanın ya da bunun yerine yazın."
     },
     "set": {
-      "fromWrite": "Yazınızdan doğrulandı",
+      "fromWrite": "El yazınızdan onaylandı",
       "fromPhoto": "Fotoğraftan doğrulandı",
       "change": "Değiştir",
       "changeLabel": "{label} öğesini değiştirin"

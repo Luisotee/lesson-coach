@@ -133,6 +133,7 @@
       "photo": "Foto"
     },
     "typeInstead": "Escríbelo con teclado",
+    "useFirst": "Revise lo que se leyó y luego pulse “{action}”.",
     "type": {
       "loading": "Cargando el campo matemático…",
       "fallback": "El campo matemático no se cargó, así que este es un campo de texto simple. Escribe las fracciones con una barra, como 2/5.",
@@ -215,7 +216,7 @@
       "open": "No se pudo abrir esta foto. Usa una foto PNG, JPEG o WebP, o escríbelo con el teclado."
     },
     "set": {
-      "fromWrite": "Confirmado a partir de tu escritura",
+      "fromWrite": "Confirmado a partir de su escritura a mano",
       "fromPhoto": "Confirmado a partir de la foto",
       "change": "Cambiar",
       "changeLabel": "Cambiar {label}"

@@ -133,6 +133,7 @@
       "photo": "Fotografia"
     },
     "typeInstead": "Digitar em vez disso",
+    "useFirst": "Verifique o que foi lido e depois prima “{action}”.",
     "type": {
       "loading": "A carregar o campo de matemática…",
       "fallback": "O campo de matemática não carregou, por isso este é um campo de texto simples. Digite frações com uma barra, como 2/5.",
@@ -215,7 +216,7 @@
       "open": "Não foi possível abrir esta fotografia. Use uma fotografia PNG, JPEG ou WebP, ou escreva no teclado."
     },
     "set": {
-      "fromWrite": "Confirmado a partir da sua escrita",
+      "fromWrite": "Confirmado a partir da sua escrita manual",
       "fromPhoto": "Confirmado a partir da fotografia",
       "change": "Alterar",
       "changeLabel": "Alterar {label}"

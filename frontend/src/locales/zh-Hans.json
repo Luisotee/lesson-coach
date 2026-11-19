@@ -133,6 +133,7 @@
       "photo": "照片"
     },
     "typeInstead": "改为键入",
+    "useFirst": "先检查读取的内容，然后按“{action}”。",
     "type": {
       "loading": "正在加载数学输入框…",
       "fallback": "数学输入框未加载，所以这是普通文本框。用斜杠输入分数，如 2/5。",
@@ -215,7 +216,7 @@
       "open": "无法打开这张照片。请使用 PNG、JPEG 或 WebP 照片，或改为输入。"
     },
     "set": {
-      "fromWrite": "已根据你的书写确认",
+      "fromWrite": "已根据你的手写内容确认",
       "fromPhoto": "已根据照片确认",
       "change": "更改",
       "changeLabel": "更改 {label}"

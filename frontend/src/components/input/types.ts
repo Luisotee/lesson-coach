@@ -22,6 +22,11 @@ export interface ConfirmedLines {
 export interface MathInputHandle {
   /** Moves focus to the active mode's main control, for page validation. */
   focus(): void
+  /**
+   * True while the active mode shows lines read from a drawing or photo that the teacher has not
+   * used yet: the page can then say "use them first" rather than "nothing entered".
+   */
+  isUnconfirmed(): boolean
 }
 
 interface MathInputBase {

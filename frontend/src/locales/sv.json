@@ -133,6 +133,7 @@
       "photo": "Foto"
     },
     "typeInstead": "Skriv det i stället",
+    "useFirst": "Kontrollera vad som lästes in och tryck sedan på ”{action}”.",
     "type": {
       "loading": "Läser in mattefältet…",
       "fallback": "Mattefältet lästes inte in, så detta är ett vanligt textfält. Skriv bråk med snedstreck, som 2/5.",
@@ -215,7 +216,7 @@
       "open": "Det här fotot kunde inte öppnas. Använd ett PNG-, JPEG- eller WebP-foto, eller skriv in det i stället."
     },
     "set": {
-      "fromWrite": "Bekräftat från din text",
+      "fromWrite": "Bekräftat från din handstil",
       "fromPhoto": "Bekräftat från fotot",
       "change": "Ändra",
       "changeLabel": "Ändra {label}"

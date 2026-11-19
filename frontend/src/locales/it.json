@@ -133,6 +133,7 @@
       "photo": "Foto"
     },
     "typeInstead": "Digitalo invece",
+    "useFirst": "Controlla ciò che è stato letto, poi premi “{action}”.",
     "type": {
       "loading": "Caricamento del campo matematico…",
       "fallback": "Il campo matematico non si è caricato, quindi questo è un campo di testo semplice. Digita le frazioni con una barra, come 2/5.",
@@ -215,7 +216,7 @@
       "open": "Non è stato possibile aprire questa foto. Usa una foto PNG, JPEG o WebP, oppure digitala."
     },
     "set": {
-      "fromWrite": "Confermato dal tuo scritto",
+      "fromWrite": "Confermato dalla tua scrittura a mano",
       "fromPhoto": "Confermato dalla foto",
       "change": "Cambia",
       "changeLabel": "Cambia {label}"

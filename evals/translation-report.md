@@ -8,32 +8,32 @@ A language ships only when its prompts, its three packs and all its UI strings p
 - The judge compares each English text with its translation and reports errors (meaning, math terms, grammar). Flagged texts are asked for again with the problems, up to 3 times; that is the review pass. Its changes to UI strings are listed below.
 - Judge flag rate: judge-majority flags per text judged. Every judging counts, including each re-judge after a repair, so a text flagged in two rounds counts twice; it is not the share of distinct texts flagged.
 
-Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $53.98.
+Ships: ar, fr, de, el, it, pt, pt-BR, ru, es, sv, pl, kk, tr, fa, ur, hi, bn, zh-Hans. Total cost: about $54.17.
 Not run: so, ti, ps, prs.
 
 Cost, calls, repairs and flag rate add up every recorded run of a language. A rerun reuses the units that already passed, so it adds little.
 
 | Language | Packs ship | Calls | Repairs | Flag rate | Cost | UI ships | Calls | Repairs | Flag rate | Cost |
 |---|---|---|---|---|---|---|---|---|---|---|
-| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 16 / 39 | 6 | 19.6% | $1.21 |
-| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 38 / 64 | 13 | 3.8% | $0.73 |
-| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 32 / 54 | 9 | 3.0% | $0.61 |
-| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 37 / 73 | 14 | 5.0% | $0.86 |
-| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 30 / 40 | 7 | 1.5% | $0.53 |
-| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 35 / 53 | 10 | 3.6% | $0.67 |
-| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 36 / 66 | 11 | 3.0% | $0.72 |
-| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 16 / 35 | 7 | 16.7% | $1.08 |
-| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 31 / 49 | 8 | 2.1% | $0.55 |
-| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 10 / 14 | 2 | 7.3% | $0.73 |
-| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 9 / 13 | 1 | 2.6% | $0.80 |
-| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 37 / 67 | 12 | 3.7% | $1.01 |
+| ar (Arabic (Modern Standard Arabic)) | yes | 2 / 4 | 1 | 3.4% | $2.72 | yes | 17 / 40 | 6 | 18.9% | $1.22 |
+| fr (French) | yes | 2 / 2 | 1 | 0.0% | $9.09 | yes | 39 / 65 | 13 | 3.8% | $0.73 |
+| de (German) | yes | 36 / 66 | 17 | 4.0% | $1.24 | yes | 33 / 57 | 9 | 3.0% | $0.63 |
+| el (Greek) | yes | 34 / 58 | 15 | 3.3% | $1.30 | yes | 39 / 77 | 15 | 5.2% | $0.89 |
+| it (Italian) | yes | 31 / 57 | 12 | 2.7% | $2.43 | yes | 33 / 47 | 9 | 2.1% | $0.57 |
+| pt (European Portuguese) | yes | 32 / 60 | 13 | 3.3% | $1.13 | yes | 36 / 54 | 10 | 3.5% | $0.68 |
+| pt-BR (Brazilian Portuguese) | yes | 31 / 59 | 12 | 3.3% | $1.14 | yes | 37 / 67 | 11 | 3.0% | $0.73 |
+| ru (Russian) | yes | 32 / 51 | 13 | 3.3% | $1.13 | yes | 17 / 38 | 7 | 16.0% | $1.09 |
+| es (Spanish) | yes | 32 / 50 | 13 | 2.2% | $1.01 | yes | 32 / 50 | 8 | 2.1% | $0.56 |
+| sv (Swedish) | yes | 31 / 51 | 12 | 3.3% | $1.10 | yes | 11 / 15 | 2 | 7.0% | $0.74 |
+| pl (Polish) | yes | 36 / 70 | 17 | 6.1% | $1.43 | yes | 10 / 14 | 1 | 2.4% | $0.81 |
+| kk (Kazakh (Cyrillic script)) | yes | 2 / 4 | 1 | 3.2% | $2.61 | yes | 38 / 68 | 12 | 3.7% | $1.02 |
 | uk (Ukrainian) | no | 31 / 55 | 12 | 3.8% | $1.22 | no | 17 / 51 | 12 | 12.7% | $2.25 |
-| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 32 / 46 | 9 | 1.8% | $0.56 |
-| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 35 / 52 | 10 | 2.1% | $0.65 |
-| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 37 / 65 | 14 | 5.5% | $0.80 |
-| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 34 / 56 | 9 | 2.7% | $0.65 |
-| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 36 / 56 | 11 | 2.7% | $0.67 |
-| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 36 / 55 | 13 | 2.7% | $0.60 |
+| tr (Turkish) | yes | 35 / 65 | 16 | 4.3% | $1.26 | yes | 33 / 47 | 9 | 1.8% | $0.57 |
+| fa (Persian (Farsi)) | yes | 34 / 68 | 15 | 4.6% | $1.26 | yes | 36 / 53 | 10 | 2.1% | $0.65 |
+| ur (Urdu) | yes | 36 / 74 | 17 | 5.8% | $1.41 | yes | 38 / 66 | 14 | 5.5% | $0.81 |
+| hi (Hindi) | yes | 33 / 55 | 14 | 2.7% | $1.15 | yes | 35 / 57 | 9 | 2.7% | $0.66 |
+| bn (Bengali) | yes | 29 / 49 | 10 | 2.2% | $1.10 | yes | 37 / 57 | 11 | 2.7% | $0.67 |
+| zh-Hans (Simplified Chinese) | yes | 2 / 4 | 1 | 0.0% | $1.38 | yes | 37 / 56 | 13 | 2.7% | $0.61 |
 | sw (Swahili) | no | 1 / 1 | 0 | 0.0% | $1.74 | no | 41 / 91 | 21 | 5.5% | $1.46 |
 
 ## uk: left out
@@ -124,6 +124,7 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | mistake.sayExample | Γραμμένο για ένα παράδειγμα άσκησης, όχι για το παράδειγμα του μαθητή σας: | Γραμμένο για ένα παράδειγμα άσκησης, όχι για την άσκηση του μαθητή σας: | judge: The Greek says “not for your student's example,” whereas the English means “not for your student's [problem/work].” (It changes the reference of “your student’s” to an example rather than the student’s problem/work.) |
 | mistake.sayWorded | διατυπώθηκε από AI για αυτό το πρόβλημα · οι αριθμοί ελέγχθηκαν από τη μηχανή μαθηματικών | διατυπώθηκε από τεχνητή νοημοσύνη για αυτό το πρόβλημα · οι αριθμοί ελέγχθηκαν από τη μαθηματική μηχανή | judge: The Greek translation uses 'AI' in Latin letters without an article, making the phrase unidiomatic/grammatically incomplete for 'by AI'. (In Greek this should be something like 'διατυπώθηκε από τεχνητή νοημοσύνη' or 'από την ΤΝ'. 'από AI' is not natural Greek and may not be understood as intended.) |
 | practice.useWorking | Χρήση αυτής της εργασίας | Χρησιμοποιήστε αυτή τη λύση | judge: Χρήση αυτής της εργασίας (The Greek means “Use of this work/assignment” and does not convey the intended math sense of “working” as the shown calculations/solution steps; it also changes the imperative into a noun phrase.) |
+| input.set.fromWrite | Επιβεβαιώθηκε από το χειρόγραφό σας | Επιβεβαιώθηκε από τη γραφή σας | judge: The Greek translation uses «χειρόγραφό σας» meaning 'your manuscript/handwritten document' rather than the intended 'your handwriting'. (Greek would normally use «τον γραφικό σας χαρακτήρα» or «τη γραφή σας» for handwriting; «χειρόγραφό σας» changes the meaning to a handwritten text/document.) |
 
 ## it: UI review changes
 
@@ -137,6 +138,8 @@ Its packs passed, but they were removed (`translate.py --prune`): a language's p
 | math.speech.power | {power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato alla {exp}}} | {power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato a {exp}}} | judge: TR: {power, select, squared {{base} al quadrato} cubed {{base} al cubo} other {{base} elevato alla {exp}}} (For a general exponent, Italian should not use the feminine article 'alla' before an arbitrary exponent; this yields ungrammatical/incorrect phrases such as 'elevato alla 3'. It should be 'elevato a/alla potenza di {exp}' depending on formulation.) |
 | math.speech.powerGroup | {base} elevato alla {exp}, fine dell'esponente | {base} elevato a {exp}, fine dell'esponente | judge: TR: {base} elevato alla {exp}, fine dell'esponente (Same issue: 'elevato alla {exp}' is not correct for an arbitrary exponent and can be ungrammatical, e.g. 'elevato alla 3'. Italian math speech would use 'elevato a {exp}' or 'elevato alla potenza di {exp}'.) |
 | mistake.possibilities | {count, plural, one {una possibilità} other {# possibilità}} | {count, plural, one {una possibilità} many {# possibilità} other {# possibilità}} | {count, plural} needs many for it |
+| input.set.fromWrite | Confermato dalla tua scrittura a mano | Confermato dal testo scritto a mano | judge: "Confirmed from your handwriting" is translated as "Confermato dalla tua scrittura a mano". (The Italian is unnatural/incorrect for this meaning: "scrittura a mano" refers to handwritten text/the act of handwriting, not the user's handwriting as input. A native reader may not understand it as intended; "calligrafia" or "testo scritto a mano" would be appropriate depending on context.) |
+| input.set.fromWrite | Confermato dal testo scritto a mano | Confermato dalla tua scrittura a mano | judge: Italian translation accurately conveys 'Confirmed from your handwriting'. (“testo scritto a mano” means handwritten text, while the source refers to handwriting/handwriting input; it shifts the meaning from the handwriting itself to a text.) |
 
 ## pt: UI review changes
 

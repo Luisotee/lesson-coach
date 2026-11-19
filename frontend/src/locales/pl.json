@@ -133,6 +133,7 @@
       "photo": "Zdjęcie"
     },
     "typeInstead": "Wpisz zamiast tego",
+    "useFirst": "Sprawdź, co zostało odczytane, a potem naciśnij „{action}”.",
     "type": {
       "loading": "Ładowanie pola matematycznego…",
       "fallback": "Pole matematyczne się nie załadowało, więc to jest zwykłe pole tekstowe. Wpisuj ułamki z ukośnikiem, na przykład 2/5.",
@@ -215,7 +216,7 @@
       "open": "Nie udało się otworzyć tego zdjęcia. Użyj zdjęcia PNG, JPEG lub WebP albo wpisz zapis ręcznie."
     },
     "set": {
-      "fromWrite": "Potwierdzono na podstawie Twojego wpisu",
+      "fromWrite": "Potwierdzono z Twojego pisma odręcznego",
       "fromPhoto": "Potwierdzono na podstawie zdjęcia",
       "change": "Zmień",
       "changeLabel": "Zmień {label}"

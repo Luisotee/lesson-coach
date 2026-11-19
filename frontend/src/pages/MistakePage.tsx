@@ -32,12 +32,13 @@ export function MistakePage() {
   const [problem, setProblem] = useState<ConfirmedExpression | null>(null)
   const [answer, setAnswer] = useState<ConfirmedExpression | null>(null)
   const [working, setWorking] = useState<ConfirmedLines | null>(null)
-  const [errors, setErrors] = useState<{ problem?: string; answer?: string }>({})
+  const [errors, setErrors] = useState<{ problem?: string; answer?: string; working?: string }>({})
   // Changing the key resets the answer input ("Try another answer").
   const [answerKey, setAnswerKey] = useState(0)
   const focusAnswerNext = useRef(false)
   const problemRef = useRef<MathInputHandle>(null)
   const answerRef = useRef<MathInputHandle>(null)
+  const workingRef = useRef<MathInputHandle>(null)
   const lastRequest = useRef<MistakeRequest | null>(null)
   // The topic the shown result was asked with; the chips may have changed since.
   const [sentTopic, setSentTopic] = useState<TopicId | undefined>()
@@ -57,13 +58,24 @@ export function MistakePage() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
+    // Lines read from a drawing or photo but not used yet: say so, not "nothing entered".
+    const unused = (ref: typeof problemRef, action: string) =>
+      ref.current?.isUnconfirmed() ? t('input.useFirst', { action }) : undefined
     const next = {
-      problem: problem ? undefined : t('mistake.needProblem'),
-      answer: answer ? undefined : t('mistake.needAnswer'),
+      problem: problem
+        ? undefined
+        : (unused(problemRef, t('mistake.useProblem')) ?? t('mistake.needProblem')),
+      answer: answer
+        ? undefined
+        : (unused(answerRef, t('mistake.useAnswer')) ?? t('mistake.needAnswer')),
+      // The working is optional, but read lines left unused would be silently dropped.
+      working: working ? undefined : unused(workingRef, t('mistake.useWorking')),
     }
     setErrors(next)
-    if (!problem) return problemRef.current?.focus()
-    if (!answer) return answerRef.current?.focus()
+    if (next.problem) return problemRef.current?.focus()
+    if (next.answer) return answerRef.current?.focus()
+    if (next.working) return workingRef.current?.focus()
+    if (!problem || !answer) return
     send({
       problem: problem.math,
       answer: answer.math,
@@ -153,12 +165,15 @@ export function MistakePage() {
             }}
           />
           <MathInput
+            ref={workingRef}
             shape="lines"
             label={t('mistake.workingLabel')}
             confirmLabel={t('mistake.useWorking')}
+            error={errors.working}
             onChange={(v) => {
               clearResult()
               setWorking(v)
+              if (v) setErrors((e) => ({ ...e, working: undefined }))
             }}
           />
 

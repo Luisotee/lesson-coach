@@ -61,7 +61,11 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
 
   const onCheck = () => {
     if (!working) {
-      setError(t('practice.needWorking'))
+      setError(
+        input.current?.isUnconfirmed()
+          ? t('input.useFirst', { action: t('practice.useWorking') })
+          : t('practice.needWorking'),
+      )
       input.current?.focus()
       return
     }

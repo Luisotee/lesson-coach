@@ -8,7 +8,7 @@ import { TypeInstead } from '@/components/input/Reading'
 import { LIMITS, type ReviewLine } from '@/components/input/types'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { parseLine } from '@/math/parse'
+import { isContinued, parseLine } from '@/math/parse'
 
 interface Row extends ReviewLine {
   id: number
@@ -108,12 +108,15 @@ export function TranscriptionReview({
       <div
         id={setId}
         role="group"
-        aria-labelledby={`${setId}-caption`}
+        aria-labelledby={`${setId}-label ${setId}-caption`}
         tabIndex={-1}
         data-main-control
         data-testid="confirmed-math"
         className="flex flex-col gap-2 rounded-xl border border-input bg-white p-3 outline-none focus-visible:ring-[3px] focus-visible:ring-ring"
       >
+        <span id={`${setId}-label`} className="sr-only">
+          {label}
+        </span>
         <div className="flex flex-wrap items-center gap-2">
           <p
             id={`${setId}-caption`}
@@ -122,20 +125,23 @@ export function TranscriptionReview({
             <CircleCheck aria-hidden="true" className="size-5 text-green" />
             {t(source === 'photo' ? 'input.set.fromPhoto' : 'input.set.fromWrite')}
           </p>
-          <Button
-            type="button"
-            variant="outline"
-            className="ms-auto min-h-11"
-            aria-label={t('input.set.changeLabel', { label })}
-            onClick={() => {
-              setConfirmed(false)
-              onUnconfirm()
-              focusAfter.current = headingId
-            }}
-          >
-            <Pencil aria-hidden="true" />
-            {t('input.set.change')}
-          </Button>
+          <span className="ms-auto flex flex-wrap gap-1">
+            <TypeInstead variant="ghost" onClick={onTypeInstead} />
+            <Button
+              type="button"
+              variant="outline"
+              className="min-h-11"
+              aria-label={t('input.set.changeLabel', { label })}
+              onClick={() => {
+                setConfirmed(false)
+                onUnconfirm()
+                focusAfter.current = headingId
+              }}
+            >
+              <Pencil aria-hidden="true" />
+              {t('input.set.change')}
+            </Button>
+          </span>
         </div>
         <Notebook
           label={label}
@@ -143,8 +149,15 @@ export function TranscriptionReview({
           numbered={!single}
           className="px-3 py-2 text-2xl sm:text-2xl"
         >
-          {filled.map((r) => (
-            <EquationLine key={r.id} left={r.left} right={r.right} op={r.op} />
+          {filled.map((r, i) => (
+            <EquationLine
+              key={r.id}
+              index={i}
+              continued={isContinued(filled, i)}
+              left={r.left}
+              right={r.right}
+              op={r.op}
+            />
           ))}
         </Notebook>
       </div>
@@ -152,22 +165,22 @@ export function TranscriptionReview({
   }
 
   const canRemove = !single || rows.length > 1
-  const canAdd = single ? rows.length === 0 : rows.length < LIMITS.lines
+  // An expression has one line; when nothing usable is left, Add is the way to write it.
+  const canAdd = single ? filled.length === 0 : rows.length < LIMITS.lines
 
   return (
-    <section aria-labelledby={headingId} className="flex flex-col gap-4">
+    <section aria-labelledby={headingId} data-unconfirmed className="flex flex-col gap-4">
       <div className="flex flex-col gap-1">
         <h3
           id={headingId}
           ref={heading}
           tabIndex={-1}
-          data-main-control
           className="text-lg font-semibold outline-none"
         >
           {t('input.review.heading')}
         </h3>
         <p className="text-muted-foreground">{t('input.review.intro')}</p>
-        <p role="status" className="font-semibold text-navy empty:hidden">
+        <p role="status" className="font-semibold text-navy empty:sr-only">
           {toCheck > 0 ? t('input.review.toCheck', { count: toCheck }) : ''}
         </p>
       </div>
@@ -187,7 +200,8 @@ export function TranscriptionReview({
               const isEditing = editing === row.id
               const onEnter = (e: KeyboardEvent<HTMLInputElement>) => {
                 // Enter ends the edit; inside a page's <form> it would otherwise submit it.
-                if (e.key !== 'Enter') return
+                // An Enter that commits an IME composition is not the end of the edit.
+                if (e.key !== 'Enter' || e.nativeEvent.isComposing || e.keyCode === 229) return
                 e.preventDefault()
                 finishEditing(row.id)
                 focusAfter.current = `edit-${uid}-${row.id}`
@@ -219,7 +233,12 @@ export function TranscriptionReview({
                           pen="pencil"
                           className="px-3 py-2 text-2xl sm:text-2xl"
                         >
-                          <EquationLine left={row.left} right={row.right} op={row.op} />
+                          <EquationLine
+                            left={row.left}
+                            right={row.right}
+                            op={row.op}
+                            continued={!single && isContinued(rows, i)}
+                          />
                         </Notebook>
                       )}
                     </div>
@@ -353,6 +372,7 @@ export function TranscriptionReview({
         )}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           <Button
+            data-main-control
             type="button"
             className="min-h-12 px-6 text-base aria-disabled:opacity-50"
             aria-disabled={!!blocked || undefined}
