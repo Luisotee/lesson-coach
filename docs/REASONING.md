@@ -69,10 +69,15 @@ Every factual claim (licenses, dataset contents, model availability) was checked
 
 The brief asks for two hours. We chose to deliver a complete, working product instead, and report the real time here. Human time and agent time are counted separately.
 
-| Phase | Wall clock (2026-11-18, UTC−3) | Luis, active | Claude, active |
+| Phase | Wall clock (UTC−3; 2026-11-18 unless marked) | Luis, active | Claude, active |
 |---|---|---|---|
 | Understanding, research, plan, peer review, design | 01:50–05:48 (4 h; peer agents researched for 2 h of it) | ~10 min, 25 prompts | ~76 min |
 | Build, T0–T13 (agent-mesh run `m956c`) | 05:47–12:32+ (6.75 h, of which 2.5 h idle: no agent ran from 08:03 to 10:32) | a few short messages, no task or code input | ~14.75 h summed over parallel agents: workers ~8.4 h, reviewers ~3.4 h, lead ~3 h. Some agent was working during ~4.3 h of wall clock |
+| Follow-up rounds in the same run (math core rounds 4–5, a flaky header test, eval reruns; PRs #14–#18) | 12:33–14:56 (2.4 h) | 2 short messages | ~2.4 h: workers ~1.4 h, reviewers ~0.1 h, lead ~0.8 h |
+| Exercise-form fix after Luis's first live test ("1/2 + 1/2 = ?"; PR #19) | 22:33–22:41 | 5 prompts | ~14 min (one session) |
+| UX fixes after Luis's live test (agent-mesh run `mcf0d`: confirm step, language menu, home page, smooth scrolling; PRs #20–#21) | 11-19 07:12–09:23 (2.2 h, with two power cuts) | 3 short messages, plus the annotated feedback that started it | ~3.1 h: workers ~2.1 h, reviewers ~0.2 h, lead ~0.8 h |
+| Final polish (centering the mistake page, this time count) | 11-19 09:44–13:30 | 4 prompts | ~20 min |
+| **Total** | 11-18 01:50 – 11-19 13:30 | ~10 min of prompts in planning, about 15 short messages after it, and his live testing (not measured) | **~22 h** summed over agents |
 
 **How we measured.**
 - **Wall clock:** the first and last timestamps of the planning session and of the mesh log.
@@ -80,6 +85,8 @@ The brief asks for two hours. We chose to deliver a complete, working product in
 - **Luis's time:** the 25 prompts in the planning transcript, and his own estimate of about 10 minutes. During the build he sent the lead a handful of short messages (asking whether it was finished; deciding not to send the questions for Mykola), with no task or code input. Every task, review and merge was sent by the lead agent.
 - **The git history starts with the plan**, at 05:39, after the planning. Per-task commit times are not a good measure, because rebases rewrite them; the mesh log has each task's send and done times.
 - **Not measured:** time Luis spent reading or testing the app outside these sessions.
+- **agy reviewers** (Gemini) are not counted: they have no Claude transcript. In run `mcf0d` they did no work (one never received its task, one was out of quota).
+- **The later rows** were measured the same way, by bucketing each transcript's events by phase; the wall clock of the two mesh runs comes from their logs.
 
 ## Known limits and next steps
 
