@@ -3,7 +3,9 @@
  *
  * A global `scroll-behavior: smooth` would also animate React Router's scroll to the top on
  * every new page and its restore on Back. So `html.smooth-scroll` (index.css) is set only around
- * a move inside the page: a same-page #link, or a focus or scrollIntoView after a button. Every
+ * a move inside the page: a same-page #link, or a focus or scrollIntoView after a button. The one
+ * page change it is used for is practice's Previous/Next problem, which keeps the same layout, so
+ * gliding to the top reads as moving within it. Every
  * scroll the browser makes then (React Router's scrollIntoView for a #hash, focus() bringing an
  * element into view) animates, and still stops below the sticky header (scroll-padding-top).
  * Under prefers-reduced-motion the class does nothing and scrolling stays instant.
@@ -60,10 +62,19 @@ export function smoothlyThen(move: () => void, then: () => void): void {
   smoothly(move)
 }
 
+/** Whether a click follows a link here: the main button, no modifier (not a new tab or window). */
+export function isPlainClick(
+  e: Pick<
+    MouseEvent,
+    'defaultPrevented' | 'button' | 'metaKey' | 'ctrlKey' | 'shiftKey' | 'altKey'
+  >,
+): boolean {
+  return !(e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+}
+
 /** Whether a click on `a` is a plain same-page jump to a #target (not a new tab or page). */
 export function isSamePageHashClick(e: MouseEvent, a: HTMLAnchorElement): boolean {
-  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
-    return false
+  if (!isPlainClick(e)) return false
   if (a.target && a.target !== '_self') return false
   const url = new URL(a.href, window.location.href)
   return (

@@ -13,7 +13,7 @@ import { RichText } from '@/components/RichText'
 import { usePageTitle } from '@/components/shell/hooks'
 import { Button } from '@/components/ui/button'
 import { isTopicId, problemNumber } from '@/content/topics'
-import { smoothly } from '@/lib/smooth'
+import { isPlainClick, smoothly } from '@/lib/smooth'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { PageFrame } from '@/pages/PageFrame'
 
@@ -141,7 +141,7 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
               <Link
                 to={`/practice/${pack.topic}/${n - 1}`}
                 className={stepLink}
-                onClick={() => smoothly()}
+                onClick={(e) => isPlainClick(e) && smoothly()}
               >
                 <ArrowLeft aria-hidden="true" className="size-4 rtl:-scale-x-100" />
                 {t('pages.previous')}
@@ -153,7 +153,7 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
               <Link
                 to={`/practice/${pack.topic}/${n + 1}`}
                 className={stepLink}
-                onClick={() => smoothly()}
+                onClick={(e) => isPlainClick(e) && smoothly()}
               >
                 {t('pages.next')}
                 <ArrowRight aria-hidden="true" className="size-4 rtl:-scale-x-100" />
