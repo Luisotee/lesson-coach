@@ -73,11 +73,11 @@ The brief asks for two hours. We chose to deliver a complete, working product in
 |---|---|---|---|
 | Understanding, research, plan, peer review, design | 01:50–05:48 (4 h; peer agents researched for 2 h of it) | ~10 min, 25 prompts | ~76 min |
 | Build, T0–T13 (agent-mesh run `m956c`) | 05:47–12:32+ (6.75 h, of which 2.5 h idle: no agent ran from 08:03 to 10:32) | a few short messages, no task or code input (~5 min, estimate) | ~14.75 h summed over parallel agents: workers ~8.4 h, reviewers ~3.4 h, lead ~3 h. Some agent was working during ~4.3 h of wall clock |
-| Follow-up rounds in the same run (math core rounds 4–5, a flaky header test, eval reruns; PRs #14–#18) | 12:33–14:56 (2.4 h) | 2 short messages (~5 min, estimate) | ~2.4 h: workers ~1.4 h, reviewers ~0.1 h, lead ~0.8 h |
+| Follow-up rounds in the same run (math core rounds 4–5, a flaky header test, eval reruns; PRs #14–#18) | 12:33–14:56 (2.4 h) | 2 short messages (~5 min, estimate) | ~2.4 h: workers ~1.4 h, reviewers ~0.1 h, lead ~0.8 h. Some agent was working during ~1.4 h of wall clock |
 | Exercise-form fix after Luis's first live test ("1/2 + 1/2 = ?"; PR #19) | 22:33–22:41 | a live test, then 5 prompts (~20 min, estimate) | ~14 min (one session) |
-| UX fixes after Luis's live test (agent-mesh run `mcf0d`: confirm step, language menu, home page, smooth scrolling; PRs #20–#21) | 11-19 07:12–09:23 (2.2 h, with two power cuts) | a live test and 4 annotated screenshots, then 3 short messages (~30 min, estimate) | ~3.1 h: workers ~2.1 h, reviewers ~0.2 h, lead ~0.8 h |
+| UX fixes after Luis's live test (agent-mesh run `mcf0d`: confirm step, language menu, home page, smooth scrolling; PRs #20–#21) | 11-19 07:12–09:23 (2.2 h, with two power cuts) | a live test and 4 annotated screenshots, then 3 short messages (~30 min, estimate) | ~3.1 h: workers ~2.1 h, reviewers ~0.2 h, lead ~0.8 h. Some agent was working during ~1.8 h of wall clock |
 | Final polish (centering the mistake page, this time count) | 11-19 09:44–13:30 | a last look at the live app, then 4 prompts (~15 min, estimate) | ~20 min |
-| **Total** | 11-18 01:50 – 11-19 13:30 | **~1.5 h**: ~10 min in planning, ~1¼ h after it (estimates) | **~22 h** summed over agents |
+| **Total** | 11-18 01:50 – 11-19 13:30 | **~1.5 h**: ~10 min in planning, ~1¼ h after it (estimates) | **~22 h** summed over agents; **~9.3 h** of wall clock with at least one agent working (parallel time counted once) |
 
 **How we measured.**
 - **Wall clock:** the first and last timestamps of the planning session and of the mesh log.
@@ -87,6 +87,7 @@ The brief asks for two hours. We chose to deliver a complete, working product in
 - **Luis's time after planning is an estimate**, not a measurement: his prompts' length and timing in the transcripts, plus a guess for the live tests behind them (each began with a screenshot of the live app). Reading the docs before sending is not included.
 - **agy reviewers** (Gemini) are not counted: they have no Claude transcript. In run `mcf0d` they did no work (one never received its task, one was out of quota).
 - **The later rows** were measured the same way, by bucketing each transcript's events by phase; the wall clock of the two mesh runs comes from their logs.
+- **Time with some agent working** merges every agent's active intervals, so time when agents ran in parallel counts once. Planning (~1.25 h) and the single-session rows count as they are.
 
 ## Known limits and next steps
 
