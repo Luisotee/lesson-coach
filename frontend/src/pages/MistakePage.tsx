@@ -115,8 +115,11 @@ export function MistakePage() {
     }
     // On a phone the answer field is a screen or more above: glide up to it first, then clear
     // the result (clearing first would shorten the page under the reader, a jump).
+    // Above the view, or under the sticky header (--header-h, 0 when it scrolls away).
     const field = answerBox.current
-    if (field && field.getBoundingClientRect().top < 0)
+    const header =
+      parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 0
+    if (field && field.getBoundingClientRect().top < header)
       smoothlyThen(() => field.scrollIntoView({ block: 'center' }), again)
     else again()
   }
