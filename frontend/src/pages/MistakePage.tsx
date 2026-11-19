@@ -125,7 +125,13 @@ export function MistakePage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-[1200px] flex-col gap-8 px-4 py-10 sm:px-6">
+    // Until there is a result, the form is the page: one centred column, not half an empty page.
+    <div
+      className={cn(
+        'mx-auto flex flex-col gap-8 px-4 py-10 sm:px-6',
+        mistake.isIdle ? 'max-w-3xl' : 'max-w-[1200px]',
+      )}
+    >
       <div className="flex max-w-2xl flex-col gap-3">
         <h1 className="text-[clamp(32px,4vw,48px)] leading-tight font-bold tracking-tight">
           {t('mistake.title')}
@@ -224,7 +230,11 @@ export function MistakePage() {
           ref={resultRef}
           aria-live="polite"
           aria-label={t('mistake.resultHeading')}
-          className="flex min-w-0 flex-[1.2_1_420px] flex-col gap-4"
+          // Kept mounted while idle (visually hidden), so the live region announces the result.
+          className={cn(
+            'flex min-w-0 flex-[1.2_1_420px] flex-col gap-4',
+            mistake.isIdle && 'sr-only',
+          )}
         >
           {mistake.isPending && <Loading lines={4} />}
           {mistake.isError && (
