@@ -55,7 +55,8 @@ export function smoothlyThen(move: () => void, then: () => void): void {
     then()
   }
   const timer = window.setTimeout(finish, 1000)
-  window.addEventListener('scrollend', finish)
+  // Added after this task, as in `smoothly`: a scroll already ending must not count as ours.
+  window.setTimeout(() => !done && window.addEventListener('scrollend', finish))
   smoothly(move)
 }
 
