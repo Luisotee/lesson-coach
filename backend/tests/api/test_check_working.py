@@ -60,3 +60,10 @@ def test_problem_abstains(
 def test_needs_lines(make_client: MakeClient) -> None:
     client, _ = make_client()
     assert client.post("/api/check-working", json={"lines": []}).status_code == 422
+
+
+def test_a_blank_for_the_answer_is_dropped_from_the_problem(make_client: MakeClient) -> None:
+    lines = [{"text": "1/2 + 1/2 = 2/4"}]
+    asked = check(make_client, problem={"latex": "\\frac{1}{2}+\\frac{1}{2}=?"}, lines=lines)
+    assert asked == check(make_client, problem={"text": "1/2 + 1/2"}, lines=lines)
+    assert asked["first_bad_line"] == {"index": 0, "reason": "false_equality"}
