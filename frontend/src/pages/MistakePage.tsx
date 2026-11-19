@@ -15,6 +15,7 @@ import { usePageTitle } from '@/components/shell/hooks'
 import { Button } from '@/components/ui/button'
 import { TOPIC_IDS, type TopicId } from '@/content/topics'
 import { useRetryWait } from '@/hooks/useRetryWait'
+import { smoothly, smoothlyThen } from '@/lib/smooth'
 import { cn } from '@/lib/utils'
 
 /** "A student wrote this": the problem, the student's answer and optional working in; the
@@ -39,6 +40,7 @@ export function MistakePage() {
   const problemRef = useRef<MathInputHandle>(null)
   const answerRef = useRef<MathInputHandle>(null)
   const workingRef = useRef<MathInputHandle>(null)
+  const answerBox = useRef<HTMLDivElement>(null)
   const lastRequest = useRef<MistakeRequest | null>(null)
   // The topic the shown result was asked with; the chips may have changed since.
   const [sentTopic, setSentTopic] = useState<TopicId | undefined>()
@@ -49,6 +51,18 @@ export function MistakePage() {
     // The fresh input may still be loading its editor; MathInput honours the focus once it can.
     answerRef.current?.focus()
   }, [answerKey])
+
+  // When the result sits below the form (phones, narrow windows), bring it up (smoothly) while it
+  // loads, so "Explain this" visibly leads somewhere. Side by side, it is already beside the
+  // button.
+  const resultRef = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const result = resultRef.current
+    const form = result?.previousElementSibling
+    if (!mistake.isPending || !result || !form) return
+    if (result.getBoundingClientRect().top >= form.getBoundingClientRect().bottom)
+      smoothly(() => result.scrollIntoView({ block: 'start' }))
+  }, [mistake.isPending])
 
   const send = (body: MistakeRequest) => {
     lastRequest.current = body
@@ -93,10 +107,18 @@ export function MistakePage() {
   const tryAnother = () => {
     // Blur first: MathLive drops a focus request while the focused element changes.
     ;(document.activeElement as HTMLElement | null)?.blur()
-    mistake.reset()
-    setAnswer(null)
-    setAnswerKey((k) => k + 1)
-    focusAnswerNext.current = true
+    const again = () => {
+      mistake.reset()
+      setAnswer(null)
+      setAnswerKey((k) => k + 1)
+      focusAnswerNext.current = true
+    }
+    // On a phone the answer field is a screen or more above: glide up to it first, then clear
+    // the result (clearing first would shorten the page under the reader, a jump).
+    const field = answerBox.current
+    if (field && field.getBoundingClientRect().top < 0)
+      smoothlyThen(() => field.scrollIntoView({ block: 'center' }), again)
+    else again()
   }
 
   return (
@@ -151,19 +173,21 @@ export function MistakePage() {
               if (v) setErrors((e) => ({ ...e, problem: undefined }))
             }}
           />
-          <MathInput
-            key={answerKey}
-            ref={answerRef}
-            shape="expression"
-            label={t('mistake.answerLabel')}
-            confirmLabel={t('mistake.useAnswer')}
-            error={errors.answer}
-            onChange={(v) => {
-              clearResult()
-              setAnswer(v)
-              if (v) setErrors((e) => ({ ...e, answer: undefined }))
-            }}
-          />
+          <div ref={answerBox}>
+            <MathInput
+              key={answerKey}
+              ref={answerRef}
+              shape="expression"
+              label={t('mistake.answerLabel')}
+              confirmLabel={t('mistake.useAnswer')}
+              error={errors.answer}
+              onChange={(v) => {
+                clearResult()
+                setAnswer(v)
+                if (v) setErrors((e) => ({ ...e, answer: undefined }))
+              }}
+            />
+          </div>
           <MathInput
             ref={workingRef}
             shape="lines"
@@ -194,6 +218,7 @@ export function MistakePage() {
         </form>
 
         <section
+          ref={resultRef}
           aria-live="polite"
           aria-label={t('mistake.resultHeading')}
           className="flex min-w-0 flex-[1.2_1_420px] flex-col gap-4"

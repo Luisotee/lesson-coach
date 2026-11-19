@@ -181,6 +181,14 @@
   }
 }
 
+/* Smooth scrolling, only while a move within the page runs (src/lib/smooth.ts) and only for
+   people who haven't asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html.smooth-scroll {
+    scroll-behavior: smooth;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

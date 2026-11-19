@@ -1,6 +1,7 @@
 import { useEffect, useRef, type RefObject } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router'
+import { isSamePageHashClick, smoothly } from '@/lib/smooth'
 
 /** Sets the document title to "<page> · Lesson Coach" in the active language (WCAG 2.4.2). */
 export function usePageTitle(page?: string): void {
@@ -123,4 +124,20 @@ export function useHeaderHeight(header: RefObject<HTMLElement | null>): void {
       root.style.removeProperty('--header-h')
     }
   }, [header])
+}
+
+/**
+ * Same-page #links (the home page's "Choose a topic", a topic page's "On this page", the header's
+ * Topics on the home page) scroll there smoothly. Listening on the document catches React
+ * Router links and plain anchors alike, before either navigates.
+ */
+export function useSmoothHashLinks(): void {
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element | null)?.closest?.('a[href]')
+      if (a instanceof HTMLAnchorElement && isSamePageHashClick(e, a)) smoothly()
+    }
+    document.addEventListener('click', onClick, true)
+    return () => document.removeEventListener('click', onClick, true)
+  }, [])
 }

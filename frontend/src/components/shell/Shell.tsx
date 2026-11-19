@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet, ScrollRestoration, useMatch } from 'react-router'
 import { createQueryClient } from '@/api/queries'
 import { LanguagePicker } from '@/components/shell/LanguagePicker'
-import { useHeaderHeight, useRouteFocus } from '@/components/shell/hooks'
+import { useHeaderHeight, useRouteFocus, useSmoothHashLinks } from '@/components/shell/hooks'
 import { findLanguage } from '@/i18n/languages'
 import { isTopicId, problemNumber } from '@/content/topics'
 import { cn } from '@/lib/utils'
@@ -49,6 +49,7 @@ export function Shell() {
     isTopicId(practiceMatch?.params.topic) && problemNumber(practiceMatch?.params.n) !== null
   const machine = findLanguage(i18n.resolvedLanguage ?? i18n.language).status === 'machine'
   useRouteFocus()
+  useSmoothHashLinks()
   const header = useRef<HTMLElement>(null)
   useHeaderHeight(header)
   // One cache for the app's lifetime: packs are static, so revisits are instant.
