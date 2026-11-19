@@ -8,7 +8,8 @@
     "mainNav": "Hauptbereich",
     "nothingSaved": "Kein Konto. Nur Ihre Sprachauswahl wird in diesem Browser gespeichert.",
     "footerNoScores": "Keine Tests. Keine Punktzahlen. Nichts über Sie oder Ihre Schülerinnen und Schüler wird gespeichert.",
-    "footerChecked": "Jede Antwort wird von einem Computeralgebrasystem geprüft."
+    "footerChecked": "Jede Antwort wird von einem Computeralgebrasystem geprüft.",
+    "machineNote": "Diese Seite wurde maschinell aus dem Englischen übersetzt und noch nicht geprüft."
   },
   "nav": {
     "topics": "Themen",
@@ -16,27 +17,32 @@
     "practice": "Üben"
   },
   "language": {
-    "label": "Sprache"
+    "label": "Sprache",
+    "button": "Sprache: {name}",
+    "note": "Englisch ist das Original. Jede andere Sprache ist maschinell übersetzt und noch nicht geprüft."
   },
   "home": {
     "eyebrow": "Für Mathematiklehrkräfte, Klassen 6–9",
     "title": "Fühlen Sie sich sicher mit der Mathematik, bevor Sie sie unterrichten.",
-    "intro": "Wählen Sie das Thema für morgen. Sehen Sie, warum jeder Schritt funktioniert, was Schülerinnen und Schüler häufig falsch machen und was Sie dann sagen können.",
+    "intro": "Lesson Coach hilft Ihnen, sich auf das Unterrichten eines mathematischen Themas vorzubereiten: die Idee auffrischen, den Fehler einer Schülerin oder eines Schülers verstehen oder selbst eine Aufgabe üben.",
     "topicsHeading": "Thema wählen",
     "topicsIntro": "Zu jedem Thema: die Idee, durchgerechnete Beispiele, häufige Fehler und ein Unterrichtsentwurf.",
     "openTopic": "Thema öffnen",
     "prepareTitle": "Unterricht vorbereiten",
-    "prepareText": "Frischen Sie die Idee auf und sehen Sie jeden Schritt auf drei Arten erklärt.",
-    "mistakeTitle": "Einen Fehler verstehen",
-    "mistakeText": "Geben Sie ein, was ein Schüler oder eine Schülerin geschrieben hat. Sehen Sie den wahrscheinlichen Grund und was Sie fragen können.",
-    "practiceTitle": "Für sich üben",
-    "practiceText": "Aufgaben mit Hinweisen, die Sie einzeln öffnen. Keine Punktzahlen.",
+    "prepareText": "Wählen Sie ein Thema. Lesen Sie die Grundidee, durchgerechnete Beispiele mit erklärtem Rechenweg, typische Fehler von Schülerinnen und Schülern und eine Unterrichtsskizze zum Ausdrucken.",
+    "mistakeTitle": "Eine Schülerin oder ein Schüler schrieb dies",
+    "mistakeText": "Tippen, zeichnen oder fotografieren Sie eine Aufgabe und die Antwort Ihrer Schülerin oder Ihres Schülers. Eine Mathematik-Engine prüft die Antwort und den Lösungsweg; der Coach nennt den wahrscheinlichen Grund und passende Fragen an Ihre Schülerin oder Ihren Schüler.",
+    "practiceTitle": "Üben",
+    "practiceText": "Lösen Sie selbst Aufgaben, mit Hinweisen, die Sie einzeln öffnen. Eine Mathematik-Engine prüft jede Zeile Ihres Lösungswegs. Keine Punkte, und nichts wird gespeichert.",
     "titleHighlight": "bevor",
-    "mistakeCta": "Ein Schüler oder eine Schülerin hat das geschrieben …",
+    "mistakeCta": "Antwort einer Schülerin oder eines Schülers erklären",
     "heroWorked": "durchgerechnetes Beispiel",
     "heroWhyTitle": "Warum dieser Schritt funktioniert",
     "heroWhyText": "Nimmt man nur von einer Seite 5 weg, kippt die Waage. Nimmt man auf beiden Seiten 5 weg, bleiben die Seiten gleich.",
-    "noTopics": "Es sind noch keine Themen verfügbar."
+    "noTopics": "Es sind noch keine Themen verfügbar.",
+    "featuresHeading": "Was Sie tun können",
+    "prepareCta": "Thema wählen",
+    "practiceCta": "Mit dem Üben beginnen"
   },
   "topics": {
     "negative-numbers": {

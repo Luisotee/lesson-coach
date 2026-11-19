@@ -8,7 +8,8 @@
     "mainNav": "Huvudmeny",
     "nothingSaved": "Inget konto. Bara ditt språkval sparas, i den här webbläsaren.",
     "footerNoScores": "Inga prov. Inga poäng. Inget om dig eller dina elever sparas.",
-    "footerChecked": "Varje svar kontrolleras av ett datoralgebrasystem."
+    "footerChecked": "Varje svar kontrolleras av ett datoralgebrasystem.",
+    "machineNote": "Den här sidan är maskinöversatt från engelska och ännu inte granskad."
   },
   "nav": {
     "topics": "Ämnen",
@@ -16,27 +17,32 @@
     "practice": "Öva"
   },
   "language": {
-    "label": "Språk"
+    "label": "Språk",
+    "button": "Språk: {name}",
+    "note": "Engelska är originalet. Alla andra språk är maskinöversatta och ännu inte granskade."
   },
   "home": {
     "eyebrow": "För matematiklärare, årskurs 6–9",
     "title": "Känn dig säker på matematiken innan du undervisar om den.",
-    "intro": "Välj morgondagens område. Se varför varje steg fungerar, vad elever ofta gör fel och vad du kan säga då.",
+    "intro": "Lesson Coach hjälper dig att bli redo att undervisa om ett matematiskt område: repetera idén, förstå en elevs misstag eller öva på en uppgift själv.",
     "topicsHeading": "Välj ett område",
     "topicsIntro": "Varje område: idén, lösta exempel, vanliga misstag och en lektionsplanering.",
     "openTopic": "Öppna ämnet",
     "prepareTitle": "Förbered en lektion",
-    "prepareText": "Friska upp idén och se varje steg förklarat på tre sätt.",
-    "mistakeTitle": "Förstå ett misstag",
-    "mistakeText": "Skriv vad en elev skrev. Se den troliga orsaken och vad du kan fråga.",
-    "practiceTitle": "Öva i lugn och ro",
-    "practiceText": "Uppgifter med ledtrådar som du öppnar en i taget. Inga poäng.",
+    "prepareText": "Välj ett område. Läs kärnidén, lösta exempel där varje steg förklaras, misstagen elever brukar göra och en lektionsplanering som du kan skriva ut.",
+    "mistakeTitle": "En elev skrev så här",
+    "mistakeText": "Skriv, rita eller fotografera en uppgift och din elevs svar. En matematikmotor kontrollerar svaret och elevens lösning; coachen föreslår den troliga orsaken och vad du kan fråga din elev.",
+    "practiceTitle": "Öva",
+    "practiceText": "Lös uppgifter själv, med ledtrådar som du öppnar en i taget. En matematikmotor kontrollerar varje rad i din lösning. Inga poäng, och inget sparas.",
     "titleHighlight": "innan",
-    "mistakeCta": "En elev skrev detta…",
+    "mistakeCta": "Förklara en elevs svar",
     "heroWorked": "löst exempel",
     "heroWhyTitle": "Varför detta steg fungerar",
     "heroWhyText": "Ta bort 5 från bara ena sidan och balansen rubbas. Ta bort det från båda, så förblir sidorna lika.",
-    "noTopics": "Inga områden finns tillgängliga än."
+    "noTopics": "Inga områden finns tillgängliga än.",
+    "featuresHeading": "Det här kan du göra",
+    "prepareCta": "Välj ett område",
+    "practiceCta": "Börja öva"
   },
   "topics": {
     "negative-numbers": {

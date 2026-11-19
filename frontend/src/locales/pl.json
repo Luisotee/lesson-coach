@@ -8,7 +8,8 @@
     "mainNav": "Główna",
     "nothingSaved": "Brak konta. Zapisywany jest tylko wybór języka, w tej przeglądarce.",
     "footerNoScores": "Bez testów. Bez wyników. Nic o Tobie ani Twoich uczniach nie jest zapisywane.",
-    "footerChecked": "Każda odpowiedź jest sprawdzana przez system algebry komputerowej."
+    "footerChecked": "Każda odpowiedź jest sprawdzana przez system algebry komputerowej.",
+    "machineNote": "Ta strona została przetłumaczona maszynowo z języka angielskiego i nie została jeszcze sprawdzona."
   },
   "nav": {
     "topics": "Tematy",
@@ -16,27 +17,32 @@
     "practice": "Ćwiczenia"
   },
   "language": {
-    "label": "Język"
+    "label": "Język",
+    "button": "Język: {name}",
+    "note": "Angielski jest wersją oryginalną. Wszystkie pozostałe języki są przetłumaczone maszynowo i nie zostały jeszcze sprawdzone."
   },
   "home": {
     "eyebrow": "Dla nauczycieli matematyki, klasy 6–9",
     "title": "Poczuj pewność w matematyce, zanim zaczniesz jej uczyć.",
-    "intro": "Wybierz temat na jutro. Zobacz, dlaczego działa każdy krok, co uczniowie zwykle robią źle i co wtedy powiedzieć.",
+    "intro": "Lesson Coach pomaga przygotować się do nauczania tematu z matematyki: odświeżyć pojęcie, zrozumieć błąd ucznia albo samodzielnie przećwiczyć zadanie.",
     "topicsHeading": "Wybierz temat",
     "topicsIntro": "Każdy temat: idea, rozwiązane przykłady, typowe błędy i zarys lekcji.",
     "openTopic": "Otwórz temat",
     "prepareTitle": "Przygotuj lekcję",
-    "prepareText": "Odśwież ideę i zobacz każdy krok wyjaśniony na trzy sposoby.",
-    "mistakeTitle": "Zrozum błąd",
-    "mistakeText": "Wpisz, co napisał uczeń. Zobacz prawdopodobną przyczynę i pytanie, które warto zadać.",
-    "practiceTitle": "Ćwicz prywatnie",
-    "practiceText": "Zadania ze wskazówkami, które otwierasz pojedynczo. Bez wyników.",
+    "prepareText": "Wybierz temat. Przeczytaj główną ideę, rozwiązane przykłady z objaśnieniem każdego kroku, błędy, które uczniowie zwykle popełniają, oraz konspekt lekcji do wydruku.",
+    "mistakeTitle": "Uczeń zapisał to",
+    "mistakeText": "Wpisz, narysuj lub sfotografuj zadanie i odpowiedź ucznia. Silnik matematyczny sprawdzi odpowiedź i tok pracy; trener podpowie prawdopodobną przyczynę oraz pytanie, które warto zadać uczniowi.",
+    "practiceTitle": "Ćwiczenie",
+    "practiceText": "Rozwiązuj zadania samodzielnie, z podpowiedziami otwieranymi po jednej. Silnik matematyczny sprawdza każdy zapisany krok. Bez ocen, nic nie jest zapisywane.",
     "titleHighlight": "zanim",
-    "mistakeCta": "Uczeń napisał tak…",
+    "mistakeCta": "Wyjaśnij odpowiedź ucznia",
     "heroWorked": "przykład rozwiązany",
     "heroWhyTitle": "Dlaczego ten krok działa",
     "heroWhyText": "Odejmij 5 tylko od jednej strony, a równowaga się zachwieje. Odejmij od obu, a strony pozostaną równe.",
-    "noTopics": "Nie ma jeszcze dostępnych tematów."
+    "noTopics": "Nie ma jeszcze dostępnych tematów.",
+    "featuresHeading": "Co możesz zrobić",
+    "prepareCta": "Wybierz temat",
+    "practiceCta": "Zacznij ćwiczyć"
   },
   "topics": {
     "negative-numbers": {
