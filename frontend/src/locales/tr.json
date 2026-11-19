@@ -8,7 +8,8 @@
     "mainNav": "Ana menü",
     "nothingSaved": "Hesap yok. Yalnızca dil seçiminiz bu tarayıcıda tutulur.",
     "footerNoScores": "Test yok. Puan yok. Siz veya öğrencileriniz hakkında hiçbir şey kaydedilmez.",
-    "footerChecked": "Her yanıt bir bilgisayar cebiri sistemi tarafından kontrol edilir."
+    "footerChecked": "Her yanıt bir bilgisayar cebiri sistemi tarafından kontrol edilir.",
+    "machineNote": "Bu sayfa İngilizceden makine çevirisiyle çevrilmiştir ve henüz gözden geçirilmemiştir."
   },
   "nav": {
     "topics": "Konular",
@@ -17,29 +18,31 @@
   },
   "language": {
     "label": "Dil",
-    "machine": "{name} (makine çevirisi)"
+    "button": "Dil: {name}",
+    "note": "Özgün dil İngilizcedir. Diğer tüm diller makine çevirisidir ve henüz incelenmemiştir."
   },
   "home": {
     "eyebrow": "Matematik öğretmenleri için, 6–9. sınıflar",
     "title": "Dersi anlatmadan önce matematikten emin olun.",
-    "intro": "Yarının konusunu seçin. Her adımın neden işe yaradığını, öğrencilerin genellikle nerede hata yaptığını ve böyle olduğunda ne söyleyeceğinizi görün.",
+    "intro": "Lesson Coach, bir matematik konusunu öğretmeye hazırlanmanıza yardımcı olur: fikri tazelemek, bir öğrencinin hatasını anlamak ya da bir problemi kendiniz çözerek alıştırma yapmak.",
     "topicsHeading": "Bir konu seçin",
     "topicsIntro": "Her konuda: fikir, çözümlü örnekler, sık yapılan hatalar ve bir ders planı.",
     "openTopic": "Konuyu aç",
-    "waysHeading": "Başlama yolları",
     "prepareTitle": "Bir ders hazırlayın",
-    "prepareText": "Fikri tazeleyin ve her adımı üç farklı açıklamayla görün.",
-    "mistakeTitle": "Bir hatayı anlayın",
-    "mistakeText": "Bir öğrencinin yazdığını yazın. Olası nedeni ve ne soracağınızı görün.",
-    "practiceTitle": "Kendi kendinize alıştırma yapın",
-    "practiceText": "İpuçlarını tek tek açtığınız problemler. Puan yok.",
+    "prepareText": "Bir konu seçin. Temel fikri, her adımı açıklanmış çözümlü örnekleri, öğrencilerin genellikle yaptığı hataları ve yazdırabileceğiniz bir ders taslağını okuyun.",
+    "mistakeTitle": "Bir öğrenci bunu yazdı",
+    "mistakeText": "Bir problemi ve öğrencinizin cevabını yazın, çizin veya fotoğrafını çekin. Bir matematik motoru cevabı ve çözümünü kontrol eder; koç olası nedeni ve öğrencinize ne soracağınızı önerir.",
+    "practiceTitle": "Alıştırma",
+    "practiceText": "İpuçlarını tek tek açarak problemleri kendiniz çözün. Bir matematik motoru çözümünüzün her satırını kontrol eder. Puan yoktur ve hiçbir şey kaydedilmez.",
     "titleHighlight": "önce",
-    "mistakeCta": "Bir öğrenci şunu yazdı…",
+    "mistakeCta": "Bir öğrencinin cevabını açıklayın",
     "heroWorked": "çözümlü örnek",
     "heroWhyTitle": "Bu adım neden işe yarar?",
     "heroWhyText": "5’i yalnızca bir taraftan çıkarırsanız denge bozulur. İki taraftan da çıkarırsanız taraflar eşit kalır.",
-    "heroExampleLink": "Çözümlü bir örnek görün: 3x + 5 = 20 denklemini çözme",
-    "noTopics": "Henüz kullanılabilir konu yok."
+    "noTopics": "Henüz kullanılabilir konu yok.",
+    "featuresHeading": "Neler yapabilirsiniz",
+    "prepareCta": "Bir konu seçin",
+    "practiceCta": "Alıştırmaya başlayın"
   },
   "topics": {
     "negative-numbers": {

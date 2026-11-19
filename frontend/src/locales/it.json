@@ -8,7 +8,8 @@
     "mainNav": "Principale",
     "nothingSaved": "Nessun account. Viene conservata solo la tua scelta della lingua, in questo browser.",
     "footerNoScores": "Nessun test. Nessun punteggio. Non viene salvato nulla su di te o sui tuoi studenti.",
-    "footerChecked": "Ogni risposta è controllata da un sistema di algebra computazionale."
+    "footerChecked": "Ogni risposta è controllata da un sistema di algebra computazionale.",
+    "machineNote": "Questa pagina è tradotta automaticamente dall'inglese e non è ancora stata revisionata."
   },
   "nav": {
     "topics": "Argomenti",
@@ -17,29 +18,31 @@
   },
   "language": {
     "label": "Lingua",
-    "machine": "{name} (tradotto automaticamente)"
+    "button": "Lingua: {name}",
+    "note": "L'inglese è l'originale. Ogni altra lingua è tradotta automaticamente e non è ancora stata revisionata."
   },
   "home": {
     "eyebrow": "Per insegnanti di matematica, classi 6–9",
     "title": "Sentiti sicuro della matematica prima di insegnarla.",
-    "intro": "Scegli l’argomento di domani. Vedi perché ogni passaggio funziona, dove gli studenti di solito sbagliano e che cosa dire quando succede.",
+    "intro": "Lesson Coach ti aiuta a prepararti per insegnare un argomento di matematica: ripassare l’idea, capire l’errore di uno studente o esercitarti tu stesso su un problema.",
     "topicsHeading": "Scegli un argomento",
     "topicsIntro": "Per ogni argomento: l’idea, esempi svolti, errori comuni e una traccia di lezione.",
     "openTopic": "Apri argomento",
-    "waysHeading": "Modi per iniziare",
     "prepareTitle": "Prepara una lezione",
-    "prepareText": "Ripassa l’idea e vedi ogni passaggio spiegato in tre modi.",
-    "mistakeTitle": "Capire un errore",
-    "mistakeText": "Scrivi che cosa ha scritto uno studente. Vedi la probabile ragione e che cosa chiedere.",
-    "practiceTitle": "Esercitati in privato",
-    "practiceText": "Problemi con suggerimenti da aprire uno alla volta. Nessun punteggio.",
+    "prepareText": "Scegli un argomento. Leggi l’idea centrale, gli esempi svolti con ogni passaggio spiegato, gli errori che gli studenti fanno di solito e una traccia di lezione che puoi stampare.",
+    "mistakeTitle": "Uno studente ha scritto questo",
+    "mistakeText": "Scrivi, disegna o fotografa un problema e la risposta del tuo studente. Un motore matematico controlla la risposta e il procedimento; il coach suggerisce la probabile ragione e che cosa chiedere allo studente.",
+    "practiceTitle": "Esercitazione",
+    "practiceText": "Risolvi problemi tu stesso, con suggerimenti che apri uno alla volta. Un motore matematico controlla ogni riga del tuo procedimento. Nessun punteggio, e non viene salvato nulla.",
     "titleHighlight": "prima",
-    "mistakeCta": "Uno studente ha scritto questo…",
+    "mistakeCta": "Spiega la risposta di uno studente",
     "heroWorked": "esempio svolto",
     "heroWhyTitle": "Perché questo passaggio funziona",
     "heroWhyText": "Togli 5 da un solo membro e l’equilibrio si rompe. Toglilo da entrambi, e i membri restano uguali.",
-    "heroExampleLink": "Vedi un esempio svolto: risolvere 3x + 5 = 20",
-    "noTopics": "Non ci sono ancora argomenti disponibili."
+    "noTopics": "Non ci sono ancora argomenti disponibili.",
+    "featuresHeading": "Che cosa puoi fare",
+    "prepareCta": "Scegli un argomento",
+    "practiceCta": "Inizia a esercitarti"
   },
   "topics": {
     "negative-numbers": {

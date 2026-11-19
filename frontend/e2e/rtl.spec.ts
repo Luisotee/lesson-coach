@@ -1,7 +1,14 @@
 import { expect, test, type Page, type Route } from '@playwright/test'
 import { IntlMessageFormat } from 'intl-messageformat'
 import { LANGUAGES } from '../src/i18n/languages.ts'
-import { checkState, expectNoSideScroll, expectNothingClipped, explainSettled, t } from './a11y.ts'
+import {
+  checkState,
+  expectNoSideScroll,
+  expectNothingClipped,
+  explainSettled,
+  languageButton,
+  t,
+} from './a11y.ts'
 import { fixture } from './api.ts'
 
 // Right-to-left pages against the real build and the real translated packs (no mocks). With
@@ -312,20 +319,29 @@ test('switching language changes lang, dir and the spoken math, and keeps focus'
   await page.goto('/topics/linear-equations')
   const math = page.locator('#idea [role="math"]').filter({ hasText: /=/ }).first()
   await expect(math).toHaveAttribute('aria-label', '2 x plus 6 equals 10')
-  const picker = page.locator('header select')
-  await picker.focus()
+  const button = languageButton(page)
+  await button.focus()
   const html = page.locator('html')
-  // A closed select changes its value on the arrow keys: Arabic is next after English, and
-  // End jumps to the last language, Simplified Chinese.
+  // By keyboard: Enter opens the menu on its first row; Arabic is next after English, and End
+  // jumps to the last language, Simplified Chinese.
   expect([LANGUAGES[1].code, LANGUAGES.at(-1)?.code]).toEqual(['ar', 'zh-Hans'])
   for (const [key, lang, dir] of [
     ['ArrowDown', 'ar', 'rtl'],
     ['End', 'zh-Hans', 'ltr'],
   ] as const) {
+    await page.keyboard.press('Enter')
+    // The menu opens with focus on its first row; keys pressed before that would go nowhere.
+    await expect(page.getByRole('menuitemradio', { name: 'English' })).toBeFocused()
     await page.keyboard.press(key)
+    // Radix moves focus on the next tick: choose only once the row is focused.
+    const row = page.getByRole('menuitemradio', {
+      name: LANGUAGES.find((l) => l.code === lang)?.nativeName,
+    })
+    await expect(row).toBeFocused()
+    await page.keyboard.press('Enter')
     await expect(html).toHaveAttribute('lang', lang)
     await expect(html).toHaveAttribute('dir', dir)
-    await expect(picker).toBeFocused()
+    await expect(button).toBeFocused()
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(
       t(lang, 'topics.linear-equations.title'),
     )

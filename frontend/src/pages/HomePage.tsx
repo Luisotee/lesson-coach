@@ -61,16 +61,18 @@ function HeroTitle() {
   )
 }
 
-/** The hero picture: a real worked example in miniature, linking to it. */
+/**
+ * The hero picture: a worked example in miniature. Only a picture: the topic cards are the one
+ * way into each topic.
+ */
 function HeroExample() {
   const { t } = useTranslation()
   return (
-    <Link
-      to="/topics/linear-equations#example"
-      className="group relative block h-[380px] min-w-0 flex-[1_1_400px] text-navy no-underline"
+    <div
+      aria-hidden="true"
+      className="relative h-[380px] min-w-0 flex-[1_1_400px] text-navy select-none"
     >
-      <span className="sr-only">{t('home.heroExampleLink')}</span>
-      <span aria-hidden="true" className="contents">
+      <span className="contents">
         <span className="absolute start-10 end-0 top-6 bottom-0 rounded-[28px] border border-line bg-[radial-gradient(120%_120%_at_0%_0%,var(--color-paleblue)_0%,#fff_60%)]" />
         <span className="absolute start-0 top-14 w-[min(360px,88%)] rounded-[20px] border border-line bg-white p-[22px] shadow-[0_30px_60px_-30px_rgba(23,43,83,.35)] motion-safe:animate-[floaty_7s_ease-in-out_infinite]">
           <span className="block text-xs font-semibold text-muted-foreground lowercase">
@@ -94,7 +96,7 @@ function HeroExample() {
           <span className="mt-2 block text-[15px] leading-normal">{t('home.heroWhyText')}</span>
         </span>
       </span>
-    </Link>
+    </div>
   )
 }
 
@@ -165,16 +167,17 @@ function TopicList() {
   )
 }
 
-export function HomePage() {
+/** The three things the app does, each said plainly, each with one way in. */
+function Features() {
   const { t } = useTranslation()
-  usePageTitle()
-  const ways = [
+  const features = [
     {
       to: { hash: '#topics' },
       icon: BookOpen,
       tone: 'bg-paleblue',
       title: t('home.prepareTitle'),
       text: t('home.prepareText'),
+      cta: t('home.prepareCta'),
     },
     {
       to: '/mistake',
@@ -182,6 +185,7 @@ export function HomePage() {
       tone: 'bg-[#fffbeb] text-[#b45309]',
       title: t('home.mistakeTitle'),
       text: t('home.mistakeText'),
+      cta: t('home.mistakeCta'),
     },
     {
       to: '/practice',
@@ -189,8 +193,44 @@ export function HomePage() {
       tone: 'bg-[#ecfdf5] text-green-text',
       title: t('home.practiceTitle'),
       text: t('home.practiceText'),
+      cta: t('home.practiceCta'),
     },
   ]
+  return (
+    <section aria-labelledby="features-heading" className="flex flex-col gap-6 pb-14">
+      <h2 id="features-heading" className="text-[32px] font-semibold tracking-tight">
+        {t('home.featuresHeading')}
+      </h2>
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-5">
+        {features.map(({ to, icon: Icon, tone, title, text, cta }) => (
+          <li
+            key={title}
+            className="flex flex-col gap-4 rounded-[20px] border border-line bg-white p-6"
+          >
+            <span
+              className={cn('flex size-11 flex-none items-center justify-center rounded-xl', tone)}
+            >
+              <Icon aria-hidden="true" className="size-[22px]" />
+            </span>
+            <h3 className="text-[22px] font-semibold tracking-tight">{title}</h3>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">{text}</p>
+            <Link
+              to={to}
+              className="mt-auto inline-flex min-h-11 items-center gap-2 self-start rounded-xl bg-navy px-5 font-semibold text-white no-underline transition-transform hover:-translate-y-px active:translate-y-px motion-reduce:transform-none"
+            >
+              {cta}
+              <ArrowRight aria-hidden="true" className="size-[18px] rtl:-scale-x-100" />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+export function HomePage() {
+  const { t } = useTranslation()
+  usePageTitle()
   return (
     <div className="mx-auto flex max-w-[1200px] flex-col px-4 sm:px-6">
       <section className="flex flex-wrap items-center gap-14 pt-14 pb-14 sm:pt-[72px]">
@@ -209,29 +249,16 @@ export function HomePage() {
               {t('home.intro')}
             </p>
           </FadeUp>
-          <FadeUp delay={0.24} className="flex flex-wrap gap-3">
-            <Link
-              to={{ hash: '#topics' }}
-              className="inline-flex min-h-12 items-center gap-2.5 rounded-xl bg-navy px-[22px] font-semibold text-white no-underline transition-transform hover:-translate-y-px active:translate-y-px motion-reduce:transform-none"
-            >
-              {t('home.prepareTitle')}
-              <ArrowRight aria-hidden="true" className="size-[18px] rtl:-scale-x-100" />
-            </Link>
-            <Link
-              to="/mistake"
-              className="inline-flex min-h-12 items-center rounded-xl border border-line bg-white px-5 font-semibold text-navy no-underline hover:border-line-strong hover:bg-[#eef1f4]"
-            >
-              {t('home.mistakeCta')}
-            </Link>
-          </FadeUp>
         </div>
         <HeroExample />
       </section>
 
+      <Features />
+
       <section
         id="topics"
         aria-labelledby="topics-heading"
-        className="flex flex-col gap-6 pt-6 pb-16"
+        className="flex flex-col gap-6 pt-2 pb-[72px]"
       >
         <div className="flex flex-wrap items-end justify-between gap-3">
           <h2 id="topics-heading" className="text-[32px] font-semibold tracking-tight">
@@ -240,35 +267,6 @@ export function HomePage() {
           <p className="text-[15px] text-muted-foreground">{t('home.topicsIntro')}</p>
         </div>
         <TopicList />
-      </section>
-
-      <section aria-labelledby="ways-heading" className="pb-[72px]">
-        <h2 id="ways-heading" className="sr-only">
-          {t('home.waysHeading')}
-        </h2>
-        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-4">
-          {ways.map(({ to, icon: Icon, tone, title, text }) => (
-            <li key={title}>
-              <Link
-                to={to}
-                className="flex h-full gap-4 rounded-[18px] border border-line bg-white p-[22px] text-navy no-underline transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-18px_rgba(23,43,83,.28)] motion-reduce:hover:translate-y-0"
-              >
-                <span
-                  className={cn(
-                    'flex size-11 flex-none items-center justify-center rounded-xl',
-                    tone,
-                  )}
-                >
-                  <Icon aria-hidden="true" className="size-[22px]" />
-                </span>
-                <span className="flex flex-col gap-1">
-                  <span className="font-semibold">{title}</span>
-                  <span className="text-sm leading-normal text-muted-foreground">{text}</span>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
       </section>
     </div>
   )

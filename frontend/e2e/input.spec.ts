@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { expect, test, type Page } from '@playwright/test'
-import { expectNoAxeViolations, t } from './a11y.ts'
+import { chooseLanguage, expectNoAxeViolations, t } from './a11y.ts'
 import { drawStroke, mockTranscribe } from './draw.ts'
 
 const FIXTURE = path.join(import.meta.dirname, 'fixtures', 'working.jpg')
@@ -180,7 +180,7 @@ test('when reading fails, the error is honest and typing is one step away', asyn
 })
 
 test('in Arabic the page is right to left and the math stays left to right', async ({ page }) => {
-  await page.getByLabel('Language').selectOption('ar')
+  await chooseLanguage(page, 'العربية')
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('مكوّنات إدخال الرياضيات')
   const field = page.locator('math-field').first()
@@ -357,7 +357,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
 }
 
 test('in Arabic the confirmed math stays left to right', async ({ page }) => {
-  await page.getByLabel('Language').selectOption('ar')
+  await chooseLanguage(page, 'العربية')
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   const working = page.locator('section', {
     has: page.getByRole('heading', { level: 2, name: t('ar', 'demo.inputLines') }),

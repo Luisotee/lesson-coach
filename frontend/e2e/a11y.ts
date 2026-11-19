@@ -100,3 +100,24 @@ export async function typeMath(page: Page, label: string, keys: string) {
   await field.focus()
   await page.keyboard.type(keys)
 }
+
+/** The header's language button. Its name follows the language, so it is found by place. */
+export function languageButton(page: Page) {
+  return page.locator('header button[aria-haspopup="menu"]')
+}
+
+/** Picks a language from the header menu, by its own name (e.g. 'العربية'), with the mouse. */
+export async function chooseLanguage(page: Page, nativeName: string) {
+  await openLanguageMenu(page)
+  await page.getByRole('menuitemradio', { name: nativeName, exact: true }).click()
+  await expect(page.getByRole('menu')).toBeHidden()
+}
+
+/** Opens the header's language menu and waits for its fade-in, so axe reads final colours. */
+export async function openLanguageMenu(page: Page) {
+  await languageButton(page).click()
+  const menu = page.getByRole('menu')
+  await expect(menu).toBeVisible()
+  await menu.evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished)))
+  return menu
+}

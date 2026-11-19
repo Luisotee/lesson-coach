@@ -23,7 +23,7 @@ test('landmarks: skip link, banner with the main nav, main, footer', async ({ pa
         - link "Topics"
         - link "A student wrote this"
         - link "Practice"
-      - combobox "Language"
+      - 'button "Language: English"'
     - main:
       - heading "Solving linear equations" [level=1]
       - navigation "On this page"

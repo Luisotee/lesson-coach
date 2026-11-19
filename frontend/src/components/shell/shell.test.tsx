@@ -8,6 +8,8 @@ import i18n from '@/i18n'
 import { routes } from '@/router'
 import { PACKS, json, mockApi } from '@/test/api'
 import ar from '@/locales/ar.json'
+import en from '@/locales/en.json'
+import { LANGUAGES } from '@/i18n/languages'
 
 beforeEach(() => {
   mockApi()
@@ -37,10 +39,23 @@ test('home links to every topic from the API, the mistake explainer and practice
     expect(await screen.findByRole('link', { name })).toHaveAttribute('href', `/topics/${id}`)
   }
   expect(screen.getByText('Grade 7–8')).toBeInTheDocument()
-  expect(screen.getByRole('link', { name: 'A student wrote this…' })).toHaveAttribute(
-    'href',
-    '/mistake',
-  )
+  // The three features, each said plainly with one way in.
+  const features = screen.getByRole('region', { name: 'What you can do' })
+  for (const [title, link, href] of [
+    ['Prepare a lesson', 'Choose a topic', '/#topics'],
+    ['A student wrote this', 'Explain a student’s answer', '/mistake'],
+    ['Practice', 'Start practising', '/practice'],
+  ]) {
+    const card = screen.getByRole('heading', { level: 3, name: title }).closest('li')!
+    expect(within(card).getAllByRole('link')).toHaveLength(1)
+    expect(within(card).getByRole('link', { name: link })).toHaveAttribute('href', href)
+    expect(features).toContainElement(card)
+  }
+  // One entry per destination in the page body (the header is the site's navigation).
+  const hrefs = within(screen.getByRole('main'))
+    .getAllByRole('link')
+    .map((a) => a.getAttribute('href'))
+  expect(hrefs.length).toBe(new Set(hrefs).size)
   expect(screen.getByRole('link', { name: 'Skip to main content' })).toBeInTheDocument()
   expect(document.title).toBe('Lesson Coach')
 })
@@ -75,12 +90,20 @@ test('navigating moves focus to the new page heading', async () => {
   expect(screen.getByRole('heading', { level: 1 })).toHaveFocus()
 })
 
-test('the language picker switches the UI to Arabic, right to left', async () => {
+test('the language menu switches the UI to Arabic, right to left', async () => {
   renderAt('/')
-  await userEvent.selectOptions(screen.getByLabelText('Language'), 'ar')
+  await userEvent.click(screen.getByRole('button', { name: 'Language: English' }))
+  const menu = screen.getByRole('menu')
+  expect(menu).toHaveAccessibleDescription(`${en.language.note} ${en.shell.nothingSaved}`)
+  expect(within(menu).getAllByRole('menuitemradio')).toHaveLength(LANGUAGES.length)
+  expect(within(menu).getByRole('menuitemradio', { name: 'English' })).toBeChecked()
+  await userEvent.click(within(menu).getByRole('menuitemradio', { name: 'العربية' }))
   expect(await screen.findByRole('link', { name: ar.nav.topics })).toBeInTheDocument()
   expect(document.documentElement).toHaveAttribute('dir', 'rtl')
-  expect(screen.getByLabelText(ar.language.label)).toHaveValue('ar')
+  expect(screen.queryByRole('menu')).toBeNull()
+  expect(
+    screen.getByRole('button', { name: ar.language.button.replace('{name}', 'العربية') }),
+  ).toBeInTheDocument()
 })
 
 test.each([

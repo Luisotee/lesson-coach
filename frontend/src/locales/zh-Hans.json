@@ -8,7 +8,8 @@
     "mainNav": "主页",
     "nothingSaved": "没有账户。只在此浏览器中保留你的语言选择。",
     "footerNoScores": "没有测试。没有分数。不会保存任何关于你或学生的信息。",
-    "footerChecked": "每个答案都由计算机代数系统检查。"
+    "footerChecked": "每个答案都由计算机代数系统检查。",
+    "machineNote": "本页由机器从英语翻译而来，尚未经过审校。"
   },
   "nav": {
     "topics": "主题",
@@ -17,29 +18,31 @@
   },
   "language": {
     "label": "语言",
-    "machine": "{name}（机器翻译）"
+    "button": "语言：{name}",
+    "note": "英语是原文。其他所有语言均为机器翻译，尚未经过审核。"
   },
   "home": {
     "eyebrow": "面向 6–9 年级数学教师",
     "title": "先弄懂数学，再安心教学。",
-    "intro": "选择明天要讲的主题。了解每一步为什么成立，学生通常会错在哪里，以及他们出错时该怎么说。",
+    "intro": "Lesson Coach 帮助你为教授一个数学主题做准备：回顾核心概念，理解学生的错误，或自己练习一道题。",
     "topicsHeading": "选择主题",
     "topicsIntro": "每个主题包括：核心概念、例题讲解、常见错误和一份教学提纲。",
     "openTopic": "打开主题",
-    "waysHeading": "进入方式",
     "prepareTitle": "备一节课",
-    "prepareText": "回顾这个概念，并看每一步用三种方式解释。",
-    "mistakeTitle": "理解一个错误",
-    "mistakeText": "输入学生写下的内容。查看可能原因和可以提的问题。",
-    "practiceTitle": "私下练习",
-    "practiceText": "题目配有提示，你可以逐条打开。不计分。",
+    "prepareText": "选择一个主题。阅读核心概念、每一步都有说明的例题、学生常犯的错误，以及可打印的教学提纲。",
+    "mistakeTitle": "一名学生这样写道",
+    "mistakeText": "输入、绘制或拍摄一道题和学生的答案。数学引擎会检查答案和解题过程；教练会提示可能原因，以及可以问学生什么。",
+    "practiceTitle": "练习",
+    "practiceText": "自己解题，并逐个打开提示。数学引擎会检查你解题过程中的每一行。没有分数，也不会保存任何内容。",
     "titleHighlight": "先",
-    "mistakeCta": "一名学生这样写……",
+    "mistakeCta": "解释学生的答案",
     "heroWorked": "例题讲解",
     "heroWhyTitle": "为什么这一步成立",
     "heroWhyText": "只从一边减去 5，天平就会倾斜。两边都减去 5，两边就仍然相等。",
-    "heroExampleLink": "查看例题讲解：解 3x + 5 = 20",
-    "noTopics": "目前还没有可用的主题。"
+    "noTopics": "目前还没有可用的主题。",
+    "featuresHeading": "你可以做什么",
+    "prepareCta": "选择主题",
+    "practiceCta": "开始练习"
   },
   "topics": {
     "negative-numbers": {

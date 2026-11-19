@@ -16,19 +16,19 @@
       "retries": 9,
       "samples": 0,
       "judge_flags": {
-        "shell.mainNav": 2,
-        "home.title": 1,
-        "demo.title": 1,
         "input.mode.type": 2,
-        "demo.inputTitle": 1,
         "math.speech.fractionSimple": 1,
+        "mistake.say.nudge": 1,
         "practice.badReason.not_equivalent": 1,
-        "mistake.say.nudge": 1
+        "home.title": 1,
+        "shell.mainNav": 2,
+        "demo.title": 1,
+        "demo.inputTitle": 1
       },
       "judged_items": 336,
       "dropped": []
     },
-    "last_usd": 0.012355,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "shell.mainNav",
@@ -128,26 +128,26 @@
       "retries": 15,
       "samples": 0,
       "judge_flags": {
+        "input.mode.type": 2,
+        "math.speech.fractionSimple": 1,
+        "practice.badReason.not_equivalent": 1,
+        "practice.useWorking": 1,
         "topics.linear-equations.grade": 1,
         "home.waysHeading": 1,
         "mistake.workingLabel": 2,
-        "input.set.fromWrite": 1,
-        "demo.ink": 1,
         "mistake.sayWorded": 1,
-        "topics.fractions.grade": 1,
-        "input.mode.type": 2,
-        "topics.negative-numbers.grade": 1,
+        "math.speech.group": 1,
+        "input.set.fromWrite": 1,
         "mistake.sayExample": 1,
-        "math.speech.fractionSimple": 1,
-        "topic.countersKey": 2,
-        "practice.badReason.not_equivalent": 1,
-        "practice.useWorking": 1,
-        "math.speech.group": 1
+        "topics.negative-numbers.grade": 1,
+        "topics.fractions.grade": 1,
+        "demo.ink": 1,
+        "topic.countersKey": 2
       },
       "judged_items": 344,
       "dropped": []
     },
-    "last_usd": 0.02849,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "topics.negative-numbers.grade",
@@ -301,19 +301,19 @@
       "retries": 10,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "math.op.sub": 1,
-        "mistake.sameAmount": 1,
-        "topic.tapLine": 2,
-        "practice.noneYet": 1,
         "input.mode.type": 2,
-        "topic.whyItWorks": 2,
-        "topic.whyItFeelsRight": 2
+        "math.op.sub": 1,
+        "input.review.unreadable": 1,
+        "topic.whyItFeelsRight": 2,
+        "topic.tapLine": 2,
+        "mistake.sameAmount": 1,
+        "practice.noneYet": 1,
+        "topic.whyItWorks": 2
       },
       "judged_items": 340,
       "dropped": []
     },
-    "last_usd": 0.006215,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -419,18 +419,18 @@
       "retries": 11,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "math.speech.negative": 1,
         "input.mode.type": 2,
-        "math.speech.positive": 1,
         "mistake.possibilities": 1,
+        "math.speech.positive": 1,
+        "input.review.unreadable": 1,
+        "input.review.intro": 3,
         "home.eyebrow": 1,
-        "input.review.intro": 3
+        "math.speech.negative": 1
       },
       "judged_items": 338,
       "dropped": []
     },
-    "last_usd": 0.00622,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "demo.inputIntro",
@@ -530,15 +530,15 @@
       "retries": 7,
       "samples": 0,
       "judge_flags": {
+        "mistake.sayExample": 1,
         "math.speech.fractionSimple": 4,
         "input.review.unreadable": 1,
-        "input.review.intro": 2,
-        "mistake.sayExample": 1
+        "input.review.intro": 2
       },
       "judged_items": 50,
       "dropped": []
     },
-    "last_usd": 0.01374,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "input.review.unreadable",
@@ -602,17 +602,17 @@
       "retries": 8,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "mistake.explain": 1,
-        "math.speech.negative": 1,
         "input.mode.type": 2,
         "math.speech.positive": 1,
-        "input.review.intro": 1
+        "input.review.unreadable": 1,
+        "mistake.explain": 1,
+        "input.review.intro": 1,
+        "math.speech.negative": 1
       },
       "judged_items": 333,
       "dropped": []
     },
-    "last_usd": 0.006225,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -700,7 +700,7 @@
       "judged_items": 43,
       "dropped": []
     },
-    "last_usd": 0.008655,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "math.op.add",
@@ -745,7 +745,7 @@
       "judged_items": 41,
       "dropped": []
     },
-    "last_usd": 0.006695,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "math.speech.plus",
@@ -780,7 +780,7 @@
       "judged_items": 53,
       "dropped": []
     },
-    "last_usd": 0.00808,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "math.speech.fractionSimple",
@@ -839,16 +839,16 @@
       "samples": 0,
       "judge_flags": {
         "input.mode.type": 2,
-        "input.review.op": 1,
-        "home.prepareText": 1,
-        "demo.intro": 1,
         "topic.outlineTotal": 1,
-        "mistake.right": 1
+        "demo.intro": 1,
+        "mistake.right": 1,
+        "input.review.op": 1,
+        "home.prepareText": 1
       },
       "judged_items": 335,
       "dropped": []
     },
-    "last_usd": 0.00655,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -936,21 +936,21 @@
       "retries": 13,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "math.op.sub": 1,
-        "demo.fractionStepsLabel": 1,
         "common.grade": 1,
-        "mistake.whatTheyWrote": 1,
-        "input.set.fromWrite": 3,
-        "home.intro": 1,
         "input.mode.type": 2,
+        "mistake.whatTheyWrote": 1,
+        "home.intro": 1,
         "input.error.unclear": 1,
-        "topic.mistakesHeading": 1
+        "math.op.sub": 1,
+        "input.set.fromWrite": 3,
+        "input.review.unreadable": 1,
+        "topic.mistakesHeading": 1,
+        "demo.fractionStepsLabel": 1
       },
       "judged_items": 341,
       "dropped": []
     },
-    "last_usd": 0.00643,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "practice.badReason.false_equality",
@@ -1074,17 +1074,17 @@
       "retries": 9,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "input.mode.type": 1,
-        "practice.badReason.unparsable": 1,
         "math.speech.powerGroup": 1,
+        "input.mode.type": 1,
+        "input.set.fromWrite": 2,
         "math.speech.power": 1,
-        "input.set.fromWrite": 2
+        "input.review.unreadable": 1,
+        "practice.badReason.unparsable": 1
       },
       "judged_items": 333,
       "dropped": []
     },
-    "last_usd": 0.034215,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1262,17 +1262,17 @@
       "retries": 9,
       "samples": 0,
       "judge_flags": {
-        "input.set.changeLabel": 1,
         "input.mode.type": 1,
-        "practice.allFollow": 1,
+        "input.set.changeLabel": 1,
         "math.speech.power": 1,
-        "mistake.sayWorded": 1,
-        "mistake.right": 1
+        "mistake.right": 1,
+        "practice.allFollow": 1,
+        "mistake.sayWorded": 1
       },
       "judged_items": 332,
       "dropped": []
     },
-    "last_usd": 0.00622,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1354,27 +1354,27 @@
       "retries": 14,
       "samples": 0,
       "judge_flags": {
-        "practice.badReason.false_equality": 1,
-        "input.review.right": 1,
-        "shell.mainNav": 3,
         "practice.doneNote": 1,
-        "home.eyebrow": 1,
-        "topic.kind.evaluate": 1,
         "input.mode.type": 2,
-        "mistake.sayExample": 1,
         "math.speech.fractionSimple": 1,
-        "mistake.workedOut": 1,
-        "shell.skipToContent": 1,
-        "practice.useWorking": 1,
-        "shell.footerChecked": 1,
-        "input.review.left": 1,
+        "input.review.right": 1,
         "demo.title": 1,
-        "mistake.problemHint": 1
+        "mistake.problemHint": 1,
+        "shell.skipToContent": 1,
+        "shell.footerChecked": 1,
+        "topic.kind.evaluate": 1,
+        "practice.badReason.false_equality": 1,
+        "mistake.workedOut": 1,
+        "practice.useWorking": 1,
+        "shell.mainNav": 3,
+        "input.review.left": 1,
+        "mistake.sayExample": 1,
+        "home.eyebrow": 1
       },
       "judged_items": 345,
       "dropped": []
     },
-    "last_usd": 0.006365,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "input.review.left",
@@ -1522,19 +1522,19 @@
       "retries": 9,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
         "practice.header": 1,
-        "demo.title": 1,
-        "mistake.say.tell": 2,
-        "input.write.undo": 1,
-        "input.write.did.undo": 1,
         "math.speech.fractionSimple": 1,
-        "shell.footerChecked": 1
+        "input.write.did.undo": 1,
+        "mistake.say.tell": 2,
+        "demo.title": 1,
+        "input.write.undo": 1,
+        "shell.footerChecked": 1,
+        "input.review.unreadable": 1
       },
       "judged_items": 337,
       "dropped": []
     },
-    "last_usd": 0.006285,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1622,19 +1622,19 @@
       "retries": 11,
       "samples": 0,
       "judge_flags": {
-        "mistake.useWorking": 1,
-        "mistake.workingLabel": 1,
-        "demo.ink": 2,
         "input.mode.type": 1,
-        "mistake.sayExample": 1,
+        "mistake.useWorking": 1,
+        "practice.useWorking": 1,
+        "mistake.workingLabel": 1,
         "input.review.op": 1,
         "topic.check": 1,
-        "practice.useWorking": 1
+        "mistake.sayExample": 1,
+        "demo.ink": 2
       },
       "judged_items": 337,
       "dropped": []
     },
-    "last_usd": 0.00629,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -1728,17 +1728,17 @@
       "retries": 13,
       "samples": 0,
       "judge_flags": {
-        "math.speech.over": 1,
         "input.mode.type": 3,
-        "topic.kind.solve": 1,
         "mistake.possibilities": 1,
-        "input.review.op": 2,
-        "input.review.intro": 1
+        "topic.kind.solve": 1,
+        "input.review.intro": 1,
+        "math.speech.over": 1,
+        "input.review.op": 2
       },
       "judged_items": 335,
       "dropped": []
     },
-    "last_usd": 0.006055,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",
@@ -2039,19 +2039,19 @@
       "retries": 12,
       "samples": 0,
       "judge_flags": {
-        "input.review.unreadable": 1,
-        "demo.fractionStepsLabel": 1,
-        "math.speech.power": 1,
-        "math.speech.powerGroup": 1,
-        "mistake.sameAmount": 2,
         "input.mode.type": 1,
         "math.speech.fractionSimple": 6,
-        "math.speech.over": 2
+        "math.speech.over": 2,
+        "math.speech.powerGroup": 1,
+        "math.speech.power": 1,
+        "input.review.unreadable": 1,
+        "mistake.sameAmount": 2,
+        "demo.fractionStepsLabel": 1
       },
       "judged_items": 408,
       "dropped": []
     },
-    "last_usd": 0.006645,
+    "last_usd": 0.0,
     "changes": [
       {
         "path": "home.prepareText",

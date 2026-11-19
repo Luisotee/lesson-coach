@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { expectNoAxeViolations, explainSettled, typeMath } from './a11y.ts'
+import { chooseLanguage, expectNoAxeViolations, explainSettled, typeMath } from './a11y.ts'
 import { fixture, mockApi } from './api.ts'
 
 test.beforeEach(async ({ page }) => {
@@ -314,7 +314,7 @@ test('practice: switching language keeps the working, the check result and open 
   await page.getByRole('button', { name: 'Show next hint' }).click()
   await expect(page.getByText(/We want the value of/)).toBeVisible()
 
-  await page.getByLabel('Language').selectOption('ar')
+  await chooseLanguage(page, 'العربية')
   await expect(page.locator('html')).toHaveAttribute('lang', 'ar')
   await expect(page.locator('[data-check="line_doesnt_follow"]')).toBeVisible()
   await expect(page.getByText(/We want the value of/)).toBeVisible()

@@ -6,7 +6,8 @@ import { useTranslation } from 'react-i18next'
 import { Link, NavLink, Outlet, ScrollRestoration, useMatch } from 'react-router'
 import { createQueryClient } from '@/api/queries'
 import { LanguagePicker } from '@/components/shell/LanguagePicker'
-import { useHeaderHeight, useRouteFocus } from '@/components/shell/hooks'
+import { useHeaderHeight, useRouteFocus, useSmoothHashLinks } from '@/components/shell/hooks'
+import { findLanguage } from '@/i18n/languages'
 import { isTopicId, problemNumber } from '@/content/topics'
 import { cn } from '@/lib/utils'
 
@@ -37,7 +38,7 @@ function Mark() {
 }
 
 export function Shell() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   // Topics and Practice link to one place but stand for a section: they are current on every
   // real page of it (not on a "Page not found" under it). aria-current="true", not "page",
   // because the link's own target is a different page.
@@ -46,7 +47,9 @@ export function Shell() {
   const inTopics = isTopicId(topicMatch?.params.id)
   const inPractice =
     isTopicId(practiceMatch?.params.topic) && problemNumber(practiceMatch?.params.n) !== null
+  const machine = findLanguage(i18n.resolvedLanguage ?? i18n.language).status === 'machine'
   useRouteFocus()
+  useSmoothHashLinks()
   const header = useRef<HTMLElement>(null)
   useHeaderHeight(header)
   // One cache for the app's lifetime: packs are static, so revisits are instant.
@@ -95,13 +98,7 @@ export function Shell() {
                   {t('nav.practice')}
                 </Link>
               </nav>
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-[13px] text-muted-foreground">
-                  <ShieldCheck aria-hidden="true" className="size-3.5 text-green" />
-                  {t('shell.nothingSaved')}
-                </span>
-                <LanguagePicker />
-              </div>
+              <LanguagePicker />
             </div>
           </header>
           <main id="main" tabIndex={-1} className="flex-1 outline-none">
@@ -110,7 +107,12 @@ export function Shell() {
           <footer className="border-t border-line bg-white print:hidden">
             <div className="mx-auto flex max-w-[1200px] flex-wrap justify-between gap-3 px-4 py-7 text-sm text-muted-foreground sm:px-6">
               <span>{t('shell.footerNoScores')}</span>
+              <span className="inline-flex gap-2">
+                <ShieldCheck aria-hidden="true" className="mt-0.5 size-4 flex-none text-green" />
+                {t('shell.nothingSaved')}
+              </span>
               <span>{t('shell.footerChecked')}</span>
+              {machine && <span>{t('shell.machineNote')}</span>}
             </div>
           </footer>
         </div>

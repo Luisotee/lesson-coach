@@ -8,7 +8,8 @@
     "mainNav": "Principal",
     "nothingSaved": "Sin cuenta. Solo se conserva tu elección de idioma en este navegador.",
     "footerNoScores": "Sin pruebas. Sin calificaciones. No se guarda nada sobre ti ni sobre tus estudiantes.",
-    "footerChecked": "Cada respuesta es revisada por un sistema de álgebra computacional."
+    "footerChecked": "Cada respuesta es revisada por un sistema de álgebra computacional.",
+    "machineNote": "Esta página está traducida automáticamente del inglés y aún no ha sido revisada."
   },
   "nav": {
     "topics": "Temas",
@@ -17,29 +18,31 @@
   },
   "language": {
     "label": "Idioma",
-    "machine": "{name} (traducción automática)"
+    "button": "Idioma: {name}",
+    "note": "El inglés es el original. Todos los demás idiomas están traducidos por máquina y aún no han sido revisados."
   },
   "home": {
     "eyebrow": "Para docentes de matemáticas, grados 6–9",
     "title": "Siente seguridad con las matemáticas antes de enseñarlas.",
-    "intro": "Elige el tema de mañana. Mira por qué funciona cada paso, en qué suelen equivocarse los estudiantes y qué decir cuando lo hacen.",
+    "intro": "Lesson Coach te ayuda a prepararte para enseñar un tema de matemáticas: repasar la idea, entender el error de un estudiante o practicar un problema por tu cuenta.",
     "topicsHeading": "Elige un tema",
     "topicsIntro": "Cada tema: la idea, ejemplos resueltos, errores comunes y un esquema de clase.",
     "openTopic": "Abrir tema",
-    "waysHeading": "Formas de entrar",
     "prepareTitle": "Preparar una clase",
-    "prepareText": "Repasa la idea y ve cada paso explicado de tres formas.",
-    "mistakeTitle": "Entender un error",
-    "mistakeText": "Escribe lo que escribió un estudiante. Mira la razón probable y qué preguntar.",
-    "practiceTitle": "Practicar en privado",
-    "practiceText": "Problemas con pistas que abres una por una. Sin puntajes.",
+    "prepareText": "Elige un tema. Lee la idea central, ejemplos resueltos con cada paso explicado, los errores que suelen cometer los estudiantes y un esquema de clase que puedes imprimir.",
+    "mistakeTitle": "Un estudiante escribió esto",
+    "mistakeText": "Escribe, dibuja o fotografía un problema y la respuesta de tu estudiante. Un motor matemático revisa la respuesta y su procedimiento; el coach sugiere la razón probable y qué preguntarle a tu estudiante.",
+    "practiceTitle": "Práctica",
+    "practiceText": "Resuelve problemas por tu cuenta, con pistas que abres una por una. Un motor matemático revisa cada línea de tu procedimiento. No hay puntuaciones y no se guarda nada.",
     "titleHighlight": "antes",
-    "mistakeCta": "Un estudiante escribió esto…",
+    "mistakeCta": "Explicar la respuesta de un estudiante",
     "heroWorked": "ejemplo resuelto",
     "heroWhyTitle": "Por qué funciona este paso",
     "heroWhyText": "Quita 5 de un solo lado y la balanza se inclina. Quítalo de ambos, y los lados siguen siendo iguales.",
-    "heroExampleLink": "Ver un ejemplo resuelto: resolver 3x + 5 = 20",
-    "noTopics": "Aún no hay temas disponibles."
+    "noTopics": "Aún no hay temas disponibles.",
+    "featuresHeading": "Qué puedes hacer",
+    "prepareCta": "Elegir un tema",
+    "practiceCta": "Empezar a practicar"
   },
   "topics": {
     "negative-numbers": {

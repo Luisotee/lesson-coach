@@ -1,5 +1,5 @@
 import { ArrowLeft, ArrowRight, ClipboardCheck } from 'lucide-react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router'
 import { isNotFound, useCheckWorking, usePack } from '@/api/queries'
@@ -13,6 +13,7 @@ import { RichText } from '@/components/RichText'
 import { usePageTitle } from '@/components/shell/hooks'
 import { Button } from '@/components/ui/button'
 import { isTopicId, problemNumber } from '@/content/topics'
+import { isPlainClick, smoothly } from '@/lib/smooth'
 import { NotFoundPage } from '@/pages/NotFoundPage'
 import { PageFrame } from '@/pages/PageFrame'
 
@@ -58,6 +59,12 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
   const [working, setWorking] = useState<ConfirmedLines | null>(null)
   const [error, setError] = useState<string>()
   const check = useCheckWorking()
+  // The verdict appears under the button: scroll it fully into view (smoothly) if it isn't.
+  const result = useRef<HTMLDivElement>(null)
+  const settled = check.isSuccess || check.isError
+  useEffect(() => {
+    if (settled) smoothly(() => result.current?.scrollIntoView({ block: 'nearest' }))
+  }, [settled])
 
   const onCheck = () => {
     if (!working) {
@@ -66,7 +73,7 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
           ? t('input.useFirst', { action: t('practice.useWorking') })
           : t('practice.needWorking'),
       )
-      input.current?.focus()
+      smoothly(() => input.current?.focus())
       return
     }
     setError(undefined)
@@ -123,7 +130,7 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
               <ClipboardCheck aria-hidden="true" />
               {check.isPending ? t('practice.checking') : t('practice.check')}
             </Button>
-            <div aria-live="polite">
+            <div aria-live="polite" ref={result}>
               {check.isError && <LoadError error={check.error} onRetry={onCheck} />}
               {check.data && <CheckResult result={check.data} />}
             </div>
@@ -131,7 +138,11 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
 
           <nav aria-label={t('pages.practiceNav')} className="flex flex-wrap justify-between gap-3">
             {n > 1 ? (
-              <Link to={`/practice/${pack.topic}/${n - 1}`} className={stepLink}>
+              <Link
+                to={`/practice/${pack.topic}/${n - 1}`}
+                className={stepLink}
+                onClick={(e) => isPlainClick(e) && smoothly()}
+              >
                 <ArrowLeft aria-hidden="true" className="size-4 rtl:-scale-x-100" />
                 {t('pages.previous')}
               </Link>
@@ -139,7 +150,11 @@ function Practice({ pack, item, n }: { pack: Pack; item: PracticeItem; n: number
               <span />
             )}
             {n < total && (
-              <Link to={`/practice/${pack.topic}/${n + 1}`} className={stepLink}>
+              <Link
+                to={`/practice/${pack.topic}/${n + 1}`}
+                className={stepLink}
+                onClick={(e) => isPlainClick(e) && smoothly()}
+              >
                 {t('pages.next')}
                 <ArrowRight aria-hidden="true" className="size-4 rtl:-scale-x-100" />
               </Link>

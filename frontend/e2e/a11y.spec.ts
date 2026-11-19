@@ -5,6 +5,7 @@ import {
   expectNoSideScroll,
   expectNothingClipped,
   explainSettled,
+  openLanguageMenu,
   typeMath,
 } from './a11y.ts'
 import { fixture, mockApi, PACKS, type ApiOverrides } from './api.ts'
@@ -70,6 +71,22 @@ const STATES: [string, (page: Page) => Promise<void>][] = [
       await mockApi(page)
       await page.goto('/')
       await expect(page.getByRole('link', { name: /Solving linear equations/ })).toBeVisible()
+    },
+  ],
+  [
+    'header: language menu open',
+    async (page) => {
+      await mockApi(page)
+      await page.goto('/')
+      await openLanguageMenu(page)
+    },
+  ],
+  [
+    'header: language menu open, Arabic',
+    async (page) => {
+      await mockApi(page)
+      await page.goto('/?lng=ar')
+      await openLanguageMenu(page)
     },
   ],
   [

@@ -8,7 +8,8 @@
     "mainNav": "Principal",
     "nothingSaved": "Sem conta. Só a sua escolha de idioma é guardada, neste navegador.",
     "footerNoScores": "Sem testes. Sem pontuações. Nada sobre si ou sobre os seus alunos é guardado.",
-    "footerChecked": "Todas as respostas são verificadas por um sistema de álgebra computacional."
+    "footerChecked": "Todas as respostas são verificadas por um sistema de álgebra computacional.",
+    "machineNote": "Esta página foi traduzida automaticamente do inglês e ainda não foi revista."
   },
   "nav": {
     "topics": "Tópicos",
@@ -17,29 +18,31 @@
   },
   "language": {
     "label": "Idioma",
-    "machine": "{name} (tradução automática)"
+    "button": "Idioma: {name}",
+    "note": "O inglês é o original. Todas as outras línguas são traduzidas automaticamente e ainda não foram revistas."
   },
   "home": {
     "eyebrow": "Para professores de Matemática, 6.º–9.º anos",
     "title": "Sinta-se seguro com a Matemática antes de a ensinar.",
-    "intro": "Escolha o tema de amanhã. Veja por que razão cada passo funciona, em que é que os alunos costumam errar e o que dizer quando isso acontece.",
+    "intro": "O Lesson Coach ajuda-o a preparar-se para ensinar um tópico de matemática: rever a ideia, compreender o erro de um aluno ou praticar um problema por si próprio.",
     "topicsHeading": "Escolha um tema",
     "topicsIntro": "Em cada tema: a ideia, exemplos resolvidos, erros comuns e um plano de aula.",
     "openTopic": "Abrir tema",
-    "waysHeading": "Formas de começar",
     "prepareTitle": "Preparar uma aula",
-    "prepareText": "Reveja a ideia e veja cada passo explicado de três formas.",
-    "mistakeTitle": "Compreender um erro",
-    "mistakeText": "Escreva o que um aluno escreveu. Veja a razão provável e o que perguntar.",
-    "practiceTitle": "Praticar em privado",
-    "practiceText": "Problemas com pistas que abre uma de cada vez. Sem pontuações.",
+    "prepareText": "Escolha um tópico. Leia a ideia central, exemplos resolvidos com cada passo explicado, os erros que os alunos costumam cometer e um plano de aula que pode imprimir.",
+    "mistakeTitle": "Um aluno escreveu isto",
+    "mistakeText": "Escreva, desenhe ou fotografe um problema e a resposta do seu aluno. Um motor matemático verifica a resposta e a resolução; o coach sugere a razão provável e o que perguntar ao seu aluno.",
+    "practiceTitle": "Prática",
+    "practiceText": "Resolva problemas por si próprio, com dicas que abre uma de cada vez. Um motor matemático verifica cada linha da sua resolução. Sem pontuações, e nada é guardado.",
     "titleHighlight": "antes",
-    "mistakeCta": "Um aluno escreveu isto…",
+    "mistakeCta": "Explicar a resposta de um aluno",
     "heroWorked": "exemplo resolvido",
     "heroWhyTitle": "Por que razão este passo funciona",
     "heroWhyText": "Retire 5 de apenas um lado e a balança desequilibra-se. Retire-o de ambos os lados, e os lados continuam iguais.",
-    "heroExampleLink": "Veja um exemplo resolvido: resolver 3x + 5 = 20",
-    "noTopics": "Ainda não há temas disponíveis."
+    "noTopics": "Ainda não há temas disponíveis.",
+    "featuresHeading": "O que pode fazer",
+    "prepareCta": "Escolher um tópico",
+    "practiceCta": "Começar a praticar"
   },
   "topics": {
     "negative-numbers": {

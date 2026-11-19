@@ -1,5 +1,12 @@
 import { expect, test } from '@playwright/test'
-import { expectNoAxeViolations, t } from './a11y.ts'
+import {
+  chooseLanguage,
+  expectNoAxeViolations,
+  languageButton,
+  openLanguageMenu,
+  t,
+} from './a11y.ts'
+import { LANGUAGES } from '../src/i18n/languages.ts'
 import { mockApi } from './api.ts'
 
 test.beforeEach(async ({ page }) => {
@@ -89,7 +96,7 @@ test('the language picker switches to Arabic, right to left, and remembers it', 
 }) => {
   await page.goto('/')
   await expect(page.locator('html')).toHaveAttribute('dir', 'ltr')
-  await page.getByLabel('Language').selectOption('ar')
+  await chooseLanguage(page, 'العربية')
   await expect(page.locator('html')).toHaveAttribute('lang', 'ar')
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   await expect(page.getByRole('link', { name: t('ar', 'nav.topics') })).toBeVisible()
@@ -102,6 +109,43 @@ test('the language picker switches to Arabic, right to left, and remembers it', 
   await page.reload()
   await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(t('ar', 'mistake.title'))
+})
+
+test('the language menu: native names, one machine-translation note, and the privacy line', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 })
+  await page.goto('/')
+  // Logo, nav and the language button fit on one row.
+  expect((await page.locator('header').boundingBox())?.height).toBeLessThanOrEqual(80)
+  await expect(languageButton(page)).toHaveAccessibleName('Language: English')
+  const menu = await openLanguageMenu(page)
+  const items = menu.getByRole('menuitemradio')
+  await expect(items).toHaveCount(LANGUAGES.length)
+  await expect(items).toHaveText(LANGUAGES.map((l) => l.nativeName))
+  await expect(menu.getByRole('menuitemradio', { name: 'English' })).toBeChecked()
+  // One note, read with the privacy line as the menu's description, instead of a suffix on
+  // every row.
+  await expect(menu).toHaveAccessibleDescription(
+    `${t('en', 'language.note')} ${t('en', 'shell.nothingSaved')}`,
+  )
+  await expect(menu).toContainText(t('en', 'shell.nothingSaved'))
+  await expect(menu).not.toContainText('machine-translated)')
+  await expectNoAxeViolations(page)
+  await page.keyboard.press('Escape')
+  // English is the original: the footer adds no machine-translation note.
+  await expect(page.locator('footer')).not.toContainText(t('ar', 'shell.machineNote'))
+  await expect(page.locator('footer')).toContainText(t('en', 'shell.nothingSaved'))
+
+  await chooseLanguage(page, 'العربية')
+  await expect(languageButton(page)).toHaveAccessibleName(
+    t('ar', 'language.button').replace('{name}', 'العربية'),
+  )
+  await expect(page.locator('footer')).toContainText(t('ar', 'shell.machineNote'))
+  const rtlMenu = await openLanguageMenu(page)
+  await expect(rtlMenu).toHaveAttribute('dir', 'rtl')
+  await expect(rtlMenu.getByRole('menuitemradio', { name: 'العربية' })).toBeChecked()
+  await expectNoAxeViolations(page)
 })
 
 test('the dev showcases are not in the production build', async ({ page }) => {

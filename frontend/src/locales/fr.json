@@ -8,7 +8,8 @@
     "mainNav": "Principal",
     "nothingSaved": "Pas de compte. Seul votre choix de langue est conservé, dans ce navigateur.",
     "footerNoScores": "Pas de tests. Pas de scores. Rien sur vous ni sur vos élèves n’est enregistré.",
-    "footerChecked": "Chaque réponse est vérifiée par un système de calcul formel."
+    "footerChecked": "Chaque réponse est vérifiée par un système de calcul formel.",
+    "machineNote": "Cette page est traduite automatiquement depuis l’anglais et n’a pas encore été relue."
   },
   "nav": {
     "topics": "Thèmes",
@@ -17,29 +18,31 @@
   },
   "language": {
     "label": "Langue",
-    "machine": "{name} (traduction automatique)"
+    "button": "Langue : {name}",
+    "note": "L’anglais est la langue d’origine. Toutes les autres langues sont traduites automatiquement et n’ont pas encore été relues."
   },
   "home": {
     "eyebrow": "Pour les professeurs de mathématiques, niveaux 6–9",
     "title": "Soyez sûr des maths avant de les enseigner.",
-    "intro": "Choisissez le sujet de demain. Voyez pourquoi chaque étape fonctionne, ce sur quoi les élèves se trompent souvent, et quoi dire quand cela arrive.",
+    "intro": "Lesson Coach vous aide à vous préparer à enseigner un thème de mathématiques : revoir l’idée, comprendre l’erreur d’un élève ou vous entraîner vous-même sur un problème.",
     "topicsHeading": "Choisir un sujet",
     "topicsIntro": "Chaque sujet : l’idée, des exemples corrigés, des erreurs fréquentes et un déroulé de leçon.",
     "openTopic": "Ouvrir le sujet",
-    "waysHeading": "Façons d’entrer",
     "prepareTitle": "Préparer une leçon",
-    "prepareText": "Revoyez l’idée et voyez chaque étape expliquée de trois façons.",
-    "mistakeTitle": "Comprendre une erreur",
-    "mistakeText": "Tapez ce qu’un élève a écrit. Voyez la raison probable et la question à poser.",
-    "practiceTitle": "S’entraîner en privé",
-    "practiceText": "Des exercices avec des indices que vous ouvrez un par un. Pas de scores.",
+    "prepareText": "Choisissez un thème. Lisez l’idée principale, des exemples résolus avec chaque étape expliquée, les erreurs que les élèves font souvent, et un plan de séance que vous pouvez imprimer.",
+    "mistakeTitle": "Un élève a écrit ceci",
+    "mistakeText": "Saisissez, dessinez ou photographiez un problème et la réponse de votre élève. Un moteur mathématique vérifie la réponse et son raisonnement ; le coach suggère la raison probable et les questions à poser à votre élève.",
+    "practiceTitle": "S’entraîner",
+    "practiceText": "Résolvez vous-même des problèmes, avec des indices que vous ouvrez un par un. Un moteur mathématique vérifie chaque ligne de votre raisonnement. Pas de notes, et rien n’est enregistré.",
     "titleHighlight": "avant",
-    "mistakeCta": "Un élève a écrit ceci…",
+    "mistakeCta": "Expliquer la réponse d’un élève",
     "heroWorked": "exemple corrigé",
     "heroWhyTitle": "Pourquoi cette étape fonctionne",
     "heroWhyText": "Enlever 5 d’un seul côté, et l’équilibre bascule. L’enlever des deux côtés, et les membres restent égaux.",
-    "heroExampleLink": "Voir un exemple corrigé : résoudre 3x + 5 = 20",
-    "noTopics": "Aucun sujet n’est encore disponible."
+    "noTopics": "Aucun sujet n’est encore disponible.",
+    "featuresHeading": "Ce que vous pouvez faire",
+    "prepareCta": "Choisir un thème",
+    "practiceCta": "Commencer à s’entraîner"
   },
   "topics": {
     "negative-numbers": {
